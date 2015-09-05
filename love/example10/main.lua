@@ -41,12 +41,8 @@ end
 -- Vykreslení spritu s jeho otočením.
 --
 function drawSprite(sprite)
-    -- uložení transformační matice
-    love.graphics.push()
     -- vykreslení spritu s rotací
     love.graphics.draw(sprite.image, sprite.x, sprite.y, sprite.r)
-    -- obnovení původní transformační matice
-    love.graphics.pop()
 end
 
 
