@@ -1,7 +1,7 @@
 --
 -- Knihovna LÖVE
 --
--- Sedmý demonstrażní příklad
+-- Sedmý demonstrační příklad
 --
 -- Kreslení pomocí funkcí z knihovny love.graphics, nastavení režimu
 -- směšování barev

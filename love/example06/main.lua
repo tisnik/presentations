@@ -1,7 +1,7 @@
 --
 -- Knihovna LÖVE
 --
--- Šestý demonstrażní příklad
+-- Šestý demonstrační příklad
 --
 -- Kreslení pomocí funkcí z knihovny love.graphics
 --
