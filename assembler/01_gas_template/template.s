@@ -27,7 +27,7 @@ sys_exit=1
         .global _start          # tento symbol ma byt dostupny i linkeru
 
 _start:
-        mov   $sys_exit,%eax    # cislo sycallu pro funkci "exit"
-        mov   $0,%ebx           # exit code = 0
+        movl  $sys_exit,%eax    # cislo sycallu pro funkci "exit"
+        movl  $0,%ebx           # exit code = 0
         int   $0x80             # volani Linuxoveho kernelu
 
