@@ -1,0 +1,3 @@
+as hello_world.s -o hello_world.o
+ld -s hello_world.o
+
