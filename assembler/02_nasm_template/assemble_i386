@@ -1,0 +1,3 @@
+nasm -felf32 template.asm
+ld -s template.o
+
