@@ -1,7 +1,7 @@
 --
 -- Knihovna LÖVE
 --
--- Patnáctý demontrační příklad
+-- Patnáctý demonstrační příklad
 --
 -- Použití jednoduchého částicového systému.
 --

@@ -1,7 +1,7 @@
 --
 -- Knihovna LÖVE
 --
--- Čtrnáctý demontrační příklad
+-- Čtrnáctý demonstrační příklad
 --
 -- Použití jednoduchého částicového systému na nějž působí gravitace.
 --
