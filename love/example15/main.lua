@@ -23,8 +23,14 @@ particleCount = 1000
 -- Funkce volaná při inicializaci aplikace.
 --
 function love.load()
+    -- načtení standardního fontu a nastavení grafického režimu
+    local font = love.graphics.newFont(love.default_font, 40)
+
     -- inicializace grafického režimu
     love.graphics.setMode(width, height, false, false, 0)
+
+    -- nastavení fontu
+    love.graphics.setFont(font)
 
     -- načtení obrázku představujícího jednu částici
     local particleImage = love.graphics.newImage("particle.png")
@@ -85,6 +91,10 @@ function love.draw()
 
     -- vykreslení částicového systému na obrazovku
     love.graphics.draw(particleSystem, 0, 0)
+
+    -- zprávy vypsané na obrazovky
+    love.graphics.print("Press Enter to start particle emitter.", 30, 415)
+    love.graphics.print("Press Escape to exit.", 30, 433)
 end
 
 
