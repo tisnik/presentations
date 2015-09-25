@@ -55,7 +55,7 @@ function love.load()
     -- počáteční umístění tělesa
     objects.block1.body = love.physics.newBody(world, 200, 200, "dynamic")
     -- tvar a rozměry
-    objects.block1.shape = love.physics.newRectangleShape(0, 0, 40, 150)
+    objects.block1.shape = love.physics.newRectangleShape(40, 150)
     -- propojení tvaru s tělesem
     objects.block1.fixture = love.physics.newFixture(objects.block1.body, objects.block1.shape, 5)
 
@@ -64,7 +64,7 @@ function love.load()
     -- počáteční umístění tělesa
     objects.block2.body = love.physics.newBody(world, 225, 50, "dynamic")
     -- tvar a rozměry
-    objects.block2.shape = love.physics.newRectangleShape(0, 0, 100, 50)
+    objects.block2.shape = love.physics.newRectangleShape(100, 50)
     -- propojení tvaru s tělesem
     objects.block2.fixture = love.physics.newFixture(objects.block2.body, objects.block2.shape, 5)
 end
