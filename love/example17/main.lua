@@ -1,9 +1,9 @@
 --
 -- Knihovna LÖVE
 --
--- Šestnáctý demonstrační příklad
+-- Sedmnáctý demonstrační příklad
 --
--- Použití jednoduchého částicového systému.
+-- Interaktivní změna parametrů dvou částicových systémů.
 --
 
 
@@ -13,13 +13,15 @@ height = 600
 
 -- asociativní pole představující částicový systém
 local particleSystem1 = nil
-local particleSystem2 = nil
 
+-- druhý částicový systém
+local particleSystem2 = nil
 
 -- maximální počet částic v částicovém systému
 particleCount = 1000
 
-
+-- barvové přechody, každý řádek obsahuje
+-- dvojici barev RGBA
 local colors = {
     {255, 255,   0, 100 ,255,   0,   0, 100},
     {255,   0,   0, 100 ,255, 255,   0, 100},
@@ -29,6 +31,7 @@ local colors = {
     {255, 255, 255, 100 ,255,   0,   0, 100}
 }
 
+-- přechody mezi relativními velikostmi částic
 local sizes = {
     {3, 0.5},
     {5, 0},
@@ -38,6 +41,7 @@ local sizes = {
     {0, 10},
 }
 
+-- rychlosti částic
 local speeds = {
     {100, 400},
     {200, 800},
@@ -45,13 +49,20 @@ local speeds = {
     {0, 200},
 }
 
+-- rychlosti emise nových částic
 local emissionRates = {
     50, 100, 200, 300, 500, 5, 10}
 
+-- rozptyl emitoru částic
 local spreads = {
     0.3, 0.1, 1, 2, 3.14, 6.28
 }
 
+
+
+--
+-- Vrátí dvě barvy pro zadaný index.
+--
 function getColors(index)
     return colors[index][1],
            colors[index][2],
@@ -63,24 +74,49 @@ function getColors(index)
            colors[index][8]
 end
 
+
+
+--
+-- Vrátí dvě velikosti částic pro zadaný index.
+--
 function getSizes(index)
     return sizes[index][1],
            sizes[index][2]
 end
 
+
+
+--
+-- Vrátí rychlost emise nových částic pro zadaný index.
+--
 function getEmissionRate(index)
     return emissionRates[index]
 end
 
+
+
+--
+-- Vrátí rychlosti emitovaných částic pro zadaný index.
+--
 function getSpeeds(index)
     return speeds[index][1],
            speeds[index][2]
 end
 
+
+
+--
+-- Vrátí rozptyl emitoru částic pro zadaný index.
+--
 function getSpread(index)
     return spreads[index]
 end
 
+
+
+--
+-- Vytvoření částicového systému s emitorem umístěným na zadaných souřadnicích.
+--
 function createParticleSystem(x, y, particleImage)
     -- vytvoření částicového systému s jeho inicializací
     local particleSystemObject = love.graphics.newParticleSystem(particleImage, particleCount)
@@ -109,6 +145,7 @@ function createParticleSystem(x, y, particleImage)
     particleSystemObject:setSizes(getSizes(1))
     particleSystemObject:stop()
 
+    -- vytvoření objektu představujícího částicový systém i jeho vlastnosti
     local particleSystem = {}
     particleSystem.particleSystemObject = particleSystemObject
     particleSystem.colorIndex = 1
@@ -137,6 +174,7 @@ function love.load()
     -- načtení obrázku představujícího jednu částici
     local particleImage = love.graphics.newImage("particle.png")
 
+    -- vytvoření obou částicových systémů
     particleSystem1 = createParticleSystem(200, 500, particleImage)
     particleSystem2 = createParticleSystem(400, 500, particleImage)
 end
@@ -147,8 +185,10 @@ end
 -- Funkce volaná cca 30x za sekundu
 --
 function love.update(dt)
-    -- přepočítat parametry částicového systému
+    -- přepočítat parametry prvního částicového systému
     particleSystem1.particleSystemObject:update(dt)
+
+    -- přepočítat parametry druhého částicového systému
     particleSystem2.particleSystemObject:update(dt)
 
     local delay = 1/30
@@ -167,11 +207,13 @@ function love.draw()
     -- režim vykreslování
     love.graphics.setBlendMode("alpha")
 
-    -- vykreslení částicového systému na obrazovku
+    -- vykreslení prvního částicového systému na obrazovku
     love.graphics.draw(particleSystem1.particleSystemObject, 0, 0)
+
+    -- vykreslení druhého částicového systému na obrazovku
     love.graphics.draw(particleSystem2.particleSystemObject, 0, 0)
 
-    -- zprávy vypsané na obrazovky
+    -- zprávy vypsané na obrazovku
     love.graphics.print("Enter: start particle emitters.", 10, 20)
 
     love.graphics.print("F1: start/stop 1st emitter.", 10, 40)
@@ -194,6 +236,9 @@ end
 
 
 
+--
+-- Spuštění či zastavení zvoleného částicového systému.
+--
 function startOrStopParticleSystem(particleSystem)
     if particleSystem.particleSystemObject:isActive() then
         particleSystem.particleSystemObject:stop()
@@ -202,7 +247,13 @@ function startOrStopParticleSystem(particleSystem)
     end
 end
 
+
+
+--
+-- Změna barvy částic zvoleného částicového systému.
+--
 function changeParticleSystemColors(particleSystem)
+    -- změna indexu
     particleSystem.colorIndex = particleSystem.colorIndex + 1
     if particleSystem.colorIndex > #colors then
          particleSystem.colorIndex = 1
@@ -210,7 +261,13 @@ function changeParticleSystemColors(particleSystem)
     particleSystem.particleSystemObject:setColors(getColors(particleSystem.colorIndex))
 end
 
+
+
+--
+-- Změna velikosti částic zvoleného částicového systému.
+--
 function changeParticleSystemSizes(particleSystem)
+    -- změna indexu
     particleSystem.sizeIndex = particleSystem.sizeIndex + 1
     if particleSystem.sizeIndex > #sizes then
          particleSystem.sizeIndex = 1
@@ -218,7 +275,13 @@ function changeParticleSystemSizes(particleSystem)
     particleSystem.particleSystemObject:setSizes(getSizes(particleSystem.sizeIndex))
 end
 
+
+
+--
+-- Změna rychlosti emitování částic zvoleného částicového systému.
+--
 function changeParticleSystemEmissionRate(particleSystem)
+    -- změna indexu
     particleSystem.emissionRateIndex = particleSystem.emissionRateIndex + 1
     if particleSystem.emissionRateIndex > #emissionRates then
          particleSystem.emissionRateIndex = 1
@@ -226,7 +289,13 @@ function changeParticleSystemEmissionRate(particleSystem)
     particleSystem.particleSystemObject:setEmissionRate(getEmissionRate(particleSystem.emissionRateIndex))
 end
 
+
+
+--
+-- Nastavení rychlosti emitovaných částic zvoleného částicového systému.
+--
 function changeParticleSystemSpeeds(particleSystem)
+    -- změna indexu
     particleSystem.speedIndex = particleSystem.speedIndex + 1
     if particleSystem.speedIndex > #speeds then
          particleSystem.speedIndex = 1
@@ -234,7 +303,13 @@ function changeParticleSystemSpeeds(particleSystem)
     particleSystem.particleSystemObject:setSpeed(getSpeeds(particleSystem.speedIndex))
 end
 
+
+
+--
+-- Nastavení rozptylu emitace částic zvoleného částicového systému.
+--
 function changeParticleSystemSpread(particleSystem)
+    -- změna indexu
     particleSystem.spreadIndex = particleSystem.spreadIndex + 1
     if particleSystem.spreadIndex > #spreads then
          particleSystem.spreadIndex = 1
