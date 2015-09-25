@@ -99,7 +99,7 @@ function love.draw()
     love.graphics.setColor(250, 150, 150)
     love.graphics.polygon("line", objects.block1.body:getWorldPoints(objects.block1.shape:getPoints()))
 
-    -- vykreslení prvního tělesa
+    -- vykreslení druhého tělesa
     love.graphics.setColor(150, 150, 250)
     love.graphics.polygon("line", objects.block2.body:getWorldPoints(objects.block2.shape:getPoints()))
 
