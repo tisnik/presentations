@@ -1,0 +1,8 @@
+
+Důsledky použití architektury RISC
+-------------------------------
+▶ Počítače s ARM(2) se spoléhaly na hrubou výpočetní sílu CPU
+▶ Orientace na 3D operace
+    ◆ x Amiga + Atari ST potřeba koprocesorů
+    ◆ BLITTER, Agnus, Denise...
+        • Orientace na rastrové 2D operace

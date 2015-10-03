@@ -1,0 +1,14 @@
+
+Rodina ARM3
+-------------------------------
+▶ Stále architektura ARMv2a
+▶ Jádro ARM3
+▶ Postupně rostoucí hodinová frekvence
+    ◆ ARM250: 12 MHz
+    ◆ ARM3: 25 MHz
+▶ Operační paměť se stává úzkým hrdlem architektury
+    ◆ Řešení typické pro RISC: použití cache
+    ◆ 4 kB cache v případě jádra ARM3 (D+I)
+▶ Základní parametry
+    ◆ Frekvence až 25 MHz
+    ◆ Výkon průměrně 12 MIPS

@@ -1,0 +1,10 @@
+
+Jádra v řadě Cortex-Mx
+-------------------------------
+Jádro       Architektura
+Cortex-M0   ARMv6-M    Von Neumann
+Cortex-M0+  ARMv6-M    Von Neumann
+Cortex-M1   ARMv6-M    Von Neumann
+Cortex-M3   ARMv7-M    Harvardská
+Cortex-M4   ARMv7E-M   Harvardská
+Cortex-M7   ARMv7E-M   Harvardská

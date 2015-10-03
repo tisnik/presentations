@@ -1,0 +1,20 @@
+
+Obchodní model ARM vs.Intel/AMD
+-------------------------------
+▶ Tradiční model mainstreamových výrobců
+    ◆ „Jedna velikost padne všem“
+    ◆ Relativně malé množství současně nabízených modelů CPU (10?)
+▶ Jedna společnost (Intel či AMD)
+    ◆ Návrh architektury čipu
+    ◆ Výroba
+    ◆ Distribuce
+▶ ARM
+    ◆ Vlastní know-how a IP
+    ◆ Nevyrábí vlastní procesory
+    ◆ Namísto toho prodává IP dalším společnostem
+        • Samsung
+        • Qualcomm
+        • NVidia
+        • Nintendo
+        • Texas Instruments
+        • dalších cca 15 důležitých zákazníků

@@ -1,0 +1,13 @@
+
+MCU a Thumb?
+-------------------------------
+▶ Je strojový kód RISCových procesorů skutečně prostorově neefektivní?
+    ◆ PIC16 a PIC18
+        • 14bitové a 16bitové instrukce
+        • osmibitové operandy
+    ◆ 8051
+        • 8, 16, 24 bitů/instrukci
+        • většinou jen osmibitové operandy
+    ◆ Thumb
+        • 16 a 32 bitů/instrukci
+        • 32bitové operandy

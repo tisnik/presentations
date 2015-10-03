@@ -1,0 +1,9 @@
+
+Projekt Acorn RISC Machine
+-------------------------------
+▶ Steve Furber a Sophie Wilson
+▶ Studie architektury Berkeley RISC
+    ◆ „Pokud skupinka studentů dokáže vytvořit
+      plnohodnotný 32bitový procesor, nebude mít
+      společnost Acorn vůbec žádný problém“
+▶ RISC = nejenom „studentský CPU“

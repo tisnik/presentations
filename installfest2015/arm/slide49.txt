@@ -1,0 +1,23 @@
+
+Instrukční sada Thumb (T32)
+-------------------------------
+▶ Aritmetické instrukce
+    ADD, ADC, SUB, SBC
+    MUL, NEG
+▶ Logické operace
+    AND, EOR, ORR
+▶ Rotace a posuny
+    ASR, LSL, LSR, ROR
+▶ Porovnání a nastavení příznaků
+    CMP, CMN, TST
+▶ Skoky
+    B,   BL,   BX,  BLX (link, exchange)
+▶ Přesuny dat
+    MOV, MVN            - move (not)
+    POP, PUSH
+▶ Operace typu LOAD a STORE
+    LDR, LDRH, LRRB     - load (word, halfword, byte)
+         LDRSH, LDRSB   - sign extend (na word)
+    STR, STRH, STRB     - store (word, halfword, byte)
+    LDMIA, STMIA        - vektor registrů 
+    STXH, STXB, UXTH, UXTB - sign/zero extend

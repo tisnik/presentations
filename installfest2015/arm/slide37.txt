@@ -1,0 +1,9 @@
+
+Rodina ARMv8-A
+-------------------------------
+▶ Zaručena zpětná kompatibilita s ARMv7-A
+▶ Podporuje AArch32 i AArch64
+▶ Současné čipy ARMv8-A
+     ◆ Cortex-A53
+     ◆ Cortex-A57
+     ◆ Cortex-A72

@@ -1,0 +1,10 @@
+
+Výpočetní výkon čipů s architekturou CISC
+-------------------------------
+▶ Intel 80286 @ 8 MHz
+    ◆ ~1,2 MIPS pro 16bitové operace
+▶ Motorola 68000 @ 8MHz
+    ◆ ~1 MIPS pro 16bitové operace
+    ◆ ~1/2 MIPS pro 32bitové operace
+    ◆ ~2 MIPS maximum
+       v syntetických testech

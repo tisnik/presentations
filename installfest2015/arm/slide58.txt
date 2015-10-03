@@ -1,0 +1,8 @@
+
+Instrukce s podmínkou
+-------------------------------
+▶ Již nejsou podporovány
+    ◆ Založeno na výsledcích benchmarků
+    ◆ Více bitů v instrukčním slově použitelných pro jiné účely
+    ◆ Současné prediktory skoků jsou již velmi kvalitní
+    ◆ Podmínky mohou být použity jen u některých instrukcí

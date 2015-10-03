@@ -1,0 +1,9 @@
+
+Výpočetní výkon však není vše
+-------------------------------
+▶ Intel 80286
+    ◆ 134 000 tranzistorů
+▶ Motorola 68000
+    ◆ 68000 tranzistorů
+▶ ARM2
+    ◆ 30000 tranzistorů

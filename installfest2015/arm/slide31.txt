@@ -1,0 +1,18 @@
+
+Cortex-M7
+-------------------------------
+▶ Nejvýkonnější řada DSP
+    ◆ Superskalární, 6řezová pipeline
+    ◆ Prediktor skoků
+    ◆ MAC s 16/32bitovými operandy v jednom cyklu
+    ◆ HW dělička (2-12 cyklů)
+▶ Floating point
+    ◆ single
+    ◆ double
+▶ SIMD
+▶ D-cache až 64kB
+▶ I-cache až 64kB
+▶ TCM
+    ◆ Tightly Coupled Memory
+▶ ECC
+▶ Režimy Sleep a Deep Sleep

@@ -1,0 +1,14 @@
+
+VFP
+-------------------------------
+▶ Vector Floating Point (VFP)
+▶ Podpora pro typy half, single a double
+    ◆ IEEE 754
+▶ Registry
+    ◆ d0..d15
+    ◆ s0..s31 (stínové registry pro single)
+▶ SIMD operace (s vektory)
+    ◆ 8*single
+    ◆ 4*double
+    ◆ mohou se provádět na jediné FP jednotce
+    ◆ stále však rychlejší než skalární operace

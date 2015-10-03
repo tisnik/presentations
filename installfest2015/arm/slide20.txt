@@ -1,0 +1,14 @@
+
+Rodina ARM2 (pokr.)
+-------------------------------
+▶ Architektura ARMv2a
+    ◆ Založeno na ARMv2 (původně jádro ARM2)
+    ◆ Nyní jádro A250
+▶ Novinky architektury ARMv2a
+    ◆ Jádro A250
+    ◆ Integrovaná jednotka MMU
+    ◆ Nové instrukce
+    ◆ Grafický I/O procesor
+▶ Základní parametry
+    ◆ Frekvence až 12 MHz
+    ◆ Výkon průměrně 7 MIPS

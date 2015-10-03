@@ -1,0 +1,7 @@
+
+Operace
+-------------------------------
+▶ 32bitové
+    ◆ horních 32 bitů zdrojových registrů ignorováno
+    ◆ horních 32 bitů cílového registru vynulováno
+▶ 64bitové

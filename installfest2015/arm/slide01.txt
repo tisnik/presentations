@@ -1,0 +1,11 @@
+
+Obsah přednášky
+-------------------------------
+▶ Základní informace o mikroprocesorech ARM
+▶ Stručná historie vývoje architektury ARM
+▶ Původní instrukční sada ARM (ARM-32)
+▶ Instrukční sada Thumb
+▶ Instrukční sada Thumb-2
+▶ Příklady využití ARM
+▶ Mikroprocesory ARM ve funkci mikrořadičů
+▶ AArch64

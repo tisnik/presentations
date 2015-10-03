@@ -1,0 +1,18 @@
+
+NEON Intrinsic
+-------------------------------
+gcc   -mcpu=cortex-a9 -mfpu=neon ...
+clang -mcpu=cortex-a9 -mfpu=neon ...
+-mtune=cortex-a5 (a8, a9)
+...
+#include <arm_neon.h>
+(typ)x(lanes)_t - uint8x4_t
+(typ)x(lanes)x(počet_registrů)_t - uint8x2x4_t
+...
+uint16x4_t vadd_u16(uint16x4_t x, uint16x4_t y);
+uint16x2_t vmlal_u32(uint64x2_t x, uint32x2_t, uint32x2_t);
+...
+▶ Naměřený výpočetní výkon
+    ◆ Funkce rgb2gray
+    ◆ Čisté céčko - 48 sekund
+    ◆ Intrinsics  - 8.8 sekund (cca 5x rychlejší)

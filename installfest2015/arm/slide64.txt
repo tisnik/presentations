@@ -1,0 +1,10 @@
+
+VFP
+-------------------------------
+▶ VPFv1
+    ◆ Dnes již nepoužívaná
+▶ VPFv2
+    ◆ Podpora v ARM instrukcích
+▶ VPFv3
+    ◆ Podpora v Thumb a ThumbEE
+    ◆ Rozšíření FP registrů na 32

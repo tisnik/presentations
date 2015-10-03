@@ -1,0 +1,15 @@
+
+Architektury a čipy ARM - využití
+-------------------------------
+ARMv1      proof of concept, funkční hned první "várka"
+ARMv2      Acorn Archimedes, 1982
+ARMv3     
+ARMv4      StrongARM
+ARMv5     
+ARMv6      Starší (univerzální) čipy, dnes RPI apod.
+ARMv6-M    Mikrořadič
+ARMv7-M    Mikrořadič
+ARMv7E-M   Mikrořadič
+ARMv7-R    Real-time aplikace
+ARMv7-A    netbooky, smartphony, tablety, čtečky, desktop
+ARMv8-A    servery

@@ -1,0 +1,17 @@
+
+Architektury a čipy ARM
+-------------------------------
+ARMv1     26/32 bitů  ARM1
+ARMv2     26/32 bitů  ARM2, ARM3
+ARMv3     26/32 bitů  ARM6, ARM7
+ARMv4     26/32 bitů  ARM8
+ARMv5     32 bitů     ARM7EJ, ARM9E, ARM10E
+ARMv6     32 bitů     ARM11
+ARMv6-M   32 bitů     Cortex-M0, Cortex-M0+, Cortex-M1
+ARMv7-M   32 bitů     Cortex-M3
+ARMv7E-M  32 bitů     Cortex-M4, Cortex-M7
+ARMv7-R   32 bitů     Cortex-R4, Cortex-R5, Cortex-R7
+ARMv7-A   32 bitů     Cortex-A5, Cortex-A7, Cortex-A8,
+                      Cortex-A9, Cortex-A12,
+                      Cortex-A15, Cortex-A17
+ARMv8-A   32/64 bitů  Cortex-A53, A57 a A72

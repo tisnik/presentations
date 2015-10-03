@@ -1,0 +1,13 @@
+
+ARM + další rozšiřující moduly
+-------------------------------
+▶ Klasické procesory ARM
+    ◆ 32bitová instrukční sada RISC
+▶ Další rozšíření
+    ◆ Instrukční sada Thumb (16 bitů)
+    ◆ Instrukční sada Thumb-2
+    ◆ Jazelle DBX (pro bajtkód JVM)
+    ◆ AArch64
+▶ MMU
+▶ Vektorový FPU
+▶ GPU

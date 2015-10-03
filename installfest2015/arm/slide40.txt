@@ -1,0 +1,8 @@
+
+Instrukční sada A32
+-------------------------------
+▶ Původní instrukční sada procesorů ARM
+▶ Konstantní šířka instrukcí 32bitů
+▶ Šířka zpracovávaných dat taktéž 32 bitů
+    ◆ Problém s načítáním konstant
+    ◆ Musí se řešit na každé architektuře RISC

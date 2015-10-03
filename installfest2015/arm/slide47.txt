@@ -1,0 +1,14 @@
+
+Instrukční sada Thumb (T32)
+-------------------------------
+▶ ARMv4T a další modely
+▶ Šířka instrukcí 16bitů
+▶ Podmnožina původní instrukční sady
+▶ Optimalizováno s ohledem na překladače C a C++
+▶ Přepínání mezi stavem ARM a stavem Thumb
+    ◆ Nutno přepínat, protože instrukce nejsou kompatibilní
+▶ Rozdělení registrů
+    ◆ Lo registers r0-r7
+    ◆ Hi registers r8-r15
+    ◆ Některé instrukce pracují pouze s jednou skupinou
+        • Ušetří se bity v instrukci

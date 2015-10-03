@@ -1,0 +1,21 @@
+
+Cortex-M0
+-------------------------------
+▶ Jádro "naprogramované" ve Verilogu
+▶ ARM čipy s nejnižší cenou, rozměry, výkonem, příkonem
+    ◆ Malá plocha čipu
+    ◆ Nejmenší čip má rozměry 1,6x2 mm
+    ◆ Pipeline se třemi řezy
+▶ Instrukční sada
+    ◆ Thumb (chybí jen tři instrukce)
+    ◆ částečně Thumb-2
+    ◆ Nikoli A32!
+▶ M0 je skutečný mikrořadič
+    ◆ Náhrada za některé 8bitové a 16bitové MCU
+    ◆ von Neumannova architektura
+    ◆ Násobička
+        • jednocyklová (high perf. čipy)
+        • 32cyklová (čipy s nižší cenou a příkonem)
+    ◆ Power management
+        • Režim sleep (CLK=0 Hz)
+        • Režim deep sleep (vypnutí flash paměti apod.)

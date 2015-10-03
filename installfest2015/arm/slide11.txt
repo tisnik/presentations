@@ -1,0 +1,14 @@
+
+Výsledek - analýza+benchmarky
+-------------------------------
+▶ Intel 80286 @ 8 MHz
+    ◆ ~1,2 MIPS pro 16bitové operace
+▶ Motorola 68000 @ 8MHz
+    ◆ ~1 MIPS pro 16bitové operace
+    ◆ ~1/2 MIPS pro 32bitové operace
+    ◆ ~2 MIPS maximum pro syntetické testy
+▶ ARM2 @ 8MHz
+    ◆ ~4,5 MIPS pro 32bitové operace
+▶ ARM3
+    ◆ výkonnostně překonal Intel 80286
+      a to i nejvyšší model @ 25 MHz

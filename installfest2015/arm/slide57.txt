@@ -1,0 +1,5 @@
+
+Skoky a rozeskoky
+-------------------------------
+▶ +- 1MB pro podmíněné skoky
+▶ +- 128MB pro nepodmíněné skoky

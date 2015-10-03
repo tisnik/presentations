@@ -1,0 +1,8 @@
+
+Základní informace o ARM CPU
+-------------------------------
+▶ Název ARM
+    ◆ 1983 - Acorn RISC Machine
+    ◆ 1990 - Advanced RISC Machines
+    ◆ V současnosti označení pravděpodobně
+      nejpopulárnější architektury procesorů RISC

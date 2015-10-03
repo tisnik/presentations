@@ -1,0 +1,13 @@
+
+Instrukční sada Thumb-2
+-------------------------------
+▶ Bitové operace
+    ◆ Bit Field Clear
+    ◆ Bit Field Insert
+▶ IT
+    ◆ Instrukce odpovídající konstrukci if-then-else
+    ◆ (viz následující slajd)
+▶ CBZ
+    ◆ Compare and Branch on Zero
+▶ CBNZ
+    ◆ Compare and Branch on Non-Zero

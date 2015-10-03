@@ -1,0 +1,16 @@
+
+Instrukční sada Thumb (T32)
+-------------------------------
+▶ Thumb neumožňuje podmníněné provádění instrukcí
+▶ Jen podmíněné skoky
+▶ Skoky
+    Branch, Branch and link
+▶ Aritmetické a logické operace
+    ◆ OP Rd, Rn, Rm
+        • omezení na r0..r7
+        • tři bity pro výběr registru v instr.slovu
+    ◆ Výjimky
+        • ADD Rd, Rn, konstanta
+        • ADD Rd, Rm - jeden z registrů r8..r15
+        • CMP Rm, Rn - dtto
+        • MOV Rd, Rm - dtto

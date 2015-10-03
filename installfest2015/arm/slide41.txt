@@ -1,0 +1,11 @@
+
+Typy instrukcí
+-------------------------------
+▶ Load-store (jeden registr)
+▶ Load-store (více registrů)
+▶ Aritmetické operace
+▶ Logické a bitové operace
+▶ Skoky a změna režimu procesoru
+▶ Práce se stavovými registry CPSR a SPSR
+▶ Práce se semafory
+▶ Instrukce koprocesoru(ů)

@@ -1,0 +1,6 @@
+
+Cortex-M0+
+-------------------------------
+▶ Kompatibilní s M0
+▶ Ještě menší spotřeba
+▶ Pipeline se dvěma řezy (tři v M0)

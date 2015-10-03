@@ -1,0 +1,12 @@
+
+Stručná historie vývoje architektury ARM
+-------------------------------
+▶ Projekt Acorn RISC Machine
+    ◆ Acorn Computers Ltd.
+    ◆ Původní počítače založeny na MOS 6502
+▶ Potřeba výkonnějšího a levnějšího CPU
+    ◆ Konkurence k PC (1981)
+    ◆ Později též konkurence k dalším počítačům
+        • Atari ST
+        • Amiga
+        • Apple Macintosh

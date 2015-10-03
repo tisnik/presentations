@@ -1,0 +1,14 @@
+
+Výsledky
+-------------------------------
+▶ Klasický přístup
+     7 instrukcí
+    28 bajtů
+    13 taktů (branch=vyprázdnění cache=3 takty)
+▶ Využití podmíněných instrukcí
+     4 instrukce
+    16 bajtů
+    10 taktů (pouze jeden branch)
+▶ Thumb (viz další slajdy)
+     7 instrukcí
+    14 bajtů (16bit/instrukci)

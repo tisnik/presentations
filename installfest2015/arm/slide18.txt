@@ -1,0 +1,10 @@
+
+Rodina ARM1
+-------------------------------
+▶ Architektura ARMv1
+    ◆ Jádro ARM1
+    ◆ První implementace jádra ARM
+    ◆ Bez HW násobičky
+    ◆ Bez MMU a bez cache
+    ◆ Proof of concept
+        • Nebyl použit v žádném komerčním produktu

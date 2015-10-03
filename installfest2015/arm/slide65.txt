@@ -1,0 +1,15 @@
+
+Advanced SIMD Architecture
+-------------------------------
+▶ SIMD
+    ◆ Jedna instrukce aplikovaná na vektor dat
+▶ Použití
+    ◆ Zpracování audia
+    ◆ Zpracování obrazu a videa
+    ◆ 3D grafika
+    ◆ Speech processing
+▶ Banku registrů určených pro SIMD operace
+    ◆ Používají se i pro VFP
+    ◆ 32bit FP (jednoduchá přesnost)
+    ◆ 8bit, 16bit, 32bit, 64bit celá čísla
+    ◆ 8bit, 16bit, 32bit, 64bit bitová pole
