@@ -1,0 +1,18 @@
+
+Vim a jazyky C/C++
+------------------
+    ◆ ctags
+    ◆ cscope
+        :cscope add cscope.out
+    :cs show
+        výpis propojení mezi Vimem a utilitou cscope
+    :cs f f stdio.h
+        nalezení souboru specifikovaného ve třetím parametru
+    :cs f t xyzzy
+        nalezení textu uvnitř řetězců (nikde jinde)
+    :cs f g test
+        nalezení definice funkce test (skok na začátek definice)
+    :cs f d main
+        zjištění, které funkce se volají z funkce main
+    :cs f c fclose
+        zjištění, odkud se volá funkce fclose

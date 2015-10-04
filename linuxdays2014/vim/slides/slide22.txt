@@ -1,0 +1,15 @@
+
+Obecné moduly
+-------------
+    Modul netrw
+        dnes standarní součást Vimu
+        :Explore
+        :HExplore
+        vim scp://uživatel@jméno_vzdáleného_počítače/cesta
+    Modul TagList
+        :TlistAddFiles *.c
+        :Tlist
+        :TlistAddFilesRecursive .
+        :Tlist
+    Modul matchit.vim
+    Modul NERD Tree

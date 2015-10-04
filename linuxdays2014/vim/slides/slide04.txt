@@ -1,0 +1,8 @@
+
+Volby způsobu zobrazení textů
+-----------------------------
+    :set number
+    :set list
+    :set tabstop=xxx
+    :set showmatch
+    :set matchpairs=(:),[:],{:},<:>

@@ -1,0 +1,6 @@
+
+Mapování kláves
+---------------
+    au BufRead,BufNewFile *.java noremap <F10> :JavaBrowser<CR>
+    au BufRead,BufNewFile *.java inoremap <F10> <Esc>:JavaBrowser<CR>
+    iabb Amaroute Amaurote

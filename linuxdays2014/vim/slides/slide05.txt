@@ -1,0 +1,5 @@
+
+Chování editoru při chybě
+-------------------------
+    :set novisualbell
+    :set vb t_vb="

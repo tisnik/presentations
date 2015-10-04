@@ -1,0 +1,14 @@
+
+Příklad obarvení - tyto slajdy :-)
+----------------------------------
+augroup __ascii__
+  au!
+  au BufRead,BufNewFile *.txt syn match odrazka1 "^\%d9654.*"
+  au BufRead,BufNewFile *.txt syn match odrazka2 "^    .*""
+  au BufRead,BufNewFile *.txt syn match odrazka3 "^        .*"
+  au BufRead,BufNewFile *.txt syn match nadpis "^[A-Z].*"
+  au BufRead,BufNewFile *.txt hi odrazka1 ctermfg=lightgreen guifg=#e0ffe0
+  au BufRead,BufNewFile *.txt hi odrazka2 ctermfg=yellow   guifg=yellow
+  au BufRead,BufNewFile *.txt hi odrazka3 ctermfg=lightcyan  guifg=#e0e0ff
+  au BufRead,BufNewFile *.txt hi nadpis   ctermfg=white  guifg=white
+augroup END

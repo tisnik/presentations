@@ -1,0 +1,14 @@
+
+Vim
+---
+▶ 1988 Vi iMitation   Bram Moolenaar (Amiga)
+▶ Později přenos na Unixové systémy
+    ◆ Vi iMitation -> Vi iMproved
+▶ Z Vi převzaty:
+    ◆ modální režim práce
+    ◆ klávesové zkratky
+    ◆ většina voleb
+    ◆ příkazy (příkazový režim)
+▶ Podpora pluginů, tabů, oken
+▶ Zvýraznění syntaxe, kontrola pravopisu
+▶ Makra, skriptování

@@ -1,0 +1,13 @@
+
+Editace zdrojového kódu (1)
+---------------------------
+    dab delete a block     (omezeno kulatými závorkam)
+    dib delete inner block (omezeno kulatými závorkami)
+    daB delete a Block     (omezeno složenými závorkami)
+    diB delete inner Block (omezeno složenými závorkami)
+    dat delete a tag       vymazání textu umístěného v párové značce
+    dit delete inner tag   vymazání textu umístěného v párové značce
+    cab change a block     (kulaté závorky)
+    cib change inner block (kulaté závorky)
+    caB change a Block     (složené závorky)
+    ciB change inner Block (složené závorky)

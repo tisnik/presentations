@@ -1,0 +1,5 @@
+
+Odkazy
+------
+    www.vim.org
+    vim.wikia.com/wiki/Vim_Tips_Wiki

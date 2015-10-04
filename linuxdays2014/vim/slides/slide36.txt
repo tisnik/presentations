@@ -1,0 +1,42 @@
+
+Vim a HTML
+----------
+▶ Taktéž lze použít xml.vim
+" Settings for HTML files {{{
+"*********************************************************************
+augroup __html__
+au!
+au BufRead,BufNewFile *.html set spell spelllang=cs spellfile=~/temp/cs.iso-8859-2.add iskeyword=@,48-57,_,128-255
+au BufReadPre,BufNewFile *.html set fileencodings=utf-8 fileencoding=utf-8 encoding=utf-8
+au BufRead,BufNewFile *.html set tw=0 linebreak
+au BufRead,BufNewFile *.html imap ,x &times;
+au BufRead,BufNewFile *.html imap ,pi &pi;
+au BufRead,BufNewFile *.html imap ,phi &phi;
+au BufRead,BufNewFile *.html imap ,sp &nbsp;
+au BufRead,BufNewFile *.html imap ,tt <tt></tt><C-O>F<
+au BufRead,BufNewFile *.html imap ,tb <tt>
+au BufRead,BufNewFile *.html imap ,te </tt>
+au BufRead,BufNewFile *.html imap ,ii <i></i><C-O>F<
+au BufRead,BufNewFile *.html imap ,ee <em></em><C-O>F<
+au BufRead,BufNewFile *.html imap ,ib <i>
+au BufRead,BufNewFile *.html imap ,ie </i>
+au BufRead,BufNewFile *.html imap ,bb <strong></strong><C-O>F<
+au BufRead,BufNewFile *,html imap ,be </strong>
+au BufRead,BufNewFile *.html imap ,uu <u></u><C-O>F<
+au BufRead,BufNewFile *.html imap ,ub <u>
+au BufRead,BufNewFile *.html imap ,ue </u>
+au BufRead,BufNewFile *.html imap ,h1 <h1></h1><C-O>F<
+au BufRead,BufNewFile *.html imap ,h2 <h2></h2><C-O>F<
+au BufRead,BufNewFile *.html imap ,h3 <h3></h3><C-O>F<
+au BufRead,BufNewFile *.html imap ,h4 <h4></h4><C-O>F<
+au BufRead,BufNewFile *.html imap ,h5 <h5></h5><C-O>F<
+au BufRead,BufNewFile *.html imap ,h6 <h6></h6><C-O>F<
+au BufRead,BufNewFile *.html imap ,br <br />
+au BufRead,BufNewFile *.html vmap <C-I> omaomb<esc>`bi</i><esc>`ai<i><esc>
+au BufRead,BufNewFile *.html vmap <C-E> omaomb<esc>`bi</em><esc>`ai<em><esc>
+au BufRead,BufNewFile *.html vmap <C-B> omaomb<esc>`bi</strong><esc>`ai<strong><esc>
+au BufRead,BufNewFile *.html vmap <C-T> omaomb<esc>`bi</tt><esc>`ai<tt><esc>
+au BufRead,BufNewFile *.html vmap <C-U> omaomb<esc>`bi</u><esc>`ai<u><esc>
+au BufRead,BufNewFile *.html vmap <C-A> omaomb<esc>`bi</a><esc>`ai<a href=""><esc>
+au BufRead,BufNewFile *.html vmap <C-P> omaomb<esc>`ba</p><esc>`ai<p><esc>
+augroup END

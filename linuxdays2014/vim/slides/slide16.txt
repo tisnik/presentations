@@ -1,0 +1,16 @@
+
+Folding
+-------
+    :set foldmethod
+        manual
+        indent
+        expr
+        marker
+        syntax
+        diff   (diff mode)
+    zf  (fold)  - jen při foldmethod=manual
+        - pracuje jako operátor
+    zo  (open)  zO - rekurze
+    zc  (close) zC - rekurze
+    zv  (view cursor line)
+    zd  (delete)   - ne pro text

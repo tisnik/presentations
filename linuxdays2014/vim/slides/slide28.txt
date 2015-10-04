@@ -1,0 +1,17 @@
+
+Omnicompletion
+--------------
+    Ctrl+X Ctrl+L
+        nalezení a doplnění celého (shodného) řádku,
+        užitečné především pro konfiguračních soubory
+    Ctrl+X Ctrl+N
+        doplnění slova, které se nalézá v aktuálně
+        editovaném souboru
+    Ctrl+X Ctrl+I
+        podobné Ctrl+N, ovšem prohledávají se i všechny vkládané (included) soubory
+    Ctrl+X Ctrl+K
+        podobné Ctrl+N, ovšem slova se hledají v souborech
+        specifikovaných pomocí konfiguračního parametru dictionary
+    Ctrl+X Ctrl+T
+        podobné Ctrl+T, ovšem slova se hledají v souborech
+        specifikovaných pomocí konfiguračního parametru thesaurus

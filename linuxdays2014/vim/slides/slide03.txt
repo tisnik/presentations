@@ -1,0 +1,16 @@
+
+Základní konfigurační volby
+---------------------------
+    :set nocompatible
+    :set ruler
+    :set statusline=...
+    :set (no)expandtab
+    (:retab)
+    :set backspace=[indent,eol,start]
+    :set filetype=[dos,unix]
+    :set selection=exclusive
+        bloky se chovají podobně jako v ostatních editorech
+    :set wildmenu
+        bude se nabízet seznam souborů po TAB
+    :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o
+        soubory (masky nazvů), které se nebudou zobrazovat

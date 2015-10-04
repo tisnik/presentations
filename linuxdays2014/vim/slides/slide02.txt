@@ -1,0 +1,16 @@
+
+Vim při vývoji
+--------------
+▶ Obecné vlastnosti
+    ◆ Konfigurační volby
+    ◆ Zobrazení textů
+    ◆ Zalamování textů
+    ◆ Folding
+    ◆ Okna, buffery, taby
+▶ Vim a jazyky C/C++
+▶ Vim a Java
+▶ Vim a Clojure
+▶ Vim a XML
+▶ Vim a HTML
+▶ Režim diff
+▶ Editace binárních souborů

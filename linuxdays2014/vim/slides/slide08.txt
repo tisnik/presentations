@@ -1,0 +1,13 @@
+
+Zalamování textu
+----------------
+    :set wrap
+        pouze vizuální zalamování (do souborů se nevkládá CR)
+    :set nowrap
+        vypnutí vizuálního zalamování
+    :set linebreak
+        vizuální zalamování na hranicích slov (vhodné pro texty)
+    :set nolinebreak
+        vypnutí vizuálního zalamování na hranicích slov
+    :set tw=xxx
+        automatické zalamování na xxx sloupci (vkládá se CR)

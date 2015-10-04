@@ -1,0 +1,14 @@
+
+Okna
+----
+▶ Vytvoření a zrušení oken
+    Ctrl+W n (new)
+    Ctrl+W s (split)
+    Ctrl+W v (vertical split)
+    Ctrl+W f (file)
+    :q
+▶ Přepínání mezi okny, přesuny oken
+    Ctrl+W w (přepínání oken)
+    Ctrl+W Ctrl+W (dtto, ale rychlejší)
+    Ctrl+W h/j/k/l (přepínání oken v daném směru)
+    Ctrl+W<Shift>h/j/k/l (přesun oken)

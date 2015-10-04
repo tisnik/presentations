@@ -1,0 +1,8 @@
+
+Taby, okna, buffery
+-------------------
+▶ Lze vzájemně kombinovat
+    ◆ Taby
+        • Rozdělení plochy na okna
+▶ Rozdělení plochy na okna
+    ◆ Základ většiny pluginů, které z Vimu dělají IDE

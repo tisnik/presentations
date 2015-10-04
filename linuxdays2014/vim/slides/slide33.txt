@@ -1,0 +1,7 @@
+
+Vim a Lua
+---------
+▶ lua-support.vim a.k.a. Lua-IDE
+    ◆ Šablony (soubory s nimi lze upravovat)
+▶ Luaref
+    ◆ Kompletní referenční příručka ve formátu Vim helpu!

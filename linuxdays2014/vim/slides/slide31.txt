@@ -1,0 +1,10 @@
+
+Vim a Java
+----------
+    Modul JavaBrowser
+        Enter   přeskok kurzoru na definici metody/atributu
+        o   dtto, ale otevře se nové okno
+        +   rozbalení podstromu
+        -   zabalení podstromu
+        *   rozbalení celého stromu
+        x   skrytí či zobrazení okna se zdrojovým kódem

@@ -1,0 +1,17 @@
+
+Práce s tagy
+------------
+▶ Vytvoření souborů taglist.txt
+    ◆ ctags
+    ◆ ctags -R
+    ◆ ctags -R /usr/lib/include
+        • Obrovské soubory, lepší skok na manuálovou stránku
+        • Shift+K
+▶ Skok na definici
+    :tag jméno funkce        lze zadat i regulárním výrazem
+     g+Levé tlačítko myši    nefunkční v terminálu
+     Ctrl+Levé tlačítko myši nefunkční v terminálu
+     Ctrl+]                  ve vizuálním režimu podobné :tag
+▶ Návrat zpět
+    ◆ Ctrl+T
+▶ Pohyb po nápovědě Vimu je řešen právě tímto způsobem

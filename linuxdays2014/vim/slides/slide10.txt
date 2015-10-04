@@ -1,0 +1,4 @@
+
+Příliš mnoho konfiguračních voleb?
+----------------------------------
+▶ :options

@@ -1,0 +1,7 @@
+
+Změna obarvení zdrojových kódů
+------------------------------
+▶ Jaké barvy dokáže zobrazit váš terminál?
+    :source $VIMRUNTIME/syntax/colortest.vim
+▶ Převod zdrojového kódu na HTML
+    :source $VIMRUNTIME/syntax/2html.vim

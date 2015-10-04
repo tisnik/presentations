@@ -1,0 +1,8 @@
+
+Taby
+----
+    :tabnew
+    :tabnew soubor
+    :tabnext
+    :tabfirst
+    Ctrl+W gf

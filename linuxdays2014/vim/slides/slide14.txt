@@ -1,0 +1,8 @@
+
+Okna
+----
+    Ctrl++   (zvětšení pro horizontálně rozdělené okno)
+    Ctrl+-   (zmenšení pro horizontálně rozdělené okno)
+    Ctrl+=   (stejná velikost)
+    Ctrl+>   (zvětšení pro vertikálně rozdělené okno)
+    Ctrl+<   (zmenšení pro vertikálně rozdělené okno)

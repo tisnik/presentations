@@ -1,0 +1,17 @@
+
+Operátory
+---------
+    c   change      změna textu (delete a následný přechod do vkládacího režimu)
+    d   delete      vymazání textu
+    y   yank        kopie textu do registru
+    !   filter      filtrace přes externí příkaz
+    >   shift right posun textu doprava o shiftwidth
+    <   shift left  posun textu doleva o shiftwidth
+    g~  swap case   změna malých písmen na velké a naopak
+    gu  lowercase   změna na malá písmena (mínusky)
+    gU  Uppercase   změna na velká písmena (verzálky)
+    gq  format      zformátování textu
+    g?  ROT13
+    =   indent      změna zarovnání textu, buď interním algoritmem,
+                    nebo pomocí externího programu definovaného v equalprg
+    zf  fold        viz další slajdy

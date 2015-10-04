@@ -1,0 +1,12 @@
+
+Další příklad obarvení - logo Vimu
+----------------------------------
+augroup __logo__
+  au BufRead,BufNewFile vim.logo syn match zeleny_ctverec "+"
+  au BufRead,BufNewFile vim.logo syn match ide "[#m\"]"
+  au BufRead,BufNewFile vim.logo syn match okraj "[\\|/'_]"
+  au BufRead,BufNewFile vim.logo hi  zeleny_ctverec ctermfg=lightgreen guifg=lightgreen
+  au BufRead,BufNewFile vim.logo hi  okraj          ctermfg=white      guifg=white
+  au BufRead,BufNewFile vim.logo hi  ide            ctermfg=yellow     guifg=yellow
+  au BufRead,BufNewFile vim.logo hi  normal guifg=gray
+augroup END

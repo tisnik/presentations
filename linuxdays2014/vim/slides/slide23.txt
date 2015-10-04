@@ -1,0 +1,10 @@
+
+Překlad programů z Vimu
+------------------
+    :make   spuštění překladu
+    :clist  výpis všech chybových hlášení
+    :cfirst přechod na první chybu
+    :clast  přechod na poslední chybu
+    :cp     přechod na předchozí chybu
+    :cn     přechod na následující chybu
+    :set makeprg=javac\ %

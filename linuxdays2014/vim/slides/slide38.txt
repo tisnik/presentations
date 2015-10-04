@@ -1,0 +1,17 @@
+
+Editace binárních souborů
+-------------------------
+▶ Editace binárních souborů velmi obtížná
+▶ Mnoho programátorů preferuje hexa editory
+▶ xxd
+▶ Příklad použití pro soubory *.class
+augroup Binary_Java_Class
+    au!
+    au BufReadPre   *.class let &bin=1
+    au BufReadPost  *.class if &bin | %!xxd -g1
+    au BufReadPost  *.class set ft=xxd | endif
+    au BufWritePre  *.class if &bin | %!xxd -g1 -r
+    au BufWritePre  *.class endif
+    au BufWritePost *.class if &bin | %!xxd -g1
+    au BufWritePost *.class set nomod | endif
+augroup END

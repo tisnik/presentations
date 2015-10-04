@@ -1,0 +1,14 @@
+
+Konfigurace Vimu s GUI
+----------------------
+▶ vim -g, gvim ...
+▶ .gvimrc
+▶ Konfigurační volby
+    :set guifont?
+    :set guifont=DejaVu\ Sans\ Mono\ 12
+    :set guifont=*
+    :set linespace=počet_pixelů
+    :set guioptions?
+    :set guioptions+=a       " kdyz neco oznacime pres <v>, tak se to ulozi do clipboardu
+    :set guioptions-=T       " vypnuti toolbaru
+    :set guioptions-=mM      " vypnuti menu

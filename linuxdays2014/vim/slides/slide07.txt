@@ -1,0 +1,7 @@
+
+Taby nebo mezery?
+-----------------
+    :syn match Tab "\t"
+    :syn match Tab2 "\t\t"
+    :hi def Tab  ctermbg=lightgreen guibg=#e0ffe0
+    :hi def Tab2 ctermbg=lightred guibg=#ffe0e0

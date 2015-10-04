@@ -1,0 +1,5 @@
+
+Pohyb po zdrojovém kódu
+-----------------------
+    %   přeskok mezi znaky definovanými volbou matchpairs
+    :set matchpairs=(:),[:],{:},<:>

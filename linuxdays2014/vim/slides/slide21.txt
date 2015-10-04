@@ -1,0 +1,10 @@
+
+Editace zdrojového kódu (2)
+---------------------------
+    =   zarovnání textu vybraného libovolnou výběrovou operací
+    =aB indent a Block  kombinace operátoru = a výběru bloku mezi {}
+    >   posun vybraného textu doprava o shiftwidth
+    <   posun vybraného textu doleva o shiftwidth
+        - lze kombinovat s Shift+V
+    >>  posun jediného řádku doprava
+    <<  posun jediného řádku doleva

@@ -1,0 +1,16 @@
+
+Vim a Java
+----------
+augroup __java__
+au!
+au BufReadPre,BufNewFile *.java set fileencodings=utf-8 fileencoding=utf-8 encoding=utf-8
+au BufRead,BufNewFile *.java set tw=0 foldmethod=indent cindent
+au BufRead,BufNewFile *.java set tabstop=4 expandtab
+au BufRead,BufNewFile *.java set foldmethod=syntax foldclose=all foldnestmax=1
+au BufRead,BufNewFile *.java set guioptions=
+au BufRead,BufNewFile *.java syn region myFold start="{" end="}" transparent fold
+au BufRead,BufNewFile *.java noremap <Tab> >>
+au BufRead,BufNewFile *.java so ~/javabrowser.vim
+au BufRead,BufNewFile *.java noremap ,c O/**<CR>*<CR>*/<Esc>
+au BufRead,BufNewFile *.java inoremap ,p * @param<Space>
+augroup END
