@@ -1,0 +1,13 @@
+
+Programové vybavení [4]
+-----------------------
+▶ Tabulkové procesory
+    ◆ Gnumeric
+    ◆ (sc)
+▶ Prohlížeče obrázků
+    ◆ fbi
+    ◆ feh
+    ◆ gpicview
+    ◆ (xsetroot pro hardcore uživatele)
+▶ Editory obrázků
+    ◆ MTpaint

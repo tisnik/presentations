@@ -1,0 +1,11 @@
+
+Minimalistický desktop
+----------------------
+▶ Desktop
+    ◆ LXDE
+    ◆ XFCE
+    ◆ Fluxbox
+    ◆ Tile window manažery
+        • wmii
+        • awesome
+        • atd. atd.

@@ -1,0 +1,7 @@
+
+Programové vybavení [2]
+-----------------------
+▶ Správce souborů
+    ◆ PCmanFM
+    ◆ Thunar
+    ◆ Midnight Commander

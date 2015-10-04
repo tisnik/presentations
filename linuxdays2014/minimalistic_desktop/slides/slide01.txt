@@ -1,0 +1,10 @@
+
+Konfigurace desktopu pro méně výkonné počítače
+----------------------------------------------
+▶ Starší PC
+    ◆ Školy, neziskové organizace...
+▶ Notebooky/netbooky na bázi Intel Atomu
+▶ Počítače osazené SoC (Koomey's law)
+    ◆ Raspberry Pi
+    ◆ BeagleBoard
+    ◆ PandaBoard

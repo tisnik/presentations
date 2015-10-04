@@ -1,0 +1,11 @@
+
+Programové vybavení [1]
+-----------------------
+    ◆ Správce souborů
+    ◆ Webové prohlížeče
+    ◆ Textové editory
+    ◆ Textové procesory
+    ◆ Tabulkové procesory
+    ◆ Prohlížeče obrázků
+    ◆ Editory obrázků
+    ◆ Komunikace

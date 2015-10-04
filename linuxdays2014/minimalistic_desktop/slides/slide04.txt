@@ -1,0 +1,11 @@
+
+Raspberry Pi: konfigurace pro desktop
+-------------------------------------
+▶ MicroSD (8GB)
+    ◆ Raspbian
+    ◆ požadavek: minimum zápisů
+▶ Externí HDD
+    ◆ připojený přes konvertor USB
+    ◆ ext3 + swap
+    ◆ automount přes fstab
+    ◆ linky na /tmp /var a /home

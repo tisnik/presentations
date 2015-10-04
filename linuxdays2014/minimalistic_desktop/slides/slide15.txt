@@ -1,0 +1,10 @@
+
+Programové vybavení [6]
+-----------------------
+▶ Webové prohlížeče
+    (zde se nejvíce projeví slabý výkon CPU)
+    ◆ NetSurf (bez JS, dobrý layout engine)
+    ◆ Firefox (kupodivu v praxi rychlejší než Midori)
+    ◆ Midory (problém - načítání v jiném tabu zdržuje)
+    ◆ Links2
+    ◆ Textové prohlížeče: lynx, links, elinks, w3m

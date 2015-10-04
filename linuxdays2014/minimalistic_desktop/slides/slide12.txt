@@ -1,0 +1,23 @@
+
+Programové vybavení [3]
+-----------------------
+▶ Textové editory
+    ◆ Leafpad/Mousepad/NE
+    ◆ (G)Vim
+    ◆ Emacs
+    ◆ a asi 50 dalších možností
+.        ________ ++     ________
+.       /VVVVVVVV\++++  /VVVVVVVV\
+.       \VVVVVVVV/++++++\VVVVVVVV/
+.        |VVVVVV|++++++++/VVVVV/'
+.        |VVVVVV|++++++/VVVVV/'
+.       +|VVVVVV|++++/VVVVV/'+
+.     +++|VVVVVV|++/VVVVV/'+++++
+.   +++++|VVVVVV|/VVVVV/'+++++++++
+.     +++|VVVVVVVVVVV/'+++++++++
+.       +|VVVVVVVVV/'+++++++++
+.        |VVVVVVV/'+++++++++
+.        |VVVVV/'+++++++++
+.        |VVV/'+++++++++
+.        'V/'   ++++++
+.                 ++
