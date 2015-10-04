@@ -1,0 +1,4 @@
+Minimalisticky desktop:  Sobota 11:30-12:00  155
+Vim ve funkci IDE:       Nedele  9:30-10:30  105
+Clojure prakticky:       Nedele 13:30-14:00  105
+
