@@ -1,0 +1,6 @@
+
+Clojure prakticky
+=================
+:autor   Pavel Tišnovský
+:email   <tisnik 0x40 centrum 0x2e cz>
+:datum   2014-10-05

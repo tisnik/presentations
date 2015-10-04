@@ -1,0 +1,12 @@
+
+Funkce pro práci s kolekcemi
+----------------------------
+(count)
+(empty)
+(cons)
+(conj)
+(pop)  ; rozdílné chování pro seznamy/vektory
+(peek) ; rozdílné chování pro seznamy/vektory
+(nth)
+(first)
+(rest)

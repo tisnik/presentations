@@ -1,0 +1,10 @@
+
+Časová složitost vybraných operací
+----------------------------------
+# Funkce Seznam Vektor
+1 count  O(1)   O(1)
+2 nth    O(N)   O(log₃₂N)
+3 pop    O(1)   O(log₃₂N)
+4 peek   O(1)   O(log₃₂N)
+5 first  O(1)   O(1)
+6 last   O(N)   O(N)

@@ -1,0 +1,7 @@
+
+Základní informace o Clojure (1)
+--------------------------------
+▶ Clojure = Java + Closure
+    ◆ Rich Hickey
+    ◆ Založeno na Lispu/Scheme
+    ◆ Teorie λ-kalkulu

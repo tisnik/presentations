@@ -1,0 +1,14 @@
+
+Clojure jako jazyk odvozený od LISPu/Scheme
+-------------------------------------------
+; výpis na standardní výstup (side effect)
+(println "Hello" "world")
+; volání funkce +
+(+ 1 2 3 4)
+; vnořené funkce
+(* (+ 1 2 3) (+ 3 4))
+; prázdný seznam je rozdílný od nil
+'()
+()
+; vektory jsou vyhodnoceny samy na sebe (na rozdíl od seznamů)
+[1 2 3 4]

@@ -1,0 +1,9 @@
+
+Základní vlastnosti Clojure
+---------------------------
+▶ Čtyři referenční typy namísto proměnných
+    ◆ synchronní/asynchronní operace
+    ◆ atomické operace (volitelné)
+    ◆ transakce (volitelné)
+    ◆ validace
+    ◆ sledování (watch)

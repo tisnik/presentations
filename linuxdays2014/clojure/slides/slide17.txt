@@ -1,0 +1,8 @@
+
+Leiningen a REPL
+----------------
+▶ Základní tvar
+    ◆ lein repl
+▶ Leiningen REPL + Screen
+    ◆ screen -S clojure
+    ◆ lein repl

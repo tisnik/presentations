@@ -6,57 +6,57 @@ Clojure prakticky
 
 Základní informace o Clojure (1)
 --------------------------------
-* Clojure = Java + Closure
-    * Rich Hickey
-    * Založeno na Lispu/Scheme
-    * Teorie λ-kalkulu
+▶ Clojure = Java + Closure
+    ◆ Rich Hickey
+    ◆ Založeno na Lispu/Scheme
+    ◆ Teorie λ-kalkulu
 
 Základní informace o Clojure (2)
 --------------------------------
-* Multiparadigmatický programovací jazyk
-    * Přednost má funkcionální přístup
-    * Ovšem není striktně vyžadován
-* Podporuje tvorbu masivně paralelních
+▶ Multiparadigmatický programovací jazyk
+    ◆ Přednost má funkcionální přístup
+    ◆ Ovšem není striktně vyžadován
+▶ Podporuje tvorbu masivně paralelních
   vícevláknových aplikaci
-    * Agenti
-    * Transakce - STM
-    * Neměnné datové typy
+    ◆ Agenti
+    ◆ Transakce - STM
+    ◆ Neměnné datové typy
     -> eliminace vzniku deadlocků
     -> žádný GIL
-* REPL
-* Code=Data
+▶ REPL
+▶ Code=Data
 
 Runtime jazyka Clojure + knihovny
 ----------------------------------
-* Podpora běhu na více virtuálních strojích
-    * JVM
+▶ Podpora běhu na více virtuálních strojích
+    ◆ JVM
         * překlad od the Fly
-    * .NET
-    * JavaScript
+    ◆ .NET
+    ◆ JavaScript
         * Resp. libovolná VM JavaScriptu
-* Nejedná se o náhradu Javy, C# ani JavaScriptu
-    * Kooperace s těmito jazyky
-    * A především jejich knihovnami
+▶ Nejedná se o náhradu Javy, C# ani JavaScriptu
+    ◆ Kooperace s těmito jazyky
+    ◆ A především jejich knihovnami
     -> Clojure se nesnaží znovuobjevit kolo
     -> velmi snadný přechod na Clojure pro Java vývojáře
 
 Základní vlastnosti Clojure
 ---------------------------
-* Čtyři referenční typy namísto proměnných
-    * synchronní/asynchronní operace
-    * atomické operace
-    * transakce
-    * validace
-    * sledování (watch)
+▶ Čtyři referenční typy namísto proměnných
+    ◆ synchronní/asynchronní operace
+    ◆ atomické operace
+    ◆ transakce
+    ◆ validace
+    ◆ sledování (watch)
 
 Clojure a líné vyhodnocování
 ----------------------------
-* Clojure vyznává stejnou filozofii jako /me
-    * Práce (výpočet) se provede až ve chvíli
+▶ Clojure vyznává stejnou filozofii jako /me
+    ◆ Práce (výpočet) se provede až ve chvíli
       kdy je to skutečně zapotřebí (nebo. nikdy)
-    * Lazy sequences
+    ◆ Lazy sequences
       (range 0 100000)
-    * Výsledky mnoha výpočtů nemusí být dostupné ihned
+    ◆ Výsledky mnoha výpočtů nemusí být dostupné ihned
     -> proč nevyužít další vlákna běžící v pozadí?
 
 Clojure jako jazyk odvozený od LISPu/Scheme
@@ -75,18 +75,18 @@ Clojure jako jazyk odvozený od LISPu/Scheme
 
 Kolekce
 -------
-* Neměnné/immutable
-    * Seznam
+▶ Neměnné/immutable
+    ◆ Seznam
         * first, rest, count
-    * Vektor
+    ◆ Vektor
         * velmi důležitá a užitečná datová struktura
         * založen na RRB-Stromech
           (Relaxed Radix Balanced Trees)
         * zabere méně paměti než seznamy
         * rychlý přístup k prvkům O(log₃₂N)
-    * Mapa
+    ◆ Mapa
         * základ formátu .edn
-    * Množina
+    ◆ Množina
 
 Funkce pro práci s kolekcemi
 ----------------------------
@@ -112,49 +112,49 @@ Funkce pro práci s kolekcemi
 
 Clojure v praxi
 ---------------
-* REPL
-* IDE
-* Web server, generovani HTML, SQL, ...
+▶ REPL
+▶ IDE
+▶ Web server, generovani HTML, SQL, ...
 
 REPL
 ----
-* Read Eval Print Loop
-* Naprostý základ při tvorbě a především ladění aplikací
-* Přímé spuštění REPL
-    * java -cp .:clojure-1.5.1.jar clojure.main
-* Existují i lepší možnosti!
+▶ Read Eval Print Loop
+▶ Naprostý základ při tvorbě a především ladění aplikací
+▶ Přímé spuštění REPL
+    ◆ java -cp .:clojure-1.5.1.jar clojure.main
+▶ Existují i lepší možnosti!
 
 REPL ve Screenu
 ---------------
-* Spuštění
-    * screen -S clojure bash -c 'java -cp .:clojure-1.5.1.jar clojure.main'
-* Výhody
-    * lze ovládat i z jiného programu
-    * základ - poslání textu do screenu tak, jakoby byl zapsán na klávesnici
-* Příklady
-    * screen -S clojure -p 0 -X stuff "(+ 1 2)\\n"
-    * screen -S clojure -p 0 -X stuff "(range 1 10)\\n"
-    * screen -S clojure -p 0 -X stuff "(defn add [x y] (+ x y))\n"
-    * screen -S clojure -p 0 -X stuff "(add 1 2)\n"
-* Použito v pluginu Slime for Vim
+▶ Spuštění
+    ◆ screen -S clojure bash -c 'java -cp .:clojure-1.5.1.jar clojure.main'
+▶ Výhody
+    ◆ lze ovládat i z jiného programu
+    ◆ základ - poslání textu do screenu tak, jakoby byl zapsán na klávesnici
+▶ Příklady
+    ◆ screen -S clojure -p 0 -X stuff "(+ 1 2)\\n"
+    ◆ screen -S clojure -p 0 -X stuff "(range 1 10)\\n"
+    ◆ screen -S clojure -p 0 -X stuff "(defn add [x y] (+ x y))\n"
+    ◆ screen -S clojure -p 0 -X stuff "(add 1 2)\n"
+▶ Použito v pluginu Slime for Vim
 
 IDE
 ---
-* Slime for Vim
-* Cider (Emacs)
-* Counterclockwise (Eclipse)
+▶ Slime for Vim
+▶ Cider (Emacs)
+▶ Counterclockwise (Eclipse)
 
 Leiningen
 ---------
-* "Maven pro Clojure"
-* Tvorba projektů
-* Jediný skript, který nainstaluje vše potřebné
-* Unit testing
-* Řešení závislostí
-* Spuštění různých typů aplikací
-    * Webové atd.
-* Vylepšený REPL
-* Podpora pluginů
+▶ "Maven pro Clojure"
+▶ Tvorba projektů
+▶ Jediný skript, který nainstaluje vše potřebné
+▶ Unit testing
+▶ Řešení závislostí
+▶ Spuštění různých typů aplikací
+    ◆ Webové atd.
+▶ Vylepšený REPL
+▶ Podpora pluginů
 
 Ukázka souboru project.clj
 --------------------------
@@ -188,11 +188,11 @@ Poněkud složitější projekt
 
 Leiningen a REPL
 ----------------
-* Základní tvar
-    * lein repl
-* Leiningen REPL + Screen
-    * screen -S clojure
-    * lein repl
+▶ Základní tvar
+    ◆ lein repl
+▶ Leiningen REPL + Screen
+    ◆ screen -S clojure
+    ◆ lein repl
 
 JSON
 ----

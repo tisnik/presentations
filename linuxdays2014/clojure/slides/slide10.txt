@@ -1,0 +1,6 @@
+
+Clojure v praxi
+---------------
+▶ REPL
+▶ IDE
+▶ Web server, generovani HTML, SQL, ...

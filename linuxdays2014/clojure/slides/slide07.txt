@@ -1,0 +1,15 @@
+
+Kolekce
+-------
+▶ Neměnné/immutable
+    ◆ Seznam
+        * first, rest, count
+    ◆ Vektor
+        * velmi důležitá a užitečná datová struktura
+        * založen na RRB-Stromech
+          (Relaxed Radix Balanced Trees)
+        * zabere méně paměti než seznamy
+        * rychlý přístup k prvkům O(log₃₂N)
+    ◆ Mapa
+        * základ formátu .edn
+    ◆ Množina

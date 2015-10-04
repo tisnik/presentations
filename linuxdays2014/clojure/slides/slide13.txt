@@ -1,0 +1,6 @@
+
+IDE
+---
+▶ Slime for Vim
+▶ Cider (Emacs)
+▶ Counterclockwise (Eclipse)

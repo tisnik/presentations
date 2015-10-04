@@ -1,0 +1,12 @@
+
+Leiningen
+---------
+▶ "Maven pro Clojure"
+▶ Tvorba projektů
+▶ Jediný skript, který nainstaluje vše potřebné
+▶ Unit testing
+▶ Řešení závislostí
+▶ Spuštění různých typů aplikací
+    ◆ Webové atd.
+▶ Vylepšený REPL
+▶ Podpora pluginů

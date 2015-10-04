@@ -1,0 +1,10 @@
+
+Clojure a líné vyhodnocování
+----------------------------
+▶ Clojure vyznává stejnou filozofii jako /me
+    ◆ Práce (výpočet) se provede až ve chvíli
+      kdy je to skutečně zapotřebí (nebo. nikdy)
+    ◆ Lazy sequences
+      (range 0 100000)
+    ◆ Výsledky mnoha výpočtů nemusí být dostupné ihned
+    -> proč nevyužít další vlákna běžící v pozadí?

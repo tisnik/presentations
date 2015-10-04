@@ -1,0 +1,14 @@
+
+REPL ve Screenu
+---------------
+▶ Spuštění
+    ◆ screen -S clojure bash -c 'java -cp .:clojure-1.5.1.jar clojure.main'
+▶ Výhody
+    ◆ lze ovládat i z jiného programu
+    ◆ základ - poslání textu do screenu tak, jakoby byl zapsán na klávesnici
+▶ Příklady
+    ◆ screen -S clojure -p 0 -X stuff "(+ 1 2)\\n"
+    ◆ screen -S clojure -p 0 -X stuff "(range 1 10)\\n"
+    ◆ screen -S clojure -p 0 -X stuff "(defn add [x y] (+ x y))\n"
+    ◆ screen -S clojure -p 0 -X stuff "(add 1 2)\n"
+▶ Použito v pluginu Slime for Vim

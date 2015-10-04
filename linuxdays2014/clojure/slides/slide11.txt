@@ -1,0 +1,8 @@
+
+REPL
+----
+▶ Read Eval Print Loop
+▶ Naprostý základ při tvorbě a především ladění aplikací
+▶ Přímé spuštění REPL
+    ◆ java -cp .:clojure-1.5.1.jar clojure.main
+▶ Existují i lepší možnosti!

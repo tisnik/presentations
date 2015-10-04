@@ -1,0 +1,14 @@
+
+Runtime jazyka Clojure + knihovny
+----------------------------------
+▶ Podpora běhu na více virtuálních strojích
+    ◆ JVM
+        * překlad od the Fly
+    ◆ .NET
+    ◆ JavaScript
+        * Resp. libovolná VM JavaScriptu
+▶ Nejedná se o náhradu Javy, C# ani JavaScriptu
+    ◆ Kooperace s těmito jazyky
+    ◆ A především jejich knihovnami
+    -> Clojure se nesnaží znovuobjevit kolo
+    -> velmi snadný přechod na Clojure pro Java vývojáře

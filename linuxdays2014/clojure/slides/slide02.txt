@@ -1,0 +1,15 @@
+
+Základní informace o Clojure (2)
+--------------------------------
+▶ Multiparadigmatický programovací jazyk
+    ◆ Přednost má funkcionální přístup
+    ◆ Ovšem není striktně vyžadován
+▶ Podporuje tvorbu masivně paralelních
+  vícevláknových aplikaci
+    ◆ Agenti
+    ◆ Transakce - STM
+    ◆ Neměnné datové typy
+    -> eliminace vzniku deadlocků
+    -> žádný GIL
+▶ REPL
+▶ Code=Data
