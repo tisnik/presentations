@@ -1,0 +1,9 @@
+
+Zajímavé akvizice ARM
+-------------------------------
+2005 Keil software
+     překladače pro různé MCU
+2006 Falanx (ARM Norway)
+     3D akcelerátory
+2013 Sensinode
+     startup, IoT

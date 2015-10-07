@@ -1,0 +1,15 @@
+
+Cortex-M0
+-------------------------------
+▶ M0 je skutečný mikrořadič
+    ◆ Náhrada za některé 8bitové a 16bitové MCU
+    ◆ von Neumannova architektura
+    ◆ Násobička
+        • jednocyklová (high perf. čipy)
+        • 32cyklová (čipy s nižší cenou a příkonem)
+    ◆ Power management
+        • Režim sleep (CLK=0 Hz)
+        • Režim deep sleep (vypnutí flash paměti apod.)
+        • Instrukce WFI, WFE
+    ◆ 12.5µW na každý MHz @ 1,2V
+    ◆ 64µW na každý MHz @ 1,8V

@@ -1,0 +1,14 @@
+
+ARM11
+-------------------------------
+▶ Architektura ARMv6
+    ◆ Instrukční sady
+        ◆ A32
+        ◆ Thumb
+        ◆ Thumb-2 (později, od ARM1156)
+    ◆ Delší pipeline
+        ◆ 8 řezů
+        ◆ out-of-order
+        ◆ branch prediction
+    ◆ SIMD
+        ◆ paralelní provádění některých operací

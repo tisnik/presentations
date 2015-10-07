@@ -1,0 +1,11 @@
+
+Rodina ARM2
+-------------------------------
+▶ Architektura ARMv2
+    ◆ Jádro ARM2
+    ◆ První komerčně používané čipy ARM
+▶ Novinky architektury ARMv2
+    ◆ Oproti ARM1 byla přidána HW násobička
+▶ Základní parametry
+    ◆ Typická frekvence 8 MHz
+    ◆ Výkon přibližně 4 MIPS

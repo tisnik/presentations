@@ -1,0 +1,5 @@
+
+Změna označování
+-------------------------------
+▶ Původní architektura: AArch32 (málokdy využíváno)
+▶ Nová architektura: AArch64

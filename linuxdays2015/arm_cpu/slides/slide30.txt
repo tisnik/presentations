@@ -1,0 +1,12 @@
+
+Cortex-M0
+-------------------------------
+▶ Jádro "naprogramované" ve Verilogu
+▶ ARM čipy s nejnižší cenou, rozměry, výkonem, příkonem
+    ◆ Malá plocha čipu
+    ◆ Nejmenší čip má rozměry 1,6x2 mm
+    ◆ Pipeline se třemi řezy
+▶ Instrukční sada
+    ◆ Thumb (chybí jen tři instrukce)
+    ◆ částečně Thumb-2 (ale ne již CBZ, CBNZ či IT)
+    ◆ Nikoli A32!

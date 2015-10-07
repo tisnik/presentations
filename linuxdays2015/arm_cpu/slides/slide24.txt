@@ -1,0 +1,14 @@
+
+Rodina StrongARM
+-------------------------------
+▶ Architektura ARMv4
+▶ Společnost DEC + Adv. ARM Machines
+    ◆ Později prodáno firmě Intel
+        • Náhrada za i860 a i960
+    ◆ StrongARM → XScale
+▶ Zaměření čipu
+    ◆ PDA
+    ◆ Set-top boxy
+    ◆ (Apple MessagePad 2000)
+    ◆ (Acorn Computers RISC PC)
+▶ Hodinové frekvence 100..233 MHz

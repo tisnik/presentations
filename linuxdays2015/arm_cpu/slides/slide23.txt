@@ -1,0 +1,18 @@
+
+ARM7 vs ARM7T
+-------------------------------
+▶ ARM7
+    ◆ A32
+    ◆ ARMv3
+▶ ARM7T
+    ◆ A32+Thumb
+    ◆ ARMv4T
+▶ ARM7TDMI
+    ARM7 +    _T_humb + 
+     JTAG     _D_ebug +
+     fast     _M_ultiplier + 
+     enhanced _I_CE  (debug support)
+        (nastaveni podmínek, kdy se aktivuje
+         breakpoint či watchpoint)
+    Licencováno TI
+    Nokia 6110

@@ -1,0 +1,14 @@
+
+Cortex-M3
+-------------------------------
+▶ Booleovský processor
+    ◆ Dva vybrané paměťové regiony á 1 MB
+    ◆ První region: SRAM
+    ◆ Druhý region: periferní zařízení
+    ◆ Adresové aliasy: blok 32 MB
+        ◆ Každé slovo mapováno do jediného bitu
+          (LSB)
+▶ Energetické nároky
+    1,2V, 25°C 31 µW/MHz
+    1,1V, 25°C 11 µW/MHz
+    0,9V, 85°C  8 µW/MHz

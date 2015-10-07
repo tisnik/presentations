@@ -1,0 +1,11 @@
+
+Rodina ARM7
+-------------------------------
+▶ Velmi úspěšná rodina čipů ARM
+▶ Novinky rodiny ARM7
+    ◆ JTAG (ARM7DI)
+        • Snazší ladění, hw breakpointy...
+    ◆ Thumb 16bit (u čipů s „T“ v názvu)
+        • ARM7-TDMI (viz další slide)
+    ◆ MMU (v závislosti na čipu)
+    ◆ Cache 8 kB (v závislosti na čipu)

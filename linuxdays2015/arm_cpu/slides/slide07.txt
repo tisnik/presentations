@@ -1,0 +1,15 @@
+
+Obchodní model ARM vs.Intel/AMD
+-------------------------------
+▶ ARM
+    ◆ Vlastní know-how a IP
+    ◆ Nevyrábí vlastní procesory
+    ◆ Namísto toho prodává IP dalším společnostem
+        • Samsung
+        • Qualcomm
+        • NVidia
+        • Nintendo
+        • Texas Instruments
+        • dalších cca 15 důležitých zákazníků
+          (oficiální seznam není zveřejněn)
+    ◆ ⇒ Veškerý zisk je možné investovat do návrhu čipů

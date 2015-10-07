@@ -1,0 +1,13 @@
+
+Rozšíření čipů s jádrem ARM
+-------------------------------
+Rok 2010
+    6 100 000 000 čipů
+    95% smartphony
+    10% přenosné počítače
+    35% TV a set-top boxy
+     0% desktopy
+     0% servery :-)
+Rok 2014
+    12 000 000 000 čipů
+    predikce pro 23% ARM na PC

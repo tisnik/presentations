@@ -1,0 +1,22 @@
+
+Arduino Due
+-------------------------------
+▶ ARM Freescale Cortex-A9 + ARM Atmel SAM3X8E CP
+▶ HD video, low power, realtime app
+    ◆ 84 MHz
+    ◆ 2 x 256 kB Flash ROM
+    ◆ 64 + 32 kB SRAM
+    ◆ 16 kB ROM
+      obsahuje především bootloader rutiny pro UART a USB
+    ◆ 54 I/O pinů
+      12 z nich vyhrazeno pro PWM
+    ◆ 16 kanálový ADC (12 bitů)
+      jeden rezervován pro vnitřní senzor teploty
+    ◆ 2 DAC (taktéž 12bitů)
+    ◆ 3 x USART
+    ◆ 9 kanálový 32bitový čítač
+    ◆ 2 TWI (Two Wire Interface, varianta I²C)
+    ◆ USB Device/Mini host
+    ◆ Ethernet MAC 10/100 + podpora pro přenos dat přes DMA
+    ◆ True Random Number Generator (TRNG)
+      dokáže každých 32 taktů vrátit 32bitové náhodné(?) číslo

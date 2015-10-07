@@ -1,0 +1,10 @@
+
+Jádra v řadě Cortex-Mx (pokr.)
+-------------------------------
+Jádro       Dělička DSP Thumb             Thumb-2
+Cortex-M0     ne    ne  kromě 3 instrukcí částecně
+Cortex-M0+    ne    ne  kromě 3 instrukcí částecně
+Cortex-M1     ne    ne  kromě 3 instrukcí částecně
+Cortex-M3     ano   ne  kompletně         kompletně
+Cortex-M4     ano   ano kompletně         kompletně
+Cortex-M7     ano   ano kompletně         kompletně

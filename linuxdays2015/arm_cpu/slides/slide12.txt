@@ -1,0 +1,16 @@
+
+ARM family, architecture, core
+-------------------------------
+▶ Rodina
+    ◆ Nejhrubší dělení
+    ◆ Dnes označuje určení čipů
+        • Cortex-M
+        • Cortex-R
+        • Cortex-A (32/64)
+        • SecurCore
+▶ Architektura
+    ◆ Určuje vlastnosti jádra CPU
+▶ Core (jádro)
+    ◆ Společné moduly (cache, MMU, ...)
+    ◆ Pro jednu architekturu odlišné
+      vlastnosti (velikost cache atd.)

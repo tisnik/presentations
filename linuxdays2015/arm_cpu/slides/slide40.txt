@@ -1,0 +1,14 @@
+
+Proč AArch64?
+-------------------------------
+▶ Nové možnosti nasazení těchto procesorů
+     ◆ "Od topinkovačů po superpočítače" :-)
+▶ Požadavky zákazníků
+     ◆ Nutnost dobrého načasování
+     ◆ Konec roku 2011
+▶ Větší virtuální paměťový prostor
+▶ Nativní práce s 64bitovými hodnotami
+▶ Zjednodušení pro vývojáře i autory překladačů/VM
+     ◆ Čistý návrh load/store RISC
+     ◆ Jen několik instrukcí obsahuje podmínku
+     ◆ Větší množina dostupných registrů

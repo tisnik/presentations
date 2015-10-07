@@ -1,0 +1,17 @@
+
+ARM1+ARM2 (společné vlastnosti)
+-------------------------------------
+▶ CPU bez mikrokódu a mikrořadiče
+▶ Architektura Load/Store
+    ◆ 32bit datová sběrnice
+    ◆ 26bit adresová sběrnice
+    ◆ PC jen 24 bitů
+        • proto kód v 64MB prostoru
+        • (později 26b, nakonec 32b)
+▶ 27 (později 37) 32bitových registrů
+    ◆ Některé mají speciální funkci
+▶ Fixní délka operačních kódů 32bitů
+▶ 1 instrukce/takt
+    ◆ (kromě skoků a později MUL)
+▶ Většina instrukcí může být vykonána za určité podmínky
+    GT, GE, EQ atd.

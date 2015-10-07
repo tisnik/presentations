@@ -1,0 +1,10 @@
+
+Jádra v řadě Cortex-Mx
+-------------------------------
+Jádro       Architektura            MPU
+Cortex-M0   ARMv6-M    Von Neumann  ne
+Cortex-M0+  ARMv6-M    Von Neumann  volitelná
+Cortex-M1   ARMv6-M    Von Neumann  ne
+Cortex-M3   ARMv7-M    Harvardská   volitelná
+Cortex-M4   ARMv7E-M   Harvardská   volitelná
+Cortex-M7   ARMv7E-M   Harvardská   volitelná

@@ -1,0 +1,16 @@
+
+ARM pro spotřební elektroniku
+-------------------------------
+▶ Cortex-A
+    ◆ 32bitové CPU
+        • 2005    Cortex-A8
+        • 2007    Cortex-A9
+        • 2009    Cortex-A5
+        • 2010    Cortex-A15
+        • 2011    Cortex-A7
+        • 2013    Cortex-A12
+        • 2014    Cortex-A17
+    ◆ 64bitové CPU
+        • 2012    Cortex-A53
+        • 2012    Cortex-A57
+        • 2015    Cortex-A72

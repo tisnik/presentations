@@ -1,0 +1,12 @@
+
+ARM pro real-time aplikace
+-------------------------------
+▶ Cortex-R4
+▶ Cortex-R5
+▶ Cortex-R7
+▶ Poměrně výkonná jádra
+    ◆ Cortex-R4 1,4 GHz
+▶ DSP
+▶ HW dělička
+▶ SIMD
+▶ FPU

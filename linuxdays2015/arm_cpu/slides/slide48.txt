@@ -1,0 +1,12 @@
+
+Nintendo DS
+-------------------------------
+▶ CPU
+    ◆ ARM946E-S
+        • 67 MHz
+        • Hry, rendering
+    ◆ ARM7TDMI
+        • 33 MHz
+        • Zvukový výstup
+        • GBA režim
+▶ 4 MB RAM

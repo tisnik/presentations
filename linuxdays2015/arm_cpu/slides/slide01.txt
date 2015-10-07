@@ -1,0 +1,18 @@
+
+Obsah přednášky (1)
+-------------------------------
+▶ Základní informace o mikroprocesorech ARM
+▶ Rozšíření čipů ARM ve světě
+▶ Přednosti architektury ARM
+▶ Architektury čipů ARM
+▶ Rodiny jader ARM (starší dělení)
+    ◆ ARM1
+    ◆ ARM2
+    ◆ ARM3
+    ◆ ARM6
+    ◆ ARM7 (+ ARM7T)
+    ◆ ARM11
+▶ Rodiny jader ARM podle nového dělení
+    ◆ Cortex-A
+    ◆ Cortex-R
+    ◆ Cortex-M

@@ -1,0 +1,10 @@
+
+Cortex-M0+
+-------------------------------
+▶ Novější čipy
+    ◆ vylepšení původních jader M0
+▶ Kompatibilní s M0
+▶ Ještě menší spotřeba
+    ◆ 9.8µW na MHz
+▶ Pipeline se dvěma řezy (tři v M0)
+▶ MPU

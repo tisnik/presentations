@@ -1,0 +1,12 @@
+
+Rodina ARM6
+-------------------------------
+▶ Architektura ARMv3
+▶ Novinky rodiny ARM6
+    ◆ Podpora pro plně 32bitové adresování
+      (dříve 24, 26 bitů)
+    ◆ Volitelná cache podle jádra (0, 4 kB)
+▶ Základní parametry
+    ◆ Frekvence až 33 MHz
+    ◆ Výkon průměrně 28 MIPS
+▶ V některých zařízeních stále používán

@@ -1,0 +1,11 @@
+
+Cortex-M3
+-------------------------------
+▶ Obecně výkonnější čipy než Cortex-M0(+)
+▶ MPU
+▶ HW násobička (1 takt)
+▶ HW dělička (2-16 taktů)
+▶ Instrukční sada
+    ◆ Thumb
+    ◆ Thumb-2
+    ◆ Nikoli A32!

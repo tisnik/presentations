@@ -1,0 +1,13 @@
+
+ARM ve funkci mikrořadiče
+-------------------------------
+▶ Tři architektury
+    ◆ ARMv6-M
+        ◆ Cortex-M0
+        ◆ Cortex-M0+
+        ◆ Cortex-M1
+    ◆ ARMv7-M
+        ◆ Cortex-M3
+    ◆ ARMv7E-M
+        ◆ Cortex-M4
+        ◆ Cortex-M7

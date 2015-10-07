@@ -1,0 +1,11 @@
+
+ARM11
+-------------------------------
+▶ Čtyři jádra
+    ◆ ARM1136
+    ◆ ARM1156
+        ◆ Thumb-2
+    ◆ ARM1176
+    ◆ ARM11MPcore
+        ◆ multicore
+(Raspberry PI a podobná zařízení používají ARM11)

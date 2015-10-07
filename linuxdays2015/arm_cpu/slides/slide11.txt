@@ -1,0 +1,18 @@
+
+Přednosti architektury ARM
+-------------------------------
+▶ Relativně malý počet tranzistorů
+▶ Malá spotřeba (MIPS/Watt)
+▶ Možnost získat licenci a zařadit jádro ARM do vlastního čipu
+    ◆ NVidia Tegra
+    ◆ OMAP
+    ◆ ...
+▶ Tři rodiny čipů pro různé aplikace
+    ◆ Mikrořadiče
+    ◆ Smartphone/tablety/PC/konzole
+    ◆ Realtime aplikace (včetně DSP apod.)
+    ◆ Servery
+▶ Dobrá podpora překladači
+    ◆ Dnes i dobrá podpora ve VM (JIT)
+▶ Linux & ARM
+    ◆ Ekonomicky výhodné spojení technologií

@@ -1,0 +1,19 @@
+
+Obsah přednášky (2)
+-------------------------------
+▶ ARM pro mikrořadiče
+    ◆ Jádra v řadě Cortex-M
+▶ ARM pro spotřební elektroniku
+    ◆ Jádra v řadě Cortex-A
+▶ AArch64 (ARMv8-A)
+▶ Příklady použití čipů s jádrem ARM
+    ◆ nRF51822 (Cortex-M0)
+      (BBC Micro Bit)
+    ◆ Atmel SAM3X8E ARM Cortex-M3
+      (Arduino Due)
+    ◆ BCM2835 (single core)
+      (Raspberry Pi)
+    ◆ BCM2836 (quad core)
+      (Raspberry Pi 2)
+    ◆ Dual-Core ARM11 MPCore + single-core ARM9
+      (Nintendo 3DS)
