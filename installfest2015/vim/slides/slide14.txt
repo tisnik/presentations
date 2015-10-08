@@ -1,0 +1,6 @@
+
+TVO: The VIM Outliner
+--------------------------------
+▶ Stažení
+    http://www.vim.org/scripts/script.php?script_id=517
+    http://bike-nomad.com/vim/vimoutliner.html

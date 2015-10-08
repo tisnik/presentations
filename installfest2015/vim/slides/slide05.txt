@@ -1,0 +1,13 @@
+
+Vim-colors-solarized
+--------------------------------
+▶ Stažení
+    https://github.com/altercation/vim-colors-solarized
+    git clone git://github.com/altercation/vim-colors-solarized.git
+▶ Po instalaci do ~/.vim/bundle 
+    :call pathogen#helptags()
+    :help solarized
+    :colorscheme solarized
+    :colorscheme <Tab>
+    :set background=dark
+    :set background=light

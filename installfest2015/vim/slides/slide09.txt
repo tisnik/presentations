@@ -1,0 +1,15 @@
+
+Netrw
+--------------------------------
+▶ dnes standarní součást Vimu
+    :Explore
+    :HExplore
+    (klavesa i, ?)
+    vim scp://uživatel@jméno_vzdáleného_počítače/cesta
+    vim ftp://jméno_vzdáleného_počítače/cesta
+    :NetUserPass
+    :e ftp://uživatel@jméno_vzdáleného_počítače/cesta
+    :NetrwSettings
+    g:netrw_ftp_cmd="ftp"
+    g:netrw_http_cmd="elinks"
+    g:netrw_sftp_cmd="sftp"

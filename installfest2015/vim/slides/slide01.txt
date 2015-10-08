@@ -1,0 +1,12 @@
+
+Vim a pluginy
+--------------------------------
+▶ Globální instalace do $VIMRUNTIME/
+    echo $VIMRUNTIME
+▶ Lokální instalace do ~/.vim
+▶ Problémy při větším množství pluginů
+    Sdílené adresáře autoload, doc, spell, syntax...
+    Podobné instalaci balíčků pro Linux :-)
+    A stejné řešení - správce pluginů
+    Vim Pathogen
+    Všechny balíčky ve ~/.vim/bundle ve vlastních adresářích

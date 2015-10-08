@@ -1,0 +1,15 @@
+
+Omnicompletion
+--------------
+    Ctrl+X Ctrl+]
+        vyhledávání v seznamu značek
+    Ctrl+X Ctrl+F
+        doplnění názvu souboru a/nebo cesty, postačuje například zadat text ~/ za
+        nímž následuje klávesová zkratka Ctrl+X Ctrl+F a zobrazí se výpis
+        souborů v domácím adresáři
+    Ctrl+X Ctrl+D
+        vyhledání definice makra a doplnění jména tohoto makra
+    Ctrl+X Ctrl+U
+        zavolání funkce zadané v konfiguračním parametru completefunc, které se předá právě editovaný text
+    Ctrl+X Ctrl+O
+        vyvolání omni completion

@@ -1,0 +1,16 @@
+
+Vim a Java
+----------
+▶ Modul JavaBrowser
+https://github.com/vim-scripts/JavaBrowser
+    Vyžaduje ctags
+        Enter   přeskok kurzoru na definici metody/atributu
+        o       dtto, ale otevře se nové okno
+        Space   prototyp
+        u       update
+        s       sort by name
+        q       quit/close
+        +       rozbalení podstromu
+        -       zabalení podstromu
+        *       rozbalení celého stromu
+        x       skrytí či zobrazení okna se zdrojovým kódem

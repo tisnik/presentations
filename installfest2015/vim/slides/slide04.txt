@@ -1,0 +1,15 @@
+
+Vim-airline
+--------------------------------
+▶ Stažení
+    https://github.com/bling/vim-airline
+    wget http://www.vim.org/scripts/download_script.php?src_id=22726
+▶ Po instalaci do ~/.vim/bundle 
+    :help airline
+    :set laststatus=2
+    :AirlineToggle
+    :AirlineRefresh
+    :AirlineTheme dark
+    :AirlineTheme wombat
+    :AirlineTheme jellybeans
+    :AirlineTheme <Tab>

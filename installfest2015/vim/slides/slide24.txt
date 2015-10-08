@@ -1,0 +1,5 @@
+
+▶ Slime for Vim
+    ◆ Využívá screen a posílání příkazů do běžícího REPLu
+    ◆ Jednoduché a přitom velmi snadno použitelné (kompletní IDE :-)
+▶ Vimclojure

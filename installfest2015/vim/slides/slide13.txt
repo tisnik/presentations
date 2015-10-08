@@ -1,0 +1,29 @@
+
+Vim Commander
+--------------------------------
+▶ Stažení
+    http://www.vim.org/scripts/script.php?script_id=808
+▶ Po instalaci
+    :call VimCommanderToggle()
+    :map --cokoli-- :call VimCommanderToggle()<cr>   
+    - TAB       = Go to the other panel.
+    - F3        = View file under cursor.
+    - F4        = Edit file under cursor.
+    - F5        = Copy file.
+    - F6        = Move/rename file.
+    - F7        = Create directory.
+    - F8/DEL    = Remove file.
+    - F10       = Quit VimCommander.
+    - C-R       = Refresh panels.
+	- Backspace = Go to parent directory.
+    - C-U       = Exchange panels.
+    - C-Left    = Put directory under cursor on other panel, or grab
+                  other panel's dir.
+    - C-Right   = Same.
+    - \H        = Show hidden files (toggle).
+    - INS       = Select file under cursor.
+    - "+"       = Select file by pattern.
+    - "-"       = De-select file by pattern.
+    - S-F4      = Edit new file.
+    - C-t       = Previous directory.
+    - C-y       = Next directory.
