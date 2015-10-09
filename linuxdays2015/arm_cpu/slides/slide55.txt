@@ -1,0 +1,9 @@
+
+Raspberry Pi 2
+-------------------------------
+▶ CPU
+    ◆ SoC BCM2836 (Quad core)
+        • ARM Cortex-A7
+        • CPU + GPU
+    ◆ 900 MHz
+    ◆ 1 GB RAM

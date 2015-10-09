@@ -1,4 +1,3 @@
-
 Architektury moderních procesorů a mikrořadičů ARM
 ==================================================
 ■ Autor    Pavel Tišnovský, Red Hat

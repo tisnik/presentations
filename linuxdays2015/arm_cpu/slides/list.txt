@@ -49,3 +49,11 @@ slide47.txt
 slide48.txt
 slide49.txt
 slide50.txt
+slide51.txt
+slide52.txt
+slide53.txt
+slide54.txt
+slide55.txt
+slide56.txt
+slide57.txt
+slide58.txt

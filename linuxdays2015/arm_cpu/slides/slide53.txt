@@ -1,0 +1,13 @@
+
+Raspberry Pi
+-------------------------------
+▶ Model B+
+    ◆ SoC BCM2835
+        • CPU + GPU
+    ◆ 512 MB RAM
+        • "nasazena" na SoC
+    ◆ 4xUSB konektor
+    ◆ Ethernet
+    ◆ HDMI + TV výstup
+    ◆ Audio výstup
+    ◆ MicroSD + Externí HDD (over USB)

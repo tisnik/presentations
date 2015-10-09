@@ -1,13 +1,17 @@
 
-Raspberry Pi: SoC
+A57
 -------------------------------
-▶ CPU
-    ◆ Rodina ARM11
-    ◆ Instrukční sada architektury ARMv6
-    ◆ 700 MHz
-    ◆ Lze snadno přetaktovat až na 1 GHz
-    ◆ Poměrně slabý výkon pro desktopové aplikace
-▶ GPU
-    ◆ HVS - Hardware Video Scaler
-    ◆ 24 GFLOPS
-    ◆ silný zejména v GPU výpočtech (x desktop)
+Instrukce jsou dekódovány do µops
+    ◆ Fetch + Decode:  in order
+    ◆ Execute (issue): out of order
+▶ Pro issue: osm samostatných pipeline
+    ◆ Integer 0           (I0)
+    ◆ Integer 1           (I1)
+    ◆ Integer Multi-cycle (M)
+    ◆ Branch              (B)
+    ◆ Load                (L)
+    ◆ Store               (S)
+    ◆ FP/ASIMD 0          (F0)
+    ◆ FP/ASIMD 1          (F1)
+▶ Za cyklus max tři µops
+▶ Load balancing FP operací

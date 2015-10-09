@@ -1,14 +1,5 @@
 
-BBC Micro Bit
+Změna označování
 -------------------------------
-▶ BBC Computer Literacy Programme
-▶ Nordic Semiconductor nRF51822
-    ◆ 16 MHz (+ 32768 Hz)
-    ◆ ARM Cortex-M0
-▶ 256KB Flash
-▶ 16KB RAM
-▶ Bluetooth
-▶ USB (On-The-Go)
-▶ Displej z 25 LED
-▶ GPIO
-  (Akcelerometr + Magnetometr přes I²C)
+▶ Původní architektura: AArch32 (málokdy využíváno)
+▶ Nová architektura: AArch64

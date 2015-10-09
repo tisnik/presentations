@@ -1,0 +1,12 @@
+
+Nintendo 3DS
+-------------------------------
+▶ CPU
+    ◆ Dual-Core ARM11 MPCore
+        • První jádro pro hry
+        • Druhé pro potřeby OS
+    ◆ Single-core ARM9
+        • Pro zpětnou kompatibilitu s DS
+▶ 128 MB RAM
+▶ 6 MB VRAM
+▶ 1 GB flash

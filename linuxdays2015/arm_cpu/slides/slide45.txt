@@ -1,13 +1,9 @@
 
-Raspberry Pi
+Rodina ARMv8-A
 -------------------------------
-▶ Model B+
-    ◆ SoC BCM2835
-        • CPU + GPU
-    ◆ 512 MB RAM
-        • "nasazena" na SoC
-    ◆ 4xUSB konektor
-    ◆ Ethernet
-    ◆ HDMI + TV výstup
-    ◆ Audio výstup
-    ◆ MicroSD + Externí HDD (over USB)
+▶ Zaručena zpětná kompatibilita s ARMv7-A
+▶ Podporuje AArch32 i AArch64
+▶ Současné čipy ARMv8-A
+     ◆ Cortex-A53
+     ◆ Cortex-A57
+     ◆ Cortex-A72

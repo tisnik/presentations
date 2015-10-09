@@ -1,12 +1,9 @@
 
-ARM pro real-time aplikace
+ARM pro spotřební elektroniku
 -------------------------------
-▶ Cortex-R4
-▶ Cortex-R5
-▶ Cortex-R7
-▶ Poměrně výkonná jádra
-    ◆ Cortex-R4 1,4 GHz
-▶ DSP
-▶ HW dělička
-▶ SIMD
-▶ FPU
+Čipy v A-profilu mají MMU
+Nutnost pro moderní OS
+    ◆ 32bitové CPU
+        Architektura ARMv7-A
+    ◆ 64bitové CPU
+        Architektura ARMv8-A

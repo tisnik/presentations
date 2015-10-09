@@ -1,7 +1,13 @@
 
-Mikroprocesory ARM s 64bitovou architekturou
+Cortex-A5
 -------------------------------
-▶ 32bitů -> 64bitů
-▶ Pravděpodobně největší změna v architektuře
-  procesorů ARM v celé jejich historii
-▶ Velké odlišnosti, nutnost překladu pro novou architekturu
+Low end zařízení
+▶ 800 MHz - 2 GHz
+▶ L1 cache: 4-64kB I + 4-64kB D
+▶ 8řezová pipeline
+▶ A32
+▶ Thumb-2
+▶ Jazelle RCT
+▶ NEON SIMD (volitelné)
+▶ VFPv3     (volitelné)
+▶ Typicky 1-4 jádra na čipu

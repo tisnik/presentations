@@ -1,3 +1,7 @@
 
-Příklady použití čipů s jádrem ARM
-==================================================
+Mikroprocesory ARM s 64bitovou architekturou
+-------------------------------
+▶ 32bitů -> 64bitů
+▶ Pravděpodobně největší změna v architektuře
+  procesorů ARM v celé jejich historii
+▶ Velké odlišnosti, nutnost překladu pro novou architekturu

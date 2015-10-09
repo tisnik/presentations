@@ -1,14 +1,14 @@
 
-Proč AArch64?
+Cortex-A9
 -------------------------------
-▶ Nové možnosti nasazení těchto procesorů
-     ◆ "Od topinkovačů po superpočítače" :-)
-▶ Požadavky zákazníků
-     ◆ Nutnost dobrého načasování
-     ◆ Konec roku 2011
-▶ Větší virtuální paměťový prostor
-▶ Nativní práce s 64bitovými hodnotami
-▶ Zjednodušení pro vývojáře i autory překladačů/VM
-     ◆ Čistý návrh load/store RISC
-     ◆ Jen několik instrukcí obsahuje podmínku
-     ◆ Větší množina dostupných registrů
+▶ 800 MHz - 2 GHz
+▶ L1 cache: 32kB I + 32kB D
+▶ L2 cache: 128kB - 8MB
+▶ Superskalární architektura
+▶ 8řezová pipeline
+▶ A32
+▶ Thumb-2
+▶ Jazelle DBX+Jazelle RCT
+▶ NEON SIMD (volitelné)
+▶ VFPv3     (volitelné)
+▶ Typicky 1-4 jádra na čipu

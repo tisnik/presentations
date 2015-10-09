@@ -1,5 +1,16 @@
 
-Změna označování
+Cortex-A8
 -------------------------------
-▶ Původní architektura: AArch32 (málokdy využíváno)
-▶ Nová architektura: AArch64
+Použito v různých zařízeních
+▶ 600 MHz - 1 GHz
+▶ L1 cache: 32kB I + 32kB D
+▶ L2 cache: 512kB
+▶ Superskalární architektura
+▶ 13řezová pipeline (Integer)
+▶ 10řezová pipeline (NEON)
+▶ A32
+▶ Thumb-2
+▶ Jazelle RCT
+▶ NEON SIMD
+▶ VFPv3
+▶ 1 jádro na čipu

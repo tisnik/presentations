@@ -1,9 +1,12 @@
 
-Rodina ARMv8-A
+ARM pro real-time aplikace
 -------------------------------
-▶ Zaručena zpětná kompatibilita s ARMv7-A
-▶ Podporuje AArch32 i AArch64
-▶ Současné čipy ARMv8-A
-     ◆ Cortex-A53
-     ◆ Cortex-A57
-     ◆ Cortex-A72
+▶ Cortex-R4
+▶ Cortex-R5
+▶ Cortex-R7
+▶ Poměrně výkonná jádra
+    ◆ Cortex-R4 1,4 GHz
+▶ DSP
+▶ HW dělička
+▶ SIMD
+▶ FPU

@@ -1,9 +1,13 @@
 
-Raspberry Pi 2
+Osm samostatných pipeline (pokr.)
 -------------------------------
-▶ CPU
-    ◆ SoC BCM2836 (Quad core)
-        • ARM Cortex-A7
-        • CPU + GPU
-    ◆ 900 MHz
-    ◆ 1 GB RAM
+    ◆ Integer Multi-cycle
+        Shift
+        MUL
+        DIV
+        CRC
+    ◆ FP/ASIMD 0
+        všechny FP operace
+        crypto
+    ◆ FP/ASIMD 1
+        ADD, MUL

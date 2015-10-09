@@ -1,0 +1,13 @@
+
+Raspberry Pi: SoC
+-------------------------------
+▶ CPU
+    ◆ Rodina ARM11
+    ◆ Instrukční sada architektury ARMv6
+    ◆ 700 MHz
+    ◆ Lze snadno přetaktovat až na 1 GHz
+    ◆ Poměrně slabý výkon pro desktopové aplikace
+▶ GPU
+    ◆ HVS - Hardware Video Scaler
+    ◆ 24 GFLOPS
+    ◆ silný zejména v GPU výpočtech (x desktop)
