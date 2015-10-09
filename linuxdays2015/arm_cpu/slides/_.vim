@@ -55,8 +55,6 @@ function! StatusLine()
 endfunction
 
 " Hot keys
-map <Up>   :call ShowPrevSlide()<cr>
-map <Down> :call ShowNextSlide()<cr>
 map <PageUp>   :call ShowPrevSlide()<cr>
 map <PageDown> :call ShowNextSlide()<cr>
 map <Home>     :call ShowFirstSlide()<cr>
