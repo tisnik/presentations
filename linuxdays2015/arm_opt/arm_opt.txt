@@ -4,7 +4,7 @@ Optimalizace při překladu na procesorech ARM
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
 ■ Datum    2015-10-10
 
-Obsah přednášky (1)
+Obsah přednášky
 -------------------------------
 ▶ ARM32 z pohledu programátora
 ▶ Instrukční sady procesorů ARM
@@ -243,16 +243,18 @@ ITE EQ
 MOVEQ r0, r2 ; větev "then"
 MOVNE r0, r3 ; větev "else"
 
-Výsledky měření
--------------------------------
+Výsledky měření: délka kódu
+----------------------------------
 Instrukční sada Délka kódu
-==========================
+==================================
 ARM             100%
 Thumb            70%
 Thumb-2          74%
 
-Instrukční sada Relativní výpočetní výkon
-==========================
+Výsledky měření: rychlost aplikace
+----------------------------------
+Instrukční sada Relativní rychlost
+==================================
 ARM             100%
 Thumb            75%
 Thumb-2          98%
@@ -306,6 +308,10 @@ Instrukce s podmínkou
     ◆ Více bitů v instrukčním slově použitelných pro jiné účely
     ◆ Současné prediktory skoků jsou již velmi kvalitní
     ◆ Podmínky mohou být použity jen u některých instrukcí
+
+===================
+Specifika AArach 64
+===================
 
 A57
 -------------------------------
@@ -430,6 +436,9 @@ VFP
             d4..d7
             d8..d11
             d12..d15
+
+VFP
+-------------------------------
     Wrapping:
         vektor s délkou 6 začínající na s5:
         [s5, s6, s7, s0, s1, s2]
@@ -471,9 +480,6 @@ Advanced SIMD Architecture
     ◆ 32bit FP (jednoduchá přesnost)
     ◆ 8bit, 16bit, 32bit, 64bit celá čísla
     ◆ 8bit, 16bit, 32bit, 64bit bitová pole
-
-Omezení některých jader ARM
--------------------------------
 
 NEON
 -------------------------------
@@ -518,6 +524,10 @@ uint16x2_t vmlal_u32(uint64x2_t x, uint32x2_t, uint32x2_t);
     ◆ Funkce rgb2gray
     ◆ Čisté céčko - 48 sekund
     ◆ Intrinsics  - 8.8 sekund (cca 5x rychlejší)
+
+===========================
+Omezení některých jader ARM
+===========================
 
 FP
 --
