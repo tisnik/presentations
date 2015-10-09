@@ -522,6 +522,58 @@ ARM pro spotřební elektroniku
         • 2012    Cortex-A57
         • 2015    Cortex-A72
 
+ARM pro spotřební elektroniku
+-------------------------------
+Čipy v A-profilu mají MMU
+Nutnost pro moderní OS
+    ◆ 32bitové CPU
+        Architektura ARMv7-A
+    ◆ 64bitové CPU
+        Architektura ARMv8-A
+
+Cortex-A5
+-------------------------------
+Low end zařízení
+▶ 800 MHz - 2 GHz
+▶ L1 cache: 4-64kB I + 4-64kB D
+▶ 8řezová pipeline
+▶ A32
+▶ Thumb-2
+▶ Jazelle RCT
+▶ NEON SIMD (volitelné)
+▶ VFPv3     (volitelné)
+▶ Typicky 1-4 jádra na čipu
+
+Cortex-A8
+-------------------------------
+Použito v různých zařízeních
+▶ 600 MHz - 1 GHz
+▶ L1 cache: 32kB I + 32kB D
+▶ L2 cache: 512kB
+▶ Superskalární architektura
+▶ 13řezová pipeline (Integer)
+▶ 10řezová pipeline (NEON)
+▶ A32
+▶ Thumb-2
+▶ Jazelle RCT
+▶ NEON SIMD
+▶ VFPv3
+▶ 1 jádro na čipu
+
+Cortex-A9
+-------------------------------
+▶ 800 MHz - 2 GHz
+▶ L1 cache: 32kB I + 32kB D
+▶ L2 cache: 128kB - 8MB
+▶ Superskalární architektura
+▶ 8řezová pipeline
+▶ A32
+▶ Thumb-2
+▶ Jazelle DBX+Jazelle RCT
+▶ NEON SIMD (volitelné)
+▶ VFPv3     (volitelné)
+▶ Typicky 1-4 jádra na čipu
+
 ARM pro real-time aplikace
 -------------------------------
 ▶ Cortex-R4
@@ -568,6 +620,61 @@ Rodina ARMv8-A
      ◆ Cortex-A53
      ◆ Cortex-A57
      ◆ Cortex-A72
+
+A57
+-------------------------------
+Instrukce jsou dekódovány do µops
+    ◆ Fetch + Decode:  in order
+    ◆ Execute (issue): out of order
+▶ Pro issue: osm samostatných pipeline
+    ◆ Integer 0           (I0)
+    ◆ Integer 1           (I1)
+    ◆ Integer Multi-cycle (M)
+    ◆ Branch              (B)
+    ◆ Load                (L)
+    ◆ Store               (S)
+    ◆ FP/ASIMD 0          (F0)
+    ◆ FP/ASIMD 1          (F1)
+▶ Za cyklus max tři µops
+▶ Load balancing FP operací
+
+Osm samostatných pipeline (pokr.)
+-------------------------------
+    ◆ Integer Multi-cycle
+        Shift
+        MUL
+        DIV
+        CRC
+    ◆ FP/ASIMD 0
+        všechny FP operace
+        crypto
+    ◆ FP/ASIMD 1
+        ADD, MUL
+
+A57
+-------------------------------
+▶ Latence a max. průchodnost (integer)
+    ADD    1     2         I0/I1
+    Shift  1     1         M
+    BLR    2-3   1         I0/I1+B (branch and link)
+    CCMP   1     2         I0/I1   (conditional compare)
+    MUL    3     1         M
+    SDIV   4-20  1/20-1/4  M
+    LDR    4     1         L
+    STR    1     1         S  (nečeká na zápis)
+
+A57
+-------------------------------
+▶ Latence a max. průchodnost (FP)
+    VADD   5     2         F0/F1
+    VMUL   5     2         F0/F1
+    VDIV   7-17  2/15-2/5  F0    (single/float)
+    VDIV   7-32  1/30-1/5  F0    (double)
+    VSQRT  7-17  2/15-2/5  F0    (single/float)
+    VSQRT  7-32  1/30-1/5  F0    (double)
+
+    DIV+SQRT - iterativní algoritmus
+             - lze přerušit
 
 Příklady použití čipů s jádrem ARM
 ==================================================
