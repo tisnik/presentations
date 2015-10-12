@@ -1,4 +1,4 @@
 #!/bin/sh
 cd slides/
-vim -S _.vim
+gvim -S _.vim
 

@@ -309,9 +309,9 @@ Instrukce s podmínkou
     ◆ Současné prediktory skoků jsou již velmi kvalitní
     ◆ Podmínky mohou být použity jen u některých instrukcí
 
-===================
-Specifika AArach 64
-===================
+==================
+Specifika AArch 64
+==================
 
 A57
 -------------------------------
@@ -533,15 +533,15 @@ FP
 --
 ▶ FPU je volitelnou součástí
 ▶ Cortex-M4
-    jen float (single), nikoli double
-    pozor na to, že překladač může mezivýpočty provádět v double!
+    ◆ jen float (single), nikoli double
+    ◆ pozor na to, že překladač může mezivýpočty provádět v double!
     -Wdouble-promotion
     -fsingle-precision-constant
 ▶ FP v obsluze přerušení
-    pokud se nepoužije -> Lazy Stacking
+    ◆ pokud se nepoužije -> Lazy Stacking
 __FPU_USED - pokud je definováno:
-    FPU se povolí automaticky ve funkci SystemInit()
-    nepatrně větší spotřeba
+    ◆ FPU se povolí automaticky ve funkci SystemInit()
+    ◆ nepatrně větší spotřeba
 
 "Skryté" výpočty s double
 -------------------------
@@ -555,18 +555,18 @@ Lazy stacking
 ▶ Použito například na Cortex-M4F
 ▶ Rutiny pro obsluhu přerušení
 ▶ Neprovádí se úschova FP registrů na zásobník, když
-FPU se v rutině nepoužívá
-nebo
-FPU se nepoužívá v přerušeném programu
+    ◆ FPU se nepoužívá v přerušovací rutině
+      nebo
+    ◆ FPU se nepoužívá v přerušeném programu
 
 C knihovny
 ----------
 ▶ ARM cc/Keil
-    std.C
+    ◆ std.C
         důraz větší výpočetní výkon
-    MicroLib
+    ◆ MicroLib
         důraz na menší paměťové nároky
 ▶ gcc
-    NewLib
-    NewLib-Nano
+    ◆ NewLib
+    ◆ NewLib-Nano
 
