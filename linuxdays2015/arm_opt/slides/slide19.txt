@@ -1,0 +1,8 @@
+
+Výsledky měření: rychlost aplikace
+----------------------------------
+Instrukční sada Relativní rychlost
+==================================
+ARM             100%
+Thumb            75%
+Thumb-2          98%

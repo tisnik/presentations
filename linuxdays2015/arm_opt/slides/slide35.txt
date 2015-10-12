@@ -1,0 +1,16 @@
+
+VFP
+-------------------------------
+▶ Vektory
+    ◆ 8*single (viz předchozí slide)
+        Rozdělení na banky:
+            s0..s7
+            s8..s15
+            s16..s23
+            s24..s31
+    ◆ 4*double
+        Rozdělení na banky:
+            d0..d3
+            d4..d7
+            d8..d11
+            d12..d15

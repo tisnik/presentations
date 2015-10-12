@@ -1,0 +1,17 @@
+
+RISCové procesory a problém se skoky
+-------------------------------------
+▶ RISCová pipeline
+    ◆ Nemá smysl nečinně čekat na výsledek skoku
+    ◆ → spekulativní provádění instrukcí
+    × Čím delší pipeline, tím větší cena za špatný
+      odhad sekvence instrukcí
+▶ Statická a/nebo dynamická predikce skoků
+    ◆ Dynamická
+        Branch Target Address Cache (BTAC)
+        pamatuje si výsledek skoku
+    ◆ Statická
+        Použije se, když BTAC neobsahuje informaci
+        "taken" pro podmíněné skoky dozadu
+    ◆ Úspěšnost se udává okolo 85%
+    × U dvoubitového prediktoru je to až 93%

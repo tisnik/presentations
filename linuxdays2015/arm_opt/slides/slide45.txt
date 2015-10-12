@@ -1,0 +1,9 @@
+
+Lazy stacking
+-------------
+▶ Použito například na Cortex-M4F
+▶ Rutiny pro obsluhu přerušení
+▶ Neprovádí se úschova FP registrů na zásobník, když
+    ◆ FPU se nepoužívá v přerušovací rutině
+      nebo
+    ◆ FPU se nepoužívá v přerušeném programu

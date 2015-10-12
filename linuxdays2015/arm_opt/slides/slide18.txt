@@ -1,0 +1,8 @@
+
+Výsledky měření: délka kódu
+----------------------------------
+Instrukční sada Délka kódu
+==================================
+ARM             100%
+Thumb            70%
+Thumb-2          74%

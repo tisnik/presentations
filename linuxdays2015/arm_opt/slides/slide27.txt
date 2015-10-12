@@ -1,0 +1,15 @@
+
+A57
+-------------------------------
+Instrukce jsou dekódovány do µops
+    ◆ Fetch + Decode:  in order
+    ◆ Execute (issue): out of order
+▶ Pro issue: osm samostatných pipeline
+    ◆ Integer 0
+    ◆ Integer 1
+    ◆ Integer Multi-cycle
+    ◆ Branch
+    ◆ Load
+    ◆ Store
+    ◆ FP/ASIMD 0
+    ◆ FP/ASIMD 1

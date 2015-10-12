@@ -1,0 +1,11 @@
+
+Instrukční sady procesorů ARM
+-------------------------------
+▶ A32
+    ◆ 32bitové instrukce, 32bitové operandy
+▶ Thumb (T32)
+    ◆ 16bitové instrukce
+▶ Thumb-2
+    ◆ Mix 16 a 32bitových instrukcí
+▶ A64
+    ◆ 32bitové instrukce, 64bitové operandy

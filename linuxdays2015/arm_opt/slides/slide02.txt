@@ -1,0 +1,16 @@
+
+ARM32 z pohledu programátora
+-------------------------------
+▶ Architektura typu Load-Store
+    ◆ Pro efektivní práci nutný velký počet registrů
+    ◆ Omezení přístupů do pomalé paměti
+    ◆ Alokace registrů → optimalizující překladač
+▶ Řešení
+    ◆ 27/37 registrů
+        30 pracovních, PC, CPSR, 5xSPSR
+        15 registrů viditelných r0..r14
+        r13 Stack Pointer
+        r14 Link Register
+    ◆ Šířka registrů 32 bitů
+    ◆ Rozdělení do banků, které se překrývají
+    ◆ Pro každý stav procesoru zvláštní bank

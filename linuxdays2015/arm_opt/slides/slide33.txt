@@ -1,0 +1,13 @@
+
+VFP
+-------------------------------
+▶ Vector Floating Point (VFP)
+▶ Podpora pro typy half, single a double
+    ◆ IEEE 754
+▶ VFPv1
+    ◆ Dnes již nepoužívaná
+▶ VFPv2
+    ◆ Podpora v ARM instrukcích
+▶ VFPv3
+    ◆ Podpora v Thumb a ThumbEE
+    ◆ Rozšíření FP registrů na 32

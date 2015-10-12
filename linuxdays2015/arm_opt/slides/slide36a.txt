@@ -1,0 +1,8 @@
+VFP
+-------------------------------
+▶ Instrukce
+    Aritmetické 
+    Konverze (single » double, integer » FP atd.)
+    FP MAC (Multiply and Accumulate)
+    √
+    Fixed point (» single, » double a naopak)

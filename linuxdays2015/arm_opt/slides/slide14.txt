@@ -1,0 +1,12 @@
+
+Instrukční sada Thumb-2
+-------------------------------
+▶ 2003
+▶ ARMv7
+▶ Povoluje kombinace instrukcí o šířce 16 a 32 bitů
+▶ Zpětná kompatibilita s Thumb
+▶ Větší složitost čipů
+▶ Větší „hustota“ strojového kódu
+    ◆ Srovnatelná s Thumb
+▶ Má smysl ve světě rychlých CPU, pomalých DRAM a drahých cache
+▶ Výkonnost srovnatelná s ARM režimem

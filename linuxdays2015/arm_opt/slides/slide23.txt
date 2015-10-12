@@ -1,0 +1,9 @@
+
+Multiply/divide
+-------------------------------
+▶ signed
+▶ unsigned
+▶ 32×32    → 32
+▶ 64×64    → 64
+▶ 64+32×32 → 64 (multiply and accumulate)
+▶ 64×64    → 64+64 (registrový pár)

@@ -1,0 +1,20 @@
+
+Podpora pro operace s FP
+-------------------------------
+▶ "softfloat" nepodporováno
+▶ Podobné VPS
+▶ FP registry
+    ◆ 32 pracovních registrů
+    ◆ Každý registr až 4x32 bitů
+▶ Použití registrů
+    ◆ Skalární hodnoty
+        • float
+        • double
+        • quad
+    ◆ Vektory
+        • 8x short float
+        • 4x float
+        • 2x double
+SIMD
+-------------------------------
+▶ Režim kompatibility s IEEE 754

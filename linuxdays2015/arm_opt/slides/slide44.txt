@@ -1,0 +1,7 @@
+
+"Skryté" výpočty s double
+-------------------------
+test.c: In function ‘calcVAT’:
+test.c:3:16: warning: implicit conversion from ‘float’ to ‘double’ to match other operand of binary expression [-Wdouble-promotion]
+     return 20.0*price;
+                     ^

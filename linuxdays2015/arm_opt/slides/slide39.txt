@@ -1,0 +1,16 @@
+
+NEON
+-------------------------------
+▶ Instrukce se provádí v jiné jednotce
+    ◆ Vlastní fronta instrukcí
+    ◆ Nezávislé na hlavní ALU
+    ◆ U některých jader více NEON jednotek
+▶ 32 nových registrů
+    ◆ d0..d31 (64bitů/registr)
+▶ Sdružení registrů do párů
+    ◆ q0..q15 (128 bitů/pár)
+▶ Vektory
+    ◆ 8x8 bitů (obrazová data)
+    ◆ 4x16 bitů (zvukové vzorky)
+    ◆ 2x32 bitů
+    ◆ float/single

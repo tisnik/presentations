@@ -1,0 +1,14 @@
+
+AArch64 z pohledu programátora
+-------------------------------
+▶ Instrukční sada A64
+▶ Instrukční slova
+    ◆ Konstantní šířka 32 bitů
+▶ Pracovní registry
+    ◆ 64bitové
+    ◆ 31 univerzálních registrů
+    ◆ 32.registr
+        • liší se v závislosti na kontextu
+        • buď nula (ZR)
+        • nebo Stack pointer (SR)
+    ◆ PC není přímo dostupný

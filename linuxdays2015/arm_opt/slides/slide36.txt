@@ -1,0 +1,14 @@
+
+VFP
+-------------------------------
+    Wrapping:
+        vektor s délkou 6 začínající na s5:
+        [s5, s6, s7, s0, s1, s2]
+    Stride
+        vektor s délkou 3, stride 2 začínající na s1:
+        [s1, s3, s5]
+        vektor s délkou 4, stride 2 začínající na s6:
+        [s6, s0, s2, s4]
+    Wrapping a stride nesmí způsobit, že se registr
+    ve vektoru ocitne 2x!
+    

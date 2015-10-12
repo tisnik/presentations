@@ -1,0 +1,17 @@
+
+FPA (ARM Floating Point Accelerator)
+-------------------------------
+▶ Podporované formáty hodnot
+    ◆ Single
+    ◆ Double
+    ◆ Extended
+▶ Registry
+    ◆ f0..f7
+        • šířka 80bitů
+    ◆ FPSR
+        • Floating Point Status Register
+    ◆ FPCR
+        • Floating Point Control Register
+▶ Podpora pro "rychlé" násobení a dělení
+    ◆ Jen pro "single"
+    ◆ Nemusí se provést korektní zaokrouhlení

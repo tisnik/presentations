@@ -1,0 +1,11 @@
+
+C knihovny
+----------
+▶ ARM cc/Keil
+    ◆ std.C
+        důraz větší výpočetní výkon
+    ◆ MicroLib
+        důraz na menší paměťové nároky
+▶ gcc
+    ◆ NewLib
+    ◆ NewLib-Nano

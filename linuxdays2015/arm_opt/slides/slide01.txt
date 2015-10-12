@@ -1,0 +1,15 @@
+
+Obsah přednášky
+-------------------------------
+▶ ARM32 z pohledu programátora
+▶ Instrukční sady procesorů ARM
+    ◆ Původní instrukční sada ARM (A32)
+    ◆ Instrukční sada Thumb
+    ◆ Instrukční sada Thumb-2
+    ◆ A64 (AArch64)
+▶ Další rozšíření instrukční sady procesorů ARM
+    ◆ VFP
+    ◆ SIMD
+    ◆ NEON
+▶ Problematika FP operací
+▶ Omezení některých jader ARM

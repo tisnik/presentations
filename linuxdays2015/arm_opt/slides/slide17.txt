@@ -1,0 +1,25 @@
+
+IT
+-------------------------------
+▶ IT{pattern} {condition}
+    ◆ až čtyři instrukce provedené na základě testu
+    ◆ (pozitivní/negativní výsledek)
+▶ {pattern}
+    ◆ T-then
+    ◆ E-else
+▶ první instrukce
+    ◆ provedena při splnění podmínky {condition}
+▶ druhá instrukce
+    ◆ T-podmínka
+    ◆ E-inverze podmínky
+▶ třetí a čtvrtá instrukce
+    ◆ dtto
+▶ {condition}
+    EQ NE GT GE LT LE
+    CS CC  carry
+    PL MI HI LS
+    ...
+CMP r0, r1
+ITE EQ
+MOVEQ r0, r2 ; větev "then"
+MOVNE r0, r3 ; větev "else"

@@ -1,0 +1,12 @@
+
+VFP
+-------------------------------
+▶ Registry
+    ◆ d0..d15 (double)
+    ◆ s0..s31 (stínové registry pro single)
+    ◆ + ve VFPv3 nově i d16..d31 (double)
+▶ SIMD operace (s vektory)
+    ◆ 8*single
+    ◆ 4*double
+    ◆ mohou se provádět na jediné FP jednotce
+    ◆ stále však rychlejší než skalární operace

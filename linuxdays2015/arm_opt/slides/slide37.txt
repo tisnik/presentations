@@ -1,0 +1,7 @@
+
+VFP
+-------------------------------
+▶ VFPv3-FP16
+▶ VFPv3-D16-FP16
+▶ VFPv4
+    Volitelná podpora 16bitových FP (Half precision)

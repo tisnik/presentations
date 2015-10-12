@@ -1,0 +1,14 @@
+
+Vlastnosti ISA typické pro ARM
+-------------------------------
+▶ Vykonání instrukce na základě příznaků
+    N - negative
+    V - overflow
+    Z - zero
+    C - carry
+    Q - sticky (ARMv5 a výše)
+▶ Lze odstranit některé skoky
+▶ Lze zvolit, které příznaky se mají nastavit
+▶ U mnoha instrukcí lze druhý operand
+    ◆ Posunout
+    ◆ Zrotovat

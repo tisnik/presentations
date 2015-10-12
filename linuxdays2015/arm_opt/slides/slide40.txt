@@ -1,0 +1,10 @@
+
+NEON
+-------------------------------
+Datové typy
+    Unsigned integer
+        8, 16, 32, 64b
+    Signed integer
+        8, 16, 32, 64b
+    Floating point
+        jen 32b

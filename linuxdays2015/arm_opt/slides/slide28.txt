@@ -1,0 +1,13 @@
+
+Osm samostatných pipeline (pokr.)
+-------------------------------
+    ◆ Integer Multi-cycle
+        Shift
+        MUL
+        DIV
+        CRC
+    ◆ FP/ASIMD 0
+        všechny FP operace
+        crypto
+    ◆ FP/ASIMD 1
+        ADD, MUL

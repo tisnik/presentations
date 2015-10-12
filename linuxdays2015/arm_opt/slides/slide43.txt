@@ -1,0 +1,14 @@
+
+FP
+--
+▶ FPU je volitelnou součástí
+▶ Cortex-M4
+    ◆ jen float (single), nikoli double
+    ◆ pozor na to, že překladač může mezivýpočty provádět v double!
+    -Wdouble-promotion
+    -fsingle-precision-constant
+▶ FP v obsluze přerušení
+    ◆ pokud se nepoužije -> Lazy Stacking
+__FPU_USED - pokud je definováno:
+    ◆ FPU se povolí automaticky ve funkci SystemInit()
+    ◆ nepatrně větší spotřeba

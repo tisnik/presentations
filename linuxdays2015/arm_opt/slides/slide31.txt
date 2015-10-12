@@ -1,0 +1,12 @@
+
+Rozšíření instrukčních sad
+-------------------------------
+▶ FPA
+▶ VFP
+▶ Advanced SIMD Architecture
+▶ NEON (Advanced SIMD)
+▶ Jazelle
+    ◆ Podpora pro spouštění většiny instrukcí JVM (bajtkód)
+        • Proměnná délka instrukcí s osmibitovým opkódem a proměnným počtem operandů
+    ◆ Musí existovat podpora v JVM
+        • Jazelle Java Technology Enabling Kit (JTEK)
