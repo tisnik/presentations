@@ -1,0 +1,161 @@
+Vim course 4
+================================================
+■ Author:    Pavel Tišnovský
+■ Mojo:      https://mojo.redhat.com/docs/DOC-1047832
+
+Vim configuration
+----------------------
+▶ .vimrc
+▶ vim -g, gvim ...
+▶ .gvimrc
+▶ :options - interactive, hypertext help etc.
+
+GVim configuration
+----------------------
+▶ Configuration options
+    :set guifont?
+    :set guifont=DejaVu\ Sans\ Mono\ 12
+    :set guifont=*
+    :set linespace=number_of_pixels
+    :set guioptions?
+    :set guioptions+=a       " visual mode block -> clipboard
+    :set guioptions-=T       " turn off toolbar
+    :set guioptions-=mM      " turn off menu
+
+Syntax highlighting
+----------------------
+Terminal test
+:source $VIMRUNTIME/syntax/colortest.vim
+
+Syntax highlighting
+----------------------
+:highlight ${group_name} term=
+                         cterm= ctermfg= ctermbf=
+                         gui=   guifg=   guibg=
+                         guisp=
+      .......................
+:highlight Cursor       guibg=#80ffff guifg=bg
+:highlight Cursor2      guibg=#ff8080 guifg=bg
+:highlight Cursor3      guibg=#60e060 guifg=bg
+:highlight Folded       ctermfg=7     ctermbg=8
+:highlight Comment      ctermfg=12
+:highlight PreProc      ctermfg=10
+:highlight Underlined   ctermbg=7    ctermfg=8
+:highlight htmlItalic   ctermbg=none ctermfg=green
+
+Syntax highlighting
+----------------------
+Attributes for :highlighting
+    term    any terminal
+    cterm   color terminal
+    ctermbg background
+    ctermfg foreground
+    gui     only avail in GUI (Gvim, ...)
+    guibg   GUI background
+    guifg   GUI foreground
+    guisp   underline etc.
+
+Any terminal
+----------------------
+term=
+    NONE
+    standout
+    bold
+    italic
+    underline
+    undercurl
+    reverse
+    inverse
+
+Color terminal
+----------------------
+ctermbg=
+ctermfg=
+       16colors 8colors Color name
+        0       0       Black
+        1       4       DarkBlue
+        2       2       DarkGreen
+        3       6       DarkCyan
+        4       1       DarkRed
+        5       5       DarkMagenta
+        6       3       Brown, DarkYellow
+        7       7       LightGray, LightGrey, Gray, Grey
+        8       0*      DarkGray, DarkGrey
+        9       4*      Blue, LightBlue
+        10      2*      Green, LightGreen
+        11      6*      Cyan, LightCyan
+        12      1*      Red, LightRed
+        13      5*      Magenta, LightMagenta
+        14      3*      Yellow, LightYellow
+        15      7*      White
+
+Syntax highlighting
+----------------------
+:highlighting Normal ctermfg=7
+:highlighting Normal ctermbg=4 ctermfg=3
+:highlighting Normal ctermbg=4 ctermfg=3 cterm=italic
+
+Syntax highlighting
+----------------------
+Actual line/column
+    :set cursorcolumn
+    :set cursorline
+    :highlight CursorLine   guibg=#2d2d2d
+    :highlight CursorColumn guibg=#2d2d2d
+    or (green line and black characters):
+    :highlight CursorLine ctermfg=1 ctermbg=0 term=NONE cterm=NONE
+
+Syntax highlighting
+----------------------
+Syntax categories
+    :syntax clear
+    :syntax clear   ${category_name}
+    :syntax keyword ${category_name}
+    :syntax match   ${category_name}
+    :syntax region  ${category_name}
+
+Syntax highlighting
+----------------------
+Tabs
+    :syntax match Tab "\t"
+    :syntax match Tab2 "\t\t"
+    :syntax match Tab3 "\t\t\t"
+    :syntax match Tab4 "\t\t\t\t"
+    :highlight Tab  ctermbg=lightgreen guibg=#e0ffe0
+    :highlight Tab2 ctermbg=lightred   guibg=#ffe0e0
+    :highlight Tab3 ctermbg=lightblue  guibg=#e0e0ff
+    :highlight Tab4 ctermbg=lightcyan  guibg=#ffffe0
+
+Numeric constants
+----------------------
+    :highlight NumericConstantOctal   ctermfg=red    guifg=red
+    :highlight NumericConstantBinary  ctermfg=green  guifg=green
+    :highlight NumericConstantHex     ctermfg=blue   guifg=blue
+    :highlight NumericConstantDecimal ctermfg=cyan   guifg=cyan
+    :highlight NumericConstantFloat   ctermfg=yellow guifg=yellow
+    :syntax match NumericConstantOctal   "0[0-7_]*\>"
+    :syntax match NumericConstantBinary  "0[bB][01_]*\>"
+    :syntax match NumericConstantHex     "0[xX][0-9a-fA-F_]*\>"
+    :syntax match NumericConstantDecimal "[1-9_][0-9_]*\>"
+    :syntax match NumericConstantFloat   "[0-9_]*\.[0-9_]*\([eE][+-]\=[0-9_]*\)\=\>"
+    Howto use the code above:
+    1) select the ten lines using visual block (V-command)
+    2) :w foobar.vim
+    3) new buffer.vim
+    4) :source foobar
+    5) type: 10 0x10 010 0b10
+    6) yes!
+
+Use case: My calendar
+----------------------
+Somewhere in .vimrc
+    highlight Days ctermfg=cyan  guifg=#aaffff
+    highlight Todo ctermfg=red   guifg=#ffaaaa
+    highlight Ok   ctermfg=green guifg=#aaffaa
+    augroup __calendar__
+    autocmd!   " Remove ALL autocommands for the current group.
+    autocmd BufRead,BufNewFile *.cal syntax keyword Days Mon Tue Wed Thu Fri Sat Sun
+    autocmd BufRead,BufNewFile *.cal syntax keyword Todo TODO
+    autocmd BufRead,BufNewFile *.cal syntax keyword OK OK
+    augroup END
+
