@@ -1,0 +1,136 @@
+Vim course 3
+================================================
+■ Author   Pavel Tišnovský
+■ Mojo:    https://mojo.redhat.com/docs/DOC-1047832
+
+Viminfo file
+------------
+▶ Vim can remember
+    ◆ The command line history.
+    ◆ The search string history.
+    ◆ The input-line history.
+    ◆ Contents of non-empty registers.
+    ◆ Marks for several files.
+    ◆ File marks, pointing to locations in files.
+    ◆ Last search/substitute pattern (for 'n' and '&').
+    ◆ The buffer list.
+    ◆ Global variables.
+▶ .vimrc
+set viminfo='20,\"50,n~/temp/_viminfo
+'20 - maximum number of previously edited files + marks
+"50 - maximum number of lines for each register
+%   - save and restore the buffer list
+/99 - maximum number of remembered search patterns
+:99 - maximum number of remembered commands
+n...- name of viminfo file (must be the last one)
+
+Marks
+-----
+▶ (File) + Line + Columns
+▶ Mark groups
+      a-z set up manually  locals
+      A-Z set up manually  globals (mark+filename)
+      0-9 set up automatically, last 10 cursor positions
+       <  set up automatically, beginning of block
+       >  set up automatically, end of block
+      "   set up automatically, cursor position in time the buffer is closed
+      ^   set up automatically, cursor position in the last insert mode
+▶ Working with marks
+      :marks      list of all marks
+      :marks mark list of selected mark
+      ma - mz local mark definition
+      mA - mZ global mark definition
+▶ Cursor movement command
+      'a - 'z jump to line
+      'A - 'Z jump to file+line
+      `a - `z jump to line+column
+      `A - 'Z jump to file+line+column
+▶ If you want to open the file and place the cursor to the same position
+      :au BufReadPost * normal `"
+
+Working with tags
+-----------------
+▶ How to create tags file
+    ◆ ctags
+    ◆ ctags * (to force generating for BASH scripts etc.)
+    ◆ ctags -R
+    ◆ ctags -R /usr/lib/include
+        • quite big files, might be better to try man pages instead
+        • Shift+K
+▶ How to jump to definition
+    :tag symbol              TAB completion
+     g+   left button        does not work in terminal
+     Ctrl+left button        does not work in terminal
+     Ctrl+]                  in visual mode :tag
+▶ Go back
+    ◆ Ctrl+T
+▶ Vim help is created similarly, ie. use Ctrl+] and Ctrl+T etc.
+
+Folding
+-------
+▶   :set foldmethod
+        manual
+        indent
+        expr
+        marker
+        syntax
+        diff   (diff mode)
+▶ Commands
+    zf  (fold)  - only for foldmethod=manual
+        - works like a regular operator
+    zo  (open)  zO - recursive variant
+    zc  (close) zC - recursive variant
+    zv  (view cursor line)
+    zd  (delete)   - not for text
+    :set foldclose=all
+    :set foldopen=all
+
+Abbreviations
+-------------
+For insert/replace/command mode
+:ab teh the
+:ab tihs this
+:ab RH Red Hat
+
+Insert mode only
+:iab teh the
+:iab tihs this
+:iab RH Red Hat
+:iab #i #include
+
+Mapping
+-------
+:map key-sequence key-sequence
+:nmap  normal mode
+:vmap  visual mode
+:imap  insert/replace modes
+:omap  operator pending mode
+
+Disable recursive mappings
+:noremap
+:nnoremap
+:vnoremap
+:inoremap
+:onoremap
+
+Remove mappings
+:unmap
+:nunmap
+:vunmap
+:iunmap
+:ounmap
+
+Key sequence
+Ctrl+K key
+to enter keyname
+
+Macros
+-------
+▶ Macro
+    ◆ sequence of keystrokes
+    ◆ stored in selected register
+▶ Usage
+q[character] - start recording macro
+q            - end recording macro
+@[character] - play macro
+
