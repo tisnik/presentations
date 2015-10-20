@@ -1,0 +1,183 @@
+Vim course
+================================================
+■ Author   Pavel Tišnovský
+■ Mojo:    https://mojo.redhat.com/docs/DOC-1047832
+
+Vim
+---
+▶ Text editor for real programmers
+  https://xkcd.com/378/
+▶ 1988 Vi iMitation   Bram Moolenaar (Amiga)
+
+Vi/Vim history
+--------------
+1965   QED    line editor
+1971   ed     simpler line editor, Ken Thompson, PDP-7
+1975   em     "Editor for Mortals", based on ed
+1976   ex     ed update, direct vi ancestor
+1976   vi     ex+new "VIsual" mode
+1987   Stevie ST Editor for VI Enthusiasts
+1988   Vim    1st version (not official)
+1990   Elvis  another Vi clone
+1991   Vim    Vi iMitation version 1.14, 1st version to be publicly distributed
+
+Vi/Vim history (cont.)
+----------------------
+▶ Transfer to Unix systems (and to Linux of course)
+    ◆ Vi iMitation -> Vi iMproved
+▶ Based on the good(?) old Vi:
+    ◆ modes (normal, command, insert/replace...)
+    ◆ keyboard shortcuts
+    ◆ options (:set ...)
+    ◆ commands (in command mode)
+▶ New features:
+    ◆ Plugins
+    ◆ Tabs
+    ◆ Windows
+    ◆ Syntax highlighting
+    ◆ Spellchecker
+▶ Macros
+    ◆ Scripting support (Vim Script)
+
+How to call Vim from CLI
+------------------------
+"One executable, different behaviours"
+vi      OS dependent, usually calls Vim in compatible mode
+vim     normal invocation
+ex      starts Vim in "Ex" mode
+evim    so called Easy Vim, probably good for novices?
+        not proper Normal mode, just Insert Normal Mode supported
+        Ctrl+O
+rvim    restricted mode, can't start shell command nor suspend Vim
+vim -d  diff mode
+gvim    Vim with GUI (GTK+)
+kvim    Vim with GUI (Qt)
+view    read-only mode
+vimx    Vim with support for Xterm extensions (clipboard etc.)
+
+Vim modes
+---------
+▶ Six (VI :) basic modes:
+    ◆ Normal
+    ◆ Insert
+    ◆ Visual
+    ◆ Select
+    ◆ Commandline
+    ◆ Ex
+Additional modes:
+    ◆ Replace (like Insert)
+    ◆ Virtual replace
+    ◆ Operator pending mode (motion)
+    ◆ Insert Normal Mode (used by evim for example)
+    ◆ etc.
+
+Normal mode basics
+------------------
+Cursor movement
+    -> image
+    http://file.brq.redhat.com/~ptisnovs/vim-shortcuts.png
+Horizontal
+    w, b, e, ge
+    - delimiter(s) could be set by :set iskeyword
+Vertical
+Other
+    t f T F   (Shift = change direction)
+    ; ,       repeat last t f T F command
+    %   jump to matching ([{}]) (configurable)
+        :set matchpairs=(:),[:],{:},<:>
+
+Vim for developers
+------------------
+▶ Common behaviour
+    ◆ Configuration Options
+    ◆ Text Displaying
+    ◆ Text Wrapping
+    ◆ Folding
+    ◆ Windows, buffers, tabs
+▶ Vim and C/C++
+▶ Vim and Java
+▶ Vim and Clojure, Python etc. (REPL)
+▶ Vim and XML
+▶ Vim and HTML
+▶ diff Mode
+▶ Binary files editing
+
+Configuration options
+---------------------------
+    :set nocompatible
+        turn on when no .vimrc or .gvimrc file is found!
+        almost nobody wants to use :set compatible :)
+    :set ruler
+        ruler contains lots of important information
+    :set noruler
+        when to use it? on really slow connection (Vim over ssh)
+    :set statusline=...
+        will be explained later
+    :set (no)expandtab
+        enables or disables expanding [Tab] to spaces
+        wanna to use [Tab] when set? Ctrl+V Tab
+    (:retab)
+    :set backspace=[indent,eol,start]
+        eol    - you could delete EOL effectively joining lines
+        start  - you could delete text written in previous 'session'
+        indent - spaces inserted by autoindent could be deleted
+    :set filetype=[dos,unix]
+    :set selection=exclusive
+        block behaviour is similar to other editors
+    :set selection=inclusive
+        character below cursor will be part of block (slightly confusing)
+    :set wildmenu
+        TAB completion
+    :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o
+        for file completion (ignored files)
+
+Text displaying
+---------------
+    :set number
+    :set nonumber
+    :set list
+         for EOLs, TABs etc.
+    :set tabstop=xxx
+    :set showmatch
+    :set matchpairs=(:),[:],{:},<:>
+    To highlight matching parens:
+        matchparen plugin (it's standard one)
+        :hi MatchParen ctermbg=blue guibg=red
+
+What happened in case of error?
+-------------------------------
+    :set novisualbell
+    :set vb t_vb="
+
+Line/column highlighting
+------------------------
+    :set cursorcolumn
+    :set cursorline
+    :hi CursorLine   guibg=#2d2d2d
+    :hi CursorColumn guibg=#2d2d2d
+
+Tabs or spaces?
+-----------------
+    :syn match Tab "\t"
+    :syn match Tab2 "\t\t"
+    :hi def Tab  ctermbg=lightgreen guibg=#e0ffe0
+    :hi def Tab2 ctermbg=lightred guibg=#ffe0e0
+
+Text wrapping
+--------------
+Visual vs. "hard"
+    :set wrap
+        just visual (on screen, not in file)
+    :set nowrap
+        turn off visual wrapping
+    :set linebreak
+        visual wrapping on word boundaries
+    :set nolinebreak
+        turn off wrapping on word boundaries
+    :set tw=xxx
+        "hard" wrapping (inserts CR or CR/LF)
+    :set tw=0
+        disables "hard" wrapping
+    How to reformat paragraph:
+            gqap
+            <VisualBlock>gq
