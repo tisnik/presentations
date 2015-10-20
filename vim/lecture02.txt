@@ -1,0 +1,196 @@
+Vim course 2
+================================================
+■ Author   Pavel Tišnovský
+■ Mojo:    https://mojo.redhat.com/docs/DOC-1047832
+
+Operators
+---------
+    c   change
+    d   delete
+    y   yank
+    !   filter
+    >   shift right
+    <   shift left
+    g~  swap case
+    gu  lowercase
+    gU  Uppercase
+    gq  format
+    g?  ROT13
+    =   indent
+
+Basic operators & editing commands
+----------------------------------
+▶ Basic operators
+    ◆ d - delete text and put it into register named "
+    ◆ c - replace the specified text (deleted/old text is put into " reg)
+    ◆ y - like Ctrl+C in other applications
+▶ How to paste text stored in register named "
+    ◆ p  - paste
+    ◆ P  - paste before cursor
+    ◆ gp - paste & move cursor below new text
+    ◆ gP - P & gp
+▶ Vim vs. other text editors
+    ◆ Ctrl+X ~~~ d
+    ◆ Ctrl+C ~~~ y
+    ◆ Ctrl+V ~~~ p
+▶ Edit history
+    ◆ . repeat last command
+    ◆ n. repeat last command n times (n>0)
+
+Usage
+-----
+▶ Basic usage of operators
+    ◆ operator motion-command
+    ◆ operator text-object
+    ◆ repeat-count operator motion-command
+    ◆ repeat-count operator text-object
+    ◆ {visual} operator
+▶ In some cases (delete, yank):
+    ◆ "register operator motion-command
+    ◆ "register operator text-object
+
+Examples 1: operator+motion-command
+-----------------------------------
+        dl   delete one char  ("x" command is shorter)
+        d$   delete until EOL ("D" command is shorter)
+        dw   delete -> next word
+        db   delete <- begining of word
+        de   delete -> till end of word (no space)
+        dd   delete whole line (special, d is not motion here!)
+        dt"  delete text till " character ('delete content of string')
+        df"  delete text to   " character ('delete string including "')
+
+Examples 2: repeat-count operator motion-command
+------------------------------------------------
+        d3w  delete 3 words
+        3dw  delete 3 words
+        9dd  delete 9 lines
+
+Examples 3: operator+text object
+--------------------------------
+        dab  delete a block
+        dib  delete inner block
+        daB  delete a Block     brackets
+        diB  delete inner Block brackets
+        dat  delete a tag
+        dit  delete inner tag
+        cab  change a block (inside ())
+        cib  change inner block
+        caB  change a Block (inside {})
+        ciB  change inner Block
+        =aB  indent a Block
+
+Special operator+motion combinations
+------------------------------------
+        dd   delete whole line
+       2dd   delete two lines
+        yy   yank (copy) whole line
+       2yy   yank two lines
+        cc   change whole line
+        D    delete until EOL
+        C    change until EOL
+        S    change whole line (same as cc)
+        >>   right shift one line
+        <<   left shift one line
+
+Normal mode->Insert mode->Normal mode
+-------------------------------------
+▶ Normal mode->Insert mode
+    ◆ a        append
+    ◆ A        append at EOL
+    ◆ i        insert
+    ◆ I        insert before first non-blank
+    ◆ gI       insert at beginning of line
+    ◆ o        open new line _below_
+    ◆ O        open new line _above_ (Shift changes direction as usual)
+    ◆ [insert] insert
+▶ Normal mode->Replace mode
+    ◆ R        replace mode
+▶ Insert mode->Replace mode
+    ◆ [insert]
+▶ Replace mode->Insert mode
+    ◆ [insert]
+▶ Insert mode->Normal mode
+    ◆ Ctrl+O   temporary switch (for one command only)
+    ◆ Esc      permanent switch
+
+Registers
+---------
+▶ Register groups
+    ◆ "     implicit register for c, d, s, or y operators
+    ◆ 0-9   automatically filled by yank and delete operators
+    ◆ a-z   can be changed by user
+    ◆ %     name of currenty edited file (very useful)
+    ◆ :     last command
+    ◆ =     eval mode pseudoregister
+    ◆ *     content of selection (PRIMARY)
+    ◆ +     content of selection (CLIPBOARD)
+    ◆ /     last searched string
+    ◆ -     implicit register of 'smaller' operations
+▶ In Insert mode
+    ◆ Ctrl+R_register name
+▶ In Normal mode
+    ◆ "register_name operator ... ...
+
+Registers
+---------
+    ◆ 0-9   automatically filled by yank and delete operators
+            editation history, very useful in some situations
+    ◆ =     eval mode pseudoregister
+            wait for user input, you can use expression that
+            is immediatelly evaluated:
+            Normal mode:
+            "=6*7<cr>p
+            Insert mode:
+            Ctrl+R=6*7<cr>
+    :reg - shows all regs
+
+Selection/clipboard
+-------------------
+:reg +*
+Now try to select something in terminal and repeat
+:reg +*
+Now select something in the browser and repeat
+:reg +*
+Now start 'xclipboard', put it above vim and perform:
+"*yy
+"+yy
+
+Buffers
+-------
+    :bn(ext)
+    :bp(rev)
+    :bf(irst)
+    :bl(ast)
+
+Tabs
+----
+    :tabnew
+    :tabnew filename
+    :tabnext
+    :tabfirst
+    :tabclose
+    Ctrl+W gf
+
+Windows
+-------
+▶ How to create and close window
+    Ctrl+W n (new)
+    Ctrl+W s (split)
+    Ctrl+W v (vertical split)
+    Ctrl+W f (file)
+    :q
+▶ How to switch between windows
+    Ctrl+W w             (next win)
+    Ctrl+W Ctrl+W        (the same, but faster)
+    Ctrl+W h/j/k/l       (go to the window in given direction)
+    Ctrl+W<Shift>h/j/k/l (move window in selected direction)
+
+Windows
+-------
+    Ctrl++   (resize, make window bigger, for horizontal split)
+    Ctrl+-   (resize, make window smaller, for horizontal split)
+    Ctrl+=   (the same size)
+    Ctrl+>   (resize, make window bigger, for horizontal split)
+    Ctrl+<   (resize, make window smaller, for horizontal split)
+
