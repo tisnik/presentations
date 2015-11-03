@@ -1,7 +1,6 @@
 Vim course
 ================================================
 ■ Author   Pavel Tišnovský
-■ Mojo:    https://mojo.redhat.com/docs/DOC-1047832
 
 Vim
 ---
