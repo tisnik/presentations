@@ -5,3 +5,417 @@ Vim course 5
 Vim Scripts
 ----------------------
 
+" ---------------------------------------------
+" Vim script #1
+" ---------------------------------------------
+" Variables, command 'let' and command 'echo'
+
+" 1) open in Vim
+" 2) :so %
+" 3) watch result!
+
+:let a=6
+:let b=7
+:let c=a*b
+:echo c
+
+
+
+" ---------------------------------------------
+" Vim script #2
+" ---------------------------------------------
+" We don't have to use semicolons in non-interactive mode!
+
+" 1) open in Vim
+" 2) :so %
+" 3) watch result!
+
+" Alternative: vim -S script2.vim
+
+let a=6
+let b=7
+let c=a*b
+echo c
+
+
+
+" ---------------------------------------------
+" Vim Script #3
+" ---------------------------------------------
+" Dot could be used to concatenate values.
+
+let x="Hello"
+let y="world"
+echo x . " " . y . "!"
+
+
+
+" ---------------------------------------------
+" Vim Script #4
+" ---------------------------------------------
+" Usage of lists
+" Usage of while loop
+
+let mylist = ["Answer", "to", "The", "Ultimate", "Question", "of", "Life,", "the", "Universe,", "and", "Everything:", 42]
+
+let i = 0
+while i < 12
+    echo mylist[i]
+    let i+=1
+endwhile
+
+
+
+" ---------------------------------------------
+" Vim Script #5
+" ---------------------------------------------
+" Usage of lists
+" Usage of for-each loop
+
+" Alternative: vim -S script5.vim
+
+let mylist = ["Answer", "to", "The", "Ultimate", "Question", "of", "Life,", "the", "Universe,", "and", "Everything:", 42]
+
+for item in mylist
+    echo item
+endfor
+
+
+
+" ---------------------------------------------
+" Vim Script #6
+" ---------------------------------------------
+" Variables
+" 1    g:variable_name    global
+" 2    s:variable_name    local for script file
+" 3    w:variable_name    local for window (not buffer!)
+" 4    t:variable_name    local for tab
+" 5    b:variable_name    local for buffer (not window!)
+" 6    l:variable_name    'true' local variable (inside function)
+" 7    a:variable_name    named function argument
+" 8    v:variable_name    Vim constant and variables
+
+echo v:version
+
+" g: t: etc. are dictionaries:
+echo "All g: variables:"
+echo g:
+echo "All t: variables:"
+echo t:
+echo "All w: variables:"
+echo w:
+echo "All b: variables:"
+echo b:
+
+
+
+" ---------------------------------------------
+" Vim Script #7
+" ---------------------------------------------
+" Vim constant and variables
+
+echo v:
+
+let vars = v:
+for item in keys(vars)
+    echo item
+    echo vars[item]
+    echo "----------------"
+endfor
+
+
+
+" ---------------------------------------------
+" Vim Script #8
+" ---------------------------------------------
+" Vim pseudovariables
+" &name   - configuration parameter
+" &l:name - local configuration parameter
+" &g:name - global configuration parameter
+" @name   - register
+" $name   - environment variable
+
+echo $HOME
+echo $USER
+echo $DISPLAY
+
+echo &backupdir
+echo &encoding
+
+
+
+" ---------------------------------------------
+" Vim Script #9
+" ---------------------------------------------
+" Vim pseudovariables
+" &name   - configuration parameter
+" &l:name - local configuration parameter
+" &g:name - global configuration parameter
+" @name   - register
+" $name   - environment variable
+
+let @"=$PATH
+reg "
+
+
+
+" ---------------------------------------------
+" Vim Script #10
+" ---------------------------------------------
+" Usage of Vim pseudovariables
+
+nmap ]] :let &tabstop += 1<CR>
+nmap [[ :let &tabstop -= &tabstop > 1 ? 1 : 0<CR>
+
+
+
+" ---------------------------------------------
+" Vim Script #11
+" ---------------------------------------------
+" Working with Vim registers
+
+let @"="foo bar"
+let @*="xyzzy"
+let @+=42
+
+reg
+
+" now try the 'Paste' operation in another application (Firefox, Gedit, etc.)
+
+
+
+" ---------------------------------------------
+" Vim Script #12
+" ---------------------------------------------
+" Numeric operators
+
+let number1 = 6
+let number2 = 7
+
+echo "Arithmetic:"
+echo number1 + number2
+echo number1 - number2
+echo number1 * number2
+echo number1 / number2
+echo number1 % number2
+echo +number1
+echo -number1
+
+echo "Comparison:"
+echo number1 == number2
+echo number1 != number2
+echo number1 > number2
+echo number1 >= number2
+echo number1 < number2
+echo number1 <= number2
+
+
+
+" ---------------------------------------------
+" Vim Script #13
+" ---------------------------------------------
+" Boolean operators
+
+let bool1 = 1
+let bool2 = 0
+
+echo "Not, and, or:"
+echo !bool1
+echo !bool2
+echo bool1 && bool2
+echo bool1 || bool2
+
+echo "Ternary operator:"
+echo bool1 ? "true" : "false"
+echo bool2 ? "true" : "false"
+
+echo "String->number->boolean conversion"
+echo !0
+echo !"0"
+echo !1
+echo !"1"
+
+
+
+" ---------------------------------------------
+" Vim Script #14
+" ---------------------------------------------
+" String expressions and operators
+
+let str1 = "hello"
+let str2 = "HELLO"
+
+echo "String concatenation:"
+echo str . str
+
+echo "Ignore vs. noignorecase"
+set ignorecase
+" Use :set ignorecase settings
+echo str1 == str2
+" Don't ignore case
+echo str1 ==# str2
+" Let's ignore case
+echo str1 ==? str2
+
+set noignorecase
+" Use :set ignorecase settings
+echo str1 == str2
+" Don't ignore case
+echo str1 ==# str2
+" Let's ignore case
+echo str1 ==? str2
+
+echo "String comparion"
+echo "ax" <  "bx"
+echo "ax" <= "bx"
+echo "ax" >= "bx"
+
+echo "String comparion and ignore/noignorecase"
+echo "Bart" <   "bart"
+echo "Bart" <#  "bart"
+echo "Bart" <?  "bart"
+
+
+
+" ---------------------------------------------
+" Vim Script #15
+" ---------------------------------------------
+" Regexp(s)
+
+let str1 = "hello"
+let str2 = "HELLO"
+let regexp = "[a-z]*"
+
+echo "String and regexp:"
+echo str1 =~ regexp
+echo str2 !~ regexp
+
+echo "Ignorecase vs noignorecase:"
+set ignorecase
+" Use Vim settings
+echo str2 =~ "Hello"
+" Don't ignore case
+echo str2 =~# "Hello"
+" Let's ignore case
+echo str2 =~? "Hello"
+
+set noignorecase
+" Use Vim settings
+echo str2 =~ "Hello"
+" Don't ignore case
+echo str2 =~# "Hello"
+" Let's ignore case
+echo str2 =~? "Hello"
+
+
+
+" ---------------------------------------------
+" Vim Script #16
+" ---------------------------------------------
+" Lists
+
+let list1=[1, 2, 3, 4]
+echo list1
+
+let two=2
+let list2=[1, two, "3", "ètyøi"]
+echo list2
+
+let list3=[[11, 12, 13] , [21, 22, 23], [31, 32, 33]]
+echo list3
+
+let first=list1[0]
+echo first
+
+let list2[1]="xyzzy"
+echo list2
+
+let list3=[[11, 12, 13] , [21, 22, 23], [31, 32, 33]]
+echo list3[2][2]
+
+echo "Indexes are ok:"
+echo get(list1, 1)
+echo get(list1, 2)
+
+echo "Indexes are out of bounds:"
+echo get(list1,-1)
+echo get(list1, 4)
+
+echo [1,2]+[3,4]
+
+let list1=[1, 2, 3]
+let list2=["3", "4", "5"]
+let list3=[[11, 12, 13] , [21, 22, 23], [31, 32, 33]]
+
+let concat=list1+list2+list3
+echo concat
+
+
+
+" ---------------------------------------------
+" Vim Script #17
+" ---------------------------------------------
+" Dictionaries
+
+let dictionary1={"one":1, "two":2, "three":3, "four":4}
+echo dictionary1
+
+let dictionary2={"one":1, "two":2, "three":3}
+echo dictionary2["one"]
+echo dictionary2.one
+
+let xx=v:
+echo xx["version"]
+
+echo xx.version
+
+echo xx["progname"]
+echo xx.progname
+
+
+
+" ---------------------------------------------
+" Vim Script #18
+" ---------------------------------------------
+" While, strlen etc.
+
+let str = "http://www.root.cz"
+while str != ""
+    echo str
+    let str = str[1 : strlen(str) - 1]
+endwhile
+
+
+
+" ---------------------------------------------
+" Vim Script #19
+" ---------------------------------------------
+" While, strlen etc.
+
+let str = "http://www.root.cz"
+while str != ""
+    echo str
+    if str =~ "^root.*"
+        break
+    endif
+    let str = str[1 : strlen(str) - 1]
+endwhile
+
+
+
+" ---------------------------------------------
+" Vim Script #20
+" ---------------------------------------------
+" Yank register, working with matrices etc.
+
+let matrix = [ [1,2,3], [4,5,6], [7,8,9] ]
+let yank_reg = ""
+for row in matrix
+    for item in row
+        let yank_reg = yank_reg . "\t" . (item*2)
+    endfor
+    let yank_reg = yank_reg . "\n"
+endfor
+let @" = yank_reg
+normal p
+
