@@ -2,6 +2,322 @@ Vim course 6
 ================================================
 ■ Author:    Pavel Tišnovský
 
-Vim Plugins
-----------------------
+Plugins for Vim
+--------------------------------
+▶ Global installation into $VIMRUNTIME/
+    echo $VIMRUNTIME
+▶ Local installation (per user)
+    into ~/.vim
+    want to be sure the path is correct?
+        :set runtimepath?
+▶ How to work with multiple plugins?
+    Shared directories (autoload, doc, shell, syntax, ...)
+    Could end in DLL hell :)
+    Solution: some sort of Vim Package Manager
+▶ Vim Pathogen
+    All packages use ~/.vim/bundle and goes into separate directories
+
+Vim Pathogen
+--------------------------------
+▶ Description of this module
+    http://www.vim.org/scripts/script.php?script_id=2332
+▶ Installation and directory configuration
+    mkdir -p ~/.vim/autoload ~/.vim/bundle 
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+▶ Usually just one change needs to be done in .vimrc
+    execute pathogen#infect()
+▶ If documentation is not accessible:
+    call pathogen#helptags()
+▶ If documentation is still not accessible:
+    set nocompatible before execute pathogen#infect() !!!
+
+Plugins for Vim
+--------------------------------
+▶ See also:
+    http://vimawesome.com/
+    http://www.vim.org/scripts/script_search_results.php?order_by=rating
+▶ Interesting plugins
+    Vim-airline
+    Vim-colors-solarized
+    im-indend-guides
+    Fugitive
+    GistVim
+    NERDTree
+    BufExplorer
+    SnipMate
+    Ctrl-P
+    Match It
+    Gundo
+    TVO
+    Tabular
+    Unite
+    Neocomplete
+    Neosnippet
+    Youcompleteme (YCM)
+    Syntastic
+    vim-prism
+
+Vim-airline
+--------------------------------
+▶ Repository localization
+    https://github.com/bling/vim-airline
+    wget http://www.vim.org/scripts/download_script.php?src_id=22726
+▶ After the installation into ~/.vim/bundle 
+    :help airline
+    :set laststatus=2
+    :AirlineToggle
+    :AirlineRefresh
+    :AirlineTheme dark
+    :AirlineTheme wombat
+    :AirlineTheme jellybeans
+    :AirlineTheme <Tab>
+
+Vim-colors-solarized
+--------------------------------
+▶ Repository localization
+    https://github.com/altercation/vim-colors-solarized
+    git clone git://github.com/altercation/vim-colors-solarized.git
+▶ After the installation into ~/.vim/bundle 
+    :call pathogen#helptags()
+    :help solarized
+    :colorscheme solarized
+    :colorscheme <Tab>
+    :set background=dark
+    :set background=light
+
+Vim-indent-guides
+--------------------------------
+▶ Indent levels, without the needs to make explicit configuration
+    Tabs
+    Spaces
+    Color selection
+▶ Repository localization
+    git clone git://github.com/nathanaelkane/vim-indent-guides.git
+▶ After the installation into ~/.vim/bundle 
+    :IndentGuidesEnable
+    :IndentGuidesDisable
+    :IndentGuidesToggle
+    :let g:indent_guides_indent_levels = 30
+
+Fugitive
+--------------------------------
+▶ Repository localization
+    http://www.vim.org/scripts/script.php?script_id=2975
+    https://github.com/tpope/vim-fugitive
+▶ After the installation into ~/.vim/bundle 
+    :call pathogen#helptags()
+    :help fugitive
+    :Git _something_
+    :Gstatus
+    :Gcommit (many commands)
+    :Gbrowse
+    :Gblame :-)
+    :Gvdiff
+
+GistVim
+--------------------------------
+▶ It needs webapi to work properly
+▶ Repository localization
+    http://www.vim.org/scripts/script.php?script_id=2423
+▶ After the installation into ~/.vim/bundle 
+    :Gist
+▶ Results might go to
+    https://gist.github.com/
+
+Netrw
+--------------------------------
+▶ Part of standard Vim installation (vim-enhanced od something similar)
+    :Explore
+    :HExplore
+    (keys i, ?)
+    vim scp://user_name@remove_computer_name/path
+    vim ftp://remove_computer_name/path
+    :NetUserPass
+    :e ftp://user_name@remove_computer_name/path
+    :NetrwSettings
+    g:netrw_ftp_cmd="ftp"
+    g:netrw_http_cmd="elinks"
+    g:netrw_sftp_cmd="sftp"
+
+TagList
+--------------------------------
+    Module TagList
+        :TlistAddFiles *.c
+        :Tlist
+        :TlistAddFilesRecursive .
+        :Tlist
+    Module matchit.vim
+
+NERD Tree
+--------------------------------
+▶ Repository localization
+    http://www.vim.org/scripts/script.php?script_id=1658
+▶ After the installation into ~/.vim/bundle 
+    :help NERDTree
+    :NERDTree
+    (then use the "?" key)
+
+NERD Commenter
+--------------------------------
+▶ Repository localization
+    http://www.vim.org/scripts/script.php?script_id=1218
+▶ After the installation into ~/.vim/bundle 
+    :echo maplocalleader
+    <leader>cc
+    <leader>cn (nesting)
+    <leader>c<space> - switchs
+
+Vim Commander
+--------------------------------
+▶ Repository localization
+    http://www.vim.org/scripts/script.php?script_id=808
+▶ After the installation into ~/.vim/bundle 
+    :call VimCommanderToggle()
+    :map --anything-- :call VimCommanderToggle()<cr>   
+    - TAB       = Go to the other panel.
+    - F3        = View file under cursor.
+    - F4        = Edit file under cursor.
+    - F5        = Copy file.
+    - F6        = Move/rename file.
+    - F7        = Create directory.
+    - F8/DEL    = Remove file.
+    - F10       = Quit VimCommander.
+    - C-R       = Refresh panels.
+	- Backspace = Go to parent directory.
+    - C-U       = Exchange panels.
+    - C-Left    = Put directory under cursor on other panel, or grab
+                  other panel's dir.
+    - C-Right   = Same.
+    - \H        = Show hidden files (toggle).
+    - INS       = Select file under cursor.
+    - "+"       = Select file by pattern.
+    - "-"       = De-select file by pattern.
+    - S-F4      = Edit new file.
+    - C-t       = Previous directory.
+    - C-y       = Next directory.
+
+TVO: The VIM Outliner
+--------------------------------
+▶ Repository localization
+    http://www.vim.org/scripts/script.php?script_id=517
+    http://bike-nomad.com/vim/vimoutliner.html
+
+Vim and C/C++ languages
+-----------------------
+▶ c.vim
+    ◆ Comments
+    ◆ Templates
+    ◆ Compilation
+    ◆ Running
+    ◆ It use GVim menu
+
+Vim and C/C++ languages
+------------------------
+    ◆ ctags
+    ◆ cscope
+        :cscope and cscope.out
+    :cs show
+        show current configuration
+    :cs f f stdio.h
+        find the specified file
+    :cs f t xyzzy
+        find text inside strings
+    :cs f g test
+        find function definition
+    :cs f d main
+        list of all functions called from main
+    :cs f c fclose
+        list of all functions calling fclose
+
+Vim and C/C++ languages
+------------------------
+    ◆ Source code indenting
+        :set shiftwidth=???
+        :set cindent
+        :set cinoptions
+	>N  "normal" indent used after a line that should incr. indent
+        fN  left { indentation below function name
+        :N  case/default in switch-case indentation
+        =N  indentation of commands after case/default
+        bN  indentation of break in case/default
+        hN  like =N, but used for "public" etc. (C++)
+
+Vim and C/C++ languages
+------------------------
+    ◆ Special setting for Makefile
+        augroup __makefile__
+        au!
+        au BufRead,BufNewFile Makefile set noexpandtab
+        augroup END
+
+Omnicompletion
+--------------
+    Ctrl+X Ctrl+L
+        whole lines
+    Ctrl+X Ctrl+N
+        keywords in the current file
+    Ctrl+X Ctrl+I
+        keywords in the current file & included files
+    Ctrl+X Ctrl+K
+        keywords in dictionary
+        :set dictionary
+    Ctrl+X Ctrl+T
+        keywords in thesaurus
+        :set thesaurus
+
+Omnicompletion
+--------------
+    Ctrl+X Ctrl+]
+        tags
+    Ctrl+X Ctrl+F
+        file names (start with ~/ etc. etc.)
+    Ctrl+X Ctrl+D
+        definitions and macros
+    Ctrl+X Ctrl+U
+        calls specified function
+    Ctrl+X Ctrl+O
+        stars omni completion (if defined)
+
+Vim and Java
+------------
+▶ Modul JavaBrowser
+https://github.com/vim-scripts/JavaBrowser
+    Needs ctags
+        Enter   jump to method or attribute
+        o       dtto, but in new window
+        Space   prototype
+        u       update
+        s       sort by name
+        q       quit/close
+        +       expand subtree
+        -       collapse subtree
+        *       expand the whole tree
+        x       show/hide window with source code
+
+Vim and Lua
+------------
+▶ lua-support.vim a.k.a. Lua-IDE
+    ◆ Templates
+▶ Luaref
+    ◆ Complete Lua reference guide in Vim help format
+
+Vim and Clojure
+-------------
+VimClojure
+    http://www.vim.org/scripts/script.php?script_id=2501
+
+▶ Slime for Vim
+    ◆ Can use "screen" or "Tmux" to communicate with REPL
+    ◆ Complete IDE :-)
+▶ Vimclojure
+
+Vim and XML
+-----------
+▶ Module xml.vim
+    ◆ http://www.vim.org/scripts/script.php?script_id=301
+    ◆ Completes tags
+    ◆ Closes tags
+:%!xmllint --format -
+:'<,'>!xmllint --format -
+:map =. :%!xmllint --format - <cr>
 
