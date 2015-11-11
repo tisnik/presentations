@@ -4,4 +4,5 @@ Vim course 6
 
 Vim Plugins
 ----------------------
+▶ Vim can remember
 
