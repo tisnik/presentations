@@ -8,6 +8,7 @@ Obsah přednášky (1)
 -------------------------------
 Vznik jazyka Lua, verze Luy
 Použití jazyka Lua v SW projektech
+Syntaxe a sémantika jazyka Lua
 
 Vznik jazyka Lua
 ----------------------------------
@@ -75,6 +76,9 @@ Funkcionální programování
 Rozšiřování možností jazyka
     Metatabulky
 
+Syntaxe a sémantika jazyka Lua
+==============================
+
 Klíčová slova
 -------------
 and             function        repeat
@@ -93,6 +97,14 @@ Další tokeny rozpoznávané jazykem
 ==    ~=    <=    >=    <     >     =
 (     )     {     }     [     ]     ::
 ;     :     ,     .     ..    ...
+
+Komentáře
+---------
+-- jednořádkový komentář
+--[[
+     víceřádkový
+     komentář
+]]--
 
 Podporované datové typy
 -----------------------
@@ -145,5 +157,182 @@ getmetatable          rawequal           unpack
 ipairs                rawget             xpcall
 load                  rawset
 
+Přiřazení
+---------
+i,j=10,20                  -- vicenasobne prirazeni
+print("i=", i)
+print("j=", j)
+--
+i,j=j,i                    -- prohozeni obsahu dvou promennych
+print("i=", i)
+print("j=", j)
+
+Bloky a viditelnost proměnných
+------------------------------
+x=10                              -- vytvoreni globalni promenne x
+print("globalni x=", x)
+--
+do                                -- zacatek bloku
+    local x=20                    -- vytvoreni lokalni promenne x
+    print("1. lokalni x=", x)
+    do                            -- zacatek zanoreneho bloku
+        local x=30                -- vytvoreni lokalni promenne x
+        print("2. lokalni x=", x)
+    end                           -- konec zanoreneho bloku
+    print("1. lokalni x=", x)
+end                               -- konec bloku
+--
+print("globalni x=", x)
+
+Podmínky
+--------
+if výraz then
+    programový blok vykonaný při splnění podmínky
+end
+--
+if výraz then
+    programový blok vykonaný při splnění podmínky
+else
+    programový blok vykonaný při nesplnění podmínky
+end
+
+Podmínky
+--------
+if výraz then
+    programový blok vykonaný při splnění první podmínky
+elseif výraz then
+    programový blok vykonaný při splnění druhé podmínky
+elseif výraz then
+    programový blok vykonaný při splnění třetí podmínky
+else
+    programový blok vykonaný při nesplnění podmínky
+end
+
+Programové smyčky: while
+------------------------
+while podmínka do
+    programový blok vykonaný při splnění první podmínky
+end
+--
+-- vypocet Fibonacciho posloupnosti az do mezni hodnoty
+n = 1000
+a, b = 1, 1
+while a <= n do
+    print(a)
+    a, b = b, a+b
+end
+
+Programové smyčky: repeat-until
+-------------------------------
+-- vypocet Fibonacciho posloupnosti az do mezni hodnoty
+n = 1000
+a, b = 1, 1
+repeat
+    print(a)
+    a, b = b, a+b
+until a > n
+
+Programové smyčky: for (počítaná)
+---------------------------------
+for prom=x1, x2 do
+    blok příkazů umístěný v těle smyčky
+end
+--
+for prom=x1, x2, krok do
+    blok příkazů umístěný v těle smyčky
+end
+--
+function star(step1, step2)
+    for i=0, 35 do
+        for j=0, 6 do
+            left(2*360/7)
+            forward(step1)
+        end
+        left(step2)
+    end
+end
+
+Programové smyčky: for-each
+---------------------------
+for namelist in explist do
+    blok příkazů umístěný v těle smyčky
+end
+--
+months={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"}
+--
+for poradi,month in pairs(months) do
+    print(poradi, month)
+end
+
+Aritmetické operátory
+---------------------
+Symbol operátoru   Arita      Popis
++                  binární    součet
+-                  binární    rozdíl
+*                  binární    součin
+/                  binární    podíl (reálná čísla)
+%                  binární    dělení modulo
+^                  binární    umocňování
+-                  unární     unární minus
+
+Logické operátory
+-----------------
+Symbol operátoru   Arita      Popis
+and                binární    logický součin
+or                 binární    logický součet
+not                unární     logická negac
+
+Relační operátory
+-----------------
+Symbol operátoru   Arita      Popis
+==                 binární    rovnost
+~=                 binární    nerovnost
+<                  binární    menší než
+>                  binární    větší než
+<=                 binární    menší nebo rovno
+>=                 binární    větší nebo rovno
+
+Další operátory
+---------------
+Symbol operátoru   Arita      Popis
+..                 binární    spojení dvou řetězců nebo
+                              číslic převedených na řetězec
+#                  unární     délka řetězce nebo velikost
+                              asociativního pole
+
+Priority operátorů
+------------------
+Priorita        Operátory
+1 (nejvyšší)    ^
+2               not # unární minus (-)
+3               * / %
+4               + -
+5               ..
+6               == ~= < > <= >=
+7               and
+8 (nejnižší)    or
+
+Pole a asociativní pole
+-----------------------
+pole={"hodnota1", "hodnota2", "hodnota3"}
+pole={klic1="hodnota1", klic2="hodnota2"}
+pole={klic1="hodnota1", klic2="hodnota2",}
+--
+for klic,hodnota in pairs(pole) do
+    print(klic, hodnota)
+end
+
+Pole a asociativní pole
+-----------------------
+pole={klic1="hodnota1", "hodnota2", klic2="hodnota3", "hodnota4"}
+--
+print(pole["klic1"])
+print(pole["klic2"])
+print(pole["klic3"]) -- neexistujici prvek, vypise se "nil"
+print(pole.klic1)
+print(pole.klic2)
+print(pole.klic3)    -- neexistujici prvek, vypise se "nil"
+
 Lua v roli skriptovacího jazyka pro WWW stránky
 -----------------------------------------------
+
