@@ -1,0 +1,149 @@
+Programovací jazyk Lua
+======================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2015-11-19
+
+Obsah přednášky (1)
+-------------------------------
+Vznik jazyka Lua, verze Luy
+Použití jazyka Lua v SW projektech
+
+Vznik jazyka Lua
+----------------------------------
+1993 PETROBRAS (brazilská ropná společnost)
+Několik projektů
+    DEL - Data Entry Lanugage
+    +
+    SOL - Simple Object Language
+    =
+    Lua
+Původně velmi jednoduchý skriptovací jazyk
+Postupně rozšiřován o další vlastnosti
+
+Verze Luy
+----------------------------------
+Lua 1.0   1993  nikdy nezveřejněna
+Lua 1.1   1994  striktní licence
+                volné použití jen pro akademickou sféru
+Lua 2.1   1995  volné využití i v komerční sféře
+Lua 3.0   1997  tag methods, auxlib
+Lua 3.1   1998  anonymní funkce, uzávěry
+Lua 4.0   2000  for cyklus
+Lua 5.0   2003  koprogramy
+Lua 5.1 * 2006  systém modulů
+Lua 5.2 * 2011  příkaz GOTO :-) a finalizátory pro tabulky
+Lua 5.3 * 2015  integer typy, bitové operátory
+
+Použití jazyka Lua v SW projektech
+----------------------------------
+Skriptovací jazyk pro různé aplikace
+    Zvětšení binárního souboru o cca 70kB
+    přidáním interpretru a běhového prostředí
+    Rozhraní Lua <=> C relativně snadné
+    LuaFFI
+Skriptovací jazyk pro hry
+    https://en.wikipedia.org/wiki/Category:Lua-scripted_video_games
+    Baldur's Gate
+    S.T.A.L.K.E.R. (všechny tři díly)
+    World of Warcraft
+    The Secret World
+    BZflag
+    atd. atd.
+Jazyk pro embedded zařízení
+    Malý runtime
+    Poměrně rychlý běh
+    Jedna z aplikací na mikrořadiči s 64kB RAM a 256kB EPROM
+Obecný skriptovací jazyk
+Lua na webových stránkách
+    lua2js
+    lua.vm.js
+
+Základní vlastnosti jazyka Lua
+------------------------------
+Velmi jednoduchá syntaxe a sémantika
+    Inspirace v Pascalu, Module, Pythonu
+    Není nutné používat středníky
+    Klíčová slova pro zápis řídicích konstrukcí (ne {})
+Přenositelnost
+    Překladač i interpret v čistém ANSI C
+Rychlost překladu i interpretace bajtkódu
+    Překlad až 6x rychlejší oproti Perlu a 8x oproti Pythonu
+Funkcionální programování
+    Funkce jako plnohodnotný datový typ
+    Uzávěry
+Rozšiřování možností jazyka
+    Metatabulky
+
+Klíčová slova
+-------------
+and             function        repeat
+break           goto            return
+do              if              then
+else            in              true
+elseif          local           until
+end             nil             while
+false           not
+for             or
+
+Další tokeny rozpoznávané jazykem
+---------------------------------
++     -     *     /     %     ^     #
+&     ~     |     <<    >>    //
+==    ~=    <=    >=    <     >     =
+(     )     {     }     [     ]     ::
+;     :     ,     .     ..    ...
+
+Podporované datové typy
+-----------------------
+nil
+        datový typ hodnoty nil
+        je v celém programu jedinečná
+        tato hodnota se definitoricky odlišuje od všech ostatních hodnot
+boolean
+        datový typ pravdivostních hodnot true a false
+number
+        reálné číslo podle IEEE 754 s dvojnásobnou přesností
+        (v céčku či Javě se jedná o typ double)
+        při překladu jazyka je však možné tento typ změnit
+        nově i další subtyp: integer
+string
+        řetězec (částečná podpora UTF-8)
+function
+        buď vytvořená přímo ve skriptu či zaregistrovaná céčková funkce
+        plnohodnotný datový typ
+userdata
+        data vytvořená v hostitelském (céčkovém) programu
+thread
+        vlákno použité pro implementaci koprogramů (coroutine)
+table
+        asociativní pole
+        flexibilní datový typ, na kterém je založena většina
+        funkcionality jazyka Lua, včetně objektového systému
+        (v asociativním poli mohou být umístěny mj. i funkce)
+
+Funkce jako plnohodnotný datový typ
+-----------------------------------
+funkce=print               -- promennym lze priradit i funkci
+print("funkce=", funkce)
+funkce(42)
+
+print=1                    -- pozor! prepis globalniho objektu (zde funkce)
+                           -- legalni, nicmene zpusobi problemy dale
+print("dofile=", print)    -- nyni jiz funkce print neni dostupna
+
+Globální objekty a funkce, které není vhodné přepisovat
+-------------------------------------------------------
+_G                    loadfile           require
+_VERSION              loadstring         select
+assert                module             setfenv
+collectgarbage        next               setmetatable
+dofile                pairs              tonumber
+error                 pcall              tostring
+getfenv               print              type
+getmetatable          rawequal           unpack
+ipairs                rawget             xpcall
+load                  rawset
+
+Lua v roli skriptovacího jazyka pro WWW stránky
+-----------------------------------------------
