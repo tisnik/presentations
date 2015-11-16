@@ -333,6 +333,231 @@ print(pole.klic1)
 print(pole.klic2)
 print(pole.klic3)    -- neexistujici prvek, vypise se "nil"
 
+Funkce
+------
+-- funkce obsahujici lokalni promennou
+function printHello()
+    local helloStr = "Hello"
+    print(helloStr)
+end
+--
+worldStr="World"
+--
+-- funkce vyuzivajici globalni promennou
+function printWorld()
+    -- ke globalni promenne je pripojena
+    -- retezcova konstanta (literal)
+    print(worldStr .. "!")
+end
+--
+-- volani obou funkci
+printHello()
+printWorld()
+--
+-- zmena globalni promenne
+-- se projevi i ve volane funkci
+worldStr = 42
+printWorld()
+
+Funkce
+------
+-- definice vlastnich funkci bez vyuziti
+-- "syntaktickeho cukru"
+--
+-- funkce obsahujici lokalni promennou
+-- (hodnota typu funkce je prirazena
+--  promenne pojmenovane "printHello")
+printHello = function()
+    local helloStr = "Hello"
+    print(helloStr)
+end
+--
+worldStr="World"
+--
+-- funkce vyuzivajici globalni promennou
+-- (hodnota typu funkce je prirazena
+--  promenne pojmenovane "printWorld")
+printWorld = function()
+    -- ke globalni promenne je pripojena
+    -- retezcova konstanta (literal)
+    print(worldStr .. "!")
+end
+--
+-- volani obou funkci
+printHello()
+printWorld()
+--
+-- zmena globalni promenne
+-- se projevi i ve volane funkci
+worldStr=42
+printWorld()
+
+Návratové hodnoty funkcí
+------------------------
+-- funkce se dvema parametry,
+-- ktera nevraci zadnou hodnotu
+function repeatMessage(message, count)
+    for i = 1, count do
+        print(i, message)
+    end
+end
+--
+-- volani funkce
+repeatMessage("Hello world!", 10)
+
+Návratové hodnoty funkcí
+------------------------
+-- nerekurzivni vypocet faktorialu
+-- (funkce s jednim parametrem vracejici taktez jednu hodnotu)
+function factorial(n)
+    local result = 1
+    -- faktorial je definovan pouze pro prirozena cisla a nulu
+    if n < 0 then
+        return nil
+    end
+    for i = 1, n do
+        result = result * i
+    end
+    return result
+end
+--
+print("n", "n!")
+for n = -5, 10 do
+    print(n, factorial(n))
+end
+
+Návratové hodnoty funkcí
+------------------------
+-- funkce vracejici dve hodnoty: vysledek celociselneho
+-- deleni a zbytek po celociselnem deleni
+function divMod(x,y)
+    return math.floor(x / y), x % y
+end
+--
+print("n", "10/n", "zbytek")
+for n = 1, 10 do
+    x, y = divMod(10, n)
+    print(n, x, y)
+end
+
+Volitelné parametry funkcí
+--------------------------
+function fce(x, y, z)
+    print(x, y, z)
+end
+-- volani funkce fce s ruznym poctem parametru
+fce(1, 2, 3)
+fce(1, 2, 3, 4) -- posledni hodnota se nevyuzije
+fce()
+fce(42)
+fce(42, 6502)
+fce(nil, 6502)
+-- lze pouzit i retezce popr. hodnoty dalsich typu typu
+fce("Hello", "world", "!")
+fce("Hello".." world", "!" )
+fce("Hello".." world".."!" )
+
+Proměnný počet parametrů
+------------------------
+-- funkce s dvojici pojmenovanych parametru
+-- s moznosti pristupu k dalsim parametrum
+-- pristupnym pres vyraz ...
+function g(x, y, ...)
+    -- pokud je seznam volitelnych parametru
+    -- naplnen alespon jednou hodnotou,
+    -- vypise se jeho delka
+    if ... ~= nil then
+        -- prevod na asociativni pole
+        local varargs = {...}
+        -- vypis delky pole
+        print("vararg length: ", #varargs .. " items")
+    end
+    -- vypis obou pojmenovanych parametru
+    -- i promennych parametru
+    print(x, y, ...)
+end
+-- ukazka volani funkce
+g()
+g(1)
+g(1,2)
+g(1,2,3)
+g(1,2,3,4)
+g(1,2,3,5)
+g("a", "b", "c", "d", "e")
+
+Ukázkový příklad
+----------------
+-- funkce vracejici trojici:
+-- 1. pocet prvku
+-- 2. soucet prvku (suma)
+-- 3. aritmeticky prumer jejich hodnot
+function statistic(...)
+   -- pokud nejsou zadany zadne parametry,
+   -- neni nutne vypocet provadet
+   if ... == nil then
+       return 0, 0, 0
+   end
+   -- prevod seznamu parametru
+   -- na asociativni pole
+   items = {...}
+   -- pocet prvku
+   n = #items
+   sum = 0
+   -- vypocet sumy
+   for i=1, n do
+      sum = sum + items[i]
+   end
+   return n, sum, sum/n
+end
+--
+print("n", "sum", "average")
+print(statistic())
+print(statistic(1, 2, 3, 4))
+print(statistic(1, 1, 0, 0))
+print(statistic(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+
+Rekurze
+-------
+-- funkce pro rekurzivni vypocet faktorialu
+function factorial(n)
+    -- faktorial je definovan pouze pro prirozena cisla a nulu
+    if n < 0 then
+        return nil
+    -- rekurze je ukoncena pri n=0
+    elseif n == 0 then
+        return 1
+    else
+        return n*factorial(n-1)
+    end
+end
+-- vypis tabulky s faktorialy
+print()
+print("Factorial")
+print("n", "n!")
+for n = -5, 10 do
+    print(n, factorial(n))
+end
+
+Rekurze
+-------
+-- rekurzivni vypocet binomickeho koeficientu
+function binomical(n, k)
+    if k == 0 then
+        return 1
+    else
+        return binomical(n - 1, k - 1) * n / k;
+    end
+end
+-- vypis nekterych hodnot "n nad k"
+print()
+print("Binomical coefficients")
+print("n", "k", "n nad k")
+for k = 0, 10 do
+    for n = k, 10 do
+        print(n, k, binomical(n, k))
+    end
+end
+
 Lua v roli skriptovacího jazyka pro WWW stránky
 -----------------------------------------------
 
