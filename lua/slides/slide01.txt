@@ -1,0 +1,11 @@
+
+Obsah přednášky (1)
+-------------------------------
+Vznik jazyka Lua, verze Luy
+Použití jazyka Lua v SW projektech
+Syntaxe a sémantika jazyka Lua
+Funkce jako plnohodnotný datový typ
+Uzávěry
+Vestavění jazyka Lua do C-čkových programů
+Metatabulky a OOP
+Koprogramy

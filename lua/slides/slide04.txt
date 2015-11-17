@@ -1,0 +1,24 @@
+
+Použití jazyka Lua v SW projektech
+----------------------------------
+Skriptovací jazyk pro různé aplikace
+    Zvětšení binárního souboru o cca 70kB
+    přidáním interpretru a běhového prostředí
+    Rozhraní Lua <=> C relativně snadné
+    LuaFFI
+Skriptovací jazyk pro hry
+    https://en.wikipedia.org/wiki/Category:Lua-scripted_video_games
+    Baldur's Gate
+    S.T.A.L.K.E.R. (všechny tři díly)
+    World of Warcraft
+    The Secret World
+    BZflag
+    atd. atd.
+Jazyk pro embedded zařízení
+    Malý runtime
+    Poměrně rychlý běh
+    Jedna z aplikací na mikrořadiči s 64kB RAM a 256kB EPROM
+Obecný skriptovací jazyk
+Lua na webových stránkách
+    lua2js
+    lua.vm.js

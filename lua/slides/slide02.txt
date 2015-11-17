@@ -1,0 +1,12 @@
+
+Vznik jazyka Lua
+----------------------------------
+1993 PETROBRAS (brazilská ropná společnost)
+Několik projektů
+    DEL - Data Entry Lanugage
+    +
+    SOL - Simple Object Language
+    =
+    Lua
+Původně velmi jednoduchý skriptovací jazyk
+Postupně rozšiřován o další vlastnosti

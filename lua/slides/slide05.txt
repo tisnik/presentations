@@ -1,0 +1,16 @@
+
+Základní vlastnosti jazyka Lua
+------------------------------
+Velmi jednoduchá syntaxe a sémantika
+    Inspirace v Pascalu, Module, Pythonu
+    Není nutné používat středníky
+    Klíčová slova pro zápis řídicích konstrukcí (ne {})
+Přenositelnost
+    Překladač i interpret v čistém ANSI C
+Rychlost překladu i interpretace bajtkódu
+    Překlad až 6x rychlejší oproti Perlu a 8x oproti Pythonu
+Funkcionální programování
+    Funkce jako plnohodnotný datový typ
+    Uzávěry
+Rozšiřování možností jazyka
+    Metatabulky

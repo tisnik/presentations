@@ -1,0 +1,11 @@
+
+Klíčová slova
+-------------
+and             function        repeat
+break           goto            return
+do              if              then
+else            in              true
+elseif          local           until
+end             nil             while
+false           not
+for             or

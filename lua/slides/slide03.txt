@@ -1,0 +1,14 @@
+
+Verze Luy
+----------------------------------
+Lua 1.0   1993  nikdy nezveřejněna
+Lua 1.1   1994  striktní licence
+                volné použití jen pro akademickou sféru
+Lua 2.1   1995  volné využití i v komerční sféře
+Lua 3.0   1997  tag methods, auxlib
+Lua 3.1   1998  anonymní funkce, uzávěry
+Lua 4.0   2000  for cyklus
+Lua 5.0   2003  koprogramy (coroutines)
+Lua 5.1 * 2006  systém modulů
+Lua 5.2 * 2011  příkaz GOTO :-) a finalizátory pro tabulky
+Lua 5.3 * 2015  integer typy, bitové operátory

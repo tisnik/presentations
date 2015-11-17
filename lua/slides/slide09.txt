@@ -1,0 +1,8 @@
+
+Komentáře
+---------
+-- jednořádkový komentář
+--[[
+     víceřádkový
+     komentář
+]]--
