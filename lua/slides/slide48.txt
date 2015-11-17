@@ -1,0 +1,19 @@
+
+Koprogramy (coroutines)
+-----------------------
+Koprogram
+    zobecnění podprogramu/funkce
+Podprogram/funkce
+    jeden vstupní bod
+    nemusí se používat spec. zásobník pro každý koprogram
+    výpočet nelze přerušit a obnovit
+Koprogram
+    libovolné množství vstupních bodů
+    činnost koprogramu lze v těchto bodech přerušit a později obnovit
+    vnitřní stav koprogramu se zachová
+    ve vstupních bodech lze předávat parametry do/z koprogramu
+Stav koprogramu
+    running (vždy pouze jediný koprogram v celé aplikaci)
+    normal
+    suspended
+    dead

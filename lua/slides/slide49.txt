@@ -1,0 +1,10 @@
+
+Koprogramy (coroutines)
+-----------------------
+Název funkce            Význam
+coroutine.create()      vytvoření koprogramu
+coroutine.resume()      spuštění či znovuspuštění koprogramu
+coroutine.running()     funkce vrátí právě běžící koprogram (pro hlavní vlákno se vrací nil)
+coroutine.status()      funkce vrátí aktuální stav koprogramu – zda běží, je pozastaven či zda je běh koprogramu již ukončen
+coroutine.wrap()        vytvoření koprogramu, vrací se funkce, která koprogram spustí
+coroutine.yield()       pozastavení koprogramu a případný přenos parametrů volajícímu programu

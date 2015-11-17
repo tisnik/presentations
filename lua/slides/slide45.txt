@@ -1,0 +1,19 @@
+
+Metatabulky a metametody
+------------------------
+Operátor        Metametoda
++               __add
+–               __sub
+*               __mul
+/               __div
+%               __mod
+^               __pow
+–               __unm (unární minus)
+..              __concat (původně spojení řetězců)
+#               __len
+==              __eq
+<               __lt
+<=              __le
+.               __index, __newindex
+[]              __index, __newindex
+volání funkce   __call
