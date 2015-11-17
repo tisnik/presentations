@@ -9,6 +9,11 @@ Obsah přednášky (1)
 Vznik jazyka Lua, verze Luy
 Použití jazyka Lua v SW projektech
 Syntaxe a sémantika jazyka Lua
+Funkce jako plnohodnotný datový typ
+Uzávěry
+Vestavění jazyka Lua do C-čkových programů
+Metatabulky a OOP
+Koprogramy
 
 Vznik jazyka Lua
 ----------------------------------
@@ -690,43 +695,6 @@ for i=0, 16 do
     generator()
 end
 
-Interpret jazyka Lua vestavěný do C-čkových programů
-----------------------------------------------------
-#include <stdio.h>
-#include <stdlib.h>
-/* Zakladni a doplnkove funkce interpretu jazyka Lua */
-#include <lualib.h>
-#include <lauxlib.h>
-/* Hlavni funkce konzolove aplikace */
-int main(int argc, char **argv)
-{
-    int result;
-    if (argc != 2)
-    {
-        puts("Pouziti: lua62 script.lua");
-        return 1;
-    }
-    /* vytisteni hlavicky */
-    puts(LUA_RELEASE);
-    puts(LUA_COPYRIGHT);
-    puts(LUA_AUTHORS);
-    putchar('\n');
-    /* vytvoreni objektu, do nejz se uklada stav interpretu */
-    lua_State* L = lua_open();
-    /* nacteme zakladni knihovnu obsahujici mj. i funkci print() */
-    luaopen_base(L);
-    /* nacteni externiho skriptu, jeho preklad a nasledne spusteni */
-    result = luaL_dofile(L, argv[1]);
-    /* odstraneni vsech objektu asociovanych se stavem "Lua" */
-    lua_close(L);
-    if (result != 0)
-    {
-        printf("Error # %d\n", result);
-    }
-    /* vypocet navratoveho kodu */
-    return (result != 0);
-}
-
 Jednoduchá varianta OOP s využitím tabulek
 ------------------------------------------
 -- Asociativni pole obsahujici metody
@@ -958,6 +926,186 @@ Complex.print(y - z)
 Complex.print(z * w)
 Complex.print(w / z)
 
-Lua v roli skriptovacího jazyka pro WWW stránky
------------------------------------------------
+Interpret jazyka Lua vestavěný do C-čkových programů
+----------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+/* Zakladni a doplnkove funkce interpretu jazyka Lua */
+#include <lualib.h>
+#include <lauxlib.h>
+/* Hlavni funkce konzolove aplikace */
+int main(int argc, char **argv)
+{
+    int result;
+    if (argc != 2)
+    {
+        puts("Pouziti: lua62 script.lua");
+        return 1;
+    }
+    /* vytisteni hlavicky */
+    puts(LUA_RELEASE);
+    puts(LUA_COPYRIGHT);
+    puts(LUA_AUTHORS);
+    putchar('\n');
+    /* vytvoreni objektu, do nejz se uklada stav interpretu */
+    lua_State* L = lua_open();
+    /* nacteme zakladni knihovnu obsahujici mj. i funkci print() */
+    luaopen_base(L);
+    /* nacteni externiho skriptu, jeho preklad a nasledne spusteni */
+    result = luaL_dofile(L, argv[1]);
+    /* odstraneni vsech objektu asociovanych se stavem "Lua" */
+    lua_close(L);
+    if (result != 0)
+    {
+        printf("Error # %d\n", result);
+    }
+    /* vypocet navratoveho kodu */
+    return (result != 0);
+}
+
+Koprogramy (coroutines)
+-----------------------
+Koprogram
+    zobecnění podprogramu/funkce
+Podprogram/funkce
+    jeden vstupní bod
+    nemusí se používat spec. zásobník pro každý koprogram
+    výpočet nelze přerušit a obnovit
+Koprogram
+    libovolné množství vstupních bodů
+    činnost koprogramu lze v těchto bodech přerušit a později obnovit
+    vnitřní stav koprogramu se zachová
+    ve vstupních bodech lze předávat parametry do/z koprogramu
+Stav koprogramu
+    running (vždy pouze jediný koprogram v celé aplikaci)
+    normal
+    suspended
+    dead
+
+Koprogramy (coroutines)
+-----------------------
+Název funkce            Význam
+coroutine.create()      vytvoření koprogramu
+coroutine.resume()      spuštění či znovuspuštění koprogramu
+coroutine.running()     funkce vrátí právě běžící koprogram (pro hlavní vlákno se vrací nil)
+coroutine.status()      funkce vrátí aktuální stav koprogramu – zda běží, je pozastaven či zda je běh koprogramu již ukončen
+coroutine.wrap()        vytvoření koprogramu, vrací se funkce, která koprogram spustí
+coroutine.yield()       pozastavení koprogramu a případný přenos parametrů volajícímu programu
+
+Koprogramy (coroutines)
+-----------------------
+-- funkce, pro kterou bude koprogram vytvoren
+function funkceKoprogramu()
+    print("*** Koprogram byl spusten ***")
+end
+--
+-- vytvoreni koprogramu
+koprogram = coroutine.create(funkceKoprogramu)
+--
+-- vypis typu objektu
+print("Typ objektu:", koprogram)
+--
+-- zjisteni a vypis stavu koprogramu
+print("Stav koprogramu:", coroutine.status(koprogram))
+--
+-- spusteni koprogramu
+coroutine.resume(koprogram)
+--
+-- zjisteni a vypis stavu koprogramu
+print("Stav koprogramu:", coroutine.status(koprogram))
+
+-- vytvoreni koprogramu, vypis jeho stavu a spusteni
+-- (anonymni) funkce koprogramu je vytvorena primo
+-- ve volani coroutine.create()
+
+Koprogramy (coroutines)
+-----------------------
+-- vytvoreni koprogramu s vyuzitim anonymni funkce
+koprogram = coroutine.create(
+    function()
+        print("*** Koprogram byl spusten ***")
+    end
+)
+--
+-- vypis typu objektu
+print("Typ objektu:", koprogram)
+--
+-- zjisteni a vypis stavu koprogramu
+print("Stav koprogramu:", coroutine.status(koprogram))
+--
+-- spusteni koprogramu
+coroutine.resume(koprogram)
+--
+-- zjisteni a vypis stavu koprogramu
+print("Stav koprogramu:", coroutine.status(koprogram))
+
+Přerušení koprogramu a obnova jeho běhu
+---------------------------------------
+-- vytvoreni koprogramu s vyuzitim anonymni funkce
+koprogram = coroutine.create(
+    function()
+        for i=1, 10 do
+            print("*** telo koprogramu pred zavolanim yield: "..i.." ***")
+            coroutine.yield()
+            print("*** telo koprogramu po zavolani yield: "..i.." ***")
+        end
+    end
+)
+--
+-- vypis typu objektu
+print("Typ objektu:", koprogram)
+--
+-- zjisteni a vypis stavu koprogramu
+print("Stav koprogramu pred vstupem do smycky while:", coroutine.status(koprogram))
+--
+counter = 0
+-- spusteni a znovuspusteni koprogramu
+while coroutine.resume(koprogram) do
+    counter = counter + 1
+    print("Funkce coroutine.resume() volano "..counter.."x")
+    print("Stav koprogramu ve smycce while:", coroutine.status(koprogram))
+end
+--
+-- zjisteni a vypis stavu koprogramu
+print("Stav koprogramu po ukonceni smycky while:", coroutine.status(koprogram))
+
+Inicializace koprogramu pomocí parametrů
+----------------------------------------
+-- predani parametru koprogramu pri jeho prvnim spusteni
+--
+-- vytvoreni koprogramu s vyuzitim anonymni funkce
+koprogram = coroutine.create(
+    function(opakovani)
+        print("Predany pocet opakovani: ", opakovani)
+        if opakovani <= 1 then
+            return
+        end
+        for i=1, opakovani do
+            print("*** telo koprogramu pred zavolanim yield: "..i.." ***")
+            coroutine.yield()
+            print("*** telo koprogramu po zavolani yield: "..i.." ***")
+        end
+    end
+)
+--
+-- vypis typu objektu
+print("Typ objektu:", koprogram)
+--
+-- zjisteni a vypis stavu koprogramu
+print("Stav koprogramu pred jeho spustenim:", coroutine.status(koprogram))
+--
+coroutine.resume(koprogram, 5)
+--
+print("Stav koprogramu pred vstupem do smycky:", coroutine.status(koprogram))
+--
+counter = 0
+-- spusteni a znovuspusteni koprogramu
+while coroutine.resume(koprogram) do
+    counter = counter + 1
+    print("Funkce coroutine.resume() volana "..counter.."x")
+    print("Stav koprogramu ve smycce while:", coroutine.status(koprogram))
+end
+--
+-- zjisteni a vypis stavu koprogramu
+print("Stav koprogramu po ukonceni smycky while:", coroutine.status(koprogram))
 
