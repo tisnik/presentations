@@ -36,7 +36,7 @@ Lua 2.1   1995  volné využití i v komerční sféře
 Lua 3.0   1997  tag methods, auxlib
 Lua 3.1   1998  anonymní funkce, uzávěry
 Lua 4.0   2000  for cyklus
-Lua 5.0   2003  koprogramy
+Lua 5.0   2003  koprogramy (coroutines)
 Lua 5.1 * 2006  systém modulů
 Lua 5.2 * 2011  příkaz GOTO :-) a finalizátory pro tabulky
 Lua 5.3 * 2015  integer typy, bitové operátory
@@ -144,7 +144,7 @@ Funkce jako plnohodnotný datový typ
 funkce=print               -- promennym lze priradit i funkci
 print("funkce=", funkce)
 funkce(42)
-
+--
 print=1                    -- pozor! prepis globalniho objektu (zde funkce)
                            -- legalni, nicmene zpusobi problemy dale
 print("dofile=", print)    -- nyni jiz funkce print neni dostupna
@@ -268,6 +268,7 @@ months={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"}
 for poradi,month in pairs(months) do
     print(poradi, month)
 end
+-- pozor na rozdíl mezi pairs() a ipairs()!
 
 Aritmetické operátory
 ---------------------
@@ -397,8 +398,8 @@ printWorld()
 worldStr=42
 printWorld()
 
-Návratové hodnoty funkcí
-------------------------
+Předávání parametrů funkcím
+---------------------------
 -- funkce se dvema parametry,
 -- ktera nevraci zadnou hodnotu
 function repeatMessage(message, count)
@@ -735,8 +736,8 @@ Complex.add(c, 10, 20)
 Complex.print(c)
 Complex.print(c2)
 
-Alternativní způsob volání metod
---------------------------------
+Alternativní způsob deklarace metod
+-----------------------------------
 -- Asociativni pole obsahujici metody
 Complex={}
 --
@@ -926,43 +927,6 @@ Complex.print(y - z)
 Complex.print(z * w)
 Complex.print(w / z)
 
-Interpret jazyka Lua vestavěný do C-čkových programů
-----------------------------------------------------
-#include <stdio.h>
-#include <stdlib.h>
-/* Zakladni a doplnkove funkce interpretu jazyka Lua */
-#include <lualib.h>
-#include <lauxlib.h>
-/* Hlavni funkce konzolove aplikace */
-int main(int argc, char **argv)
-{
-    int result;
-    if (argc != 2)
-    {
-        puts("Pouziti: lua62 script.lua");
-        return 1;
-    }
-    /* vytisteni hlavicky */
-    puts(LUA_RELEASE);
-    puts(LUA_COPYRIGHT);
-    puts(LUA_AUTHORS);
-    putchar('\n');
-    /* vytvoreni objektu, do nejz se uklada stav interpretu */
-    lua_State* L = lua_open();
-    /* nacteme zakladni knihovnu obsahujici mj. i funkci print() */
-    luaopen_base(L);
-    /* nacteni externiho skriptu, jeho preklad a nasledne spusteni */
-    result = luaL_dofile(L, argv[1]);
-    /* odstraneni vsech objektu asociovanych se stavem "Lua" */
-    lua_close(L);
-    if (result != 0)
-    {
-        printf("Error # %d\n", result);
-    }
-    /* vypocet navratoveho kodu */
-    return (result != 0);
-}
-
 Koprogramy (coroutines)
 -----------------------
 Koprogram
@@ -1108,4 +1072,41 @@ end
 --
 -- zjisteni a vypis stavu koprogramu
 print("Stav koprogramu po ukonceni smycky while:", coroutine.status(koprogram))
+
+Interpret jazyka Lua vestavěný do C-čkových programů
+----------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+/* Zakladni a doplnkove funkce interpretu jazyka Lua */
+#include <lualib.h>
+#include <lauxlib.h>
+/* Hlavni funkce konzolove aplikace */
+int main(int argc, char **argv)
+{
+    int result;
+    if (argc != 2)
+    {
+        puts("Pouziti: lua62 script.lua");
+        return 1;
+    }
+    /* vytisteni hlavicky */
+    puts(LUA_RELEASE);
+    puts(LUA_COPYRIGHT);
+    puts(LUA_AUTHORS);
+    putchar('\n');
+    /* vytvoreni objektu, do nejz se uklada stav interpretu */
+    lua_State* L = lua_open();
+    /* nacteme zakladni knihovnu obsahujici mj. i funkci print() */
+    luaopen_base(L);
+    /* nacteni externiho skriptu, jeho preklad a nasledne spusteni */
+    result = luaL_dofile(L, argv[1]);
+    /* odstraneni vsech objektu asociovanych se stavem "Lua" */
+    lua_close(L);
+    if (result != 0)
+    {
+        printf("Error # %d\n", result);
+    }
+    /* vypocet navratoveho kodu */
+    return (result != 0);
+}
 
