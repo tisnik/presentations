@@ -795,7 +795,7 @@ table = getmetatable(objekt)
 print(table)
 --
 -- Tisk obsahu metatabulky
-for key, value in ipairs(table) do
+for key, value in pairs(table) do
     print(key, value)
 end
 
