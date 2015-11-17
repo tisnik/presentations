@@ -1,0 +1,13 @@
+
+Globální objekty a funkce, které není vhodné přepisovat
+-------------------------------------------------------
+_G                    loadfile           require
+_VERSION              loadstring         select
+assert                module             setfenv
+collectgarbage        next               setmetatable
+dofile                pairs              tonumber
+error                 pcall              tostring
+getfenv               print              type
+getmetatable          rawequal           unpack
+ipairs                rawget             xpcall
+load                  rawset

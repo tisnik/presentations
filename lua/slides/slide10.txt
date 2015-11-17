@@ -1,0 +1,28 @@
+
+Podporované datové typy
+-----------------------
+nil
+        datový typ hodnoty nil
+        je v celém programu jedinečná
+        tato hodnota se definitoricky odlišuje od všech ostatních hodnot
+boolean
+        datový typ pravdivostních hodnot true a false
+number
+        reálné číslo podle IEEE 754 s dvojnásobnou přesností
+        (v céčku či Javě se jedná o typ double)
+        při překladu jazyka je však možné tento typ změnit
+        nově i další subtyp: integer
+string
+        řetězec (částečná podpora UTF-8)
+function
+        buď vytvořená přímo ve skriptu či zaregistrovaná céčková funkce
+        plnohodnotný datový typ
+userdata
+        data vytvořená v hostitelském (céčkovém) programu
+thread
+        vlákno použité pro implementaci koprogramů (coroutine)
+table
+        asociativní pole
+        flexibilní datový typ, na kterém je založena většina
+        funkcionality jazyka Lua, včetně objektového systému
+        (v asociativním poli mohou být umístěny mj. i funkce)
