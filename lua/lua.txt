@@ -558,6 +558,138 @@ for k = 0, 10 do
     end
 end
 
+Funkce jako plnohodnotný datový typ
+-----------------------------------
+-- pomocna funkce, ktera vytiskne tabulku hodnot
+-- pro uhly lezici mezi 0 az 90 stupni
+-- na zaklade predane funkce
+function printTable(func)
+    -- tisk adresy funkce v adresnim prostoru VM
+    print(func)
+    -- tisk uhlu mezi 0 az 90 stupni
+    -- a hodnot uzivatelske funkce pro tyto uhly
+    -- (je nastaven krok po peti stupnich)
+    for i=0, 90, 5 do
+        -- prevod stupnu na radiany
+        local alfa = math.pi * i / 180.0
+        -- volani funkce predane jako parametr
+        local y = func(alfa)
+        print(string.format("%d\t%6.4f", i, y))
+    end
+end
+--
+-- uzivatelsky definovana funkce ulozena
+-- do promenne "fce"
+fce = function(x)
+    return math.sin(x)
+end
+--
+-- tisk tabulky
+print("fce = function(x) return math.sin(x) end")
+printTable(fce)
+--
+-- muzeme primo pouzit i knihovni funkci
+-- se stejnym vyznamem
+print("fce = math.sin")
+printTable(math.sin)
+
+Uzávěry
+-------
+-- Funkce obsahujici lokalni promennou.
+-- Tato funkce vraci anonymni funkci
+-- jako svuj vysledek.
+function generateClosure()
+    -- lokalni promenna, ktera neni
+    -- z okolniho programu dostupna
+    local y = 1
+    -- anonymni funkce vytiskne hodnotu
+    -- lokalni promenne funkce "generateClosure"
+    -- a potom se pokusi o zmenu jeji hodnoty:
+    return function()
+        print(y)
+        y = y + 1
+    end
+end
+--
+-- ziskame uzaver, tj. instanci anonymni funkce
+closure1 = generateClosure()
+--
+-- jake hodnoty se vytisknou?
+closure1()
+closure1()
+closure1()
+closure1()
+
+Uzávěry (2)
+-----------
+-- Funkce obsahujici lokalni promennou.
+-- Tato funkce vraci anonymni funkci
+-- jako svuj vysledek.
+function generateClosure()
+    -- lokalni promenna, ktera neni
+    -- z okolniho programu dostupna
+    local y = 1
+    -- anonymni funkce vytiskne hodnotu
+    -- lokalni promenne funkce "generateClosure"
+    -- a potom se pokusi o zmenu jeji hodnoty:
+    local result = function()
+        print(y)
+        y = y + 1
+    end
+    -- po vytvoreni zarodku uzaveru
+    -- zmenime hodnotu lokalni promenne
+    y = 42
+    -- vratime vytvorenou funkci - uzaver
+    return result
+end
+--
+-- ziskame uzaver, tj. instanci anonymni funkce
+closure = generateClosure()
+--
+-- vytiskne se posloupnost hodnot 42, 43, 44 a 45
+closure()
+closure()
+closure()
+closure()
+
+Použití uzávěrů
+---------------
+-- pomocna funkce vracejici uzaver
+function defPosloupnosti(n)
+    -- pamatovana hodnota, ktera vsak
+    -- neni z okolniho programu dostupna
+    local y = 1
+    -- pocitadlo volani = exponent
+    local index = 0
+    -- anonymni funkce vytiskne pamatovanou
+    -- hodnotu a nakonec ji vynasobi zvolenou konstantou
+    return function()
+        print(index, y)
+        y = y * n
+        index = index + 1
+    end
+end
+--
+print("mocniny cisla 2")
+-- ziskani uzaveru
+generator = defPosloupnosti(2)
+--
+-- postupne se budou tisknout
+-- mocniny cisla 2
+for i=0, 16 do
+    generator()
+end
+--
+print("mocniny cisla 3")
+-- ziskani uzaveru
+generator = defPosloupnosti(3)
+--
+-- postupne se budou tisknout
+-- mocniny cisla 3
+for i=0, 16 do
+    generator()
+end
+
 Lua v roli skriptovacího jazyka pro WWW stránky
 -----------------------------------------------
 
