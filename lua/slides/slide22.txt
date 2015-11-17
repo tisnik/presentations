@@ -1,0 +1,7 @@
+
+Logické operátory
+-----------------
+Symbol operátoru   Arita      Popis
+and                binární    logický součin
+or                 binární    logický součet
+not                unární     logická negac

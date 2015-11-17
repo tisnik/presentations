@@ -1,0 +1,11 @@
+
+Aritmetické operátory
+---------------------
+Symbol operátoru   Arita      Popis
++                  binární    součet
+-                  binární    rozdíl
+*                  binární    součin
+/                  binární    podíl (reálná čísla)
+%                  binární    dělení modulo
+^                  binární    umocňování
+-                  unární     unární minus

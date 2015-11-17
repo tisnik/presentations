@@ -1,0 +1,12 @@
+
+Priority operátorů
+------------------
+Priorita        Operátory
+1 (nejvyšší)    ^
+2               not # unární minus (-)
+3               * / %
+4               + -
+5               ..
+6               == ~= < > <= >=
+7               and
+8 (nejnižší)    or

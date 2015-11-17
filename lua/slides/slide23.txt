@@ -1,0 +1,10 @@
+
+Relační operátory
+-----------------
+Symbol operátoru   Arita      Popis
+==                 binární    rovnost
+~=                 binární    nerovnost
+<                  binární    menší než
+>                  binární    větší než
+<=                 binární    menší nebo rovno
+>=                 binární    větší nebo rovno

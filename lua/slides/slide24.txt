@@ -1,0 +1,8 @@
+
+Další operátory
+---------------
+Symbol operátoru   Arita      Popis
+..                 binární    spojení dvou řetězců nebo
+                              číslic převedených na řetězec
+#                  unární     délka řetězce nebo velikost
+                              asociativního pole
