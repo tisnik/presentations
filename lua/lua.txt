@@ -690,6 +690,274 @@ for i=0, 16 do
     generator()
 end
 
+Interpret jazyka Lua vestavěný do C-čkových programů
+----------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+/* Zakladni a doplnkove funkce interpretu jazyka Lua */
+#include <lualib.h>
+#include <lauxlib.h>
+/* Hlavni funkce konzolove aplikace */
+int main(int argc, char **argv)
+{
+    int result;
+    if (argc != 2)
+    {
+        puts("Pouziti: lua62 script.lua");
+        return 1;
+    }
+    /* vytisteni hlavicky */
+    puts(LUA_RELEASE);
+    puts(LUA_COPYRIGHT);
+    puts(LUA_AUTHORS);
+    putchar('\n');
+    /* vytvoreni objektu, do nejz se uklada stav interpretu */
+    lua_State* L = lua_open();
+    /* nacteme zakladni knihovnu obsahujici mj. i funkci print() */
+    luaopen_base(L);
+    /* nacteni externiho skriptu, jeho preklad a nasledne spusteni */
+    result = luaL_dofile(L, argv[1]);
+    /* odstraneni vsech objektu asociovanych se stavem "Lua" */
+    lua_close(L);
+    if (result != 0)
+    {
+        printf("Error # %d\n", result);
+    }
+    /* vypocet navratoveho kodu */
+    return (result != 0);
+}
+
+Jednoduchá varianta OOP s využitím tabulek
+------------------------------------------
+-- Asociativni pole obsahujici metody
+Complex={}
+--
+-- Konstruktor (ve skutecnosti jen vhodne
+-- pojmenovana funkce)
+function Complex.new(paramReal, paramImag)
+    local self={}
+    self.real = paramReal
+    self.imag = paramImag
+    return self
+end
+--
+-- Metoda print s explicitnim predanim parametru self
+function Complex.print(self)
+    print(self.real.."+i"..self.imag)
+end
+--
+-- Metoda add s explicitnim predanim parametru self
+function Complex.add(self, paramReal, paramImag)
+    self.real = self.real + paramReal
+    self.imag = self.imag + paramImag
+end
+--
+-- vytvoreni dvojice objektu
+c = Complex.new(1, 2)
+c2 = Complex.new(3, 4)
+--
+-- tisk hodnot obou objektu
+Complex.print(c)
+Complex.print(c2)
+--
+-- zmena atributu prvniho objektu
+Complex.add(c, 10, 20)
+--
+-- tisk hodnot obou objektu
+Complex.print(c)
+Complex.print(c2)
+
+Alternativní způsob volání metod
+--------------------------------
+-- Asociativni pole obsahujici metody
+Complex={}
+--
+-- Konstruktor (ve skutecnosti jen vhodne
+-- pojmenovana funkce)
+function Complex.new(paramReal, paramImag)
+    local self={}
+    self.real = paramReal
+    self.imag = paramImag
+    return self
+end
+--
+-- Metoda print s implicitnim predanim parametru self
+function Complex:print()
+    print(self.real.."+i"..self.imag)
+end
+--
+-- Metoda add s implicitnim predanim parametru self
+function Complex:add(paramReal, paramImag)
+    self.real = self.real + paramReal
+    self.imag = self.imag + paramImag
+end
+--
+-- vytvoreni dvojice objektu
+c = Complex.new(1, 2)
+c2 = Complex.new(3, 4)
+--
+-- tisk hodnot obou objektu
+Complex.print(c)
+Complex.print(c2)
+--
+-- zmena atributu prvniho objektu
+Complex.add(c, 10, 20)
+--
+-- tisk hodnot obou objektu
+Complex.print(c)
+
+Metatabulky
+-----------
+-- Asociativni pole predstavujici zaklad objektu
+objekt = {}
+--
+-- Asociativni pole, ktere bude pouzito jako metatabulka
+metatable = {}
+--
+-- Ziskani metatabulky (vrati se nil, ktere se posleze vytiskne)
+print(getmetatable(objekt))
+--
+-- Prirazeni metatabulky k objektu
+setmetatable(objekt, metatable)
+--
+-- Ziskani metatabulky (vrati se prazdne pole, nikoli nil)
+table = getmetatable(objekt)
+--
+print(table)
+--
+-- Tisk obsahu metatabulky
+for key, value in ipairs(table) do
+    print(key, value)
+end
+
+Metatabulky a metametody
+------------------------
+Operátor        Metametoda
++               __add
+–               __sub
+*               __mul
+/               __div
+%               __mod
+^               __pow
+–               __unm (unární minus)
+..              __concat (původně spojení řetězců)
+#               __len
+==              __eq
+<               __lt
+<=              __le
+.               __index, __newindex
+[]              __index, __newindex
+volání funkce   __call
+
+Objekty v jazyce Lua
+--------------------
+Complex = {}
+--
+-- Metatabulka pro objekty predstavujici komplexni cisla
+complex_meta = {
+    -- Pro "objektovy" zpusob volani metod
+    __index = Complex
+}
+--
+-- Konstruktor pro komplexni cisla
+function Complex:new(real, imag)
+    -- asociativni pole pro ulozeni atributu
+    local value = { real = real, imag = imag }
+    return setmetatable(value, complex_meta)
+end
+--
+-- Metoda print
+function Complex:print()
+    print(self.real, self.imag)
+end
+--
+-- Objekty predstavujici komplexni cisla
+z1 = Complex:new(1, 2)
+z2 = Complex:new(3, 4)
+z3 = Complex:new(5, 6)
+--
+-- Ruzne zpusoby zavolani metody print()
+--
+-- primo pres "tridu" - nepouziva se metatabulka
+Complex.print(z1)
+--
+-- pres metatabulku, explicitni naplneni parametru self
+z2.print(z2)
+--
+-- pres metatabulku, vyuziti syntaktickeho cukru
+-- pro automaticke naplneni parametru self
+z3:print()
+
+Složitější příklad
+------------------
+-- pretizeni operatoru +, -, * a / pro komplexni cisla
+-- vraceny vysledek je taktez "objektem" typu komplexni cislo
+Complex = {}
+--
+-- Metatabulka pro objekty predstavujici komplexni cisla
+complex_meta = {
+    -- Pro "objektovy" zpusob volani metod
+    __index = Complex,
+    --
+    -- Metametoda pro operator +
+    __add = function(x, y)
+        return setmetatable({real = x.real + y.real, imag = x.imag + y.imag }, complex_meta)
+    end,
+    --
+    -- Metametoda pro operator -
+    __sub = function(x, y)
+        return setmetatable({ real = x.real - y.real, imag = x.imag - y.imag }, complex_meta)
+    end,
+    --
+    -- Metametoda pro operator *
+    __mul = function(x, y)
+        local result = { real = x.real * y.real - x.imag * y.imag, imag = x.real * y.imag + x.imag * y.real }
+        return setmetatable(result, complex_meta)
+    end,
+    --
+    -- Metametoda pro operator /
+    __div = function(x, y)
+        local mag = y.real ^ 2 + y.imag ^ 2
+        local y_upravene = { real = y.real/mag, imag = - y.imag/mag}
+        return complex_meta.__mul(x,y_upravene)
+    end
+}
+--
+-- Konstruktor pro komplexni cisla
+function Complex:new( real, imag )
+    local value = { real = real, imag = imag }
+    return setmetatable(value, complex_meta)
+end
+--
+-- Metoda print
+function Complex:print()
+    print(self.real, self.imag)
+end
+--
+-- Objekty predstavujici komplexni cisla
+z1 = Complex:new(4, 3)
+z2 = Complex:new(2, 0)
+--
+-- Zkouska pretizeni aritmetickych operatoru
+x = z1 + z2
+x:print()
+--
+y = z1 - z2
+y:print()
+--
+z = z1 * z2
+z:print()
+--
+w = z1 / z2
+w:print()
+--
+-- Vysledek operaci nad komplexnimi cisly
+-- ma prirazenou metatabulku pro komplexni cisla
+Complex.print(x + y)
+Complex.print(y - z)
+Complex.print(z * w)
+Complex.print(w / z)
+
 Lua v roli skriptovacího jazyka pro WWW stránky
 -----------------------------------------------
 
