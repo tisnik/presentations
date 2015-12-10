@@ -3,6 +3,9 @@
 
 # Demonstrační příklady využívající knihovnu Pygame
 
+# Příklad číslo 3
+
+
 import pygame, sys
 
 # Nutno importovat kvůli konstantám QUIT atd.
