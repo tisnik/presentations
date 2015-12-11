@@ -3,7 +3,8 @@
 
 # Demonstrační příklady využívající knihovnu Pygame
 
-# Příklad číslo 4
+# Příklad číslo 4: vykreslení základních geometrických
+#                  tvarů s využitím modulu pygame.draw.
 
 
 import pygame, sys

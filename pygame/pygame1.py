@@ -3,7 +3,8 @@
 
 # Demonstrační příklady využívající knihovnu Pygame
 
-# Příklad číslo 1
+# Příklad číslo 1: kostra aplikace, v níž se používá
+#                  knihovna Pygame
 
 
 import pygame, sys

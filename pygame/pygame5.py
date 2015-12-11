@@ -3,7 +3,8 @@
 
 # Demonstrační příklady využívající knihovnu Pygame
 
-# Příklad číslo 5
+# Příklad číslo 5: přístup k pixelům vybraného objektu
+#                  typu Surface.
 
 
 import pygame, sys

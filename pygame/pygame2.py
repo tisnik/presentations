@@ -3,7 +3,8 @@
 
 # Demonstrační příklady využívající knihovnu Pygame
 
-# Příklad číslo 2
+# Příklad číslo 2: jeden ze způsobů snížení zatížení
+#                  procesoru v hlavní smyčce událostí
 
 
 import pygame, sys
