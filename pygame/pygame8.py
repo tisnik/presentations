@@ -72,6 +72,10 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == KEYDOWN and event.key == K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+
     pygame.display.update()
     clock.tick(20)
 
