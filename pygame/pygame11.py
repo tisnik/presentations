@@ -55,8 +55,13 @@ for i in range(1,90,5):
     # výpočet koncových bodů úseček
     x = radius * math.sin(math.radians(i))
     y = radius * math.cos(math.radians(i))
-    # vykreslení jedné úsečky, blend je nastaveno na True
-    pygame.draw.aaline(display, WHITE, (WIDTH-1, 0), (WIDTH-x, y), True)
+
+    if display.get_bitsize() >= 24:
+        # vykreslení jedné antialiasované úsečky, blend je nastaveno na True
+        pygame.draw.aaline(display, WHITE, (WIDTH-1, 0), (WIDTH-x, y), True)
+    else:
+        # vykreslení jedné úsečky
+        pygame.draw.line(display, WHITE, (WIDTH-1, 0), (WIDTH-x, y))
 
 # Vykreslení čar různou šířkou
 for i in range(1,10):
@@ -80,6 +85,10 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == KEYDOWN and event.key == K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+
     pygame.display.update()
     clock.tick(20)
 
