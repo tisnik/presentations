@@ -68,7 +68,8 @@ for i in range(1,90,5):
 for i in range(1,10):
     pygame.draw.line(display, WHITE, (10 + i*15, 90), (10 + i*15, 230), i)
 
-
+# Načtení bitmapy a její okamžitá konverze do formátu kompatibilního s framebufferem
+# Při konverzi se zachová i alfa kanál
 image_surface = (pygame.image.load(os.path.join('images', 'gnome-globe.png')).convert_alpha())
 
 # Výpočet souřadnic pro umístění obrázku přesně doprostřed okna
