@@ -19,7 +19,8 @@ function getCommentChars()
         vim        = "\"",
         clojure    = ";",
         sh         = "#",
-        python     = "#"}
+        python     = "#",
+        basic      = "REM"}
     -- ziskani informace o aktualne nastavene syntaxi
     local selectedSyntax = vim.eval("&syntax")
     -- vraceni znaku z tabulky (popr. vraceni nil ve chvili,
