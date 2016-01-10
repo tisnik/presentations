@@ -14,6 +14,7 @@ function getCommentChars()
     local languages = {
         lua        = "--",
         c          = "//",
+        cpp        = "//",
         java       = "//",
         javascript = "//",
         vim        = "\"",
