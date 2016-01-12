@@ -1,7 +1,8 @@
 // ------------------------------------------------------------
 // Knihovna Mori: demonstracni priklad cislo 8
 //
-// Otestovani funkce mori.partitionBy()
+// Otestovani funkce mori.partitionBy(), mori.takeWhile()
+// a mori.filter().
 // ------------------------------------------------------------
 
 
@@ -56,6 +57,14 @@ printSequenceInfo("mori.partitionBy(f1, seq)");
 printSequenceInfo("mori.partitionBy(f2, seq)");
 printSequenceInfo("mori.partitionBy(f3, seq)");
 printSequenceInfo("mori.partitionBy(f4, seq)");
+
+printSequenceInfo("mori.takeWhile(f1, seq)");
+printSequenceInfo("mori.takeWhile(f2, seq)");
+printSequenceInfo("mori.takeWhile(f3, seq)");
+
+printSequenceInfo("mori.filter(f1, seq)");
+printSequenceInfo("mori.filter(f2, seq)");
+printSequenceInfo("mori.filter(f3, seq)");
 
 
 
