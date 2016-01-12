@@ -1,7 +1,7 @@
 // ------------------------------------------------------------
 // Knihovna Mori: demonstracni priklad cislo 7
 //
-// Otestovani funkce mori.partition()
+// Otestovani funkce mori.partition() a mori.interleave()
 // ------------------------------------------------------------
 
 
@@ -37,6 +37,13 @@ printSequenceInfo("mori.partition(3, seq)");
 printSequenceInfo("mori.partition(4, seq)");
 printSequenceInfo("mori.partition(6, seq)");
 printSequenceInfo("mori.partition(20, seq)");
+
+var seq1 = mori.range(0,12);
+var seq2 = mori.repeat(12, '*');
+
+printSequenceInfo("seq1");
+printSequenceInfo("seq2");
+printSequenceInfo("mori.interleave(seq1, seq2)");
 
 
 
