@@ -44,7 +44,6 @@ void draw(int framebufferDevice, long int bufferSize)
                                MAP_SHARED, framebufferDevice,
                                0);
     if (pixels != MAP_FAILED) {
-        puts("Here");
         int x;
         for (x=0; x<bufferSize; x++) pixels[x] = x;
         getchar();
