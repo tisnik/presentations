@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     int framebufferDevice = 0;
 
     /* Ze zarizeni potrebujeme pouze cist.*/
-        framebufferDevice = open("/dev/fb0", O_RDONLY);
+    framebufferDevice = open("/dev/fb0", O_RDONLY);
 
     /* Pokud otevreni probehlo uspesne, nacteme
      * a nasledne vypiseme informaci o framebufferu.*/
