@@ -125,7 +125,7 @@ def check_collisions(player, sprite_group):
     hit_list = pygame.sprite.spritecollide(player, sprite_group, False)
     collisions = len(hit_list)
     # Přenastavení titulku okna
-    pygame.display.set_caption('Pygame test #20: collisions ' + str(collisions))
+    pygame.display.set_caption('Pygame test #21: collisions ' + str(collisions))
     pass
 
 
