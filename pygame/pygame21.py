@@ -70,7 +70,8 @@ wall4  = BlockySprite(GRAY, 15, 200, 100)
 wall5  = BlockySprite(GRAY, 15, 200, 150)
 player = BlockySprite(RED,  25, WIDTH/2-12, HEIGHT/2-12)
 
-# Přidání dvojice spritů do seznamu
+# Přidání několika dalších spritů do seznamu
+# (jen jeden sprite bude pohyblivý)
 all_sprites.add(wall1)
 all_sprites.add(wall2)
 all_sprites.add(wall3)
@@ -92,7 +93,7 @@ def move_sprites(sprite_group, playground_width, playground_height):
         # Posun spritu
         sprite.rect.x = sprite.rect.x + sprite.speed_x
         sprite.rect.y = sprite.rect.y + sprite.speed_y
-        # Kontrola, zda sprite nenarazil do okraju okna
+        # Kontrola, zda sprite nenarazil do okrajů okna
         if sprite.rect.x < 0:
             sprite.rect.x = 0
             sprite.speed_x = 0
