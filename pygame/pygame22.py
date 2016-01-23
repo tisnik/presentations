@@ -39,9 +39,11 @@ class BlockySprite(pygame.sprite.Sprite):
         self.speed_x = 0
         self.speed_y = 0
 
+    # Nastavení barvy spritu, který kolidoval s hráčem
     def yellowColor(self):
         self.image.fill(YELLOW)
 
+    # Nastavení barvy spritu, který nekolidoval s hráčem
     def grayColor(self):
         self.image.fill(GRAY)
 
@@ -69,7 +71,8 @@ all_sprites = pygame.sprite.Group()
 # Objekt sdružující všechny sprity kromě hráče
 all_sprites_but_player = pygame.sprite.Group()
 
-# Vytvoření dvojice typů spritů - zdi a hráče
+# Vytvoření několika typů spritů
+#                     barva  x   y velikost
 wall1  = BlockySprite(GRAY, 50, 10, 10)
 wall2  = BlockySprite(GRAY, 15, 100, 100)
 wall3  = BlockySprite(GRAY, 15, 100, 150)
@@ -80,7 +83,7 @@ wall7  = BlockySprite(GRAY, 15, 150, 150)
 player = BlockySprite(RED,  40, WIDTH/2-20, HEIGHT/2-20)
 
 # Přidání několika dalších spritů do seznamu
-# (jen jeden sprite bude pohyblivý)
+# (jen jeden sprite - ten poslední - bude ve skutečnosti pohyblivý)
 all_sprites.add(wall1)
 all_sprites.add(wall2)
 all_sprites.add(wall3)
@@ -90,6 +93,7 @@ all_sprites.add(wall6)
 all_sprites.add(wall7)
 all_sprites.add(player)
 
+# Seznam všech nepohyblivých spritů
 all_sprites_but_player.add(wall1)
 all_sprites_but_player.add(wall2)
 all_sprites_but_player.add(wall3)
@@ -133,7 +137,9 @@ def draw_scene(display, background_color, sprite_group):
 
 
 
+# Změna barvy spritu na základě kolize s hráčem
 def change_colors(sprite_group, hit_list):
+    # Projít všemi sprity ze skupiny, kterou detekovala kolizní funkce
     for sprite in sprite_group:
         if sprite in hit_list:
             sprite.yellowColor()
@@ -142,9 +148,11 @@ def change_colors(sprite_group, hit_list):
 
 
 
-# Zjistí kolize spritu se "stěnami"
+# Zjistí kolize spritu se "stěnami" (nepohyblivými sprity)
 def check_collisions(player, sprite_group):
+    # Vytvoření seznamu spritů, které kolidují s hráčem
     hit_list = pygame.sprite.spritecollide(player, sprite_group, False)
+    # Změna barev kolidujících spritů
     change_colors(sprite_group, hit_list)
     collisions = len(hit_list)
     # Přenastavení titulku okna

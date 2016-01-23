@@ -60,7 +60,8 @@ GRAY    = (128, 128, 128)
 # Objekt sdružující všechny sprity
 all_sprites = pygame.sprite.Group()
 
-# Vytvoření dvojice spritů - zdi a hráče
+# Vytvoření několika typů spritů
+#                     barva  x   y velikost
 wall1  = BlockySprite(GRAY, 50, 10, 10)
 wall2  = BlockySprite(GRAY, 15, 100, 100)
 wall3  = BlockySprite(GRAY, 15, 100, 150)
@@ -69,7 +70,7 @@ wall5  = BlockySprite(GRAY, 15, 200, 150)
 player = BlockySprite(RED,  25, WIDTH/2-12, HEIGHT/2-12)
 
 # Přidání několika dalších spritů do seznamu
-# (jen jeden sprite bude pohyblivý)
+# (jen jeden sprite - ten poslední - bude ve skutečnosti pohyblivý)
 all_sprites.add(wall1)
 all_sprites.add(wall2)
 all_sprites.add(wall3)
@@ -112,8 +113,9 @@ def draw_scene(display, background_color, sprite_group):
 
 
 
-# Zjistí kolize spritu se "stěnami"
+# Zjistí kolize spritu se "stěnami" (nepohyblivými sprity)
 def check_collisions(player, sprite_group):
+    # Vytvoření seznamu spritů, které kolidují s hráčem
     hit_list = pygame.sprite.spritecollide(player, sprite_group, False)
     collisions = len(hit_list)
     # Přenastavení titulku okna
