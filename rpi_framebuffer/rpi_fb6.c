@@ -241,7 +241,7 @@ void drawTestImage(int framebufferDevice,
 
 
 
-/* Vstupni bod do demonstraniho prikladu... :) */
+/* Vstupni bod do demonstracniho prikladu... :) */
 int main(int argc, char **argv)
 {
     FramebufferInfo framebufferInfo;
