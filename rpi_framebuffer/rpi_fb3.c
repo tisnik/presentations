@@ -1,3 +1,8 @@
+/* Framebuffer na jednodeskovem mikropocitaci Raspberry Pi */
+/* Autor: Pavel Tisnovsky, 2016 */
+
+/* Demonstracni priklad cislo 3: zapis do framebufferu */
+
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
