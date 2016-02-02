@@ -1,3 +1,9 @@
+/* Framebuffer na jednodeskovem mikropocitaci Raspberry Pi */
+/* Autor: Pavel Tisnovsky, 2016 */
+
+/* Demonstracni priklad cislo 1: otevreni zarizeni /dev/fb0  */
+/*                               a precteni zakladnich informaci o framebufferu */
+
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
