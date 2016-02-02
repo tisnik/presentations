@@ -1,3 +1,9 @@
+/* Framebuffer na jednodeskovem mikropocitaci Raspberry Pi */
+/* Autor: Pavel Tisnovsky, 2016 */
+
+/* Demonstracni priklad cislo 2: otevreni zarizeni /dev/fb0 a pouziti */
+/*                               IOCTL operaci FBIOGET_FSCREENINFO a FBIOGET_VSCREENINFO */
+
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
