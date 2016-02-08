@@ -295,6 +295,7 @@ void saveFramebuffer(const char *filename, FramebufferInfo *framebufferInfoPtr, 
                 putc(r, fout);
                 putc(g, fout);
                 putc(b, fout);
+                adr+=2; /* posun na dalsi pixel ve framebufferu */
             }
             break;
         case 24: /* 24bitova barvova hloubka - lze nahradit jedinym zapisem, pokud nebudete prehazovat barvy! */
@@ -302,6 +303,7 @@ void saveFramebuffer(const char *filename, FramebufferInfo *framebufferInfoPtr, 
                 fwrite(adr+2, 1, 1, fout);
                 fwrite(adr+1, 1, 1, fout);
                 fwrite(adr+0, 1, 1, fout);
+                adr+=3; /* posun na dalsi pixel ve framebufferu */
             }
             break;
         case 32: /* 32bitova barvova hloubka */
