@@ -285,7 +285,7 @@ void saveFramebuffer(const char *filename, FramebufferInfo *framebufferInfoPtr, 
                 /* nejprve se prectou dva bajty z framebufferu */
                 unsigned char b1 = *(adr+1);
                 unsigned char b2 = *(adr);
-                /* posleze se prevedou na 32bitove slovo */
+                /* posleze se prevedou na 16bitove slovo */
                 unsigned int  color = (b1 << 8) + b2;
                 /* a zase ziskame zpetnym prevodem hodnoty barvovych slozek */
                 unsigned char r = ((color >> RED_OFFSET)   & RED_MASK)   << RED_LOST_BITS;
