@@ -8,6 +8,8 @@ function printHello()
     print(helloStr)
 end
 
+printHello()
+
 worldStr="World"
 
 -- funkce vyuzivajici globalni promennou
