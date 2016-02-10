@@ -288,6 +288,9 @@ void saveFramebuffer(const char *filename, FramebufferInfo *framebufferInfoPtr, 
                 /* posleze se prevedou na 16bitove slovo */
                 unsigned int  color = (b1 << 8) + b2;
                 /* a zase ziskame zpetnym prevodem hodnoty barvovych slozek */
+                /* 1) nejprve je 16bitove slovo posunuto doprava tak, aby se ve spodnich bitech nachazela prislusna slozka */
+                /* 2) posleze se provede maskovani spodnich peti ci sesti bitu, vysledkem je 16bitove slovo s nulovymi 10 ci 9 bity */
+                /* 3) nasledne se onech 5 ci 6 bitu posune doleva, aby vznikla osmibitova hodnota barvy */
                 unsigned char r = ((color >> RED_OFFSET)   & RED_MASK)   << RED_LOST_BITS;
                 unsigned char g = ((color >> GREEN_OFFSET) & GREEN_MASK) << GREEN_LOST_BITS;
                 unsigned char b = ((color >> BLUE_OFFSET)  & BLUE_MASK)  << BLUE_LOST_BITS;
