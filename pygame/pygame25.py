@@ -38,9 +38,9 @@ display.fill(BLACK)
 image_surface = pygame.image.load(os.path.join('images', 'pygame.png'))
 
 # Vytvoření zrcadlených obrázků
-horizontally_flipped = pygame.transform.flip(image_surface, True, False);
-vertically_flipped   = pygame.transform.flip(image_surface, False, True);
-both_flipped   = pygame.transform.flip(image_surface, True, True);
+horizontally_flipped = pygame.transform.flip(image_surface, True, False)
+vertically_flipped   = pygame.transform.flip(image_surface, False, True)
+both_flipped   = pygame.transform.flip(image_surface, True, True)
 
 # Přímé vykreslení původního obrázku
 display.blit(image_surface, (50, 25))
