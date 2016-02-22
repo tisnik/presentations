@@ -108,7 +108,7 @@ void finalize_egl(EGL_STATE_T *state)
     eglSwapBuffers(state->display, state->surface);
     eglMakeCurrent(state->display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
     eglDestroySurface(state->display, state->surface);
-    eglDestroyContext(state->display, state->surface);
+    eglDestroyContext(state->display, state->context);
     eglTerminate(state->display);
 }
 
@@ -120,10 +120,13 @@ void finalize_egl(EGL_STATE_T *state)
 int main(int argc, char *argv[])
 {
     EGL_STATE_T egl_state;
+
     initialize_egl(&egl_state);
     puts("initialize_egl OK");
+
     finalize_egl(&egl_state);
     puts("finalize_egl OK");
+
     return 0;
 }
 
