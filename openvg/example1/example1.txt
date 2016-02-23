@@ -1,0 +1,2 @@
+initialize_egl OK
+finalize_egl OK
