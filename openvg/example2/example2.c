@@ -81,7 +81,7 @@ void initialize_egl(EGL_STATE_T *state)
 
     /* precteni poctu konfiguraci dostupnych pres EGL */
     eglGetConfigs(state->display, NULL, 0, &configurations_count);
-    printf("EGL has %d confugurations availabel\n", configurations_count);
+    printf("EGL has %d configurations available\n", configurations_count);
 
     /* nacteni vsech konfiguraci do pripraveneho pole */
     all_configurations = malloc(configurations_count * sizeof(*all_configurations));
