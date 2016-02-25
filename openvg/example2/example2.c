@@ -38,8 +38,8 @@ void print_egl_configuration(EGLDisplay display, EGLConfig *config)
     int red, green, blue, alpha, buffer;
 
     eglGetConfigAttrib(display, *config, EGL_RED_SIZE, &red);
-    eglGetConfigAttrib(display, *config, EGL_BLUE_SIZE, &green);
-    eglGetConfigAttrib(display, *config, EGL_GREEN_SIZE, &blue);
+    eglGetConfigAttrib(display, *config, EGL_BLUE_SIZE, &blue);
+    eglGetConfigAttrib(display, *config, EGL_GREEN_SIZE, &green);
     eglGetConfigAttrib(display, *config, EGL_ALPHA_SIZE, &alpha);
     eglGetConfigAttrib(display, *config, EGL_BUFFER_SIZE, &buffer);
     if (alpha) {
