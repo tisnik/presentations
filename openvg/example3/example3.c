@@ -42,8 +42,8 @@ void print_egl_configuration(EGLDisplay display, EGLConfig *config)
     int bind_to_rgb, bind_to_rgba;
 
     eglGetConfigAttrib(display, *config, EGL_RED_SIZE, &red);
-    eglGetConfigAttrib(display, *config, EGL_BLUE_SIZE, &green);
-    eglGetConfigAttrib(display, *config, EGL_GREEN_SIZE, &blue);
+    eglGetConfigAttrib(display, *config, EGL_BLUE_SIZE, &blue);
+    eglGetConfigAttrib(display, *config, EGL_GREEN_SIZE, &green);
     eglGetConfigAttrib(display, *config, EGL_ALPHA_SIZE, &alpha);
     eglGetConfigAttrib(display, *config, EGL_BUFFER_SIZE, &buffer);
     eglGetConfigAttrib(display, *config, EGL_DEPTH_SIZE, &depth);
@@ -90,7 +90,7 @@ void initialize_egl(EGL_STATE_T *state)
 
     /* precteni poctu konfiguraci dostupnych pres EGL */
     eglGetConfigs(state->display, NULL, 0, &configurations_count);
-    printf("EGL has %d confugurations availabel\n", configurations_count);
+    printf("EGL has %d configurations available\n", configurations_count);
 
     /* nacteni vsech konfiguraci do pripraveneho pole */
     all_configurations = malloc(configurations_count * sizeof(*all_configurations));
