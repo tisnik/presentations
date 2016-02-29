@@ -1,4 +1,4 @@
-# Makefile pro preklad ctvrteho prikladu ukazujiciho
+# Makefile pro preklad pateho prikladu ukazujiciho
 # praci s OpenVG a EGL.
 
 # Parametry prekladace.
