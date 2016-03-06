@@ -1,5 +1,6 @@
 // ------------------------------------------------------------
 // Knihovna Underscore.js: demonstracni priklad cislo 1
+//                         Zakladni funkce pri praci s poli.
 // ------------------------------------------------------------
 
 
@@ -31,10 +32,26 @@ var array1 = [1,2,3,4,5];
 printArrayInfo(array1);
 
 // zakladni operace nad polem
+
+// funkce _.first()
 printArrayInfo("_.first(array1)");
+printArrayInfo("_.first(array1, 2)");
+printArrayInfo("_.first(array1, 100)"); // n je vetsi nez delka pole
+
+// funkce _.last()
 printArrayInfo("_.last(array1)");
+printArrayInfo("_.last(array1, 2)");
+printArrayInfo("_.last(array1, 100)"); // n je vetsi nez delka pole
+
+// funkce _.initial()
 printArrayInfo("_.initial(array1)");
+printArrayInfo("_.initial(array1, 2)");
+printArrayInfo("_.initial(array1, 100)"); // n je vetsi nez delka pole
+
+// funkce _.rest()
 printArrayInfo("_.rest(array1)");
+printArrayInfo("_.rest(array1, 2)");
+printArrayInfo("_.rest(array1, 100)"); // n je vetsi nez delka pole
 
 
 // otestovani funkce uniq
