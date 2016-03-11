@@ -1,6 +1,7 @@
 // ------------------------------------------------------------
 // Knihovna Underscore.js: demonstracni priklad cislo 11
-//                         Pouziti funkce each
+//                         Pouziti funkce each spolecne s funkci
+//                         reduce.
 // ------------------------------------------------------------
 
 
