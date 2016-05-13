@@ -1,6 +1,6 @@
 # Knihovny Numpy a matplotlib
 #
-# Osmnáctý demonstračaní příklad:
+# Osmnáctý demonstrační příklad:
 # - změna stylu koláčových grafů
 
 from matplotlib import pyplot as plt
