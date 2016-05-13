@@ -4,6 +4,7 @@
 #
 # Dvacátý druhý demonstrační příklad:
 # - zobrazení kontur funkce typu z=f(x,y)
+# - zobrazení hodnot u jednotlivých "vrstevnic"
 
 import matplotlib
 import numpy as np
