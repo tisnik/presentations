@@ -1,0 +1,3 @@
+as arm_thumb.s -o arm_thumb.o
+ld -s arm_thumb.o
+
