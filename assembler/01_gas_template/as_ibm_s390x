@@ -1,0 +1,3 @@
+as s390.s -o s390x.o
+ld -s s390x.o
+

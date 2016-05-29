@@ -1,0 +1,3 @@
+as -m31 hello_world-s390.s -o hello_world-s390.o
+ld -melf_s390 -s hello_world-s390.o
+
