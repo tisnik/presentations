@@ -1,0 +1,3 @@
+test1
+test2
+zprava, ktera musi byt delsi nez padesat znaku, przaverecny test

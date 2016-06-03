@@ -1,0 +1,4 @@
+echo "test1" | ./a.out > check.txt
+echo "test2" | ./a.out >> check.txt
+echo "zprava, ktera musi byt delsi nez padesat znaku, predana programu" | ./a.out >> check.txt
+echo "zaverecny test" | ./a.out >> check.txt

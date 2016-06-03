@@ -1,0 +1,3 @@
+nasm -felf32 read_input_2.asm
+ld -s read_input_2.o
+
