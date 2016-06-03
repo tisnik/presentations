@@ -1,0 +1,3 @@
+as read_input.s -o read_input.o
+ld -s read_input.o
+
