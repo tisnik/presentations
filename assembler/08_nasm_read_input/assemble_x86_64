@@ -1,0 +1,3 @@
+nasm -felf64 read_input_1.asm
+ld -s read_input_1.o
+
