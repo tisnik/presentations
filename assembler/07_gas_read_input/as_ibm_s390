@@ -1,0 +1,3 @@
+as -m31 read_input-s390.s -o read_input-s390.o
+ld -melf_s390 -s read_input-s390.o
+
