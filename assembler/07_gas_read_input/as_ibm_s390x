@@ -1,0 +1,3 @@
+as read_input-s390x.s -o read_input-s390x.o
+ld -s read_input-s390x.o
+
