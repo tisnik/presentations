@@ -1,0 +1,3 @@
+as read_input-arm.s -o read_input-arm.o
+ld -s read_input-arm.o
+
