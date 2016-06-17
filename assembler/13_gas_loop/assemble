@@ -1,0 +1,3 @@
+as loop3.s -o loop3.o
+ld -s loop3.o
+
