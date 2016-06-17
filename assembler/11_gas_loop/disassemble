@@ -1,0 +1,2 @@
+objdump -M intel-mnemonic -f -d -t -h a.out
+
