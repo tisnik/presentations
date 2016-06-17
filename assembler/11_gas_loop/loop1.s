@@ -25,7 +25,7 @@ rep_count=40
  
 #-----------------------------------------------------------------------------
 .section .bss
-        .lcomm buffer, rep_count+1   # rezervace bufferu pro vystup
+        .lcomm buffer, rep_count     # rezervace bufferu pro vystup
  
  
  
