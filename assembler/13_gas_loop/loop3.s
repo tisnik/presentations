@@ -40,8 +40,8 @@ loop:
         mov   [ecx], al              # zapis znaku do bufferu
         inc   al                     # ASCII kod dalsiho znaku
         inc   ecx                    # uprava ukazatele do bufferu
-        cmp   al, 'z'                # ma se smycka ukoncit?
-        jna   loop                   # pokud jsme neprekrocili kod 'z', opakovat smycku
+        cmp   al, 'z'+1              # ma se smycka ukoncit?
+        jnz   loop                   # pokud jsme neprekrocili kod 'z', opakovat smycku
  
         mov   eax, sys_write         # cislo syscallu pro funkci "write"
         mov   ebx, 1                 # standardni vystup
