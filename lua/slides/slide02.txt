@@ -3,7 +3,7 @@ Vznik jazyka Lua
 ----------------------------------
 1993 PETROBRAS (brazilská ropná společnost)
 Několik projektů
-    DEL - Data Entry Lanugage
+    DEL - Data Entry Language
     +
     SOL - Simple Object Language
     =
