@@ -1,0 +1,18 @@
+
+Tvorba dokumentace v Red Hatu
+-----------------------------
+▶ Vstupní formáty
+    ◆ DocBook
+    ◆ Asciidoc
+    ◆ (Markdown, RST - ReStructuredText)
+▶ Zpracování
+    ◆ Publican
+    ◆ (AsciiDoctor)
+▶ Výstupní formáty
+    ◆ HTML single (jedna stránka)
+    ◆ HTML rozdělený na kapitoly
+    ◆ HTML pro desktop
+    ◆ PDF (sazba volitelně přes TeX)
+    ◆ EPUB
+
+

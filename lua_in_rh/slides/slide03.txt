@@ -1,0 +1,19 @@
+
+Testování dokumentace
+---------------------
+▶ Emender
+    ◆ Framework pro testování dokumentace
+    ◆ Naprogramovaný v jazyku Lua
+    ◆ Open source (na GitHubu)
+    ◆ Lze spouštět z CLI
+    ◆ Nakonfigurovaný formou úloh na Jenkinsu
+▶ Testy
+    ◆ Naprogramované taktéž v Lua
+    ◆ Metainformace + snadno pochopitelný formát
+    ◆ Výstupní formáty z Emenderu:
+        HTML, JSON, XML, JUnit, txt
+    ◆ Většinou taktéž open source (na GitHubu)
+    ◆ Jen malá část testů je určena pouze pro interní potřeby RH
+      (ty závisí na infrastruktuře)
+
+

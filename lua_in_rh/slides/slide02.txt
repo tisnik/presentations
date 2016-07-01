@@ -1,0 +1,16 @@
+
+Workflow
+--------
+▶ Zdrojové kódy dokumentace v GITu (GitLab)
+    ◆ (merge requesty od členů ostatních týmů)
+    ◆ (rychlý náhled na AsciiDoc dokumenty)
+▶ Jenkins server s úlohami pro:
+    ◆ Generování HTML (náhledy)
+    ◆ Generování PDF
+    ◆ Testování
+    ◆ Nasazení finální verze na portál
+▶ Zákaznický portál (Drupal)
+    ◆ Podpora pro fulltext search
+    ◆ Videa, další typy souborů atd
+
+

@@ -1,0 +1,7 @@
+Programovací jazyk Lua a tvorba dokumentace
+===========================================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2016-06-30
+
+

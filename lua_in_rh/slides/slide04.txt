@@ -1,0 +1,23 @@
+
+Testování dokumentace
+---------------------
+▶ Testy
+    ◆ Validita DocBooku
+    ◆ Kontrola platnosti odkazů
+        + kontrola zakázaných odkazů
+    ◆ Kontrola existence balíčků
+    ◆ Testy před publikováním
+        správný rok v (c)?
+        korektní e-mailové adresy (stále platné?)
+        správný "brand"?
+        číslo verze (nesmí být Alfa, Beta, ...)
+        konfigurace (nesmí být "draft", ten dělá watermark)
+    ◆ Jazykové testy
+        kontrola oproti aspell
+        kontrola oproti internímu whitelistu (rozšíření aspellu)
+        kontrola oproti internímu blacklistu (naopak zůžení)
+        použití sémantických značek
+        kontrola zápisu adresářů v <filename class="directory">
+        atd....
+
+
