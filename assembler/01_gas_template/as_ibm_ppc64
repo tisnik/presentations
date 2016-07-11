@@ -1,0 +1,2 @@
+as ppc64.s -o ppc64.o
+ld -s ppc64.o

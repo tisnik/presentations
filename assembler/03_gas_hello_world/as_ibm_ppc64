@@ -1,0 +1,2 @@
+as hello_world-ppc64.s -o hello_world-ppc64.o
+ld -s hello_world-ppc64.o
