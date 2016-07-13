@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{luacode}
+
+\begin{document}
+
+\section*{Backslash behaviour}
+
+\subsection*{luacode}
+
+\begin{luacode*}
+tex.print("\\TeX")
+tex.print("\\\\")
+tex.print("\\textbackslash")
+tex.print("\\\\")
+tex.print("$\\backslash$")
+\end{luacode*}
+
+\subsection*{directlua}
+
+\directlua{--tex.sprint("\noexpand\TeX")}
+
+\directlua{tex.sprint([[\noexpand\TeX]])}
+
+\end{document}
+
