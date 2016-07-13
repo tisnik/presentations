@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{luacode}
+
+\begin{document}
+
+\section*{Random number generator}
+
+A random number:
+\directlua{tex.print(math.random())}
+
+\section*{$\pi$}
+
+$\pi = \directlua{tex.print(math.pi)}$
+
+\section*{Date}
+
+Date:
+\directlua{tex.print(os.date())}
+
+\section*{Combination}
+
+a\directlua{tex.print("--")}b
+
+\end{document}
+
