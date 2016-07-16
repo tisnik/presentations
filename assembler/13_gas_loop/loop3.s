@@ -10,9 +10,13 @@
  
  
 # Linux kernel system call table
-sys_exit=1
-sys_write=4
+sys_exit   = 1
+sys_write  = 4
  
+# Dalsi konstanty pouzite v programu - standardni streamy
+std_input  = 0
+std_output = 1
+
 # pocet opakovani znaku
 rep_count='z'-'a'+1
  
@@ -44,7 +48,7 @@ loop:
         jnz   loop                   # pokud jsme neprekrocili kod 'z', opakovat smycku
  
         mov   eax, sys_write         # cislo syscallu pro funkci "write"
-        mov   ebx, 1                 # standardni vystup
+        mov   ebx, std_output        # standardni vystup
         mov   ecx, offset buffer     # adresa retezce, ktery se ma vytisknout
         mov   edx, rep_count         # pocet znaku, ktere se maji vytisknout
         int   0x80                   # volani Linuxoveho kernelu
