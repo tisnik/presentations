@@ -1,0 +1,3 @@
+as loop1-arm-v1.s -o loop1-arm-v1.o
+ld -s loop1-arm-v1.o
+
