@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{luacode}
+\usepackage{longtable}
+
+\begin{document}
+
+\section*{Callback functions}
+
+\begin{luacode*}
+tex.print("\\begin{longtable}{|r|l|l|}\\hline")
+tex.print("i&key&value\\\\")
+tex.print("\\hline")
+
+local callbacks = callback.list()
+
+local names = {}
+for key,val in pairs(callbacks) do
+    table.insert(names, key)
+end
+
+table.sort(names)
+
+for i,name in ipairs(names) do
+    val = callbacks[name]
+    tex.print(i .. "&", name:gsub("_", "\\_") .. "&" .. tostring(val):gsub("_", "\\_"))
+    tex.print("\\\\")
+end
+
+tex.print("\\hline")
+tex.print("\\end{longtable}")
+\end{luacode*}
+
+
+\end{document}
+
