@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{luacode}
+
+\directlua{dofile("debugprint.lua")}
+\directlua{dofile("test9.lua")}
+
+\newcommand*{\factorial}[1]{%
+  \directlua{debugprint(factorial(#1))}%
+}
+
+\begin{document}
+
+\section*{Faktorial}
+
+\subsection*{verze 3}
+
+\begin{tabular}{|r|r|}
+\hline
+$n$ & $n!$ \\
+\hline
+1   & \factorial{1} \\
+10  & \factorial{10} \\
+100 & \factorial{100} \\
+\hline
+\end{tabular}
+
+\section*{Mocniny dvou}
+
+\subsection*{verze 4}
+
+\begin{tabular}{|r|r|}
+\hline
+$n$ & $2^n$ \\
+\hline
+\directlua{poweroftwo(1,16)}
+\hline
+\end{tabular}
+
+\end{document}
+
