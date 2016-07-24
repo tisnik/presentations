@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{luacode}
+
+\directlua{dofile("test8.lua")}
+
+\newcommand*{\factorial}[1]{%
+  \directlua{tex.print(factorial(#1))}%
+}
+
+\begin{document}
+
+\section*{Faktorial}
+
+\subsection*{verze 2}
+
+\begin{tabular}{|r|r|}
+\hline
+$n$ & $n!$ \\
+\hline
+1   & \factorial{1} \\
+10  & \factorial{10} \\
+100 & \factorial{100} \\
+\hline
+\end{tabular}
+
+\end{document}
+
