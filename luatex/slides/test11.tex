@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{luacode}
+
+\begin{document}
+
+\section{First section}
+
+\subsection{First subsection}
+
+\directlua{tex.print(\thepage)}
+\\
+\directlua{tex.print(\thesection)}
+\\
+\directlua{tex.print(\thesubsection)}
+\\
+
+\subsection{Second subsection}
+
+\directlua{tex.print(\thepage)}
+\\
+\directlua{tex.print(\thesection)}
+\\
+\directlua{tex.print(\thesubsection)}
+\\
+
+\section{Second section}
+
+\directlua{tex.print(\thepage)}
+\\
+\directlua{tex.print(\thesection)}
+\\
+\directlua{tex.print(\thesubsection)}
+\\
+
+\end{document}
+
