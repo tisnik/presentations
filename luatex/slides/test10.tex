@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{luacode}
+
+\begin{document}
+
+\section*{Macro expansion}
+
+\directlua{print("------------------")}
+\directlua{print([[\TeX]])}
+\directlua{print("------------------")}
+\directlua{print([[\noexpand\TeX]])}
+\directlua{print("------------------")}
+
+\directlua{tex.print(string.len([[\TeX]]))}
+\\
+\directlua{tex.print(string.len([[\noexpand\TeX]]))}
+
+\end{document}
+
