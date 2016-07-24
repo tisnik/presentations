@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{luacode}
+
+\usepackage{longtable}
+
+\begin{document}
+
+\section*{Status}
+
+\begin{luacode*}
+tex.print("\\begin{longtable}{|l|p{7cm}|}\\hline")
+tex.print("key&value\\\\")
+tex.print("\\hline")
+local stat = status.list()
+for key,val in pairs(stat) do
+    tex.print(key:gsub("_", "\\_") .. "&" .. tostring(val):gsub("_", "\\_"))
+    tex.print("\\\\")
+end
+tex.print("\\hline")
+tex.print("\\end{longtable}")
+\end{luacode*}
+
+
+\end{document}
+
