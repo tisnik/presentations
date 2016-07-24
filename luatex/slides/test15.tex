@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{luacode}
+
+\begin{document}
+
+
+\section*{Callback functions}
+
+\begin{luacode*}
+function x(head,tail)
+    print()
+    print("hyphenation:")
+    print(head)
+    print(tail)
+end
+
+luatexbase.add_to_callback("hyphenate", x, "description", 0)
+
+\end{luacode*}
+
+This section will guide you through the formatting techniques of the text. Formatting tends to refer to most things to do with appearance, so it makes the list of possible topics quite eclectic: text style, spacing, etc. If formatting may also refer to paragraphs and to the page layout, we will focus on the customization of words and sentences for now.
+
+A lot of formatting techniques are required to differentiate certain elements from the rest of the text. It is often necessary to add emphasis to key words or phrases. Footnotes are useful for providing extra information or clarification without interrupting the main flow of text. So, for these reasons, formatting is very important. However, it is also very easy to abuse, and a document that has been over-done can look and read worse than one with none at all.
+
+\LaTeX is so flexible that we will actually only skim the surface, as you can have much more control over the presentation of your document if you wish. Having said that, one of the purposes of LaTeX is to take away the stress of having to deal with the physical presentation yourself, so you need not get too carried away!
+
+\end{document}
+
