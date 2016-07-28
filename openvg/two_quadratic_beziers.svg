@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg width="400"
+     height="400"
+     viewBox="-10 -10 220 220"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+     <path stroke="black" stroke-width="5" fill="none"
+           d="M 0 100 Q 50 0 100 100 Q 150 50 200 100" />
+     <circle cx="0"   cy="100" r="4" stroke="gray" stroke-width="2" fill="white" />
+     <circle cx="50"  cy="0" r="4" stroke="red" stroke-width="2" fill="yellow" />
+     <circle cx="100" cy="100" r="4" stroke="red" stroke-width="2" fill="yellow" />
+     <circle cx="200" cy="100" r="4" stroke="blue" stroke-width="2" fill="white" />
+     <circle cx="150" cy="50" r="4" stroke="blue" stroke-width="2" fill="white" />
+</svg>
