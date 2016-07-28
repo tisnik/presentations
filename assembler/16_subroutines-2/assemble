@@ -1,0 +1,3 @@
+as -g --32 subroutines-2.s -o subroutines-2.o
+ld -m elf_i386 -s subroutines-2.o
+
