@@ -1,0 +1,3 @@
+as -alm -g --32 macros.s -o macros.o
+ld -m elf_i386 -s macros.o
+
