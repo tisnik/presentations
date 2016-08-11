@@ -1,0 +1,3 @@
+as -g --32 print_directive.s -o print_directive.o
+ld -m elf_i386 -s print_directive.o
+
