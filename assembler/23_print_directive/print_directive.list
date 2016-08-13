@@ -1,0 +1,161 @@
+Declaring label loop0
+Declaring label loop1
+Declaring label loop2
+GAS LISTING print_directive.s 			page 1
+
+
+   1              	# asmsyntax=as
+   2              	
+   3              	# Ukazka pouziti maker v GNU Assembleru - pouziti direktivy .print pro vypis pocitadla
+   4              	# - pouzita je "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	.intel_syntax noprefix
+   9              	
+  10              	
+  11              	# Linux kernel system call table
+  12              	sys_exit   = 1
+  13              	sys_write  = 4
+  14              	
+  15              	# Dalsi konstanty pouzite v programu - standardni streamy
+  16              	std_input  = 0
+  17              	std_output = 1
+  18              	
+  19              	
+  20              	
+  21              	#-----------------------------------------------------------------------------
+  22              	
+  23              	# Deklarace makra pro ukonceni aplikace
+  24              	.macro exit
+  25              	        mov   eax, sys_exit          # cislo sycallu pro funkci "exit"
+  26              	        mov   ebx, 0                 # exit code = 0
+  27              	        int   0x80                   # volani Linuxoveho kernelu
+  28              	.endm
+  29              	
+  30              	
+  31              	
+  32              	# Deklarace makra pro vytisteni zpravy na standardni vystup
+  33              	.macro writeMessage message,messageLength
+  34              	        mov   ecx, offset \message   # adresa retezce, ktery se ma vytisknout
+  35              	        mov   edx, \messageLength    # pocet znaku, ktere se maji vytisknout
+  36              	        call  write_message          # vytisknout zpravu "Zero flag not set"
+  37              	.endm
+  38              	
+  39              	
+  40              	
+  41              	# Deklarace makra pro vytisteni zpravy na standardni vystup
+  42              	.macro writeMessageRepeatedly message,messageLength,count
+  43              	        mov   ebp, \count            # nastaveni pocitadla
+  44              	        .print "Declaring label loop\@"
+  45              	loop\@:                              # lokalni navesti (unikatni)
+  46              	        mov   ecx, offset \message   # adresa retezce, ktery se ma vytisknout
+  47              	        mov   edx, \messageLength    # pocet znaku, ktere se maji vytisknout
+  48              	        call  write_message          # vytisknout zpravu "Zero flag not set"
+  49              	        dec   ebp                    # snizeni hodnoty pocitadla
+  50              	        jnz   loop\@                 # opakovani smycky
+  51              	.endm
+  52              	
+  53              	
+  54              	
+  55              	#-----------------------------------------------------------------------------
+  56              	.section .data
+  57              	message1:
+GAS LISTING print_directive.s 			page 2
+
+
+  58 0000 48656C6C 	        .string "Hello world\n"
+  58      6F20776F 
+  58      726C640A 
+  58      00
+  59              	message1len = $ - message1         # delka prvni zpravy
+  60              	
+  61              	message2:
+  62 000d 56697465 	        .string "Vitejte na mojefedora.cz\n"
+  62      6A746520 
+  62      6E61206D 
+  62      6F6A6566 
+  62      65646F72 
+  63              	message2len = $ - message2         # delka druhe zpravy
+  64              	
+  65              	message3:
+  66 0027 41737365 	        .string "Assembler je fajn\n"
+  66      6D626C65 
+  66      72206A65 
+  66      2066616A 
+  66      6E0A00
+  67              	message3len = $ - message3         # delka druhe zpravy
+  68              	
+  69              	
+  70              	
+  71              	#-----------------------------------------------------------------------------
+  72              	.section .bss
+  73              	
+  74              	
+  75              	
+  76              	#-----------------------------------------------------------------------------
+  77              	.section .text
+  78              	        .global _start               # tento symbol ma byt dostupny i linkeru
+  79              	
+  80              	_start:
+  81              	        writeMessageRepeatedly message1,message1len,10
+  81 0000 BD0A0000 	>  mov ebp,10
+  81      00
+  81              	>  .print "Declaring label loop0"
+  81              	> loop0:
+  81 0005 B9000000 	>  mov ecx,offset message1
+  81      00
+  81 000a BA0D0000 	>  mov edx,message1len
+  81      00
+  81 000f E83D0000 	>  call write_message
+  81      00
+  81 0014 4D       	>  dec ebp
+  81 0015 75EE     	>  jnz loop0
+  82              	        writeMessageRepeatedly message2,message2len,2
+  82 0017 BD020000 	>  mov ebp,2
+  82      00
+  82              	>  .print "Declaring label loop1"
+  82              	> loop1:
+  82 001c B90D0000 	>  mov ecx,offset message2
+  82      00
+  82 0021 BA1A0000 	>  mov edx,message2len
+  82      00
+  82 0026 E8260000 	>  call write_message
+GAS LISTING print_directive.s 			page 3
+
+
+  82      00
+  82 002b 4D       	>  dec ebp
+  82 002c 75EE     	>  jnz loop1
+  83              	        writeMessageRepeatedly message3,message3len,7
+  83 002e BD070000 	>  mov ebp,7
+  83      00
+  83              	>  .print "Declaring label loop2"
+  83              	> loop2:
+  83 0033 B9270000 	>  mov ecx,offset message3
+  83      00
+  83 0038 BA130000 	>  mov edx,message3len
+  83      00
+  83 003d E80F0000 	>  call write_message
+  83      00
+  83 0042 4D       	>  dec ebp
+  83 0043 75EE     	>  jnz loop2
+  84              	        exit                         # ukonceni aplikace
+  84 0045 B8010000 	>  mov eax,sys_exit
+  84      00
+  84 004a BB000000 	>  mov ebx,0
+  84      00
+  84 004f CD80     	>  int 0x80
+  85              	
+  86              	
+  87              	
+  88              	# Podprogram pro vytisteni zpravy na standardni vystup
+  89              	# Ocekava se, ze v ecx bude adresa zpravy a v edx jeji delka
+  90              	write_message:
+  91 0051 B8040000 	        mov   eax, sys_write         # cislo syscallu pro funkci "write"
+  91      00
+  92 0056 BB010000 	        mov   ebx, std_output        # standardni vystup
+  92      00
+  93 005b CD80     	        int   0x80
+  94 005d C3       	        ret
+  95              	
