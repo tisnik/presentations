@@ -1,0 +1,126 @@
+GAS LISTING macros.s 			page 1
+
+
+   1              	# asmsyntax=as
+   2              	
+   3              	# Ukazka pouziti maker v GNU Assembleru
+   4              	# - pouzita je "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	.intel_syntax noprefix
+   9              	
+  10              	
+  11              	# Linux kernel system call table
+  12              	sys_exit   = 1
+  13              	sys_write  = 4
+  14              	
+  15              	# Dalsi konstanty pouzite v programu - standardni streamy
+  16              	std_input  = 0
+  17              	std_output = 1
+  18              	
+  19              	
+  20              	
+  21              	#-----------------------------------------------------------------------------
+  22              	
+  23              	# Deklarace makra pro ukonceni aplikace
+  24              	.macro exit
+  25              	        mov   eax, sys_exit          # cislo sycallu pro funkci "exit"
+  26              	        mov   ebx, 0                 # exit code = 0
+  27              	        int   0x80                   # volani Linuxoveho kernelu
+  28              	.endm
+  29              	
+  30              	
+  31              	
+  32              	# Deklarace makra pro vytisteni zpravy na standardni vystup
+  33              	.macro writeMessage message,messageLength
+  34              	        mov   ecx, offset \message   # adresa retezce, ktery se ma vytisknout
+  35              	        mov   edx, \messageLength    # pocet znaku, ktere se maji vytisknout
+  36              	        call  write_message          # vytisknout zpravu "Zero flag not set"
+  37              	.endm
+  38              	
+  39              	
+  40              	
+  41              	#-----------------------------------------------------------------------------
+  42              	.section .data
+  43              	message1:
+  44 0000 48656C6C 	        .string "Hello world\n"
+  44      6F20776F 
+  44      726C640A 
+  44      00
+  45              	message1len = $ - message1         # delka prvni zpravy
+  46              	
+  47              	message2:
+  48 000d 56697465 	        .string "Vitejte na mojefedora.cz\n"
+  48      6A746520 
+  48      6E61206D 
+  48      6F6A6566 
+  48      65646F72 
+  49              	message2len = $ - message2         # delka druhe zpravy
+  50              	
+GAS LISTING macros.s 			page 2
+
+
+  51              	message3:
+  52 0027 41737365 	        .string "Assembler je fajn\n"
+  52      6D626C65 
+  52      72206A65 
+  52      2066616A 
+  52      6E0A00
+  53              	message3len = $ - message3         # delka druhe zpravy
+  54              	
+  55              	
+  56              	
+  57              	#-----------------------------------------------------------------------------
+  58              	.section .bss
+  59              	
+  60              	
+  61              	
+  62              	#-----------------------------------------------------------------------------
+  63              	.section .text
+  64              	        .global _start               # tento symbol ma byt dostupny i linkeru
+  65              	
+  66              	_start:
+  67              	        writeMessage message1,message1len
+  67 0000 B9000000 	>  mov ecx,offset message1
+  67      00
+  67 0005 BA0D0000 	>  mov edx,message1len
+  67      00
+  67 000a E82A0000 	>  call write_message
+  67      00
+  68              	        writeMessage message2,message2len
+  68 000f B90D0000 	>  mov ecx,offset message2
+  68      00
+  68 0014 BA1A0000 	>  mov edx,message2len
+  68      00
+  68 0019 E81B0000 	>  call write_message
+  68      00
+  69              	        writeMessage message3,message3len
+  69 001e B9270000 	>  mov ecx,offset message3
+  69      00
+  69 0023 BA130000 	>  mov edx,message3len
+  69      00
+  69 0028 E80C0000 	>  call write_message
+  69      00
+  70              	        exit                         # ukonceni aplikace
+  70 002d B8010000 	>  mov eax,sys_exit
+  70      00
+  70 0032 BB000000 	>  mov ebx,0
+  70      00
+  70 0037 CD80     	>  int 0x80
+  71              	
+  72              	
+  73              	
+  74              	# Podprogram pro vytisteni zpravy na standardni vystup
+  75              	# Ocekava se, ze v ecx bude adresa zpravy a v edx jeji delka
+  76              	write_message:
+  77 0039 B8040000 	        mov   eax, sys_write         # cislo syscallu pro funkci "write"
+  77      00
+  78 003e BB010000 	        mov   ebx, std_output        # standardni vystup
+  78      00
+GAS LISTING macros.s 			page 3
+
+
+  79 0043 CD80     	        int   0x80
+  80 0045 C3       	        ret
+  81              	
