@@ -1,0 +1,154 @@
+GAS LISTING local_labels.s 			page 1
+
+
+   1              	# asmsyntax=as
+   2              	
+   3              	# Ukazka pouziti maker v GNU Assembleru - tvorba lokalnich navesti
+   4              	# - pouzita je "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	.intel_syntax noprefix
+   9              	
+  10              	
+  11              	# Linux kernel system call table
+  12              	sys_exit   = 1
+  13              	sys_write  = 4
+  14              	
+  15              	# Dalsi konstanty pouzite v programu - standardni streamy
+  16              	std_input  = 0
+  17              	std_output = 1
+  18              	
+  19              	
+  20              	
+  21              	#-----------------------------------------------------------------------------
+  22              	
+  23              	# Deklarace makra pro ukonceni aplikace
+  24              	.macro exit
+  25              	        mov   eax, sys_exit          # cislo sycallu pro funkci "exit"
+  26              	        mov   ebx, 0                 # exit code = 0
+  27              	        int   0x80                   # volani Linuxoveho kernelu
+  28              	.endm
+  29              	
+  30              	
+  31              	
+  32              	# Deklarace makra pro vytisteni zpravy na standardni vystup
+  33              	.macro writeMessage message,messageLength
+  34              	        mov   ecx, offset \message   # adresa retezce, ktery se ma vytisknout
+  35              	        mov   edx, \messageLength    # pocet znaku, ktere se maji vytisknout
+  36              	        call  write_message          # vytisknout zpravu "Zero flag not set"
+  37              	.endm
+  38              	
+  39              	
+  40              	
+  41              	# Deklarace makra pro vytisteni zpravy na standardni vystup
+  42              	.macro writeMessageRepeatedly message,messageLength,count
+  43              	        mov   ebp, \count            # nastaveni pocitadla
+  44              	loop\@:                              # lokalni navesti (unikatni)
+  45              	        mov   ecx, offset \message   # adresa retezce, ktery se ma vytisknout
+  46              	        mov   edx, \messageLength    # pocet znaku, ktere se maji vytisknout
+  47              	        call  write_message          # vytisknout zpravu "Zero flag not set"
+  48              	        dec   ebp                    # snizeni hodnoty pocitadla
+  49              	        jnz   loop\@                 # opakovani smycky
+  50              	.endm
+  51              	
+  52              	
+  53              	
+  54              	#-----------------------------------------------------------------------------
+  55              	.section .data
+  56              	message1:
+  57 0000 48656C6C 	        .string "Hello world\n"
+GAS LISTING local_labels.s 			page 2
+
+
+  57      6F20776F 
+  57      726C640A 
+  57      00
+  58              	message1len = $ - message1         # delka prvni zpravy
+  59              	
+  60              	message2:
+  61 000d 56697465 	        .string "Vitejte na mojefedora.cz\n"
+  61      6A746520 
+  61      6E61206D 
+  61      6F6A6566 
+  61      65646F72 
+  62              	message2len = $ - message2         # delka druhe zpravy
+  63              	
+  64              	message3:
+  65 0027 41737365 	        .string "Assembler je fajn\n"
+  65      6D626C65 
+  65      72206A65 
+  65      2066616A 
+  65      6E0A00
+  66              	message3len = $ - message3         # delka druhe zpravy
+  67              	
+  68              	
+  69              	
+  70              	#-----------------------------------------------------------------------------
+  71              	.section .bss
+  72              	
+  73              	
+  74              	
+  75              	#-----------------------------------------------------------------------------
+  76              	.section .text
+  77              	        .global _start               # tento symbol ma byt dostupny i linkeru
+  78              	
+  79              	_start:
+  80              	        writeMessageRepeatedly message1,message1len,10
+  80 0000 BD0A0000 	>  mov ebp,10
+  80      00
+  80              	> loop0:
+  80 0005 B9000000 	>  mov ecx,offset message1
+  80      00
+  80 000a BA0D0000 	>  mov edx,message1len
+  80      00
+  80 000f E83D0000 	>  call write_message
+  80      00
+  80 0014 4D       	>  dec ebp
+  80 0015 75EE     	>  jnz loop0
+  81              	        writeMessageRepeatedly message2,message2len,2
+  81 0017 BD020000 	>  mov ebp,2
+  81      00
+  81              	> loop1:
+  81 001c B90D0000 	>  mov ecx,offset message2
+  81      00
+  81 0021 BA1A0000 	>  mov edx,message2len
+  81      00
+  81 0026 E8260000 	>  call write_message
+  81      00
+  81 002b 4D       	>  dec ebp
+  81 002c 75EE     	>  jnz loop1
+GAS LISTING local_labels.s 			page 3
+
+
+  82              	        writeMessageRepeatedly message3,message3len,7
+  82 002e BD070000 	>  mov ebp,7
+  82      00
+  82              	> loop2:
+  82 0033 B9270000 	>  mov ecx,offset message3
+  82      00
+  82 0038 BA130000 	>  mov edx,message3len
+  82      00
+  82 003d E80F0000 	>  call write_message
+  82      00
+  82 0042 4D       	>  dec ebp
+  82 0043 75EE     	>  jnz loop2
+  83              	        exit                         # ukonceni aplikace
+  83 0045 B8010000 	>  mov eax,sys_exit
+  83      00
+  83 004a BB000000 	>  mov ebx,0
+  83      00
+  83 004f CD80     	>  int 0x80
+  84              	
+  85              	
+  86              	
+  87              	# Podprogram pro vytisteni zpravy na standardni vystup
+  88              	# Ocekava se, ze v ecx bude adresa zpravy a v edx jeji delka
+  89              	write_message:
+  90 0051 B8040000 	        mov   eax, sys_write         # cislo syscallu pro funkci "write"
+  90      00
+  91 0056 BB010000 	        mov   ebx, std_output        # standardni vystup
+  91      00
+  92 005b CD80     	        int   0x80
+  93 005d C3       	        ret
+  94              	
