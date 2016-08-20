@@ -1,0 +1,3 @@
+as -g --32 include.s -o include.o
+ld -m elf_i386 -s include.o
+

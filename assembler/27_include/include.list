@@ -1,0 +1,172 @@
+Declaring label loop0
+Declaring label loop2
+Declaring label loop4
+GAS LISTING include.s 			page 1
+
+
+   1              	# asmsyntax=as
+   2              	
+   3              	# Ukazka pouziti maker v GNU Assembleru - direktiva .include
+   4              	# - pouzita je "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	.intel_syntax noprefix
+   9              	
+  10              	# Nacteni definice makra pro ukonceni aplikace
+  11              	.include "exit.s"
+   1              	# asmsyntax=as
+   2              	
+   3              	# Makro pro ukonceni procesu v Linuxu.
+   4              	#
+   5              	# Autor: Pavel Tisnovsky
+   6              	
+   7              	sys_exit   = 1
+   8              	
+   9              	# Deklarace makra pro ukonceni aplikace
+  10              	.macro exit
+  11              	        mov   eax, sys_exit          # cislo sycallu pro funkci "exit"
+  12              	        mov   ebx, 0                 # exit code = 0
+  13              	        int   0x80                   # volani Linuxoveho kernelu
+  14              	.endm
+  15              	
+  12              	
+  13              	# Nacteni maker pro (opakovany) tisk zpravy i prislusne subrutiny
+  14              	.include "writeMessage.s"
+   1              	# asmsyntax=as
+   2              	
+   3              	# Makro pro tisk zpravy na standardni vystup.
+   4              	#
+   5              	# Autor: Pavel Tisnovsky
+   6              	
+   7              	# Linux kernel system call table
+   8              	sys_write  = 4
+   9              	std_output = 1
+  10              	
+  11              	
+  12              	# Deklarace makra pro vytisteni zpravy na standardni vystup
+  13              	.macro writeMessage message,messageLength
+  14              	        mov   ecx, offset \message   # adresa retezce, ktery se ma vytisknout
+  15              	        mov   edx, \messageLength    # pocet znaku, ktere se maji vytisknout
+  16              	        call  write_message          # vytisknout zpravu "Zero flag not set"
+  17              	.endm
+  18              	
+  19              	
+  20              	
+  21              	# Deklarace makra pro vytisteni zpravy na standardni vystup
+  22              	.macro writeMessageRepeatedly message,messageLength,count
+  23              	        mov   ebp, \count            # nastaveni pocitadla
+  24              	        .print "Declaring label loop\@"
+  25              	loop\@:                              # lokalni navesti (unikatni)
+  26              	        writeMessage \message, \messageLength
+  27              	        dec   ebp                    # snizeni hodnoty pocitadla
+  28              	        jnz   loop\@                 # opakovani smycky
+GAS LISTING include.s 			page 2
+
+
+  29              	.endm
+  30              	
+  31              	
+  32              	
+  33              	# Podprogram pro vytisteni zpravy na standardni vystup
+  34              	# Ocekava se, ze v ecx bude adresa zpravy a v edx jeji delka
+  35              	write_message:
+  36 0000 B8040000 	        mov   eax, sys_write         # cislo syscallu pro funkci "write"
+  36      00
+  37 0005 BB010000 	        mov   ebx, std_output        # standardni vystup
+  37      00
+  38 000a CD80     	        int   0x80
+  39 000c C3       	        ret
+  40              	
+  15              	
+  16              	
+  17              	
+  18              	#-----------------------------------------------------------------------------
+  19              	.section .data
+  20              	message1:
+  21 0000 48656C6C 	        .string "Hello world\n"
+  21      6F20776F 
+  21      726C640A 
+  21      00
+  22              	message1len = $ - message1         # delka prvni zpravy
+  23              	
+  24              	message2:
+  25 000d 56697465 	        .string "Vitejte na mojefedora.cz\n"
+  25      6A746520 
+  25      6E61206D 
+  25      6F6A6566 
+  25      65646F72 
+  26              	message2len = $ - message2         # delka druhe zpravy
+  27              	
+  28              	message3:
+  29 0027 41737365 	        .string "Assembler je fajn\n"
+  29      6D626C65 
+  29      72206A65 
+  29      2066616A 
+  29      6E0A00
+  30              	message3len = $ - message3         # delka druhe zpravy
+  31              	
+  32              	
+  33              	
+  34              	#-----------------------------------------------------------------------------
+  35              	.section .bss
+  36              	
+  37              	
+  38              	
+  39              	#-----------------------------------------------------------------------------
+  40              	.section .text
+  41              	        .global _start               # tento symbol ma byt dostupny i linkeru
+  42              	
+  43              	_start:
+  44              	        writeMessageRepeatedly message1,message1len,10
+  44 000d BD0A0000 	>  mov ebp,10
+  44      00
+GAS LISTING include.s 			page 3
+
+
+  44              	>  .print "Declaring label loop0"
+  44              	> loop0:
+  44              	>  writeMessage message1,message1len
+  44 0012 B9000000 	>>  mov ecx,offset message1
+  44      00
+  44 0017 BA0D0000 	>>  mov edx,message1len
+  44      00
+  44 001c E8DFFFFF 	>>  call write_message
+  44      FF
+  44 0021 4D       	>  dec ebp
+  44 0022 75EE     	>  jnz loop0
+  45              	        writeMessageRepeatedly message2,message2len,2
+  45 0024 BD020000 	>  mov ebp,2
+  45      00
+  45              	>  .print "Declaring label loop2"
+  45              	> loop2:
+  45              	>  writeMessage message2,message2len
+  45 0029 B90D0000 	>>  mov ecx,offset message2
+  45      00
+  45 002e BA1A0000 	>>  mov edx,message2len
+  45      00
+  45 0033 E8C8FFFF 	>>  call write_message
+  45      FF
+  45 0038 4D       	>  dec ebp
+  45 0039 75EE     	>  jnz loop2
+  46              	        writeMessageRepeatedly message3,message3len,7
+  46 003b BD070000 	>  mov ebp,7
+  46      00
+  46              	>  .print "Declaring label loop4"
+  46              	> loop4:
+  46              	>  writeMessage message3,message3len
+  46 0040 B9270000 	>>  mov ecx,offset message3
+  46      00
+  46 0045 BA130000 	>>  mov edx,message3len
+  46      00
+  46 004a E8B1FFFF 	>>  call write_message
+  46      FF
+  46 004f 4D       	>  dec ebp
+  46 0050 75EE     	>  jnz loop4
+  47              	        exit                         # ukonceni aplikace
+  47 0052 B8010000 	>  mov eax,sys_exit
+  47      00
+  47 0057 BB000000 	>  mov ebx,0
+  47      00
+  47 005c CD80     	>  int 0x80
+  48              	
