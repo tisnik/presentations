@@ -1,0 +1,95 @@
+.ifc
+Hello != World
+Hello == Hello
+empty strings are equal
+
+.ifeqs
+Hello != World
+Hello == Hello
+empty strings are equal
+
+.ifnes
+Hello != World
+Hello == Hello
+empty strings are equal
+GAS LISTING string_comparisons.s 			page 1
+
+
+   1              	# asmsyntax=as
+   2              	
+   3              	# Ukazka pouziti maker v GNU Assembleru - direktivy pro porovnani retezcu
+   4              	# - pouzita je "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	.intel_syntax noprefix
+   9              	
+  10              	
+  11              	
+  12              	.print ".ifc"
+  13              	
+  14              	.ifc "Hello", "World"
+  15              	    .print "Hello == World"
+  16              	.else
+  17              	    .print "Hello != World"
+  18              	.endif
+  19              	
+  20              	.ifc "Hello", "Hello"
+  21              	    .print "Hello == Hello"
+  22              	.else
+  23              	    .print "Hello != Hello"
+  24              	.endif
+  25              	
+  26              	.ifc "", ""
+  27              	    .print "empty strings are equal"
+  28              	.else
+  29              	    .print "empty strings are not equal"
+  30              	.endif
+  31              	
+  32              	
+  33              	
+  34              	.print "\n.ifeqs"
+  35              	
+  36              	.ifeqs "Hello", "World"
+  37              	    .print "Hello == World"
+  38              	.else
+  39              	    .print "Hello != World"
+  40              	.endif
+  41              	
+  42              	.ifeqs "Hello", "Hello"
+  43              	    .print "Hello == Hello"
+  44              	.else
+  45              	    .print "Hello != Hello"
+  46              	.endif
+  47              	
+  48              	.ifeqs "", ""
+  49              	    .print "empty strings are equal"
+  50              	.else
+  51              	    .print "empty strings are not equal"
+  52              	.endif
+  53              	
+  54              	
+  55              	
+  56              	.print "\n.ifnes"
+  57              	
+GAS LISTING string_comparisons.s 			page 2
+
+
+  58              	.ifnes "Hello", "World"
+  59              	    .print "Hello != World"
+  60              	.else
+  61              	    .print "Hello == World"
+  62              	.endif
+  63              	
+  64              	.ifnes "Hello", "Hello"
+  65              	    .print "Hello != Hello"
+  66              	.else
+  67              	    .print "Hello == Hello"
+  68              	.endif
+  69              	
+  70              	.ifnes "", ""
+  71              	    .print "empty strings are not equal"
+  72              	.else
+  73              	    .print "empty strings are equal"
+  74              	.endif
+  75              	

@@ -1,0 +1,3 @@
+as -g --32 string_comparisons.s -o string_comparisons.o
+ld -m elf_i386 -s string_comparisons.o
+
