@@ -1,0 +1,3 @@
+as -g --32 zero_flag.s -o zero_flag.o
+ld -m elf_i386 -s zero_flag.o
+
