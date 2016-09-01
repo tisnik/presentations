@@ -22,7 +22,7 @@
         mov   eax, \const1
         mov   ebx, \const2
         cmp   eax, ebx               # porovnani registru a nastaveni priznaku
-        js    sign_set\@             # test na priznak ZF
+        js    sign_set\@             # test na priznak SF
         writeMessage messageSignNotSet, messageSignNotSetLen
         jmp   end_compare\@
 sign_set\@:
@@ -35,7 +35,7 @@ end_compare\@:
         mov   eax, \const1
         mov   ebx, \const2
         add   eax, ebx               # soucet registru a nastaveni priznaku
-        js    sign_set\@             # test na priznak ZF
+        js    sign_set\@             # test na priznak SF
         writeMessage messageSignNotSet, messageSignNotSetLen
         jmp   end_add\@
 sign_set\@:

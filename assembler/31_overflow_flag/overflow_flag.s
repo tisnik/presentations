@@ -22,7 +22,7 @@
         mov   eax, \const1
         mov   ebx, \const2
         cmp   eax, ebx               # porovnani registru a nastaveni priznaku
-        jo    overflow_set\@             # test na priznak ZF
+        jo    overflow_set\@             # test na priznak OF
         writeMessage messageOverflowNotSet, messageOverflowNotSetLen
         jmp   end_compare\@
 overflow_set\@:
@@ -35,7 +35,7 @@ end_compare\@:
         mov   eax, \const1
         mov   ebx, \const2
         add   eax, ebx               # soucet registru a nastaveni priznaku
-        jo    overflow_set\@             # test na priznak ZF
+        jo    overflow_set\@             # test na priznak OF
         writeMessage messageOverflowNotSet, messageOverflowNotSetLen
         jmp   end_add\@
 overflow_set\@:
