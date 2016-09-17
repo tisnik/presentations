@@ -1,6 +1,6 @@
 # asmsyntax=as
 
-# Program pro otestovani makra urceneho pro vytisteni hexadecimalni hodnoty.
+# Program pro otestovani makra urceneho pro vytisteni desitkove hodnoty.
 # - pro zapis je pouzita "Intel" syntaxe.
 #
 # Autor: Pavel Tisnovsky
@@ -15,7 +15,7 @@
 # Nacteni maker pro (opakovany) tisk zpravy i prislusne subrutiny
 .include "writeMessage.s"
 
-# Nacteni makra pro vytisteni hexadecimalni 32bitove hodnoty
+# Nacteni makra pro vytisteni desitkove 32bitove hodnoty
 # spolecne s makrem je nactena i prislusna subrutina
 .include "printDecimalNumber.s"
 
