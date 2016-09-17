@@ -25,7 +25,15 @@ can be found on the address
 
 ### Matplotlib
 
-Examples that are written in Python and use the Matplotlib library
+Examples that are written in Python and use the Matplotlib library that
 can be found on the address
 [http://matplotlib.org/](http://matplotlib.org/).
+
+
+Credits
+-------
+ * Dan Horak ported some assembly examples to s390 and s390x
+ * Rafael Fonseca ported some assembly examples to PowerPC
+
+Thanx a lot!
 
