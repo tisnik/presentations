@@ -23,15 +23,15 @@
 
 .macro testAndPrintBitValue word,bitIndex
         mov ebx, \word
-        printHexNumber ebx
-        mov al, '0'
-        btc  ebx, \bitIndex
-        push ebx
-        adc al, 0
-        mov [bitValueTemplate], al
-        writeMessage bitValueMessage, bitValueMessageLen
-        pop ebx
-        printHexNumber ebx
+        printHexNumber ebx                 # vytisteni puvodni hodnoty
+        mov al, '0'                        # ASCII kod znaku, ktery se ma vepsat do sablony
+        btc  ebx, \bitIndex                # test bitu a posleze jeho negace
+        push ebx                           # nechceme prijit o hodnotu predanou do makra
+        adc al, 0                          # pricteni Carry Flagu ke znaku "0"
+        mov [bitValueTemplate], al         # zapis do sablony
+        writeMessage bitValueMessage, bitValueMessageLen  # vypis celeho retezce na standardni vystup
+        pop ebx                            # obnoveni hodnoty ulozene na zasobnik instrukci push ebx
+        printHexNumber ebx                 # vytisteni nove hodnoty (po negaci vybraneho bitu)
         println
 .endm
 
