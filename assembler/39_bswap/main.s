@@ -37,19 +37,19 @@
 
 _start:
         mov eax, 0x12345678
-        printHexNumber eax           # vytiskneme původní hodnotu
+        printHexNumber eax           # vytiskneme puvodni hodnotu
         bswap eax
         printHexNumber eax           # vytiskneme slovo s prohozenymi bajty
         bswap eax
-        printHexNumber eax           # vytiskneme původní hodnotu
+        printHexNumber eax           # vytiskneme puvodni hodnotu
         println
 
         mov eax, 0x000000ff
-        printHexNumber eax           # vytiskneme původní hodnotu
+        printHexNumber eax           # vytiskneme puvodni hodnotu
         bswap eax
         printHexNumber eax           # vytiskneme slovo s prohozenymi bajty
         bswap eax
-        printHexNumber eax           # vytiskneme původní hodnotu
+        printHexNumber eax           # vytiskneme puvodni hodnotu
         println
 
         exit                         # ukonceni aplikace
