@@ -23,11 +23,11 @@
 
 .macro testAndPrintBitValue word,bitIndex
         mov ebx, \word
-        mov al, '0'
-        bt  ebx, \bitIndex
-        adc al, 0
-        mov [bitValueTemplate], al
-        writeMessage bitValueMessage, bitValueMessageLen
+        mov al, '0'                        # ASCII kod znaku, ktery se ma vepsat do sablony
+        bt  ebx, \bitIndex                 # pokud je testovany bit jednickovy, nastavi se i Carry Flag
+        adc al, 0                          # pricteni Carry Flagu ke znaku "0"
+        mov [bitValueTemplate], al         # zapis do sablony
+        writeMessage bitValueMessage, bitValueMessageLen  # vypis celeho retezce na standardni vystup
 .endm
 
 #-----------------------------------------------------------------------------
