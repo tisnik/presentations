@@ -6,7 +6,7 @@ public class ListSourcePositionProcessor extends AbstractProcessor {
     public void process(CtElement element) {
         SourcePosition sp = element.getPosition();
         String position = sp == null ? "unknown" : sp.toString();
-        System.out.println(position + "\t" + element);
+        System.out.println(position + "\t" + element.getClass().getName() + "\t" + element.getShortRepresentation());
     }
 }
 
