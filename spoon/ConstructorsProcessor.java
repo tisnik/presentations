@@ -1,6 +1,5 @@
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtConstructor;
-import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.cu.SourcePosition;
 
 public class ConstructorsProcessor extends AbstractProcessor<CtConstructor> {
