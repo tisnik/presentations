@@ -103,6 +103,10 @@ Vim for developers
 
 Configuration options
 ---------------------------
+    :set
+        list all non-default options
+    :set [no]optionName
+        for Boolean options like yes/no  on/of  enable/disable
     :set nocompatible
         turn on when no .vimrc or .gvimrc file is found!
         almost nobody wants to use :set compatible :)
@@ -120,7 +124,8 @@ Configuration options
         eol    - you could delete EOL effectively joining lines
         start  - you could delete text written in previous 'session'
         indent - spaces inserted by autoindent could be deleted
-    :set filetype=[dos,unix]
+    :set fileformat=[dos,unix]
+        can be used instead of dos2unix tool
     :set selection=exclusive
         block behaviour is similar to other editors
     :set selection=inclusive
