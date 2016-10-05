@@ -2,10 +2,6 @@ Vim course 6
 ================================================
 ■ Author:    Pavel Tišnovský
 
-Vim Plugins
-----------------------
-▶ Vim can remember
-=======
 Plugins for Vim
 --------------------------------
 ▶ Global installation into $VIMRUNTIME/
