@@ -1,0 +1,14 @@
+
+Windows
+-------
+▶ How to create and close window
+    Ctrl+W n (new)
+    Ctrl+W s (split)
+    Ctrl+W v (vertical split)
+    Ctrl+W f (file)
+    :q
+▶ How to switch between windows
+    Ctrl+W w             (next win)
+    Ctrl+W Ctrl+W        (the same, but faster)
+    Ctrl+W h/j/k/l       (go to the window in given direction)
+    Ctrl+W<Shift>h/j/k/l (move window in selected direction)

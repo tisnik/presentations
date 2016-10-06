@@ -1,0 +1,13 @@
+
+Special operator+motion combinations
+------------------------------------
+        dd   delete whole line
+       2dd   delete two lines
+        yy   yank (copy) whole line
+       2yy   yank two lines
+        cc   change whole line
+        D    delete until EOL
+        C    change until EOL
+        S    change whole line (same as cc)
+        >>   right shift one line
+        <<   left shift one line

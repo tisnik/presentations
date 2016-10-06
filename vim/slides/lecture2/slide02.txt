@@ -1,0 +1,19 @@
+
+Basic operators & editing commands
+----------------------------------
+▶ Basic operators
+    ◆ d - delete text and put it into register named "
+    ◆ c - replace the specified text (deleted/old text is put into " reg)
+    ◆ y - like Ctrl+C in other applications
+▶ How to paste text stored in register named "
+    ◆ p  - paste
+    ◆ P  - paste before cursor
+    ◆ gp - paste & move cursor below new text
+    ◆ gP - P & gp
+▶ Vim vs. other text editors
+    ◆ Ctrl+X ~~~ d
+    ◆ Ctrl+C ~~~ y
+    ◆ Ctrl+V ~~~ p
+▶ Edit history
+    ◆ . repeat last command
+    ◆ n. repeat last command n times (n>0)

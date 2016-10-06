@@ -1,0 +1,13 @@
+
+Registers
+---------
+    ◆ 0-9   automatically filled by yank and delete operators
+            editation history, very useful in some situations
+    ◆ =     eval mode pseudoregister
+            wait for user input, you can use expression that
+            is immediatelly evaluated:
+            Normal mode:
+            "=6*7<cr>p
+            Insert mode:
+            Ctrl+R=6*7<cr>
+    :reg - shows all regs

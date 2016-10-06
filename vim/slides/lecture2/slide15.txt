@@ -1,0 +1,8 @@
+
+Windows
+-------
+    Ctrl++   (resize, make window bigger, for horizontal split)
+    Ctrl+-   (resize, make window smaller, for horizontal split)
+    Ctrl+=   (the same size)
+    Ctrl+>   (resize, make window bigger, for horizontal split)
+    Ctrl+<   (resize, make window smaller, for horizontal split)

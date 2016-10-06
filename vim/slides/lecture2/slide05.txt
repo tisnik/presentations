@@ -1,0 +1,6 @@
+
+Examples 2: repeat-count operator motion-command
+------------------------------------------------
+        d3w  delete 3 words
+        3dw  delete 3 words
+        9dd  delete 9 lines

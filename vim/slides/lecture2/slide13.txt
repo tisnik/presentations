@@ -1,0 +1,9 @@
+
+Tabs
+----
+    :tabnew
+    :tabnew filename
+    :tabnext
+    :tabfirst
+    :tabclose
+    Ctrl+W gf

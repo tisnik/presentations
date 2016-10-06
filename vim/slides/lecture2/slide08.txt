@@ -1,0 +1,21 @@
+
+Normal mode->Insert mode->Normal mode
+-------------------------------------
+▶ Normal mode->Insert mode
+    ◆ a        append
+    ◆ A        append at EOL
+    ◆ i        insert
+    ◆ I        insert before first non-blank
+    ◆ gI       insert at beginning of line
+    ◆ o        open new line _below_
+    ◆ O        open new line _above_ (Shift changes direction as usual)
+    ◆ [insert] insert
+▶ Normal mode->Replace mode
+    ◆ R        replace mode
+▶ Insert mode->Replace mode
+    ◆ [insert]
+▶ Replace mode->Insert mode
+    ◆ [insert]
+▶ Insert mode->Normal mode
+    ◆ Ctrl+O   temporary switch (for one command only)
+    ◆ Esc      permanent switch

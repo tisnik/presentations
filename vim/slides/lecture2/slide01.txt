@@ -1,0 +1,15 @@
+
+Operators
+---------
+    c   change
+    d   delete
+    y   yank
+    !   filter
+    >   shift right
+    <   shift left
+    g~  swap case
+    gu  lowercase
+    gU  Uppercase
+    gq  format
+    g?  ROT13
+    =   indent

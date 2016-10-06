@@ -1,0 +1,12 @@
+
+Usage
+-----
+▶ Basic usage of operators
+    ◆ operator motion-command
+    ◆ operator text-object
+    ◆ repeat-count operator motion-command
+    ◆ repeat-count operator text-object
+    ◆ {visual} operator
+▶ In some cases (delete, yank):
+    ◆ "register operator motion-command
+    ◆ "register operator text-object

@@ -1,0 +1,18 @@
+
+Registers
+---------
+▶ Register groups
+    ◆ "     implicit register for c, d, s, or y operators
+    ◆ 0-9   automatically filled by yank and delete operators
+    ◆ a-z   can be changed by user
+    ◆ %     name of currenty edited file (very useful)
+    ◆ :     last command
+    ◆ =     eval mode pseudoregister
+    ◆ *     content of selection (PRIMARY)
+    ◆ +     content of selection (CLIPBOARD)
+    ◆ /     last searched string
+    ◆ -     implicit register of 'smaller' operations
+▶ In Insert mode
+    ◆ Ctrl+R_register name
+▶ In Normal mode
+    ◆ "register_name operator ... ...

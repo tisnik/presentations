@@ -1,0 +1,11 @@
+
+Examples 1: operator+motion-command
+-----------------------------------
+        dl   delete one char  ("x" command is shorter)
+        d$   delete until EOL ("D" command is shorter)
+        dw   delete -> next word
+        db   delete <- begining of word
+        de   delete -> till end of word (no space)
+        dd   delete whole line (special, d is not motion here!)
+        dt"  delete text till " character ('delete content of string')
+        df"  delete text to   " character ('delete string including "')

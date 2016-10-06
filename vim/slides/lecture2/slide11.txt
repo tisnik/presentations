@@ -1,0 +1,11 @@
+
+Selection/clipboard
+-------------------
+:reg +*
+Now try to select something in terminal and repeat
+:reg +*
+Now select something in the browser and repeat
+:reg +*
+Now start 'xclipboard', put it above vim and perform:
+"*yy
+"+yy

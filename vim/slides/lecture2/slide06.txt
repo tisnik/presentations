@@ -1,0 +1,14 @@
+
+Examples 3: operator+text object
+--------------------------------
+        dab  delete a block
+        dib  delete inner block
+        daB  delete a Block     brackets
+        diB  delete inner Block brackets
+        dat  delete a tag
+        dit  delete inner tag
+        cab  change a block (inside ())
+        cib  change inner block
+        caB  change a Block (inside {})
+        ciB  change inner Block
+        =aB  indent a Block
