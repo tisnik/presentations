@@ -1,0 +1,19 @@
+
+Folding
+-------
+▶   :set foldmethod
+        manual
+        indent
+        expr
+        marker
+        syntax
+        diff   (diff mode)
+▶ Commands
+    zf  (fold)  - only for foldmethod=manual
+        - works like a regular operator
+    zo  (open)  zO - recursive variant
+    zc  (close) zC - recursive variant
+    zv  (view cursor line)
+    zd  (delete)   - not for text
+    :set foldclose=all
+    :set foldopen=all

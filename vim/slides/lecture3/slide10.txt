@@ -1,0 +1,4 @@
+
+Key sequence
+Ctrl+K key
+to enter keyname

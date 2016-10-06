@@ -1,0 +1,7 @@
+
+Disable recursive mappings
+:noremap
+:nnoremap
+:vnoremap
+:inoremap
+:onoremap

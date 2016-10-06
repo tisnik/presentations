@@ -1,0 +1,8 @@
+
+Mapping
+-------
+:map key-sequence key-sequence
+:nmap  normal mode
+:vmap  visual mode
+:imap  insert/replace modes
+:omap  operator pending mode

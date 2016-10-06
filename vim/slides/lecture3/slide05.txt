@@ -1,0 +1,7 @@
+
+Abbreviations
+-------------
+For insert/replace/command mode
+:ab teh the
+:ab tihs this
+:ab RH Red Hat

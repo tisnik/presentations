@@ -1,0 +1,10 @@
+
+Macros
+-------
+▶ Macro
+    ◆ sequence of keystrokes
+    ◆ stored in selected register
+▶ Usage
+q[character] - start recording macro
+q            - end recording macro
+@[character] - play macro

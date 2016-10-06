@@ -1,0 +1,18 @@
+
+Working with tags
+-----------------
+▶ How to create tags file
+    ◆ ctags
+    ◆ ctags * (to force generating for BASH scripts etc.)
+    ◆ ctags -R
+    ◆ ctags -R /usr/lib/include
+        • quite big files, might be better to try man pages instead
+        • Shift+K
+▶ How to jump to definition
+    :tag symbol              TAB completion
+     g+   left button        does not work in terminal
+     Ctrl+left button        does not work in terminal
+     Ctrl+]                  in visual mode :tag
+▶ Go back
+    ◆ Ctrl+T
+▶ Vim help is created similarly, ie. use Ctrl+] and Ctrl+T etc.

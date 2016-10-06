@@ -1,0 +1,24 @@
+
+Marks
+-----
+▶ (File) + Line + Columns
+▶ Mark groups
+      a-z set up manually  locals
+      A-Z set up manually  globals (mark+filename)
+      0-9 set up automatically, last 10 cursor positions
+       <  set up automatically, beginning of block
+       >  set up automatically, end of block
+      "   set up automatically, cursor position in time the buffer is closed
+      ^   set up automatically, cursor position in the last insert mode
+▶ Working with marks
+      :marks      list of all marks
+      :marks mark list of selected mark
+      ma - mz local mark definition
+      mA - mZ global mark definition
+▶ Cursor movement command
+      'a - 'z jump to line
+      'A - 'Z jump to file+line
+      `a - `z jump to line+column
+      `A - 'Z jump to file+line+column
+▶ If you want to open the file and place the cursor to the same position
+      :au BufReadPost * normal `"

@@ -1,0 +1,7 @@
+
+Remove mappings
+:unmap
+:nunmap
+:vunmap
+:iunmap
+:ounmap
