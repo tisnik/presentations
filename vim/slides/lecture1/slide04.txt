@@ -1,0 +1,17 @@
+
+How to call Vim from CLI
+------------------------
+"One executable, different behaviours"
+vi      OS dependent, usually calls Vim in compatible mode
+vim     normal invocation
+ex      starts Vim in "Ex" mode
+evim    so called Easy Vim, probably good for novices?
+        not proper Normal mode, just Insert Normal Mode supported
+        Ctrl+O
+        (also vim -y)
+rvim    restricted mode, can't start shell command nor suspend Vim
+vim -d  diff mode
+gvim    Vim with GUI (GTK+)
+kvim    Vim with GUI (Qt)
+view    read-only mode
+vimx    Vim with support for Xterm extensions (clipboard etc.)

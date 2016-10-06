@@ -1,0 +1,13 @@
+
+Text displaying
+---------------
+    :set number
+    :set nonumber
+    :set list
+         for EOLs, TABs etc.
+    :set tabstop=xxx
+    :set showmatch
+    :set matchpairs=(:),[:],{:},<:>
+    To highlight matching parens:
+        matchparen plugin (it's standard one)
+        :hi MatchParen ctermbg=blue guibg=red

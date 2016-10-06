@@ -1,0 +1,18 @@
+
+Vi/Vim history (cont.)
+----------------------
+▶ Transfer to Unix systems (and to Linux of course)
+    ◆ Vi iMitation -> Vi iMproved
+▶ Based on the good(?) old Vi:
+    ◆ modes (normal, command, insert/replace...)
+    ◆ keyboard shortcuts
+    ◆ options (:set ...)
+    ◆ commands (in command mode)
+▶ New features:
+    ◆ Plugins
+    ◆ Tabs
+    ◆ Windows
+    ◆ Syntax highlighting
+    ◆ Spellchecker
+▶ Macros
+    ◆ Scripting support (Vim Script)

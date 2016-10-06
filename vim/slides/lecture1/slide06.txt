@@ -1,0 +1,15 @@
+
+Normal mode basics
+------------------
+Cursor movement
+    -> image
+    http://file.brq.redhat.com/~ptisnovs/vim-shortcuts.png
+Horizontal
+    w, b, e, ge
+    - delimiter(s) could be set by :set iskeyword
+Vertical
+Other
+    t f T F   (Shift = change direction)
+    ; ,       repeat last t f T F command
+    %   jump to matching ([{}]) (configurable)
+        :set matchpairs=(:),[:],{:},<:>

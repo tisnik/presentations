@@ -1,0 +1,19 @@
+
+Text wrapping
+--------------
+Visual vs. "hard"
+    :set wrap
+        just visual (on screen, not in file)
+    :set nowrap
+        turn off visual wrapping
+    :set linebreak
+        visual wrapping on word boundaries
+    :set nolinebreak
+        turn off wrapping on word boundaries
+    :set tw=xxx
+        "hard" wrapping (inserts CR or CR/LF)
+    :set tw=0
+        disables "hard" wrapping
+    How to reformat paragraph:
+            gqap
+            <VisualBlock>gq

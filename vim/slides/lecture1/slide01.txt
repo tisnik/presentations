@@ -1,0 +1,6 @@
+
+Vim
+---
+▶ Text editor for real programmers
+  https://xkcd.com/378/
+▶ 1988 Vi iMitation   Bram Moolenaar (Amiga)

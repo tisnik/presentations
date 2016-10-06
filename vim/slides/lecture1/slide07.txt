@@ -1,0 +1,16 @@
+
+Vim for developers
+------------------
+▶ Common behaviour
+    ◆ Configuration Options
+    ◆ Text Displaying
+    ◆ Text Wrapping
+    ◆ Folding
+    ◆ Windows, buffers, tabs
+▶ Vim and C/C++
+▶ Vim and Java
+▶ Vim and Clojure, Python etc. (REPL)
+▶ Vim and XML
+▶ Vim and HTML
+▶ diff Mode
+▶ Binary files editing

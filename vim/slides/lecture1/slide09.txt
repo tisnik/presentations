@@ -1,0 +1,17 @@
+
+Configuration options (cont)
+---------------------------
+    :set backspace=[indent,eol,start]
+        eol    - you could delete EOL effectively joining lines
+        start  - you could delete text written in previous 'session'
+        indent - spaces inserted by autoindent could be deleted
+    :set fileformat=[dos,unix]
+        can be used instead of dos2unix tool
+    :set selection=exclusive
+        block behaviour is similar to other editors
+    :set selection=inclusive
+        character below cursor will be part of block (slightly confusing)
+    :set wildmenu
+        TAB completion
+    :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o
+        for file completion (ignored files)

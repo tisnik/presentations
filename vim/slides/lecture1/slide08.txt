@@ -1,0 +1,20 @@
+
+Configuration options
+---------------------------
+    :set
+        list all non-default options
+    :set [no]optionName
+        for Boolean options like yes/no  on/of  enable/disable
+    :set nocompatible
+        turn on when no .vimrc or .gvimrc file is found!
+        almost nobody wants to use :set compatible :)
+    :set ruler
+        ruler contains lots of important information
+    :set noruler
+        when to use it? on really slow connection (Vim over ssh)
+    :set statusline=...
+        will be explained later
+    :set (no)expandtab
+        enables or disables expanding [Tab] to spaces
+        wanna to use [Tab] when set? Ctrl+V Tab
+    (:retab)

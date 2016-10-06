@@ -1,0 +1,12 @@
+
+Vi/Vim history
+--------------
+1965   QED    line editor
+1971   ed     simpler line editor, Ken Thompson, PDP-7
+1975   em     "Editor for Mortals", based on ed
+1976   ex     ed update, direct vi ancestor
+1976   vi     ex+new "VIsual" mode
+1987   Stevie ST Editor for VI Enthusiasts
+1988   Vim    1st version (not official)
+1990   Elvis  another Vi clone
+1991   Vim    Vi iMitation version 1.14, 1st version to be publicly distributed

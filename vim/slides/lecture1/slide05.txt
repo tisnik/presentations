@@ -1,0 +1,16 @@
+
+Vim modes
+---------
+▶ Six (VI :) basic modes:
+    ◆ Normal
+    ◆ Insert
+    ◆ Visual
+    ◆ Select
+    ◆ Commandline
+    ◆ Ex
+Additional modes:
+    ◆ Replace (like Insert)
+    ◆ Virtual replace
+    ◆ Operator pending mode (motion)
+    ◆ Insert Normal Mode (used by evim for example)
+    ◆ etc.

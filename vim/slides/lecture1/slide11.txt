@@ -1,0 +1,5 @@
+
+What happened in case of error?
+-------------------------------
+    :set novisualbell
+    :set vb t_vb="
