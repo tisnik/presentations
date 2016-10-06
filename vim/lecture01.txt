@@ -47,6 +47,7 @@ ex      starts Vim in "Ex" mode
 evim    so called Easy Vim, probably good for novices?
         not proper Normal mode, just Insert Normal Mode supported
         Ctrl+O
+        (also vim -y)
 rvim    restricted mode, can't start shell command nor suspend Vim
 vim -d  diff mode
 gvim    Vim with GUI (GTK+)
@@ -120,6 +121,9 @@ Configuration options
         enables or disables expanding [Tab] to spaces
         wanna to use [Tab] when set? Ctrl+V Tab
     (:retab)
+
+Configuration options (cont)
+---------------------------
     :set backspace=[indent,eol,start]
         eol    - you could delete EOL effectively joining lines
         start  - you could delete text written in previous 'session'
