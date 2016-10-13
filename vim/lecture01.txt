@@ -85,6 +85,13 @@ Other
     ; ,       repeat last t f T F command
     %   jump to matching ([{}]) (configurable)
         :set matchpairs=(:),[:],{:},<:>
+Sections etc:
+    (  previous sentence
+    )  next sentence
+    {  previous paragraph
+    }  next paragraph
+    [[ previous section
+    ]] next section
 
 Vim for developers
 ------------------
