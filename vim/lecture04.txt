@@ -125,6 +125,10 @@ Tabs
     :highlight Tab3 ctermbg=lightblue  guibg=#e0e0ff
     :highlight Tab4 ctermbg=lightcyan  guibg=#ffffe0
 
+Bugzilla numbers highlight
+    :syntax match bug "BZ#[0-9]\+"
+    :highlight bug ctermbg=red guibg=red
+
 Numeric constants
 ----------------------
     :highlight NumericConstantOctal   ctermfg=red    guifg=red
