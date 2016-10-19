@@ -43,7 +43,7 @@ Marks
       'a - 'z jump to line
       'A - 'Z jump to file+line
       `a - `z jump to line+column
-      `A - 'Z jump to file+line+column
+      `A - `Z jump to file+line+column
 ▶ If you want to open the file and place the cursor to the same position
       :au BufReadPost * normal `"
 
@@ -58,8 +58,8 @@ Working with tags
         • Shift+K
 ▶ How to jump to definition
     :tag symbol              TAB completion
-     g+   left button        does not work in terminal
-     Ctrl+left button        does not work in terminal
+     g+   left mouse button  does not work in terminal
+     Ctrl+left mouse button  does not work in terminal
      Ctrl+]                  in visual mode :tag
 ▶ Go back
     ◆ Ctrl+T
@@ -122,6 +122,13 @@ Remove mappings
 Key sequence
 Ctrl+K key
 to enter keyname
+
+Digraphs
+--------
+:set digraph
+In insert mode: Key1<backspace>Key2
+For example: :<backspace>u produces ü
+For example: J<backspace>A produces Я
 
 Macros
 -------
