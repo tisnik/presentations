@@ -1,0 +1,3 @@
+as -g --32 main.s -o main.o
+ld -m elf_i386 -s main.o
+
