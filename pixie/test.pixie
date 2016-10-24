@@ -1,0 +1,17 @@
+(ns parser (:require [pixie.string :refer :all]
+                     [pixie.io :refer :all]))
+
+(defn select-
+    [lines]
+    (->> (map #(split % ":") lines)
+         (filter #(ends-with? (nth % 6 "") "bash"))
+         (map first)))
+
+(defn select
+    [lines]
+    (->> (map #(split % ":") lines)
+         (filter #(ends-with? (last %) "bash"))
+         (map first)))
+
+(-> "/etc/passwd" slurp split-lines select)
+
