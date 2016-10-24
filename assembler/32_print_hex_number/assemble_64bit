@@ -1,0 +1,3 @@
+as -g main.s -o main.o
+ld -s main.o
+
