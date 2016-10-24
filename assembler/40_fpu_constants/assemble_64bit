@@ -1,0 +1,3 @@
+as -g main_64bit.s -o main.o
+ld -s main.o
+
