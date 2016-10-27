@@ -312,6 +312,24 @@ VimClojure
     ◆ Complete IDE :-)
 ▶ Vimclojure
 
+Vim and Python
+--------------
+Useful plugin:
+    https://github.com/vim-scripts/indentpython.vim
+Nice article:
+    https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
+Another info can be seen here:
+    https://wiki.python.org/moin/Vim
+PEP8-compatible settings:
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
 Vim and XML
 -----------
 ▶ Module xml.vim
