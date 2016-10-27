@@ -1,0 +1,2 @@
+as -alm -g --32 main.s -o main.o
+
