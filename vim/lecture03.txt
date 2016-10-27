@@ -22,6 +22,10 @@ set viminfo='20,\"50,n~/temp/_viminfo
 /99 - maximum number of remembered search patterns
 :99 - maximum number of remembered commands
 n...- name of viminfo file (must be the last one)
+    ◆ It is possible to exchange values stored in viminfo
+        :wv
+        :rv
+    ◆ Please see :help viminfo for more information
 
 Marks
 -----
@@ -135,6 +139,7 @@ Macros
 ▶ Macro
     ◆ sequence of keystrokes
     ◆ stored in selected register
+    ◆ macros can be automatically stored in .viminfo files
 ▶ Usage
 q[character] - start recording macro
 q            - end recording macro
