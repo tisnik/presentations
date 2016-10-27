@@ -1,0 +1,423 @@
+GAS LISTING main.s 			page 1
+
+
+   1              	# asmsyntax=as
+   2              	
+   3              	# Program pro otestovani instrukce BT
+   4              	# - pro zapis je pouzita "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	.intel_syntax noprefix
+   9              	
+  10              	
+  11              	
+  12              	# Nacteni definice makra pro ukonceni aplikace
+  13              	.include "exit.s"
+   1              	# asmsyntax=as
+   2              	
+   3              	# Makro pro ukonceni procesu v Linuxu.
+   4              	# - pro zapis je pouzita "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	sys_exit   = 1                       # cislo syscallu pro ukonceni procesu
+   9              	
+  10              	# Deklarace makra pro ukonceni aplikace
+  11              	.macro exit
+  12              	        mov   eax, sys_exit          # cislo sycallu pro funkci "exit"
+  13              	        mov   ebx, 0                 # exit code = 0
+  14              	        int   0x80                   # volani Linuxoveho kernelu
+  15              	.endm
+  16              	
+  14              	
+  15              	# Nacteni maker pro (opakovany) tisk zpravy i prislusne subrutiny
+  16              	.include "writeMessage.s"
+   1              	# asmsyntax=as
+   2              	
+   3              	# Makro pro tisk zpravy na standardni vystup.
+   4              	# - pro zapis je pouzita "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	# Linux kernel system call table
+   9              	sys_write  = 4
+  10              	std_output = 1
+  11              	
+  12              	
+  13              	
+  14              	# Deklarace makra pro vytisteni zpravy na standardni vystup
+  15              	.macro writeMessage message,messageLength
+  16              	        mov   ecx, offset \message   # adresa retezce, ktery se ma vytisknout
+  17              	        mov   edx, \messageLength    # pocet znaku, ktere se maji vytisknout
+  18              	        call  write_message          # vytisknout zpravu "Zero flag not set"
+  19              	.endm
+  20              	
+  21              	
+  22              	
+  23              	# Podprogram pro vytisteni zpravy na standardni vystup
+  24              	# Ocekava se, ze v ecx bude adresa zpravy a v edx jeji delka
+  25              	write_message:
+GAS LISTING main.s 			page 2
+
+
+  26 0000 B8040000 	        mov   eax, sys_write         # cislo syscallu pro funkci "write"
+  26      00
+  27 0005 BB010000 	        mov   ebx, std_output        # standardni vystup
+  27      00
+  28 000a CD80     	        int   0x80
+  29 000c C3       	        ret
+  30              	
+  31              	
+  32              	
+  33              	# Deklarace makra pro vytisteni znaku konce radku (provede se tedy odradkovani)
+  34              	.macro println
+  35              	        writeMessage printlnMessage,printlnLength
+  36              	.endm
+  37              	
+  38              	
+  39              	
+  40              	#-----------------------------------------------------------------------------
+  41              	.section .data
+  42              	# Miniretezec pouzivany makrem println
+  43              	printlnMessage:
+  44 0000 0A00     	        .string "\n"
+  45              	printlnLength = $ - printlnMessage
+  46              	
+  17              	
+  18              	# Nacteni makra pro vytisteni hexadecimalni 32bitove hodnoty
+  19              	# spolecne s makrem je nactena i prislusna subrutina
+  20              	.include "printHexNumber.s"
+   1              	# asmsyntax=as
+   2              	
+   3              	# Makro pro pripravu a tisk hexadecimalni hodnoty na standardni vystup.
+   4              	# - pro zapis je pouzita "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	.intel_syntax noprefix
+   9              	
+  10              	
+  11              	
+  12              	# Makro pro vypis 32bitove hexadecimalni hodnoty na standardni vystup
+  13              	# Jedinym parametrem makra je hodnota (konstanta)
+  14              	.macro printHexNumber value
+  15              	        pusha                              # uschovat vsechny registry na zasobnik
+  16              	        mov  edx, \value                   # hodnotu pro tisk ulozit do registru EDX
+  17              	        mov  ebx, offset hexValueTemplate  # adresu pro retezec ulozit do registru EBX
+  18              	        call hex2string                    # zavolani prislusne subrutiny pro prevod na string
+  19              	        writeMessage hexValueMessage, hexValueMessageLen # retezec je naplnen, tak ho muzeme vytisk
+  20              	        popa                               # obnovit obsah vsech registru
+  21              	.endm
+  22              	
+  23              	
+  24              	
+  25              	#-----------------------------------------------------------------------------
+  26              	.section .data
+  27              	hexValueMessage:
+  28 0002 48657820 	        .string "Hex value: 0x"             # prvni cast zpravy
+  28      76616C75 
+  28      653A2030 
+GAS LISTING main.s 			page 3
+
+
+  28      7800
+  29              	hexValueTemplate:                           # druha cast zpravy ma vlastni navesti
+  30 0010 3F3F3F3F 	        .string "????????\n"                # otazniky budou prepsany
+  30      3F3F3F3F 
+  30      0A00
+  31              	hexValueMessageLen = $ - hexValueMessage    # delka zpravy
+  32              	
+  33              	
+  34              	
+  35              	#-----------------------------------------------------------------------------
+  36              	.section .text
+  37              	
+  38              	# Subrutina urcena pro prevod 32bitove hexadecimalni hodnoty na retezec
+  39              	# Vstup: EDX - hodnota, ktera se ma prevest na retezec
+  40              	#        EBX - adresa jiz drive alokovaneho retezce (resp. osmice bajtu)
+  41              	hex2string:
+  42 000d B108     	                  mov cl,  8                # pocet opakovani smycky
+  43              	
+  44 000f C1C204   	print_one_digit:  rol edx, 4                # rotace doleva znamena, ze se do spodnich 4 bitu nasun
+  45 0012 88D0     	                  mov al, dl                # nechceme porusit obsah vstupni hodnoty v EDX, proto p
+  46 0014 240F     	                  and al, 0x0f              # maskovani, potrebujeme pracovat jen s jednou cifrou
+  47 0016 3C0A     	                  cmp al, 10                # je cifra vetsi nebo rovna 10?
+  48 0018 7C02     	                  jl  store_digit           # neni, pouze prevest 0..9 na ASCII hodnotu '0'..'9'
+  49              	
+  50 001a 0407     	alpha_digit:      add al, 'A'-10-'0'        # prevod hodnoty 10..15 na znaky 'A'..'F'
+  51              	
+  52 001c 0430     	store_digit:      add al, '0'
+  53 001e 8803     	                  mov byte ptr [ebx], al    # ulozeni cifry do retezce
+  54 0020 43       	                  inc ebx                   # dalsi ulozeni v retezci o znak dale
+  55 0021 FEC9     	                  dec cl                    # snizeni pocitadla smycky
+  56 0023 75EA     	                  jnz print_one_digit       # a opakovani smycky, dokud se nedosahlo nuly
+  57              	
+  58 0025 C3       	                  ret                       # navrat ze subrutiny
+  59              	
+  21              	
+  22              	
+  23              	
+  24              	.macro testAndPrintBitValue word,bitIndex
+  25              	        mov ebx, \word
+  26              	        mov al, '0'                        # ASCII kod znaku, ktery se ma vepsat do sablony
+  27              	        bt  ebx, \bitIndex                 # pokud je testovany bit jednickovy, nastavi se i Carry 
+  28              	        adc al, 0                          # pricteni Carry Flagu ke znaku "0"
+  29              	        mov [bitValueTemplate], al         # zapis do sablony
+  30              	        writeMessage bitValueMessage, bitValueMessageLen  # vypis celeho retezce na standardni vyst
+  31              	.endm
+  32              	
+  33              	#-----------------------------------------------------------------------------
+  34              	.section .data
+  35              	bitValueMessage:
+  36 001a 42697420 	        .string "Bit value: "              # prvni cast zpravy
+  36      76616C75 
+  36      653A2000 
+  37              	bitValueTemplate:                          # druha cast zpravy ma vlastni navesti
+  38 0026 3F0A00   	        .string "?\n"                      # otaznik bude prepsan
+  39              	bitValueMessageLen = $ - bitValueMessage   # delka zpravy
+  40              	
+  41              	
+GAS LISTING main.s 			page 4
+
+
+  42              	
+  43              	#-----------------------------------------------------------------------------
+  44              	.section .bss
+  45              	
+  46              	
+  47              	
+  48              	#-----------------------------------------------------------------------------
+  49              	.section .text
+  50              	        .global _start               # tento symbol ma byt dostupny i linkeru
+  51              	
+  52              	_start:
+  53              	        printHexNumber 0x00000001
+  53 0026 60       	>  pusha 
+  53 0027 BA010000 	>  mov edx,0x00000001
+  53      00
+  53 002c BB100000 	>  mov ebx,offset hexValueTemplate
+  53      00
+  53 0031 E8D7FFFF 	>  call hex2string
+  53      FF
+  53              	>  writeMessage hexValueMessage,hexValueMessageLen
+  53 0036 B9020000 	>>  mov ecx,offset hexValueMessage
+  53      00
+  53 003b BA180000 	>>  mov edx,hexValueMessageLen
+  53      00
+  53 0040 E8BBFFFF 	>>  call write_message
+  53      FF
+  53 0045 61       	>  popa 
+  54              	        testAndPrintBitValue 0x00000001, 0
+  54 0046 BB010000 	>  mov ebx,0x00000001
+  54      00
+  54 004b B030     	>  mov al,48
+  54 004d 0FBAE300 	>  bt ebx,0
+  54 0051 1400     	>  adc al,0
+  54 0053 A2260000 	>  mov [bitValueTemplate],al
+  54      00
+  54              	>  writeMessage bitValueMessage,bitValueMessageLen
+  54 0058 B91A0000 	>>  mov ecx,offset bitValueMessage
+  54      00
+  54 005d BA0F0000 	>>  mov edx,bitValueMessageLen
+  54      00
+  54 0062 E899FFFF 	>>  call write_message
+  54      FF
+  55              	        testAndPrintBitValue 0x00000001, 1
+  55 0067 BB010000 	>  mov ebx,0x00000001
+  55      00
+  55 006c B030     	>  mov al,48
+  55 006e 0FBAE301 	>  bt ebx,1
+  55 0072 1400     	>  adc al,0
+  55 0074 A2260000 	>  mov [bitValueTemplate],al
+  55      00
+  55              	>  writeMessage bitValueMessage,bitValueMessageLen
+  55 0079 B91A0000 	>>  mov ecx,offset bitValueMessage
+  55      00
+  55 007e BA0F0000 	>>  mov edx,bitValueMessageLen
+  55      00
+  55 0083 E878FFFF 	>>  call write_message
+  55      FF
+GAS LISTING main.s 			page 5
+
+
+  56              	        testAndPrintBitValue 0x00000001, 31
+  56 0088 BB010000 	>  mov ebx,0x00000001
+  56      00
+  56 008d B030     	>  mov al,48
+  56 008f 0FBAE31F 	>  bt ebx,31
+  56 0093 1400     	>  adc al,0
+  56 0095 A2260000 	>  mov [bitValueTemplate],al
+  56      00
+  56              	>  writeMessage bitValueMessage,bitValueMessageLen
+  56 009a B91A0000 	>>  mov ecx,offset bitValueMessage
+  56      00
+  56 009f BA0F0000 	>>  mov edx,bitValueMessageLen
+  56      00
+  56 00a4 E857FFFF 	>>  call write_message
+  56      FF
+  57              	        println
+  57              	>  writeMessage printlnMessage,printlnLength
+  57 00a9 B9000000 	>>  mov ecx,offset printlnMessage
+  57      00
+  57 00ae BA020000 	>>  mov edx,printlnLength
+  57      00
+  57 00b3 E848FFFF 	>>  call write_message
+  57      FF
+  58              	
+  59              	        printHexNumber 0x80000000
+  59 00b8 60       	>  pusha 
+  59 00b9 BA000000 	>  mov edx,0x80000000
+  59      80
+  59 00be BB100000 	>  mov ebx,offset hexValueTemplate
+  59      00
+  59 00c3 E845FFFF 	>  call hex2string
+  59      FF
+  59              	>  writeMessage hexValueMessage,hexValueMessageLen
+  59 00c8 B9020000 	>>  mov ecx,offset hexValueMessage
+  59      00
+  59 00cd BA180000 	>>  mov edx,hexValueMessageLen
+  59      00
+  59 00d2 E829FFFF 	>>  call write_message
+  59      FF
+  59 00d7 61       	>  popa 
+  60              	        testAndPrintBitValue 0x80000000, 0
+  60 00d8 BB000000 	>  mov ebx,0x80000000
+  60      80
+  60 00dd B030     	>  mov al,48
+  60 00df 0FBAE300 	>  bt ebx,0
+  60 00e3 1400     	>  adc al,0
+  60 00e5 A2260000 	>  mov [bitValueTemplate],al
+  60      00
+  60              	>  writeMessage bitValueMessage,bitValueMessageLen
+  60 00ea B91A0000 	>>  mov ecx,offset bitValueMessage
+  60      00
+  60 00ef BA0F0000 	>>  mov edx,bitValueMessageLen
+  60      00
+  60 00f4 E807FFFF 	>>  call write_message
+  60      FF
+  61              	        testAndPrintBitValue 0x80000000, 1
+  61 00f9 BB000000 	>  mov ebx,0x80000000
+GAS LISTING main.s 			page 6
+
+
+  61      80
+  61 00fe B030     	>  mov al,48
+  61 0100 0FBAE301 	>  bt ebx,1
+  61 0104 1400     	>  adc al,0
+  61 0106 A2260000 	>  mov [bitValueTemplate],al
+  61      00
+  61              	>  writeMessage bitValueMessage,bitValueMessageLen
+  61 010b B91A0000 	>>  mov ecx,offset bitValueMessage
+  61      00
+  61 0110 BA0F0000 	>>  mov edx,bitValueMessageLen
+  61      00
+  61 0115 E8E6FEFF 	>>  call write_message
+  61      FF
+  62              	        testAndPrintBitValue 0x80000000, 31
+  62 011a BB000000 	>  mov ebx,0x80000000
+  62      80
+  62 011f B030     	>  mov al,48
+  62 0121 0FBAE31F 	>  bt ebx,31
+  62 0125 1400     	>  adc al,0
+  62 0127 A2260000 	>  mov [bitValueTemplate],al
+  62      00
+  62              	>  writeMessage bitValueMessage,bitValueMessageLen
+  62 012c B91A0000 	>>  mov ecx,offset bitValueMessage
+  62      00
+  62 0131 BA0F0000 	>>  mov edx,bitValueMessageLen
+  62      00
+  62 0136 E8C5FEFF 	>>  call write_message
+  62      FF
+  63              	        println
+  63              	>  writeMessage printlnMessage,printlnLength
+  63 013b B9000000 	>>  mov ecx,offset printlnMessage
+  63      00
+  63 0140 BA020000 	>>  mov edx,printlnLength
+  63      00
+  63 0145 E8B6FEFF 	>>  call write_message
+  63      FF
+  64              	
+  65              	        printHexNumber 0xffffffff
+  65 014a 60       	>  pusha 
+  65 014b BAFFFFFF 	>  mov edx,0xffffffff
+  65      FF
+  65 0150 BB100000 	>  mov ebx,offset hexValueTemplate
+  65      00
+  65 0155 E8B3FEFF 	>  call hex2string
+  65      FF
+  65              	>  writeMessage hexValueMessage,hexValueMessageLen
+  65 015a B9020000 	>>  mov ecx,offset hexValueMessage
+  65      00
+  65 015f BA180000 	>>  mov edx,hexValueMessageLen
+  65      00
+  65 0164 E897FEFF 	>>  call write_message
+  65      FF
+  65 0169 61       	>  popa 
+  66              	        testAndPrintBitValue 0xffffffff, 0
+  66 016a BBFFFFFF 	>  mov ebx,0xffffffff
+  66      FF
+  66 016f B030     	>  mov al,48
+GAS LISTING main.s 			page 7
+
+
+  66 0171 0FBAE300 	>  bt ebx,0
+  66 0175 1400     	>  adc al,0
+  66 0177 A2260000 	>  mov [bitValueTemplate],al
+  66      00
+  66              	>  writeMessage bitValueMessage,bitValueMessageLen
+  66 017c B91A0000 	>>  mov ecx,offset bitValueMessage
+  66      00
+  66 0181 BA0F0000 	>>  mov edx,bitValueMessageLen
+  66      00
+  66 0186 E875FEFF 	>>  call write_message
+  66      FF
+  67              	        testAndPrintBitValue 0xffffffff, 1
+  67 018b BBFFFFFF 	>  mov ebx,0xffffffff
+  67      FF
+  67 0190 B030     	>  mov al,48
+  67 0192 0FBAE301 	>  bt ebx,1
+  67 0196 1400     	>  adc al,0
+  67 0198 A2260000 	>  mov [bitValueTemplate],al
+  67      00
+  67              	>  writeMessage bitValueMessage,bitValueMessageLen
+  67 019d B91A0000 	>>  mov ecx,offset bitValueMessage
+  67      00
+  67 01a2 BA0F0000 	>>  mov edx,bitValueMessageLen
+  67      00
+  67 01a7 E854FEFF 	>>  call write_message
+  67      FF
+  68              	        testAndPrintBitValue 0xffffffff, 31
+  68 01ac BBFFFFFF 	>  mov ebx,0xffffffff
+  68      FF
+  68 01b1 B030     	>  mov al,48
+  68 01b3 0FBAE31F 	>  bt ebx,31
+  68 01b7 1400     	>  adc al,0
+  68 01b9 A2260000 	>  mov [bitValueTemplate],al
+  68      00
+  68              	>  writeMessage bitValueMessage,bitValueMessageLen
+  68 01be B91A0000 	>>  mov ecx,offset bitValueMessage
+  68      00
+  68 01c3 BA0F0000 	>>  mov edx,bitValueMessageLen
+  68      00
+  68 01c8 E833FEFF 	>>  call write_message
+  68      FF
+  69              	        println
+  69              	>  writeMessage printlnMessage,printlnLength
+  69 01cd B9000000 	>>  mov ecx,offset printlnMessage
+  69      00
+  69 01d2 BA020000 	>>  mov edx,printlnLength
+  69      00
+  69 01d7 E824FEFF 	>>  call write_message
+  69      FF
+  70              	
+  71              	        exit                         # ukonceni aplikace
+  71 01dc B8010000 	>  mov eax,sys_exit
+  71      00
+  71 01e1 BB000000 	>  mov ebx,0
+  71      00
+  71 01e6 CD80     	>  int 0x80
+  72              	
+GAS LISTING main.s 			page 8
+
+
