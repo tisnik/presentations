@@ -1,0 +1,307 @@
+GAS LISTING main.s 			page 1
+
+
+   1              	# asmsyntax=as
+   2              	
+   3              	# Program pro otestovani instrukce BSWAP
+   4              	# - pro zapis je pouzita "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	.intel_syntax noprefix
+   9              	
+  10              	
+  11              	
+  12              	# Nacteni definice makra pro ukonceni aplikace
+  13              	.include "exit.s"
+   1              	# asmsyntax=as
+   2              	
+   3              	# Makro pro ukonceni procesu v Linuxu.
+   4              	# - pro zapis je pouzita "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	sys_exit   = 1                       # cislo syscallu pro ukonceni procesu
+   9              	
+  10              	# Deklarace makra pro ukonceni aplikace
+  11              	.macro exit
+  12              	        mov   eax, sys_exit          # cislo sycallu pro funkci "exit"
+  13              	        mov   ebx, 0                 # exit code = 0
+  14              	        int   0x80                   # volani Linuxoveho kernelu
+  15              	.endm
+  16              	
+  14              	
+  15              	# Nacteni maker pro (opakovany) tisk zpravy i prislusne subrutiny
+  16              	.include "writeMessage.s"
+   1              	# asmsyntax=as
+   2              	
+   3              	# Makro pro tisk zpravy na standardni vystup.
+   4              	# - pro zapis je pouzita "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	# Linux kernel system call table
+   9              	sys_write  = 4
+  10              	std_output = 1
+  11              	
+  12              	
+  13              	
+  14              	# Deklarace makra pro vytisteni zpravy na standardni vystup
+  15              	.macro writeMessage message,messageLength
+  16              	        mov   ecx, offset \message   # adresa retezce, ktery se ma vytisknout
+  17              	        mov   edx, \messageLength    # pocet znaku, ktere se maji vytisknout
+  18              	        call  write_message          # vytisknout zpravu "Zero flag not set"
+  19              	.endm
+  20              	
+  21              	
+  22              	
+  23              	# Podprogram pro vytisteni zpravy na standardni vystup
+  24              	# Ocekava se, ze v ecx bude adresa zpravy a v edx jeji delka
+  25              	write_message:
+GAS LISTING main.s 			page 2
+
+
+  26 0000 B8040000 	        mov   eax, sys_write         # cislo syscallu pro funkci "write"
+  26      00
+  27 0005 BB010000 	        mov   ebx, std_output        # standardni vystup
+  27      00
+  28 000a CD80     	        int   0x80
+  29 000c C3       	        ret
+  30              	
+  31              	
+  32              	
+  33              	# Deklarace makra pro vytisteni znaku konce radku (provede se tedy odradkovani)
+  34              	.macro println
+  35              	        writeMessage printlnMessage,printlnLength
+  36              	.endm
+  37              	
+  38              	
+  39              	
+  40              	#-----------------------------------------------------------------------------
+  41              	.section .data
+  42              	# Miniretezec pouzivany makrem println
+  43              	printlnMessage:
+  44 0000 0A00     	        .string "\n"
+  45              	printlnLength = $ - printlnMessage
+  46              	
+  17              	
+  18              	# Nacteni makra pro vytisteni hexadecimalni 32bitove hodnoty
+  19              	# spolecne s makrem je nactena i prislusna subrutina
+  20              	.include "printHexNumber.s"
+   1              	# asmsyntax=as
+   2              	
+   3              	# Makro pro pripravu a tisk hexadecimalni hodnoty na standardni vystup.
+   4              	# - pro zapis je pouzita "Intel" syntaxe.
+   5              	#
+   6              	# Autor: Pavel Tisnovsky
+   7              	
+   8              	.intel_syntax noprefix
+   9              	
+  10              	
+  11              	
+  12              	# Makro pro vypis 32bitove hexadecimalni hodnoty na standardni vystup
+  13              	# Jedinym parametrem makra je hodnota (konstanta)
+  14              	.macro printHexNumber value
+  15              	        pusha                              # uschovat vsechny registry na zasobnik
+  16              	        mov  edx, \value                   # hodnotu pro tisk ulozit do registru EDX
+  17              	        mov  ebx, offset hexValueTemplate  # adresu pro retezec ulozit do registru EBX
+  18              	        call hex2string                    # zavolani prislusne subrutiny pro prevod na string
+  19              	        writeMessage hexValueMessage, hexValueMessageLen # retezec je naplnen, tak ho muzeme vytisk
+  20              	        popa                               # obnovit obsah vsech registru
+  21              	.endm
+  22              	
+  23              	
+  24              	
+  25              	#-----------------------------------------------------------------------------
+  26              	.section .data
+  27              	hexValueMessage:
+  28 0002 48657820 	        .string "Hex value: 0x"             # prvni cast zpravy
+  28      76616C75 
+  28      653A2030 
+GAS LISTING main.s 			page 3
+
+
+  28      7800
+  29              	hexValueTemplate:                           # druha cast zpravy ma vlastni navesti
+  30 0010 3F3F3F3F 	        .string "????????\n"                # otazniky budou prepsany
+  30      3F3F3F3F 
+  30      0A00
+  31              	hexValueMessageLen = $ - hexValueMessage    # delka zpravy
+  32              	
+  33              	
+  34              	
+  35              	#-----------------------------------------------------------------------------
+  36              	.section .text
+  37              	
+  38              	# Subrutina urcena pro prevod 32bitove hexadecimalni hodnoty na retezec
+  39              	# Vstup: EDX - hodnota, ktera se ma prevest na retezec
+  40              	#        EBX - adresa jiz drive alokovaneho retezce (resp. osmice bajtu)
+  41              	hex2string:
+  42 000d B108     	                  mov cl,  8                # pocet opakovani smycky
+  43              	
+  44 000f C1C204   	print_one_digit:  rol edx, 4                # rotace doleva znamena, ze se do spodnich 4 bitu nasun
+  45 0012 88D0     	                  mov al, dl                # nechceme porusit obsah vstupni hodnoty v EDX, proto p
+  46 0014 240F     	                  and al, 0x0f              # maskovani, potrebujeme pracovat jen s jednou cifrou
+  47 0016 3C0A     	                  cmp al, 10                # je cifra vetsi nebo rovna 10?
+  48 0018 7C02     	                  jl  store_digit           # neni, pouze prevest 0..9 na ASCII hodnotu '0'..'9'
+  49              	
+  50 001a 0407     	alpha_digit:      add al, 'A'-10-'0'        # prevod hodnoty 10..15 na znaky 'A'..'F'
+  51              	
+  52 001c 0430     	store_digit:      add al, '0'
+  53 001e 8803     	                  mov byte ptr [ebx], al    # ulozeni cifry do retezce
+  54 0020 43       	                  inc ebx                   # dalsi ulozeni v retezci o znak dale
+  55 0021 FEC9     	                  dec cl                    # snizeni pocitadla smycky
+  56 0023 75EA     	                  jnz print_one_digit       # a opakovani smycky, dokud se nedosahlo nuly
+  57              	
+  58 0025 C3       	                  ret                       # navrat ze subrutiny
+  59              	
+  21              	
+  22              	
+  23              	
+  24              	#-----------------------------------------------------------------------------
+  25              	.section .data
+  26              	
+  27              	
+  28              	
+  29              	#-----------------------------------------------------------------------------
+  30              	.section .bss
+  31              	
+  32              	
+  33              	
+  34              	#-----------------------------------------------------------------------------
+  35              	.section .text
+  36              	        .global _start               # tento symbol ma byt dostupny i linkeru
+  37              	
+  38              	_start:
+  39 0026 B8785634 	        mov eax, 0x12345678
+  39      12
+  40              	        printHexNumber eax           # vytiskneme puvodni hodnotu
+  40 002b 60       	>  pusha 
+  40 002c 89C2     	>  mov edx,eax
+GAS LISTING main.s 			page 4
+
+
+  40 002e BB100000 	>  mov ebx,offset hexValueTemplate
+  40      00
+  40 0033 E8D5FFFF 	>  call hex2string
+  40      FF
+  40              	>  writeMessage hexValueMessage,hexValueMessageLen
+  40 0038 B9020000 	>>  mov ecx,offset hexValueMessage
+  40      00
+  40 003d BA180000 	>>  mov edx,hexValueMessageLen
+  40      00
+  40 0042 E8B9FFFF 	>>  call write_message
+  40      FF
+  40 0047 61       	>  popa 
+  41 0048 0FC8     	        bswap eax
+  42              	        printHexNumber eax           # vytiskneme slovo s prohozenymi bajty
+  42 004a 60       	>  pusha 
+  42 004b 89C2     	>  mov edx,eax
+  42 004d BB100000 	>  mov ebx,offset hexValueTemplate
+  42      00
+  42 0052 E8B6FFFF 	>  call hex2string
+  42      FF
+  42              	>  writeMessage hexValueMessage,hexValueMessageLen
+  42 0057 B9020000 	>>  mov ecx,offset hexValueMessage
+  42      00
+  42 005c BA180000 	>>  mov edx,hexValueMessageLen
+  42      00
+  42 0061 E89AFFFF 	>>  call write_message
+  42      FF
+  42 0066 61       	>  popa 
+  43 0067 0FC8     	        bswap eax
+  44              	        printHexNumber eax           # vytiskneme puvodni hodnotu
+  44 0069 60       	>  pusha 
+  44 006a 89C2     	>  mov edx,eax
+  44 006c BB100000 	>  mov ebx,offset hexValueTemplate
+  44      00
+  44 0071 E897FFFF 	>  call hex2string
+  44      FF
+  44              	>  writeMessage hexValueMessage,hexValueMessageLen
+  44 0076 B9020000 	>>  mov ecx,offset hexValueMessage
+  44      00
+  44 007b BA180000 	>>  mov edx,hexValueMessageLen
+  44      00
+  44 0080 E87BFFFF 	>>  call write_message
+  44      FF
+  44 0085 61       	>  popa 
+  45              	        println
+  45              	>  writeMessage printlnMessage,printlnLength
+  45 0086 B9000000 	>>  mov ecx,offset printlnMessage
+  45      00
+  45 008b BA020000 	>>  mov edx,printlnLength
+  45      00
+  45 0090 E86BFFFF 	>>  call write_message
+  45      FF
+  46              	
+  47 0095 B8FF0000 	        mov eax, 0x000000ff
+  47      00
+  48              	        printHexNumber eax           # vytiskneme puvodni hodnotu
+  48 009a 60       	>  pusha 
+GAS LISTING main.s 			page 5
+
+
+  48 009b 89C2     	>  mov edx,eax
+  48 009d BB100000 	>  mov ebx,offset hexValueTemplate
+  48      00
+  48 00a2 E866FFFF 	>  call hex2string
+  48      FF
+  48              	>  writeMessage hexValueMessage,hexValueMessageLen
+  48 00a7 B9020000 	>>  mov ecx,offset hexValueMessage
+  48      00
+  48 00ac BA180000 	>>  mov edx,hexValueMessageLen
+  48      00
+  48 00b1 E84AFFFF 	>>  call write_message
+  48      FF
+  48 00b6 61       	>  popa 
+  49 00b7 0FC8     	        bswap eax
+  50              	        printHexNumber eax           # vytiskneme slovo s prohozenymi bajty
+  50 00b9 60       	>  pusha 
+  50 00ba 89C2     	>  mov edx,eax
+  50 00bc BB100000 	>  mov ebx,offset hexValueTemplate
+  50      00
+  50 00c1 E847FFFF 	>  call hex2string
+  50      FF
+  50              	>  writeMessage hexValueMessage,hexValueMessageLen
+  50 00c6 B9020000 	>>  mov ecx,offset hexValueMessage
+  50      00
+  50 00cb BA180000 	>>  mov edx,hexValueMessageLen
+  50      00
+  50 00d0 E82BFFFF 	>>  call write_message
+  50      FF
+  50 00d5 61       	>  popa 
+  51 00d6 0FC8     	        bswap eax
+  52              	        printHexNumber eax           # vytiskneme puvodni hodnotu
+  52 00d8 60       	>  pusha 
+  52 00d9 89C2     	>  mov edx,eax
+  52 00db BB100000 	>  mov ebx,offset hexValueTemplate
+  52      00
+  52 00e0 E828FFFF 	>  call hex2string
+  52      FF
+  52              	>  writeMessage hexValueMessage,hexValueMessageLen
+  52 00e5 B9020000 	>>  mov ecx,offset hexValueMessage
+  52      00
+  52 00ea BA180000 	>>  mov edx,hexValueMessageLen
+  52      00
+  52 00ef E80CFFFF 	>>  call write_message
+  52      FF
+  52 00f4 61       	>  popa 
+  53              	        println
+  53              	>  writeMessage printlnMessage,printlnLength
+  53 00f5 B9000000 	>>  mov ecx,offset printlnMessage
+  53      00
+  53 00fa BA020000 	>>  mov edx,printlnLength
+  53      00
+  53 00ff E8FCFEFF 	>>  call write_message
+  53      FF
+  54              	
+  55              	        exit                         # ukonceni aplikace
+  55 0104 B8010000 	>  mov eax,sys_exit
+  55      00
+GAS LISTING main.s 			page 6
+
+
+  55 0109 BB000000 	>  mov ebx,0
+  55      00
+  55 010e CD80     	>  int 0x80
+  56              	
