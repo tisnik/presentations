@@ -330,6 +330,20 @@ au BufNewFile,BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 
+Autocomplettion
+---------------
+▶ Module YouCompleteMe
+    https://github.com/Valloric/YouCompleteMe
+    Very good autocompletion module, probably better than all other plugins available
+    Support for:
+        * C, C++, Objective C
+        * Python 2 and Python 3
+        * JavaScript
+        * C#
+        * Go
+        * JavaScript and TypeScript
+        * Rust
+
 Vim and XML
 -----------
 ▶ Module xml.vim
