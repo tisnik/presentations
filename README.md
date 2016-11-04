@@ -29,6 +29,9 @@ Examples that are written in Python and use the Matplotlib library that
 can be found on the address
 [http://matplotlib.org/](http://matplotlib.org/).
 
+### Rust
+
+Demonstration example for the Rust programming language.
 
 Credits
 -------
