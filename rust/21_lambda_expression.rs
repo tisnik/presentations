@@ -1,0 +1,8 @@
+fn main() {
+    let sequence = 0..10;
+    let squares = sequence.map(|x| x*x);
+    for n in squares {
+        println!("{}", n);
+    }
+}
+
