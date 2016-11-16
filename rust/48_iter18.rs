@@ -1,0 +1,8 @@
+fn main() {
+    for n in 1..10 {
+	let fact = (1..n+1).fold(1, |prod, x| prod * x);
+	println!("{}! = {}", n, fact);
+    }
+
+}
+
