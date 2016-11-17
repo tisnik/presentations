@@ -1,3 +1,4 @@
+// POZOR: tento program obsahuje nekonecnou smycku, ukoncete pomoci CTRL+C nebo prikazem kill
 fn main() {
     let iter1 = 1..;
 
