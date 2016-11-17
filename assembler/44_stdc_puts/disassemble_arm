@@ -1,0 +1,2 @@
+objdump -f -d -t -h a.out
+
