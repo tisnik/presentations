@@ -1,0 +1,8 @@
+[package]
+name = "project5"
+version = "0.1.0"
+authors = ["Pavel Tisnovsky <ptisnovs@redhat.com>"]
+
+[dependencies]
+rand = "0.3.14"
+
