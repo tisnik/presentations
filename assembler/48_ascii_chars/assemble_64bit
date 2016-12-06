@@ -1,0 +1,2 @@
+gcc -g main_64bit.s
+
