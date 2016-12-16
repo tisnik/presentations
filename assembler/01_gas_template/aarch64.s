@@ -29,5 +29,5 @@ sys_exit=93
 _start:
         mov  x8, #sys_exit      // cislo sycallu pro funkci "exit"
         mov  x0, #0             // exit code = 0
-        svc   0                 // volani Linuxoveho kernelu
+        svc  0                  // volani Linuxoveho kernelu
 
