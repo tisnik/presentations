@@ -1,0 +1,3 @@
+as aarch64.s -o aarch64.o
+ld -s aarch64.o
+
