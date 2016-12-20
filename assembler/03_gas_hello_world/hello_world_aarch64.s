@@ -11,6 +11,9 @@
 sys_exit=93
 sys_write=64
 
+# List of syscalls for AArch64:
+# https://github.com/torvalds/linux/blob/master/include/uapi/asm-generic/unistd.h
+
 
 
 #-----------------------------------------------------------------------------

@@ -12,6 +12,12 @@ sys_exit   = 93
 sys_read   = 63
 sys_write  = 64
 
+
+# List of syscalls for AArch64:
+# https://github.com/torvalds/linux/blob/master/include/uapi/asm-generic/unistd.h
+
+
+
 # Dalsi konstanty pouzite v programu - standardni streamy
 std_input  = 0
 std_output = 1

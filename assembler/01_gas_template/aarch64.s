@@ -10,6 +10,9 @@
 # Linux kernel system call table
 sys_exit=93
 
+# List of syscalls for AArch64:
+# https://github.com/torvalds/linux/blob/master/include/uapi/asm-generic/unistd.h
+
 
 
 #-----------------------------------------------------------------------------
