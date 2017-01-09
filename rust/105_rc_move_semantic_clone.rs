@@ -38,5 +38,6 @@ fn main() {
     c.print();
     f2(c.clone());
     f2(c.clone());
+    println!("end of main");
 }
 
