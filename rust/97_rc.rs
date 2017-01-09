@@ -22,13 +22,13 @@ impl Drop for Complex {
 
 fn fn2() {
     println!("fn2 begin");
-    let c = Box::new(Complex::new(2.0, 2.0));
+    let c = Rc::new(Complex::new(2.0, 2.0));
     println!("fn2 end");
 }
 
 fn fn1() {
     println!("fn1 begin");
-    let c = Box::new(Complex::new(1.0, 1.0));
+    let c = Rc::new(Complex::new(1.0, 1.0));
     fn2();
     println!("fn1 end");
 }
