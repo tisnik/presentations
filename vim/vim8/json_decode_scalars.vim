@@ -24,7 +24,7 @@ let booleanValueFalse = 1==2
 let jsonValue = json_encode(booleanValueFalse)
 echo json_decode(jsonValue)
 
-let greetings = "VimPerferct"
+let greetings = "VimPerfect"
 let jsonValue = json_encode(greetings)
 echo json_decode(jsonValue)
 

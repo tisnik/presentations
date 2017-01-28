@@ -20,6 +20,6 @@ echo json_encode(booleanValueTrue)
 let booleanValueFalse = 1==2
 echo json_encode(booleanValueFalse)
 
-let greetings = "VimPerferct"
+let greetings = "VimPerfect"
 echo json_encode(greetings)
 

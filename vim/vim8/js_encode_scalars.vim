@@ -20,6 +20,6 @@ echo js_encode(booleanValueTrue)
 let booleanValueFalse = 1==2
 echo js_encode(booleanValueFalse)
 
-let greetings = "VimPerferct"
+let greetings = "VimPerfect"
 echo js_encode(greetings)
 
