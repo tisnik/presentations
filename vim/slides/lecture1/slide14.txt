@@ -10,6 +10,7 @@ Visual vs. "hard"
         visual wrapping on word boundaries
     :set nolinebreak
         turn off wrapping on word boundaries
+    :set textwidth=xx
     :set tw=xxx
         "hard" wrapping (inserts CR or CR/LF)
     :set tw=0
@@ -17,3 +18,5 @@ Visual vs. "hard"
     How to reformat paragraph:
             gqap
             <VisualBlock>gq
+    :set formatoptions+=a
+        automatic format
