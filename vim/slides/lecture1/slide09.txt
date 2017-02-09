@@ -13,5 +13,5 @@ Configuration options (cont)
         character below cursor will be part of block (slightly confusing)
     :set wildmenu
         TAB completion
-    :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o
+    :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o,*.png,*.jpg
         for file completion (ignored files)
