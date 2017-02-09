@@ -10,7 +10,7 @@ evim    so called Easy Vim, probably good for novices?
         Ctrl+O
         (also vim -y)
 rvim    restricted mode, can't start shell command nor suspend Vim
-vim -d  diff mode
+vim -d  diff mode (also vimdiff)
 gvim    Vim with GUI (GTK+)
 kvim    Vim with GUI (Qt)
 view    read-only mode
