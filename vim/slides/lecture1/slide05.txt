@@ -6,8 +6,8 @@ Vim modes
     ◆ Insert
     ◆ Visual
     ◆ Select
-    ◆ Commandline
-    ◆ Ex
+    ◆ Command + Commandline
+    ◆ Ex (key "Q")
 Additional modes:
     ◆ Replace (like Insert)
     ◆ Virtual replace
