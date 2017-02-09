@@ -4,7 +4,7 @@ Configuration options
     :set
         list all non-default options
     :set [no]optionName
-        for Boolean options like yes/no  on/of  enable/disable
+        for Boolean options like yes/no  on/off  enable/disable
     :set nocompatible
         turn on when no .vimrc or .gvimrc file is found!
         almost nobody wants to use :set compatible :)
@@ -18,3 +18,5 @@ Configuration options
         enables or disables expanding [Tab] to spaces
         wanna to use [Tab] when set? Ctrl+V Tab
     (:retab)
+        replaces all [Tab]s by spaces (if expandtab is selected)
+    :set tabstop=number
