@@ -1,1 +1,1 @@
-/home/tester/temp/presentations/vim/common/_.vim
+../../common/_.vim
