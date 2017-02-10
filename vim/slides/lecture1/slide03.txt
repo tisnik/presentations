@@ -9,7 +9,7 @@ Vi/Vim history (cont.)
     ◆ options (:set ...)
     ◆ commands (in command mode)
 ▶ New features:
-    ◆ Plugins
+    ◆ Plug-ins
     ◆ Tabs
     ◆ Windows
     ◆ Syntax highlighting
