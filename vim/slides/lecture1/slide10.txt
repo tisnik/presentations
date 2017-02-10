@@ -5,6 +5,8 @@ Text displaying
     :set nonumber
     :set list
          for EOLs, TABs etc.
+    :set nolist
+         turn off the previous settings
     :set tabstop=xxx
     :set showmatch
     :set matchpairs=(:),[:],{:},<:>
