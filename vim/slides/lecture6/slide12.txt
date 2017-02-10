@@ -1,0 +1,10 @@
+
+NERD Commenter
+--------------------------------
+▶ Repository localization
+    http://www.vim.org/scripts/script.php?script_id=1218
+▶ After the installation into ~/.vim/bundle 
+    :echo maplocalleader
+    <leader>cc
+    <leader>cn (nesting)
+    <leader>c<space> - switchs

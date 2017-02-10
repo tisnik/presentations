@@ -1,0 +1,8 @@
+
+Vim and Lua
+------------
+▶ lua-support.vim a.k.a. Lua-IDE
+    ◆ Templates
+▶ Luaref
+    http://www.vim.org/scripts/script.php?script_id=1291
+    ◆ Complete Lua reference guide in Vim help format

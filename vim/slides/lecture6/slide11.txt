@@ -1,0 +1,9 @@
+
+NERD Tree
+--------------------------------
+▶ Repository localization
+    http://www.vim.org/scripts/script.php?script_id=1658
+▶ After the installation into ~/.vim/bundle 
+    :help NERDTree
+    :NERDTree
+    (then use the "?" key)

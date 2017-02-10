@@ -1,0 +1,15 @@
+
+Omnicompletion
+--------------
+    Ctrl+X Ctrl+L
+        whole lines
+    Ctrl+X Ctrl+N
+        keywords in the current file
+    Ctrl+X Ctrl+I
+        keywords in the current file & included files
+    Ctrl+X Ctrl+K
+        keywords in dictionary
+        :set dictionary
+    Ctrl+X Ctrl+T
+        keywords in thesaurus
+        :set thesaurus

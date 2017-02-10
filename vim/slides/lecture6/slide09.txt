@@ -1,0 +1,15 @@
+
+Netrw
+--------------------------------
+▶ Part of standard Vim installation (vim-enhanced od something similar)
+    :Explore
+    :HExplore
+    (keys i, ?)
+    vim scp://user_name@remove_computer_name/path
+    vim ftp://remove_computer_name/path
+    :NetUserPass
+    :e ftp://user_name@remove_computer_name/path
+    :NetrwSettings
+    g:netrw_ftp_cmd="ftp"
+    g:netrw_http_cmd="elinks"
+    g:netrw_sftp_cmd="sftp"

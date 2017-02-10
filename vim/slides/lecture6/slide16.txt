@@ -1,0 +1,18 @@
+
+Vim and C/C++ languages
+------------------------
+    ◆ ctags
+    ◆ cscope
+        :cscope and cscope.out
+    :cs show
+        show current configuration
+    :cs f f stdio.h
+        find the specified file
+    :cs f t xyzzy
+        find text inside strings
+    :cs f g test
+        find function definition
+    :cs f d main
+        list of all functions called from main
+    :cs f c fclose
+        list of all functions calling fclose

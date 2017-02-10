@@ -1,0 +1,14 @@
+
+Vim-indent-guides
+--------------------------------
+▶ Indent levels, without the needs to make explicit configuration
+    Tabs
+    Spaces
+    Color selection
+▶ Repository localization
+    git clone git://github.com/nathanaelkane/vim-indent-guides.git
+▶ After the installation into ~/.vim/bundle 
+    :IndentGuidesEnable
+    :IndentGuidesDisable
+    :IndentGuidesToggle
+    :let g:indent_guides_indent_levels = 30

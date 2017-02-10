@@ -1,0 +1,15 @@
+
+Plugins for Vim
+--------------------------------
+▶ Global installation into $VIMRUNTIME/
+    echo $VIMRUNTIME
+▶ Local installation (per user)
+    into ~/.vim
+    want to be sure the path is correct?
+        :set runtimepath?
+▶ How to work with multiple plugins?
+    Shared directories (autoload, doc, shell, syntax, ...)
+    Could end in DLL hell :)
+    Solution: some sort of Vim Package Manager
+▶ Vim Pathogen
+    All packages use ~/.vim/bundle and goes into separate directories

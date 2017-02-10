@@ -1,0 +1,16 @@
+
+Vim and Java
+------------
+▶ Modul JavaBrowser
+https://github.com/vim-scripts/JavaBrowser
+    Needs ctags
+        Enter   jump to method or attribute
+        o       dtto, but in new window
+        Space   prototype
+        u       update
+        s       sort by name
+        q       quit/close
+        +       expand subtree
+        -       collapse subtree
+        *       expand the whole tree
+        x       show/hide window with source code

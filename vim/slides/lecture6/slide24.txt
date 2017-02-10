@@ -1,0 +1,5 @@
+
+▶ Slime for Vim
+    ◆ Can use "screen" or "Tmux" to communicate with REPL
+    ◆ Complete IDE :-)
+▶ Vimclojure

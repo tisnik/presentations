@@ -1,0 +1,26 @@
+
+Plugins for Vim
+--------------------------------
+▶ See also:
+    http://vimawesome.com/
+    http://www.vim.org/scripts/script_search_results.php?order_by=rating
+▶ Interesting plugins
+    Vim-airline
+    Vim-colors-solarized
+    im-indend-guides
+    Fugitive
+    GistVim
+    NERDTree
+    BufExplorer
+    SnipMate
+    Ctrl-P
+    Match It
+    Gundo
+    TVO
+    Tabular
+    Unite
+    Neocomplete
+    Neosnippet
+    Youcompleteme (YCM)
+    Syntastic
+    vim-prism

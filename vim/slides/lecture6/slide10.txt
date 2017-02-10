@@ -1,0 +1,9 @@
+
+TagList
+--------------------------------
+    Module TagList
+        :TlistAddFiles *.c
+        :Tlist
+        :TlistAddFilesRecursive .
+        :Tlist
+    Module matchit.vim

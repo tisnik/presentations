@@ -1,0 +1,10 @@
+
+GistVim
+--------------------------------
+▶ It needs webapi to work properly
+▶ Repository localization
+    http://www.vim.org/scripts/script.php?script_id=2423
+▶ After the installation into ~/.vim/bundle 
+    :Gist
+▶ Results might go to
+    https://gist.github.com/

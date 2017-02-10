@@ -1,0 +1,13 @@
+
+Vim and C/C++ languages
+------------------------
+    ◆ Source code indenting
+        :set shiftwidth=???
+        :set cindent
+        :set cinoptions
+	>N  "normal" indent used after a line that should incr. indent
+        fN  left { indentation below function name
+        :N  case/default in switch-case indentation
+        =N  indentation of commands after case/default
+        bN  indentation of break in case/default
+        hN  like =N, but used for "public" etc. (C++)

@@ -1,0 +1,15 @@
+
+Fugitive
+--------------------------------
+▶ Repository localization
+    http://www.vim.org/scripts/script.php?script_id=2975
+    https://github.com/tpope/vim-fugitive
+▶ After the installation into ~/.vim/bundle 
+    :call pathogen#helptags()
+    :help fugitive
+    :Git _something_
+    :Gstatus
+    :Gcommit (many commands)
+    :Gbrowse
+    :Gblame :-)
+    :Gvdiff

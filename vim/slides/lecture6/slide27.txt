@@ -1,0 +1,10 @@
+
+Vim and XML
+-----------
+▶ Module xml.vim
+    ◆ http://www.vim.org/scripts/script.php?script_id=301
+    ◆ Completes tags
+    ◆ Closes tags
+:%!xmllint --format -
+:'<,'>!xmllint --format -
+:map =. :%!xmllint --format - <cr>

@@ -1,0 +1,13 @@
+
+Omnicompletion
+--------------
+    Ctrl+X Ctrl+]
+        tags
+    Ctrl+X Ctrl+F
+        file names (start with ~/ etc. etc.)
+    Ctrl+X Ctrl+D
+        definitions and macros
+    Ctrl+X Ctrl+U
+        calls specified function
+    Ctrl+X Ctrl+O
+        stars omni completion (if defined)

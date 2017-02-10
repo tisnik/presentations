@@ -1,0 +1,14 @@
+
+Vim Pathogen
+--------------------------------
+▶ Description of this module
+    http://www.vim.org/scripts/script.php?script_id=2332
+▶ Installation and directory configuration
+    mkdir -p ~/.vim/autoload ~/.vim/bundle 
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+▶ Usually just one change needs to be done in .vimrc
+    execute pathogen#infect()
+▶ If documentation is not accessible:
+    call pathogen#helptags()
+▶ If documentation is still not accessible:
+    set nocompatible before execute pathogen#infect() !!!

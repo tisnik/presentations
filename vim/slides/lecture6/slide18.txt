@@ -1,0 +1,8 @@
+
+Vim and C/C++ languages
+------------------------
+    ◆ Special setting for Makefile
+        augroup __makefile__
+        au!
+        au BufRead,BufNewFile Makefile set noexpandtab
+        augroup END
