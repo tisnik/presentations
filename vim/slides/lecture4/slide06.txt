@@ -1,0 +1,12 @@
+
+Any terminal
+----------------------
+term=
+    NONE
+    standout
+    bold
+    italic
+    underline
+    undercurl
+    reverse
+    inverse

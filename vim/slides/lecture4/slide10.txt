@@ -1,0 +1,9 @@
+
+Syntax highlighting
+----------------------
+Syntax categories
+    :syntax clear
+    :syntax clear   ${category_name}
+    :syntax keyword ${category_name}
+    :syntax match   ${category_name}
+    :syntax region  ${category_name}

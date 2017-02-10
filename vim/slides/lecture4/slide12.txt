@@ -1,0 +1,4 @@
+
+Bugzilla numbers highlight
+    :syntax match bug "BZ#[0-9]\+"
+    :highlight bug ctermbg=red guibg=red

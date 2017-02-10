@@ -1,0 +1,12 @@
+
+GVim configuration
+----------------------
+▶ Configuration options
+    :set guifont?
+    :set guifont=DejaVu\ Sans\ Mono\ 12
+    :set guifont=*
+    :set linespace=number_of_pixels
+    :set guioptions?
+    :set guioptions+=a       " visual mode block -> clipboard
+    :set guioptions-=T       " turn off toolbar
+    :set guioptions-=mM      " turn off menu

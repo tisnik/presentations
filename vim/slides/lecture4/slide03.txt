@@ -1,0 +1,5 @@
+
+Syntax highlighting
+----------------------
+Terminal test
+:source $VIMRUNTIME/syntax/colortest.vim

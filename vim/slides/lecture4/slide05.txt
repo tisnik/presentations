@@ -1,0 +1,12 @@
+
+Syntax highlighting
+----------------------
+Attributes for :highlighting
+    term    any terminal
+    cterm   color terminal
+    ctermbg background
+    ctermfg foreground
+    gui     only avail in GUI (Gvim, ...)
+    guibg   GUI background
+    guifg   GUI foreground
+    guisp   underline etc.

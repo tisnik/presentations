@@ -1,0 +1,13 @@
+
+Use case: My calendar
+----------------------
+Somewhere in .vimrc
+    highlight Days ctermfg=cyan  guifg=#aaffff
+    highlight Todo ctermfg=red   guifg=#ffaaaa
+    highlight Ok   ctermfg=green guifg=#aaffaa
+    augroup __calendar__
+    autocmd!   " Remove ALL autocommands for the current group.
+    autocmd BufRead,BufNewFile *.cal syntax keyword Days Mon Tue Wed Thu Fri Sat Sun
+    autocmd BufRead,BufNewFile *.cal syntax keyword Todo TODO
+    autocmd BufRead,BufNewFile *.cal syntax keyword OK OK
+    augroup END

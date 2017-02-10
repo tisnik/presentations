@@ -1,0 +1,10 @@
+
+Syntax highlighting
+----------------------
+Actual line/column
+    :set cursorcolumn
+    :set cursorline
+    :highlight CursorLine   guibg=#2d2d2d
+    :highlight CursorColumn guibg=#2d2d2d
+    or (green line and black characters):
+    :highlight CursorLine ctermfg=1 ctermbg=0 term=NONE cterm=NONE

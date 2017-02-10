@@ -1,0 +1,6 @@
+
+Syntax highlighting
+----------------------
+:highlighting Normal ctermfg=7
+:highlighting Normal ctermbg=4 ctermfg=3
+:highlighting Normal ctermbg=4 ctermfg=3 cterm=italic

@@ -1,0 +1,12 @@
+
+Syntax highlighting
+----------------------
+Tabs
+    :syntax match Tab "\t"
+    :syntax match Tab2 "\t\t"
+    :syntax match Tab3 "\t\t\t"
+    :syntax match Tab4 "\t\t\t\t"
+    :highlight Tab  ctermbg=lightgreen guibg=#e0ffe0
+    :highlight Tab2 ctermbg=lightred   guibg=#ffe0e0
+    :highlight Tab3 ctermbg=lightblue  guibg=#e0e0ff
+    :highlight Tab4 ctermbg=lightcyan  guibg=#ffffe0

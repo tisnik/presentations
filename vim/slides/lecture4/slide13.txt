@@ -1,0 +1,20 @@
+
+Numeric constants
+----------------------
+    :highlight NumericConstantOctal   ctermfg=red    guifg=red
+    :highlight NumericConstantBinary  ctermfg=green  guifg=green
+    :highlight NumericConstantHex     ctermfg=blue   guifg=blue
+    :highlight NumericConstantDecimal ctermfg=cyan   guifg=cyan
+    :highlight NumericConstantFloat   ctermfg=yellow guifg=yellow
+    :syntax match NumericConstantOctal   "0[0-7_]*\>"
+    :syntax match NumericConstantBinary  "0[bB][01_]*\>"
+    :syntax match NumericConstantHex     "0[xX][0-9a-fA-F_]*\>"
+    :syntax match NumericConstantDecimal "[1-9_][0-9_]*\>"
+    :syntax match NumericConstantFloat   "[0-9_]*\.[0-9_]*\([eE][+-]\=[0-9_]*\)\=\>"
+    Howto use the code above:
+    1) select the ten lines using visual block (V-command)
+    2) :w foobar.vim
+    3) new buffer.vim
+    4) :source foobar
+    5) type: 10 0x10 010 0b10
+    6) yes!

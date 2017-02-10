@@ -1,0 +1,7 @@
+
+Vim configuration
+----------------------
+▶ .vimrc
+▶ vim -g, gvim ...
+▶ .gvimrc
+▶ :options - interactive, hypertext help etc.
