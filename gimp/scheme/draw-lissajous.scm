@@ -47,11 +47,11 @@
 ; a specifikace proměnných nastavitelných uživatelem,
 ; které se posléze přenesou jako parametry skriptu.
 (script-fu-register "script-fu-draw-lissajous"
-                    _"<Image>/Filters/Decor/Lissajous"
+                    "<Image>/Filters/Render/Lissajous"
                     "Vykresli Lissajousuv obrazec na zaklade zadanych parametru"
                     "Pavel Tisnovsky"
                     "Pavel Tisnovsky"
-                    "2010-05-04"
+                    "2017-02-11"
                     "RGB* GRAY* INDEXED*"
                     SF-IMAGE "The Image" 0
                     SF-DRAWABLE "The Layer" 0
