@@ -1,0 +1,6 @@
+
+Insert mode only
+:iab teh the
+:iab tihs this
+:iab RH Red Hat
+:iab #i #include

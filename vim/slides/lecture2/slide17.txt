@@ -1,0 +1,8 @@
+
+Abbreviations
+-------------
+For insert/replace/command mode
+:ab teh the
+:ab tihs this
+:ab RH Red Hat
+:ab RHMAP Red Hat Mobile Application Platform
