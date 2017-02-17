@@ -5,6 +5,7 @@ Examples 3: operator+text object
         dib  delete inner block
         daB  delete a Block     brackets
         diB  delete inner Block brackets
+        dis  delete sentence.
         dat  delete a tag
         dit  delete inner tag
         cab  change a block (inside ())
@@ -12,3 +13,6 @@ Examples 3: operator+text object
         caB  change a Block (inside {})
         ciB  change inner Block
         =aB  indent a Block
+        dap  delete a paragraph
+        dip  delete inner paragraph
+        :help text-object

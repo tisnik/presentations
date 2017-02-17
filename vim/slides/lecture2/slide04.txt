@@ -9,3 +9,4 @@ Examples 1: operator+motion-command
         dd   delete whole line (special, d is not motion here!)
         dt"  delete text till " character ('delete content of string')
         df"  delete text to   " character ('delete string including "')
+        d)   delete till end of sentence
