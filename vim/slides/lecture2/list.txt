@@ -15,3 +15,5 @@ slide13.txt
 slide14.txt
 slide15.txt
 slide16.txt
+slide17.txt
+slide18.txt

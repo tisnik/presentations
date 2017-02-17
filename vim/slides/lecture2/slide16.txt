@@ -1,1 +1,24 @@
 
+Insert mode
+-----------
+    Esc/Ctrl+[    back to Normal mode
+    Ctrl+C        dtto but don't check abbreviations (next slide)
+
+    Ctrl+W        delete Word
+
+    Ctrl+R x      insert register x
+    Ctrl+P        autocompletion (find previous word)
+    Ctrl+N        autocompletion (find next word)
+    Ctrl+X ...    special "Ctrl+X" mode
+    Ctrl+X Ctrl+F file autocompletion
+    Ctrl+K x y    insert digraph (I like this feature!)
+                  :digraphs
+                  Ctrl+K Co
+                  Ctrl+K Rg
+                  Ctrl+K a:
+                  Ctrl+K oe
+                  Ctrl+K =>
+
+    Ctrl+T        indent
+    Ctrl+D        unindent
+
