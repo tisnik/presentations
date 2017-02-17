@@ -1,0 +1,81 @@
+Programovací jazyk Rust
+=======================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2017-02-15
+
+Obsah přednášky
+-------------------------------
+▶ Charakteristické rysy Rustu
+▶ Rust a C/C++
+▶ Základ syntaxe
+▶ Datové typy
+▶ Zajímavé prvky jazyka
+▶ OOP v Rustu
+▶ Správa paměti
+▶ Vlákna
+
+Charakteristické rysy Rustu
+-------------------------------
+
+Rust a C/C++
+-------------------------------
+
+Základ syntaxe
+-------------------------------
+
+Datové typy
+-------------------------------
+▶ Primitivní datové typy
+▶ Homogenní struktury
+    Pole
+    Vektor
+    + slice pole/vektorů
+▶ N-tice
+▶ Záznamy
+
+Zajímavé prvky jazyka
+-------------------------------
+Neměnitelné hodnoty
+    Výchozí modifikátor
+Rozsah (range)
+Řídicí struktury
+    Vrací hodnotu
+Anonymní funkce
+Funkce vyššího řádu
+    map
+    filter
+    take
+    take_while
+    fold
+    Nekonečné sekvence
+Pattern matching
+Makra
+Unsafe bloky
+
+OOP v Rustu
+-------------------------------
+Vlastnictví objektů
+    Reference
+    Sémantika "move"
+    Sémantika "copy"
+Traity
+    Kombinace trait+struktura+metody
+Konstruktory a destruktory
+    Trait "drop"
+    Přetěžování operátorů
+        Přetížení = implementace traitu
+Generické funkce
+
+Správa paměti
+-------------------------------
+Zásobník versus halda
+Box
+Rc
+Arc
+Pole a vektory
+    slice
+
+Vlákna
+-------------------------------
+
