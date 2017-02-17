@@ -11,3 +11,6 @@ Registers
             Insert mode:
             Ctrl+R=6*7<cr>
     :reg - shows all regs
+    Ctrl+A  increase number (under the cursor)
+    Ctrl+X  decrease number
+

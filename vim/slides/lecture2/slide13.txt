@@ -6,4 +6,4 @@ Tabs
     :tabnext
     :tabfirst
     :tabclose
-    Ctrl+W gf
+    Ctrl+W gf - open the file (under the cursor) in new tab
