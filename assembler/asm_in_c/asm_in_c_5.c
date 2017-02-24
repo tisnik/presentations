@@ -2,7 +2,7 @@
 
 unsigned long long result;
 
-int main ()
+int main()
 {
     __asm__ __volatile__(
         "mov    $42, %%rbx;   \n\t"

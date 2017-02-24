@@ -4,7 +4,7 @@ unsigned long long x = 10;
 unsigned long long y = 20;
 unsigned long long result;
 
-int main ()
+int main()
 {
     __asm__ __volatile__(
         "add    %%rbx, %%rax;   \n\t"
