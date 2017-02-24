@@ -135,6 +135,82 @@ Vylepšení skriptovacího engine
 ▶ Kanály
 ▶ Úlohy
 
+ID oken
+-------
+" Funkce bude obecně vracet různá čísla:
+function! PrintWindowNumbers()
+    let windowNumbers = []
+    windo call add(windowNumbers, winnr()) 
+    for windowNumber in windowNumbers
+        echo windowNumber
+    endfor
+endfunction
+"
+" Funkce bude pro jedno okno vždy vracet stejné ID
+function! PrintWindowIDs()
+    let windowIDs = []
+    windo call add(windowIDs, win_getid(winnr())) 
+    for windowID in windowIDs
+        echo windowID
+    endfor
+endfunction
+
+Anonymní funkce (lambdy)
+------------------------
+Zápis:
+    {x,y -> x + y}
+Otestování:
+    :echo {x,y -> x + y}(1,2)
+Přiřazení do proměnné (pojmenování):
+    :let Fce={x,y -> x + y}
+    :echo Fce(1,2)
+    3
+
+Funkce vyššího řádu
+-------------------
+let  sequence = range(10)
+echo sequence
+"
+call map(sequence, {index, value -> value * 2})
+echo sequence
+"
+call map(sequence, {index, value -> value * 2})
+echo sequence
+"
+let  sequence2 = filter(copy(sequence), {index, value -> value % 2 == 0})
+let  sequence3 = filter(copy(sequence), {index, value -> value % 3 == 0})
+echo "sequence1=" sequence
+echo "sequence2=" sequence2
+echo "sequence3=" sequence3
+
+Časovače
+--------
+Vytvoření časovače:
+    timer_start(interval, funcref či anonymní funkce)
+    timer_start(interval, funcref či anonymní funkce, {'repeat':počet_opakování})
+Periodické opakování:
+    timer_start(interval, funcref či anonymní funkce, {'repeat':-1})
+
+Podpora formátu JSON
+--------------------
+json_encode(výraz)
+    převod výrazu do JSON formátu, který se vrátí ve formě řetězce
+json_decode(řetězec)
+    opak předchozí funkce, parsování řetězce s daty uloženými v JSON
+    formátu do interních datových struktur VimScriptu
+js_encode(výraz)
+    podobné funkci json_encode(), ovšem klíče nejsou umístěny
+    v uvozovkách
+js_decode(řetězec)
+    podobné funkci json_decode(), ovšem při parsingu se nevyžaduje,
+    aby byly klíče umístěny v uvozovkách
+
+Kanály
+------
+
+Úlohy
+-----
+
 Blbinka na závěr
 -------------------------------
 Příkaz :smile
