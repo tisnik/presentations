@@ -14,15 +14,70 @@ Obsah přednášky
 ▶ OOP v Rustu
 ▶ Správa paměti
 ▶ Vlákna
+▶ Správce balíčků (Cargo)
 
 Charakteristické rysy Rustu
 -------------------------------
+▶ Multiparadigmatický jazyk
+    OO
+    Funcionální rysy
+    Imperativní
+▶ Dostupný pro všechny „zajímavé“ systémy
+    Linux, (Free)BSD, OS X, Windows
+▶ Současná verze používá LLVM backend
+▶ Cíle
+    Bezpečné aplikace
+    Paralelní běh částí aplikace
+    Výkon srovnatelný s C a C++
+    Překladač s rozumným chybovým hlášením
+    Odstranění některých historických pozůstatků v C/C++
+
+Charakteristické rysy Rustu
+-------------------------------
+▶ Unicode řetězce (UTF-8)
+▶ Odvození typů proměnných (type inference)
+▶ Striktní typová kontrola
+▶ OOP založené strukturách (struct) a traitech
+▶ Životní cyklus hodnot (zejména ukazatelů)
+    (borrow)
+▶ Sémantiky „copy“ a „move“
+▶ Generické parametry funkcí
+▶ Pattern matching
 
 Rust a C/C++
 -------------------------------
+(D, Go, Nimrod...)
+▶ Syntaxe Rustu částečně odvozena od C/C++
+▶ Využití existujícího „ekosystému“
+    ▶ Použití již hotových C knihoven
+        Foreign Function Interface (FFI)
+    ▶ C++ knihovny
+        Stále ještě problematické
+▶ C ⇒ Rust
+    Project Corrode
+
+Chybové hlášení překladače
+--------------------------
+error[E0382]: use of moved value: `c`
+  --> an_example.rs:40:8
+   |
+39 |     funkce1(c);
+   |        - value moved here
+40 |     funkce2(c);
+   |        ^ value used here after move
+   |
+   = note: move occurs because `c` has type `std::rc::Rc<Complex>`, which does not implement the `Copy` trait
+    vs:
+    ↓
+Generate the longest error message in C++
+http://tinyurl.com/longest-error-message
 
 Základ syntaxe
 -------------------------------
+▶ Funkce
+▶ Proměnné
+▶ Struktury
+▶ Řídicí konstrukce
 
 Datové typy
 -------------------------------
@@ -38,6 +93,7 @@ Zajímavé prvky jazyka
 -------------------------------
 Neměnitelné hodnoty
     Výchozí modifikátor
+    Lze změnit pomocí „mut“
 Rozsah (range)
 Řídicí struktury
     Vrací hodnotu
@@ -53,6 +109,169 @@ Pattern matching
 Makra
 Unsafe bloky
 
+Základ syntaxe
+-------------------------------
+
+// začínáme - funkce main()
+fn main() {
+    println!("Hello world!");
+}
+
+// odvození typu všech proměnných (i z)
+// použití makra println!
+fn main() {
+    let x = 6;
+    let y = 7;
+    let z;
+    // překladač až nyní získá informace o typu
+    z = x * y;
+    println!("{} * {} = {}", x, y, z);
+}
+
+// měnitelná proměnná
+// specifikace typu proměnné
+// programová smyčka while
+fn main() {
+    let mut i:i8 = 0;
+    while i<200 {
+        println!("pocitadlo: {}", i);
+        i = i + 1;
+    }
+}
+
+// smyčka typu for-each a typ range
+fn main() {
+    for i in 1..10 {
+        println!("pocitadlo: {}", i)
+    }
+}
+
+// smyčka typu for-each pro pole
+fn main() {
+    let array = [1, 2, 3, 4];
+.
+    for i in array.iter().rev() {
+        println!("{}", i);
+    }
+}
+
+// konstrukce "if" ve funkci výrazu
+fn if_expression(value:i32) {
+    let value_type =
+        if value < 0 {
+            "zaporna"
+        }
+        else {
+            if value == 0 {
+                "nulova"
+            }
+            else {
+                "kladna"
+            }
+        };
+    println!("Hodnota {} je {}", value, value_type);
+}
+.
+fn main() {
+    if_expression(0);
+    if_expression(10);
+    if_expression(-10);
+}
+
+// návratové typy funkcí
+fn foo() -> i32 {
+    42
+}
+.
+fn bar(argument:i32) -> i32 {
+    return argument * 2;
+}
+.
+fn baz(argument:i32) -> i32 {
+    argument * 2
+}
+.
+fn main() {
+    println!("{}", foo());
+    println!("{}", bar(21));
+    println!("{}", baz(21));
+}
+
+// příklad použití map() + anonymní funkce
+fn main() {
+    let sequence = 0..10;
+    let squares = sequence.map(|x| x*x);
+    for n in squares {
+        println!("{}", n);
+    }
+}
+
+// explicitní specifikace datového typu
+fn main() {
+    let sequence = -10..10;
+    let squares = sequence.map(|x:i32| x*x);
+    for n in squares {
+        println!("{}", n);
+    }
+}
+
+// nekonečné sekvence a práce s nimi
+fn main() {
+    let iter1 = 1..;
+    let iter2 = iter1.filter(|x| x % 2 == 0);
+    let iter3 = iter2.take(10);
+    let suma  = iter3.fold(0, |sum, x| sum + x);
+    println!("sum = {}", suma);
+}
+
+// faktoriály
+fn main() {
+    for n in 1..10 {
+        let fact = (1..n+1).fold(1, |prod, x| prod * x);
+        println!("{}! = {}", n, fact);
+    }
+
+}
+
+// anonymní funkce jsou "hodnotou"
+fn main() {
+    let is_odd  = |x: i32| x & 1 == 1;
+    //let is_even = |x: i32| !is_odd(x);
+    let square  = |x: i32| x*x;
+    for x in 0..10 {
+        println!("{}*{}={}, {} is {} number", x, x, square(x), x, if is_odd(x) {"odd"} else {"even"})
+    }
+}
+
+// passing by value or reference
+fn mutate_variable(arg1:i32, arg2:&mut i32) {
+    println!("mutation ...");
+    let x = arg1 * 2;
+    *arg2 = x;
+}
+.
+fn print_variables(arg1:i32, arg2:i32) {
+    println!("function print_variables()");
+    println!("Variable1: {}", arg1);
+    println!("Variable2: {}", arg2);
+}
+.
+fn pass_by_reference(arg1:&i32, arg2:&i32) {
+    println!("function pass_by_reference()");
+    println!("Variable1: {}", *arg1);
+    println!("Variable2: {}", *arg2);
+}
+.
+fn main() {
+    let variable1 = 1;
+    let mut variable2 = 1;
+    print_variables(variable1, variable2);
+    pass_by_reference(&variable1, &variable2);
+    mutate_variable(variable1, &mut variable2);
+    print_variables(variable1, variable2);
+    pass_by_reference(&variable1, &variable2);
+}
+
 OOP v Rustu
 -------------------------------
 Vlastnictví objektů
@@ -67,6 +286,144 @@ Konstruktory a destruktory
         Přetížení = implementace traitu
 Generické funkce
 
+//
+struct Complex {
+    real: f32,
+    imag: f32,
+}
+//
+fn print_complex(c:Complex) {
+    println!("complex number: {}+{}i", c.real, c.imag);
+}
+//
+fn main() {
+    let c1 = Complex{real:1.0, imag:2.0};
+    print_complex(c1);
+    // nelze, vlastnictví přesunuto do print_complex
+    let c2 = c1;
+    print_complex(c2);
+}
+
+// copy trait
+#[derive(Copy, Clone)]
+struct Complex {
+    real: f32,
+    imag: f32,
+}
+//
+fn print_complex(c:Complex) {
+    println!("complex number: {}+{}i", c.real, c.imag);
+}
+//
+fn main() {
+    let c1 = Complex{real:1.0, imag:2.0};
+    print_complex(c1);
+    let c2 = c1;
+    print_complex(c2);
+}
+
+// metody
+struct Complex {
+    real: f32,
+    imag: f32,
+}
+//
+impl Complex {
+    // konstruktor volany Complex::new(real, imag)
+    fn new(real: f32, imag: f32) -> Complex {
+        Complex{real:real, imag:imag}
+    }
+    // konstruktor volany Complex::zero()
+    fn zero() -> Complex {
+        Complex{real:0.0, imag:0.0}
+    }
+//
+    fn abs(&self) -> f32 {
+        (self.real * self.real + self.imag * self.imag).sqrt()
+    }
+//
+    fn print(&self) {
+        println!("complex number: {}+{}i", self.real, self.imag);
+    }
+//
+    fn add(&self, c:&Complex) -> Complex {
+        Complex{real: self.real + c.real, imag: self.imag + c.imag}
+    }
+}
+//
+fn main() {
+    let c1 = Complex{real:3.0, imag:4.0};
+    c1.print();
+    println!("absolute value: {}", c1.abs());
+}
+
+// deklarace traitu
+trait Print {
+    fn print(&self);
+}
+// nase datova struktura
+struct Complex {
+    real: f32,
+    imag: f32,
+}
+// implementace traitu pro datovou strukturu
+impl Print for Complex {
+    fn print(&self) {
+        println!("complex number: {}+{}i", self.real, self.imag);
+    }
+}
+
+// genericka datova struktura
+struct Complex<T> {
+    real: T,
+    imag: T,
+}
+// lze pouzit
+let c1 = Complex{real:10, imag:20};
+let c2 = Complex{real:10.1, imag:20.1};
+let c3 = Complex{real:10.2f64, imag:20.2f64};
+let c4 = Complex{real:true, imag:false};
+
+// pretizeni operatoru +
+use std::ops::Add;
+-
+struct Complex {
+    real: f32,
+    imag: f32,
+}
+-
+impl Complex {
+-
+    fn new(real: f32, imag: f32) -> Complex {
+        Complex{real:real, imag:imag}
+    }
+-
+    fn print(&self) {
+        println!("complex number: {:}+{:}i", self.real, self.imag);
+    }
+}
+-
+impl Add for Complex {
+-
+    type Output = Complex;
+-
+    fn add(self, right: Complex) -> Self::Output {
+        Complex{real: self.real + right.real,
+                imag: self.imag + right.imag}
+    }
+-
+}
+-
+fn main() {
+    let c1 = Complex::new(1.0, 1.0);
+    let c2 = Complex::new(3.0, 4.0);
+    c1.print();
+    c2.print();
+    let c3 = c1 + c2;
+    c3.print();
+}
+
+
 Správa paměti
 -------------------------------
 Zásobník versus halda
@@ -76,6 +433,101 @@ Arc
 Pole a vektory
     slice
 
+Box
+---
+fn main() {
+    let x = Box::new(42);
+    println!("{}", x);
+}
+
+let c = Box::new(Complex::new(1.0, 2.0));
+
+Rc
+--
+
+Arc
+---
+
+Pole
+----
+
+Vektory
+-------
+
+"Slice" polí a vektorů
+----------------------
+
 Vlákna
--------------------------------
+------
+
+Testy
+-----
+#[test]
+fn ok_test() {
+}
+.
+#[test]
+fn failure() {
+    assert!(false);
+}
+
+Správce balíčků (Cargo)
+-----------------------
+▶ Vytvoření kostry nového projektu
+▶ Nový projekt obsahuje i adresáře a soubory umožňující podporu SCM
+    - Git
+    - Mercurial
+▶ Automatická kontrola, které soubory je zapotřebí přeložit
+▶ Automatické stažení všech knihoven a jejich závislostí
+▶ Spuštění projektu s možností předání parametrů příkazového řádku.
+▶ Spuštění jednotkových testů
+▶ Spuštění benchmarků
+▶ Vyhledání knihovny v centrálním registru zaregistrovaných knihoven
+▶ Publikování vlastního balíčku v centrálním registru (crates.io)
+▶ Instalace aplikace
+
+Cargo.toml
+----------
+[package]
+name = "projectXYZ"
+version = "0.1.0"
+authors = ["Pepa z depa <pepa@installfest.cz>"]
+.
+[dependencies]
+rand = "0.3.14"
+
+Použití nástroje Cargo
+----------------------
+$ cargo build
+    Compiling project1 v0.1.0 (file:///home/tester/temp/project1)
+    Finished debug [unoptimized + debuginfo] target(s) in 0.37 secs
+.
+$ cargo build
+    Finished debug [unoptimized + debuginfo] target(s) in 0.0 secs
+
+$ cargo run
+    Finished debug [unoptimized + debuginfo] target(s) in 0.0 secs
+     Running `target/debug/project1`
+Hello, world!
+
+Použití nástroje Cargo
+----------------------
+$ cargo test
+   Compiling project1 v0.1.0 (file:///home/tester/temp/project1)
+    Finished debug [unoptimized + debuginfo] target(s) in 0.43 secs
+     Running target/debug/project1-b888664ab405e319
+.
+running 0 tests
+.
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured
+
+Použití nástroje Cargo
+----------------------
+$ cargo install
+   Compiling libc v0.2.17
+   Compiling rand v0.3.14
+   Compiling projectXYZ v0.1.0 (file:///home/tester/temp/projectXYZ)
+    Finished release [optimized] target(s) in 5.88 secs
+  Installing /home/tester/.cargo/bin/projectXYZ
+warning: be sure to add `/home/tester/.cargo/bin` to your PATH to be able to run the installed binaries
 
