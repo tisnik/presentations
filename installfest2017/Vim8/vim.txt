@@ -18,9 +18,9 @@ Od QEDu k Vimu
 -------------------------------
 1965   QED        řádkový editor
 1971   ed         jednodušší řádkový editor, Ken Thompson, PDP-7
-1975   em         "Editor for Mortals", založen na ed
+1975   em         „Editor for Mortals“, založen na ed
 1976   ex         ed update, přímý předchůdce Vi
-1976   vi         ex+new "VIsual" mode
+1976   vi         ex+new „VIsual“ mode
 1987   Stevie     ST Editor for VI Enthusiasts
 1988   Vim 1.0    první neoficiální verze
 1990   Elvis      klon Vi s mnoha vylepšeními
@@ -32,6 +32,7 @@ Stručná historie verzí Vimu
 1992   Vim 1.22   port na Unix 
 1993   Vim 2.0    Vim Improved
 1994   Vim 3      horizontálně rozdělená okna, integrovaná nápověda
+                  (screenshot)
 1996   Vim 4      GUI
 1998   Vim 5      zvýraznění syntaxe, vertikálně rozdělená okna
 ...               Unicode, diff mode, port na VMS, BeOS, Mac,
@@ -40,6 +41,9 @@ Stručná historie verzí Vimu
 2006   Vim 7      podpora pro další skriptovací jazyky, taby
 ...               slovníky, omnicompletion
 2016   Vim 8      viz zbytek přednášky
+
+Vim 8
+-------------------------------
 
 Nastavení breakindent
 -------------------------------
@@ -71,7 +75,7 @@ Vylepšení práce se souborem .viminfo
     globální proměnné
 ▶ Původně: poslední instance přepsala předchozí změny
 ▶ Nové chování
-    časové značky + "merge změn"
+    časové značky + „merge změn“
     užitečné ve chvíli, kdy je spuštěno více instancí Vimu
 # Command Line History (newest to oldest):
 :q
@@ -205,11 +209,32 @@ js_decode(řetězec)
     podobné funkci json_decode(), ovšem při parsingu se nevyžaduje,
     aby byly klíče umístěny v uvozovkách
 
-Kanály
-------
+Režimy pluginů
+--------------
+Režim        Připojení    Popis
+démon        socket       proces pro více instancí Vimu
+úloha (job)  socket/pipe  proces pro jednu instanci Vimu
+krátká úloha socket/pipe  neběží po celou dobu existence Vimu
+filtr        pipe         spouští se synchronně
 
 Úlohy
 -----
+▶ Při spuštění pluginu v samosatatném procesu
+job_start()   - cesta ke spriptu + options
+job_status()  - "run", "fail", "dead" ...
+job_stop()    - "term", "hup", "quit", ...
+job_channel() - získání kanálu pro komunikaci
+
+Kanály
+------
+▶ Slouží pro komunikaci mezi Vimem a externími pluginy
+▶ Využívají se sockety nebo pipe
+
+Typ zprávy Význam
+RAW        obecný formát
+NL         textová zpráva je ukončena znakem (NL)
+JSON       formát JSON
+JS         formát JSON s klíči odpovídajícími JavaScriptu
 
 Blbinka na závěr
 -------------------------------
@@ -222,7 +247,7 @@ Prerekvizity
     sudo dnf install ncurses-devel
     sudo apt-get install libncurses-dev
 Stažení a rozbalení zdrojových kódů
-    wget https://github.com/vim/vim/archive/master.zip	
+    wget https://github.com/vim/vim/archive/master.zip  
     unzip master.zip
 Překlad
     cd vim-master
