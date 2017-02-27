@@ -1,0 +1,10 @@
+
+Obsah přednášky
+-------------------------------
+▶ Stručná historie verzí Vimu
+▶ Nastavení breakindent
+▶ Vylepšení práce se souborem .viminfo
+▶ Standardní formát pluginů
+▶ Vylepšení skriptovacího engine
+▶ Blbinka na závěr
+▶ Doplnění - překlad Vimu8

@@ -1,0 +1,5 @@
+
+Kanály
+------
+▶ Slouží pro komunikaci mezi Vimem a externími pluginy
+▶ Využívají se sockety nebo pipe

@@ -1,0 +1,8 @@
+
+Režimy pluginů
+--------------
+Režim        Připojení    Popis
+démon        socket       proces pro více instancí Vimu
+úloha (job)  socket/pipe  proces pro jednu instanci Vimu
+krátká úloha socket/pipe  neběží po celou dobu existence Vimu
+filtr        pipe         spouští se synchronně

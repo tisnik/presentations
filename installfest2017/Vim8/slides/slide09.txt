@@ -1,0 +1,36 @@
+
+Struktura adresářů s balíčky
+-------------------------------
+.
+└── pack
+    └── balicky
+        ├── start
+        │   ├── plugin1
+        │   │   ├── doc
+        │   │   │   └── plugin1.txt
+        │   │   ├── LICENSE
+        │   │   ├── plugin
+        │   │   │   └── plugin1.vim
+        │   │   └── README.md
+        │   └── plugin2
+        │       ├── doc
+        │       │   └── plugin2.txt
+        │       ├── LICENSE
+        │       ├── plugin
+        │       │   └── plugin2.vim
+        │       └── README.md
+        └── opt
+            ├── makejob
+            │   ├── doc
+            │   │   └── makejob.txt
+            │   ├── LICENSE
+            │   ├── plugin
+            │   │   └── makejob.vim
+            │   └── README.md
+            └── pluginZ
+                ├── doc
+                │   └── pluginZ.txt
+                ├── LICENSE
+                ├── plugin
+                │   └── pluginZ.vim
+                └── README.md

@@ -1,0 +1,9 @@
+
+Nastavení breakindent (ukázky)
+-------------------------------
+1. nowrap
+2. wrap
+3. wrap + showbreak=...
+4. wrap + linebreak
+5. wrap + breakindent
+6. wrap + linebreak + breakindent

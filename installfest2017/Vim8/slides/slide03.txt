@@ -1,0 +1,16 @@
+
+Stručná historie verzí Vimu
+-------------------------------
+1991   Vim 1.14   první oficiálně vydaná verze
+1992   Vim 1.22   port na Unix 
+1993   Vim 2.0    Vim Improved
+1994   Vim 3      horizontálně rozdělená okna, integrovaná nápověda
+                  (screenshot)
+1996   Vim 4      GUI
+1998   Vim 5      zvýraznění syntaxe, vertikálně rozdělená okna
+...               Unicode, diff mode, port na VMS, BeOS, Mac,
+...               vylepšení regexpů o \{} 
+2001   Vim 6      Easy Vim (používá to někdo?)
+2006   Vim 7      podpora pro další skriptovací jazyky, taby
+...               slovníky, omnicompletion
+2016   Vim 8      viz zbytek přednášky

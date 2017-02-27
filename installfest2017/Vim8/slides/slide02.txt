@@ -1,0 +1,12 @@
+
+Od QEDu k Vimu
+-------------------------------
+1965   QED        řádkový editor
+1971   ed         jednodušší řádkový editor, Ken Thompson, PDP-7
+1975   em         "Editor for Mortals", založen na ed
+1976   ex         ed update, přímý předchůdce Vi
+1976   vi         ex+new "VIsual" mode
+1987   Stevie     ST Editor for VI Enthusiasts
+1988   Vim 1.0    první neoficiální verze
+1990   Elvis      klon Vi s mnoha vylepšeními
+1991   Vim 1.14   první oficiálně vydaná verze

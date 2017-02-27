@@ -1,0 +1,22 @@
+
+Vylepšení práce se souborem .viminfo
+------------------------------------
+▶ .viminfo
+    makra (v registrech)
+    historie příkazů
+    historie vyhledávaných řetězců
+    obsah pracovních registrů
+    uživatelem definované značky (marks)
+    poslední pozice kurzoru v otevřených souborech
+    globální proměnné
+▶ Původně: poslední instance přepsala předchozí změny
+▶ Nové chování
+    časové značky + "merge změn"
+    užitečné ve chvíli, kdy je spuštěno více instancí Vimu
+# Command Line History (newest to oldest):
+:q
+|2,0,1487279026,,"q"
+:e ~/temp/.viminfo
+|2,0,1487279024,,"e ~/temp/.viminfo"
+:set linebreak
+|2,0,1487278557,,"set linebreak"

@@ -1,0 +1,8 @@
+
+Úlohy
+-----
+▶ Při spuštění pluginu v samosatatném procesu
+job_start()   - cesta ke spriptu + options
+job_status()  - "run, "fail", "dead" ...
+job_stop()    - "term", "hup", "quit", ...
+job_channel() - získání kanálu pro komunikaci

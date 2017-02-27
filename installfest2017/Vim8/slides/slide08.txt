@@ -1,0 +1,9 @@
+
+Standardní formát pluginů
+-------------------------------
+▶ Stávající řešení
+    Vundle
+    Pathogen
+▶ Standardní správce balíčků
+    Struktura adresářů s balíčky
+    ~/.vim/pack

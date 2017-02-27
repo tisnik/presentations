@@ -1,0 +1,14 @@
+
+Doplnění - překlad Vimu8
+-------------------------------
+Prerekvizity
+    sudo dnf install ncurses-devel
+    sudo apt-get install libncurses-dev
+Stažení a rozbalení zdrojových kódů
+    wget https://github.com/vim/vim/archive/master.zip  
+    unzip master.zip
+Překlad
+    cd vim-master
+    cd src/
+    ./configure
+    make

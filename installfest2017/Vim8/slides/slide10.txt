@@ -1,0 +1,9 @@
+
+Vylepšení skriptovacího engine
+-------------------------------
+▶ ID oken
+▶ Anonymní funkce (lambdy)
+▶ Časovače
+▶ Podpora formátu JSON
+▶ Kanály
+▶ Úlohy

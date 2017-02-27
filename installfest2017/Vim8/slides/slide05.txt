@@ -1,0 +1,9 @@
+
+Nastavení breakindent
+-------------------------------
+▶ Kombinace s linebreak a wrap
+▶ Použití
+    (La)TeX
+    AsciiDoc
+    Markdown
+    ...

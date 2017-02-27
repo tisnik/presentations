@@ -1,0 +1,13 @@
+
+Doplnění - překlad Vimu8
+-------------------------------
+Kontrola
+    file vim
+    vim: ELF 64-bit LSB  executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.24, BuildID[sha1]=a4a8c0450e172314d87769e0b0ed072e164c7f82, not stripped
+    ls -la vim
+    -rwxr-xr-x 1 tester tester 8904520 lis 26 22:04 vim
+    (strip vim pokud vás děsí  ^^^^^^^)
+Instalace
+    sudo make install
+    /usr/local/bin/vim
+Pozor na nastavení $PATH
