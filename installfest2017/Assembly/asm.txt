@@ -1,0 +1,211 @@
+   _____                              ___.   .__                
+  /  _  \   ______ ______ ____   _____\_ |__ |  |   ___________ 
+ /  /_\  \ /  ___//  ___// __ \ /     \| __ \|  | _/ __ \_  __ \
+/    |    \\___ \ \___ \\  ___/|  Y Y  \ \_\ \  |_\  ___/|  | \/
+\____|__  /____  >____  >\___  >__|_|  /___  /____/\___  >__|   
+.       \/     \/     \/     \/      \/    \/          \/       
+
+
+Proč assembler?
+---------------
+1. Větší efektivita využití CPU
+2. Rychlejší (a predikovatelné) přerušovací rutiny
+3. Efektivita při práci s pamětí (cache+RAM)
+4. Kompaktní kód
+    Některé požadavky se mohou vzájemně vylučovat!
+(Lepší pochopení práce s gdb a dalšími debuggery)
+
+Role assembleru
+---------------
+▶ Několik úrovní abstrakce (vrstev nad HW)
+5   uživatelské aplikace
+4½  (skriptovací engine)
+4   vyšší programovací jazyk
+3   assembler
+2   strojový kód
+1   syscalls
+0   HW
+
+Závislost na platformě
+----------------------
+5   uživatelské aplikace
+4½  (skriptovací engine)
+4   vyšší programovací jazyk
+    ↑↑↑ nezávislý ↑↑↑
+    ↓↓↓ závislý ↓↓↓
+3   assembler
+2   strojový kód
+1   syscalls
+0   HW
+
+Použití assembleru v minulosti
+------------------------------
+▶ První generace mainframů
+    - vývojové diagramy v roli „vyššího jazyka“
+    - assembler
+    - strojový kód (zpočátku ruční překlad!)
+▶ Mainframy a později minipočítače
+    - přechod k vyšším programovacím jazykům
+    - levnější vývoj, šance na přenositelnost
+▶ Osmibitové herní konzole
+    - assembler jediná rozumná volba
+▶ Domácí mikropočítače
+    - návrat „ke kořenům“
+    - prakticky jediná volba pro profesionální aplikace
+▶ Osobní mikropočítače
+    - Motorola 68000
+    - 8086/80286...
+    - specifické použití assembleru (hry, dema, ...)
+▶ DSP
+    - výpočetní subrutiny (FFT...)
+    - přerušovací rutiny
+
+Použití assembleru v současnosti
+--------------------------------
+1. Firmware
+2. Kód pracující přímo s HW (senzory, CPU+FPGA)
+3. DSP a MCU - přerušovací rutiny!
+4. Instrukce nedostupné ve vyšším programovacím jazyce
+5. Specifické subrutiny (SIMD, SSE, rotace, hledání vzorků...)
+6. Zpracování signálů
+7. Kodeky
+8. Virtuální stroje generující strojový kód
+9. Reverse engineering :-)
+10. Samomodifikující se kód
+11. DSP
+
+Instrukce nedostupné ve vyšším programovacím jazyce
+---------------------------------------------------
+▶ GCC nabízí ve formě „buildins“
+    __builtin_clz
+    __builtin_parity
+    __builtin_bswap64
+    a desítky dalších
+
+Použití assembleru v současnosti
+--------------------------------
+▶ Většinou SPECIFICKÉ pro určitou oblast
+▶ Naprostá většina aplikací není psána pouze v assembleru
+    Coreboot: většinou C, jen zhruba 1% asm
+    Důvod: známé důvody + snadnější audit kódu
+
+Příklad
+-------
+x264 naprogramovaný v assembleru
+http://git.videolan.org/?p=x264.git;a=tree;f=common/x86;hb=HEAD
+
+Hodnocení „popularity“ assembleru ½
+-----------------------------------
+OpenHub
+cca 0,5% projektů, <0,2% commitů
+
+Hodnocení „popularity“ assembleru 
+---------------------------------
+TIOBE index
+02/2017 02/2016 Jazyk            Hodnocení Změna
+1       1       Java                16,6%  -4,4%
+2       2       C                    8,4%  -7,1%
+3       3       C++                  5,4%  -1,4%
+4       4       C#                   4,9%  +0,5%
+5       5       Python               4,0%  -0,1%
+6       6       PHP                  3,0%  +0,3%
+7       9       JavaScript           2,8%  +0,6%
+8       7       Visual Basic .NET    2,8%  +0,3%
+9       10      Delphi/Object Pascal 2,4%  +0,3%
+10      8       Perl                 2,1%  -0,0%
+11      11      Ruby                 2,1%  +0,1%
+12      16      Swift                2,1%  +0,7%
+13      13      Assembler ********   2,1%  +0,3%
+
+Kdy/proč psát v assembleru
+--------------------------
+▶ Seřazeno podle důležitosti a podle specificity
+1. Použití lepšího algoritmu (vyšší programovací jazyk)
+    čas/použití paměti
+2. Použití překladače, ne intepretru (či mixu typu JVM)
+3. Optimalizace nabízené překladačem + jejich kombinace
+    některé optimalizace se ovšem částečně vylučují (-Os, -O3)
+4. Hinty pro překladač (nutno odzkoušet, zda mají význam)
+    const, const *, register
+5. Profilování (!)
+6. Speciální vlastnosti konkrétního překladače (nepřenositelné!)
+    __builtin_expect, __buildin_unreachable, __buildin_prefetch...
+    "hot" atribut u funkcí, "pure" atribut, "simd" apod.
+    https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#Common-Function-Attributes
+6. Přepis RELEVANTÍHO kódu do assembleru
+
+Assembler a Linux
+-----------------
+▶ as    (GNU Assembler, GAS)
+▶ NASM  (Netwide Assembler)
+▶ Yasm
+▶ FASM  (flat assembler)
+
+GNU Assembler
+-------------
+▶ Součást klasického toolchainu
+  cpp → gcc → as → ln → spustitelný_soubor
+    ▶ Překlad do asm: gcc -S source.c
+▶ Původně jen AT&T syntaxe
+▶ Dnes i „Intel“ syntaxe (na x86/x86-64)
+▶ Různý způsob zápisu podle platformy!
+    Jména registrů
+    Konstanty
+    Adresování
+    Komentáře
+
+NASM
+----
+▶ Netwide Assembler
+    Syntaxe inspirována TASM a MASM
+▶ Původní autor Simon Tatham (PuTTY...)
+▶ Generuje objektový kód pro platformu x86 (16bit, 32bit, 64bit)
+    Zjednodušený toolchain
+        nasm → flat file (.COM, bootloader...)
+        nasm → ln → spustitelný_soubor
+
+FASM
+----
+▶ Flat Assembler
+▶ Tomasz Grysztar
+▶ Backend pro PureBasic, BlitzMax a HLA
+
+Syscally a GNU Assembler
+------------------------
+
+DSP
+---
+
+Assembler v C
+-------------
+▶ Podporováno většinou překladačů
+   Ovšem není součástí standardu
+▶ Blok nebo „makro“ asm popř. __asm__
+   asm {
+       add RAX, RBX
+       nop
+   }
+   asm("add RAX, RBX \n\t"
+       "nop");
+
+Specifikace výstupních operandů
+-------------------------------
+
+Explicitní registry pro výstupní operandy
+-----------------------------------------
+
+Specifikace vstupních operandů
+------------------------------
+
+Explicitní určení registru pro výstupní operand
+-----------------------------------------------
+
+Vliv optimalizací na generovaný kód
+-----------------------------------
+
+Použití syntaxe používané firmou Intel
+--------------------------------------
+
+gdb
+---
+
