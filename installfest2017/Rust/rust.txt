@@ -530,6 +530,21 @@ fn main() {
 
 Arc
 ---
+▶ Taktéž počítání referencí, ovšem atomické
+▶ Arc::clone()
+▶ Deref trait
+
+fn start_threads() {
+    let c = Arc::new(Complex::new(1.0, 1.0));
+    for id in 0..10 {
+        let owner = ComplexNumberOwner{id:id, value: c.clone()};
+        // move protože objekt může přežít toto vlákno
+        thread::spawn(move || {
+                owner.print();
+                delay(400);
+        });
+    }
+}
 
 Pole
 ----
