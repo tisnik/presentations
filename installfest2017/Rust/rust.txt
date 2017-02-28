@@ -31,7 +31,7 @@ Charakteristické rysy Rustu
 ▶ Cíle
     Bezpečné aplikace
     Paralelní běh částí aplikace
-    Výkon srovnatelný s C a C++
+    Výkon srovnatelný s C a C++ (i pro nové prvky jazyka)
     Překladač s rozumným chybovým hlášením
 × Poučení z chyb, které najdeme například v C/C++
     (=, string, ptr, makrosystém)
@@ -44,8 +44,10 @@ Charakteristické rysy Rustu
 ▶ OOP založené strukturách (struct) a traitech
 ▶ Životní cyklus hodnot (zejména ukazatelů)
     (borrow)
+▶ Bezpečná práce s objekty uloženými na zásobníku i haldě
+    NPE? co to znamená? :-)
 ▶ Sémantiky „copy“ a „move“
-▶ Generické parametry funkcí
+▶ Generické parametry funkcí, prvky struktur, ...
 ▶ Pattern matching
 
 Rust a C/C++
@@ -136,8 +138,8 @@ fn main() {
 // specifikace typu proměnné
 // programová smyčka while
 fn main() {
-    let mut i:i8 = 0;
-    while i<200 {
+    let mut i: i8 = 0;
+    while i < 200 {
         println!("pocitadlo: {}", i);
         i = i + 1;
     }
@@ -164,8 +166,7 @@ fn if_expression(value:i32) {
     let value_type =
         if value < 0 {
             "zaporna"
-        }
-        else {
+        } else {
             if value == 0 {
                 "nulova"
             }
