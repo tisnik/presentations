@@ -11,7 +11,7 @@ Obsah přednášky
 ▶ Základ syntaxe
 ▶ Datové typy
 ▶ Zajímavé prvky jazyka
-▶ OOP v Rustu
+▶ Přístup k OO v Rustu
 ▶ Správa paměti
 ▶ Vlákna
 ▶ Správce balíčků (Cargo)
@@ -19,18 +19,22 @@ Obsah přednášky
 Charakteristické rysy Rustu
 -------------------------------
 ▶ Multiparadigmatický jazyk
-    OO
     Funcionální rysy
     Imperativní
+    Má některé OO rysy (ne však systém tříd)
 ▶ Dostupný pro všechny „zajímavé“ systémy
     Linux, (Free)BSD, OS X, Windows
+▶ Používaný na velkém množství architektur procesorů
+    i686, x86-64, ARMv6/v7 (32), AArch64, MIPS, PowerPC, S390
 ▶ Současná verze používá LLVM backend
+    (dovoluje i WebAssembly přes Emscripten)
 ▶ Cíle
     Bezpečné aplikace
     Paralelní běh částí aplikace
     Výkon srovnatelný s C a C++
     Překladač s rozumným chybovým hlášením
-    Odstranění některých historických pozůstatků v C/C++
+× Poučení z chyb, které najdeme například v C/C++
+    (=, string, ptr, makrosystém)
 
 Charakteristické rysy Rustu
 -------------------------------
