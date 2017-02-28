@@ -463,12 +463,23 @@ Správa paměti
 
 Box
 ---
+▶ Alokace objektu na haldě
+▶ „Obaluje“ vlastní objekt (číslo, strukturu, pole)
+▶ Trait Deref - snadný přístup k obalenému objektu
+▶ Hlídání životnosti objektu i ukazatele
+▶ Nemůže být NULL/nil
+
 fn main() {
     let x = Box::new(42);
     println!("{}", x);
 }
-
+//
 let c = Box::new(Complex::new(1.0, 2.0));
+
+// deref
+fn print_complex(c:Box<Complex>) {
+    println!("Complex number: {:}+{:}i", c.real, c.imag);
+}
 
 Rc
 --
