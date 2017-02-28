@@ -483,6 +483,50 @@ fn print_complex(c:Box<Complex>) {
 
 Rc
 --
+▶ Počítání referencí
+▶ Rc::clone()
+▶ Pokud čítač dosáhne nuly, je Rc i objekt jím vlastněný zrušen
+▶ Automatická dereference (Deref trait)
+
+fn main() {
+    println!("main begin");
+    let c = Rc::new(Complex::new(0.0, 0.0));
+    c.print();
+    {
+        println!("inner block begin");
+        let c2 = Rc::new(Complex::new(0.0, 0.0));
+        c2.print();
+        {
+            println!("inmost block begin");
+            let c3 = Rc::new(Complex::new(0.0, 0.0));
+            c3.print();
+            println!("inmost block end");
+        }
+        println!("inner block end");
+    }
+    println!("main end");
+}
+
+// jeden sdílený objekt referencovaný třikrá
+fn main() {
+    println!("main begin");
+    let c = Rc::new(Complex::new(0.0, 0.0));
+    c.print();
+    {
+        println!("inner block begin");
+        let c2 = c.clone();
+        c2.print();
+        {
+            println!("inmost block begin");
+            let c3 = c.clone();
+            c3.print();
+            println!("inmost block end");
+        }
+        println!("inner block end");
+    }
+    println!("main end");
+}
+
 
 Arc
 ---
