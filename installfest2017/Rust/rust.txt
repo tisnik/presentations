@@ -548,9 +548,60 @@ fn start_threads() {
 
 Pole
 ----
+▶ V Rustu považováno za primitivní datový typ
+▶ Dva typy konstruktorů
+▶ Zjištění délky pole za běhu programu
+▶ Přístup k prvkům přes indexy
+▶ Indexy začínají od nuly (C-like  × Fortran, Lua)
+▶ „Slice polí“ (efektivní operace)
+
+fn main() {
+    let array = [10, 20, 30, 40];
+    // délka pole
+    println!("array has {} items", array.len());
+    // range + délka pole
+    for i in 0..array.len() {
+        println!("item #{} = {}", i+1, array[i]);
+    }
+    // for-each
+    for i in array.iter() {
+        println!("{}", i);
+    }
+}
+
+fn main() {
+    let array = [1; 10];
+    // délka pole
+    println!("array has {} items", array.len());
+    // range + délka pole
+    for i in 0..array.len() {
+        println!("item #{} = {}", i+1, array[i]);
+    }
+    // for-each
+    for i in array.iter() {
+        println!("{}", i);
+    }
+}
 
 Vektory
 -------
+fn main() {
+    let vector = vec![1, 2, 3, 4, 5];
+    // délka vektoru
+    println!("vector has {} items", vector.len());
+    // range + délka pole
+    for i in 0..vector.len() {
+        println!("item #{} = {}", i+1, vector[i]);
+    }
+    // for-each
+    for item in vector.iter() {
+        println!("{}", item);
+    }
+    // také funguje
+    for item in &vector {
+        println!("{}", item);
+    }
+}
 
 "Slice" polí a vektorů
 ----------------------
