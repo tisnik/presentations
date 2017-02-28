@@ -2,7 +2,7 @@ Programovací jazyk Rust
 =======================
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
-■ Datum    2017-02-15
+■ Datum    2017-02-28
 
 Obsah přednášky
 -------------------------------
@@ -27,6 +27,7 @@ Charakteristické rysy Rustu
 ▶ Používaný na velkém množství architektur procesorů
     i686, x86-64, ARMv6/v7 (32), AArch64, MIPS, PowerPC, S390
 ▶ Současná verze používá LLVM backend
+    Možnosti pro další vylepšování překladu
     (dovoluje i WebAssembly přes Emscripten)
 ▶ Cíle
     Bezpečné aplikace
@@ -42,6 +43,7 @@ Charakteristické rysy Rustu
 ▶ Odvození typů proměnných (type inference)
 ▶ Striktní typová kontrola
 ▶ OOP založené strukturách (struct) a traitech
+    × třídy, objekty a rozhraní
 ▶ Životní cyklus hodnot (zejména ukazatelů)
     (borrow)
 ▶ Bezpečná práce s objekty uloženými na zásobníku i haldě
@@ -49,11 +51,13 @@ Charakteristické rysy Rustu
 ▶ Sémantiky „copy“ a „move“
 ▶ Generické parametry funkcí, prvky struktur, ...
 ▶ Pattern matching
+▶ Funkce jsou taktéž datovým typem
+    ⇒ lambdy atd.
 
 Rust a C/C++
 -------------------------------
 (D, Go, Nimrod...)
-▶ Syntaxe Rustu částečně odvozena od C/C++
+▶ Syntaxe Rustu jen částečně odvozena od C/C++
 ▶ Využití existujícího „ekosystému“
     ▶ Použití již hotových C knihoven
         Foreign Function Interface (FFI)
@@ -62,7 +66,7 @@ Rust a C/C++
 ▶ C ⇒ Rust
     Project Corrode
 
-Chybové hlášení překladače
+Chybová hlášení překladače
 --------------------------
 error[E0382]: use of moved value: `c`
   --> an_example.rs:40:8
@@ -88,12 +92,19 @@ Základ syntaxe
 Datové typy
 -------------------------------
 ▶ Primitivní datové typy
+    Boolean
+    char (Unicode!)
+    i8..i64, u8..u64
+    isize, usize
+    f32, f64
 ▶ Homogenní struktury
     Pole
+    Slice (pohled na jinou strukturu)
     Vektor
     + slice pole/vektorů
 ▶ N-tice
 ▶ Záznamy
+▶ Funkce
 
 Zajímavé prvky jazyka
 -------------------------------
@@ -188,11 +199,11 @@ fn foo() -> i32 {
     42
 }
 .
-fn bar(argument:i32) -> i32 {
+fn bar(argument: i32) -> i32 {
     return argument * 2;
 }
 .
-fn baz(argument:i32) -> i32 {
+fn baz(argument: i32) -> i32 {
     argument * 2
 }
 .
@@ -277,16 +288,28 @@ fn main() {
     pass_by_reference(&variable1, &variable2);
 }
 
+// matching (nejjednodušší varianta)
+fn main() {
+    let x: i32 = 1;
+    match x {
+        0 => println!("zero"),
+        1 => println!("one"),
+        2 => println!("two"),
+        3 => println!("three"),
+        _ => println!("something else"),
+    }
+}
+
 OOP v Rustu
 -------------------------------
 Vlastnictví objektů
     Reference
-    Sémantika "move"
-    Sémantika "copy"
+    Sémantika „move“
+    Sémantika „copy“
 Traity
     Kombinace trait+struktura+metody
 Konstruktory a destruktory
-    Trait "drop"
+    Trait „drop“
     Přetěžování operátorů
         Přetížení = implementace traitu
 Generické funkce
@@ -431,11 +454,11 @@ fn main() {
 
 Správa paměti
 -------------------------------
-Zásobník versus halda
-Box
-Rc
-Arc
-Pole a vektory
+▶ Zásobník versus halda
+▶ Box
+▶ Rc
+▶ Arc
+▶ Pole a vektory
     slice
 
 Box
