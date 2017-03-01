@@ -64,7 +64,7 @@ Použití assembleru v současnosti
 --------------------------------
 1. Firmware
 2. Kód pracující přímo s HW (senzory, CPU+FPGA)
-3. DSP a MCU - přerušovací rutiny!
+3. DSP a MCU - rychlé přerušovací rutiny!
 4. Instrukce nedostupné ve vyšším programovacím jazyce
 5. Specifické subrutiny (SIMD, SSE, rotace, hledání vzorků...)
 6. Zpracování signálů
@@ -73,6 +73,7 @@ Použití assembleru v současnosti
 9. Reverse engineering :-)
 10. Samomodifikující se kód
 11. DSP
+12. Fingerprints (A86)
 
 Instrukce nedostupné ve vyšším programovacím jazyce
 ---------------------------------------------------
@@ -84,10 +85,10 @@ Instrukce nedostupné ve vyšším programovacím jazyce
 
 Použití assembleru v současnosti
 --------------------------------
-▶ Většinou SPECIFICKÉ pro určitou oblast
+▶ Většinou velmi SPECIFICKÉ pro určitou oblast
 ▶ Naprostá většina aplikací není psána pouze v assembleru
     Coreboot: většinou C, jen zhruba 1% asm
-    Důvod: známé důvody + snadnější audit kódu
+    Důvod: výhody vyšších programovacích jazyků + snadnější audit kódu
 
 Příklad
 -------
@@ -172,9 +173,24 @@ FASM
 
 Syscally a GNU Assembler
 ------------------------
+Ukončení procesu funkcí "exit"
+▶ i386, syntaxe AT&T
+▶ i386, syntaxe Intel
+▶ ARM (32bit)
+▶ AArch64
 
-DSP
----
+Syscally a GNU Assembler
+------------------------
+„Hello world“ v assembleru
+
+Volání funkcí ze standardní céčkové knihovny
+--------------------------------------------
+
+puts
+----
+
+printf
+------
 
 Assembler v C
 -------------
@@ -188,11 +204,30 @@ Assembler v C
    asm("add RAX, RBX \n\t"
        "nop");
 
+Zápis v GCC
+-----------
+int main()
+{
+    __asm__ __volatile__(
+        "nop   \n\t"
+        : /* zadne vystupni registry */
+        : /* zadne vstupni operandy */
+        : /* zadne registry pouzivane uvnitr kodu */
+    );
+    return 0;
+}
+
 Specifikace výstupních operandů
 -------------------------------
 
 Explicitní registry pro výstupní operandy
 -----------------------------------------
+    a   →   %rax, %eax, %ax, %al
+    b   →   %rbx, %ebx, %bx, %bl
+    c   →   %rcx, %ecx, %cx, %cl
+    d   →   %rdx, %edx, %dx, %dl
+    S   →   %rsi, %esi, %si
+    D   →   %rdi, %edi, %di
 
 Specifikace vstupních operandů
 ------------------------------
@@ -205,6 +240,9 @@ Vliv optimalizací na generovaný kód
 
 Použití syntaxe používané firmou Intel
 --------------------------------------
+
+Assembler a C pro procesory ARM
+--------------------------------
 
 gdb
 ---
