@@ -180,8 +180,7 @@ fn if_expression(value:i32) {
         } else {
             if value == 0 {
                 "nulova"
-            }
-            else {
+            } else {
                 "kladna"
             }
         };
@@ -216,7 +215,7 @@ fn main() {
 // příklad použití map() + anonymní funkce
 fn main() {
     let sequence = 0..10;
-    let squares = sequence.map(|x| x*x);
+    let squares = sequence.map(|x| x * x);
     for n in squares {
         println!("{}", n);
     }
@@ -225,7 +224,7 @@ fn main() {
 // explicitní specifikace datového typu
 fn main() {
     let sequence = -10..10;
-    let squares = sequence.map(|x:i32| x*x);
+    let squares = sequence.map(|x: i32| x * x);
     for n in squares {
         println!("{}", n);
     }
@@ -243,36 +242,36 @@ fn main() {
 // faktoriály
 fn main() {
     for n in 1..10 {
-        let fact = (1..n+1).fold(1, |prod, x| prod * x);
+        let fact = (1..n + 1).fold(1, |prod, x| prod * x);
         println!("{}! = {}", n, fact);
     }
-
 }
 
 // anonymní funkce jsou "hodnotou"
 fn main() {
-    let is_odd  = |x: i32| x & 1 == 1;
+    let is_odd = |x: i32| x & 1 == 1;
     //let is_even = |x: i32| !is_odd(x);
-    let square  = |x: i32| x*x;
+    let square = |x: i32| x*x;
     for x in 0..10 {
-        println!("{}*{}={}, {} is {} number", x, x, square(x), x, if is_odd(x) {"odd"} else {"even"})
+        println!("{}*{}={}, {} is {} number",
+                 x, x, square(x), x, if is_odd(x) {"odd"} else {"even"})
     }
 }
 
 // passing by value or reference
-fn mutate_variable(arg1:i32, arg2:&mut i32) {
+fn mutate_variable(arg1: i32, arg2: &mut i32) {
     println!("mutation ...");
     let x = arg1 * 2;
     *arg2 = x;
 }
 .
-fn print_variables(arg1:i32, arg2:i32) {
+fn print_variables(arg1: i32, arg2: i32) {
     println!("function print_variables()");
     println!("Variable1: {}", arg1);
     println!("Variable2: {}", arg2);
 }
 .
-fn pass_by_reference(arg1:&i32, arg2:&i32) {
+fn pass_by_reference(arg1: &i32, arg2: &i32) {
     println!("function pass_by_reference()");
     println!("Variable1: {}", *arg1);
     println!("Variable2: {}", *arg2);
@@ -320,12 +319,12 @@ struct Complex {
     imag: f32,
 }
 //
-fn print_complex(c:Complex) {
+fn print_complex(c: Complex) {
     println!("complex number: {}+{}i", c.real, c.imag);
 }
 //
 fn main() {
-    let c1 = Complex{real:1.0, imag:2.0};
+    let c1 = Complex { real:1.0, imag:2.0 };
     print_complex(c1);
     // nelze, vlastnictví přesunuto do print_complex
     let c2 = c1;
@@ -339,12 +338,12 @@ struct Complex {
     imag: f32,
 }
 //
-fn print_complex(c:Complex) {
+fn print_complex(c: Complex) {
     println!("complex number: {}+{}i", c.real, c.imag);
 }
 //
 fn main() {
-    let c1 = Complex{real:1.0, imag:2.0};
+    let c1 = Complex { real: 1.0, imag: 2.0 };
     print_complex(c1);
     let c2 = c1;
     print_complex(c2);
@@ -359,11 +358,11 @@ struct Complex {
 impl Complex {
     // konstruktor volany Complex::new(real, imag)
     fn new(real: f32, imag: f32) -> Complex {
-        Complex{real:real, imag:imag}
+        Complex { real: real, imag: imag }
     }
     // konstruktor volany Complex::zero()
     fn zero() -> Complex {
-        Complex{real:0.0, imag:0.0}
+        Complex { real: 0.0, imag: 0.0 }
     }
 //
     fn abs(&self) -> f32 {
@@ -375,12 +374,15 @@ impl Complex {
     }
 //
     fn add(&self, c:&Complex) -> Complex {
-        Complex{real: self.real + c.real, imag: self.imag + c.imag}
+        Complex {
+            real: self.real + c.real,
+            imag: self.imag + c.imag,
+        }
     }
 }
 //
 fn main() {
-    let c1 = Complex{real:3.0, imag:4.0};
+    let c1 = Complex { real: 3.0, imag: 4.0 };
     c1.print();
     println!("absolute value: {}", c1.abs());
 }
@@ -407,10 +409,10 @@ struct Complex<T> {
     imag: T,
 }
 // lze pouzit
-let c1 = Complex{real:10, imag:20};
-let c2 = Complex{real:10.1, imag:20.1};
-let c3 = Complex{real:10.2f64, imag:20.2f64};
-let c4 = Complex{real:true, imag:false};
+let c1 = Complex { real: 10, imag: 20 };
+let c2 = Complex { real: 10.1, imag: 20.1 };
+let c3 = Complex { real: 10.2f64, imag: 20.2f64 };
+let c4 = Complex { real: true, imag: false };
 
 // pretizeni operatoru +
 use std::ops::Add;
@@ -423,7 +425,7 @@ struct Complex {
 impl Complex {
 -
     fn new(real: f32, imag: f32) -> Complex {
-        Complex{real:real, imag:imag}
+        Complex { real: real, imag: imag }
     }
 -
     fn print(&self) {
@@ -436,8 +438,10 @@ impl Add for Complex {
     type Output = Complex;
 -
     fn add(self, right: Complex) -> Self::Output {
-        Complex{real: self.real + right.real,
-                imag: self.imag + right.imag}
+        Complex {
+            real: self.real + right.real,
+            imag: self.imag + right.imag,
+        }
     }
 -
 }
@@ -477,7 +481,7 @@ fn main() {
 let c = Box::new(Complex::new(1.0, 2.0));
 
 // deref
-fn print_complex(c:Box<Complex>) {
+fn print_complex(c: Box<Complex>) {
     println!("Complex number: {:}+{:}i", c.real, c.imag);
 }
 
@@ -537,7 +541,7 @@ Arc
 fn start_threads() {
     let c = Arc::new(Complex::new(1.0, 1.0));
     for id in 0..10 {
-        let owner = ComplexNumberOwner{id:id, value: c.clone()};
+        let owner = ComplexNumberOwner { id: id, value: c.clone() };
         // move protože objekt může přežít toto vlákno
         thread::spawn(move || {
                 owner.print();
@@ -561,7 +565,7 @@ fn main() {
     println!("array has {} items", array.len());
     // range + délka pole
     for i in 0..array.len() {
-        println!("item #{} = {}", i+1, array[i]);
+        println!("item #{} = {}", i + 1, array[i]);
     }
     // for-each
     for i in array.iter() {
@@ -575,7 +579,7 @@ fn main() {
     println!("array has {} items", array.len());
     // range + délka pole
     for i in 0..array.len() {
-        println!("item #{} = {}", i+1, array[i]);
+        println!("item #{} = {}", i + 1, array[i]);
     }
     // for-each
     for i in array.iter() {
@@ -591,7 +595,7 @@ fn main() {
     println!("vector has {} items", vector.len());
     // range + délka pole
     for i in 0..vector.len() {
-        println!("item #{} = {}", i+1, vector[i]);
+        println!("item #{} = {}", i + 1, vector[i]);
     }
     // for-each
     for item in vector.iter() {
@@ -634,7 +638,9 @@ Vlákna
 fn main() {
     println!("Starting");
     for i in 1..10 {
-        thread::spawn(move || {println!("Hello from a thread #{}", i);});
+        thread::spawn(move || {
+            println!("Hello from a thread #{}", i);
+        });
     }
     println!("Stopping");
 }
@@ -655,9 +661,8 @@ Typ „Option“
 ------------
 fn div(x: i32, y: i32) -> Option<i32> {
     if y != 0 {
-        Some(x/y)
-    }
-    else {
+        Some(x / y)
+    } else {
         None
     }
 }
@@ -674,9 +679,8 @@ Typ „Result“
 ------------
 fn div(x: i32, y: i32) -> Result<i32, &'static str> {
     if y != 0 {
-        Ok(x/y)
-    }
-    else {
+        Ok(x / y)
+    } else {
         Err("Divide by zero!")
     }
 }
@@ -691,9 +695,8 @@ fn main() {
 
 fn div(x: i32, y: i32) -> Result<i32, &'static str> {
     if y != 0 {
-        Ok(x/y)
-    }
-    else {
+        Ok(x / y)
+    } else {
         Err("Divide by zero!")
     }
 }
@@ -701,7 +704,7 @@ fn div(x: i32, y: i32) -> Result<i32, &'static str> {
 fn print_div_result(result: Result<i32, &'static str>) {
     match result {
         Ok(value)  => println!("value: {}", value),
-        Err(error) => println!("error: {}", error)
+        Err(error) => println!("error: {}", error),
     }
 }
 //
@@ -715,20 +718,19 @@ fn main() {
 
 fn div(x: i32, y: i32) -> Result<i32, &'static str> {
     if y != 0 {
-        Ok(x/y)
-    }
-    else {
+        Ok(x / y)
+    } else {
         Err("Divide by zero!")
     }
 }
 fn print_div_result(result: Result<i32, &'static str>) {
     match result {
         Ok(value)  => println!("value: {}", value),
-        Err(error) => println!("error: {}", error)
+        Err(error) => println!("error: {}", error),
     }
 }
 fn inc(x: i32) -> i32 {
-    x+1
+    x + 1
 }
 fn main() {
     let z0 = div(0, 1);
