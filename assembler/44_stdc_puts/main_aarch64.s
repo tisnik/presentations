@@ -2,7 +2,7 @@
 
 # Program pro otestovani volani funkci ze standardni knihovny jazyka C
 # - volani funkce 'puts'
-# - varianta urcena pro klasickou 32bitovou architekturu ARM
+# - varianta urcena pro 64bitovou architekturu ARM
 #
 # Autor: Pavel Tisnovsky
 
