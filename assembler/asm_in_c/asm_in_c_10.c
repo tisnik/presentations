@@ -9,7 +9,7 @@ int main()
     __asm__ __volatile__(
         "add    rax, rbx;   \n\t"
         : "=a" (result)    /* vystupni operand */
-        : "a" (x), "b" (y) /* dva vstupni operandy v registrech rbx a rcx */
+        : "a" (x), "b" (y) /* dva vstupni operandy v registrech rax a rbx */
         :                  /* registry pouzivane uvnitr kodu */
     );
 
