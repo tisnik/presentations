@@ -26,6 +26,10 @@ Charakteristické rysy Rustu
     Linux, (Free)BSD, OS X, Windows
 ▶ Používaný na velkém množství architektur procesorů
     i686, x86-64, ARMv6/v7 (32), AArch64, MIPS, PowerPC, S390
+    Bare Cortex-M0, M0+, M1, M4(F), M7(F)
+        bare = bez OS, jen core library
+    (připravuje se i MSP430 - 16bit MCU!)
+    https://forge.rust-lang.org/platform-support.html
 ▶ Současná verze používá LLVM backend
     Možnosti pro další vylepšování překladu
     (dovoluje i WebAssembly přes Emscripten)
@@ -92,17 +96,17 @@ Základ syntaxe
 Datové typy
 -------------------------------
 ▶ Primitivní datové typy
-    Boolean
+    bool
     char (Unicode!)
     i8..i64, u8..u64
     isize, usize
     f32, f64
+    Pole (array)
+    slice (pohled na jinou strukturu)
+    N-tice (tuple)
+    str (UTF-8, interně ukazatel na data + délka)
 ▶ Homogenní struktury
-    Pole
-    Slice (pohled na jinou strukturu)
     Vektor
-    + slice pole/vektorů
-▶ N-tice
 ▶ Záznamy
 ▶ Funkce
 
@@ -299,6 +303,23 @@ fn main() {
     }
 }
 
+// matching, složitější ukázka
+fn classify(x:i32) -> &'static str {
+    match x {
+        0         => "zero",
+        1 | 2     => "one or two",
+        3 | 4 | 5 => "from three to five",
+        10 ... 20 => "from ten to twenty",
+        _         => "something else",
+    }
+}
+// 
+fn main() {
+    for x in 0..10 {
+        println!("{}:{}", x, classify(x))
+    }
+}
+
 OOP v Rustu
 -------------------------------
 Vlastnictví objektů
@@ -308,7 +329,7 @@ Vlastnictví objektů
 Traity
     Kombinace trait+struktura+metody
 Konstruktory a destruktory
-    Trait „drop“
+    Trait „Drop“
     Přetěžování operátorů
         Přetížení = implementace traitu
 Generické funkce
@@ -616,7 +637,7 @@ fn main() {
         println!("{}", i);
     }
 }
-
+//
 fn main() {
     let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let array2 = &array[5..];
@@ -624,7 +645,7 @@ fn main() {
         println!("{}", i);
     }
 }
-
+//
 fn main() {
     let vector = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     println!("vector has {} items", vector.len());
@@ -634,7 +655,6 @@ fn main() {
 
 Vlákna
 ------
-
 fn main() {
     println!("Starting");
     for i in 1..10 {
@@ -644,7 +664,6 @@ fn main() {
     }
     println!("Stopping");
 }
-
 
 Testy
 -----
