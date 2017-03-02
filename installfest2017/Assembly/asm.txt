@@ -246,4 +246,89 @@ Assembler a C pro procesory ARM
 
 gdb
 ---
+▶ CLI
+    Ovládán interaktivně
+    Popř. lze spustit i skript s příkazy pro gdb
+▶ TUI
+    gdbtui
+Velké možnosti nastavení
+Použití
+    Původně pro GNU CC
+        Compiler Collections
+    Dnes různé nástavby
+        Python...
+
+Ladicí informace ve vytvářených programech
+------------------------------------------
+▶ gcc -g -O0 test.c
+    -g
+        přidání ladicích informací (symbolů)
+    -O0
+        vypnutí optimalizací (usnadní ladění)
+
+Spuštění gdb
+------------
+▶ Tři základní metody
+    gdb program_name
+    gdb program_name PID
+    gdb program_name core
+
+Základní příkazy
+----------------
+r      run
+start            start+zastaví na mian
+c      cont      continue
+s      step      step into
+n      next      step over
+bt     backtrace print stacktrace
+l      list      výpis zdrojového kódu (fce)
+p      print     výpis výrazu
+q      quit
+h      help
+
+Breakpointy
+-----------
+b          breakpoint na aktuálním řádku
+b#         breakpoint na řádku #
+b fce      breakpoint na funkci
+b file:fce specifikace souboru s funkcí
+b file:#   specifikace souboru a čísla řádku
+
+info b     informace o všech breakpointech
+delete #   vymazání breakpointu s daným indexem
+
+Breakpointy s podmínkou
+-----------------------
+b fce if cond
+    cond může být například x<10
+ignore # count
+    # je index (číslo) breakpointu
+    count je počet opakování
+
+Watchpointy
+-----------
+watch expr
+    zastaveno při zápisu
+rwatch expr
+    zastaveno při čtení
+awatch expr
+    watch+rwatch
+info watchpoints
+
+Demo
+----
+▶ as -g hello_world.s -o hello_world.o
+▶ ld hello_world.o -o hello_world 
+▶ gdb hello_world
+    b _start
+    display $eax
+    display $ebx
+    r
+    Breakpoint 1, _start () at hello_world.s:32
+    2: $ebx = 0
+    1: $eax = 0
+    n
+    2: $ebx = 0
+    1: $eax = 4
+    c
 
