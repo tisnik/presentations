@@ -1,0 +1,29 @@
+
+puts
+----
+Práce se zásobníkem
+   ARM
+     R13 = SP, R14 = LR, R15 = PC
+     STMFD sp!, {lr}  ⇐ bitové pole
+     LDMFD sp!, {pc}
+
+        LD    - Load
+          M   - Multiple
+           F  - SP ukazuje na zapsaný prvek (TOS) 
+            D - směr růstu zásobníku
+
+        ST    - Store
+          M   - Multiple
+           F  - SP ukazuje na zapsaný prvek (TOS) 
+            D - směr růstu zásobníku
+
+     F = SP ukazuje na zapsaný prvek (TOS) 
+     E = SP ukazuje na první volný prvek
+     A/D = směr růstu zásobníku
+
+   AArch64
+      LDP
+          pouze pro dva registry (libovolné)
+      STP
+          pouze pro dva registry (libovolné)
+

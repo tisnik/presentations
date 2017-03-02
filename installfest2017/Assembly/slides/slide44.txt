@@ -1,0 +1,14 @@
+
+gdb
+---
+▶ CLI
+    Ovládán interaktivně
+    Popř. lze spustit i skript s příkazy pro gdb
+▶ TUI
+    gdbtui
+Velké možnosti nastavení
+Použití
+    Původně pro GNU CC
+        Compiler Collections
+    Dnes různé nástavby
+        Python...

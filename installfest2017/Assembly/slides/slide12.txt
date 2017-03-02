@@ -1,0 +1,17 @@
+
+Kdy/proč psát v assembleru
+--------------------------
+▶ Seřazeno podle důležitosti a podle specificity
+1. Použití lepšího algoritmu (vyšší programovací jazyk)
+    čas/použití paměti
+2. Použití překladače, ne intepretru (či mixu typu JVM)
+3. Optimalizace nabízené překladačem + jejich kombinace
+    některé optimalizace se ovšem částečně vylučují (-Os, -O3)
+4. Hinty pro překladač (nutno odzkoušet, zda mají význam)
+    const, const *, register
+5. Profilování (!)
+6. Speciální vlastnosti konkrétního překladače (nepřenositelné!)
+    __builtin_expect, __buildin_unreachable, __buildin_prefetch...
+    "hot" atribut u funkcí, "pure" atribut, "simd" apod.
+    https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#Common-Function-Attributes
+6. Přepis RELEVANTÍHO kódu do assembleru

@@ -1,0 +1,8 @@
+
+Breakpointy s podmínkou
+-----------------------
+b fce if cond
+    cond může být například x<10
+ignore # count
+    # je index (číslo) breakpointu
+    count je počet opakování

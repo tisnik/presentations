@@ -1,0 +1,11 @@
+
+Breakpointy
+-----------
+b          breakpoint na aktuálním řádku
+b#         breakpoint na řádku #
+b fce      breakpoint na funkci
+b file:fce specifikace souboru s funkcí
+b file:#   specifikace souboru a čísla řádku
+
+info b     informace o všech breakpointech
+delete #   vymazání breakpointu s daným indexem

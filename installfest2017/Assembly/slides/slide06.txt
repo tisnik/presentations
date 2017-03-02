@@ -1,0 +1,15 @@
+
+Použití assembleru v současnosti
+--------------------------------
+1. Firmware
+2. Kód pracující přímo s HW (senzory, CPU+FPGA)
+3. DSP a MCU - rychlé přerušovací rutiny!
+4. Instrukce nedostupné ve vyšším programovacím jazyce
+5. Specifické subrutiny (SIMD, SSE, rotace, hledání vzorků...)
+6. Zpracování signálů
+7. Kodeky
+8. Virtuální stroje generující strojový kód
+9. Reverse engineering :-)
+10. Samomodifikující se kód
+11. DSP
+12. Fingerprints (A86)

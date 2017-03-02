@@ -1,0 +1,13 @@
+
+Základní příkazy
+----------------
+r      run
+start            start+zastaví na mian
+c      cont      continue
+s      step      step into
+n      next      step over
+bt     backtrace print stacktrace
+l      list      výpis zdrojového kódu (fce)
+p      print     výpis výrazu
+q      quit
+h      help

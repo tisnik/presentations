@@ -1,0 +1,9 @@
+
+Proč assembler?
+---------------
+1. Větší efektivita využití CPU
+2. Rychlejší (a predikovatelné) přerušovací rutiny
+3. Efektivita při práci s pamětí (cache+RAM)
+4. Kompaktní kód
+    Některé požadavky se mohou vzájemně vylučovat!
+(Lepší pochopení práce s gdb a dalšími debuggery)

@@ -1,0 +1,17 @@
+
+Demo
+----
+▶ as -g hello_world.s -o hello_world.o
+▶ ld hello_world.o -o hello_world 
+▶ gdb hello_world
+    b _start
+    display $eax
+    display $ebx
+    r
+    Breakpoint 1, _start () at hello_world.s:32
+    2: $ebx = 0
+    1: $eax = 0
+    n
+    2: $ebx = 0
+    1: $eax = 4
+    c

@@ -1,0 +1,5 @@
+
+Příklad
+-------
+x264 naprogramovaný v assembleru
+http://git.videolan.org/?p=x264.git;a=tree;f=common/x86;hb=HEAD

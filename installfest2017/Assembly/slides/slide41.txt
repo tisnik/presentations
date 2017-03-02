@@ -1,0 +1,6 @@
+
+Assembler a C pro procesory ARM
+--------------------------------
+▶ Jména registrů bez %%
+▶ r0..r15 popř. aliasy lr, sp, pc
+▶ Komentáře začínají znakem @

@@ -1,0 +1,7 @@
+
+Spuštění gdb
+------------
+▶ Tři základní metody
+    gdb program_name
+    gdb program_name PID
+    gdb program_name core

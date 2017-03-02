@@ -1,0 +1,8 @@
+
+Syscally a GNU Assembler
+------------------------
+Ukončení procesu funkcí "exit"
+▶ i386, syntaxe AT&T
+▶ i386, syntaxe Intel
+▶ ARM (32bit)
+▶ AArch64

@@ -1,0 +1,19 @@
+
+Volání funkcí ze standardní céčkové knihovny
+--------------------------------------------
+▶ Důležité je správná práce se zásobníkem
+    Pořadí vkládání parametrů
+    Zarovnání zásobníku (x86-64)
+        Adresa dělitelná šestnácti
+▶ Předávání parametrů v registrech
+    x86-64
+    Celočíselné parametry a adresy:
+        RDI, RSI, RDX, RCX, R8 a R9
+    Hodnoty single(float) a double:
+        XMM0, XMM1, XMM2, XMM3, XMM4, XMM5, XMM6 a XMM7
+    Funkce s proměnným počtem parametrů?
+        RAX (AL) počet předávaných hodnot typu float či double
+▶ Vlastní volání
+    CALL
+    BL    (Branch and Link)
+

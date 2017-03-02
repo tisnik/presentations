@@ -1,0 +1,7 @@
+
+Assembler a Linux
+-----------------
+▶ as    (GNU Assembler, GAS)
+▶ NASM  (Netwide Assembler)
+▶ Yasm
+▶ FASM  (flat assembler)

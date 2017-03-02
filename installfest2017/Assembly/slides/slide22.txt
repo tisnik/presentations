@@ -1,0 +1,4 @@
+
+Syscally a GNU Assembler
+------------------------
+„Hello world“ v assembleru

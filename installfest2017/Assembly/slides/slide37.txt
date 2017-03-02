@@ -1,0 +1,9 @@
+
+Explicitní registry pro výstupní operandy
+-----------------------------------------
+    a   →   %rax, %eax, %ax, %al
+    b   →   %rbx, %ebx, %bx, %bl
+    c   →   %rcx, %ecx, %cx, %cl
+    d   →   %rdx, %edx, %dx, %dl
+    S   →   %rsi, %esi, %si
+    D   →   %rdi, %edi, %di

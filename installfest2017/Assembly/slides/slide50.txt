@@ -1,0 +1,10 @@
+
+Watchpointy
+-----------
+watch expr
+    zastaveno při zápisu
+rwatch expr
+    zastaveno při čtení
+awatch expr
+    watch+rwatch
+info watchpoints
