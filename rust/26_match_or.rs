@@ -1,4 +1,4 @@
-fn classify(x:i32) -> &'static str {
+fn classify(x :i32) -> &'static str {
     match x {
         0         => "zero",
         1 | 2     => "one or two",

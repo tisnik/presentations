@@ -3,7 +3,7 @@ enum Item {
     Second,
 }
 
-fn select_item<T>(first_item:T, second_item:T, item:Item) -> T {
+fn select_item<T>(first_item :T, second_item :T, item :Item) -> T {
     match item {
         Item::First  => first_item,
         Item::Second => second_item,
@@ -16,8 +16,8 @@ fn main() {
     println!("1st item = {}", select_item(x, y, Item::First));
     println!("2nd item = {}", select_item(x, y, Item::Second));
     
-    let z:i32 = 10;
-    let w:i32 = 20;
+    let z :i32 = 10;
+    let w :i32 = 20;
     println!("1st item = {}", select_item(z, w, Item::First));
     println!("2nd item = {}", select_item(z, w, Item::Second));
     
