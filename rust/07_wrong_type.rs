@@ -2,12 +2,10 @@ fn if_expression(value:u32) {
     let value_type =
         if value < 0 {
             "zaporna"
-        }
-        else {
+        } else {
             if value == 0 {
                 "nulova"
-            }
-            else {
+            } else {
                 "kladna"
             }
         };
