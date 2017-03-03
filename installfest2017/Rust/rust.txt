@@ -532,7 +532,7 @@ fn main() {
     println!("main end");
 }
 
-// jeden sdílený objekt referencovaný třikrá
+// jeden sdílený objekt referencovaný třikrát
 fn main() {
     println!("main begin");
     let c = Rc::new(Complex::new(0.0, 0.0));
@@ -551,7 +551,6 @@ fn main() {
     }
     println!("main end");
 }
-
 
 Arc
 ---
