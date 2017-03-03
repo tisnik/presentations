@@ -1,8 +1,7 @@
 fn div(x: i32, y: i32) -> Option<i32> {
     if y != 0 {
         Some(x/y)
-    }
-    else {
+    } else {
         None
     }
 }
@@ -13,8 +12,7 @@ fn div_and_print(x: i32, y :i32) {
 
     if let Some(val) = result {
         println!("{} / {} = {}", x, y, val);
-    }
-    else {
+    } else {
         println!("Divide by zero");
     }
 

@@ -1,8 +1,7 @@
 fn div(x: i32, y: i32) -> Option<i32> {
     if y != 0 {
         Some(x/y)
-    }
-    else {
+    } else {
         None
     }
 }

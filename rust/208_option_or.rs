@@ -1,8 +1,7 @@
 fn div(x: i32, y: i32) -> Option<i32> {
     if y != 0 {
         Some(x/y)
-    }
-    else {
+    } else {
         None
     }
 }
@@ -17,8 +16,7 @@ fn div_square(x: i32, y :i32) -> String {
 
     if let Some(val) = result {
         format!("({} / {}) ^ 2 = {}", x, y, val)
-    }
-    else {
+    } else {
         String::from("Divide by zero")
     }
 }
