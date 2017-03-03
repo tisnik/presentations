@@ -57,6 +57,7 @@ endfunction
 " Hot keys
 map <PageUp>   :call ShowPrevSlide()<cr>
 map <PageDown> :call ShowNextSlide()<cr>
+map <Space> :call ShowNextSlide()<cr>
 map <Home>     :call ShowFirstSlide()<cr>
 map <End>      :call ShowLastSlide()<cr>
 
