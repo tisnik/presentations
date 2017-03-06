@@ -1,0 +1,20 @@
+
+Zajímavé prvky jazyka
+-------------------------------
+Neměnitelné hodnoty
+    Výchozí modifikátor
+    Lze změnit pomocí „mut“
+Rozsah (range)
+Řídicí struktury
+    Vrací hodnotu
+Anonymní funkce
+Funkce vyššího řádu
+    map
+    filter
+    take
+    take_while
+    fold
+    Nekonečné sekvence
+Pattern matching
+Makra
+Unsafe bloky

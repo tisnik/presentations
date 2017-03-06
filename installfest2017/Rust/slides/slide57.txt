@@ -1,0 +1,11 @@
+
+Použití nástroje Cargo
+----------------------
+$ cargo test
+   Compiling project1 v0.1.0 (file:///home/tester/temp/project1)
+    Finished debug [unoptimized + debuginfo] target(s) in 0.43 secs
+     Running target/debug/project1-b888664ab405e319
+.
+running 0 tests
+.
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured

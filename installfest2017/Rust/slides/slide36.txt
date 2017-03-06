@@ -1,0 +1,5 @@
+
+// deref
+fn print_complex(c: Box<Complex>) {
+    println!("Complex number: {:}+{:}i", c.real, c.imag);
+}

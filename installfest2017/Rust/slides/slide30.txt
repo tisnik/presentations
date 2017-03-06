@@ -1,0 +1,11 @@
+
+// genericka datova struktura
+struct Complex<T> {
+    real: T,
+    imag: T,
+}
+// lze pouzit
+let c1 = Complex { real: 10, imag: 20 };
+let c2 = Complex { real: 10.1, imag: 20.1 };
+let c3 = Complex { real: 10.2f64, imag: 20.2f64 };
+let c4 = Complex { real: true, imag: false };

@@ -1,0 +1,16 @@
+
+// deklarace traitu
+trait Print {
+    fn print(&self);
+}
+// nase datova struktura
+struct Complex {
+    real: f32,
+    imag: f32,
+}
+// implementace traitu pro datovou strukturu
+impl Print for Complex {
+    fn print(&self) {
+        println!("complex number: {}+{}i", self.real, self.imag);
+    }
+}

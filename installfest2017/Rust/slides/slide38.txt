@@ -1,0 +1,19 @@
+
+fn main() {
+    println!("main begin");
+    let c = Rc::new(Complex::new(0.0, 0.0));
+    c.print();
+    {
+        println!("inner block begin");
+        let c2 = Rc::new(Complex::new(0.0, 0.0));
+        c2.print();
+        {
+            println!("inmost block begin");
+            let c3 = Rc::new(Complex::new(0.0, 0.0));
+            c3.print();
+            println!("inmost block end");
+        }
+        println!("inner block end");
+    }
+    println!("main end");
+}

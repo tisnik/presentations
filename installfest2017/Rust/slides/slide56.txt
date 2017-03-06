@@ -1,0 +1,5 @@
+
+$ cargo run
+    Finished debug [unoptimized + debuginfo] target(s) in 0.0 secs
+     Running `target/debug/project1`
+Hello, world!

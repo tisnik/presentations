@@ -1,0 +1,9 @@
+
+Použití nástroje Cargo
+----------------------
+$ cargo build
+    Compiling project1 v0.1.0 (file:///home/tester/temp/project1)
+    Finished debug [unoptimized + debuginfo] target(s) in 0.37 secs
+.
+$ cargo build
+    Finished debug [unoptimized + debuginfo] target(s) in 0.0 secs

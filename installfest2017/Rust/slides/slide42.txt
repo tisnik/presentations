@@ -1,0 +1,9 @@
+
+Pole
+----
+▶ V Rustu považováno za primitivní datový typ
+▶ Dva typy konstruktorů
+▶ Zjištění délky pole za běhu programu
+▶ Přístup k prvkům přes indexy
+▶ Indexy začínají od nuly (C-like  × Fortran, Lua)
+▶ „Slice polí“ (efektivní operace)

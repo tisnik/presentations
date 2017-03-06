@@ -1,0 +1,7 @@
+
+Rc
+--
+▶ Počítání referencí
+▶ Rc::clone()
+▶ Pokud čítač dosáhne nuly, je Rc i objekt jím vlastněný zrušen
+▶ Automatická dereference (Deref trait)

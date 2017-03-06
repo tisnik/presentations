@@ -1,0 +1,17 @@
+
+Charakteristické rysy Rustu
+-------------------------------
+▶ Unicode řetězce (UTF-8)
+▶ Odvození typů proměnných (type inference)
+▶ Striktní typová kontrola
+▶ OOP založené strukturách (struct) a traitech
+    × třídy, objekty a rozhraní
+▶ Životní cyklus hodnot (zejména ukazatelů)
+    (borrow)
+▶ Bezpečná práce s objekty uloženými na zásobníku i haldě
+    NPE? co to znamená? :-)
+▶ Sémantiky „copy“ a „move“
+▶ Generické parametry funkcí, prvky struktur, ...
+▶ Pattern matching
+▶ Funkce jsou taktéž datovým typem
+    ⇒ lambdy atd.

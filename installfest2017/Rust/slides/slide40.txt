@@ -1,0 +1,6 @@
+
+Arc
+---
+▶ Taktéž počítání referencí, ovšem atomické
+▶ Arc::clone()
+▶ Deref trait

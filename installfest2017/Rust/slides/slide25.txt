@@ -1,0 +1,14 @@
+
+OOP v Rustu
+-------------------------------
+Vlastnictví objektů
+    Reference
+    Sémantika „move“
+    Sémantika „copy“
+Traity
+    Kombinace trait+struktura+metody
+Konstruktory a destruktory
+    Trait „Drop“
+    Přetěžování operátorů
+        Přetížení = implementace traitu
+Generické funkce

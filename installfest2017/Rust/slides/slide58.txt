@@ -1,0 +1,10 @@
+
+Použití nástroje Cargo
+----------------------
+$ cargo install
+   Compiling libc v0.2.17
+   Compiling rand v0.3.14
+   Compiling projectXYZ v0.1.0 (file:///home/tester/temp/projectXYZ)
+    Finished release [optimized] target(s) in 5.88 secs
+  Installing /home/tester/.cargo/bin/projectXYZ
+warning: be sure to add `/home/tester/.cargo/bin` to your PATH to be able to run the installed binaries

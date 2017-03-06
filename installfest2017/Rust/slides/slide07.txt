@@ -1,0 +1,17 @@
+
+Datové typy
+-------------------------------
+▶ Primitivní datové typy
+    bool
+    char (Unicode!)
+    i8..i64, u8..u64
+    isize, usize
+    f32, f64
+    Pole (array)
+    slice (pohled na jinou strukturu)
+    N-tice (tuple)
+    str (UTF-8, interně ukazatel na data + délka)
+▶ Homogenní struktury
+    Vektor
+▶ Záznamy
+▶ Funkce

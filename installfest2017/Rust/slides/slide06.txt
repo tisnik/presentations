@@ -1,0 +1,7 @@
+
+Základ syntaxe
+-------------------------------
+▶ Funkce
+▶ Proměnné
+▶ Struktury
+▶ Řídicí konstrukce

@@ -1,0 +1,9 @@
+
+Správa paměti
+-------------------------------
+▶ Zásobník versus halda
+▶ Box
+▶ Rc
+▶ Arc
+▶ Pole a vektory
+    slice

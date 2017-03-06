@@ -1,0 +1,10 @@
+
+Cargo.toml
+----------
+[package]
+name = "projectXYZ"
+version = "0.1.0"
+authors = ["Pepa z depa <pepa@installfest.cz>"]
+.
+[dependencies]
+rand = "0.3.14"

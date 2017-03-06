@@ -1,0 +1,20 @@
+
+Vektory
+-------
+fn main() {
+    let vector = vec![1, 2, 3, 4, 5];
+    // délka vektoru
+    println!("vector has {} items", vector.len());
+    // range + délka pole
+    for i in 0..vector.len() {
+        println!("item #{} = {}", i + 1, vector[i]);
+    }
+    // for-each
+    for item in vector.iter() {
+        println!("{}", item);
+    }
+    // také funguje
+    for item in &vector {
+        println!("{}", item);
+    }
+}

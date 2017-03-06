@@ -1,0 +1,7 @@
+
+// smyčka typu for-each a typ range
+fn main() {
+    for i in 1..10 {
+        println!("pocitadlo: {}", i)
+    }
+}

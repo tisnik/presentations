@@ -1,0 +1,11 @@
+
+// odvození typu všech proměnných (i z)
+// použití makra println!
+fn main() {
+    let x = 6;
+    let y = 7;
+    let z;
+    // překladač až nyní získá informace o typu
+    z = x * y;
+    println!("{} * {} = {}", x, y, z);
+}

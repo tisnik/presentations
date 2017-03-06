@@ -1,0 +1,16 @@
+
+Chybová hlášení překladače
+--------------------------
+error[E0382]: use of moved value: `c`
+  --> an_example.rs:40:8
+   |
+39 |     funkce1(c);
+   |        - value moved here
+40 |     funkce2(c);
+   |        ^ value used here after move
+   |
+   = note: move occurs because `c` has type `std::rc::Rc<Complex>`, which does not implement the `Copy` trait
+    vs:
+    ↓
+Generate the longest error message in C++
+http://tinyurl.com/longest-error-message

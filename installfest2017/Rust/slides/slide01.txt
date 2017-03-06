@@ -1,0 +1,12 @@
+
+Obsah přednášky
+-------------------------------
+▶ Charakteristické rysy Rustu
+▶ Rust a C/C++
+▶ Základ syntaxe
+▶ Datové typy
+▶ Zajímavé prvky jazyka
+▶ Přístup k OO v Rustu
+▶ Správa paměti
+▶ Vlákna
+▶ Správce balíčků (Cargo)

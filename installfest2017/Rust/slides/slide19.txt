@@ -1,0 +1,9 @@
+
+// nekonečné sekvence a práce s nimi
+fn main() {
+    let iter1 = 1..;
+    let iter2 = iter1.filter(|x| x % 2 == 0);
+    let iter3 = iter2.take(10);
+    let suma  = iter3.fold(0, |sum, x| sum + x);
+    println!("sum = {}", suma);
+}

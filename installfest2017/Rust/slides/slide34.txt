@@ -1,0 +1,8 @@
+
+Box
+---
+▶ Alokace objektu na haldě
+▶ „Obaluje“ vlastní objekt (číslo, strukturu, pole)
+▶ Trait Deref - snadný přístup k obalenému objektu
+▶ Hlídání životnosti objektu i ukazatele
+▶ Nemůže být NULL/nil

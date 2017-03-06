@@ -1,0 +1,20 @@
+
+// jeden sdílený objekt referencovaný třikrát
+fn main() {
+    println!("main begin");
+    let c = Rc::new(Complex::new(0.0, 0.0));
+    c.print();
+    {
+        println!("inner block begin");
+        let c2 = c.clone();
+        c2.print();
+        {
+            println!("inmost block begin");
+            let c3 = c.clone();
+            c3.print();
+            println!("inmost block end");
+        }
+        println!("inner block end");
+    }
+    println!("main end");
+}
