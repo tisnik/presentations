@@ -7,4 +7,4 @@ NASM
 ▶ Generuje objektový kód pro platformu x86 (16bit, 32bit, 64bit)
     Zjednodušený toolchain
         nasm → flat file (.COM, bootloader...)
-        nasm → ln → spustitelný_soubor
+        nasm → ld → spustitelný_soubor
