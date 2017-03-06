@@ -1,7 +1,7 @@
 
 Úlohy
 -----
-▶ Při spuštění pluginu v samosatatném procesu
+▶ Při spuštění pluginu v samostatném procesu
 job_start()   - cesta ke spriptu + options
 job_status()  - "run, "fail", "dead" ...
 job_stop()    - "term", "hup", "quit", ...
