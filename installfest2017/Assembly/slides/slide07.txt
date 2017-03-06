@@ -1,7 +1,7 @@
 
 Instrukce nedostupné ve vyšším programovacím jazyce
 ---------------------------------------------------
-▶ GCC nabízí ve formě „buildins“
+▶ GCC nabízí ve formě „builtins“
     __builtin_clz
     __builtin_parity
     __builtin_bswap64

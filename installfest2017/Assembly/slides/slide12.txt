@@ -11,7 +11,7 @@ Kdy/proč psát v assembleru
     const, const *, register
 5. Profilování (!)
 6. Speciální vlastnosti konkrétního překladače (nepřenositelné!)
-    __builtin_expect, __buildin_unreachable, __buildin_prefetch...
+    __builtin_expect, __builtin_unreachable, __builtin_prefetch...
     "hot" atribut u funkcí, "pure" atribut, "simd" apod.
     https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#Common-Function-Attributes
 6. Přepis RELEVANTÍHO kódu do assembleru
