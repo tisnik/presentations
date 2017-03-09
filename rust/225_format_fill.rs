@@ -1,7 +1,7 @@
 fn main() {
     let value = 42;
     println!("|{}|", value);
-    println!("|{:.10}|", value);
+    println!("|{:10}|", value);
     println!("|{:.>10}|", value);
     println!("|{:.<10}|", value);
     println!("|{:.^10}|", value);
