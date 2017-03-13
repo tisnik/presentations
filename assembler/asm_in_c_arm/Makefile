@@ -1,5 +1,5 @@
 # Parametry prekladace.
-CFLAGS=-Wall -O9
+CFLAGS=-Wall -O0 -g
 
 # Vychozi pravidlo pro vytvoreni vysledne spustitelne aplikace.
 all:	asm_in_c_0.s asm_in_c_0 \
@@ -13,7 +13,12 @@ all:	asm_in_c_0.s asm_in_c_0 \
 	asm_in_c_8.s asm_in_c_8 \
 	asm_in_c_9.s asm_in_c_9 \
 	asm_in_c_10.s asm_in_c_10 \
-	asm_in_c_11.s asm_in_c_11
+	asm_in_c_11.s asm_in_c_11 \
+	asm_in_c_12.s asm_in_c_12 \
+	asm_in_c_13.s asm_in_c_13 \
+	asm_in_c_14.s asm_in_c_14 \
+	asm_in_c_15.s asm_in_c_15 \
+	asm_in_c_16.s asm_in_c_16
 
 clean:
 	rm -f *.o
