@@ -35,7 +35,7 @@ def create_starry_sky_1(width, height, stars):
 
 
 
-# Registrace skriptu do prosteedi grafickeho editoru GIMP
+# Registrace skriptu do prostredi grafickeho editoru GIMP
 # a specifikace parametru nastavitelnych uzivatelem,
 # ktere se posleze prenesou jako parametry skriptu.
 register(
