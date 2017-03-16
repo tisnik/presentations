@@ -89,7 +89,7 @@
 ; které se posléze přenesou jako parametry skriptu.
 (script-fu-register "script-fu-stars-4"
                     "<Image>/Filters/Render/Pattern/Stars4"
-                    "Vytvori obrazek hvezdnou oblohou."
+                    "Vytvori obrazek s hvezdnou oblohou."
                     "Pavel Tisnovsky"
                     "Pavel Tisnovsky"
                     "2017-03-16"

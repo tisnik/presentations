@@ -1,6 +1,6 @@
 ; Funkce, která vytvoří nový obrázek o zadané velikosti.
 ; V obrázku bude jedna hladina nazvaná "Stars" a
-; v této hladině bude vykreslena hvezdna obloha.
+; v této hladině bude vykreslena hvězdná obloha.
 (define (script-fu-stars-1 width height stars)
     ; definice lokálních proměnných
     (let*
@@ -51,7 +51,7 @@
 ; které se posléze přenesou jako parametry skriptu.
 (script-fu-register "script-fu-stars-1"
                     "<Image>/Filters/Render/Pattern/Stars1"
-                    "Vytvori obrazek hvezdnou oblohou."
+                    "Vytvori obrazek s hvezdnou oblohou."
                     "Pavel Tisnovsky"
                     "Pavel Tisnovsky"
                     "2017-02-19"
