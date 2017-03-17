@@ -1,6 +1,6 @@
 ; Funkce, která vytvoří nový obrázek o zadané velikosti.
 ; V obrázku bude jedna hladina nazvaná "Stars" a
-; v této hladině bude vykreslena hvezdna obloha.
+; v této hladině bude vykreslena hvězdná obloha.
 (define (script-fu-stars-3 width height stars selected-brush selected-color)
     ; definice lokálních proměnných
     (let*
@@ -11,7 +11,6 @@
             ; vytvoření nové hladiny, jejíž ID se uloží
             ; do proměnné nazvané "layer"
             (layer (car (gimp-layer-new image width height RGB-IMAGE "Stars" 100 NORMAL-MODE))))
-            ; pole s uloženými RGB hodnotami pixelu
 
         ; zákaz ukládání operací do zásobníku
         (gimp-image-undo-disable image)

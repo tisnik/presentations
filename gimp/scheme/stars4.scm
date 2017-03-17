@@ -1,6 +1,6 @@
 ; Funkce, která vytvoří nový obrázek o zadané velikosti.
 ; V obrázku bude jedna hladina nazvaná "Stars" a
-; v této hladině bude vykreslena hvezdna obloha.
+; v této hladině bude vykreslena hvězdná obloha.
 (define (script-fu-stars-4 width height stars1 stars2 stars3)
     ; definice lokálních proměnných
     (let*
