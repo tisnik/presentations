@@ -1,13 +1,13 @@
-use std::collections::HashSet;
+use std::collections::BTreeSet;
 
-fn print_hashset(set: &HashSet<&str>) {
+fn print_hashset(set: &BTreeSet<&str>) {
     for item in set {
         println!("{}", item);
     }
 }
 
 fn main() {
-    let mut set = HashSet::new();
+    let mut set = BTreeSet::new();
 
     set.insert("podporucik");
     set.insert("inspektor");
