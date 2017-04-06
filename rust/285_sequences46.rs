@@ -39,28 +39,28 @@ impl Hash for Complex {
     }
 }
 
-fn print_list(list: &HashSet<Complex>) {
+fn print_set(set: &HashSet<Complex>) {
 
-    if list.is_empty() {
-        println!("list is empty");
+    if set.is_empty() {
+        println!("set is empty");
     } else {
-        println!("list has {} items", list.len());
+        println!("set has {} items", set.len());
     }
 
-    for item in list.iter() {
+    for item in set.iter() {
         item.print();
     }
 }
 
 fn main() {
-    let list: HashSet<Complex> = vec![Complex::new(0, 0),
+    let set: HashSet<Complex> = vec![Complex::new(0, 0),
                                       Complex::new(1, 1),
                                       Complex::new(0, 0),
                                       Complex::new(1, 1),
                                       Complex::new(2, 2),
                                       Complex::new(2, 2)].into_iter().collect();
 
-    print_list(&list);
+    print_set(&set);
 
     println!("exit from main()");
 }
