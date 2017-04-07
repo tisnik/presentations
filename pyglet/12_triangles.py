@@ -9,14 +9,14 @@ window = pyglet.window.Window(width=450,
 
 
 def draw_triangle(x, y):
-    glBegin(GL_TRIANGLES);
-    glColor3f(1.0, 0.0, 0.0);                # kazdy vertex bude vykresleny jinou barvou
-    glVertex2i(x, y);
-    glColor3f(0.0, 1.0, 0.0);
-    glVertex2i(x+100, y);
-    glColor3f(0.0, 0.0, 1.0);
-    glVertex2i(x+50, y+80);
-    glEnd();
+    glBegin(GL_TRIANGLES) 
+    glColor3f(1.0, 0.0, 0.0)                 # kazdy vertex bude vykresleny jinou barvou
+    glVertex2i(x, y) 
+    glColor3f(0.0, 1.0, 0.0) 
+    glVertex2i(x+100, y) 
+    glColor3f(0.0, 0.0, 1.0) 
+    glVertex2i(x+50, y+80) 
+    glEnd() 
 
 @window.event
 def on_draw():
@@ -63,26 +63,26 @@ def on_draw():
 
     pattern2_gl = (GLubyte * len(pattern2))(*pattern2)
 
-    glClearColor(0.0, 0.0, 0.0, 0.0);           # nastaveni mazaci barvy na cernou
-    glClear(GL_COLOR_BUFFER_BIT);               # vymazani bitovych rovin barvoveho bufferu
+    glClearColor(0.0, 0.0, 0.0, 0.0)            # nastaveni mazaci barvy na cernou
+    glClear(GL_COLOR_BUFFER_BIT)                # vymazani bitovych rovin barvoveho bufferu
 
-    glPointSize(5.0);                           # velikost bodu je rovna peti pixelum
-    glLineWidth(2.0);                           # tloustka usecek je rovna dvema pixelum
-    glEnable(GL_POINT_SMOOTH);                  # povoleni antialiasingu bodu
-    glEnable(GL_LINE_SMOOTH);                   # povoleni antialiasingu usecek
-    glDisable(GL_POLYGON_STIPPLE);              # zakazat vzorek
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  # vykreslovani vyplnenych trojuhelniku
-    draw_triangle(50, 50);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  # vykreslovani pouze hran trojuhelniku
-    draw_triangle(180, 50);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_POINT); # vykreslovani pouze vrcholu trojuhelniku
-    draw_triangle(310, 50);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  # vykreslovani vyplnenych trojuhelniku
-    glEnable(GL_POLYGON_STIPPLE);               # povolit vzorek
-    glPolygonStipple(pattern1_gl);              # zadat prvni vzorek
-    draw_triangle(110, 190);
-    glPolygonStipple(pattern2_gl);              # zadat druhy vzorek
-    draw_triangle(240, 190);
+    glPointSize(5.0)                            # velikost bodu je rovna peti pixelum
+    glLineWidth(2.0)                            # tloustka usecek je rovna dvema pixelum
+    glEnable(GL_POINT_SMOOTH)                   # povoleni antialiasingu bodu
+    glEnable(GL_LINE_SMOOTH)                    # povoleni antialiasingu usecek
+    glDisable(GL_POLYGON_STIPPLE)               # zakazat vzorek
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)   # vykreslovani vyplnenych trojuhelniku
+    draw_triangle(50, 50) 
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)   # vykreslovani pouze hran trojuhelniku
+    draw_triangle(180, 50) 
+    glPolygonMode(GL_FRONT_AND_BACK, GL_POINT)  # vykreslovani pouze vrcholu trojuhelniku
+    draw_triangle(310, 50) 
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)   # vykreslovani vyplnenych trojuhelniku
+    glEnable(GL_POLYGON_STIPPLE)                # povolit vzorek
+    glPolygonStipple(pattern1_gl)               # zadat prvni vzorek
+    draw_triangle(110, 190) 
+    glPolygonStipple(pattern2_gl)               # zadat druhy vzorek
+    draw_triangle(240, 190) 
 
 
 pyglet.app.run()
