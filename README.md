@@ -23,6 +23,10 @@ Examples that are written in Python and use the well known Pygame library that
 can be found on the address
 [http://www.pygame.org/](http://www.pygame.org/).
 
+### Pyglet
+
+Dtto for the very nice Pyglet library
+
 ### Matplotlib
 
 Examples that are written in Python and use the Matplotlib library that
