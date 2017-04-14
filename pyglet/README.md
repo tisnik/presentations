@@ -20,4 +20,5 @@ List of examples:
 * 16_polygons.py
 * 17_3d_projection.py
 * 18_rotation.py
-
+* 19_perspective.py
+* 20_fills.py
