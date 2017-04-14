@@ -3,6 +3,9 @@ Examples from the article serie about Fractals
 
 List of examples:
 
+Subdirectory root.cz
+--------------------
+
 fractals03_1.c
 fractals03_2.c
 fractals05_1.c
@@ -36,4 +39,7 @@ fractals13_3.c
 fractals13_4.c
 fractals14_1.c
 fractals14_2.c
+
+Subdirectory mandelbulb_etc
+---------------------------
 
