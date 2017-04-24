@@ -5,8 +5,8 @@ from pyglet.gl import *
 from pyglet.window import key
 
 fov = 70.0                                    # hodnota zorneho uhlu - field of view
-nearPlane = 0.1;                              # blizsi orezavaci rovina
-farPlane = 90.0;                              # vzdalenejsi orezavaci rovina
+nearPlane = 0.1                               # blizsi orezavaci rovina
+farPlane = 90.0                               # vzdalenejsi orezavaci rovina
 
 r1 = 0.0
 r2 = 0.0
@@ -53,7 +53,7 @@ def on_draw():
 
     glMatrixMode(GL_PROJECTION)               # zacatek modifikace projekcni matice
     glLoadIdentity()                          # vymazani projekcni matice (=identita)
-    gluPerspective(fov, 1.0, nearPlane, farPlane);
+    gluPerspective(fov, 1.0, nearPlane, farPlane)
 
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()                          # nahrat jednotkovou matici
