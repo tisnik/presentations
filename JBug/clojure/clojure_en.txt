@@ -27,9 +27,63 @@ Clojure - (yet another) language for JVM
 ----------------------------------------
 Java Virtual Machine
 Specification implemented by more VMs
+    HotSpot
+        Client
+        Server
+    Azul
+    J9
+    JamVM
+    CACAO VM
+    Graal
+    Jikes RVM
+
+JVM
+---
+JVM is scalable
+    No (apparent) GIL
+    Multi-threaded garbage collectors
+    Synchronized and unsynchronized variants of collections
+    Future interface
+and
+Supports dynamically typed programming languages
+
+Java platform
+-------------
+Compiler+JVM+standard packages+other tools
+Mature
+    evolving since 1985 now > 14M developers (TIOBE)
+Stable and robust + rich standard libraries
+Usually backward compatible
+    "Java is a modern COBOL"
+
+Java is not the only language prepared to run on JVM
+-----------------------------------------------------
+JavaScript
+    Rhino
+    Nashorn
+Scala
+Groovy
+Jython
+JRuby
+Kotlin
+...
+...
+...
+Clojure!
+
+Clojure
+-------
+
+Java vs.Clojure?
+----------------
+Clojure is not replacement of Java
+    does not try to reinvent the wheel
+    cooperates nicely with Java libs
+        "Java interop"
 
 Basic Clojure features
 ----------------------
+
 Forms
 -----
 
