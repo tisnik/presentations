@@ -6,25 +6,69 @@ Practical Clojure
 
 Agenda
 ------
-Clojure - (not) yet another language for JVM
-Basic Clojure features
-Forms
-Collections
-Functions
-Lazy evaluation and lazy sequences
-Four reference types (variable substitution)
-Parallel programming
-Watchers
-Validators
-Macros
-Classes and objects in Clojure
-Cooperation between Java and Clojure
-Web apps (Clojure Ring philosophy)
-Testing
-Code coverage reporting
+▶ Clojure - (not) yet another language for JVM
+▶ Basic Clojure features
+▶ Forms
+▶ Collections
+▶ Functions
+▶ Lazy evaluation and lazy sequences
+▶ Four reference types (variable substitution)
+▶ Parallel programming
+▶ Watchers
+▶ Validators
+▶ Macros
+▶ Classes and objects in Clojure
+▶ Cooperation between Java and Clojure
+▶ Web apps (Clojure Ring philosophy)
+▶ Testing
+▶ Code coverage reporting
 
 Clojure - (yet another) language for JVM
 ----------------------------------------
 Java Virtual Machine
 Specification implemented by more VMs
+
+Basic Clojure features
+----------------------
+Forms
+-----
+
+Collections
+-----------
+
+Functions
+---------
+
+Lazy evaluation and lazy sequences
+----------------------------------
+
+Four reference types (variable substitution)
+--------------------------------------------
+
+Parallel programming
+--------------------
+
+Watchers
+--------
+
+Validators
+----------
+
+Macros
+------
+
+Classes and objects in Clojure
+------------------------------
+
+Cooperation between Java and Clojure
+------------------------------------
+
+Web apps (Clojure Ring philosophy)
+----------------------------------
+
+Testing
+-------
+
+Code coverage reporting
+-----------------------
 
