@@ -22,3 +22,9 @@ List of examples:
 * 18_rotation.py
 * 19_perspective.py
 * 20_fills.py
+* 21_no_z_buffer.py
+* 22_z_buffer.py
+* 23_blending.py
+* 24_blending2.py
+* 25_blending_function.py
+* 26_variable_alpha.py
