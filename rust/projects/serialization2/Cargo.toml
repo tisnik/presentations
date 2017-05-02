@@ -1,0 +1,8 @@
+[package]
+name = "serialization2"
+version = "0.1.0"
+authors = ["Pavel Tisnovsky <ptisnovs@redhat.com>"]
+
+[dependencies]
+bincode = "0.7.0"
+
