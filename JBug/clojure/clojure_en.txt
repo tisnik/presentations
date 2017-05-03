@@ -157,12 +157,6 @@ Compound forms
     Maps
     Sets
 
-Function calls
---------------
-
-Nested functions
-----------------
-
 Special forms
 -------------
 Special forms
@@ -175,6 +169,46 @@ Special forms
     . (dot)
         used to call methods of Java objects
     etc.
+
+Functions
+---------
+Functions have similar properties as other values
+    It's possible to create new functions in runtime
+    Function could be passed to other function as a parameter
+    Function could be returned by other function as its return value
+    Function could be stored in list, vector, map etc.
+    Name could be bind to a function
+        but it's not needed in all cases
+        anonymous functions
+        used extensivelly not only in Clojure
+
+Anonymous functions
+-------------------
+Short form of anonymous function definition
+Functions with name
+    defn = def + fn
+
+Referentially transparent functions
+-----------------------------------
+Don't access any global symbol
+Without side-off effects (I/O)
+Don't have internal state
+    those functions are not bound to application state
+    results can be cached
+    (memoization)
+
+Multiarity functions
+--------------------
+
+Lazy evaluation and lazy sequences
+----------------------------------
+
+Recursion vs tail recursion
+---------------------------
+Factorial - a typical example
+Very deep recursion might cause stack overflow
+    ''recur'' special form
+    It is not possible to use ''recur'' everywhere
 
 Collections
 -----------
@@ -239,36 +273,31 @@ Implemented as hash sets
 Can't contain duplicate items
 Sortable sets
 
-Functions
+Sequences
 ---------
-Functions have similar properties as other values
-    It's possible to create new functions in runtime
-    Function could be passed to other function as a parameter
-    Function could be returned by other function as its return value
-    Function could be stored in list, vector, map etc.
-    Name could be bind to a function
-        but it's not needed in all cases
-        anonymous functions
-        used extensivelly not only in Clojure
+Sequence = iterator in other languages
+Three basic operations
+    first
+        returns the first item in the collection/sequence
+    rest
+        returns (possibly empty) sequence of the items after the first item
+    next
+        returns a sequence of items after the first item
+        nil instead of empty sequence
+All collections are sequences
 
-Anonymous functions
--------------------
-Short form of anonymous function definition
-Functions with name
-    defn = def + fn
-
-Multiarity functions
---------------------
-
-Lazy evaluation and lazy sequences
-----------------------------------
-
-Recursion vs tail recursion
----------------------------
-Factorial - a typical example
-Very deep recursion might cause stack overflow
-    ''recur'' special form
-    It is not possible to use ''recur'' everywhere
+Lazy sequences
+--------------
+Lazy sequence - computation is done ALAP
+    range function
+    repeat function
+    map
+        returns a lazy sequence
+    take
+        returns a lazy sequence of the first n items in coll
+    take-while
+        returns a lazy sequence of successive items from coll according to the given condition
+    filter
 
 Four reference types (variable substitution)
 --------------------------------------------
@@ -285,6 +314,13 @@ Validators
 Macros
 ------
 
+Threading macros
+----------------
+->
+(-> "/etc/passwd" slurp clojure.string/split-lines count)
+->>
+(->> (range) (take 20) (filter #(zero? (mod % 3))))
+
 Classes and objects in Clojure
 ------------------------------
 
@@ -296,7 +332,104 @@ Web apps (Clojure Ring philosophy)
 
 Testing
 -------
+(ns factorial.core
+  (:gen-class))
+ 
+(defn factorial
+    [n]
+    (if (neg? n)
+        (throw (IllegalArgumentException. "negative numbers are not supported!"))
+        (apply * (range 1 (inc n)))))
+ 
+(defn -main
+    "I don't do a whole lot ... yet."
+    [& args]
+    (doseq [i (range 0 10)]
+        (println i "! = " (factorial i))))
+
+Unit tests...
+-------------
+(ns factorial.core-test
+  (:require [clojure.test :refer :all]
+            [factorial.core :refer :all]))
+ 
+(deftest factorial-test
+    (testing "Factorial"
+        (is ( = (factorial 0)   1) "beginning")
+        (is ( = (factorial 1)   1) "beginning")
+        (is ( = (factorial 2)   (* 1 2)) "still easy")
+        (is ( = (factorial 5)   (* 1 2 3 4 5)) "5!")
+        (is ( = (factorial 6)   720) "6!")))
+ 
+(deftest negative-factorial-test
+    (testing "Negative tests"
+        (is ( = (factorial 0)   0) "negative test case #1")
+        (is ( = (factorial 1)   0) "negative test case #2")
+        (is ( = (factorial 2)   0) "negative test case #3")))
+ 
+(deftest exception-test
+    (testing "If factorial throws exception"
+        (is (thrown? IllegalArgumentException (factorial -1)))
+        (is (thrown? IllegalArgumentException (factorial -2)))
+        (is (thrown? IllegalArgumentException (factorial -100)))))
+ 
+(deftest negative-exception-test
+    (testing "(negative test) If factorial throws exception"
+        (is (thrown? IllegalArgumentException (factorial 1)))
+        (is (thrown? IllegalArgumentException (factorial 2)))
+        (is (thrown? IllegalArgumentException (factorial 3)))))
+
+Test results
+------------
+FAIL in (negative-factorial-test) (core_test.clj:15)
+Negative tests
+negative test case #1
+expected: (= (factorial 0) 0)
+  actual: (not (= 1 0))
+
+Expectations
+------------
+(defproject expectations-demo "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [expectations "2.0.9"]]
+  :main ^:skip-aot expectations-demo.core
+  :target-path "target/%s"
+  :plugins [[lein-expectations "0.0.8"]]
+  :profiles {:uberjar {:aot :all}})
+ 
+(expect 42 (* 6 7))
+(expect "Hello world" (str "Hello" " " "world"))
+(expect 2/3 (/ 2 3))
+(expect ArithmeticException (/ 1 0))
 
 Code coverage reporting
 -----------------------
+(defproject cloverage "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.6.0"]]
+  :main ^:skip-aot cloverage.core
+  :target-path "target/%s"
+  :plugins [[lein-cloverage "1.0.2"]]
+  :profiles {:uberjar {:aot :all}})
+
+Documentation generation
+-------------------------
+(defproject codoxtest "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.6.0"]]
+  :main ^:skip-aot codoxtest.core
+  :target-path "target/%s"
+  :plugins [[codox "0.8.11"]]
+  :profiles {:uberjar {:aot :all}})
+
 
