@@ -3,6 +3,7 @@ Clojure - LISP on JVM
 :author  Pavel Tišnovský
 :email   <ptisnovs 0x40 redhat 0x2e com>
 :date    2017-05-03
+:where   FI MUNI A318
 
 Agenda
 ------
@@ -234,7 +235,7 @@ Don't have internal state
 
 Multiarity functions
 --------------------
-(def multiply
+(defn multiply
    ([x]
     (* x x))
    ([x y]
