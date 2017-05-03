@@ -73,15 +73,15 @@ Clojure!
 
 Clojure
 -------
-Clojure = Java + Closure
-Rich Hickey
-Based on LISP (and on Scheme too)
-    Theory of λ-calculus
+▶ Clojure = Java + Closure
+▶ Rich Hickey
+▶ Based on LISP (and on Scheme too)
+    ◆ Theory of λ-calculus
         Alonzo Church
         Look at the Clojure logo :)
-    WEB2.0^W cloud^W social networks^W^W AI was the IT buzzword in 1950s
-    John McCarthy 1956-1958
-    Implemented by S.R.Russell (REPL)
+    ◆ WEB2.0^W cloud^W social networks^W^W AI was the IT buzzword in 1950s
+    ◆ John McCarthy 1956-1958
+    ◆ Implemented by S.R.Russell (REPL)
 
 Java vs.Clojure?
 ----------------
@@ -156,6 +156,12 @@ Compound forms
     Maps
     Sets
 
+Function calls
+--------------
+
+Nested functions
+----------------
+
 Special forms
 -------------
 Special forms
@@ -169,18 +175,12 @@ Special forms
         used to call methods of Java objects
     etc.
 
-Function calls
---------------
-
-Nested functions
-----------------
-
 Collections
 -----------
 List, Vector, Map, Set
 Immutable items
 Persistent collections
-    It's not neccessary to clone a collection in case of some operations
+    It is not neccessary to clone a collection in case of some operations
     pop/peek for lists
     ...
 
