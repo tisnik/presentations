@@ -90,6 +90,10 @@ Clojure
     ◆ WEB2.0^W cloud^W social networks^W^W AI was the IT buzzword in 1950s
     ◆ John McCarthy 1956-1958
     ◆ Implemented by S.R.Russell (REPL)
+▶ Three main implementations
+    ◆ for JVM
+    ◆ for .NET
+    ◆ transpiled into JavaScript
 
 Basic Clojure features
 ----------------------
@@ -137,6 +141,20 @@ Programs are compiled into JVM bytecode
         The best of "scripted" and "compiled" worlds :-)
     With support for dynamic typing 
         Not an easy task (before invokedynamic)
+
+LISP roots
+----------
+; side effect
+(println "Hello" "world")
+; + is regular function
+(+ 1 2 3 4)
+; nested functions
+(* (+ 1 2 3) (+ 3 4))
+; empty list != nil !!!
+'()
+()
+; vector
+[1 2 3 4]
 
 Namespaces
 ----------
@@ -327,6 +345,59 @@ Classes and objects in Clojure
 Cooperation between Java and Clojure
 ------------------------------------
 
+REPL
+----
+▶ Read Eval Print Loop
+▶ Better to use it with Leiningen
+
+Leiningen
+---------
+▶ "Maven for Clojure"
+▶ Project handling
+▶ Unit testing
+▶ Supports plugins
+▶ Run apps in devel mode
+    ◆ Web apps atd.
+▶ Better REPL
+
+Project.clj
+-----------
+(defproject Test2 "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [hiccup "1.0.4"]]
+  :main test.core)
+
+More complicated project
+------------------------
+(defproject smearch "0.1.0-SNAPSHOT"
+  :description "The ultimate application"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [org.clojure/java.jdbc "0.3.3"]
+                 [ring/ring-core "1.2.2"]
+                 [ring/ring-jetty-adapter "1.2.2"]
+                 [hiccup "1.0.4"]
+                 [org.clojure/tools.cli "0.3.1"]]
+  :resource-paths ["resources/teiid-8.6.0.Final-jdbc.jar"]
+  :dev-dependencies [[lein-ring "0.8.10"]]
+  :plugins [[lein-ring "0.8.10"]]
+  :ring {:handler smearch.core/app}
+  :main smearch.core)
+
+Leiningen and REPL
+------------------
+▶ Basic usage
+    ◆ lein repl
+▶ Leiningen REPL + Screen
+    ◆ screen -S clojure
+    ◆ lein repl
+
 Web apps (Clojure Ring philosophy)
 ----------------------------------
 Clojure Ring
@@ -362,35 +433,76 @@ Middleware
 
 Hiccup
 ------
-(ns htmltest2.core
-    (:gen-class))
- 
+(require '[hiccup.core :as hiccup])
 (require '[hiccup.page :as page])
- 
-(defn fact
-    [n]
-    (apply * (range 1 (inc n))))
- 
-(defn html-page
+(require '[hiccup.form :as form])
+;
+(defn render-html-header
+    []
+    [:head
+        [:title "Ultimate tool"]
+        [:meta {:name "Author"    :content "Pavel Tisnovsky"}]
+        [:meta {:name "Generator" :content "Clojure"}]
+        [:meta {:http-equiv "Content-type" :content "text/html; charset=utf-8"}]
+        (page/include-css "bootstrap.min.css")
+        (page/include-js  "bootstrap.min.js")
+    ]
+)
+;
+(defn render-page
+    [user-name]
+    (page/xhtml
+        (render-html-header)
+        [:body
+            [:div {:class "container"}
+            (form/form-to [:get "/" ]
+                (form/text-field {:autofocus "autofocus" :size "40"} "user-name" (str user-name))
+                (form/submit-button "Search"))
+            ] ; </div class="container">
+        ] ; </body>
+))
+
+Hiccup
+------
+(ns test.core)
+;
+(require '[hiccup.page :as page])
+;
+(defn factorial
+    ([n]
+        (factorial n 1N))  ; dulezite -> donutime pouziti BigInteger
+                           ; (uz zadne IntegerOverflow :)
+    ([n acc]
+        (if  (= n 0)  acc
+            (recur (dec n) (* acc n)))))
+;
+(defn render-factorials
+    [max-n]
+    (for [n (range 0 (inc max-n))]
+        [:tr [:td n] [:td (factorial n)]]))
+;
+(defn render-html-page
     []
     (page/xhtml
         [:head
-            [:title "Hiccup test #2"]
-            [:meta {:name "Generator" :content "Clojure"}]
+            [:title "Factorial generator"]
+            [:meta {:name "Author"    :content "Pavel Tisnovsky"}]
+            [:meta {:name "Generator" :content "Clojure/hiccup"}]
             [:meta {:http-equiv "Content-type" :content "text/html; charset=utf-8"}]
+            (page/include-css "style.css")
+            (page/include-js  "scripts.js")
         ]
         [:body
-            [:h1 "Hiccup test #2"]
+            [:h1 "Factorial"]
             [:table
                 [:tr [:th "n"] [:th "n!"]]
-                (for [n (range 0 20)]
-                    [:tr [:td n] [:td (fact n)]])
-            ]
-        ]))
- 
+                (render-factorials 100)
+            ]]))
+;
 (defn -main
+    "Entry point"
     [& args]
-    (spit "test.html" (html-page)))
+    (spit "test.html" (render-html-page)))
 
 Project file
 ------------
@@ -411,57 +523,172 @@ Project file
   :ring     {:handler ringapp1.core/app}
   :profiles {:uberjar {:aot :all}})
 
-Server
-------
-(def app
-    (-> handler
-        http-params/wrap-params))
- 
-(defn -main
-    [& args]
-    (jetty/run-jetty app {:port 8080}))
-
-Requests processing
--------------------
-(defn handler
-    [request]
-    (let [params (:params request)
-          max-n  (param->number params "max-n")]
-        (println "Params: " params)
-        (println "max-n:  " max-n)
-        (-> (response/response (html-page (if max-n max-n 10M)))
-            (response/content-type "text/html; charset=utf-8"))))
-
-Response
---------
-(defn fact
-    [n]
-    (apply * (range 1M (inc n))))
- 
-(defn html-page
-    [max-n]
+Clojure Ring
+------------
+(ns servertest.core)
+;
+(require '[ring.adapter.jetty      :as jetty])
+(require '[ring.middleware.params  :as http-params])
+(require '[ring.util.response      :as http-response])
+;
+(require '[hiccup.page :as page])
+;
+(defn render-page
+    []
     (page/xhtml
         [:head
-            [:title "Ring app #1"]
+            [:title "Hello world!"]
+            [:meta {:name "Author"    :content "Pavel Tisnovsky"}]
             [:meta {:name "Generator" :content "Clojure"}]
             [:meta {:http-equiv "Content-type" :content "text/html; charset=utf-8"}]
         ]
         [:body
-            [:h1 "Ring app #1"]
-            (form/form-to [:get "/"]
-                (form/text-field {:size "20"} "max-n" max-n)
-                [:br]
-                (form/submit-button "Recalculate"))
-            [:br]
-            [:table {:style "border:2px solid brown;background-color:#ace"}
-                [:tr [:th "n"] [:th "n!"]]
-                (for [n (range 0M (inc max-n))]
-                    [:tr [:td n] [:td {:style "text-align:right"} (fact n)]])
-            ]
-        ]))
+            [:h1 "Hello world!"]]))
+;
+(defn generate-response
+    [page-content]
+    (-> (http-response/response page-content)
+        (http-response/content-type "text/html")))
+;
+(defn handle-request
+    [request]
+    (generate-response (render-page)))
+;
+(defn handler
+    [request]
+    (handle-request request))
+;
+(def app
+    (-> handler
+        http-params/wrap-params))
+;
+(defn start-server
+    [port]
+    (println "Starting the server at the port: " port)
+    (jetty/run-jetty app {:port port}))
+;
+(defn -main
+    [& args]
+    (start-server 8080))
+
+Requests processing
+-------------------
+(ns servertest2.core)
+;
+(require '[ring.adapter.jetty      :as jetty])
+(require '[ring.middleware.params  :as http-params])
+(require '[ring.util.response      :as http-response])
+;
+(require '[hiccup.page :as page])
+;
+(defn render-page
+    []
+    (page/xhtml
+        [:head
+            [:title "Hello world!"]
+            [:meta {:name "Author"    :content "Pavel Tisnovsky"}]
+            [:meta {:name "Generator" :content "Clojure"}]
+            [:meta {:http-equiv "Content-type" :content "text/html; charset=utf-8"}]
+        ]
+        [:body
+            [:h1 "Hello world!"]]))
+;
+(defn generate-response
+    [page-content]
+    (-> (http-response/response page-content)
+        (http-response/content-type "text/html")))
+;
+(defn print-request-info
+    [request]
+    (println "time:        " (.toString (new java.util.Date)))
+    (println "addr:        " (request :remote-addr))
+    (println "params:      " (request :params))
+    (println "user-agent:  " ((request :headers) "user-agent"))
+    (println ""))
+;
+(defn handle-request
+    [request]
+    (println "request URI: " (request :uri))
+    (print-request-info request)
+    (generate-response (render-page)))
+;
+(defn handler
+    [request]
+    (handle-request request))
+;
+(def app
+    (-> handler
+        http-params/wrap-params))
+;
+(defn start-server
+    [port]
+    (println "Starting the server at the port: " port)
+    (jetty/run-jetty app {:port port}))
+;
+(defn -main
+    [& args]
+    (start-server 8080))
 
 Sessions
 --------
+(ns servertest3.core)
+;
+(require '[ring.adapter.jetty      :as jetty])
+(require '[ring.middleware.params  :as http-params])
+(require '[ring.middleware.session :as http-session])
+(require '[ring.util.response      :as http-response])
+;
+(require '[hiccup.page :as page])
+;
+(defn render-page
+    [counter]
+    (page/xhtml
+        [:head
+            [:title "Hello world!"]
+            [:meta {:name "Author"    :content "Pavel Tisnovsky"}]
+            [:meta {:name "Generator" :content "Clojure"}]
+            [:meta {:http-equiv "Content-type" :content "text/html; charset=utf-8"}]
+        ]
+        [:body
+            [:h1 "Hello world!"]
+            [:div "Counter: " counter]]))
+;
+(defn generate-response
+    [page-content session]
+    (-> (http-response/response page-content)
+        (http-response/content-type "text/html")
+        (assoc :session session)))
+;
+(defn index-page-handler
+    [session]
+    (let [counter (get session :counter 0)
+          session (assoc session :counter (inc counter))]
+          (generate-response (render-page counter) session)))
+;
+(defn handle-request
+    [request]
+    (let [params   (request :params)
+          session  (request :session)]
+          (index-page-handler session)))
+;
+(defn handler
+    [request]
+    (handle-request request))
+;
+(def app
+    (-> handler
+        http-session/wrap-session ; we need to work with HTTP sessions
+        http-params/wrap-params)) ; and to process request parameters, of course
+;
+(defn start-server
+    [port]
+    (println "Starting the server at the port: " port)
+    (jetty/run-jetty app {:port port}))
+;
+(defn -main
+    [& args]
+    (start-server 8080))
+;
 
 Clojure and SQL
 ---------------
@@ -683,4 +910,9 @@ Documentation generation
   :plugins [[codox "0.8.11"]]
   :profiles {:uberjar {:aot :all}})
 
+IDE
+---
+▶ Slime for Vim
+▶ Cider (Emacs)
+▶ Counterclockwise (Eclipse)
 
