@@ -1,0 +1,13 @@
+
+Lists
+------
+Lists
+    Internally constist of:
+        first item
+        rest (sublist)
+        count
+Program itself is represented by a sequence of lists!
+Examples
+    '(1 2 3 4)
+    '()
+    '(1 (2 (3 (4 5))))

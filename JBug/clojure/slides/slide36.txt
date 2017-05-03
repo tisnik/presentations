@@ -1,0 +1,32 @@
+
+Refs
+----
+support transactions
+    synchronous state change
+    coordinated - state is changed inside transaction only
+Constructor
+    (def name (ref value))
+Get value
+    (deref name)
+    @name
+Change value
+    dosync
+        transaction (STM, ACID, nested transactions possible)
+    ref-set
+        sets a new value
+        can be used only inside transaction
+        (checked by Clojure)
+    alter
+        change value by applying some function to ref
+        can be used only inside transaction
+        (checked by Clojure)
+
+(def account-1 (ref 100000))
+(def account-2 (ref 20000))
+
+(defn transfer-money
+    [from to amount]
+    (dosync
+        (alter from - amount)
+        (alter to + amount)))
+

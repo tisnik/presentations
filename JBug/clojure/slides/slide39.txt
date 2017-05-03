@@ -1,0 +1,22 @@
+
+Agents
+------
+asynchronous state change
+    agent run its operation in new thread
+    more elegant than future/promise
+Constructor
+    (def name (agent value))
+Get value
+    (deref name)
+    @name
+        don't perform the synchronization!!!
+        -> you could get the wrong (old) value
+Change value
+    send
+        sends function to agent's thread
+    send-off
+        sends function to agent's thread 
+Wait for agent
+    await
+    await-for
+        incl. timeout

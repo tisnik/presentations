@@ -1,0 +1,16 @@
+
+Lazy sequences
+--------------
+Lazy sequence - computation is done ALAP
+    lazy-seq macro
+    iterate function
+        returns a lazy sequence of x, (f x), (f (f x))...
+    range function
+    repeat function
+    map
+        returns a lazy sequence
+    take
+        returns a lazy sequence of the first n items in coll
+    take-while
+        returns a lazy sequence of successive items from coll according to the given condition
+    filter

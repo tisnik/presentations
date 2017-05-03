@@ -1,0 +1,15 @@
+
+Basic Clojure features
+----------------------
+Deadlock-free multi-threaded programs
+    Immutable data types
+        List (linked), vector (RRB Tree), hash map, set
+        very important feature in massive parallel applications
+    Agents
+    Software Transactional Memory (STM)
+        Support for transactions
+Clojure contains REPL
+    Read-Eval-Print-Loop
+Code == Data
+    -> Homoiconicity
+    Well, Clojure is a LISP variant...

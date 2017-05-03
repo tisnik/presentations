@@ -1,0 +1,9 @@
+
+Java platform
+-------------
+Compiler+JVM+standard packages+other tools
+Mature
+    evolving since 1985 now > 14M developers (TIOBE)
+Stable and robust + rich standard libraries
+Usually backward compatible
+    "Java is a modern COBOL"

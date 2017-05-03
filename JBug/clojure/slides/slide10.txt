@@ -1,0 +1,13 @@
+
+Basic Clojure features
+----------------------
+Lambda expressions
+Closures
+Explicit tail recursion
+Clojure is lazy
+    ie it is like many humans (incl. /me)
+    Performs required work only when forced/asked
+    Lazy sequences
+        range function is a good example
+    Some work (computation) does not have to be performed ASAP
+        Let's start it in a background thread!

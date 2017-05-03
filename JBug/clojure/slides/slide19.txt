@@ -1,0 +1,9 @@
+
+Referentially transparent functions
+-----------------------------------
+Don't access any global symbol
+Without side-off effects (I/O)
+Don't have internal state
+    those functions are not bound to application state
+    results can be cached
+    (memoization)

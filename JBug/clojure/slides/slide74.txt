@@ -1,0 +1,8 @@
+
+Test results
+------------
+FAIL in (negative-factorial-test) (core_test.clj:15)
+Negative tests
+negative test case #1
+expected: (= (factorial 0) 0)
+  actual: (not (= 1 0))

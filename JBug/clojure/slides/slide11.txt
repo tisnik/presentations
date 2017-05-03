@@ -1,0 +1,10 @@
+
+Java <--> Clojure communication
+-------------------------------
+Clojure can create an instance of a Java class and access its attributes and methods
+    JSR-292 support
+Programs are compiled into JVM bytecode
+    On the fly
+        The best of "scripted" and "compiled" worlds :-)
+    With support for dynamic typing 
+        Not an easy task (before invokedynamic)

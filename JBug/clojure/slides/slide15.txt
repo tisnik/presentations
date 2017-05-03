@@ -1,0 +1,15 @@
+
+Special forms
+-------------
+Special forms
+    if
+    def
+        creates a "global" var with the given name
+    do
+    new
+        calls the respective constructor of the given Java class
+    . (dot)
+        used to call methods of Java objects
+    quote
+        '(1 2 3 4)
+    etc.

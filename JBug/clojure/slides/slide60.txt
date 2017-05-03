@@ -1,0 +1,9 @@
+
+Middleware
+----------
+(defn wrap-auth [handler]
+  (fn [request]
+    (if (authorized? request)
+      (handler request)
+      (-> (response "Access Denied")
+          (status 403)))))

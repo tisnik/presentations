@@ -1,0 +1,7 @@
+
+Four reference types (variable substitution)
+--------------------------------------------
+Vars
+Refs
+Atoms
+Agents

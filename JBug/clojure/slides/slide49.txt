@@ -1,0 +1,9 @@
+
+Macros
+------
+Macros are part of Clojure standard library
+    for
+    dotimes
+    while
+    lazy-seq
+    etc.

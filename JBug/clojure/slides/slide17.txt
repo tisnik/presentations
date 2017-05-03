@@ -1,0 +1,17 @@
+
+Anonymous functions
+-------------------
+Function definition
+
+    (fn [x y] (* x y))
+
+    ((fn [x y] (* x y)) 6 7)
+
+Short form of anonymous function definition
+
+    #(* % %)
+
+    #(* %1 %2)
+
+    (#(* %1 %2) 6 7)
+

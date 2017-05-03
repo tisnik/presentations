@@ -1,0 +1,12 @@
+
+Validators
+----------
+Validator
+    Function ''registered'' to some reference
+    Automatically called to check if reference value is correct
+    During write/set operations
+    Bypassed inside transaction!
+    Must return true/false
+    Any number of validators can be set for one reference
+Validator can be registered using:
+    (set-validator! reference function)

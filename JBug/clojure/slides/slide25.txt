@@ -1,0 +1,12 @@
+
+Basic functions for collection processing
+-----------------------------------------
+(count)
+(empty)
+(cons)
+(conj)
+(pop)  ; lists vs vectors
+(peek) ; lists vs vectors
+(nth)
+(first)
+(rest)

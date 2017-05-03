@@ -1,0 +1,13 @@
+
+Sequences
+---------
+Sequence = iterator in other languages
+Three basic operations
+    first
+        returns the first item in the collection/sequence
+    rest
+        returns (possibly empty) sequence of the items after the first item
+    next
+        returns a sequence of items after the first item
+        nil instead of empty sequence
+All collections are sequences

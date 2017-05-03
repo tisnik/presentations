@@ -1,0 +1,16 @@
+
+Clojure
+-------
+▶ Clojure = Java + Closure
+▶ Rich Hickey
+▶ Based on LISP (and on Scheme too)
+    ◆ Theory of λ-calculus
+        Alonzo Church
+        Look at the Clojure logo :)
+    ◆ WEB2.0^W cloud^W social networks^W^W AI was the IT buzzword in 1950s
+    ◆ John McCarthy 1956-1958
+    ◆ Implemented by S.R.Russell (REPL)
+▶ Three main implementations
+    ◆ for JVM
+    ◆ for .NET
+    ◆ transpiled into JavaScript

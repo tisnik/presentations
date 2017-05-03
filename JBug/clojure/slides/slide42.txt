@@ -1,0 +1,12 @@
+
+Future and promise
+------------------
+future
+    starts computation in a new thread
+    synchronization occurs only when deref (@) is called
+    easier to use than Future interface in Java
+    Helper functions
+        future-done?
+        future-cancel
+ (def future_fact (fact 20))
+ @future_fact

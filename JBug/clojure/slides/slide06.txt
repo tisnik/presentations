@@ -1,0 +1,8 @@
+
+Java vs.Clojure?
+----------------
+Java vs. Clojure? not exactly...
+Clojure is not replacement of Java
+    does not try to reinvent the wheel
+    cooperates nicely with Java libs
+        "Java interop"

@@ -1,0 +1,11 @@
+
+Vars
+----
+synchronous state change
+    ~ static variables in selected namespace
+it is safe to use them locally in current thread
+Constructor
+    (def name value)
+Change value
+    set!
+    let - local symbols/vars

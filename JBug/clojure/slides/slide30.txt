@@ -1,0 +1,10 @@
+
+Sets
+----
+Implemented as hash sets
+Can't contain duplicate items
+Sortable sets
+Examples
+    #{"this" "is" "a" "set"}
+    #{1 1 3}
+        IllegalArgumentException

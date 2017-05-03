@@ -1,0 +1,21 @@
+
+Atoms
+-----
+synchronous state change
+    change of value is "atomic"
+    other threads can use new value immediatelly
+    BUT other threads could "see" intermediate values
+        -> difference from Refs
+Constructor
+    (def name (atom value))
+Get value
+    (deref name)
+    @name
+Change value
+    reset!
+        sets new value
+    swap!
+        calls function on the old value
+Other
+    compare-and-set!
+        similar to test-and-set atomic oop

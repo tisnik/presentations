@@ -1,0 +1,13 @@
+
+Functions with name
+-------------------
+Functions behave as other values
+
+    (def multiply (fn [x y] (* x y)))
+
+    (multiply 6 7)
+
+defn = def + fn
+
+    (defn multiply [x y] (* x y))
+

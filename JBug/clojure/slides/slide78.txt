@@ -1,0 +1,9 @@
+
+IDE
+---
+▶ SLIME
+▶ SLIME for Vim
+    VimClojure
+    Rainbow parenthesis
+▶ Cider (Emacs)
+▶ Counterclockwise (Eclipse)

@@ -1,0 +1,21 @@
+
+Reader macros
+-------------
+;
+    comment
+\
+    Unicode literals (\u0040)...
+^
+    used to add metadata to symbols, lists, ...
+#
+    dispatch (various meaning)
+'
+    (quote ....)
+`
+    syntax quote
+~
+    unquote
+~@
+    unquote splicing
+@
+    (deref ...)

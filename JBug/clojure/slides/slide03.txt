@@ -1,0 +1,10 @@
+
+JVM
+---
+JVM is scalable
+    No (apparent) GIL
+    Multi-threaded garbage collectors
+    Synchronized and unsynchronized variants of collections
+    Future interface
+etc. etc. etc.
+Supports dynamically typed programming languages

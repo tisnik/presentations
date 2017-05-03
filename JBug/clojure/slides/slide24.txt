@@ -1,0 +1,9 @@
+
+Collections
+-----------
+List, Vector, Map, Set
+Immutable items
+Persistent collections
+    It is not neccessary to clone a collection in case of some operations
+    pop/peek for lists
+    ...

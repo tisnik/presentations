@@ -1,0 +1,24 @@
+
+Web apps (Clojure Ring philosophy)
+----------------------------------
+Clojure Ring
+    Pure function to transform request->response
+    Basically Map -> Map
+    Well not that easy in real apps :)
+Four components of web app:
+    Handler
+    Request
+    Response
+    Middleware
+Request
+    A map with keys:
+    :server-port, :uri, :query-string, :headers, :request-method, :body (POST)
+Response
+    A map with keys:
+    :status, :headers, :body
+Middleware
+    Session processing
+    Params
+    Content type
+    HTTP code
+    etc.

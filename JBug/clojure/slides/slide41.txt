@@ -1,0 +1,18 @@
+
+Parallel programming
+--------------------
+pmap/pcalls/pvalues
+    pmap
+        parallel map
+        it isn't always better to parallelize things!
+        pmap is not always faster than map
+    pcalls
+        (pcalls func1 func2 func3 ...)
+        returns lazy sequence containing return values of called functions
+        (pcalls (fn [] (compute 10)) (fn [] (compute 20)) (fn [] (compute -1)))
+    pvalues
+        returns a lazy sequence of the values of the exprs, which are evaluated in parallel
+        (def results (pvalues (compute 10) (compute 20) (compute 30)))
+agents
+future and promise
+STM - Software Transactional Memory

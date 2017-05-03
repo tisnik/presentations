@@ -1,0 +1,6 @@
+
+Namespaces
+----------
+namespace/name
+ns macro
+no real "global" variables

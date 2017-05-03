@@ -1,0 +1,9 @@
+
+Basic Clojure features
+----------------------
+Four reference types instead of simple "variables"
+    variables are a poor choice for many operations
+    sync/async operations
+    atomic operations
+    regular variable can't be "watched"
+    regular variable can't be validated simply

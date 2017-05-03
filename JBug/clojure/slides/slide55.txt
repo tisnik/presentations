@@ -1,0 +1,10 @@
+
+Leiningen
+---------
+▶ "Maven for Clojure"
+▶ Project handling
+▶ Unit testing
+▶ Supports plugins
+▶ Run apps in devel mode
+    ◆ Web apps atd.
+▶ Better REPL

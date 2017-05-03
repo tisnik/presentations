@@ -1,0 +1,15 @@
+
+Java is not the only language prepared to run on JVM
+-----------------------------------------------------
+JavaScript
+    Rhino
+    Nashorn
+Scala
+Groovy
+Jython
+JRuby
+Kotlin
+...
+...
+...
+Clojure!

@@ -1,0 +1,12 @@
+
+Functions
+---------
+Functions have similar properties as other values
+    It's possible to create new functions in runtime
+    Function could be passed to other function as a parameter
+    Function could be returned by other function as its return value
+    Function could be stored in list, vector, map etc.
+    Name could be bind to a function
+        but it's not needed in all cases
+        anonymous functions
+        used extensivelly not only in Clojure
