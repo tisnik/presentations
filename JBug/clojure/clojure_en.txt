@@ -155,6 +155,9 @@ LISP roots
 ()
 ; vector
 [1 2 3 4]
+; Clojure supports fractions
+(/ (+ 1 2) (+ 3 4))
+→ 3/7
 
 Namespaces
 ----------
@@ -186,6 +189,8 @@ Special forms
         calls the respective constructor of the given Java class
     . (dot)
         used to call methods of Java objects
+    quote
+        '(1 2 3 4)
     etc.
 
 Functions
@@ -202,9 +207,21 @@ Functions have similar properties as other values
 
 Anonymous functions
 -------------------
+Function definition
+    (fn [x y] (* x y))
+    ((fn [x y] (* x y)) 6 7)
 Short form of anonymous function definition
+    #(* % %)
+    #(* %1 %2)
+    (#(* %1 %2) 6 7)
+
 Functions with name
-    defn = def + fn
+-------------------
+Functions behave as other values
+    (def multiply (fn [x y] (* x y)))
+    (multiply 6 7)
+defn = def + fn
+    (defn multiply [x y] (* x y))
 
 Referentially transparent functions
 -----------------------------------
@@ -217,16 +234,54 @@ Don't have internal state
 
 Multiarity functions
 --------------------
-
-Lazy evaluation and lazy sequences
-----------------------------------
+(def multiply
+   ([x]
+    (* x x))
+   ([x y]
+    (* x y))
+   ([x y z]
+    (* x y z)))
 
 Recursion vs tail recursion
 ---------------------------
 Factorial - a typical example
+    (defn fact
+        [n]
+        (if (<= n 1)
+            1
+            (* n (fact (- n 1)))))
+    (fact 100M)
+    (fact 10000M)
+         StackOverflowError :)
 Very deep recursion might cause stack overflow
     ''recur'' special form
+    (defn fact
+        ([n]
+         (fact n 1))
+        ([n acc]
+         (if (<= n 1)
+             acc
+             (recur (dec n) (* acc n)))))
     It is not possible to use ''recur'' everywhere
+        so called "tail position"
+
+Memoization
+-----------
+(defn fact
+    [n]
+    (apply *
+         (range 1M (inc n))))
+ 
+(dotimes [i 10] (time (fact 10000)))
+
+(defn fact2
+    [n]
+    (memoize
+        (fn [n]
+            (apply *
+                (range 1M (inc n))))))
+ 
+(dotimes [i 10] (time (fact2 10000)))
 
 Collections
 -----------
@@ -267,6 +322,10 @@ Lists
         rest (sublist)
         count
 Program itself is represented by a sequence of lists!
+Examples
+    '(1 2 3 4)
+    '()
+    '(1 (2 (3 (4 5))))
 
 Vectors
 -------
@@ -279,17 +338,27 @@ Vectors
             root=32 references to 32-item vectors
         <= 32768 items -> tree with height=3
             and so on...
+Examples
+    [1 2 3 4]
+    [ [1 2 3] [4 5 6] [7 8 9]]
 
 Maps
 ----
 ~ dictionaries, hashtables
 Sortable maps
+Examples
+    {:one 1, :two 2}
+    {:one 1  :two 2}
 
 Sets
 ----
 Implemented as hash sets
 Can't contain duplicate items
 Sortable sets
+Examples
+    #{"this" "is" "a" "set"}
+    #{1 1 3}
+        IllegalArgumentException
 
 Sequences
 ---------
@@ -319,6 +388,23 @@ Lazy sequence - computation is done ALAP
     take-while
         returns a lazy sequence of successive items from coll according to the given condition
     filter
+
+Lazy sequences
+--------------
+(map inc [1 2 3 4])
+(map inc (range 1 9))
+;
+(map * [1 2 3 4] [5 6 7 8])
+;
+(def lazy (range))
+(def lazy2 (map inc lazy))
+(nth lazy2 10)
+(take 10 lazy2)
+;
+(defn end-of? [x] (<= x 42))
+(take-while end-of? (range 1 100 3))
+;
+(filter (fn [x] (< x 10)) (range 0 1000))
 
 Four reference types (variable substitution)
 --------------------------------------------
@@ -359,6 +445,16 @@ Change value
         change value by applying some function to ref
         can be used only inside transaction
         (checked by Clojure)
+Refs
+----
+(def account-1 (ref 100000))
+(def account-2 (ref 20000))
+;
+(defn transfer-money
+    [from to amount]
+    (dosync
+        (alter from - amount)
+        (alter to + amount)))
 
 Atoms
 -----
@@ -380,6 +476,16 @@ Change value
 Other
     compare-and-set!
         similar to test-and-set atomic oop
+
+Atoms
+-----
+(def x (atom 42))
+(deref x)
+@x
+(reset! x 10)
+@x
+(swap! x + 1)
+@x
 
 Agents
 ------
@@ -403,6 +509,19 @@ Wait for agent
     await-for
         incl. timeout
 
+Agents
+------
+(def my-agent (agent 0))
+(send my-agent + 6)
+(send my-agent * 7)
+@my-agent
+;
+(def agent1 ....
+...send slow computation
+(def agent2 ....
+...send slow computation
+(await agent1 agent2)
+
 Parallel programming
 --------------------
 pmap/pcalls/pvalues
@@ -413,8 +532,10 @@ pmap/pcalls/pvalues
     pcalls
         (pcalls func1 func2 func3 ...)
         returns lazy sequence containing return values of called functions
+        (pcalls (fn [] (compute 10)) (fn [] (compute 20)) (fn [] (compute -1)))
     pvalues
         returns a lazy sequence of the values of the exprs, which are evaluated in parallel
+        (def results (pvalues (compute 10) (compute 20) (compute 30)))
 agents
 future and promise
 STM - Software Transactional Memory
@@ -428,6 +549,11 @@ future
     Helper functions
         future-done?
         future-cancel
+ (def future_fact (fact 20))
+ @future_fact
+
+Future and promise
+------------------
 promise
     can be used to implement a dataflow model
     usually used together with a "future" object
@@ -442,6 +568,26 @@ promise
             deref == @
             !!! can possibly lead to deadlock !!!
 
+Future+promise dataflow
+-----------------------
+(def x (promise))
+(def y (promise))
+(def z (promise))
+;
+(def task-1
+    (future
+        (deliver z (@x @y))))
+;
+(def task-2
+    (future
+        (deliver x (fact 10))))
+;
+(def task-3
+    (future
+        (deliver y (fact 100))))
+; now all three calculations are running
+; first one needs to wait for other two
+
 Watchers
 --------
 Watcher
@@ -454,6 +600,21 @@ Watcher can be registered using:
 And unregistered using:
     (remove-watch reference key)
 
+Watchers
+--------
+(defn on-change
+    [key identity old-val new-val]
+    (println (str "Old value: " old-val))
+    (println (str "New value: " new-val)))
+;
+(def x (ref 42))
+;
+(add-watch x "watch-1" on-change)
+;
+(dosync (alter x + 1))
+;
+(dosync (alter x + 1) (alter x - 1 ))
+
 Validators
 ----------
 Validator
@@ -465,6 +626,21 @@ Validator
     Any number of validators can be set for one reference
 Validator can be registered using:
     (set-validator! reference function)
+
+Validators
+----------
+(def x (ref 42))
+;
+(set-validator! x (fn [val] (even? val)))
+;
+(dosync (ref-set x 10))
+;
+(dosync (alter x + 10))
+;
+(dosync (alter x + 1))
+;
+; check is not performed DURING transaction
+(dosync (alter x + 1) (alter x + 1))
 
 Macros
 ------
