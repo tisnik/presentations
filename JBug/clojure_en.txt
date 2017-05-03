@@ -1,0 +1,620 @@
+Practical Clojure
+=================
+:author  Pavel Tišnovský
+:email   <ptisnovs 0x40 redhat 0x2e com>
+:date    2017-05-0?
+
+Agenda
+------
+▶ Clojure - (not) yet another language for JVM
+▶ Basic Clojure features
+▶ Forms
+▶ Collections
+▶ Functions
+▶ Lazy evaluation and lazy sequences
+▶ Four reference types (variable substitution)
+▶ Parallel programming
+▶ Watchers
+▶ Validators
+▶ Macros
+▶ Classes and objects in Clojure
+▶ Cooperation between Java and Clojure
+▶ Web apps (Clojure Ring philosophy)
+▶ Testing
+▶ Code coverage reporting
+
+Clojure - (yet another) language for JVM
+----------------------------------------
+Java Virtual Machine
+Specification implemented by more VMs
+    HotSpot
+        Client
+        Server
+    Azul
+    J9
+    JamVM
+    CACAO VM
+    Graal
+    Jikes RVM
+
+JVM
+---
+JVM is scalable
+    No (apparent) GIL
+    Multi-threaded garbage collectors
+    Synchronized and unsynchronized variants of collections
+    Future interface
+and
+Supports dynamically typed programming languages
+
+Java platform
+-------------
+Compiler+JVM+standard packages+other tools
+Mature
+    evolving since 1985 now > 14M developers (TIOBE)
+Stable and robust + rich standard libraries
+Usually backward compatible
+    "Java is a modern COBOL"
+
+Java is not the only language prepared to run on JVM
+-----------------------------------------------------
+JavaScript
+    Rhino
+    Nashorn
+Scala
+Groovy
+Jython
+JRuby
+Kotlin
+...
+...
+...
+Clojure!
+
+Clojure
+-------
+▶ Clojure = Java + Closure
+▶ Rich Hickey
+▶ Based on LISP (and on Scheme too)
+    ◆ Theory of λ-calculus
+        Alonzo Church
+        Look at the Clojure logo :)
+    ◆ WEB2.0^W cloud^W social networks^W^W AI was the IT buzzword in 1950s
+    ◆ John McCarthy 1956-1958
+    ◆ Implemented by S.R.Russell (REPL)
+
+Java vs.Clojure?
+----------------
+Clojure is not replacement of Java
+    does not try to reinvent the wheel
+    cooperates nicely with Java libs
+        "Java interop"
+
+Basic Clojure features
+----------------------
+Deadlock-free multi-threaded programs
+    Immutable data types
+        List (linked), vector (RRB Tree), hash map, set
+        very important feature in massive parallel applications
+    Agents
+    Software Transactional Memory (STM)
+        Support for transactions
+Clojure contains REPL
+    Read-Eval-Print-Loop
+Code == Data
+    -> Homoiconicity
+    Well, Clojure is a LISP variant...
+
+Basic Clojure features
+----------------------
+Four reference types instead of simple "variables"
+    variables are a poor choice for many operations
+    sync/async operations
+    atomic operations
+    regular variable can't be "watched"
+    regular variable can't be validated simply
+
+Basic Clojure features
+----------------------
+Lambda expressions
+Closures
+Explicit tail recursion
+Clojure is lazy
+    ie it is like many humans (incl. /me)
+    Performs required work only when forced/asked
+    Lazy sequences
+        range function is a good example
+    Some work (computation) does not have to be performed ASAP
+        Let's start it in a background thread!
+
+Java <--> Clojure communication
+-------------------------------
+Clojure can create an instance of a Java class and access its attributes and methods
+    JSR-292 support
+Programs are compiled into JVM bytecode
+    On the fly
+        The best of "scripted" and "compiled" worlds :-)
+    With support for dynamic typing 
+        Not an easy task (before invokedynamic)
+
+Namespaces
+----------
+namespace/name
+ns macro
+no real "global" variables
+
+Forms
+-----
+Literals
+    Numbers
+    Strings
+    Boolean values
+    Symbols and keywords
+Compound forms
+    Lists
+    Vectors
+    Maps
+    Sets
+
+Function calls
+--------------
+
+Nested functions
+----------------
+
+Special forms
+-------------
+Special forms
+    if
+    def
+        creates a "global" var with the given name
+    do
+    new
+        calls the respective constructor of the given Java class
+    . (dot)
+        used to call methods of Java objects
+    etc.
+
+Collections
+-----------
+List, Vector, Map, Set
+Immutable items
+Persistent collections
+    It is not neccessary to clone a collection in case of some operations
+    pop/peek for lists
+    ...
+
+Basic functions for collection processing
+-----------------------------------------
+(count)
+(empty)
+(cons)
+(conj)
+(pop)  ; lists vs vectors
+(peek) ; lists vs vectors
+(nth)
+(first)
+(rest)
+
+Time complexity
+---------------
+# Function List   Vector
+1 count    O(1)   O(1)
+2 nth      O(N)   O(log₃₂N)
+3 pop      O(1)   O(log₃₂N)
+4 peek     O(1)   O(log₃₂N)
+5 first    O(1)   O(1)
+6 last     O(N)   O(N)
+
+Lists
+------
+Lists
+    Internally constist of:
+        first item
+        rest (sublist)
+        count
+Program itself is represented by a sequence of lists!
+
+Vectors
+-------
+Vectors
+    used extensivelly in Clojure
+    Based on RRB-Trees, Relaxed Radix Balanced Trees
+    usually takes less memory than lists
+        <=32 items -> simple array
+        <=1024 items -> tree with height=2
+            root=32 references to 32-item vectors
+        <= 32768 items -> tree with height=3
+            and so on...
+
+Functions
+---------
+
+Lazy evaluation and lazy sequences
+----------------------------------
+
+Four reference types (variable substitution)
+--------------------------------------------
+
+Parallel programming
+--------------------
+
+Watchers
+--------
+
+Validators
+----------
+
+Macros
+------
+
+Threading macros
+----------------
+->
+(-> "/etc/passwd" slurp clojure.string/split-lines count)
+->>
+(->> (range) (take 20) (filter #(zero? (mod % 3))))
+
+Classes and objects in Clojure
+------------------------------
+
+Cooperation between Java and Clojure
+------------------------------------
+
+Web apps (Clojure Ring philosophy)
+----------------------------------
+Clojure Ring
+    Pure function to transform request->response
+    Basically Map -> Map
+    Well not that easy in real apps :)
+Four components of web app:
+    Handler
+    Request
+    Response
+    Middleware
+Request
+    A map with keys:
+    :server-port, :uri, :query-string, :headers, :request-method, :body (POST)
+Response
+    A map with keys:
+    :status, :headers, :body
+Middleware
+    Session processing
+    Params
+    Content type
+    HTTP code
+    etc.
+
+Middleware
+----------
+(defn wrap-auth [handler]
+  (fn [request]
+    (if (authorized? request)
+      (handler request)
+      (-> (response "Access Denied")
+          (status 403)))))
+
+Hiccup
+------
+(ns htmltest2.core
+    (:gen-class))
+ 
+(require '[hiccup.page :as page])
+ 
+(defn fact
+    [n]
+    (apply * (range 1 (inc n))))
+ 
+(defn html-page
+    []
+    (page/xhtml
+        [:head
+            [:title "Hiccup test #2"]
+            [:meta {:name "Generator" :content "Clojure"}]
+            [:meta {:http-equiv "Content-type" :content "text/html; charset=utf-8"}]
+        ]
+        [:body
+            [:h1 "Hiccup test #2"]
+            [:table
+                [:tr [:th "n"] [:th "n!"]]
+                (for [n (range 0 20)]
+                    [:tr [:td n] [:td (fact n)]])
+            ]
+        ]))
+ 
+(defn -main
+    [& args]
+    (spit "test.html" (html-page)))
+
+Project file
+------------
+(defproject ringapp1 "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [ring/ring-core "1.3.2"]
+                 [ring/ring-jetty-adapter "1.3.2"]
+                 [hiccup "1.0.4"]
+                 [org.clojure/tools.cli "0.3.1"]]
+  :dev-dependencies [[lein-ring "0.8.10"]]
+  :plugins [[lein-ring "0.8.10"]]
+  :main ^:skip-aot ringapp1.core
+  :target-path "target/%s"
+  :ring     {:handler ringapp1.core/app}
+  :profiles {:uberjar {:aot :all}})
+
+Server
+------
+(def app
+    (-> handler
+        http-params/wrap-params))
+ 
+(defn -main
+    [& args]
+    (jetty/run-jetty app {:port 8080}))
+
+Requests processing
+-------------------
+(defn handler
+    [request]
+    (let [params (:params request)
+          max-n  (param->number params "max-n")]
+        (println "Params: " params)
+        (println "max-n:  " max-n)
+        (-> (response/response (html-page (if max-n max-n 10M)))
+            (response/content-type "text/html; charset=utf-8"))))
+
+Response
+--------
+(defn fact
+    [n]
+    (apply * (range 1M (inc n))))
+ 
+(defn html-page
+    [max-n]
+    (page/xhtml
+        [:head
+            [:title "Ring app #1"]
+            [:meta {:name "Generator" :content "Clojure"}]
+            [:meta {:http-equiv "Content-type" :content "text/html; charset=utf-8"}]
+        ]
+        [:body
+            [:h1 "Ring app #1"]
+            (form/form-to [:get "/"]
+                (form/text-field {:size "20"} "max-n" max-n)
+                [:br]
+                (form/submit-button "Recalculate"))
+            [:br]
+            [:table {:style "border:2px solid brown;background-color:#ace"}
+                [:tr [:th "n"] [:th "n!"]]
+                (for [n (range 0M (inc max-n))]
+                    [:tr [:td n] [:td {:style "text-align:right"} (fact n)]])
+            ]
+        ]))
+
+Sessions
+--------
+
+Clojure and SQL
+---------------
+
+GUI: Clojure Seesaw
+-------------------
+(ns seesaw1.core (:gen-class))
+ 
+(use 'seesaw.core)
+ 
+(defn -main
+    [& args]
+    (let [main-frame (frame :title "Hello world!")
+          btn        (button :text "Click Me")]
+          (config! main-frame :content btn)
+          (pack!   main-frame)
+          (show!   main-frame)))
+
+GUI: Clojure Seesaw
+-------------------
+(ns seesaw9.core (:gen-class))
+ 
+(use 'seesaw.core)
+(use 'seesaw.color)
+ 
+(def formular
+    (grid-panel :columns 2
+                :rows 3
+                :items [(button :text ":background :red"
+                                :background :red
+                                :listen [:action #(println "Button#1\n" %1)])
+                        (button :text ":background :yellow"
+                                :background :yellow
+                                :listen [:action #(println "Button#2\n" %1)])
+                        (button :text ":background :orange"
+                                :background :orange
+                                :listen [:action #(println "Button#3\n" %1)])
+                        (button :text ":background #ff8080"
+                                :background "#ff8080"
+                                :listen [:action #(println "Button#4\n" %1)])
+                        (button :text ":background #8080ff"
+                                :background "#8080ff"
+                                :listen [:action #(println "Button#5\n" %1)])
+                        (button :text ":background #8f8"
+                                :background "#8f8"
+                                :listen [:action #(println "Button#6\n" %1)])
+                        ]))
+ 
+(defn -main
+    [& args]
+    (-> (frame :title "Color test"
+               :on-close :exit
+               :content formular)
+        (pack!)
+        (show!)))
+
+Async programming
+-----------------
+(ns async1.core (:gen-class))
+ 
+(require '[clojure.core.async :refer (go chan >! <!)])
+ 
+(defn wait
+    "Pozastaveni hlavniho vlakna - simulace interaktivni prace."
+    []
+    (Thread/sleep 1000))
+ 
+(defn -main
+    [& args]
+    (println "Start")
+    ; vytvorime kanal
+    (let [channel (chan)]
+        ; send message to channel (go block will wait for data)
+        (go (>! channel "Hello world #1!"))
+        (wait)
+ 
+        ; read message from channel
+        (go (println (<! channel)))
+        (wait)
+         
+        ; try to read from empty channel (it will wail to new data)
+        (go (println (<! channel)))
+        (wait)
+ 
+        ; send another message to channel
+        (go (>! channel "Hello world #2!"))
+        (wait))
+ 
+    (println "Finish"))
+
+Producer-consumer
+-----------------
+(defn -main
+    [& args]
+    (println "Start")
+    ; channel with given capacity
+    (let [channel (chan (dropping-buffer 10))]
+ 
+        (go
+            (loop [result []]
+                (<! (timeout 1))
+                (let [item (<! channel)] ; if channel is closed, nil is returned
+                    (if item             ; not nil is returned instead
+                       (recur (conj result item)) ; add item to collection
+                       (println result)))))       ; end of sequence
+ 
+        (println "consumer started")
+ 
+        (go
+            (doseq [i (range 0 1000)]
+                (>! channel i))
+            (close! channel)))
+ 
+        (println "producer started")
+ 
+    (wait)
+    (println "Finish")
+    (System/exit 0))
+
+Testing
+-------
+(ns factorial.core
+  (:gen-class))
+ 
+(defn factorial
+    [n]
+    (if (neg? n)
+        (throw (IllegalArgumentException. "negative numbers are not supported!"))
+        (apply * (range 1 (inc n)))))
+ 
+(defn -main
+    "I don't do a whole lot ... yet."
+    [& args]
+    (doseq [i (range 0 10)]
+        (println i "! = " (factorial i))))
+
+Unit tests...
+-------------
+(ns factorial.core-test
+  (:require [clojure.test :refer :all]
+            [factorial.core :refer :all]))
+ 
+(deftest factorial-test
+    (testing "Factorial"
+        (is ( = (factorial 0)   1) "beginning")
+        (is ( = (factorial 1)   1) "beginning")
+        (is ( = (factorial 2)   (* 1 2)) "still easy")
+        (is ( = (factorial 5)   (* 1 2 3 4 5)) "5!")
+        (is ( = (factorial 6)   720) "6!")))
+ 
+(deftest negative-factorial-test
+    (testing "Negative tests"
+        (is ( = (factorial 0)   0) "negative test case #1")
+        (is ( = (factorial 1)   0) "negative test case #2")
+        (is ( = (factorial 2)   0) "negative test case #3")))
+ 
+(deftest exception-test
+    (testing "If factorial throws exception"
+        (is (thrown? IllegalArgumentException (factorial -1)))
+        (is (thrown? IllegalArgumentException (factorial -2)))
+        (is (thrown? IllegalArgumentException (factorial -100)))))
+ 
+(deftest negative-exception-test
+    (testing "(negative test) If factorial throws exception"
+        (is (thrown? IllegalArgumentException (factorial 1)))
+        (is (thrown? IllegalArgumentException (factorial 2)))
+        (is (thrown? IllegalArgumentException (factorial 3)))))
+
+Test results
+------------
+FAIL in (negative-factorial-test) (core_test.clj:15)
+Negative tests
+negative test case #1
+expected: (= (factorial 0) 0)
+  actual: (not (= 1 0))
+
+Expectations
+------------
+(defproject expectations-demo "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [expectations "2.0.9"]]
+  :main ^:skip-aot expectations-demo.core
+  :target-path "target/%s"
+  :plugins [[lein-expectations "0.0.8"]]
+  :profiles {:uberjar {:aot :all}})
+ 
+(expect 42 (* 6 7))
+(expect "Hello world" (str "Hello" " " "world"))
+(expect 2/3 (/ 2 3))
+(expect ArithmeticException (/ 1 0))
+
+Code coverage reporting
+-----------------------
+(defproject cloverage "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.6.0"]]
+  :main ^:skip-aot cloverage.core
+  :target-path "target/%s"
+  :plugins [[lein-cloverage "1.0.2"]]
+  :profiles {:uberjar {:aot :all}})
+
+Documentation generation
+-------------------------
+(defproject codoxtest "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.6.0"]]
+  :main ^:skip-aot codoxtest.core
+  :target-path "target/%s"
+  :plugins [[codox "0.8.11"]]
+  :profiles {:uberjar {:aot :all}})
+
+
