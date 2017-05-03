@@ -307,6 +307,9 @@ All collections are sequences
 Lazy sequences
 --------------
 Lazy sequence - computation is done ALAP
+    lazy-seq macro
+    iterate function
+        returns a lazy sequence of x, (f x), (f (f x))...
     range function
     repeat function
     map
@@ -319,9 +322,125 @@ Lazy sequence - computation is done ALAP
 
 Four reference types (variable substitution)
 --------------------------------------------
+Vars
+Refs
+Atoms
+Agents
+
+Vars
+----
+synchronous state change
+    ~ static variables in selected namespace
+it is safe to use them locally in current thread
+Constructor
+    (def name value)
+Change value
+    set!
+    let - local symbols/vars
+
+Refs
+----
+support transactions
+    synchronous state change
+    coordinated - state is changed inside transaction only
+Constructor
+    (def name (ref value))
+Get value
+    (deref name)
+    @name
+Change value
+    dosync
+        transaction (STM, ACID, nested transactions possible)
+    ref-set
+        sets a new value
+        can be used only inside transaction
+        (checked by Clojure)
+    alter
+        change value by applying some function to ref
+        can be used only inside transaction
+        (checked by Clojure)
+
+Atoms
+-----
+synchronous state change
+    change of value is "atomic"
+    other threads can use new value immediatelly
+    BUT other threads could "see" intermediate values
+        -> difference from Refs
+Constructor
+    (def name (atom value))
+Get value
+    (deref name)
+    @name
+Change value
+    reset!
+        sets new value
+    swap!
+        calls function on the old value
+Other
+    compare-and-set!
+        similar to test-and-set atomic oop
+
+Agents
+------
+asynchronous state change
+    agent run its operation in new thread
+    more elegant than future/promise
+Constructor
+    (def name (agent value))
+Get value
+    (deref name)
+    @name
+        don't perform the synchronization!!!
+        -> you could get the wrong (old) value
+Change value
+    send
+        sends function to agent's thread
+    send-off
+        sends function to agent's thread 
+Wait for agent
+    await
+    await-for
+        incl. timeout
 
 Parallel programming
 --------------------
+pmap/pcalls/pvalues
+    pmap
+        parallel map
+        it isn't always better to parallelize things!
+        pmap is not always faster than map
+    pcalls
+        (pcalls func1 func2 func3 ...)
+        returns lazy sequence containing return values of called functions
+    pvalues
+        returns a lazy sequence of the values of the exprs, which are evaluated in parallel
+agents
+future and promise
+STM - Software Transactional Memory
+
+Future and promise
+------------------
+future
+    starts computation in a new thread
+    synchronization occurs only when deref (@) is called
+    easier to use than Future interface in Java
+    Helper functions
+        future-done?
+        future-cancel
+promise
+    can be used to implement a dataflow model
+    usually used together with a "future" object
+    three functions
+        promise
+            creates "promise" objects
+        deliver value
+            usually called from a "future" thread
+            only the first value is really set
+        deref value
+            might wait for the "future" thread to finish
+            deref == @
+            !!! can possibly lead to deadlock !!!
 
 Watchers
 --------
