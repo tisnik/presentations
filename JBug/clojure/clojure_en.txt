@@ -1,8 +1,8 @@
-Practical Clojure
-=================
+Clojure - LISP on JVM
+=====================
 :author  Pavel Tišnovský
 :email   <ptisnovs 0x40 redhat 0x2e com>
-:date    2017-05-0?
+:date    2017-05-03
 
 Agenda
 ------
@@ -44,7 +44,7 @@ JVM is scalable
     Multi-threaded garbage collectors
     Synchronized and unsynchronized variants of collections
     Future interface
-and
+etc. etc. etc.
 Supports dynamically typed programming languages
 
 Java platform
@@ -71,6 +71,14 @@ Kotlin
 ...
 Clojure!
 
+Java vs.Clojure?
+----------------
+Java vs. Clojure? not exactly...
+Clojure is not replacement of Java
+    does not try to reinvent the wheel
+    cooperates nicely with Java libs
+        "Java interop"
+
 Clojure
 -------
 ▶ Clojure = Java + Closure
@@ -82,13 +90,6 @@ Clojure
     ◆ WEB2.0^W cloud^W social networks^W^W AI was the IT buzzword in 1950s
     ◆ John McCarthy 1956-1958
     ◆ Implemented by S.R.Russell (REPL)
-
-Java vs.Clojure?
-----------------
-Clojure is not replacement of Java
-    does not try to reinvent the wheel
-    cooperates nicely with Java libs
-        "Java interop"
 
 Basic Clojure features
 ----------------------
@@ -184,6 +185,28 @@ Persistent collections
     pop/peek for lists
     ...
 
+Basic functions for collection processing
+-----------------------------------------
+(count)
+(empty)
+(cons)
+(conj)
+(pop)  ; lists vs vectors
+(peek) ; lists vs vectors
+(nth)
+(first)
+(rest)
+
+Time complexity
+---------------
+# Function List   Vector
+1 count    O(1)   O(1)
+2 nth      O(N)   O(log₃₂N)
+3 pop      O(1)   O(log₃₂N)
+4 peek     O(1)   O(log₃₂N)
+5 first    O(1)   O(1)
+6 last     O(N)   O(N)
+
 Lists
 ------
 Lists
@@ -205,11 +228,47 @@ Vectors
         <= 32768 items -> tree with height=3
             and so on...
 
+Maps
+----
+~ dictionaries, hashtables
+Sortable maps
+
+Sets
+----
+Implemented as hash sets
+Can't contain duplicate items
+Sortable sets
+
 Functions
 ---------
+Functions have similar properties as other values
+    It's possible to create new functions in runtime
+    Function could be passed to other function as a parameter
+    Function could be returned by other function as its return value
+    Function could be stored in list, vector, map etc.
+    Name could be bind to a function
+        but it's not needed in all cases
+        anonymous functions
+        used extensivelly not only in Clojure
+
+Anonymous functions
+-------------------
+Short form of anonymous function definition
+Functions with name
+    defn = def + fn
+
+Multiarity functions
+--------------------
 
 Lazy evaluation and lazy sequences
 ----------------------------------
+
+Recursion vs tail recursion
+---------------------------
+Factorial - a typical example
+Very deep recursion might cause stack overflow
+    ''recur'' special form
+    It is not possible to use ''recur'' everywhere
 
 Four reference types (variable substitution)
 --------------------------------------------
