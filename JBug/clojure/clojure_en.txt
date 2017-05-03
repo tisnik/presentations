@@ -444,12 +444,57 @@ promise
 
 Watchers
 --------
+Watcher
+    Function ''registered'' to some reference
+    Automatically called when reference changes its value
+    Watcher is called in the same thread
+    Any number of watchers can be set for one reference
+Watcher can be registered using:
+    (add-watch reference key function)
+And unregistered using:
+    (remove-watch reference key)
 
 Validators
 ----------
+Validator
+    Function ''registered'' to some reference
+    Automatically called to check if reference value is correct
+    During write/set operations
+    Bypassed inside transaction!
+    Must return true/false
+    Any number of validators can be set for one reference
+Validator can be registered using:
+    (set-validator! reference function)
 
 Macros
 ------
+Macros are part of Clojure standard library
+    for
+    dotimes
+    while
+    lazy-seq
+    etc.
+
+Reader macros
+-------------
+;
+    comment
+\
+    Unicode literals (\u0040)...
+^
+    used to add metadata to symbols, lists, ...
+#
+    dispatch (various meaning)
+'
+    (quote ....)
+`
+    syntax quote
+~
+    unquote
+~@
+    unquote splicing
+@
+    (deref ...)
 
 Threading macros
 ----------------
@@ -458,11 +503,20 @@ Threading macros
 ->>
 (->> (range) (take 20) (filter #(zero? (mod % 3))))
 
-Classes and objects in Clojure
-------------------------------
-
 Cooperation between Java and Clojure
 ------------------------------------
+Special function to access Java arrays
+Constructors
+    new
+    (special form)
+Methods
+    .
+    (special form)
+Attributes
+    .
+    gets/reads a value
+    set!
+    sets/writes a value
 
 REPL
 ----
@@ -1031,7 +1085,10 @@ Documentation generation
 
 IDE
 ---
-▶ Slime for Vim
+▶ SLIME
+▶ SLIME for Vim
+    VimClojure
+    Rainbow parenthesis
 ▶ Cider (Emacs)
 ▶ Counterclockwise (Eclipse)
 
