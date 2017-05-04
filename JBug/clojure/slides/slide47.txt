@@ -2,7 +2,7 @@
 Validators
 ----------
 Validator
-    Function ''registered'' to some reference
+    Function "registered" to some reference
     Automatically called to check if reference value is correct
     During write/set operations
     Bypassed inside transaction!

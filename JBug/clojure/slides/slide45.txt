@@ -2,7 +2,7 @@
 Watchers
 --------
 Watcher
-    Function ''registered'' to some reference
+    Function "registered" to some reference
     Automatically called when reference changes its value
     Watcher is called in the same thread
     Any number of watchers can be set for one reference

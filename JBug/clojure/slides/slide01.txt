@@ -17,3 +17,4 @@ Agenda
 ▶ Web apps (Clojure Ring philosophy)
 ▶ Testing
 ▶ Code coverage reporting
+▶ Core.matrix library
