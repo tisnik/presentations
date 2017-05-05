@@ -5,8 +5,8 @@ use std::fs::File;
 
 use bincode::{deserialize_from, Infinite};
 
-fn deserialize_value(mut fout: &File) -> Option<i32> {
-    match deserialize_from(&mut fout, Infinite) {
+fn deserialize_value(mut fin: &File) -> Option<i32> {
+    match deserialize_from(&mut fin, Infinite) {
         Ok(value) => {
             println!("successfully deserialized from file");
             Some(value)
@@ -20,8 +20,8 @@ fn deserialize_value(mut fout: &File) -> Option<i32> {
 
 fn main() {
     match File::open("test.bin") {
-        Ok(fout) => {
-            match deserialize_value(&fout) {
+        Ok(fin) => {
+            match deserialize_value(&fin) {
                 Some(value) => {
                     println!("deserialized value: 0x{:x}", value);
                 }
