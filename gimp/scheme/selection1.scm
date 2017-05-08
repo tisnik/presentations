@@ -20,7 +20,7 @@
             ; vykreslení obrazce - jeho výplň
             (gimp-edit-fill layer BG-IMAGE-FILL)
 
-            ; vytvoření výběru ve tvaru čtverce
+            ; vytvoření výběru ve tvaru kružnice
             (gimp-image-select-ellipse
                 image                         ; obrázek v němž se výběr vytvoří
                 CHANNEL-OP-REPLACE            ; přepsání oblasti původního výběru
