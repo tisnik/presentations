@@ -1,7 +1,7 @@
 # asmsyntax=as
 
 # Aplikace pro precteni dat ze standardniho vstupu
-# naprogramovana v assembleru GNU as - priklad pro ARM Thumb
+# naprogramovana v assembleru GNU as - priklad pro AArch64
 #
 # Autor: Pavel Tisnovsky
 
