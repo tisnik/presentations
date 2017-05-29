@@ -1,4 +1,4 @@
-// WARNING: this example is really ugly, use it as an example how NOT to make programs
+// WARNING: this example is really ugly, use it just as an example how NOT to make programs
 
 fn main() {
     let array: [i32; 5] = [1, 2, 3, 4, 5];
