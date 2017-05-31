@@ -1,6 +1,8 @@
-int string_length(const char *str)
+#include <stdint.h>
+
+int32_t string_length(const char *str)
 {
-    int len = 0;
+    int32_t len = 0;
     for (; *str; str++, len++)
         ;
     return len;
