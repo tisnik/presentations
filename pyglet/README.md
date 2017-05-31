@@ -28,3 +28,19 @@ List of examples:
 * 24_blending2.py
 * 25_blending_function.py
 * 26_variable_alpha.py
+* 27_pyglet_image_load.py
+* 28_pyglet_image_blit.py
+* 29_sprite.py
+* 30_sprite_rotation.py
+* 31_sprite_rotation_origin.py
+* 32_sprite_scale.py
+* 33_sprite_scale_origin.py
+* 34_sprite_move.py
+* 35_sprites_and_OpenGL.py
+* 36_textures.py
+* 37_texture_wrapping.py
+* 38_texture_mirror.py
+* 39_texture_magnification.py
+* 40_texture_smooth.py
+* 41_texture_on_3d.py
+
