@@ -15,7 +15,7 @@ all:	$(LIBNAME) $(PROGNAME)
 
 # Pravidlo pro slinkovani vsech objektovych souboru a vytvoreni
 # vysledne spustitelne aplikace.
-$(PROGNAME):	$(RUST_SRC)
+$(PROGNAME):	$(RUST_SRC) $(LIBNAME)
 	$(RUSTC) -L . $<
 
 # Pravidlo pro preklad knihovny
