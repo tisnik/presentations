@@ -36,21 +36,21 @@ def on_resize(width, height):
 
 
 def draw_quad(x, y):
-    glBegin(GL_QUADS) 
+    glBegin(GL_QUADS)
 
-    glTexCoord2f(0.0, 0.0);
-    glVertex2i(x, y) 
+    glTexCoord2f(0.0, 0.0)
+    glVertex2i(x, y)
 
-    glTexCoord2f(1.0, 0.0);
-    glVertex2i(x+150, y) 
+    glTexCoord2f(1.0, 0.0)
+    glVertex2i(x+150, y)
 
-    glTexCoord2f(1.0, 1.0);
-    glVertex2i(x+150, y+150) 
+    glTexCoord2f(1.0, 1.0)
+    glVertex2i(x+150, y+150)
 
-    glTexCoord2f(0.0, 1.0);
-    glVertex2i(x, y+150) 
+    glTexCoord2f(0.0, 1.0)
+    glVertex2i(x, y+150)
 
-    glEnd() 
+    glEnd()
 
 
 @window.event
