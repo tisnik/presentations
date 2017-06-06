@@ -171,7 +171,7 @@ def on_draw():
 
     glMatrixMode(GL_PROJECTION)               # zacatek modifikace projekcni matice
     glLoadIdentity()                          # vymazani projekcni matice (=identita)
-    gluPerspective(fov, 1.0, nearPlane, farPlane);
+    gluPerspective(fov, 1.0, nearPlane, farPlane)
 
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()                          # nahrat jednotkovou matici
@@ -196,5 +196,5 @@ def on_draw():
 pyglet.app.run()
 
 
-#    glTexCoord2f(0.4, 0.4);
+#    glTexCoord2f(0.4, 0.4)
 
