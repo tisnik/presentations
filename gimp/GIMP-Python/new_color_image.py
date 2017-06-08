@@ -2,10 +2,11 @@
 
 from gimpfu import *
 
+
 # funkce zavolana po spusteni pluginu uzivatelem
 def create_new_image_background(color):
     # vytvoreni noveho obrazku
-    image = gimp.Image(256, 256, RGB);
+    image = gimp.Image(256, 256, RGB)
 
     # vytvoreni nove hladiny
     layer = gimp.Layer(image, "Hladina", 256, 256, RGB_IMAGE, 100, NORMAL_MODE)
@@ -35,7 +36,7 @@ register(
     "Open source",
     "2017-02-11",
     "Vytvor novy obrazek s barevnym pozadim",
-    "", # plugin se spusti jen pokud neexistuje obrazek
+    "",  # plugin se spusti jen pokud neexistuje obrazek
     [
         (PF_COLOR, "color", "Barva pozadi obrazku", (0.5, 0.5, 0.5))
     ],
@@ -44,4 +45,3 @@ register(
     menu="<Image>/Filters/Test/")
 
 main()
-
