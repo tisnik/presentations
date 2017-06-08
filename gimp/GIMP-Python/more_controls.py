@@ -2,6 +2,7 @@
 
 from gimpfu import *
 
+
 # funkce zavolana po spusteni pluginu uzivatelem
 def more_controls():
     pass
@@ -18,7 +19,7 @@ register(
     "Open source",
     "2017-02-11",
     "Zobrazeni dalsich ovladacich prvku",
-    "*", # plugin se spusti jen pokud existuje obrazek
+    "*",  # plugin se spusti jen pokud existuje obrazek
     [
         (PF_PALETTE,  "palette",  "Paleta", ""),
         (PF_BRUSH,    "brush",    "Stetec", None),
@@ -39,4 +40,3 @@ register(
     menu="<Image>/Filters/Test/")
 
 main()
-
