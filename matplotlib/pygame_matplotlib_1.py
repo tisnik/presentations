@@ -23,7 +23,6 @@ IMAGE_FILE = "plot1.png"
 FRAMEBUFFER_DEVICE = "/dev/fb0"
 
 
-
 # Vytvoreni grafu
 def create_graph():
     fig = plt.figure()
@@ -35,14 +34,13 @@ def create_graph():
     return fig
 
 
-
 # Ulozeni grafu do souboru
 def save_graph(fig, imageFile):
     plt.savefig(imageFile)
 
 
-
-# Inicializace knihovny Pygame, inicializace video systemu a otevreni framebufferu
+# Inicializace knihovny Pygame, inicializace video systemu
+# a otevreni framebufferu
 def initialize_pygame(width, height, background_color, framebuffer_device):
     os.environ["SDL_FBDEV"] = framebuffer_device
     pygame.init()
@@ -52,13 +50,11 @@ def initialize_pygame(width, height, background_color, framebuffer_device):
     return screen
 
 
-
 # Zobrazeni rastroveho obrazku do framebufferu
 def show_image(screen, imageFile):
     image = pygame.image.load(imageFile)
-    screen.blit(image, (0,0))
+    screen.blit(image, (0, 0))
     pygame.display.flip()
-
 
 
 # Cekani na ukonceni aplikace libovolnou klavesou
@@ -71,7 +67,6 @@ def wait_for_key():
             if event.type == KEYDOWN:
                 return
         clock.tick(20)
-
 
 
 # Ukonceni aplikace
@@ -90,8 +85,6 @@ def main():
     exit()
 
 
-
 # Vstupni bod
 if __name__ == "__main__":
     main()
-
