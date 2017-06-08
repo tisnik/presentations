@@ -3,13 +3,15 @@
 from gimpfu import *
 from random import *
 
+
 # funkce zavolana po spusteni pluginu uzivatelem
 def create_starry_sky_3(width, height, stars, brush):
     # vytvoreni noveho obrazku
-    image = gimp.Image(int(width), int(height), RGB);
+    image = gimp.Image(int(width), int(height), RGB)
 
     # vytvoreni nove hladiny
-    layer = gimp.Layer(image, "Stars", int(width), int(height), RGB_IMAGE, 100, NORMAL_MODE)
+    layer = gimp.Layer(image, "Stars", int(width), int(height), RGB_IMAGE,
+                       100, NORMAL_MODE)
 
     # nastaveni barvy vykreslovani pozadi (druha barva ve vyberu)
     gimp.set_background(0, 0, 40)
@@ -42,7 +44,6 @@ def create_starry_sky_3(width, height, stars, brush):
     gimp.displays_flush()
 
 
-
 # Registrace skriptu do prostredi grafickeho editoru GIMP
 # a specifikace parametru nastavitelnych uzivatelem,
 # ktere se posleze prenesou jako parametry skriptu.
@@ -54,7 +55,7 @@ register(
     "Open source",
     "2017-03-16",
     "Vytvor novy obrazek s hvezdnou oblohou (3)",
-    "", # plugin se spusti jen pokud neexistuje obrazek
+    "",  # plugin se spusti jen pokud neexistuje obrazek
     [
         (PF_SPINNER, "width",  "Image width",  256, (16, 8192, 16)),
         (PF_SPINNER, "height", "Image height", 256, (16, 8192, 16)),
@@ -66,4 +67,3 @@ register(
     menu="<Image>/Filters/Test/")
 
 main()
-
