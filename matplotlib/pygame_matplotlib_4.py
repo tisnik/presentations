@@ -24,7 +24,6 @@ IMAGE_FILE = "plot4.png"
 FRAMEBUFFER_DEVICE = "/dev/fb0"
 
 
-
 # Vytvoreni grafu
 def create_graph(width, height, dpi):
     fig = plt.figure(figsize=(1.0*width/dpi, 1.0*height/dpi), dpi=dpi)
@@ -36,14 +35,13 @@ def create_graph(width, height, dpi):
     return fig
 
 
-
 # Ulozeni grafu do souboru
 def save_graph(fig, imageFile, dpi):
     plt.savefig(imageFile, facecolor=fig.get_facecolor(), dpi=dpi)
 
 
-
-# Inicializace knihovny Pygame, inicializace video systemu a otevreni framebufferu
+# Inicializace knihovny Pygame, inicializace video systemu a otevreni
+# framebufferu
 def initialize_pygame(width, height, background_color, framebuffer_device):
     os.environ["SDL_FBDEV"] = framebuffer_device
     pygame.init()
@@ -53,7 +51,6 @@ def initialize_pygame(width, height, background_color, framebuffer_device):
     return screen
 
 
-
 # Zobrazeni rastroveho obrazku do framebufferu
 def show_image(screen, imageFile):
     image = pygame.image.load(imageFile)
@@ -61,9 +58,8 @@ def show_image(screen, imageFile):
     screen_rect = screen.get_rect()
     x = (screen_rect.width - image_rect.width) / 2
     y = (screen_rect.height - image_rect.height) / 2
-    screen.blit(image, (x,y))
+    screen.blit(image, (x, y))
     pygame.display.flip()
-
 
 
 # Cekani na ukonceni aplikace libovolnou klavesou
@@ -78,10 +74,10 @@ def wait_for_key():
         clock.tick(20)
 
 
-
 # precteni aktualne nastaveneho rozliseni framebufferu
 def get_framebuffer_resolution(framebuffer_device):
-    fbset_output = subprocess.check_output(["fbset", "-s", "-fb", framebuffer_device])
+    fbset_output = subprocess.check_output(["fbset", "-s",
+                                            "-fb", framebuffer_device])
 
     for line in fbset_output.split("\n"):
         line = line.strip()
@@ -91,12 +87,10 @@ def get_framebuffer_resolution(framebuffer_device):
             return (int(parsed.group(1)), int(parsed.group(2)))
 
 
-
 # Ukonceni aplikace
 def exit():
     pygame.quit()
     sys.exit()
-
 
 
 # Hlavni funkce aplikace
@@ -110,8 +104,6 @@ def main():
     exit()
 
 
-
 # Vstupni bod
 if __name__ == "__main__":
     main()
-
