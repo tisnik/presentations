@@ -25,4 +25,3 @@ plt.ylabel("sin(x) a cos(x)")
 
 # zobrazení grafu
 plt.show()
-

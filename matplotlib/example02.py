@@ -29,4 +29,3 @@ plt.savefig("example02.svg")
 
 # zobrazení grafu
 plt.show()
-

@@ -21,4 +21,3 @@ plt.ylabel("sin(x)")
 
 # zobrazení grafu
 plt.show()
-

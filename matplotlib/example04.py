@@ -35,4 +35,3 @@ plt.ylabel("sin(x), cos(x) a sinc(x)")
 
 # zobrazení grafu
 plt.show()
-
