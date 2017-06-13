@@ -7,4 +7,3 @@ window = pyglet.window.Window(width=640,
                               caption="Pyglet library")
 
 pyglet.app.run()
-
