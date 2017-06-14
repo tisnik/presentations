@@ -10,11 +10,15 @@ typedef struct {
     float   f;
 } test_struct;
 
-void print_struct(test_struct s)
+void export_struct(test_struct s)
 {
     FILE *fout = fopen("test.bin", "wb");
     fwrite(&s, sizeof(s), 1, fout);
     fclose(fout);
+}
+
+void print_struct(test_struct s)
+{
     printf("sizeof(test_struct) = %lu bytes\n", sizeof(s));
     printf("a = %d\n", s.a);
     printf("b = %d\n", s.b);
