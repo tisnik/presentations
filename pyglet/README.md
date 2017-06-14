@@ -43,4 +43,10 @@ List of examples:
 * 39_texture_magnification.py
 * 40_texture_smooth.py
 * 41_texture_on_3d.py
-
+* 42_textures_and_colors_modulate.py
+* 43_textures_and_colors_replace.py
+* 44_textures_and_colors_decal.py
+* 45_textures_and_colors_blend.py
+* 46_make_checker.py
+* 47_checker.py
+* 48_checker_mipmap.py
