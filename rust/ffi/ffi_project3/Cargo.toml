@@ -1,0 +1,11 @@
+[package]
+name = "ffi_project3"
+version = "0.1.0"
+authors = ["Pavel Tisnovsky <ptisnovs@redhat.com>"]
+build = "build.rs"
+
+[dependencies]
+
+[build-dependencies]
+gcc = "0.3"
+

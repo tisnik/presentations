@@ -12,12 +12,11 @@ image = pyglet.image.load('gnome-globe.png', file=image_stream)
 texture = image.get_texture()
 
 
-
 def init():
-    glClearColor(0.0, 0.0, 0.3, 0.0)          # barva pozadi obrazku
-    glPolygonMode(GL_FRONT, GL_FILL)          # nastaveni rezimu vykresleni modelu
+    glClearColor(0.0, 0.0, 0.3, 0.0)       # barva pozadi obrazku
+    glPolygonMode(GL_FRONT, GL_FILL)       # nastaveni rezimu vykresleni modelu
     glPolygonMode(GL_BACK, GL_FILL)
-    glDisable(GL_CULL_FACE)                   # zadne hrany ani steny se nebudou odstranovat
+    glDisable(GL_CULL_FACE)                # zadne hrany ani steny se nebudou odstranovat
 
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
@@ -27,12 +26,10 @@ def init():
     glBindTexture(GL_TEXTURE_2D, texture.id)
 
 
-
 @window.event
 def on_resize(width, height):
     init()
-    glViewport(0, 0, width, height)           # viditelna oblast pres cele okno
-
+    glViewport(0, 0, width, height)        # viditelna oblast pres cele okno
 
 
 def draw_quad(x, y):
@@ -55,10 +52,10 @@ def draw_quad(x, y):
 
 @window.event
 def on_draw():
-    glClear(GL_COLOR_BUFFER_BIT)                # vymazani vsech bitovych rovin barvoveho bufferu
+    glClear(GL_COLOR_BUFFER_BIT)           # vymazani vsech bitovych rovin barvoveho bufferu
     glLoadIdentity()
-    glClearColor(0.0, 0.0, 0.0, 0.0)            # nastaveni mazaci barvy na cernou
-    glClear(GL_COLOR_BUFFER_BIT)                # vymazani bitovych rovin barvoveho bufferu
+    glClearColor(0.0, 0.0, 0.0, 0.0)       # nastaveni mazaci barvy na cernou
+    glClear(GL_COLOR_BUFFER_BIT)           # vymazani bitovych rovin barvoveho bufferu
 
     glEnable(GL_TEXTURE_2D)
 
@@ -85,7 +82,5 @@ def on_draw():
     draw_quad(165, 10)
 
 
-
 # spusteni aplikace
 pyglet.app.run()
-
