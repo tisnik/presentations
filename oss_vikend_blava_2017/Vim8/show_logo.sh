@@ -1,0 +1,2 @@
+vim -S logo.vim
+
