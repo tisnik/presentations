@@ -14,26 +14,37 @@ Stručná historie verzí Vimu
 1998   Vim 5      zvýraznění syntaxe, vertikálně rozdělená okna
 ...               Unicode, diff mode, port na VMS, BeOS, Mac,
 ...               vylepšení regexpů o \{} 
-2001   Vim 6      Easy Vim (používá to někdo?)
+2001   Vim 6      Easy Vim (používá to někdo? :-)
 2006   Vim 7      podpora pro další skriptovací jazyky, taby
 ...               slovníky, omnicompletion
 2016   Vim 8      viz zbytek přednášky
 
+Jak poznat, že používám Vim 8?
+------------------------------
+:smile
+
 V čem psát pluginy pro Vim?
 ---------------------------
-Jazyk vimscript
-    Zabudovaný přímo do Vimu
-Rozhraní mezi Vimem a dalšími skriptovacími enginy
+▶ Jazyk vimscript
+    zabudovaný přímo do Vimu
+▶ Rozhraní mezi Vimem a dalšími skriptovacími enginy
 
 Jazyk vimscript
 ---------------
-Imperativní jazyk
-Dnes (Vim8) podporuje i některé vlastnosti převzaté z FP světa
-Umožňuje kombinovat příkazy Vimu s programovacím jazykem
+▶ Umožňuje kombinovat příkazy Vimu s dalšími konstrukcemi
+    podmínky
+    smyčky
+▶ Umožňuje přistupovat k interním strukturám Vimu
+▶ Imperativní jazyk
+    Původně
+        velmi jednoduché zpracování seznamu příkazů
+    Současnost
+        Vim8
+        podporuje některé vlastnosti převzaté z FP světa
 
 Když vimscript nevyhovuje
 -------------------------
-Rozhraní mezi Vimem a dalšími skriptovacími enginy
+▶ Rozhraní mezi Vimem a dalšími skriptovacími enginy
     Python
     TCL
     Perl
@@ -49,34 +60,51 @@ Rozhraní mezi Vimem a dalšími skriptovacími enginy
 
 Když vimscript nevyhovuje
 -------------------------
-Rozhraní musí být povoleno při překladu Vimu!
+▶ Rozhraní musí být povoleno při překladu Vimu!
 :ver
 .
-Lze testovat:
+▶ Lze testovat:
 :echo has("python")
 :echo has("perl")
 atd.
 
 Spouštění vimscriptu
 --------------------
-Příkazy je možné spouštět přímo v příkazovém režimu
+▶ Příkazy je možné spouštět přímo v příkazovém režimu
     :echo "Hello world!"
-Delší skripty je vhodnější ukládat do samostatných souborů
+▶ Delší skripty je vhodnější ukládat do samostatných souborů
     Koncovka:
         .vim (pro zvýraznění syntaxe)
     Spuštění:
         :source %
         :so %
+    Vim -S jméno_skriptu
 
 Základní vlastnosti vimscriptu
 ------------------------------
-Proměnné v různých "jmenných prostorech"
-Přístup k proměnným a konstantám samotného Vimu
-Pseudoproměnné
-Práce s řetězci
-Rozhodovací konstrukce
-Programové smyčky
-Funkce
+▶ Proměnné v různých "jmenných prostorech"
+▶ Přístup k proměnným a konstantám samotného Vimu
+▶ Pseudoproměnné
+▶ Práce s řetězci
+    přidány speciální operátory
+▶ Regulární výrazy
+    přidány speciální operátory
+▶ Rozhodovací konstrukce
+▶ Programové smyčky
+▶ Funkce
+▶ Složené datové typy
+
+Datové typy
+-----------
+▶ Primitivní
+    celá čísla 32/64bit
+    čísla s plovoucí řádovou čárkou
+    (boolean jako 0 a 1)
+    řetězce
+▶ Složené datové typy
+    seznam
+    slovník (asociativní pole)
+    reference na funkci (funcref)
 
 Proměnné, příkaz :let, příkaz :echo
 -----------------------------------
@@ -109,6 +137,7 @@ Programová smyčka while
 let mylist = ["Answer", "to", "The", "Ultimate", "Question",
               "of", "Life,", "the", "Universe,", "and", "Everything:",
               42]
+echo len(mylist)
 "
 let i = 0
 while i < 12
@@ -279,11 +308,13 @@ echo str1 ==? str2
 
 Lexikografické porovnání řetězců
 --------------------------------
+" lexikografické - testuje slovníkové řazení dvou řetězců
 echo "String comparion"
 echo "ax" <  "bx"
 echo "ax" <= "bx"
 echo "ax" >= "bx"
 " 
+" opět je možné nastavit chování ignorecase/noignorecase
 echo "String comparion and ignore/noignorecase"
 echo "Bart" <   "bart"
 echo "Bart" <#  "bart"
@@ -291,6 +322,9 @@ echo "Bart" <?  "bart"
 
 Regulární výrazy
 ----------------
+" Test zda řetězec vyhovuje či naopak nevyhovuje regulárnímu výrazu
+" Operátory =~ a !~
+"
 let str1 = "hello"
 let str2 = "HELLO"
 let regexp = "[a-z]*"
@@ -316,16 +350,13 @@ echo str2 =~# "Hello"
 " Let's ignore case
 echo str2 =~? "Hello"
 
-" ---------------------------------------------
-" Vim Script #16
-" ---------------------------------------------
-" Lists
-" 
+Seznamy
+-------
 let list1=[1, 2, 3, 4]
 echo list1
 " 
 let two=2
-let list2=[1, two, "3", "ètyøi"]
+let list2=[1, two, "3", "čtyři"]
 echo list2
 " 
 let list3=[[11, 12, 13] , [21, 22, 23], [31, 32, 33]]
@@ -347,7 +378,9 @@ echo get(list1, 2)
 echo "Indexes are out of bounds:"
 echo get(list1,-1)
 echo get(list1, 4)
-" 
+
+Spojování seznamů
+-----------------
 echo [1,2]+[3,4]
 " 
 let list1=[1, 2, 3]
@@ -357,11 +390,8 @@ let list3=[[11, 12, 13] , [21, 22, 23], [31, 32, 33]]
 let concat=list1+list2+list3
 echo concat
 
-" ---------------------------------------------
-" Vim Script #17
-" ---------------------------------------------
-" Dictionaries
-" 
+Slovníky
+--------
 let dictionary1={"one":1, "two":2, "three":3, "four":4}
 echo dictionary1
 " 
@@ -377,22 +407,16 @@ echo xx.version
 echo xx["progname"]
 echo xx.progname
 
-" ---------------------------------------------
-" Vim Script #18
-" ---------------------------------------------
-" While, strlen etc.
-" 
+Řetězce - přístup ke znakům či podřetězcům
+------------------------------------------
 let str = "http://www.root.cz"
 while str != ""
     echo str
     let str = str[1 : strlen(str) - 1]
 endwhile
 
-" ---------------------------------------------
-" Vim Script #19
-" ---------------------------------------------
-" While, strlen etc.
-" 
+Postupné zpracování řetězce
+---------------------------
 let str = "http://www.root.cz"
 while str != ""
     echo str
@@ -402,11 +426,8 @@ while str != ""
     let str = str[1 : strlen(str) - 1]
 endwhile
 
-" ---------------------------------------------
-" Vim Script #20
-" ---------------------------------------------
-" Yank register, working with matrices etc.
-" 
+Použití registru používaného implicitně operací yank
+----------------------------------------------------
 let matrix = [ [1,2,3], [4,5,6], [7,8,9] ]
 let yank_reg = ""
 for row in matrix
@@ -417,6 +438,111 @@ for row in matrix
 endfor
 let @" = yank_reg
 normal p
+
+Skriptovací engine ve Vimu 8
+----------------------------
+▶ ID oken
+▶ Anonymní funkce (lambdy)
+▶ Časovače
+▶ Podpora formátu JSON
+▶ Kanály
+▶ Úlohy
+
+ID oken
+-------
+" Funkce bude obecně vracet různá čísla:
+function! PrintWindowNumbers()
+    let windowNumbers = []
+    windo call add(windowNumbers, winnr()) 
+    for windowNumber in windowNumbers
+        echo windowNumber
+    endfor
+endfunction
+"
+" Funkce bude pro jedno okno vždy vracet stejné ID
+function! PrintWindowIDs()
+    let windowIDs = []
+    windo call add(windowIDs, win_getid(winnr())) 
+    for windowID in windowIDs
+        echo windowID
+    endfor
+endfunction
+
+Anonymní funkce (lambdy)
+------------------------
+Zápis:
+    {x,y -> x + y}
+Otestování:
+    :echo {x,y -> x + y}(1,2)
+Přiřazení do proměnné (pojmenování):
+    :let Fce={x,y -> x + y}
+    :echo Fce(1,2)
+    3
+
+Funkce vyššího řádu
+-------------------
+let  sequence = range(10)
+echo sequence
+"
+call map(sequence, {index, value -> value * 2})
+echo sequence
+"
+call map(sequence, {index, value -> value * 2})
+echo sequence
+"
+let  sequence2 = filter(copy(sequence), {index, value -> value % 2 == 0})
+let  sequence3 = filter(copy(sequence), {index, value -> value % 3 == 0})
+echo "sequence1=" sequence
+echo "sequence2=" sequence2
+echo "sequence3=" sequence3
+
+Časovače
+--------
+Vytvoření časovače:
+    timer_start(interval, funcref či anonymní funkce)
+    timer_start(interval, funcref či anonymní funkce, {'repeat':počet_opakování})
+Periodické opakování:
+    timer_start(interval, funcref či anonymní funkce, {'repeat':-1})
+
+Podpora formátu JSON
+--------------------
+json_encode(výraz)
+    převod výrazu do JSON formátu, který se vrátí ve formě řetězce
+json_decode(řetězec)
+    opak předchozí funkce, parsování řetězce s daty uloženými v JSON
+    formátu do interních datových struktur VimScriptu
+js_encode(výraz)
+    podobné funkci json_encode(), ovšem klíče nejsou umístěny
+    v uvozovkách
+js_decode(řetězec)
+    podobné funkci json_decode(), ovšem při parsingu se nevyžaduje,
+    aby byly klíče umístěny v uvozovkách
+
+Režimy pluginů
+--------------
+Režim        Připojení    Popis
+démon        socket       proces pro více instancí Vimu
+úloha (job)  socket/pipe  proces pro jednu instanci Vimu
+krátká úloha socket/pipe  neběží po celou dobu existence Vimu
+filtr        pipe         spouští se synchronně
+
+Úlohy
+-----
+▶ Při spuštění pluginu v samosatatném procesu
+job_start()   - cesta ke spriptu + options
+job_status()  - "run", "fail", "dead" ...
+job_stop()    - "term", "hup", "quit", ...
+job_channel() - získání kanálu pro komunikaci
+
+Kanály
+------
+▶ Slouží pro komunikaci mezi Vimem a externími pluginy
+▶ Využívají se sockety nebo pipe
+Typ zprávy Význam
+RAW        obecný formát
+NL         textová zpráva je ukončena znakem (NL)
+JSON       formát JSON
+JS         formát JSON s klíči odpovídajícími JavaScriptu
 
 Standardní formát pluginů
 -------------------------------
