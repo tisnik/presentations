@@ -1,0 +1,8 @@
+
+Časovače
+--------
+Vytvoření časovače:
+    timer_start(interval, funcref či anonymní funkce)
+    timer_start(interval, funcref či anonymní funkce, {'repeat':počet_opakování})
+Periodické opakování:
+    timer_start(interval, funcref či anonymní funkce, {'repeat':-1})

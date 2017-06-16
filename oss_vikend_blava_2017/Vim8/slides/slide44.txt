@@ -1,0 +1,10 @@
+
+Kanály
+------
+▶ Slouží pro komunikaci mezi Vimem a externími pluginy
+▶ Využívají se sockety nebo pipe
+Typ zprávy Význam
+RAW        obecný formát
+NL         textová zpráva je ukončena znakem (NL)
+JSON       formát JSON
+JS         formát JSON s klíči odpovídajícími JavaScriptu

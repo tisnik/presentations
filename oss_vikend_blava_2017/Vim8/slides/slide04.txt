@@ -1,0 +1,13 @@
+
+Jazyk vimscript
+---------------
+▶ Umožňuje kombinovat příkazy Vimu s dalšími konstrukcemi
+    podmínky
+    smyčky
+▶ Umožňuje přistupovat k interním strukturám Vimu
+▶ Imperativní jazyk
+    Původně
+        velmi jednoduché zpracování seznamu příkazů
+    Současnost
+        Vim8
+        podporuje některé vlastnosti převzaté z FP světa

@@ -1,0 +1,16 @@
+
+Když vimscript nevyhovuje
+-------------------------
+▶ Rozhraní mezi Vimem a dalšími skriptovacími enginy
+    Python
+    TCL
+    Perl
+    Ruby
+    MzScheme
+    Lua
+    ...
+:help if_pyth
+:help if_tcl
+:help if_perl
+:help if_ruby
+:help if_mzsch

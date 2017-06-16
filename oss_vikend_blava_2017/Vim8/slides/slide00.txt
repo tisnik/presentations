@@ -1,0 +1,5 @@
+Tvorba pluginů pro textový editor Vim
+=====================================
+■ Author   Pavel Tišnovský
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2017-06-15

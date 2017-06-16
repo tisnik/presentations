@@ -1,0 +1,9 @@
+
+Skriptovací engine ve Vimu 8
+----------------------------
+▶ ID oken
+▶ Anonymní funkce (lambdy)
+▶ Časovače
+▶ Podpora formátu JSON
+▶ Kanály
+▶ Úlohy

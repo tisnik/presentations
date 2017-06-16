@@ -1,0 +1,6 @@
+
+V čem psát pluginy pro Vim?
+---------------------------
+▶ Jazyk vimscript
+    zabudovaný přímo do Vimu
+▶ Rozhraní mezi Vimem a dalšími skriptovacími enginy

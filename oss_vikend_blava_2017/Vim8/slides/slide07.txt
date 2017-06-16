@@ -1,0 +1,12 @@
+
+Spouštění vimscriptu
+--------------------
+▶ Příkazy je možné spouštět přímo v příkazovém režimu
+    :echo "Hello world!"
+▶ Delší skripty je vhodnější ukládat do samostatných souborů
+    Koncovka:
+        .vim (pro zvýraznění syntaxe)
+    Spuštění:
+        :source %
+        :so %
+    Vim -S jméno_skriptu

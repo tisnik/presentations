@@ -1,0 +1,14 @@
+
+Podpora formátu JSON
+--------------------
+json_encode(výraz)
+    převod výrazu do JSON formátu, který se vrátí ve formě řetězce
+json_decode(řetězec)
+    opak předchozí funkce, parsování řetězce s daty uloženými v JSON
+    formátu do interních datových struktur VimScriptu
+js_encode(výraz)
+    podobné funkci json_encode(), ovšem klíče nejsou umístěny
+    v uvozovkách
+js_decode(řetězec)
+    podobné funkci json_decode(), ovšem při parsingu se nevyžaduje,
+    aby byly klíče umístěny v uvozovkách

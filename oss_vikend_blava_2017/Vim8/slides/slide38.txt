@@ -1,0 +1,11 @@
+
+Anonymní funkce (lambdy)
+------------------------
+Zápis:
+    {x,y -> x + y}
+Otestování:
+    :echo {x,y -> x + y}(1,2)
+Přiřazení do proměnné (pojmenování):
+    :let Fce={x,y -> x + y}
+    :echo Fce(1,2)
+    3

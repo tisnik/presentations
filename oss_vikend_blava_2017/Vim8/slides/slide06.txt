@@ -1,0 +1,10 @@
+
+Když vimscript nevyhovuje
+-------------------------
+▶ Rozhraní musí být povoleno při překladu Vimu!
+:ver
+.
+▶ Lze testovat:
+:echo has("python")
+:echo has("perl")
+atd.

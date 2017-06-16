@@ -1,0 +1,14 @@
+
+Základní vlastnosti vimscriptu
+------------------------------
+▶ Proměnné v různých "jmenných prostorech"
+▶ Přístup k proměnným a konstantám samotného Vimu
+▶ Pseudoproměnné
+▶ Práce s řetězci
+    přidány speciální operátory
+▶ Regulární výrazy
+    přidány speciální operátory
+▶ Rozhodovací konstrukce
+▶ Programové smyčky
+▶ Funkce
+▶ Složené datové typy

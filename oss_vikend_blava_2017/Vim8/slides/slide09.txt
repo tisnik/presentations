@@ -1,0 +1,12 @@
+
+Datové typy
+-----------
+▶ Primitivní
+    celá čísla 32/64bit
+    čísla s plovoucí řádovou čárkou
+    (boolean jako 0 a 1)
+    řetězce
+▶ Složené datové typy
+    seznam
+    slovník (asociativní pole)
+    reference na funkci (funcref)
