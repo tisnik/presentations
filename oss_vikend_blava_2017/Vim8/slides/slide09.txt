@@ -9,4 +9,4 @@ Datové typy
 ▶ Složené datové typy
     seznam
     slovník (asociativní pole)
-    reference na funkci (funcref)
+▶ Reference na funkci (funcref)

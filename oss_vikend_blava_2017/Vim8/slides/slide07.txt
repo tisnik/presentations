@@ -9,4 +9,4 @@ Spouštění vimscriptu
     Spuštění:
         :source %
         :so %
-    Vim -S jméno_skriptu
+    vim -S jméno_skriptu
