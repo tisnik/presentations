@@ -12,10 +12,11 @@ label = pyglet.text.Label("Pyglet library",
                           x=window.width//2,
                           y=window.height//2)
 
+
 @window.event
 def on_draw():
     window.clear()
     label.draw()
 
-pyglet.app.run()
 
+pyglet.app.run()
