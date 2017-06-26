@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Vytvoreni textury s "kruznicovym moare"
+# Vytvoreni textury s "kruznicovym moare" i dalsimi typy moare
 
 from PIL import Image
 import palette_blues
@@ -15,8 +15,8 @@ IMAGE_WIDTH = 256
 IMAGE_HEIGHT = 256
 
 
-# Funkce provadejici vypocet moare s kruznicovym vzorkem
-def recalc_circle_pattern(image, palette, xmin, ymin, xmax, ymax, function):
+# Funkce provadejici vypocet moare s kruznicovym ci jinym vzorkem
+def recalc_any_pattern(image, palette, xmin, ymin, xmax, ymax, function):
     width, height = image.size       # rozmery obrazku
     stepx = (xmax - xmin)/width
     stepy = (ymax - ymin)/height
@@ -36,26 +36,26 @@ def recalc_circle_pattern(image, palette, xmin, ymin, xmax, ymax, function):
 image = Image.new("RGB", (IMAGE_WIDTH, IMAGE_HEIGHT))
 
 mez = (2 << 5) + 30 * 2.5
-recalc_circle_pattern(image, palette_mandmap.palette, -mez, -mez, mez, mez, lambda x,y : x*x + y*y)
+recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x,y : x*x + y*y)
 image.save("patternC_circle.png")
 
 mez = (2 << 5) + 30 * 2.5
-recalc_circle_pattern(image, palette_mandmap.palette, -mez, -mez, mez, mez, lambda x,y : x*x - y*y)
+recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x,y : x*x - y*y)
 image.save("patternC_anticircle.png")
 
-mez = 20.0
-recalc_circle_pattern(image, palette_mandmap.palette, -mez, -mez, mez, mez, lambda x,y : x**3 + y**3)
+mez = 15.0
+recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x,y : x**3 + y**3)
 image.save("patternC_x3y3.png")
 
-mez = 20.0
-recalc_circle_pattern(image, palette_mandmap.palette, -mez, -mez, mez, mez, lambda x,y : x**4 + y**4)
+mez = 15.0
+recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x,y : x**4 + y**4)
 image.save("patternC_x4y4.png")
 
-mez = 90.0
-recalc_circle_pattern(image, palette_mandmap.palette, -mez, -mez, mez, mez, lambda x,y : x*x + y*y + x*y*1.5)
+mez = 60.0
+recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x,y : x*x + y*y + x*y*1.5)
 image.save("patternC_var1.png")
 
-mez = 20.0
-recalc_circle_pattern(image, palette_mandmap.palette, -mez, -mez, mez, mez, lambda x,y : x*x*y + y*y*x)
+mez = 15.0
+recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x,y : x*x*y + y*y*x)
 image.save("patternC_var2.png")
 
