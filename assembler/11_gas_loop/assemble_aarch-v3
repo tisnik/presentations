@@ -1,0 +1,3 @@
+as loop1-aarch64-v3.s -o loop1-aarch64-v3.o
+ld -s loop1-aarch64-v3.o
+
