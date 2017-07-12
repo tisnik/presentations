@@ -7,7 +7,8 @@
 #                  procesoru v hlavní smyčce událostí
 
 
-import pygame, sys
+import pygame
+import sys
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -16,7 +17,7 @@ from pygame.locals import *
 WIDTH = 320
 HEIGHT = 240
 
-# Inicializace knihovny Pygame 
+# Inicializace knihovny Pygame
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -38,4 +39,3 @@ while True:
     clock.tick(20)
 
 # finito
-
