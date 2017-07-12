@@ -1,0 +1,7 @@
+[package]
+name = "ndarray-info"
+version = "0.1.0"
+authors = ["Pavel Tisnovsky <ptisnovs@redhat.com>"]
+
+[dependencies]
+ndarray = "0.9.1"
