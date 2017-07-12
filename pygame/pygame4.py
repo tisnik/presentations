@@ -7,7 +7,8 @@
 #                  tvarů s využitím modulu pygame.draw.
 
 
-import pygame, sys
+import pygame
+import sys
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -16,7 +17,7 @@ from pygame.locals import *
 WIDTH = 320
 HEIGHT = 240
 
-# Inicializace knihovny Pygame 
+# Inicializace knihovny Pygame
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -49,7 +50,7 @@ pygame.draw.line(display, RED,     (10, 50), (160, 50))
 pygame.draw.line(display, MAGENTA, (10, 60), (160, 60))
 
 # Vykreslení čar různou šířkou
-for i in range(1,10):
+for i in range(1, 10):
     pygame.draw.line(display, WHITE, (10 + i*15, 80), (10 + i*15, 210), i)
 
 # Základní geometrické tvary: kruh, vyplněný čtverec, elipsa a čtverec
@@ -70,4 +71,3 @@ while True:
     clock.tick(20)
 
 # finito
-
