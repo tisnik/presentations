@@ -5,8 +5,10 @@ from tkinter import ttk
 
 import sys
 
+
 def exit():
     sys.exit(0)
+
 
 root = Tk()
 
@@ -17,4 +19,3 @@ label.pack()
 button.pack()
 
 root.mainloop()
-
