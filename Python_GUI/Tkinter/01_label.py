@@ -10,4 +10,3 @@ label = ttk.Label(root, text="Hello world!")
 label.pack()
 
 root.mainloop()
-
