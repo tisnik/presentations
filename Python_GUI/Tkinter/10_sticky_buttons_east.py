@@ -5,11 +5,6 @@ from tkinter import ttk
 
 import sys
 
-
-def exit():
-    sys.exit(0)
-
-
 root = Tk()
 
 button1 = ttk.Button(root, text="1st btn", command=lambda: sys.exit(0))
