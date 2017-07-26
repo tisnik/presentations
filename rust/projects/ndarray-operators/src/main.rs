@@ -20,6 +20,23 @@ fn array_operators() {
 }
 
 
+
+fn array_2D_operators() {
+    println!("array_2D_operators");
+
+    let array1 = Array::from_iter(10..30).into_shape((4,5)).unwrap();
+    let array2 = Array::from_iter(100..120).into_shape((4,5)).unwrap();
+
+    println!("array1:\n{}\n", array1);
+    println!("array2:\n{}\n", array2);
+
+    println!("add:\n{}\n", array1 * array2);
+
+    println!();
+}
+
+
+
 fn array_consume_operators() {
     println!("array_consume_operators");
 
@@ -72,6 +89,7 @@ fn array_broadcasting() {
 
 fn main() {
     array_operators();
+    array_2D_operators();
     array_consume_operators();
     array_in_place_operators();
     array_broadcasting();
