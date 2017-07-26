@@ -1,5 +1,5 @@
 [package]
-name = "ndarray-views"
+name = "ndarray-slices"
 version = "0.1.0"
 authors = ["Pavel Tisnovsky <ptisnovs@redhat.com>"]
 
