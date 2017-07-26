@@ -21,6 +21,12 @@ fn slice_1d_array() {
 
     let slice4 = array.slice(s![..]);
     println!("slice ..:\n{}\n", slice4);
+
+    let slice5 = array.slice(s![3..4]);
+    println!("slice 3..4:\n{}\n", slice5);
+
+    let slice6 = array.slice(s![4..4]);
+    println!("slice 4..4:\n{}\n", slice6);
 }
 
 
@@ -42,6 +48,8 @@ fn slice_1d_array_negative_indexes() {
     let slice4 = array.slice(s![-3..]);
     println!("slice -3..:\n{}\n", slice4);
 
+    let slice5 = array.slice(s![-1..]);
+    println!("slice -1..:\n{}\n", slice5);
 }
 
 
@@ -82,6 +90,9 @@ fn slice_1d_array_negative_step() {
 
     let slice4 = array.slice(s![..;-2]);
     println!("slice ..;-2:\n{}\n", slice4);
+
+    let slice5 = array.slice(s![..;-1]);
+    println!("slice ..;-1:\n{}\n", slice5);
 }
 
 
@@ -109,7 +120,7 @@ fn slice_2d_array() {
 
 
 fn slice_2d_array_explicit_steps() {
-    println!("slice_2d_array");
+    println!("slice_2d_array_explicit_steps");
 
     let array = Array::from_iter(10..30).into_shape((4,5)).unwrap();
     println!("original array:\n{}\n", array);
