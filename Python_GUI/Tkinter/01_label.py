@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-from tkinter import *
+import tkinter
 from tkinter import ttk
 
-root = Tk()
+root = tkinter.Tk()
 
 label = ttk.Label(root, text="Hello world!")
 
