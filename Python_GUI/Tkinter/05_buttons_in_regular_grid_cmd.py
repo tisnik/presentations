@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-from tkinter import *
+import tkinter
 from tkinter import ttk
 
 import sys
 
-root = Tk()
+root = tkinter.Tk()
 
 button1 = ttk.Button(root, text="First button", command=lambda: sys.exit(0))
 button2 = ttk.Button(root, text="Second button", command=lambda: sys.exit(0))
