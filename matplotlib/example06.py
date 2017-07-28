@@ -38,4 +38,3 @@ plt.ylabel("sin(x) a sinc(3x)")
 
 # zobrazení grafu
 plt.show()
-
