@@ -32,4 +32,3 @@ plt.legend(loc="lower right")
 
 # zobrazení grafu
 plt.show()
-
