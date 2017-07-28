@@ -16,7 +16,7 @@ radius1 = theta
 # druhá funkce: vzdálenost od středu
 radius2 = 3*np.abs(theta-2*np.pi)
 
-ax=plt.subplot(111, projection="polar")
+ax = plt.subplot(111, projection="polar")
 
 # vykreslit průběh první funkce
 # v polárním grafu
@@ -31,4 +31,3 @@ plt.legend(loc="lower left")
 
 # zobrazení grafu
 plt.show()
-
