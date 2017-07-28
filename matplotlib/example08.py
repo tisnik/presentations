@@ -38,16 +38,15 @@ plt.ylabel("sin(x) a cos(x)")
 
 # vložit první popisek do grafu
 plt.annotate("maximální hodnota sin(x)",
-             xy=(np.pi/2,1.0),
+             xy=(np.pi/2, 1.0),
              xytext=(1, 1.3),
              arrowprops=dict(arrowstyle="->"))
 
 # vložit druhý popisek do grafu
 plt.annotate("minimální hodnota cos(x)",
-             xy=(np.pi,-1.0),
-             xytext=(2,-1.3),
+             xy=(np.pi, -1.0),
+             xytext=(2, -1.3),
              arrowprops=dict(arrowstyle="->"))
 
 # zobrazení grafu
 plt.show()
-
