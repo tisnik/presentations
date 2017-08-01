@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 
-from tkinter import *
+import tkinter
 
 import sys
 
-root = Tk()
+root = tkinter.Tk()
 
-button1 = Button(root, background='yellow', text="1st btn",
-                 command=lambda: sys.exit(0))
-button2 = Button(root, background='#ff8080', text="Second button",
-                 command=lambda: sys.exit(0))
-button3 = Button(root, text="Third button",
-                 command=lambda: sys.exit(0))
-button4 = Button(root, text="This is fourth button, the last one",
-                 command=lambda: sys.exit(0))
+button1 = tkinter.Button(root, background='yellow', text="1st btn",
+                         command=lambda: sys.exit(0))
+button2 = tkinter.Button(root, background='#ff8080', text="Second button",
+                         command=lambda: sys.exit(0))
+button3 = tkinter.Button(root, text="Third button",
+                         command=lambda: sys.exit(0))
+button4 = tkinter.Button(root, text="This is fourth button, the last one",
+                         command=lambda: sys.exit(0))
 
 button3.configure(background='#8080ff')
 button4['background'] = '#80ff80'
