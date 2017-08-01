@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from tkinter import *
+import tkinter
 from tkinter import ttk
 
 import sys
@@ -10,14 +10,14 @@ def exit():
     sys.exit(0)
 
 
-root = Tk()
+root = tkinter.Tk()
 
 style = ttk.Style()
 style.configure('Red.TButton', background='#ff8080')
 
 buttonStyles = ("sunken", "solid", "flat", "groove", "raised", "ridge")
 
-buttons = (Button(root, text=buttonStyle, relief=buttonStyle)
+buttons = (tkinter.Button(root, text=buttonStyle, relief=buttonStyle)
            for buttonStyle in buttonStyles)
 
 quitButton = ttk.Button(root, text="Exit", style='Red.TButton',
