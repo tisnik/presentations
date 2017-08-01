@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from tkinter import *
+import tkinter
 from tkinter import ttk
 
 import sys
@@ -10,7 +10,7 @@ def exit():
     sys.exit(0)
 
 
-root = Tk()
+root = tkinter.Tk()
 
 style = ttk.Style()
 
@@ -37,9 +37,9 @@ button4.grid(column=2, row=2, sticky="we")
 
 quitButton.grid(column=2, row=5, sticky="we")
 
-label = Label(root, text='Hello world')
-entry = Entry(root)
-checkbutton = Checkbutton(text='Do you like Tkinter?')
+label = tkinter.Label(root, text='Hello world')
+entry = tkinter.Entry(root)
+checkbutton = tkinter.Checkbutton(text='Do you like Tkinter?')
 
 checkbutton.grid(column=1, row=3, columnspan=2, sticky="w")
 label.grid(column=1, row=4)
