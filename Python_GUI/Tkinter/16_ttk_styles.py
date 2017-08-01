@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from tkinter import *
+import tkinter
 from tkinter import ttk
 
 import sys
@@ -10,7 +10,7 @@ def exit():
     sys.exit(0)
 
 
-root = Tk()
+root = tkinter.Tk()
 
 style = ttk.Style()
 style.configure('Yellow.TButton', background='yellow')
