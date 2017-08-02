@@ -30,6 +30,7 @@ label3 = pyglet.text.Label("Pyglet library",
                            anchor_x='right',
                            anchor_y='bottom')
 
+
 @window.event
 def on_draw():
     window.clear()
@@ -37,5 +38,5 @@ def on_draw():
     label2.draw()
     label3.draw()
 
-pyglet.app.run()
 
+pyglet.app.run()
