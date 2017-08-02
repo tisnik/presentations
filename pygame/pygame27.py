@@ -7,7 +7,9 @@
 #                   a operace pygame.transform.smoothscale().
 
 
-import pygame, sys, os
+import pygame
+import sys
+import os
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -16,7 +18,7 @@ from pygame.locals import *
 WIDTH = 400
 HEIGHT = 400
 
-# Inicializace knihovny Pygame 
+# Inicializace knihovny Pygame
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -28,7 +30,7 @@ display = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame test #27')
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
+BLACK = (0, 0, 0)
 
 # Vyplnění plochy okna černou barvou
 display.fill(BLACK)
@@ -38,7 +40,7 @@ display.fill(BLACK)
 image_surface = pygame.image.load(os.path.join('images', 'pygame.png'))
 
 # Rozměry původního obrázku
-image_width  = image_surface.get_width()
+image_width = image_surface.get_width()
 image_height = image_surface.get_height()
 
 scale_ratio = 3
@@ -75,7 +77,6 @@ font_surface1 = font.render(pygame.transform.get_smoothscale_backend(), True, WH
 display.blit(font_surface1, (15, 100))
 
 
-
 # Hlavní herní smyčka
 while True:
     # Načtení a zpracování všech událostí z fronty
@@ -93,4 +94,3 @@ while True:
     clock.tick(20)
 
 # finito
-
