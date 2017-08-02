@@ -93,28 +93,28 @@ def on_resize(width, height):
     glViewport(0, 0, width, height)        # viditelna oblast pres cele okno
 
 
-
 def draw_walls():
-    glBegin(GL_QUADS)                         # vykresleni otevrene krychle - sten domecku
+    """Vykresleni otevrene krychle - sten domecku."""
+    glBegin(GL_QUADS)
     glColor3f(0.0, 0.0, 1.0)                  # modra barva steny
     glTexCoord2f(0.0, 0.0)
     glVertex3f(-5.0, -5.0, -5.0)
     glTexCoord2f(0.7, 0.0)
     glVertex3f(-5.0, -5.0,  5.0)
     glTexCoord2f(0.7, 0.7)
-    glVertex3f( 5.0, -5.0,  5.0)
+    glVertex3f(5.0, -5.0,  5.0)
     glTexCoord2f(0.0, 0.7)
-    glVertex3f( 5.0, -5.0, -5.0)
+    glVertex3f(5.0, -5.0, -5.0)
 
     glColor3f(0.0, 1.0, 0.0)                  # zelena barva steny
     glTexCoord2f(0.0, 0.0)
-    glVertex3f(-5.0,  5.0, -5.0)
+    glVertex3f(-5.0, 5.0, -5.0)
     glTexCoord2f(0.7, 0.0)
-    glVertex3f(-5.0,  5.0,  5.0)
+    glVertex3f(-5.0, 5.0,  5.0)
     glTexCoord2f(0.7, 0.7)
-    glVertex3f( 5.0,  5.0,  5.0)
+    glVertex3f(5.0, 5.0,  5.0)
     glTexCoord2f(0.0, 0.7)
-    glVertex3f( 5.0,  5.0, -5.0)
+    glVertex3f(5.0, 5.0, -5.0)
 
     glColor3f(1.0, 0.0, 0.0)                  # cervena barva steny
     glTexCoord2f(0.0, 0.0)
@@ -122,58 +122,57 @@ def draw_walls():
     glTexCoord2f(0.7, 0.0)
     glVertex3f(-5.0, -5.0,  5.0)
     glTexCoord2f(0.7, 0.7)
-    glVertex3f(-5.0,  5.0,  5.0)
+    glVertex3f(-5.0, 5.0,  5.0)
     glTexCoord2f(0.0, 0.7)
-    glVertex3f(-5.0,  5.0, -5.0)
+    glVertex3f(-5.0, 5.0, -5.0)
 
     glColor3f(1.0, 1.0, 0.0)                  # zluta barva steny
     glTexCoord2f(0.0, 0.0)
-    glVertex3f( 5.0, -5.0, -5.0)
+    glVertex3f(5.0, -5.0, -5.0)
     glTexCoord2f(0.7, 0.0)
-    glVertex3f( 5.0, -5.0,  5.0)
+    glVertex3f(5.0, -5.0,  5.0)
     glTexCoord2f(0.7, 0.7)
-    glVertex3f( 5.0,  5.0,  5.0)
+    glVertex3f(5.0, 5.0,  5.0)
     glTexCoord2f(0.0, 0.7)
-    glVertex3f( 5.0,  5.0, -5.0)
+    glVertex3f(5.0, 5.0, -5.0)
     glEnd()
-
 
 
 def draw_roof():
-    glBegin(GL_TRIANGLES)                      # vykresleni strechy domecku z trojuhelniku
+    """Vykresleni strechy domecku z trojuhelniku."""
+    glBegin(GL_TRIANGLES)
     glColor3f(0.0, 1.0, 1.0)
     glTexCoord2f(0.0, 0.0)
-    glVertex3f(-5.0,  5.0, -5.0)
+    glVertex3f(-5.0, 5.0, -5.0)
     glTexCoord2f(0.7, 0.0)
-    glVertex3f( 5.0,  5.0, -5.0)
+    glVertex3f(5.0, 5.0, -5.0)
     glTexCoord2f(0.7, 0.7)
-    glVertex3f( 0.0, 11.0,  0.0)
- 
+    glVertex3f(0.0, 11.0, 0.0)
+
     glColor3f(1.0, 0.0, 1.0)
     glTexCoord2f(0.0, 0.0)
-    glVertex3f( 5.0,  5.0, -5.0)
+    glVertex3f(5.0, 5.0, -5.0)
     glTexCoord2f(0.7, 0.0)
-    glVertex3f( 5.0,  5.0,  5.0)
+    glVertex3f(5.0, 5.0,  5.0)
     glTexCoord2f(0.7, 0.7)
-    glVertex3f( 0.0, 11.0,  0.0)
- 
+    glVertex3f(0.0, 11.0, 0.0)
+
     glColor3f(1.0, 1.0, 1.0)
     glTexCoord2f(0.0, 0.0)
-    glVertex3f( 5.0,  5.0,  5.0)
+    glVertex3f(5.0, 5.0,  5.0)
     glTexCoord2f(0.7, 0.0)
-    glVertex3f(-5.0,  5.0,  5.0)
+    glVertex3f(-5.0, 5.0,  5.0)
     glTexCoord2f(0.7, 0.7)
-    glVertex3f( 0.0, 11.0,  0.0)
- 
+    glVertex3f(0.0, 11.0, 0.0)
+
     glColor3f(0.0, 0.0, 0.0)
     glTexCoord2f(0.0, 0.0)
-    glVertex3f(-5.0,  5.0,  5.0)
+    glVertex3f(-5.0, 5.0,  5.0)
     glTexCoord2f(0.7, 0.0)
-    glVertex3f(-5.0,  5.0, -5.0)
+    glVertex3f(-5.0, 5.0, -5.0)
     glTexCoord2f(0.7, 0.7)
-    glVertex3f( 0.0, 11.0,  0.0)
+    glVertex3f(0.0, 11.0, 0.0)
     glEnd()
-
 
 
 def set_depth_buffer(depthBufferEnabled):
@@ -266,7 +265,6 @@ def on_draw():
 
     draw_walls()
     draw_roof()
-
 
 
 window.push_handlers(keys)
