@@ -41,11 +41,11 @@ display.fill(BLACK)
 image_surface = pygame.image.load(os.path.join('images', 'pygame.png'))
 
 # Vytvoření otočených obrázků
-rot90_image  = pygame.transform.rotate(image_surface, 90)
+rot90_image = pygame.transform.rotate(image_surface, 90)
 rot180_image = pygame.transform.rotate(image_surface, 180)
 rot270_image = pygame.transform.rotate(image_surface, 270)
-rot45_image  = pygame.transform.rotate(image_surface, 45)
-rotm45_image  = pygame.transform.rotate(image_surface, -45)
+rot45_image = pygame.transform.rotate(image_surface, 45)
+rotm45_image = pygame.transform.rotate(image_surface, -45)
 rot_and_scaled_image_1 = pygame.transform.rotozoom(image_surface, 30, 0.7)
 rot_and_scaled_image_2 = pygame.transform.rotozoom(image_surface, 30, 2.0)
 
