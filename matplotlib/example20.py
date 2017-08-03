@@ -26,11 +26,12 @@ width = 0.30
 
 # sloupcový graf se dvěma skupinami sloupců
 plt.bar(indexes, vals1, width, color='gray', edgecolor='black', label='CPU#1',
-        yerr=delta1, error_kw=dict(elinewidth=2,ecolor='red'))
+        yerr=delta1, error_kw=dict(elinewidth=2, ecolor='red'))
 
 # posunuté sloupce
-plt.bar(indexes+width, vals2, width, color='red', edgecolor='black', label='CPU#2',
-        yerr=delta2, error_kw=dict(elinewidth=2,ecolor='black'))
+plt.bar(indexes+width, vals2, width, color='red', edgecolor='black',
+        label='CPU#2',
+        yerr=delta2, error_kw=dict(elinewidth=2, ecolor='black'))
 
 # povolení zobrazení mřížky
 plt.grid(True)
@@ -40,4 +41,3 @@ plt.legend(loc="lower right")
 
 # zobrazení grafu
 plt.show()
-
