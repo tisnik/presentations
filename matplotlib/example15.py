@@ -24,7 +24,8 @@ width = 0.30
 # sloupcový graf se dvěma skupinami sloupců
 plt.bar(indexes, vals1, width, color='gray', edgecolor='black', label='CPU#1')
 # posunuté sloupce
-plt.bar(indexes+width, vals2, width, color='red', edgecolor='black', label='CPU#2')
+plt.bar(indexes+width, vals2, width, color='red', edgecolor='black',
+        label='CPU#2')
 
 # povolení zobrazení mřížky
 plt.grid(True)
@@ -34,4 +35,3 @@ plt.legend(loc="lower right")
 
 # zobrazení grafu
 plt.show()
-
