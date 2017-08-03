@@ -13,4 +13,3 @@ plt.hist(y, bins=30, range=None, normed=True)
 
 # zobrazení grafu
 plt.show()
-
