@@ -1,0 +1,175 @@
+fn funkce1() {
+    println("funkce1")
+}
+
+fn funkce2() -> {
+    println("funkce2")
+    return 42
+}
+
+fn funkce3(x,y) -> {
+    return x*y
+}
+
+funkce4(x,y) = x*y
+
+inv(x) = if x!=0 {1.0/x} else {0}
+
+factorial(n) = if n <= 1 { 1 }
+               else {n * factorial(n-1)}
+
+fn inc(mut x) {
+    x += 1
+}
+
+fn functions() {
+    funkce1()
+    println(funkce2())
+    println(funkce3(6,7))
+    println(funkce4(6,7))
+    println(inv(0))
+    println(inv(2))
+    println(factorial(1))
+    println(factorial(2))
+    println(factorial(3))
+    println(factorial(4))
+
+    x := 1
+    println(x)
+    inc(mut x)
+    println(x)
+    inc(mut x)
+    println(x)
+}
+
+fn closures() {
+    f := \(x,y) = x*y
+    println(\f(6,7))
+
+    fac := \(n) = if n <= 1 { 1 }
+                  else {n * factorial(n-1)}
+    println(\fac(10))
+
+    delta := 6
+    f := \(x) = x * (grab delta)
+
+    println(\f(7))
+}
+
+fn blocks() {
+    u := 42
+    println(u)
+
+    v := {42}
+    println(v)
+
+    w := {6*7}
+    println(w)
+
+    x := {u*v}
+    println(x)
+
+    y := {
+        a := 6
+        b := 7
+        a*b
+    }
+    println(y)
+
+    z := {
+        a := 6
+        b := 7
+        if a<b {
+            a*b
+        } else {
+            0
+        }
+    }
+    println(z)
+}
+
+//fn blocks_error() {
+//    x := {
+//        y := 42
+//        y
+//    }
+//    println(x)
+//}
+
+fn blocks_clone() {
+    x := {
+        y := 42
+        clone(y)
+    }
+    println(x)
+}
+
+fn condition() {
+    x := 1
+
+    if x < 0 {
+        println("zaporny")
+    } else {
+        println("nezaporny")
+    }
+
+    if x < 0 {
+        println("zaporny")
+    } else if x == 0 {
+        println("nulovy")
+    } else {
+        println("kladny")
+    }
+
+    println(if x < 0 {"zaporny"} else {"nezaporny"})
+    println(if x < 0 {"zaporny"} else if x == 0 {"nulovy"} else {"kladny"})
+}
+
+fn basic_loops() {
+    x := 0
+    loop {
+        println(x)
+        x += 1
+        if x > 10 {break}
+    }
+
+    println("")
+
+    for x := 1; x < 1000; x *= 2 {
+        println(x)
+    }
+
+    println("")
+
+    for i 10 {
+        println(i)
+    }
+
+    println("")
+
+    for i [10,20) {
+        println(i)
+    }
+
+    println("")
+
+    a := [1,2,3,10]
+
+    for i {
+        println(a[i])
+    }
+
+    b := sum i len(a) { a[i] }
+    println(b)
+}
+
+fn main() {
+    //functions()
+    //closures()
+    //blocks()
+    //blocks_error()
+    //blocks_clone()
+    //condition()
+    basic_loops()
+}
+
