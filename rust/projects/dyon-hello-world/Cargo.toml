@@ -1,0 +1,7 @@
+[package]
+name = "dyon-hello-world"
+version = "0.1.0"
+authors = ["Pavel Tisnovsky <ptisnovs@redhat.com>"]
+
+[dependencies]
+dyon = "0.21.0"
