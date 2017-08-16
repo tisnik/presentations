@@ -1,3 +1,52 @@
+fn variables() {
+    a := 42
+    a := "xyzzy"
+    b := 0
+    b = 42
+}
+
+fn data_types() {
+    a := true
+    println(a)
+
+    b := 42
+    println(b)
+
+    c := 1_000_000
+    println(c)
+
+    // 4D vektor
+    d := (1,2,3,4)
+    println(d)
+
+    // 3D vektor
+    e := (1,2,3)
+    println(e)
+
+    // 2D vektor
+    f := (1,2)
+    println(f)
+
+    // skalár! (jen umístěný do závorek)
+    g := (1)
+    println(g)
+
+    // heterogenní pole
+    h := [1,2,3,4,true,"xyzzy"]
+    println(h)
+
+    // seznam
+    i := link{1 2 3 4}
+    println(i)
+    println(head(i))
+    println(tail(i))
+    println(head(tail(i)))
+    println(tail(tail(i)))
+
+    s := "Hello"
+    println(s)
+}
+
 fn funkce1() {
     println("funkce1")
 }
@@ -153,23 +202,93 @@ fn basic_loops() {
 
     println("")
 
+}
+
+fn consise_loops() {
     a := [1,2,3,10]
 
     for i {
         println(a[i])
     }
 
-    b := sum i len(a) { a[i] }
-    println(b)
+    println("")
+
+    b := [1,2,3,4,5,6,7,8]
+
+    for i {
+        println(b[i]*a[i])
+    }
+
+    println("")
+}
+
+fn packed_loops() {
+    x:= [[1,2,3], [4,5,6], [7,8,9]]
+
+    for i {
+        for j {
+            println(x[i][j])
+        }
+    }
+
+    println("")
+
+    for i, j {
+        println(x[i][j])
+    }
+
+    y:= [[[1,2,3],
+          [4,5,6],
+          [7,8,9]],
+         [[1,0,0],
+          [0,1,0],
+          [0,0,1]]]
+
+    for i {
+        for j {
+            for k {
+                println(y[i][j][k])
+            }
+        }
+    }
+
+    println("")
+
+    for i, j, k {
+        println(y[i][j][k])
+    }
+
+}
+
+fn special_loops() {
+    a := [3,2,1,10,1]
+
+    minimum := min i { a[i] }
+    println(minimum)
+
+    maximum := max i { a[i] }
+    println(maximum)
+
+    suma := sum i len(a) { a[i] }
+    println(suma)
+
+    product := prod i len(a) { a[i] }
+    println(product)
+
 }
 
 fn main() {
-    //functions()
-    //closures()
-    //blocks()
+    variables()
+    data_types()
+    functions()
+    closures()
+    blocks()
     //blocks_error()
-    //blocks_clone()
-    //condition()
+    blocks_clone()
+    condition()
     basic_loops()
+    consise_loops()
+    packed_loops()
+    special_loops()
 }
 
