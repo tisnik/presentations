@@ -43,7 +43,38 @@ fn test_result_type() {
     }
 }
 
+fn div(x,y) -> {
+    if y == 0 {
+        return err("Div by 0")
+    } else {
+        return ok(x/y)
+    }
+}
+
+fn div_add(x, y, z) -> {
+    r := div(x, y)?
+    println(r)
+    return ok(r + z)
+}
+
+fn test_div() {
+    d := div(10, 5)
+    println(d)
+    e := div(1, 0)
+    println(e)
+}
+
+fn test_div_question_op() {
+    r1 := div_add(10, 5, 100)
+    println(r1)
+
+    r2 := div_add(10, 0, 100)
+    println(r2)
+}
+
 fn main() {
-    test_option_type()
-    test_result_type()
+    //test_option_type()
+    //test_result_type()
+    //test_div()
+    test_div_question_op()
 }
