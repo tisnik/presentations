@@ -1,0 +1,17 @@
+some(42)
+none()
+2
+ok(42)
+true
+false
+err("Very serious")
+false
+true
+2
+Very serious
+42
+ok(2)
+err("Div by 0")
+2
+ok(102)
+err("Div by 0")
