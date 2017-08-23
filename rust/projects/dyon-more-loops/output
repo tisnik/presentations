@@ -1,0 +1,25 @@
+Special loops: all, any
+[3, 2, 1, 10, 1]
+false
+true
+[3, 2, -1, 10, 1]
+true
+false
+
+Special loops: min max, secrets
+[3, 2, 1, 10, 1]
+Min: 1 at index: [2]
+Max: 10 at index: [3]
+
+Special loops: any, secrets
+[3, 2, 1, 10, 1]
+Has negative values: No
+[3, 2, -1, 10, -1]
+Has negative values: Yes, at index: [2]
+
+Special loops: all, secrets
+[3, 2, 1, 10, 1]
+All values are positive: Yes
+[3, 2, -1, 10, -1]
+All values are positive: No, 1st non-positive value found at index: [2]
+

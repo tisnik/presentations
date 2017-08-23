@@ -1,0 +1,112 @@
+fn special_loops_min_max_secrets() {
+    println("Special loops: min max, secrets")
+
+    a := [3,2,1,10,1]
+    println(a)
+
+    minimum := min i { a[i] }
+    print("Min: ")
+    print(minimum)
+    print(" at index: ")
+    println(where(minimum))
+
+    maximum := max i { a[i] }
+    print("Max: ")
+    print(maximum)
+    print(" at index: ")
+    println(where(maximum))
+
+    println("")
+}
+
+fn special_loops_all_any() {
+    println("Special loops: all, any")
+
+    a := [3,2,1,10,1]
+    println(a)
+
+    has_negative_values := any i { a[i] < 0 }
+    println(has_negative_values)
+
+    all_values_positive := all i { a[i] > 0 }
+    println(all_values_positive)
+
+    a := [3,2,-1,10,1]
+    println(a)
+
+    has_negative_values := any i { a[i] < 0 }
+    println(has_negative_values)
+
+    all_values_positive := all i { a[i] > 0 }
+    println(all_values_positive)
+
+    println("")
+}
+
+fn special_loops_any_secrets() {
+    println("Special loops: any, secrets")
+
+    a := [3,2,1,10,1]
+    println(a)
+
+    has_negative_values := any i { a[i] < 0 }
+    print("Has negative values: ")
+    if has_negative_values {
+        print("Yes, at index: ")
+        println(why(has_negative_values))
+    } else {
+        println("No")
+    }
+
+    a := [3,2,-1,10,-1]
+    println(a)
+
+    has_negative_values := any i { a[i] < 0 }
+    print("Has negative values: ")
+    if has_negative_values {
+        print("Yes, at index: ")
+        println(why(has_negative_values))
+    } else {
+        println("No")
+    }
+
+    println("")
+}
+
+fn special_loops_all_secrets() {
+    println("Special loops: all, secrets")
+
+    a := [3,2,1,10,1]
+    println(a)
+
+    all_values_positive := all i { a[i] > 0 }
+    print("All values are positive: ")
+    if all_values_positive {
+        println("Yes")
+    } else {
+        print("No, 1st non-positive value found at index: ")
+        println(why(!all_values_positive))
+    }
+
+    a := [3,2,-1,10,-1]
+    println(a)
+
+    all_values_positive := all i { a[i] > 0 }
+    print("All values are positive: ")
+    if all_values_positive {
+        println("Yes")
+    } else {
+        print("No, 1st non-positive value found at index: ")
+        println(why(!all_values_positive))
+    }
+
+    println("")
+}
+
+fn main() {
+    special_loops_all_any()
+    special_loops_min_max_secrets()
+    special_loops_any_secrets()
+    special_loops_all_secrets()
+}
+
