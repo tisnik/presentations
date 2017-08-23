@@ -1,0 +1,49 @@
+fn test_option_type() {
+    o := some(42)
+    println(o)
+
+    o = none()
+    println(o)
+
+    o = some(2)
+    println(unwrap(o))
+
+    o = none()
+    //println(unwrap(o))
+
+    if o != none() {
+        println(unwrap(o))
+    }
+}
+
+fn test_result_type() {
+    r := ok(42)
+    println(r)
+    println(is_ok(r))
+    println(is_err(r))
+
+    r = err("Very serious")
+    println(r)
+    println(is_ok(r))
+    println(is_err(r))
+
+    r = ok(2)
+    println(unwrap(r))
+    //println(unwrap_err(r))
+
+    r = err("Very serious")
+    //println(unwrap(r))
+    println(unwrap_err(r))
+
+    r = ok(42)
+    if is_ok(r) {
+        println(unwrap(r))
+    } else {
+        println(unwrap_err(r))
+    }
+}
+
+fn main() {
+    test_option_type()
+    test_result_type()
+}
