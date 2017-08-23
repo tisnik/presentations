@@ -1,0 +1,67 @@
+fn inc(mut x) {
+    x += 1
+}
+
+fn call_inc(mut x) {
+    inc(mut x)
+}
+
+fn functions() {
+    x := 1
+    println(x)
+    call_inc(mut x)
+    println(x)
+}
+
+fn test_objects() {
+    c := {real:10, imag:20}
+    println(c)
+
+    c.real = 1000
+    println(c)
+
+    c["real"] = 0
+    println(c)
+
+    c.name := "komplexni cislo"
+    println(c)
+}
+
+fn new_complex(real, imag) -> Complex {
+    return {real: clone(real),
+            imag: clone(imag)}
+}
+
+fn print_complex(c: Complex) {
+    print(c.real)
+    print("+j")
+    print(c.imag)
+}
+
+fn test_complex() {
+    cplx := new_complex(10, 20)
+    print_complex(cplx)
+    println("")
+}
+
+fn foo(a: 'return) -> {
+    return a
+}
+
+fn bar(a: 'return) -> {
+    return foo(a)
+}
+
+fn test_lifetimes() {
+    b := 10
+    x := bar(b)
+    println(x)
+}
+
+fn main() {
+    functions()
+    test_objects()
+    test_complex()
+    test_lifetimes()
+}
+
