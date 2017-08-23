@@ -73,8 +73,8 @@ fn test_div_question_op() {
 }
 
 fn main() {
-    //test_option_type()
-    //test_result_type()
-    //test_div()
+    test_option_type()
+    test_result_type()
+    test_div()
     test_div_question_op()
 }
