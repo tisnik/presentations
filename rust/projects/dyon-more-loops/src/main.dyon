@@ -1,3 +1,13 @@
+fn sum_prod_unicode_name() {
+    a := [3,2,1,10,1]
+
+    suma := ∑ i len(a) { a[i] }
+    println(suma)
+
+    product := ∏ i len(a) { a[i] }
+    println(product)
+}
+
 fn special_loops_min_max_secrets() {
     println("Special loops: min max, secrets")
 
@@ -38,6 +48,30 @@ fn special_loops_all_any() {
     println(has_negative_values)
 
     all_values_positive := all i { a[i] > 0 }
+    println(all_values_positive)
+
+    println("")
+}
+
+fn special_loops_all_any_unicode_name() {
+    println("Special loops: all, any")
+
+    a := [3,2,1,10,1]
+    println(a)
+
+    has_negative_values := ∃ i { a[i] < 0 }
+    println(has_negative_values)
+
+    all_values_positive := ∀ i { a[i] > 0 }
+    println(all_values_positive)
+
+    a := [3,2,-1,10,1]
+    println(a)
+
+    has_negative_values := ∃ i { a[i] < 0 }
+    println(has_negative_values)
+
+    all_values_positive := ∀ i { a[i] > 0 }
     println(all_values_positive)
 
     println("")
