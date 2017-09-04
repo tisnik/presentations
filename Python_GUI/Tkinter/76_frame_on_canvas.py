@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+
+import tkinter
+from tkinter import ttk
+import sys
+
+
+def exit():
+    sys.exit(0)
+
+
+root = tkinter.Tk()
+
+canvas = tkinter.Canvas(root, width=300, height=300, background='white')
+canvas.pack()
+
+canvas.create_line(0, 150,
+                   80, 20,
+                   220, 280,
+                   300, 150, dash=10)
+
+canvas.create_line(0, 150,
+                   80, 20,
+                   220, 280,
+                   300, 150, smooth=True, width=2, fill="red")
+
+nested_window = tkinter.Frame(relief=tkinter.RAISED)
+canvas.create_window(150, 150, width=150, height=150, window=nested_window)
+
+label = tkinter.Label(root, text="Hello world!")
+button = tkinter.Button(root, text="Close window", command=exit)
+
+label.pack()
+button.pack()
+
+root.mainloop()
