@@ -76,7 +76,6 @@ def on_mouse_press(x, y, button, modifiers):
 @window.event
 def on_mouse_release(x, y, button, modifiers):
     on_mouse_action(x, y, button, "released")
-    on_draw()
 
 
 pyglet.app.run()
