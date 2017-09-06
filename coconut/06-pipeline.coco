@@ -1,0 +1,13 @@
+-42 |> abs |> print
+ 
+"B" |> ord |> abs |> hex |> print
+
+range(11) |> sum |> print
+
+range(11) |> reversed |> sum |> print
+
+def evens(sequence):
+    return filter(lambda x: x % 2 == 0, sequence)
+
+[1, 2, 3, 4, 5, 6, 30] |> evens |> sum |> print
+
