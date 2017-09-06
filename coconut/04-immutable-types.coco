@@ -1,0 +1,27 @@
+data complex(real, imag):
+
+    def __abs__(self) =
+        (self.real**2 + self.imag**2)**1/2
+
+    def __neg__(self) =
+        (self.real, self.imag) |> map$(-) |*> complex
+
+    def __add__(self, other) = 
+        complex(self.real + other.real, self.imag + other.imag)
+
+
+c1=complex(1.0, 2.0)
+
+print(-c1)
+
+print(c1)
+
+print(abs(c1))
+
+c1 |> abs |> print
+
+c2=complex(100.0, 50.0)
+
+print(c1+c2)
+
+print(c1+c1)
