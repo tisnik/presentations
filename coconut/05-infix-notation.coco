@@ -1,0 +1,29 @@
+print("hello" `isinstance` str)
+
+def factorial(n):
+    if n <= 1:
+        return 1
+    else:
+        return range(1, n+1) |> reduce$(*)
+
+def choose(n, k):
+    return factorial(n)/(factorial(k)*factorial(n-k))
+
+print(factorial(10))
+
+for k in range(5):
+    print(choose(4, k))
+
+print()
+
+for k in range(5):
+    print(4 `choose` k)
+
+def n `nad` k:
+    return factorial(n)/(factorial(k)*factorial(n-k))
+
+print()
+
+for k in range(5):
+    print(4 `nad` k)
+
