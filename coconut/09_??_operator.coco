@@ -1,0 +1,20 @@
+import os
+
+v1 = None
+v2 = "Some"
+
+print(v1 ?? v2)
+
+v3 = "Some"
+v4 = "Something else"
+
+print(v3 ?? v4)
+
+v5 = None
+v6 = None
+
+print(v5 ?? v6)
+
+print(os.getenv('EDITOR') ?? "notepad")
+print(os.getenv('XXEDITOR') ?? "notepad")
+
