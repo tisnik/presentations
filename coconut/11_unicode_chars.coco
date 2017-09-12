@@ -1,0 +1,21 @@
+result = 60⋅7÷10
+print(result)
+
+if result ≥ 40 and result ≤ 50:
+    print("very close")
+
+print(1 « 10)
+print(1 ⊕ 255)
+
+-42 ↦ abs ↦ print
+
+"B" ↦ ord ↦ abs ↦ hex ↦ print
+
+range(11) ↦ sum ↦ print
+
+range(11) ↦ reversed ↦ sum ↦ print
+
+"B" ↦ hex ∘ abs ∘ ord ↦ print
+
+range(11) ↦ sum ∘ reversed ↦ print
+
