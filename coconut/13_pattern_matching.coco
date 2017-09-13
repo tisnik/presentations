@@ -1,0 +1,42 @@
+def factorial_variant_A(n):
+    case n:
+        match 0:
+            return 1
+        match 1:
+            return 1
+        match x:
+            return x * factorial_variant_A(x-1)
+    else:
+        raise TypeError("expecting integer >= 0")
+
+for n in range(11):
+    print("{n}!={f}".format(n=n, f=factorial_variant_A(n)))
+
+def factorial_variant_B(n):
+    case n:
+        match 0:
+            return 1
+        match 1:
+            return 1
+        match x if x > 1:
+            return x * factorial_variant_B(x-1)
+    else:
+        raise TypeError("expecting integer >= 0")
+
+for n in range(11):
+    print("{n}!={f}".format(n=n, f=factorial_variant_B(n)))
+
+def factorial_variant_C(n):
+    case n:
+        match 0:
+            return 1
+        match 1:
+            return 1
+        match x is int if x > 1:
+            return x * factorial_variant_C(x-1)
+    else:
+        raise TypeError("expecting integer >= 0")
+
+for n in range(11):
+    print("{n}!={f}".format(n=n, f=factorial_variant_C(n)))
+
