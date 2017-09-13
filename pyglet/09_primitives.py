@@ -7,23 +7,26 @@ window = pyglet.window.Window(width=450,
                               height=350,
                               caption="Pyglet+OpenGL")
 
+
 def draw_points():
     glColor3f(1.0, 1.0, 1.0)                # nastaveni barvy pro kresleni
     glBegin(GL_POINTS)                      # nyni zacneme vykreslovat body
-    glVertex2i( 50,  50)
-    glVertex2i(100,  50)
+    glVertex2i(50, 50)
+    glVertex2i(100, 50)
     glVertex2i(100, 100)
-    glVertex2i( 50, 100)
+    glVertex2i(50, 100)
     glEnd()
+
 
 def draw_lines():
     glColor3f(1.0, 0.0, 1.0)
     glBegin(GL_LINES)                       # nyni zacneme vykreslovat usecky
-    glVertex2i(150,  50)
-    glVertex2i(200,  50)
+    glVertex2i(150, 50)
+    glVertex2i(200, 50)
     glVertex2i(200, 100)
     glVertex2i(150, 100)
     glEnd()
+
 
 def draw_line_strip():
     glColor3f(0.0, 1.0, 1.0)
@@ -34,23 +37,26 @@ def draw_line_strip():
     glVertex2i(250, 100)
     glEnd()
 
+
 def draw_line_loop():
     glColor3f(1.0, 1.0, 0.0)
-    glBegin(GL_LINE_LOOP)                   # nyni vykreslime uzavrenou polycaru
-    glVertex2i(350,  50)
-    glVertex2i(400,  50)
+    glBegin(GL_LINE_LOOP)                   # nyni vykreslime uzavrenou
+    glVertex2i(350, 50)                     # polycaru (nevyplneny polygon)
+    glVertex2i(400, 50)
     glVertex2i(400, 100)
     glVertex2i(350, 100)
     glEnd()
 
+
 def draw_triangles():
     glColor3f(0.0, 0.0, 1.0)
     glBegin(GL_TRIANGLES)                   # vykresleni trojuhelniku
-    glVertex2i( 50, 150)
+    glVertex2i(50, 150)
     glVertex2i(100, 150)
     glVertex2i(100, 200)
-    glVertex2i( 50, 200)
+    glVertex2i(50, 200)
     glEnd()
+
 
 def draw_triangle_strip():
     glColor3f(0.0, 1.0, 0.0)
@@ -60,6 +66,7 @@ def draw_triangle_strip():
     glVertex2i(200, 200)
     glVertex2i(200, 150)
     glEnd()
+
 
 def draw_triangle_fan():
     glColor3f(1.0, 0.0, 0.0)
@@ -73,14 +80,16 @@ def draw_triangle_fan():
     glVertex2i(350, 160)
     glEnd()
 
+
 def draw_quads():
     glColor3f(1.0, 0.5, 0.5)
     glBegin(GL_QUADS)                       # vykresleni ctyruhelniku
-    glVertex2i( 50, 250)
+    glVertex2i(50, 250)
     glVertex2i(100, 250)
     glVertex2i(100, 300)
-    glVertex2i( 50, 300)
+    glVertex2i(50, 300)
     glEnd()
+
 
 def draw_quad_strip():
     glColor3f(0.5, 0.5, 1.0)
@@ -95,6 +104,7 @@ def draw_quad_strip():
     glVertex2i(300, 300)
     glEnd()
 
+
 def draw_polygon():
     glColor3f(0.5, 1.0, 0.5)
     glBegin(GL_POLYGON)                     # vykresleni konvexniho polygonu
@@ -107,6 +117,7 @@ def draw_polygon():
     glVertex2i(370, 300)
     glVertex2i(350, 280)
     glEnd()
+
 
 @window.event
 def on_draw():
@@ -130,4 +141,3 @@ def on_draw():
 
 
 pyglet.app.run()
-
