@@ -1,0 +1,21 @@
+slovnik = {
+    "prvni": 1,
+    "druhy": 2,
+    "treti": 3,
+    "posledni": None
+}
+
+print(slovnik)
+
+slovnik["prvni"] ??= 1000
+
+print(slovnik)
+
+slovnik["posledni"] ??= 1000
+
+print(slovnik)
+
+slovnik["neexistujici"] ??= 10
+
+print(slovnik)
+
