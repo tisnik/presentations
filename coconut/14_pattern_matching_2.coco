@@ -1,0 +1,30 @@
+def type(x):
+    case x:
+        match [a, b]:
+            return "list, 2 items"
+        match [a]:
+            return "list, 1 item"
+        match []:
+            return "empty list"
+
+def say_hello(s):
+    case s:
+        match "My name is " + name:
+            return "Hi " + name
+
+def pair(p):
+    case p:
+        match [x,x]:
+            return "same values!"
+        match [x,y] if x>y:
+            return "1st value is greater"
+        match [x,y]:
+            return "2nd value is greater"
+    else:
+        return "other"
+
+def get_name(s):
+    case s:
+        match name + "@root.cz":
+            return name
+
