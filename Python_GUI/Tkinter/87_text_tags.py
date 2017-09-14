@@ -5,11 +5,6 @@ from tkinter import ttk
 import sys
 
 
-WIDTH = 400
-HEIGHT = 400
-GRID_SIZE = 100
-
-
 def exit():
     sys.exit(0)
 
