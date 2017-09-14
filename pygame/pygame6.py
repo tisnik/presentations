@@ -3,7 +3,8 @@
 
 # Demonstrační příklady využívající knihovnu Pygame
 
-import pygame, sys
+import pygame
+import sys
 
 # Příklad číslo 6: výpis seznamu všech dostupných grafických
 #                  režimů pro zadané bitové hloubky.
@@ -12,7 +13,7 @@ import pygame, sys
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
 
-# Inicializace knihovny Pygame 
+# Inicializace knihovny Pygame
 pygame.init()
 
 print("Driver: " + pygame.display.get_driver())
@@ -20,7 +21,7 @@ print("")
 
 # Budou nás zajímat grafické režimy s bitovou hloubkou
 # 8bpp (256 barev), 16bpp (hi-color), 24bpp a 32bpp (True Color)
-for depth in [8,16,24,32]:
+for depth in [8, 16, 24, 32]:
     print("Graphics modes for %d bpp:" % depth)
 
     # Získat seznam grafických režimů pro danou bitovou hloubku
@@ -33,4 +34,3 @@ for depth in [8,16,24,32]:
 pygame.quit()
 
 # finito
-
