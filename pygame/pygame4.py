@@ -29,24 +29,24 @@ display = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame test #4')
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
-BLUE    = (  0,   0, 255)
-CYAN    = (  0, 255, 255)
-GREEN   = (  0, 255,   0)
-YELLOW  = (255, 255,   0)
-RED     = (255,   0,   0)
-MAGENTA = (255,   0, 255)
-WHITE   = (255, 255, 255)
+BLACK = (0, 0, 0)
+BLUE = (0, 0, 255)
+CYAN = (0, 255, 255)
+GREEN = (0, 255, 0)
+YELLOW = (255, 255, 0)
+RED = (255, 0, 0)
+MAGENTA = (255, 0, 255)
+WHITE = (255, 255, 255)
 
 # Vyplnění plochy okna černou barvou
 display.fill(BLACK)
 
 # Vykreslení čar různou barvou
-pygame.draw.line(display, BLUE,    (10, 10), (160, 10))
-pygame.draw.line(display, CYAN,    (10, 20), (160, 20))
-pygame.draw.line(display, GREEN,   (10, 30), (160, 30))
+pygame.draw.line(display, BLUE, (10, 10), (160, 10))
+pygame.draw.line(display, CYAN, (10, 20), (160, 20))
+pygame.draw.line(display, GREEN, (10, 30), (160, 30))
 pygame.draw.line(display, YELLOW,  (10, 40), (160, 40))
-pygame.draw.line(display, RED,     (10, 50), (160, 50))
+pygame.draw.line(display, RED, (10, 50), (160, 50))
 pygame.draw.line(display, MAGENTA, (10, 60), (160, 60))
 
 # Vykreslení čar různou šířkou
