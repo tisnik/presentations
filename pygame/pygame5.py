@@ -7,7 +7,8 @@
 #                  typu Surface.
 
 
-import pygame, sys
+import pygame
+import sys
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -16,7 +17,7 @@ from pygame.locals import *
 WIDTH = 256
 HEIGHT = 256
 
-# Inicializace knihovny Pygame 
+# Inicializace knihovny Pygame
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -28,14 +29,14 @@ display = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame test #5')
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
-BLUE    = (  0,   0, 255)
-CYAN    = (  0, 255, 255)
-GREEN   = (  0, 255,   0)
-YELLOW  = (255, 255,   0)
-RED     = (255,   0,   0)
-MAGENTA = (255,   0, 255)
-WHITE   = (255, 255, 255)
+BLACK = (0, 0, 0)
+BLUE = (0, 0, 255)
+CYAN = (0, 255, 255)
+GREEN = (0, 255, 0)
+YELLOW = (255, 255, 0)
+RED = (255, 0, 0)
+MAGENTA = (255, 0, 255)
+WHITE = (255, 255, 255)
 
 # Vyplnění plochy okna černou barvou
 display.fill(BLACK)
@@ -64,4 +65,3 @@ while True:
     clock.tick(20)
 
 # finito
-
