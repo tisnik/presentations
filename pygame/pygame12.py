@@ -6,7 +6,10 @@
 # Příklad číslo 12: konverze objektů typu Surface.
 
 
-import pygame, sys, os, math
+import pygame
+import sys
+import os
+import math
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -15,7 +18,7 @@ from pygame.locals import *
 WIDTH = 320
 HEIGHT = 240
 
-# Inicializace knihovny Pygame 
+# Inicializace knihovny Pygame
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -27,14 +30,14 @@ display = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame test #12')
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
-BLUE    = (  0,   0, 255)
-CYAN    = (  0, 255, 255)
-GREEN   = (  0, 255,   0)
-YELLOW  = (255, 255,   0)
-RED     = (255,   0,   0)
-MAGENTA = (255,   0, 255)
-WHITE   = (255, 255, 255)
+BLACK = (0, 0, 0)
+BLUE = (0, 0, 255)
+CYAN = (0, 255, 255)
+GREEN = (0, 255, 0)
+YELLOW = (255, 255, 0)
+RED = (255, 0, 0)
+MAGENTA = (255, 0, 255)
+WHITE = (255, 255, 255)
 
 # Vyplnění plochy okna černou barvou
 display.fill(BLACK)
@@ -48,7 +51,7 @@ pygame.draw.line(display, RED,     (10, 50), (160, 50))
 pygame.draw.line(display, MAGENTA, (10, 60), (160, 60))
 
 # Vykreslení čar s různým sklonem
-for i in range(1,90,5):
+for i in range(1, 90, 5):
     # převod ze stupňů na radiány
     angle = math.radians(i)
     radius = 150
@@ -64,11 +67,13 @@ for i in range(1,90,5):
         pygame.draw.line(display, WHITE, (WIDTH-1, 0), (WIDTH-x, y))
 
 # Vykreslení čar různou šířkou
-for i in range(1,10):
+for i in range(1, 10):
     pygame.draw.line(display, WHITE, (10 + i*15, 90), (10 + i*15, 230), i)
 
-# Načtení bitmapy a její okamžitá konverze do formátu kompatibilního s framebufferem
-image_surface = (pygame.image.load(os.path.join('images', 'gnome-globe.png')).convert())
+# Načtení bitmapy a její okamžitá konverze do formátu
+# kompatibilního s framebufferem
+image_surface = (pygame.image.load(os.path.join('images',
+                                                'gnome-globe.png')).convert())
 
 # Výpočet souřadnic pro umístění obrázku přesně doprostřed okna
 center_x = (display.get_width() - image_surface.get_width()) / 2
@@ -93,4 +98,3 @@ while True:
     clock.tick(20)
 
 # finito
-
