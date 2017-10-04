@@ -1,0 +1,511 @@
+Vim ve funkci integrovaného vývojového prostředí
+================================================
+■ Autor    Pavel Tišnovský
+■ Email    <tisnik 0x40 centrum 0x2e cz>
+■ Datum    2017-10-08
+
+Základní funkce IDE
+-------------------
+Textový editor
+Nástroje pro překlad a sestavení projektů
+Nástroje pro ladění aplikací
+
+To ale samozřejmě nestačí
+-------------------------
+Správa projektů
+    Projektové soubory
+    Práce se souborovým systémem
+Orientace v projektu
+    Třídy
+    Metody
+    Funkce
+    Makra
+    Grep
+Podpora při editaci zdrojových souborů
+    Šablony
+    Kontrola chyb
+    Pomocné operace
+        Otevírání hlavičkových souborů...
+    Automatické doplňování kódu
+    Refaktoring
+
+A další očekávané funkce IDE
+----------------------------
+Rozhraní pro systémy pro správu verzí
+    GIT
+    Mercurial
+    ...
+       + diff/blame režimy
+Rozhraní k debuggerům
+    Lokální ladění
+    Vzdálené ladění
+RAD
+    Ideálně obousměrná práce s GUI
+CDE (podpora pro spolupráci)
+    Rozhraní k Bugzille, JIRE atd.
+    TODO list
+    Správa dokumentů
+    ...
+Terminál
+    Historie
+    Filtrace/zvýraznění stdout a stderr
+    Grep
+REPL
+Rozhraní k Facebooku??? :)
+
+Vim ve funkci IDE
+=================
+
+Vylepšení prostředí Vimu
+------------------------
+vim-airline
+vim-colors-solarized
+
+Vim-airline
+-----------
+▶ Stažení
+    https://github.com/bling/vim-airline
+    wget http://www.vim.org/scripts/download_script.php?src_id=22726
+▶ Po instalaci do ~/.vim/bundle 
+    :help airline
+    :set laststatus=2
+    :AirlineToggle      zapnutí či vypnutí tohoto modulu
+    :AirlineRefresh     překreslení stavové řádky
+    :AirlineTheme jméno nastavení barvového schématu
+    :AirlineTheme dark
+    :AirlineTheme wombat
+    :AirlineTheme jellybeans
+    :AirlineTheme <Tab>
+
+Vim-colors-solarized
+--------------------------------
+▶ Stažení
+    https://github.com/altercation/vim-colors-solarized
+    git clone git://github.com/altercation/vim-colors-solarized.git
+▶ Po instalaci do ~/.vim/bundle 
+    :call pathogen#helptags()
+    :help solarized
+    :colorscheme solarized
+    :colorscheme <Tab>
+    :set background=dark
+    :set background=light
+
+Vim-indent-guides
+--------------------------------
+▶ Indent levels, prakticky bez konfigurace
+  Taby, mezery, volba barev
+▶ Stažení
+    git clone git://github.com/nathanaelkane/vim-indent-guides.git
+▶ Po instalaci do ~/.vim/bundle 
+    :IndentGuidesEnable
+    :IndentGuidesDisable
+    :IndentGuidesToggle
+    :let g:indent_guides_indent_levels = 30
+
+Usnadnění editace zdrojového kódu
+---------------------------------
+NERD Commenter
+Rainbow Parentheses
+vim-signature
+SearchComplete
+    <Tab> po příkazu / a ?
+ctrlp.vim
+    Klávesová zkratka Ctrl-P
+        vyhledání souborů
+        bufferů
+        + použití regexpů
+
+NERD Commenter
+--------------------------------
+▶ Stažení
+    http://www.vim.org/scripts/script.php?script_id=1218
+▶ Po instalaci
+    :echo maplocalleader
+    <leader>cc
+    <leader>cn (nesting)
+    <leader>c<space> - prepina
+
+ctrlp.vim
+---------
+Ctrl+D	přepnutí mezi vyhledáváním ve jménech souborů či i ve jménech souborů a adresářů (výchozí)
+Ctrl+R	přepnutí mezi použitím regexpů či tzv. řetězcového režimu (výchozí)
+Ctrl+T	otevření vybraného souboru v novém tabu
+Ctrl+V	vertikální rozdělení okna a otevření vybraného souboru
+Ctrl+S	horizontální rozdělení okna a otevření vybraného souboru
+Ctrl+Z	označení souboru (vedle jména souboru se zobrazí značka)
+Ctrl+O	otevření všech označených souborů
+Tab	automatické doplnění názvu adresáře
+Esc	zavření okna pluginu ctrlp.vim
+
+Práce s projekty a se soubory
+-----------------------------
+NERDTree
+Vim Commander
+
+NERD Tree
+--------------------------------
+▶ Stažení
+    http://www.vim.org/scripts/script.php?script_id=1658
+▶ Po instalaci do ~/.vim/bundle 
+    :help NERDTree
+    :NERDTree
+    (potom klávesa ?)
+
+Vim Commander
+--------------------------------
+▶ Stažení
+    http://www.vim.org/scripts/script.php?script_id=808
+▶ Po instalaci
+    :call VimCommanderToggle()
+    :map --cokoli-- :call VimCommanderToggle()<cr>   
+    - TAB       = Go to the other panel.
+    - F3        = View file under cursor.
+    - F4        = Edit file under cursor.
+    - F5        = Copy file.
+    - F6        = Move/rename file.
+    - F7        = Create directory.
+    - F8/DEL    = Remove file.
+    - F10       = Quit VimCommander.
+    - C-R       = Refresh panels.
+	- Backspace = Go to parent directory.
+    - C-U       = Exchange panels.
+    - C-Left    = Put directory under cursor on other panel, or grab
+                  other panel's dir.
+    - C-Right   = Same.
+    - \H        = Show hidden files (toggle).
+    - INS       = Select file under cursor.
+    - "+"       = Select file by pattern.
+    - "-"       = De-select file by pattern.
+    - S-F4      = Edit new file.
+    - C-t       = Previous directory.
+    - C-y       = Next directory.
+
+Orientace v projektech
+----------------------
+TagList
+
+TagList
+--------------------------------
+    Modul TagList
+        :TlistAddFiles *.c
+        :Tlist
+        :TlistAddFilesRecursive .
+        :Tlist
+    Modul matchit.vim
+
+Rozhraní k terminálu
+--------------------
+ConqueTerm
+    Vybraný buffer ve Vimu bude použit ve funkci terminálu
+    Použití - základní příkazy
+        :ConqueTerm příkaz (bash, python...)
+        :ConqueTermSplit -//-
+        :ConqueTermVSplit -//-
+        :ConqueTermTab -//-
+    Po vytvoření terminálu se editor přepne do vkládacího režimu!
+    Speciální klávesy
+        <F9> - vybraný blok se pošle do terminálu (a spustí)
+        <F10> - celý buffer se pošle do terminálu
+        <F11> - rozdělení obrazovky + spuštění aktuálního bufferu v terminálu
+                (soubor otevřený v bufferu musí být spustitelný!)
+    Pomocí :map si zjistěte, zda nedochází ke kolizi mapování
+
+Rozhraní k debuggeru
+--------------------
+Několik existujících řešení
+    Clewn
+    Pyclewn
+    Conque GDB
+
+Clewn
+-----
+Plugin psaný zčásti ve VimScriptu
+Navíc má i nativní část (clewn)
+    Provede inicializaci debuggeru
+    Následně spustí Gvim
+    Zajišťuje komunikaci mezi debuggerem a Gvimem
+Instalace
+    Nutno správně přeložit nativní část
+        ncurses-devel
+        libreadline-devel
+    Klasická trojice
+        ./configure
+        make
+        make install
+
+Clewn
+-----
+Použití
+    Překlad projektu
+        gcc -O0 -g -o test test.c
+    Spuštění Vimu + debuggeru
+        clewn -d -ga test
+Klávesové zkratky
+    R       spuštění programu
+    Q       ukončení ladění
+    Ctrl+B  nastavení breakpointu na řádku s kurzorem
+    Ctrl+E  vymazání breakpointů na řádku s kurzorem
+    B       zobrazení informací o breakpointech
+    S       jeden krok s vykonáním celé funkce (step)
+    I       jeden krok s případným vstupem do funkce (step into)
+    C       pokračovat (continue)
+    L       zobrazení informací o lokálních proměnných
+    A       zobrazení argumentů
+    W       zobrazení backtrace
+
+Pyclewn
+-------
+Rozhraní ke dvěma debuggerům
+    gdb  (C, C++, Fortran, ...)
+    pdb  (Python debugger)
+Rozdílný od Clewn
+    využívá jediný terminál s debuggerem i Vimem
+Instalace
+    python-dev
+    pip install --user pyclewn
+Instalace pluginu (distribuován jako vim-ball)
+    python -c "import clewn; clewn.get_vimball()"
+    vim -S pyclewn-2.1.vmb
+
+Pyclewn
+-------
+Použití
+    Překlad projektu
+        gcc -O0 -g -o test test.c
+    Spuštění Vimu + debuggeru
+        vim test.c
+        :pyclewn gdb
+    Načtení binárního souboru do debuggeru
+        :Cfile test
+    Další užitečné příkazy
+        :Cbreak main
+        :Crun
+        :Cstep
+        :Cwatch x,y,answer
+    Podokno s obsahem výrazů
+        :Cdbgvar x
+        :Cdbgvar x*10
+
+Conque GDB
+----------
+http://www.vim.org/scripts/script.php?script_id=4582
+Používá Vimball Archiver
+    stáhnout balíček
+    otevřít ve Vimu
+    spustit ho příkazem :so / :source
+    instalace se provede do adresáře ~/.vim
+Nové příkazy
+    :ConqueGDB
+    :ConqueGDBSplit
+    :ConqueGDBVSplit
+    :ConqueGDBTab
+    :ConqueGDBCommand
+
+Conque GDB
+----------
+Nové klávesové zkratky
+    leader je nastavený na \
+    použijte map \ na zjištění, zda nedochází ke konfliktům
+     \r     run
+     \s     step
+     \n     next
+     \c     continue
+     \p     tisk hodnoty identifikátoru/výrazu
+     \t     backtrace
+     \f     finish
+     \b     breakpoint (nastavení/zrušení)
+
+Systémy pro správu verzí
+------------------------
+Vcscommand
+Fugitive
+
+Vcscommand
+----------
+    :VCSAdd     přidání aktuálně editovaného souboru do VCS
+    :VCSCommit  přidání změn provedených v editovaném souboru do VCS
+    :VCSDelete  odstranění souboru z VCS
+    :VCSRemove  (alias) odstranění souboru z VCS
+    :VCSDiff    zobrazení změn provedených v editovaném souboru
+    :VCSLog     zobrazení historie změn do nového bufferu
+    :VCSReview  zobrazení specifikované verze souboru
+    :VCSStatus  zobrazení stavu aktuálně editovaného souboru
+
+Vcscommand a stařičké CVS
+-------------------------
+    :CVSEdit        = cvs edit pro aktuálně editovaný soubor
+    :CVSEditors     = cvs edit pro aktuálně editovaný soubor
+    :CVSUnedit      = cvs unedit
+    :CVSWatch       = cvs watch s parametrem on/off/add/remove
+    :CVSWatchAdd    = cvs watch add
+    :CVSWatchOn     = cvs watch on
+    :CVSWatchOff    = cvs watch off
+    :CVSWatchRemove = cvs watch remove
+    :CVSWatchers    = cvs watchers pro aktuálně editovaný soubor
+
+Fugitive
+--------------------------------
+▶ Stažení
+    http://www.vim.org/scripts/script.php?script_id=2975
+    https://github.com/tpope/vim-fugitive
+▶ Po instalaci do ~/.vim/bundle 
+    :call pathogen#helptags()
+    :help fugitive
+    :Git cokoli
+    :Gstatus
+    :Gcommit (spousta prikazu)
+    :Gbrowse
+    :Gblame :-)
+    :Gvdiff
+
+Vim a jazyky C/C++
+------------------
+▶ c.vim
+    ◆ Komentáře
+    ◆ Šablony
+    ◆ Překlady
+    ◆ Spouštění
+    ◆ Ideální si zobrazit menu
+
+Vim a jazyky C/C++
+------------------
+    ◆ ctags
+    ◆ cscope
+        :cscope add cscope.out
+    :cs show
+        výpis propojení mezi Vimem a utilitou cscope
+    :cs f f stdio.h
+        nalezení souboru specifikovaného ve třetím parametru
+    :cs f t xyzzy
+        nalezení textu uvnitř řetězců (nikde jinde)
+    :cs f g test
+        nalezení definice funkce test (skok na začátek definice)
+    :cs f d main
+        zjištění, které funkce se volají z funkce main
+    :cs f c fclose
+        zjištění, odkud se volá funkce fclose
+
+Vim a jazyky C/C++
+------------------
+    ◆ Formátování zdrojového kódu (C, C++, Java)
+        :set shiftwidth=???
+        :set cindent
+        :set cinoptions
+        fN  úroveň posunutí otevírací levé závorky { pod jménem funkce
+        :N  úroveň odsazení větví case/default v konstrukci switch-case
+        =N  odsazení příkazu/příkazů za klíčovým slovem case/default
+        bN  odsazení příkazu break v konstrukci switch-case
+        hN  podobné volbě =N, ale platné pro klíčová slova public atd. (C++)
+
+Vim a jazyky C/C++
+------------------
+    ◆ Speciální nastavení pro Makefile
+        augroup __makefile__
+        au!
+        au BufRead,BufNewFile Makefile set noexpandtab
+        augroup END
+
+Omnicompletion
+--------------
+    Ctrl+X Ctrl+L
+        nalezení a doplnění celého (shodného) řádku,
+        užitečné především pro konfiguračních soubory
+    Ctrl+X Ctrl+N
+        doplnění slova, které se nalézá v aktuálně
+        editovaném souboru
+    Ctrl+X Ctrl+I
+        podobné Ctrl+N, ovšem prohledávají se i všechny vkládané (included) soubory
+    Ctrl+X Ctrl+K
+        podobné Ctrl+N, ovšem slova se hledají v souborech
+        specifikovaných pomocí konfiguračního parametru dictionary
+    Ctrl+X Ctrl+T
+        podobné Ctrl+T, ovšem slova se hledají v souborech
+        specifikovaných pomocí konfiguračního parametru thesaurus
+
+Omnicompletion
+--------------
+    Ctrl+X Ctrl+]
+        vyhledávání v seznamu značek
+    Ctrl+X Ctrl+F
+        doplnění názvu souboru a/nebo cesty, postačuje například zadat text ~/ za
+        nímž následuje klávesová zkratka Ctrl+X Ctrl+F a zobrazí se výpis
+        souborů v domácím adresáři
+    Ctrl+X Ctrl+D
+        vyhledání definice makra a doplnění jména tohoto makra
+    Ctrl+X Ctrl+U
+        zavolání funkce zadané v konfiguračním parametru completefunc, které se předá právě editovaný text
+    Ctrl+X Ctrl+O
+        vyvolání omni completion
+
+Vim a Java
+----------
+▶ Modul JavaBrowser
+https://github.com/vim-scripts/JavaBrowser
+    Vyžaduje ctags
+        Enter   přeskok kurzoru na definici metody/atributu
+        o       dtto, ale otevře se nové okno
+        Space   prototyp
+        u       update
+        s       sort by name
+        q       quit/close
+        +       rozbalení podstromu
+        -       zabalení podstromu
+        *       rozbalení celého stromu
+        x       skrytí či zobrazení okna se zdrojovým kódem
+
+Vim a Lua
+---------
+▶ lua-support.vim a.k.a. Lua-IDE
+    ◆ Šablony (soubory s nimi lze upravovat)
+▶ Luaref
+    ◆ Kompletní referenční příručka ve formátu Vim helpu!
+
+Vim a Clojure
+-------------
+VimClojure
+    http://www.vim.org/scripts/script.php?script_id=2501
+
+▶ Slime for Vim
+    ◆ Využívá screen a posílání příkazů do běžícího REPLu
+    ◆ Jednoduché a přitom velmi snadno použitelné (kompletní IDE :-)
+▶ Vimclojure
+
+Vim a XML
+---------
+▶ Modul xml.vim
+    ◆ http://www.vim.org/scripts/script.php?script_id=301
+    ◆ Uzavírání tagů, kompletace tagů, ...
+:%!xmllint --format -
+:'<,'>!xmllint --format -
+:map =. :%!xmllint --format - <cr>
+
+
+Strom souborů
+
+
+vtreeexplorer
+https://vim.sourceforge.io/scripts/script.php?script_id=184
+
+Sprava Projektu
+project
+https://vim.sourceforge.io/scripts/script.php?script_id=69
+
+Syntastic
+    kontrola chyb
+vim-easytags
+ctrlp
+A.vim
+    otevirani hlavickovych souboru
+    :AT - otevre soubor xxxx.h, kdyz se edituje xxxx.c
+vim-superman
+    vytvareni manualovych stranek
+
+
+Odkazy
+------
+http://vim.wikia.com/wiki/Use_Vim_like_an_IDE
+.
+Eclim http://eclim.org/
+.
+Python Debugging Tools
+https://wiki.python.org/moin/PythonDebuggingTools
