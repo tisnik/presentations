@@ -58,8 +58,12 @@ Vim ve funkci IDE
 
 Vylepšení prostředí Vimu
 ------------------------
-vim-airline
-vim-colors-solarized
+1. vim-airline
+2. vim-colors-solarized
+3. Buffer Explorer
+4. Vim-indent-guides
+5. Calendar
+6. Caps Lock -> Esc
 
 Vim-airline
 -----------
@@ -102,18 +106,44 @@ Vim-indent-guides
     :IndentGuidesToggle
     :let g:indent_guides_indent_levels = 30
 
+Buffer explorer
+---------------
+▶ Stažení
+    https://vim.sourceforge.io/scripts/script.php?script_id=42
+▶ Použití
+    \be  otevření bufferu
+    \bs  horizontální rozdělení + otevření bufferu
+    \bv  vertikální rozdělení + otevření bufferu
+
+Calendar
+--------
+▶ Stažení
+    http://www.vim.org/scripts/download_script.php?src_id=19707
+▶ Použití
+    :Calendar   vertikální rozdělení okna a zobrazení kalendáře
+    :CalendarH  horizontální rozdělení okna a zobrazení kalendáře
+▶ V kalendáři
+    šipka doleva        předchozí měsíc
+    šipka doprava       následující měsíc
+    šipka nahoru        předchozí rok
+    šipka dolů          následující rok
+    t                   přechod na aktuální datum
+    q                   uzavření okna s kalendářem
+    Enter               zobrazení/vytvoření poznámky pro vybraný den
+
+Caps Lock -> Esc
+----------------
+    xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+
 Usnadnění editace zdrojového kódu
 ---------------------------------
-NERD Commenter
-Rainbow Parentheses
-vim-signature
-SearchComplete
-    <Tab> po příkazu / a ?
-ctrlp.vim
-    Klávesová zkratka Ctrl-P
-        vyhledání souborů
-        bufferů
-        + použití regexpů
+1. NERD Commenter
+2. Rainbow Parentheses
+3. vim-signature
+4. SearchComplete
+5. ctrlp.vim
+6. Surround
+7. snipMate
 
 NERD Commenter
 --------------------------------
@@ -123,24 +153,112 @@ NERD Commenter
     :echo maplocalleader
     <leader>cc
     <leader>cn (nesting)
-    <leader>c<space> - prepina
+    <leader>c<space> - přepíná
+
+Rainbow Parentheses
+--------------------------------
+▶ Stažení
+    https://github.com/junegunn/rainbow_parentheses.vim
+▶ Po instalaci
+    Povolení
+        :RainbowParentheses
+    Zákaz
+        :RainbowParentheses!
+    Přepnutí
+        :RainbowParentheses!!
+▶ Nastavení
+    :let g:rainbow#max_level = 16
+    :let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+
+Vim signature
+--------------------------------
+Vizuální zobrazení značek (marks) v levém sloupci
+▶ Stažení
+    https://github.com/kshenoy/vim-signature
+▶ Použití
+    ma - mz     definice lokální značky a-z
+    dma - dmz   smazání lokální značky a-z (přidáno pluginem)
+    mA - mZ     definice globální značky A-Z
+    dmA - dmZ   smazání globální značky A-Z (přidáno pluginem)
+    m,          vytvoření nové značky, automatická volba písmene
+                (přidáno pluginem)
+    m.          vytvoření nové značky, automatická volba písmene;
+                pokud značka existuje, zruší se
+    'a - 'z     skok na řádek, kde je značka definovaná
+                (jedná se o příkaz pohybu kurzoru!)
+    'A - 'Z     skok na soubor a řádek, kde je značka definovaná
+    `a - `z     skok na přesné místo, kde je značka definovaná
+                (jedná se o příkaz pohybu kurzoru!)
+    'A - 'Z     skok na přesné místo (řádek i sloupec),
+                kde je značka definovaná
+
+SearchComplete
+--------------------------------
+▶ Stažení
+    https://github.com/vim-scripts/SearchComplete
+▶ Po instalaci
+    <Tab> po příkazu / a ?
+▶ Co říká autor
+"Call me lazy but I wanted to be able to tab-complete words
+while typing in a search and I have always been up to a
+challange.  After learning a lot more about vim and key
+mapping then I ever knew before, this is the result, working
+tab completion inside a search."
+
+ctrlp.vim
+--------------------------------
+▶ Stažení
+    https://github.com/ctrlpvim/ctrlp.vim
+Klávesová zkratka Ctrl-P
+    vyhledání souborů
+    bufferů
+    + použití regexpů
 
 ctrlp.vim
 ---------
-Ctrl+D	přepnutí mezi vyhledáváním ve jménech souborů či i ve jménech souborů a adresářů (výchozí)
-Ctrl+R	přepnutí mezi použitím regexpů či tzv. řetězcového režimu (výchozí)
-Ctrl+T	otevření vybraného souboru v novém tabu
-Ctrl+V	vertikální rozdělení okna a otevření vybraného souboru
-Ctrl+S	horizontální rozdělení okna a otevření vybraného souboru
-Ctrl+Z	označení souboru (vedle jména souboru se zobrazí značka)
-Ctrl+O	otevření všech označených souborů
-Tab	automatické doplnění názvu adresáře
-Esc	zavření okna pluginu ctrlp.vim
+Ctrl+D  přepnutí mezi vyhledáváním ve jménech souborů
+        či i ve jménech souborů a adresářů (výchozí)
+Ctrl+R  přepnutí mezi použitím regexpů či
+        tzv. řetězcového režimu (výchozí)
+Ctrl+T  otevření vybraného souboru v novém tabu
+Ctrl+V  vertikální rozdělení okna a otevření vybraného souboru
+Ctrl+S  horizontální rozdělení okna a otevření vybraného souboru
+Ctrl+Z  označení souboru (vedle jména souboru se zobrazí značka)
+Ctrl+O  otevření všech označených souborů
+Tab     automatické doplnění názvu adresáře
+Esc     zavření okna pluginu ctrlp.vim
+
+Surround
+--------
+▶ Stažení
+    https://github.com/tpope/vim-surround
+Nové/modifikované příkazy
+ds"         vymaže uvozovky okolo textu (v němž se nachází kurzor)
+ds(         vymaže kulaté závorky okolo textu (levou i pravou)
+ds)         dtto
+ds[         vymaže hranaté závorky okolo textu
+dst         vymaže tag okolo textu (platné pro XML a HTML)
+ysaw"       zapíše uvozovky okolo slova ("aw" znamená "a word")
+ysaw(       zapíše pravou a levou kulatou závorku okolo slova ("aw" znamená "a word")
+ysW(        text od kurzoru až po další slovo bude uzavřen mezi kulaté závorky
+ysip<div>   celý textový odstavec se umístí mezi párové značky <div> a </div>
+yssB        celý řádek se umístí do složených závorek
+cs"'        nahradí obalové uvozovky za apostrofy
+cs'<strong> nahradí apostrofy okolo textu za párovou značku <strong> a </strong>
+
+snipMate
+--------
+▶ Stažení
+    https://github.com/msanders/snipmate.vim
+▶ Použití
+    začátek snippetu<Tab>
+    přesun na další proměnnou položku - <Tab>
 
 Práce s projekty a se soubory
 -----------------------------
-NERDTree
-Vim Commander
+1. NERDTree
+2. Vim Commander
+3. Project
 
 NERD Tree
 --------------------------------
@@ -167,7 +285,7 @@ Vim Commander
     - F8/DEL    = Remove file.
     - F10       = Quit VimCommander.
     - C-R       = Refresh panels.
-	- Backspace = Go to parent directory.
+        - Backspace = Go to parent directory.
     - C-U       = Exchange panels.
     - C-Left    = Put directory under cursor on other panel, or grab
                   other panel's dir.
@@ -180,9 +298,37 @@ Vim Commander
     - C-t       = Previous directory.
     - C-y       = Next directory.
 
+Project
+-------
+Sprava projektů
+    vlastně jen seznam používaných souborů
+    automatické spouštění skriptů po výběru určitých souborů
+    grep v projektu pomocí \g a \G
+    specifikace, jak se má soubor otevřít
+       *.jpg otevře soubor v Eog atd. atd.
+▶ Stažení
+    https://vim.sourceforge.io/scripts/script.php?script_id=69
+
 Orientace v projektech
 ----------------------
+1. TagList
+
 TagList
+--------------------------------
+▶ Vytvoření souborů taglist.txt
+    ◆ ctags
+    ◆ ctags -R
+    ◆ ctags -R /usr/lib/include
+        • Obrovské soubory, lepší skok na manuálovou stránku
+        • Shift+K
+▶ Skok na definici
+    :tag jméno funkce        lze zadat i regulárním výrazem
+     g+Levé tlačítko myši    nefunkční v terminálu
+     Ctrl+Levé tlačítko myši nefunkční v terminálu
+     Ctrl+]                  ve vizuálním režimu podobné :tag
+▶ Návrat zpět
+    ◆ Ctrl+T
+▶ Pohyb po nápovědě Vimu je řešen právě tímto způsobem
 
 TagList
 --------------------------------
@@ -191,7 +337,52 @@ TagList
         :Tlist
         :TlistAddFilesRecursive .
         :Tlist
-    Modul matchit.vim
+
+Modul matchit.vim
+--------------------
+Doskoky na párové tagy v HTML, XML atd. pomocí %
+Lze použít i pro VimScript:
+if <---> endif
+while <---> endwhile
+atd.
+
+Režim diff
+----------
+▶ vim -d test_old.c test_new.c
+▶ vim -d test.c ../test-sources/
+▶ Příkazy
+    [c skok na začátek předchozího bloku se změnami
+    ]c skok na začátek následujícího bloku se změnami
+    dp přenos změny do druhého souboru
+    do opak předchozího příkazu – získání změny
+    :diffupdate tento příkaz provede nové vyhodnocení
+       rozdílů mezi oběma
+
+DirDiff
+-------
+▶ Stažení
+    git clone https://github.com/will133/vim-dirdiff
+▶ Použití
+    :DirDiff cesta_k_prvnímu_adresáři cesta_ke_druhému_adresáři
+.
+Zkratka Význam
+Enter   zobrazí se rozdíl pro vybraný soubor (na němž se nachází kurzor)
+o       stejný význam jako předchozí zkratka
+s       provedení synchronizace s výběrem vhodné metody (kopie z prvního adresáře atd.)
+u       má stejný význam jako příkaz :diffupdate
+q       ukončení režimu DirDiff
+
+Multiple Cursors
+----------------
+▶ Stažení
+    git clone https://github.com/terryma/vim-multiple-cursors
+▶ Použití
+Ctrl+N
+    Po provedení výběru:
+    c (change)
+    s (substitute)
+    i (insert)
+    apod.
 
 Rozhraní k terminálu
 --------------------
@@ -317,8 +508,8 @@ Nové klávesové zkratky
 
 Systémy pro správu verzí
 ------------------------
-Vcscommand
-Fugitive
+1. Vcscommand
+2. Fugitive
 
 Vcscommand
 ----------
@@ -479,16 +670,46 @@ Vim a XML
 :'<,'>!xmllint --format -
 :map =. :%!xmllint --format - <cr>
 
+Editace binárních souborů
+-------------------------
+▶ Editace binárních souborů velmi obtížná
+▶ Mnoho programátorů preferuje hexa editory
+▶ xxd
+▶ Příklad použití pro soubory *.class
+augroup Binary_Java_Class
+    au!
+    au BufReadPre   *.class let &bin=1
+    au BufReadPost  *.class if &bin | %!xxd -g1
+    au BufReadPost  *.class set ft=xxd | endif
+    au BufWritePre  *.class if &bin | %!xxd -g1 -r
+    au BufWritePre  *.class endif
+    au BufWritePost *.class if &bin | %!xxd -g1
+    au BufWritePost *.class set nomod | endif
+augroup END
 
-Strom souborů
-
+Editace binárních souborů
+-------------------------
+0000000: ca fe ba be 00 00 00 32 00 0f 0a 00 03 00 0c 07  .......2........
+0000010: 00 0d 07 00 0e 01 00 06 3c 69 6e 69 74 3e 01 00  ........<init>..
+0000020: 03 28 29 56 01 00 04 43 6f 64 65 01 00 0f 4c 69  .()V...Code...Li
+0000030: 6e 65 4e 75 6d 62 65 72 54 61 62 6c 65 01 00 04  neNumberTable...
+0000040: 6d 61 69 6e 01 00 16 28 5b 4c 6a 61 76 61 2f 6c  main...([Ljava/l
+0000050: 61 6e 67 2f 53 74 72 69 6e 67 3b 29 56 01 00 0a  ang/String;)V...
+0000060: 53 6f 75 72 63 65 46 69 6c 65 01 00 09 54 65 73  SourceFile...Tes
+0000070: 74 2e 6a 61 76 61 0c 00 04 00 05 01 00 04 54 65  t.java........Te
+0000080: 73 74 01 00 10 6a 61 76 61 2f 6c 61 6e 67 2f 4f  st...java/lang/O
+0000090: 62 6a 65 63 74 00 21 00 02 00 03 00 00 00 00 00  bject.!.........
+00000a0: 02 00 01 00 04 00 05 00 01 00 06 00 00 00 1d 00  ................
+00000b0: 01 00 01 00 00 00 05 2a b7 00 01 b1 00 00 00 01  .......*........
+00000c0: 00 07 00 00 00 06 00 01 00 00 00 01 00 09 00 08  ................
+00000d0: 00 09 00 01 00 06 00 00 00 19 00 00 00 01 00 00  ................
+00000e0: 00 01 b1 00 00 00 01 00 07 00 00 00 06 00 01 00  ................
+00000f0: 00 00 03 00 01 00 0a 00 00 00 02 00 0b           .............
 
 vtreeexplorer
+-------------
+Strom souborů
 https://vim.sourceforge.io/scripts/script.php?script_id=184
-
-Sprava Projektu
-project
-https://vim.sourceforge.io/scripts/script.php?script_id=69
 
 Syntastic
     kontrola chyb
@@ -500,12 +721,27 @@ A.vim
 vim-superman
     vytvareni manualovych stranek
 
-
-Odkazy
-------
+Užitečné odkazy
+---------------
+Use Vim like an IDE
 http://vim.wikia.com/wiki/Use_Vim_like_an_IDE
 .
-Eclim http://eclim.org/
+Eclim
+http://eclim.org/
 .
 Python Debugging Tools
 https://wiki.python.org/moin/PythonDebuggingTools
+http://www.vim.org
+http://vim.wikia.com/wiki/Vim_Tips_Wiki
+
+.      _____________________
+.     < Děkuji za pozornost >
+.      ---------------------
+.       \
+.        \   \_\_    _/_/
+.         \      \__/
+.                (oo)\_______
+.                (__)\       )\/\
+.                    ||----w |
+.                    ||     ||
+.     
