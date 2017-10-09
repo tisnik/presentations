@@ -6,7 +6,10 @@
 # Příklad číslo 20: použití spritů, pohyblivý sprite
 
 
-import pygame, sys, os, math
+import pygame
+import sys
+import os
+import math
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -14,7 +17,6 @@ from pygame.locals import *
 # Velikost okna aplikace
 WIDTH = 320
 HEIGHT = 240
-
 
 
 # Třída představující sprite zobrazený jako jednobarevný čtverec.
@@ -26,7 +28,7 @@ class BlockySprite(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         # Vytvoření obrázku představujícího vizuální obraz spritu:
-        self.image = pygame.Surface([size,size])
+        self.image = pygame.Surface([size, size])
         self.image.fill(color)
 
         # Vytvoření obalového obdélníku
@@ -38,7 +40,6 @@ class BlockySprite(pygame.sprite.Sprite):
         # Počáteční rychlost spritu
         self.speed_x = 0
         self.speed_y = 0
-
 
 
 # Inicializace knihovny Pygame
@@ -53,21 +54,21 @@ display = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame test #20')
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
-RED     = (255,   0,   0)
-GRAY    = (128, 128, 128)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GRAY = (128, 128, 128)
 
 # Objekt sdružující všechny sprity
 all_sprites = pygame.sprite.Group()
 
 # Vytvoření několika typů spritů
 #                     barva  x   y velikost
-wall1  = BlockySprite(GRAY, 50, 10, 10)
-wall2  = BlockySprite(GRAY, 15, 100, 100)
-wall3  = BlockySprite(GRAY, 15, 100, 150)
-wall4  = BlockySprite(GRAY, 15, 200, 100)
-wall5  = BlockySprite(GRAY, 15, 200, 150)
-player = BlockySprite(RED,  25, WIDTH/2-12, HEIGHT/2-12)
+wall1 = BlockySprite(GRAY, 50, 10, 10)
+wall2 = BlockySprite(GRAY, 15, 100, 100)
+wall3 = BlockySprite(GRAY, 15, 100, 150)
+wall4 = BlockySprite(GRAY, 15, 200, 100)
+wall5 = BlockySprite(GRAY, 15, 200, 150)
+player = BlockySprite(RED, 25, WIDTH/2-12, HEIGHT/2-12)
 
 # Přidání několika dalších spritů do seznamu
 # (jen jeden sprite - ten poslední - bude ve skutečnosti pohyblivý)
@@ -77,7 +78,6 @@ all_sprites.add(wall3)
 all_sprites.add(wall4)
 all_sprites.add(wall5)
 all_sprites.add(player)
-
 
 
 # Posun všech spritů ve skupině na základě jejich rychlosti
@@ -101,7 +101,6 @@ def move_sprites(sprite_group, playground_width, playground_height):
             sprite.speed_y = 0
 
 
-
 # Vykreslení celé scény na obrazovku
 def draw_scene(display, background_color, sprite_group):
     # Vyplnění plochy okna černou barvou
@@ -112,15 +111,14 @@ def draw_scene(display, background_color, sprite_group):
     pygame.display.update()
 
 
-
 # Zjistí kolize spritu se "stěnami" (nepohyblivými sprity)
 def check_collisions(player, sprite_group):
     # Vytvoření seznamu spritů, které kolidují s hráčem
     hit_list = pygame.sprite.spritecollide(player, sprite_group, False)
     collisions = len(hit_list)
     # Přenastavení titulku okna
-    pygame.display.set_caption('Pygame test #20: collisions ' + str(collisions))
-
+    caption = 'Pygame test #20: collisions ' + str(collisions)
+    pygame.display.set_caption(caption)
 
 
 # Hlavní herní smyčka
@@ -160,4 +158,3 @@ while True:
     clock.tick(20)
 
 # finito
-
