@@ -7,7 +7,10 @@
 #                   kolize, různé tvary kolidujících spritů
 
 
-import pygame, sys, os, math
+import pygame
+import sys
+import os
+import math
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -15,7 +18,6 @@ from pygame.locals import *
 # Velikost okna aplikace
 WIDTH = 320
 HEIGHT = 240
-
 
 
 # Třída představující sprite zobrazený jako jednobarevný čtverec.
@@ -28,12 +30,15 @@ class CircularSprite(pygame.sprite.Sprite):
 
         # Načtení obrázků, jeden pro normální sprite,
         # druhý pro sprite, který koliduje s hráčem
-        self.normal_image = pygame.image.load("images/" + normal_image_name + ".png")
-        self.collision_image = pygame.image.load("images/" + collision_image_name + ".png")
+        self.normal_image = pygame.image.load(
+            "images/" + normal_image_name + ".png")
+        self.collision_image = pygame.image.load(
+            "images/" + collision_image_name + ".png")
 
         # Vytvoření obrázku představujícího vizuální obraz spritu:
         self.image = self.normal_image
-        #self.image.fill(color) - toto nyní nepoužijeme, pozůstatek z BlockySprite
+        # self.image.fill(color) - toto nyní nepoužijeme,
+        #                          pozůstatek z BlockySprite
 
         # Vytvoření obalového obdélníku
         # (velikost se získá z rozměru obrázku)
@@ -54,7 +59,6 @@ class CircularSprite(pygame.sprite.Sprite):
         self.image = self.normal_image
 
 
-
 # Inicializace knihovny Pygame
 pygame.init()
 
@@ -67,7 +71,7 @@ display = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame test #23')
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
+BLACK = (0, 0, 0)
 
 # Objekt sdružující všechny sprity
 all_sprites = pygame.sprite.Group()
@@ -75,13 +79,13 @@ all_sprites = pygame.sprite.Group()
 all_sprites_but_player = pygame.sprite.Group()
 
 # Vytvoření několika typů spritů
-#                         x    y   první obr. druhý obr.
-wall1  = CircularSprite( 20,  40, "sprite3", "sprite2")
-wall2  = CircularSprite( 20, 140, "sprite3", "sprite2")
-wall3  = CircularSprite(220,  40, "sprite3", "sprite2")
-wall4  = CircularSprite(220, 140, "sprite3", "sprite2")
-wall5  = CircularSprite(120,  40, "sprite3", "sprite2")
-wall6  = CircularSprite(120, 140, "sprite3", "sprite2")
+#                       x    y   první obr. druhý obr.
+wall1 = CircularSprite(20,  40, "sprite3", "sprite2")
+wall2 = CircularSprite(20, 140, "sprite3", "sprite2")
+wall3 = CircularSprite(220,  40, "sprite3", "sprite2")
+wall4 = CircularSprite(220, 140, "sprite3", "sprite2")
+wall5 = CircularSprite(120,  40, "sprite3", "sprite2")
+wall6 = CircularSprite(120, 140, "sprite3", "sprite2")
 player = CircularSprite(WIDTH/2-20, HEIGHT/2-20, "sprite1", "sprite1")
 
 # Přidání několika dalších spritů do seznamu
@@ -101,7 +105,6 @@ all_sprites_but_player.add(wall3)
 all_sprites_but_player.add(wall4)
 all_sprites_but_player.add(wall5)
 all_sprites_but_player.add(wall6)
-
 
 
 # Posun všech spritů ve skupině na základě jejich rychlosti
@@ -125,7 +128,6 @@ def move_sprites(sprite_group, playground_width, playground_height):
             sprite.speed_y = 0
 
 
-
 # Vykreslení celé scény na obrazovku
 def draw_scene(display, background_color, sprite_group):
     # Vyplnění plochy okna černou barvou
@@ -134,7 +136,6 @@ def draw_scene(display, background_color, sprite_group):
     sprite_group.draw(display)
     # Obnovení obsahu obrazovky (překlopení zadního a předního bufferu)
     pygame.display.update()
-
 
 
 # Změna obrázku spritu na základě kolize s hráčem
@@ -147,7 +148,6 @@ def change_sprite_image(sprite_group, hit_list):
             sprite.setNormalImage()
 
 
-
 # Zjistí kolize spritu se "stěnami" (nepohyblivými sprity)
 def check_collisions(player, sprite_group):
     # Vytvoření seznamu spritů, které kolidují s hráčem
@@ -156,8 +156,8 @@ def check_collisions(player, sprite_group):
     change_sprite_image(sprite_group, hit_list)
     collisions = len(hit_list)
     # Přenastavení titulku okna
-    pygame.display.set_caption('Pygame test #23: collisions ' + str(collisions))
-
+    caption = 'Pygame test #23: collisions ' + str(collisions)
+    pygame.display.set_caption(caption)
 
 
 # Hlavní herní smyčka
@@ -197,4 +197,3 @@ while True:
     clock.tick(20)
 
 # finito
-
