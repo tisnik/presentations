@@ -7,7 +7,9 @@
 #                  a sklonu bez použití antialiasingu.
 
 
-import pygame, sys, math
+import pygame
+import sys
+import math
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -16,7 +18,7 @@ from pygame.locals import *
 WIDTH = 320
 HEIGHT = 240
 
-# Inicializace knihovny Pygame 
+# Inicializace knihovny Pygame
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -28,14 +30,14 @@ display = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame test #8')
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
-BLUE    = (  0,   0, 255)
-CYAN    = (  0, 255, 255)
-GREEN   = (  0, 255,   0)
-YELLOW  = (255, 255,   0)
-RED     = (255,   0,   0)
-MAGENTA = (255,   0, 255)
-WHITE   = (255, 255, 255)
+BLACK = (0, 0, 0)
+BLUE = (0, 0, 255)
+CYAN = (0, 255, 255)
+GREEN = (0, 255, 0)
+YELLOW = (255, 255, 0)
+RED = (255, 0, 0)
+MAGENTA = (255, 0, 255)
+WHITE = (255, 255, 255)
 
 # Vyplnění plochy okna černou barvou
 display.fill(BLACK)
@@ -49,7 +51,7 @@ pygame.draw.line(display, RED,     (10, 50), (160, 60))
 pygame.draw.line(display, MAGENTA, (10, 60), (160, 70))
 
 # Vykreslení čar s různým sklonem
-for i in range(1,90,5):
+for i in range(1, 90, 5):
     # převod ze stupňů na radiány
     angle = math.radians(i)
     radius = 150
@@ -60,9 +62,8 @@ for i in range(1,90,5):
     pygame.draw.line(display, WHITE, (WIDTH-1, 0), (WIDTH-x, y))
 
 # Vykreslení čar různou šířkou
-for i in range(1,10):
+for i in range(1, 10):
     pygame.draw.line(display, WHITE, (10 + i*15, 90), (20 + i*15, 230), i)
-
 
 
 # Hlavní herní smyčka
@@ -80,4 +81,3 @@ while True:
     clock.tick(20)
 
 # finito
-
