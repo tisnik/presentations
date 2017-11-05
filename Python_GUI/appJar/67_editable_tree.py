@@ -4,10 +4,6 @@ from appJar import gui
 import re
 
 
-from appJar import gui
-
-app = gui()
-
 treeContent = """
 <html>
     <head>
