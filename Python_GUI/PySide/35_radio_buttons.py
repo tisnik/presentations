@@ -1,0 +1,88 @@
+#!/usr/bin/env python
+# vim: set fileencoding=utf-8
+
+import sys
+
+# import "jádra" frameworku Qt i modulu pro GUI
+from PySide import QtCore
+from PySide import QtGui
+
+
+def buttonEvent(eventName):
+    print("Event " + eventName)
+
+
+# nový widget bude odvozen od obecného widgetu
+class MainWindow(QtGui.QWidget):
+
+    def __init__(self):
+        # zavoláme konstruktor předka
+        super(MainWindow, self).__init__()
+
+        # konfigurace GUI + přidání widgetu do okna
+        self.prepareGUI()
+
+    def prepareGUI(self):
+        # velikost není potřeba specifikovat
+        # self.resize(320, 240)
+        self.setWindowTitle("QButton signals")
+
+        # testovací zaškrtávací tlačítka
+        self.testRadioButton1 = QtGui.QRadioButton("radio button #1")
+        self.testRadioButton2 = QtGui.QRadioButton("radio button #2")
+        self.testRadioButton3 = QtGui.QRadioButton("radio button #3")
+
+        # tlačítko pro zjištění stavů přepínačů
+        testButton = QtGui.QPushButton("Print state")
+
+        # tlačítko pro ukončení aplikace
+        quitButton = QtGui.QPushButton("Quit")
+
+        # vytvoření správce geometrie
+        layout = QtGui.QVBoxLayout()
+
+        # umístění widgetů do okna
+        layout.addWidget(self.testRadioButton1)
+        layout.addWidget(self.testRadioButton2)
+        layout.addWidget(self.testRadioButton3)
+        layout.addWidget(testButton)
+        layout.addWidget(quitButton)
+
+        # nastavení správce geometrie a vložení všech komponent do okna
+        self.setLayout(layout)
+
+        # po stisku testovacího tlačítka se zavolá metoda
+        testButton.clicked.connect(self.printState)
+
+        # navázání akce na stisk tlačítka pro ukončení aplikace
+        quitButton.clicked.connect(self.quit)
+
+    def printState(self):
+        print("-" * 50)
+        MainWindow.printStateForRadioButton("#1", self.testRadioButton1)
+        MainWindow.printStateForRadioButton("#2", self.testRadioButton2)
+        MainWindow.printStateForRadioButton("#3", self.testRadioButton3)
+
+    @staticmethod
+    def printStateForRadioButton(name, radioButton):
+        state = "checked" if radioButton.isChecked() else "unchecked"
+        print("Radio button {name} is {state}".format(name=name, state=state))
+
+    def run(self, app):
+        # zobrazení okna na obrazovce
+        self.show()
+        # vstup do smyčky událostí (event loop)
+        app.exec_()
+
+    def quit(self):
+        print("Closing...")
+        self.close()
+
+
+def main():
+    app = QtGui.QApplication(sys.argv)
+    MainWindow().run(app)
+
+
+if __name__ == '__main__':
+    main()
