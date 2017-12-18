@@ -8,10 +8,6 @@ from PySide import QtCore
 from PySide import QtGui
 
 
-def buttonEvent(eventName):
-    print("Event " + eventName)
-
-
 # nový widget bude odvozen od obecného widgetu
 class MainWindow(QtGui.QWidget):
 
@@ -25,7 +21,7 @@ class MainWindow(QtGui.QWidget):
     def prepareGUI(self):
         # velikost není potřeba specifikovat
         # self.resize(320, 240)
-        self.setWindowTitle("QButton signals")
+        self.setWindowTitle("QCheckBox")
 
         # testovací zaškrtávací tlačítka
         self.testCheckBox1 = QtGui.QCheckBox("check box 1")
