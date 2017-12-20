@@ -8,10 +8,6 @@ from PySide import QtCore
 from PySide import QtGui
 
 
-def buttonEvent(eventName):
-    print("Event " + eventName)
-
-
 # nový widget bude odvozen od obecného widgetu
 class MainWindow(QtGui.QWidget):
 
@@ -25,12 +21,18 @@ class MainWindow(QtGui.QWidget):
     def prepareGUI(self):
         # velikost není potřeba specifikovat
         # self.resize(320, 240)
-        self.setWindowTitle("QButton signals")
+        self.setWindowTitle("Six radio buttons")
 
-        # testovací zaškrtávací tlačítka
+        # testovací přepínací tlačítka
         self.testRadioButton1 = QtGui.QRadioButton("radio button #1")
         self.testRadioButton2 = QtGui.QRadioButton("radio button #2")
         self.testRadioButton3 = QtGui.QRadioButton("radio button #3")
+        self.testRadioButton4 = QtGui.QRadioButton("radio button #4")
+        self.testRadioButton5 = QtGui.QRadioButton("radio button #5")
+        self.testRadioButton6 = QtGui.QRadioButton("radio button #6")
+
+        # které tlačítko bude vybráno
+        self.testRadioButton3.setChecked(True)
 
         # tlačítko pro zjištění stavů přepínačů
         testButton = QtGui.QPushButton("Print state")
@@ -45,6 +47,9 @@ class MainWindow(QtGui.QWidget):
         layout.addWidget(self.testRadioButton1)
         layout.addWidget(self.testRadioButton2)
         layout.addWidget(self.testRadioButton3)
+        layout.addWidget(self.testRadioButton4)
+        layout.addWidget(self.testRadioButton5)
+        layout.addWidget(self.testRadioButton6)
         layout.addWidget(testButton)
         layout.addWidget(quitButton)
 
@@ -62,6 +67,9 @@ class MainWindow(QtGui.QWidget):
         MainWindow.printStateForRadioButton("#1", self.testRadioButton1)
         MainWindow.printStateForRadioButton("#2", self.testRadioButton2)
         MainWindow.printStateForRadioButton("#3", self.testRadioButton3)
+        MainWindow.printStateForRadioButton("#4", self.testRadioButton4)
+        MainWindow.printStateForRadioButton("#5", self.testRadioButton5)
+        MainWindow.printStateForRadioButton("#6", self.testRadioButton6)
 
     @staticmethod
     def printStateForRadioButton(name, radioButton):
