@@ -20,11 +20,11 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareGUI(self):
         # tlačítko 1
-        self.counterButton = QtGui.QPushButton("Counter", self)
+        self.counterButton = QtGui.QPushButton('Counter', self)
         self.counterButton.resize(self.counterButton.sizeHint())
 
         # tlačítko 2
-        quitButton = QtGui.QPushButton("Quit", self)
+        quitButton = QtGui.QPushButton('Quit', self)
         quitButton.resize(quitButton.sizeHint())
 
         # vytvoření správce geometrie
@@ -56,9 +56,9 @@ class MainWindow(QtGui.QMainWindow):
     def prepareGUI(self):
         # velikost není potřeba specifikovat
         # self.resize(320, 240)
-        self.setWindowTitle("QMainWindow")
+        self.setWindowTitle('QMainWindow')
 
-        self.statusBar().showMessage("QMainWindow")
+        self.statusBar().showMessage('QMainWindow')
 
         content = MainWindowContent()
         self.setCentralWidget(content)
