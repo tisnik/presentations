@@ -56,7 +56,7 @@ class MainWindow(QtGui.QMainWindow):
     def prepareGUI(self):
         # velikost není potřeba specifikovat
         # self.resize(320, 240)
-        self.setWindowTitle("QMainWindow")
+        self.setWindowTitle("QMainWindow + QListWidget")
 
         # vložení komponenty do okna
         self.setCentralWidget(MainWindowContent())
