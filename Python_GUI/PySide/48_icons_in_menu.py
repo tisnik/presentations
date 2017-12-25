@@ -21,7 +21,7 @@ class MainWindow(QtGui.QMainWindow):
     def prepareGUI(self):
         # velikost není potřeba specifikovat
         # self.resize(320, 240)
-        self.setWindowTitle('QMainWindow + statusBar + mainMenu + toolBar')
+        self.setWindowTitle('QMainWindow + statusBar + mainMenu')
 
         # stavový řádek
         self.statusBar().showMessage('QMainWindow')
@@ -50,25 +50,6 @@ class MainWindow(QtGui.QMainWindow):
         # položka Help v hlavním menu
         helpMenu = menubar.addMenu('&Help')
         helpMenu.addAction(helpAboutItem)
-
-        # tlačítko Quit
-        quitAction = QtGui.QAction(QtGui.QIcon('icons/application-exit.png'),
-                                   '&Quit', self)
-        quitAction.triggered.connect(self.close)
-        quitAction.setStatusTip('Quit the application')
-
-        # tlačítko About
-        aboutAction = QtGui.QAction(QtGui.QIcon('icons/dialog-information.png'),
-                                    '&About', self)
-        aboutAction.triggered.connect(self.aboutDialog)
-        aboutAction.setStatusTip('About this application')
-
-        # nástrojový pruh
-        self.toolbar = self.addToolBar('title')
-
-        # přidání tlačítek na nástrojový pruh
-        self.toolbar.addAction(quitAction)
-        self.toolbar.addAction(aboutAction)
 
         # zobrazení hlavního okna
         self.show()
