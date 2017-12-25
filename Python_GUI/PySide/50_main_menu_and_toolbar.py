@@ -21,21 +21,47 @@ class MainWindow(QtGui.QMainWindow):
     def prepareGUI(self):
         # velikost není potřeba specifikovat
         # self.resize(320, 240)
-        self.setWindowTitle('QMainWindow + statusBar + toolBar')
+        self.setWindowTitle('QMainWindow + statusBar + mainMenu + toolBar')
+
+        # stavový řádek
+        self.statusBar().showMessage('QMainWindow')
+
+        # hlavní menu
+        menubar = self.menuBar()
+
+        # příkaz File/Quit
+        fileQuitItem = QtGui.QAction(QtGui.QIcon('icons/application-exit.png'),
+                                     '&Quit', self)
+        fileQuitItem.triggered.connect(self.close)
+        fileQuitItem.setStatusTip('Quit the application')
+        fileQuitItem.setShortcut('Ctrl+Q')
+
+        # položka File v hlavním menu
+        fileMenu = menubar.addMenu('&File')
+        fileMenu.addAction(fileQuitItem)
+
+        # příkaz Help/About
+        helpAboutItem = QtGui.QAction(QtGui.QIcon('icons/dialog-information.png'),
+                                      '&About', self)
+        helpAboutItem.triggered.connect(self.aboutDialog)
+        helpAboutItem.setStatusTip('About this application')
+        helpAboutItem.setShortcut('F1')
+
+        # položka Help v hlavním menu
+        helpMenu = menubar.addMenu('&Help')
+        helpMenu.addAction(helpAboutItem)
 
         # tlačítko Quit
         quitAction = QtGui.QAction(QtGui.QIcon('icons/application-exit.png'),
                                    '&Quit', self)
         quitAction.triggered.connect(self.close)
         quitAction.setStatusTip('Quit the application')
-        quitAction.setShortcut('Ctrl+Q')
-                                            
+
         # tlačítko About
         aboutAction = QtGui.QAction(QtGui.QIcon('icons/dialog-information.png'),
                                     '&About', self)
         aboutAction.triggered.connect(self.aboutDialog)
         aboutAction.setStatusTip('About this application')
-        aboutAction.setShortcut('F1')
 
         # nástrojový pruh
         self.toolbar = self.addToolBar('title')
