@@ -1,0 +1,22 @@
+
+Vim signature
+--------------------------------
+Vizuální zobrazení značek (marks) v levém sloupci
+▶ Stažení
+    https://github.com/kshenoy/vim-signature
+▶ Použití
+    ma - mz     definice lokální značky a-z
+    dma - dmz   smazání lokální značky a-z (přidáno pluginem)
+    mA - mZ     definice globální značky A-Z
+    dmA - dmZ   smazání globální značky A-Z (přidáno pluginem)
+    m,          vytvoření nové značky, automatická volba písmene
+                (přidáno pluginem)
+    m.          vytvoření nové značky, automatická volba písmene;
+                pokud značka existuje, zruší se
+    'a - 'z     skok na řádek, kde je značka definovaná
+                (jedná se o příkaz pohybu kurzoru!)
+    'A - 'Z     skok na soubor a řádek, kde je značka definovaná
+    `a - `z     skok na přesné místo, kde je značka definovaná
+                (jedná se o příkaz pohybu kurzoru!)
+    'A - 'Z     skok na přesné místo (řádek i sloupec),
+                kde je značka definovaná

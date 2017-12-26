@@ -1,0 +1,19 @@
+
+To ale samozřejmě nestačí
+-------------------------
+Správa projektů
+    Projektové soubory (File Explorer)
+    Práce se souborovým systémem
+Orientace v projektu
+    Třídy
+    Metody
+    Funkce
+    Makra
+    Grep
+Podpora při editaci zdrojových souborů
+    Šablony
+    Kontrola chyb
+    Pomocné operace
+        Otevírání hlavičkových souborů...
+    Automatické doplňování kódu
+    Refaktoring

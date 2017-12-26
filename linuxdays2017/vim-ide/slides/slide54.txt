@@ -1,0 +1,9 @@
+
+Vim a XML
+---------
+▶ Modul xml.vim
+    ◆ http://www.vim.org/scripts/script.php?script_id=301
+    ◆ Uzavírání tagů, kompletace tagů, ...
+:%!xmllint --format -
+:'<,'>!xmllint --format -
+:map =. :%!xmllint --format - <cr>

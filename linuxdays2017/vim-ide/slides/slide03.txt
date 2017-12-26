@@ -1,0 +1,25 @@
+
+A další očekávané funkce IDE
+----------------------------
+Rozhraní pro systémy pro správu verzí
+    GIT
+    Mercurial
+    ...
+       + diff/blame režimy
+Rozhraní k debuggerům
+    Lokální ladění
+    Vzdálené ladění
+RAD
+    Ideálně obousměrná práce s GUI
+CDE (podpora pro spolupráci)
+    Rozhraní k Bugzille, JIRE atd.
+    TODO list
+    Správa dokumentů
+    ...
+Kontextová dokumentace
+Terminál
+    Historie
+    Filtrace/zvýraznění stdout a stderr
+    Grep
+REPL
+Rozhraní k Facebooku??? :)

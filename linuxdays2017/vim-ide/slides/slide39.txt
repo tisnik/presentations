@@ -1,0 +1,14 @@
+
+Conque GDB
+----------
+Nové klávesové zkratky
+    leader je nastavený na \
+    použijte map \ na zjištění, zda nedochází ke konfliktům
+     \r     run
+     \s     step
+     \n     next
+     \c     continue
+     \p     tisk hodnoty identifikátoru/výrazu
+     \t     backtrace
+     \f     finish
+     \b     breakpoint (nastavení/zrušení)

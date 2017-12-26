@@ -1,0 +1,12 @@
+
+Vim a jazyky C/C++
+------------------
+    ◆ Formátování zdrojového kódu (C, C++, Java)
+        :set shiftwidth=???
+        :set cindent
+        :set cinoptions
+        fN  úroveň posunutí otevírací levé závorky { pod jménem funkce
+        :N  úroveň odsazení větví case/default v konstrukci switch-case
+        =N  odsazení příkazu/příkazů za klíčovým slovem case/default
+        bN  odsazení příkazu break v konstrukci switch-case
+        hN  podobné volbě =N, ale platné pro klíčová slova public atd. (C++)

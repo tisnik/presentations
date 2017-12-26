@@ -1,0 +1,12 @@
+
+Vim-indent-guides
+--------------------------------
+▶ Indent levels, prakticky bez konfigurace
+  Taby, mezery, volba barev
+▶ Stažení
+    git clone git://github.com/nathanaelkane/vim-indent-guides.git
+▶ Po instalaci do ~/.vim/bundle 
+    :IndentGuidesEnable
+    :IndentGuidesDisable
+    :IndentGuidesToggle
+    :let g:indent_guides_indent_levels = 30

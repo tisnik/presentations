@@ -1,0 +1,13 @@
+
+Užitečné odkazy
+---------------
+Use Vim like an IDE
+http://vim.wikia.com/wiki/Use_Vim_like_an_IDE
+.
+Eclim
+http://eclim.org/
+.
+Python Debugging Tools
+https://wiki.python.org/moin/PythonDebuggingTools
+http://www.vim.org
+http://vim.wikia.com/wiki/Vim_Tips_Wiki

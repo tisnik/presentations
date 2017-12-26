@@ -1,0 +1,14 @@
+
+ctrlp.vim
+---------
+Ctrl+D  přepnutí mezi vyhledáváním ve jménech souborů
+        či i ve jménech souborů a adresářů (výchozí)
+Ctrl+R  přepnutí mezi použitím regexpů či
+        tzv. řetězcového režimu (výchozí)
+Ctrl+T  otevření vybraného souboru v novém tabu
+Ctrl+V  vertikální rozdělení okna a otevření vybraného souboru
+Ctrl+S  horizontální rozdělení okna a otevření vybraného souboru
+Ctrl+Z  označení souboru (vedle jména souboru se zobrazí značka)
+Ctrl+O  otevření všech označených souborů
+Tab     automatické doplnění názvu adresáře
+Esc     zavření okna pluginu ctrlp.vim

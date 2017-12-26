@@ -1,0 +1,15 @@
+
+Conque GDB
+----------
+http://www.vim.org/scripts/script.php?script_id=4582
+Používá Vimball Archiver
+    stáhnout balíček
+    otevřít ve Vimu
+    spustit ho příkazem :so / :source
+    instalace se provede do adresáře ~/.vim
+Nové příkazy
+    :ConqueGDB
+    :ConqueGDBSplit
+    :ConqueGDBVSplit
+    :ConqueGDBTab
+    :ConqueGDBCommand

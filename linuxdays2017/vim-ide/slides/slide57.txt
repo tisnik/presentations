@@ -1,0 +1,5 @@
+
+vtreeexplorer
+-------------
+Strom souborů
+https://vim.sourceforge.io/scripts/script.php?script_id=184

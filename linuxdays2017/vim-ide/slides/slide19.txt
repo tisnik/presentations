@@ -1,0 +1,18 @@
+
+Surround
+--------
+▶ Stažení
+    https://github.com/tpope/vim-surround
+Nové/modifikované příkazy
+ds"         vymaže uvozovky okolo textu (v němž se nachází kurzor)
+ds(         vymaže kulaté závorky okolo textu (levou i pravou)
+ds)         dtto
+ds[         vymaže hranaté závorky okolo textu
+dst         vymaže tag okolo textu (platné pro XML a HTML)
+ysaw"       zapíše uvozovky okolo slova ("aw" znamená "a word")
+ysaw(       zapíše pravou a levou kulatou závorku okolo slova ("aw" znamená "a word")
+ysW(        text od kurzoru až po další slovo bude uzavřen mezi kulaté závorky
+ysip<div>   celý textový odstavec se umístí mezi párové značky <div> a </div>
+yssB        celý řádek se umístí do složených závorek
+cs"'        nahradí obalové uvozovky za apostrofy
+cs'<strong> nahradí apostrofy okolo textu za párovou značku <strong> a </strong>

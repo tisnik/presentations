@@ -1,0 +1,9 @@
+
+NERD Tree
+--------------------------------
+▶ Stažení
+    http://www.vim.org/scripts/script.php?script_id=1658
+▶ Po instalaci do ~/.vim/bundle 
+    :help NERDTree
+    :NERDTree
+    (potom klávesa ?)

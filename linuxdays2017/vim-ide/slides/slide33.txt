@@ -1,0 +1,7 @@
+
+Rozhraní k debuggeru
+--------------------
+Několik existujících řešení
+    Clewn
+    Pyclewn
+    Conque GDB

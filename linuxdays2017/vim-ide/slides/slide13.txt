@@ -1,0 +1,10 @@
+
+NERD Commenter
+--------------------------------
+▶ Stažení
+    http://www.vim.org/scripts/script.php?script_id=1218
+▶ Po instalaci
+    :echo maplocalleader
+    <leader>cc
+    <leader>cn (nesting)
+    <leader>c<space> - přepíná

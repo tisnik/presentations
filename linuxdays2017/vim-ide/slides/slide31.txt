@@ -1,0 +1,12 @@
+
+Multiple Cursors
+----------------
+▶ Stažení
+    git clone https://github.com/terryma/vim-multiple-cursors
+▶ Použití
+Ctrl+N
+    Po provedení výběru:
+    c (change)
+    s (substitute)
+    i (insert)
+    apod.

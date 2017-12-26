@@ -1,0 +1,19 @@
+
+Pyclewn
+-------
+Použití
+    Překlad projektu
+        gcc -O0 -g -o test test.c
+    Spuštění Vimu + debuggeru
+        vim test.c
+        :pyclewn gdb
+    Načtení binárního souboru do debuggeru
+        :Cfile test
+    Další užitečné příkazy
+        :Cbreak main
+        :Crun
+        :Cstep
+        :Cwatch x,y,answer
+    Podokno s obsahem výrazů
+        :Cdbgvar x
+        :Cdbgvar x*10

@@ -1,0 +1,9 @@
+
+Vylepšení prostředí Vimu
+------------------------
+1. vim-airline
+2. vim-colors-solarized
+3. Buffer Explorer
+4. Vim-indent-guides
+5. Calendar
+6. Caps Lock -> Esc

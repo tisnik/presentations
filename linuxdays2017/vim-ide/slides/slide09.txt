@@ -1,0 +1,9 @@
+
+Buffer explorer
+---------------
+▶ Stažení
+    https://vim.sourceforge.io/scripts/script.php?script_id=42
+▶ Použití
+    \be  otevření bufferu
+    \bs  horizontální rozdělení + otevření bufferu
+    \bv  vertikální rozdělení + otevření bufferu

@@ -1,0 +1,16 @@
+
+Calendar
+--------
+▶ Stažení
+    http://www.vim.org/scripts/download_script.php?src_id=19707
+▶ Použití
+    :Calendar   vertikální rozdělení okna a zobrazení kalendáře
+    :CalendarH  horizontální rozdělení okna a zobrazení kalendáře
+▶ V kalendáři
+    šipka doleva        předchozí měsíc
+    šipka doprava       následující měsíc
+    šipka nahoru        předchozí rok
+    šipka dolů          následující rok
+    t                   přechod na aktuální datum
+    q                   uzavření okna s kalendářem
+    Enter               zobrazení/vytvoření poznámky pro vybraný den

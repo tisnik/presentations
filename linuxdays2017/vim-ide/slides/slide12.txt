@@ -1,0 +1,10 @@
+
+Usnadnění editace zdrojového kódu
+---------------------------------
+1. NERD Commenter
+2. Rainbow Parentheses
+3. vim-signature
+4. SearchComplete
+5. ctrlp.vim
+6. Surround
+7. snipMate

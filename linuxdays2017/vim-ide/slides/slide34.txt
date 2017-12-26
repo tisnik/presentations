@@ -1,0 +1,16 @@
+
+Clewn
+-----
+Plugin psaný zčásti ve VimScriptu
+Navíc má i nativní část (clewn)
+    Provede inicializaci debuggeru
+    Následně spustí Gvim
+    Zajišťuje komunikaci mezi debuggerem a Gvimem
+Instalace
+    Nutno správně přeložit nativní část
+        ncurses-devel
+        libreadline-devel
+    Klasická trojice
+        ./configure
+        make
+        make install

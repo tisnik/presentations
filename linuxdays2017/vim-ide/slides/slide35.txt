@@ -1,0 +1,20 @@
+
+Clewn
+-----
+Použití
+    Překlad projektu
+        gcc -O0 -g -o test test.c
+    Spuštění Vimu + debuggeru
+        clewn -d -ga test
+Klávesové zkratky
+    R       spuštění programu
+    Q       ukončení ladění
+    Ctrl+B  nastavení breakpointu na řádku s kurzorem
+    Ctrl+E  vymazání breakpointů na řádku s kurzorem
+    B       zobrazení informací o breakpointech
+    S       jeden krok s vykonáním celé funkce (step)
+    I       jeden krok s případným vstupem do funkce (step into)
+    C       pokračovat (continue)
+    L       zobrazení informací o lokálních proměnných
+    A       zobrazení argumentů
+    W       zobrazení backtrace

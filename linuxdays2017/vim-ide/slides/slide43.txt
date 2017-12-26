@@ -1,0 +1,15 @@
+
+Fugitive
+--------------------------------
+▶ Stažení
+    http://www.vim.org/scripts/script.php?script_id=2975
+    https://github.com/tpope/vim-fugitive
+▶ Po instalaci do ~/.vim/bundle 
+    :call pathogen#helptags()
+    :help fugitive
+    :Git cokoli
+    :Gstatus
+    :Gcommit (spousta prikazu)
+    :Gbrowse
+    :Gblame :-)
+    :Gvdiff

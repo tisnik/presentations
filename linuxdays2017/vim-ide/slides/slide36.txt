@@ -1,0 +1,14 @@
+
+Pyclewn
+-------
+Rozhraní ke dvěma debuggerům
+    gdb  (C, C++, Fortran, ...)
+    pdb  (Python debugger)
+Rozdílný od Clewn
+    využívá jediný terminál s debuggerem i Vimem
+Instalace
+    python-dev
+    pip install --user pyclewn
+Instalace pluginu (distribuován jako vim-ball)
+    python -c "import clewn; clewn.get_vimball()"
+    vim -S pyclewn-2.1.vmb

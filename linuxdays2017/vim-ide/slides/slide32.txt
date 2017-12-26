@@ -1,0 +1,17 @@
+
+Rozhraní k terminálu
+--------------------
+ConqueTerm
+    Vybraný buffer ve Vimu bude použit ve funkci terminálu
+    Použití - základní příkazy
+        :ConqueTerm příkaz (bash, python...)
+        :ConqueTermSplit -//-
+        :ConqueTermVSplit -//-
+        :ConqueTermTab -//-
+    Po vytvoření terminálu se editor přepne do vkládacího režimu!
+    Speciální klávesy
+        <F9> - vybraný blok se pošle do terminálu (a spustí)
+        <F10> - celý buffer se pošle do terminálu
+        <F11> - rozdělení obrazovky + spuštění aktuálního bufferu v terminálu
+                (soubor otevřený v bufferu musí být spustitelný!)
+    Pomocí :map si zjistěte, zda nedochází ke kolizi mapování

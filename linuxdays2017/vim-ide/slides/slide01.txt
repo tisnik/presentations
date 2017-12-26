@@ -1,0 +1,6 @@
+
+Základní funkce IDE
+-------------------
+Textový editor
+Nástroje pro překlad a sestavení projektů
+Nástroje pro ladění aplikací

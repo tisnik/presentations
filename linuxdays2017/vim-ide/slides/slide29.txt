@@ -1,0 +1,12 @@
+
+Režim diff
+----------
+▶ vim -d test_old.c test_new.c
+▶ vim -d test.c ../test-sources/
+▶ Příkazy
+    [c skok na začátek předchozího bloku se změnami
+    ]c skok na začátek následujícího bloku se změnami
+    dp přenos změny do druhého souboru
+    do opak předchozího příkazu – získání změny
+    :diffupdate tento příkaz provede nové vyhodnocení
+       rozdílů mezi oběma

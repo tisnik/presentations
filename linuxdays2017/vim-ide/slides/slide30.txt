@@ -1,0 +1,14 @@
+
+DirDiff
+-------
+▶ Stažení
+    git clone https://github.com/will133/vim-dirdiff
+▶ Použití
+    :DirDiff cesta_k_prvnímu_adresáři cesta_ke_druhému_adresáři
+.
+Zkratka Význam
+Enter   zobrazí se rozdíl pro vybraný soubor (na němž se nachází kurzor)
+o       stejný význam jako předchozí zkratka
+s       provedení synchronizace s výběrem vhodné metody (kopie z prvního adresáře atd.)
+u       má stejný význam jako příkaz :diffupdate
+q       ukončení režimu DirDiff

@@ -1,0 +1,9 @@
+
+ctrlp.vim
+--------------------------------
+▶ Stažení
+    https://github.com/ctrlpvim/ctrlp.vim
+Klávesová zkratka Ctrl-P
+    vyhledání souborů
+    bufferů
+    + použití regexpů

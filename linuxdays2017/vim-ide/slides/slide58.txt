@@ -1,0 +1,10 @@
+
+Syntastic
+    kontrola chyb
+vim-easytags
+ctrlp
+A.vim
+    otevirani hlavickovych souboru
+    :AT - otevre soubor xxxx.h, kdyz se edituje xxxx.c
+vim-superman
+    vytvareni manualovych stranek

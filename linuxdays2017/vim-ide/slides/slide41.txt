@@ -1,0 +1,11 @@
+
+Vcscommand
+----------
+    :VCSAdd     přidání aktuálně editovaného souboru do VCS
+    :VCSCommit  přidání změn provedených v editovaném souboru do VCS
+    :VCSDelete  odstranění souboru z VCS
+    :VCSRemove  (alias) odstranění souboru z VCS
+    :VCSDiff    zobrazení změn provedených v editovaném souboru
+    :VCSLog     zobrazení historie změn do nového bufferu
+    :VCSReview  zobrazení specifikované verze souboru
+    :VCSStatus  zobrazení stavu aktuálně editovaného souboru

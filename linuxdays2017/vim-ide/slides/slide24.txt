@@ -1,0 +1,11 @@
+
+Project
+-------
+Sprava projektů
+    vlastně jen seznam používaných souborů
+    automatické spouštění skriptů po výběru určitých souborů
+    grep v projektu pomocí \g a \G
+    specifikace, jak se má soubor otevřít
+       *.jpg otevře soubor v Eog atd. atd.
+▶ Stažení
+    https://vim.sourceforge.io/scripts/script.php?script_id=69

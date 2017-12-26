@@ -1,0 +1,12 @@
+
+Vcscommand a stařičké CVS
+-------------------------
+    :CVSEdit        = cvs edit pro aktuálně editovaný soubor
+    :CVSEditors     = cvs edit pro aktuálně editovaný soubor
+    :CVSUnedit      = cvs unedit
+    :CVSWatch       = cvs watch s parametrem on/off/add/remove
+    :CVSWatchAdd    = cvs watch add
+    :CVSWatchOn     = cvs watch on
+    :CVSWatchOff    = cvs watch off
+    :CVSWatchRemove = cvs watch remove
+    :CVSWatchers    = cvs watchers pro aktuálně editovaný soubor

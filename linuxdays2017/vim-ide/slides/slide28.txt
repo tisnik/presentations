@@ -1,0 +1,8 @@
+
+Modul matchit.vim
+--------------------
+Doskoky na párové tagy v HTML, XML atd. pomocí %
+Lze použít i pro VimScript:
+if <---> endif
+while <---> endwhile
+atd.

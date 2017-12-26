@@ -1,0 +1,15 @@
+
+Rainbow Parentheses
+--------------------------------
+▶ Stažení
+    https://github.com/junegunn/rainbow_parentheses.vim
+▶ Po instalaci
+    Povolení
+        :RainbowParentheses
+    Zákaz
+        :RainbowParentheses!
+    Přepnutí
+        :RainbowParentheses!!
+▶ Nastavení
+    :let g:rainbow#max_level = 16
+    :let g:rainbow#pairs = [['(', ')'], ['[', ']']]

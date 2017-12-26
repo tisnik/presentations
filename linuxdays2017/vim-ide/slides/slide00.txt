@@ -1,0 +1,5 @@
+Vim ve funkci integrovaného vývojového prostředí
+================================================
+■ Autor    Pavel Tišnovský
+■ Email    <tisnik 0x40 centrum 0x2e cz>
+■ Datum    2017-10-07

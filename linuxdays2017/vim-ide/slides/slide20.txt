@@ -1,0 +1,8 @@
+
+snipMate
+--------
+▶ Stažení
+    https://github.com/msanders/snipmate.vim
+▶ Použití
+    začátek snippetu<Tab>
+    přesun na další proměnnou položku - <Tab>
