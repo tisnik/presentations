@@ -38,6 +38,7 @@ class MainWindowContent(QtGui.QWidget):
         # události vyvolávané manipulací se seznamem
         listWidget.itemActivated.connect(self.onItemActivated)
         listWidget.itemPressed.connect(self.onItemPressed)
+        listWidget.itemClicked.connect(self.onItemClicked)
 
         # vytvoření správce geometrie
         layout = QtGui.QVBoxLayout()
@@ -53,6 +54,10 @@ class MainWindowContent(QtGui.QWidget):
         self._parentWidget.statusBar().showMessage(message)
 
     def onItemPressed(self, item):
+        message = u"tlačítko stisknuto na prvku: {text}".format(text=item.text())
+        self.showMessage(message)
+
+    def onItemClicked(self, item):
         message = u"kliknuto na prvek: {text}".format(text=item.text())
         self.showMessage(message)
 
