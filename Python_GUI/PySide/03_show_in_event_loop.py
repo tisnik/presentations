@@ -13,6 +13,8 @@
 #      Pavel Tisnovsky
 #
 
+# tento import je zapotřebí kvůli nutnosti zpracování parametrů
+# předávaných přes příkazový řádek
 import sys
 import time
 
