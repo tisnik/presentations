@@ -31,3 +31,6 @@ window.show()
 
 # vstup do smyčky událostí (event loop)
 sys.exit(app.exec_())
+
+# do tohoto místa se program dostane až po uzavření hlavního okna
+print("Finishing")
