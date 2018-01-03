@@ -2,7 +2,7 @@
 # vim: set fileencoding=utf-8
 
 #
-#  (C) Copyright 2017  Pavel Tisnovsky
+#  (C) Copyright 2017, 2018  Pavel Tisnovsky
 #
 #  All rights reserved. This program and the accompanying materials
 #  are made available under the terms of the Eclipse Public License v1.0
@@ -32,5 +32,6 @@ window.show()
 # vstup do smyčky událostí (event loop)
 sys.exit(app.exec_())
 
-# do tohoto místa se program dostane až po uzavření hlavního okna
+# do tohoto místa se program teoreticky dostane až PO uzavření
+# hlavního okna, ve skutečnosti však skončí už na sys.exit()
 print("Finishing")
