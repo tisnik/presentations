@@ -57,7 +57,6 @@ class MainWindow(QtGui.QMainWindow):
         msgBox.setText('About:\n...\n...\n...')
         msgBox.setIcon(QtGui.QMessageBox.Information)
         msgBox.exec_()
-        pass
 
     def run(self, app):
         # zobrazení okna na obrazovce
