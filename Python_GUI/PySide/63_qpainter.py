@@ -29,6 +29,7 @@ class MainWindow(QtGui.QMainWindow):
                                   MainWindow.IMAGE_HEIGHT,
                                   QtGui.QImage.Format_RGB32)
 
+        # vytvoření objektu typu QPainter
         qp = QtGui.QPainter()
         qp.begin(self.image)
         qp.setPen(QtGui.QColor(64, 255, 64))
