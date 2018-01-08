@@ -114,9 +114,9 @@ void putpixelRGBA(const int x, const int y,
 #define RED_LOST_BITS   3
 #define GREEN_LOST_BITS 2
 #define BLUE_LOST_BITS  3
-#define RED_MASK        0x1f /* 0001 1111 */
-#define GREEN_MASK      0x3f /* 0011 1111 */
-#define BLUE_MASK       0x1f /* 0001 1111 */
+#define RED_MASK        0x1F /* 0001 1111 */
+#define GREEN_MASK      0x3F /* 0011 1111 */
+#define BLUE_MASK       0x1F /* 0001 1111 */
 
 
 
