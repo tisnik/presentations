@@ -2,7 +2,7 @@
 # vim: set fileencoding=utf-8
 
 #
-#  (C) Copyright 2017  Pavel Tisnovsky
+#  (C) Copyright 2017, 2018  Pavel Tisnovsky
 #
 #  All rights reserved. This program and the accompanying materials
 #  are made available under the terms of the Eclipse Public License v1.0
@@ -13,6 +13,8 @@
 #      Pavel Tisnovsky
 #
 
+# tento import je zapotřebí kvůli nutnosti zpracování parametrů
+# předávaných přes příkazový řádek
 import sys
 
 # prozatím budeme využívat jen modul QtGui
