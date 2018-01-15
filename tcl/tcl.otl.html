@@ -1,0 +1,904 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/temp/tcl/new/tcl.otl.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-2">
+</head>
+<body bgcolor="#ffffff" text="#000000"><font face="monospace">
+<font color="#006400">===================== Obsah kurzu =============================</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;1. Ošetření chyb ve skriptech</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;2. Smyčka událostí</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;3. Dynamická tvorba kódu</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;4. Oblast platnosti proměnných</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;5. Regulární výrazy</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;6. Práce se sockety</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;7. Informace poskytované VM TCL</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;8. Trasování proměnných</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;9. Trasování programu</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;10. Vytváření procesů</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;11. Multithreading</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;12. Jmenné prostory</font><br>
+<br>
+<br>
+<br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">===================== 1. Ošetření chyb ========================</font><br>
+<br>
+<font color="#006400">Ošetření chyb</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkaz &quot;error msg&quot;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkaz &quot;catch script&quot;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkaz &quot;catch script proměnná&quot;</font><br>
+<br>
+<font color="#006400">Příkaz &quot;error msg&quot;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Vypíše zprávu na standardní výstup</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Ukončí běh procedury (pokud je použit v proceduře)</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Lze odchytit pomocí příkazu &quot;catch&quot;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- procedura pro výpočet podílu</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- pokud by mělo dojít k dělení nulou, vypíše se chyba</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc div {a b} {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if {$b==0} {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error &quot;divide by zero&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [expr $a/$b]</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% div 4 2</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% div 4 0</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;divide by zero</font><br>
+<br>
+<font color="#006400">Příkaz &quot;catch script&quot;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Spoustí skript předaný v prvním argumentu příkazu</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Zachycuje všechny výjimečné stavy</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Vrací 0 v případě, že je vše ok</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TCL_OK = 0</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Vrací jinou hodnotu v případě chyby</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TCL_ERROR = 1</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TCL_RETURN = 2</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TCL_BREAK = 3</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TCL_CONTINUE = 4</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- využití dříve definované procedury &quot;div&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% catch {div 4 2}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% catch {div 4 0}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% catch {set result [div 4 2]}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% puts $result</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% catch {set result [div 4 0]}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% puts $result</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 // původní hodnota!</font><br>
+<br>
+<font color="#006400">Příkaz &quot;catch script proměnná&quot;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Podobná funkcionalita, jako v případě &quot;catch script&quot;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Proměnná se nastaví na chybovou hodnotu</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Zjednoduší se některé programové konstrukce</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- otevře soubor pro zápis s testem, zda je vše ok</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if { [catch {open $fileName w} fid] } {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts stderr &quot;Could not open $fileName for writing\n$fid&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit 1</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 2. Smyčka událostí&nbsp;&nbsp; ======================</font><br>
+<br>
+<font color="#006400">Smyčka událostí</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Event loop</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Interní programová smyčka spravovaná VM TCL</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Používána pro</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Interně použita v knihovně Tk</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Tvorbu GUI (implicitně při použití &quot;wish&quot; apod.)</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Práci se sockety</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Práci s časovači (timery)</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Později si ukážeme práci se sockety</font><br>
+<br>
+<font color="#006400">Vstup do smyčky událostí</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* vwait proměnná</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Interně testuje hodnotu proměnné</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Pokud je proměnná změněna, smyčka se ukončí</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- mnohem lepší, než se snažit o použití return či exit</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;což ne vždy funguje</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Musí se jednat o globální proměnnou</font><br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 3. Dynamická tvorba kódu ==================</font><br>
+<br>
+<font color="#006400">Dynamická tvorba kódu</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Tcl je v porovnání s podobnými jazyky velmi dynamický skriptovací jazyk</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- většina příkazů se vyhodnocuje až při běhu programu</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- neprovádí se mezipřeklad</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkazy i jejich parametry jsou chápány jako řetězce</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- naproti tomu Perl, Python: překlad do mezikódu</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- i v těchto jazycích však existuje podpora pro eval()</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* základ dynamické tvorby kódu</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz je možné uložit do proměnné</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- následně je možné tuto proměnnou &quot;spustit&quot;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* jednoduchý příklad</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uložení příkazu do proměnné &quot;a&quot;</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set a llength</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;llength</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% $a {1 2 3}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uložení příkazu do dvojice proměnných &quot;a&quot; a &quot;b&quot;</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set a lle</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lle</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set b ngth</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ngth</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # dvojice promennych ve forme parametru</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% puts $a$b</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;llength</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # dvojice promennych ve forme prikazu</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% $a$b {1 2 3}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* při zápisu příkazů je možné využívat interpolaci (substituci)</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* a další příkazy vložené do [] nebo naopak do {}</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Tcl nejprve vyhodnotí vše uvnitř [] a posléze výsledek považuje za příkaz</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- použití substituce []</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% [string range &quot;Xllen&quot; 1 end]gth {1 2 3}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* pro složitější konstrukce se používá příkaz eval</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příklad použití příkazu eval</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval &quot;set foo 10&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # zavorky {} zabranuji vyhodnoceni</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set myscript {puts $foo}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts $foo</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $myscript</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* eval pracuje následovně:</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nejprve spojí své parametry do jediného seznamu</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vyhodnocí parametr jako příkaz</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vrátí výsledek tohoto příkazu</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* pozor na spojování parametrů do jediného seznamu</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příklad s chybou</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set a {puts &quot;Procedura a&quot;}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;Procedura a&quot;</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set b {puts &quot;Procedura b&quot;}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;Procedura b&quot;</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # vyhodnocení procedury A</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $a</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Procedura a</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # vyhodnocení procedury B</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $b</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Procedura b</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # zde ovšem dojde k chybě</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $a $b</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bad argument &quot;Procedura b&quot;: should be &quot;nonewline&quot;</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- využití spojení parametrů do seznamu</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set print {puts}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $print</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wrong # args: should be &quot;puts ?-nonewline? ?channelId? string&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $print 10</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* vytvoření nového typu programové smyčky</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- procedura s dvojicí parametrů: počtem opakování a skriptem</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc repeat {count script} {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while {[incr count -1] &gt;= 0} {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eval $script</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nyní proceduru vyzkoušíme</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% repeat 6 {puts Hello}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- složitější příklad</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% repeat 6 {puts [expr 1+2]}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* přístup k proměnným ze skriptů vyhodnocovaných pomocí eval</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vytvoření globální proměnné</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set x 10</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% puts x 10</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- globální proměnná je viditelná ze skriptu v eval</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval {puts $x}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
+<br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 4. Oblast platnosti proměnných&nbsp;&nbsp;===========</font><br>
+<br>
+<font color="#006400">Oblast platnosti proměnných</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* TCL vyhodnocuje oblast viditelnosti proměnných</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vázané na proceduru</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vázané na jmenný prostor</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- globální proměnné</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkaz &quot;global&quot;</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- proměnná s lokální platností (v proceduře) bude</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;odkazovat na globální proměnnou tohoto jména</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkaz &quot;upvar&quot;</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- naváže jméno proměnné na proměnnou s jinou</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oblastí platnosti</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- upvar otherVar myVar</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- myVar bude referencí na otherVar</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- upvar otherVar1 myVar1 otherVar2 myVar2 ...</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- myVar1 bude referencí na otherVar1</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- myVar2 bude referencí na otherVar2</font><br>
+<font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- myVarN bude referencí na otherVarN</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- upvar level otherVar myVar</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- dokáže odkazovat na proměnnou v rámci zásobníku volání</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(o N úrovní výše od současné pozice směrem nahoru)</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- upvar #level otherVar myVar</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- dokáže odkazovat na proměnnou v rámci zásobníku volání</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(o N úrovní níže od globální úrovně směrem dolů)</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Využití příkazu &quot;info&quot; pro test na existenci proměnné</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz &quot;info exists proměnná&quot; vrací 1/0 podle toho</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zda proměnná existuje</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc add {prom hodnota} {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upvar $prom p</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if { [info exists p] } {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;incr p $hodnota</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set p $hodnota</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 5. Regulární výrazy&nbsp;&nbsp;&nbsp;&nbsp; ===================</font><br>
+<br>
+<font color="#006400">Regulární výrazy v TCL</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Jedna z možností zpracování řetězců a získávání informací</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uložených v těchto řetězcích</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Dva typy regulárních výrazů</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- glob matching (&quot;globbing&quot;)</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- &quot;skutečné&quot; regulární výrazy</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Glob matching</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- odvozeno od zástupných znaků používaných v shellu (Bash...)</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- používán v TCL:</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz lsearch</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz string match</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz glob</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- kromě běžných znaků se používají speciální znaky:</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;*&quot;&nbsp;&nbsp; zastupuje sekvenci libovolných znaků</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;?&quot;&nbsp;&nbsp; zastupuje jeden libovolný znak</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[]&quot;&nbsp;&nbsp;zastupuje libovolný znak v závorkách</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[-]&quot; zastupuje znak ze zadaného rozsahu, př. A-Z, 0-9</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- použití příkazu glob</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% glob t*</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tzdata_issue</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomcat</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test-machines.odt</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tcl</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set seznam [glob t*]</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% foreach prvek $seznam {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts $prvek</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tzdata_issue</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomcat</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test-machines.odt</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tcl</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- použití příkazu string match</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set x &quot;foo&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match f* $x</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match f? $x</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match f?? $x</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# pozor na speciální význam []!</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match [a-z]* $x</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invalid command name &quot;a-z&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match &quot;[a-z]*&quot; $x</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invalid command name &quot;a-z&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# toto už je lepší</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match {[a-z]*} $x</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* &quot;Plnohodnotné&quot; regulární výrazy</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz regexp</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- znaky se speciálním významem</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- kvalifikátory</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- atomy</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- znaky pro začátek a konec řádku</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- výrazy v []</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- třídy znaků</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- speciální znaky</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Součásti regulárních výrazů</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- kvalifikátory</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp; sekvence 0..n atomů</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp; sekvence 1..n atomů</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;&nbsp;&nbsp;&nbsp; žádný nebo jeden atom</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{m}&nbsp;&nbsp; v závorce je zapsán přesný počet atomů</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{m,}&nbsp;&nbsp;v závorce je zapsán minimální počet atomů</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{m,n} v závorce je minimální a maximální počet atomů</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- atomy</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;konkrétní znak</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;() prázdný řetězec</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;jediný znak</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\X řídicí znak či znak se zadaným kódem</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(xxx) část výrazu, k níž lze později přistupovat (podle indexu)</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- znaky pro začátek a konec řádku</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^ nahrazuje začátek řádku</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ nahrazuje konec řádku</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- výrazy v []</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lze zde zapsat množinu znaků</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;při rozdělení znaků pomocí - se určuje rozsah a-z, 5-7 atd.</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^ negace - všechny znaky, které NEodpovídají dalšímu výrazu</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- třídy znaků</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vnější závorky [] změní třídu znaků na množinu</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:alpha:]]&nbsp;&nbsp;písmeno</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:upper:]]&nbsp;&nbsp;velké písmeno</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:lower:]]&nbsp;&nbsp;malé písmeno</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:digit:]]&nbsp;&nbsp;číslice</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:xdigit:]] hexadecimální číslice</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:alnum:]]&nbsp;&nbsp;písmeno či číslice</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:space:]]&nbsp;&nbsp;znak, který se vytiskne jako mezera</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:graph:]]&nbsp;&nbsp;znak, který má tisknutelnou podobu</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:cntrl:]]&nbsp;&nbsp;řídicí znak</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- speciální (řídicí) znaky</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert (bell)</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backspace</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;může se použít namísto \\ (čitelnější)</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;znak ESCape</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nový řádek</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;návrat kurzoru</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tab</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u1234&nbsp;&nbsp;znak se zadaným Unikódem</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vybrané třídy znaků zapsané zkrácenou formou</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\d [[:digit:]]</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\s [[:space:]]</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\w [[:alnum:]_]&nbsp;&nbsp;jako \d a _</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\D [^[:digit:]]</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\S [^[:space:]]</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\W [^[:alnum:]_] negace \W</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příklady regulárních výrazů</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regulární výraz pro IPv4 adresu (nepřesný!)</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- znak \ zabraňuje spuštění &quot;příkazu&quot; v []</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})&quot;</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regulární výraz akceptující reálná čísla</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- zde je regulární výraz umístěný v {}, tudíž se neuvádí \ před []</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{[-+]?([0-9]+\.?[0-9]*|\.[0-9]+)([eE][-+]?[0-8]+)?}</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Použití příkazu regexp</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regexp reg_výraz řetězec</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vrací 0/1 podle toho, zda se v řetězci</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nachází vzor z regulárního výrazu</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[a-z]} xyzzy</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[a-z]} 12345</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- využití tříd znaků v regulárních výrazech</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[[:alpha:]]} xyzzy</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[[:upper:]]} xyzzy</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[[:lower:]]} xyzzy</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[[:alpha:]]} áýžřčš</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regexp volby reg_výraz řetězec</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz regexp lze zavolat s různými volbami</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- v některých případech je nutné volby ukončit pomocí --</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp -all {[a-z]} xyzzy</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp -inline {[a-z]} xyzzy</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp -inline -all {[a-z]} xyzzy</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x y z z y</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regexp reg_výraz řetězec proměnná</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[a-z]} xyzzy vysledek</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regexp reg_výraz řetězec proměnná prom1 ... promN</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set str 66.70.7.154</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;regexp &quot;(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})&quot; $str all first second third fourth</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;$all \n $first \n $second \n $third \n $fourth \n&quot;</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regexp a regsub</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set sample &quot;Where there is a will, There is a way.&quot;</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Match the first substring with lowercase letters only</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set result [regexp {[a-z]+} $sample match]</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;Result: $result match: $match&quot;</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Match the first two words, the first one allows uppercase</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set result [regexp {([A-Za-z]+) +([a-z]+)} $sample match sub1 sub2 ]</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;Result: $result Match: $match 1: $sub1 2: $sub2&quot;</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Replace a word</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;regsub &quot;way&quot; $sample &quot;lawsuit&quot; sample2</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;New: $sample2&quot;</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Use the -all option to count the number of &quot;words&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;Number of words: [regexp -all {[^ ]+} $sample]&quot;</font><br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 6. Práce se sockety&nbsp;&nbsp;&nbsp;&nbsp; ===================</font><br>
+<br>
+<font color="#006400">* Socket</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- vytvořený operačním systémem při nazávání připojení</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- procesy spolu mohou komunikovat stylem</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- peer to peer</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- client - server</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- jeden server může obsluhovat více klientů</font><br>
+<br>
+<font color="#006400">* Práce se sockety</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- jednoduchý echo server (typický příklad)</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- využívá následující příkazy</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;socket</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fconfigure</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileevent</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vwait</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- v TCK je obsluha řešená přes callback funkce</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set sock [socket -server callbackFunkce $port]</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- callBack funkce je zavolána při každém vytvoření připojení</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- aby to fungovalo korektně, musí se skript dostat do smyčky událostí</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- event loop</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- dále se (pro echo server) nastaví režim vyrovnávací paměti,</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aby se buffer vyprázdnil pro každou řádku (jinak by se echo mohlo</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poslat až na konci spojení nebo při přeplnění bufferu)</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% fconfigure $sock -buffering line</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- registrace callback funkce zavolané po přijetí dat</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% fileevent $sock readable [list callbackFunkce2 $sock]</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- list xxx yyy je pouzit pro konstrukci volani callback funkce</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- test na příznak konce souboru</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eof $sock</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- načtení řádku se zachycením chyb</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% catch {gets file line}</font><br>
+<br>
+<br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 7. Informace poskytované VM TCL ===========</font><br>
+<br>
+<font color="#006400">Informace poskytované VM TCL</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* příkaz &quot;info&quot;</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- je vyhodnocován za běhu skriptu</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* informace o interpretru</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- lze získat jeho verzi</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info tclversion</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.5</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* informace o proměnných</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info exists promenna</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set a foo</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info exists a</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info exists b</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* globální proměnné</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info globals</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info globals glob_výraz</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* informace o příkazech</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info commands</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...........</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info commands p*</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pwd pid proc package puts</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info commands l*</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list lassign lrange lsearch lappend llength linsert lreplace</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lreverse lset lrepeat load lindex lsort</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* získání informací o procedurách</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info proc procname</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info args procname</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info body procname</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vytvoření testovací procedury</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc plus{x y} {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[expr $x+$y]</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- získání základních informací o proceduře</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% info proc plus</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plus</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% info args plus</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x y</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% info body plus</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[expr $x+$y]</font><br>
+<br>
+<br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 8. Trasování proměnných ===================</font><br>
+<font color="#006400">Trasování proměnných</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* příkaz &quot;trace&quot;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace add variable proměnná událost callbackFunkce</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- událost: read write</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace info variable proměnná</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace remove variable proměnná událost callbackFunkce</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace variable ...</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace vdelete ...</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace vinfo proměnná</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- trasování zápisu do proměnné x</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace add variable x write tisk_write_x</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc tisk_write_x args {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global x</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;zapis hodnoty $x do promenne x&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- zrušení trasování zápisu do proměnné x</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace remove variable x write tisk_write_x</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- výpis všech argumentů předaných do trasovací funkce</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc tisk_write_x args {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#puts &quot;zapis hodnoty $x do promenne x&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach arg $args {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;tisk_write_x: $arg&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- výpis všech callback funkcí navázaných na proměnnou</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace info variable x</font><br>
+<br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 9. Trasování programu&nbsp;&nbsp; ===================</font><br>
+<font color="#006400">Trasování programu</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* opět se používá příkaz &quot;trace&quot;</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace add execution ...</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace add command ...</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- trasování vstupu a ukončení procedury test_proc</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc test_proc {x y} { return [expr $x+$y]}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace add execution test_proc enter test_proc_enter</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace add execution test_proc leave test_proc_leave</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc test_proc_enter args { puts &quot;test_proc enter&quot; }</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc test_proc_leave args { puts &quot;test_proc leave&quot; }</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc test_proc_enter args {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach arg $args {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;test_proc_enter: $arg&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc test_proc_leave args {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach arg $args {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;test_proc_leave: $arg&quot;</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace info execution test_proc</font><br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 10. Vytváření procesů&nbsp;&nbsp; ===================</font><br>
+<font color="#006400">Spuštění nového procesu</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* exec</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- exec ?switches? arg ?arg ...?</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;&lt; value</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;přesměrování hodnoty na standardní vstup</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; filename</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;přesměrování standardního výstupu</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt; filename</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;přesměrování standardního výstupu, připojení na konec souboru</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&gt; filename</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;přesměrování chybového výstupu</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&gt;&gt; filename</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;přesměrování chybového výstupu, připojení na konec souboru</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- exec ?switches? arg ?arg ...? &amp;</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spuštění úlohy na pozadí</font><br>
+<br>
+<br>
+<br>
+<font color="#006400">Named pipes</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Jedna z možností vytvoření komunikačního kanálu mezi procesy</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- výhoda: práce s named pipes stejná jako u souborů</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nevýhoda: jen na některých OS, omezení při vzdálené komunikaci</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Vytvoření v shellu</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ mkfifo foo</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Skript, který reaguje na každý zápis do roury</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set fifo [open &quot;foo&quot; {RDWR NONBLOCK}]</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fconfigure $fifo -blocking 1</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc read_fifo {} {</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global fifo</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gets $fifo x</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;x is $x&quot;</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileevent $fifo readable read_fifo</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Otestování funkčnosti</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ echo &quot;qwerty&quot; &gt; foo</font><br>
+<br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 11. Multithreading&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;===================</font><br>
+<font color="#006400">Multithreading</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Import balíčku s podporou multithreadingu</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;package require Thread</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkazy v balíčku Thread</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::create ?skript?</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vrací identifikátor nového vlákna</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::wait</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vstup vlákna do smyčky událostí</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- používáno při thread:create se zadaným skriptem!</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- musí být až na konci skriptu</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- jen tak lze vláknu poslat nový skript pomocí thread:sent</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::send id ?skript?</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- při -async se nečeká na dokončení skriptu</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::send id ?skript? proměnná_s_výsledkem</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- lze specifikovat jméno proměnné pro uložení výsledku</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::broadcast id ?skript?</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- pošle skript do všech vláken, nečeká na dokončení</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::join id</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- čeká na dokončení vlákna id a vrátí jeho výsledek</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- použití thread::create a thread:send</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set t1 [thread::create]</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set t2 [thread::create] </font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::send -async $t1 &quot;set a 1&quot; result</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::send -async $t2 &quot;set b 2&quot; result </font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# čekání na dokončení obou vláken</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# není zaručeno pořadí dokončení</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for {set i 0} {$i &lt; 2} {incr i} {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vwait result</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Mutexy (synchronizační mechanismus)</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::mutex create</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::mutex destroy mutex</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::mutex lock mutex</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::mutex unlock mutex</font><br>
+<br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">=================== 12. Jmenné prostory&nbsp;&nbsp;&nbsp;&nbsp; ===================</font><br>
+<font color="#006400">Jmenné prostory</font><br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Jeden ze způsobů organizace zdrojových kódů</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- zmenšení počtu globálních proměnných</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- zmenšení počtu globálních procedur</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; menší pravděpodobnost konfliktu jmen (např. přepis globální proměnné)</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Identifikátor jmenného prostoru se zapisuje před proceduru/proměnnou</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$jmenný_prostor::proměnná</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jmenný_prostor::procedura()</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Jmenné prostory lze uspořádat hierarchicky</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$jmenný_prostor::jmenný_prostor::proměnná</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jmenný_prostor::jmenný_prostor::procedura()</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Globální jmenný prostor</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&quot; - prázdný řetězec</font><br>
+<font color="#006400">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: - synonymum</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Mnohé balíčky vytváří vlastní jmenný prostor</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- viz thread::create atd.</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Vytvoření nového jmenného prostoru</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace eval Counter {</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export increment_variable</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable num 0</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc increment_variable {} {</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable num</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;incr num</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
+<br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace eval ::tcl::clock \</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[list variable LibDir [file dirname [info script]]]</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace eval ::tcl::clock {</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Export the subcommands</font><br>
+<br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export format</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export clicks</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export microseconds</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export milliseconds</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export scan</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export seconds</font><br>
+<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export add</font><br>
+<br>
+<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Přístup k procedurám a proměnným ve jmenném prostoru</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counter::bump 5</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counter::Reset</font><br>
+<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts $Counter::num</font><br>
+<br>
+<font color="#006400">_______________________________________________________________</font><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="#006400">_</font><br>
+</font></body>
+</html>
