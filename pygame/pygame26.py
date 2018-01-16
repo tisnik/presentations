@@ -7,7 +7,9 @@
 #                   a operace pygame.transform.scale().
 
 
-import pygame, sys, os
+import pygame
+import sys
+import os
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -16,7 +18,7 @@ from pygame.locals import *
 WIDTH = 320
 HEIGHT = 240
 
-# Inicializace knihovny Pygame 
+# Inicializace knihovny Pygame
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -28,7 +30,7 @@ display = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame test #26')
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
+BLACK = (0, 0, 0)
 
 # Vyplnění plochy okna černou barvou
 display.fill(BLACK)
@@ -38,15 +40,24 @@ display.fill(BLACK)
 image_surface = pygame.image.load(os.path.join('images', 'pygame.png'))
 
 # Rozměry původního obrázku
-image_width  = image_surface.get_width()
+image_width = image_surface.get_width()
 image_height = image_surface.get_height()
 
 scale_ratio = 1.5
 
 # Vytvoření zvětšených obrázků
-horizontally_scaled_image = pygame.transform.scale(image_surface, (int(image_width*scale_ratio), image_height))
-vertically_scaled_image   = pygame.transform.scale(image_surface, (image_width, int(image_height*scale_ratio)))
-scaled_image              = pygame.transform.scale(image_surface, (int(image_width*scale_ratio), int(image_height*scale_ratio)))
+horizontally_scaled_image = \
+    pygame.transform.scale(image_surface,
+                           (int(image_width*scale_ratio), image_height))
+
+vertically_scaled_image = \
+    pygame.transform.scale(image_surface,
+                           (image_width, int(image_height*scale_ratio)))
+
+scaled_image = \
+    pygame.transform.scale(image_surface,
+                           (int(image_width*scale_ratio),
+                            int(image_height*scale_ratio)))
 
 # Přímé vykreslení původního obrázku
 display.blit(image_surface, (50, 25))
@@ -55,7 +66,6 @@ display.blit(image_surface, (50, 25))
 display.blit(horizontally_scaled_image, (150, 25))
 display.blit(vertically_scaled_image, (50, 125))
 display.blit(scaled_image, (150, 125))
-
 
 
 # Hlavní herní smyčka
@@ -75,4 +85,3 @@ while True:
     clock.tick(20)
 
 # finito
-
