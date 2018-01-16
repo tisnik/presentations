@@ -7,7 +7,9 @@
 #                   a operace pygame.transform.flip().
 
 
-import pygame, sys, os
+import pygame
+import sys
+import os
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -16,7 +18,7 @@ from pygame.locals import *
 WIDTH = 320
 HEIGHT = 240
 
-# Inicializace knihovny Pygame 
+# Inicializace knihovny Pygame
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -28,7 +30,7 @@ display = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Pygame test #25')
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
+BLACK = (0, 0, 0)
 
 # Vyplnění plochy okna černou barvou
 display.fill(BLACK)
@@ -39,8 +41,8 @@ image_surface = pygame.image.load(os.path.join('images', 'pygame.png'))
 
 # Vytvoření zrcadlených obrázků
 horizontally_flipped = pygame.transform.flip(image_surface, True, False)
-vertically_flipped   = pygame.transform.flip(image_surface, False, True)
-both_flipped   = pygame.transform.flip(image_surface, True, True)
+vertically_flipped = pygame.transform.flip(image_surface, False, True)
+both_flipped = pygame.transform.flip(image_surface, True, True)
 
 # Přímé vykreslení původního obrázku
 display.blit(image_surface, (50, 25))
@@ -49,7 +51,6 @@ display.blit(image_surface, (50, 25))
 display.blit(horizontally_flipped, (150, 25))
 display.blit(vertically_flipped, (50, 125))
 display.blit(both_flipped, (150, 125))
-
 
 
 # Hlavní herní smyčka
@@ -69,4 +70,3 @@ while True:
     clock.tick(20)
 
 # finito
-
