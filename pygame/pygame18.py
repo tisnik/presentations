@@ -6,7 +6,10 @@
 # Příklad číslo 18: použití spritů, pohyblivý sprite
 
 
-import pygame, sys, os, math
+import pygame
+import sys
+import os
+import math
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
@@ -14,7 +17,6 @@ from pygame.locals import *
 # Velikost okna aplikace
 WIDTH = 320
 HEIGHT = 240
-
 
 
 # Třída představující sprite zobrazený jako jednobarevný čtverec.
@@ -26,7 +28,7 @@ class BlockySprite(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         # Vytvoření obrázku představujícího vizuální obraz spritu:
-        self.image = pygame.Surface([size,size])
+        self.image = pygame.Surface([size, size])
         self.image.fill(color)
 
         # Vytvoření obalového obdélníku
@@ -38,7 +40,6 @@ class BlockySprite(pygame.sprite.Sprite):
         # Počáteční rychlost spritu
         self.speed_x = 0
         self.speed_y = 0
-
 
 
 # Inicializace knihovny Pygame
@@ -69,13 +70,11 @@ all_sprites.add(wall)
 all_sprites.add(player)
 
 
-
 # Posun všech spritů ve skupině na základě jejich rychlosti
 def move_sprites(sprite_group):
     for sprite in sprite_group:
         sprite.rect.x = sprite.rect.x + sprite.speed_x
         sprite.rect.y = sprite.rect.y + sprite.speed_y
-
 
 
 # Vykreslení celé scény na obrazovku
@@ -86,7 +85,6 @@ def draw_scene(display, background_color, sprite_group):
     sprite_group.draw(display)
     # Obnovení obsahu obrazovky (překlopení zadního a předního bufferu)
     pygame.display.update()
-
 
 
 # Hlavní herní smyčka
@@ -110,10 +108,8 @@ while True:
             elif event.key == pygame.K_DOWN:
                 player.speed_y = +3
 
-    
     move_sprites(all_sprites)
     draw_scene(display, BLACK, all_sprites)
     clock.tick(20)
 
 # finito
-
