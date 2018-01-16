@@ -23,7 +23,7 @@ x = np.arange(-10.0, 10.0, delta)
 # průběh nezávislé proměnné y
 y = np.arange(-10.0, 10.0, delta)
 
-# vytvoření dvou polí se souřadnicemi [x,y] 
+# vytvoření dvou polí se souřadnicemi [x,y]
 X, Y = np.meshgrid(x, y)
 
 # vzdálenost od bodu [0,0]
@@ -34,7 +34,7 @@ Z = np.sin(R)/R
 
 # zobrazení 3D grafu formou plochy
 surface = ax.plot_surface(X, Y, Z, rstride=2, cstride=2, cmap=cm.coolwarm,
-                       linewidth=0, antialiased=False)
+                          linewidth=0, antialiased=False)
 
 ax.set_zlim(-1.01, 1.01)
 
@@ -47,4 +47,3 @@ fig.colorbar(surface, shrink=0.7, aspect=5)
 
 # zobrazení grafu
 plt.show()
-

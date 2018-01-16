@@ -28,4 +28,3 @@ ax.plot(x, y, z)
 
 # zobrazení grafu
 plt.show()
-
