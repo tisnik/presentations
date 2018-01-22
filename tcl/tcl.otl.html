@@ -1,904 +1,1166 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<title>~/temp/tcl/new/tcl.otl.html</title>
-<meta name="Generator" content="Vim/7.2">
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/temp/presentations/tcl/tcl.otl.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="none">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,expand_tabs,prevent_copy=">
+<meta name="colorscheme" content="zellner">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Tab { background-color: #e0ffe0; padding-bottom: 1px; }
+.Tab2 { background-color: #ffe0e0; padding-bottom: 1px; }
+.otlTagDef { background-color: #90ee90; padding-bottom: 1px; }
+.otlTagRef { background-color: #ffbbbb; padding-bottom: 1px; }
+.otlTextLeader { color: #a9a9a9; }
+.OtlTab0 { color: #00a000; }
+.OtlTab1 { color: #a00000; }
+.OtlTab2 { color: #0000a0; }
+.OtlTab3 { color: #0080a0; }
+.otlTab4 { color: #8b008b; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
 </head>
-<body bgcolor="#ffffff" text="#000000"><font face="monospace">
-<font color="#006400">===================== Obsah kurzu =============================</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;1. Ošetření chyb ve skriptech</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;2. Smyčka událostí</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;3. Dynamická tvorba kódu</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;4. Oblast platnosti proměnných</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;5. Regulární výrazy</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;6. Práce se sockety</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;7. Informace poskytované VM TCL</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;8. Trasování proměnných</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;9. Trasování programu</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;10. Vytváření procesů</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;11. Multithreading</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;12. Jmenné prostory</font><br>
-<br>
-<br>
-<br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">===================== 1. Ošetření chyb ========================</font><br>
-<br>
-<font color="#006400">Ošetření chyb</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkaz &quot;error msg&quot;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkaz &quot;catch script&quot;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkaz &quot;catch script proměnná&quot;</font><br>
-<br>
-<font color="#006400">Příkaz &quot;error msg&quot;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Vypíše zprávu na standardní výstup</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Ukončí běh procedury (pokud je použit v proceduře)</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Lze odchytit pomocí příkazu &quot;catch&quot;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- procedura pro výpočet podílu</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- pokud by mělo dojít k dělení nulou, vypíše se chyba</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc div {a b} {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if {$b==0} {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error &quot;divide by zero&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [expr $a/$b]</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% div 4 2</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% div 4 0</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;divide by zero</font><br>
-<br>
-<font color="#006400">Příkaz &quot;catch script&quot;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Spoustí skript předaný v prvním argumentu příkazu</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Zachycuje všechny výjimečné stavy</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Vrací 0 v případě, že je vše ok</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TCL_OK = 0</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Vrací jinou hodnotu v případě chyby</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TCL_ERROR = 1</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TCL_RETURN = 2</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TCL_BREAK = 3</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TCL_CONTINUE = 4</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- využití dříve definované procedury &quot;div&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% catch {div 4 2}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% catch {div 4 0}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% catch {set result [div 4 2]}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% puts $result</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% catch {set result [div 4 0]}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% puts $result</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 // původní hodnota!</font><br>
-<br>
-<font color="#006400">Příkaz &quot;catch script proměnná&quot;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Podobná funkcionalita, jako v případě &quot;catch script&quot;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Proměnná se nastaví na chybovou hodnotu</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Zjednoduší se některé programové konstrukce</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- otevře soubor pro zápis s testem, zda je vše ok</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if { [catch {open $fileName w} fid] } {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts stderr &quot;Could not open $fileName for writing\n$fid&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit 1</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 2. Smyčka událostí&nbsp;&nbsp; ======================</font><br>
-<br>
-<font color="#006400">Smyčka událostí</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Event loop</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Interní programová smyčka spravovaná VM TCL</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Používána pro</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Interně použita v knihovně Tk</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Tvorbu GUI (implicitně při použití &quot;wish&quot; apod.)</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Práci se sockety</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Práci s časovači (timery)</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Později si ukážeme práci se sockety</font><br>
-<br>
-<font color="#006400">Vstup do smyčky událostí</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* vwait proměnná</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Interně testuje hodnotu proměnné</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Pokud je proměnná změněna, smyčka se ukončí</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- mnohem lepší, než se snažit o použití return či exit</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;což ne vždy funguje</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Musí se jednat o globální proměnnou</font><br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 3. Dynamická tvorba kódu ==================</font><br>
-<br>
-<font color="#006400">Dynamická tvorba kódu</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Tcl je v porovnání s podobnými jazyky velmi dynamický skriptovací jazyk</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- většina příkazů se vyhodnocuje až při běhu programu</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- neprovádí se mezipřeklad</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkazy i jejich parametry jsou chápány jako řetězce</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- naproti tomu Perl, Python: překlad do mezikódu</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- i v těchto jazycích však existuje podpora pro eval()</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* základ dynamické tvorby kódu</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz je možné uložit do proměnné</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- následně je možné tuto proměnnou &quot;spustit&quot;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* jednoduchý příklad</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uložení příkazu do proměnné &quot;a&quot;</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set a llength</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;llength</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% $a {1 2 3}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uložení příkazu do dvojice proměnných &quot;a&quot; a &quot;b&quot;</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set a lle</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lle</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set b ngth</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ngth</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # dvojice promennych ve forme parametru</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% puts $a$b</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;llength</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # dvojice promennych ve forme prikazu</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% $a$b {1 2 3}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* při zápisu příkazů je možné využívat interpolaci (substituci)</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* a další příkazy vložené do [] nebo naopak do {}</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Tcl nejprve vyhodnotí vše uvnitř [] a posléze výsledek považuje za příkaz</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- použití substituce []</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% [string range &quot;Xllen&quot; 1 end]gth {1 2 3}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* pro složitější konstrukce se používá příkaz eval</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příklad použití příkazu eval</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval &quot;set foo 10&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # zavorky {} zabranuji vyhodnoceni</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set myscript {puts $foo}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts $foo</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $myscript</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* eval pracuje následovně:</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nejprve spojí své parametry do jediného seznamu</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vyhodnocí parametr jako příkaz</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vrátí výsledek tohoto příkazu</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* pozor na spojování parametrů do jediného seznamu</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příklad s chybou</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set a {puts &quot;Procedura a&quot;}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;Procedura a&quot;</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set b {puts &quot;Procedura b&quot;}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;Procedura b&quot;</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # vyhodnocení procedury A</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $a</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Procedura a</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # vyhodnocení procedury B</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $b</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Procedura b</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% # zde ovšem dojde k chybě</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $a $b</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bad argument &quot;Procedura b&quot;: should be &quot;nonewline&quot;</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- využití spojení parametrů do seznamu</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set print {puts}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $print</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wrong # args: should be &quot;puts ?-nonewline? ?channelId? string&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval $print 10</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* vytvoření nového typu programové smyčky</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- procedura s dvojicí parametrů: počtem opakování a skriptem</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc repeat {count script} {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while {[incr count -1] &gt;= 0} {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eval $script</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nyní proceduru vyzkoušíme</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% repeat 6 {puts Hello}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- složitější příklad</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% repeat 6 {puts [expr 1+2]}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* přístup k proměnným ze skriptů vyhodnocovaných pomocí eval</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vytvoření globální proměnné</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set x 10</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% puts x 10</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- globální proměnná je viditelná ze skriptu v eval</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eval {puts $x}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</font><br>
-<br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 4. Oblast platnosti proměnných&nbsp;&nbsp;===========</font><br>
-<br>
-<font color="#006400">Oblast platnosti proměnných</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* TCL vyhodnocuje oblast viditelnosti proměnných</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vázané na proceduru</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vázané na jmenný prostor</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- globální proměnné</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkaz &quot;global&quot;</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- proměnná s lokální platností (v proceduře) bude</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;odkazovat na globální proměnnou tohoto jména</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkaz &quot;upvar&quot;</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- naváže jméno proměnné na proměnnou s jinou</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oblastí platnosti</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- upvar otherVar myVar</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- myVar bude referencí na otherVar</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- upvar otherVar1 myVar1 otherVar2 myVar2 ...</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- myVar1 bude referencí na otherVar1</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- myVar2 bude referencí na otherVar2</font><br>
-<font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- myVarN bude referencí na otherVarN</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- upvar level otherVar myVar</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- dokáže odkazovat na proměnnou v rámci zásobníku volání</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(o N úrovní výše od současné pozice směrem nahoru)</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- upvar #level otherVar myVar</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- dokáže odkazovat na proměnnou v rámci zásobníku volání</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(o N úrovní níže od globální úrovně směrem dolů)</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Využití příkazu &quot;info&quot; pro test na existenci proměnné</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz &quot;info exists proměnná&quot; vrací 1/0 podle toho</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zda proměnná existuje</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc add {prom hodnota} {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upvar $prom p</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if { [info exists p] } {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;incr p $hodnota</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set p $hodnota</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 5. Regulární výrazy&nbsp;&nbsp;&nbsp;&nbsp; ===================</font><br>
-<br>
-<font color="#006400">Regulární výrazy v TCL</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Jedna z možností zpracování řetězců a získávání informací</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uložených v těchto řetězcích</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Dva typy regulárních výrazů</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- glob matching (&quot;globbing&quot;)</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- &quot;skutečné&quot; regulární výrazy</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Glob matching</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- odvozeno od zástupných znaků používaných v shellu (Bash...)</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- používán v TCL:</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz lsearch</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz string match</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz glob</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- kromě běžných znaků se používají speciální znaky:</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;*&quot;&nbsp;&nbsp; zastupuje sekvenci libovolných znaků</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;?&quot;&nbsp;&nbsp; zastupuje jeden libovolný znak</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[]&quot;&nbsp;&nbsp;zastupuje libovolný znak v závorkách</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[-]&quot; zastupuje znak ze zadaného rozsahu, př. A-Z, 0-9</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- použití příkazu glob</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% glob t*</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tzdata_issue</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomcat</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test-machines.odt</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tcl</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set seznam [glob t*]</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% foreach prvek $seznam {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts $prvek</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tzdata_issue</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomcat</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test-machines.odt</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tcl</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- použití příkazu string match</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set x &quot;foo&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match f* $x</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match f? $x</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match f?? $x</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# pozor na speciální význam []!</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match [a-z]* $x</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invalid command name &quot;a-z&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match &quot;[a-z]*&quot; $x</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invalid command name &quot;a-z&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# toto už je lepší</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% string match {[a-z]*} $x</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* &quot;Plnohodnotné&quot; regulární výrazy</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz regexp</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- znaky se speciálním významem</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- kvalifikátory</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- atomy</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- znaky pro začátek a konec řádku</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- výrazy v []</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- třídy znaků</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- speciální znaky</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Součásti regulárních výrazů</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- kvalifikátory</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp; sekvence 0..n atomů</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp; sekvence 1..n atomů</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;&nbsp;&nbsp;&nbsp; žádný nebo jeden atom</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{m}&nbsp;&nbsp; v závorce je zapsán přesný počet atomů</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{m,}&nbsp;&nbsp;v závorce je zapsán minimální počet atomů</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{m,n} v závorce je minimální a maximální počet atomů</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- atomy</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;konkrétní znak</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;() prázdný řetězec</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;jediný znak</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\X řídicí znak či znak se zadaným kódem</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(xxx) část výrazu, k níž lze později přistupovat (podle indexu)</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- znaky pro začátek a konec řádku</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^ nahrazuje začátek řádku</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ nahrazuje konec řádku</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- výrazy v []</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lze zde zapsat množinu znaků</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;při rozdělení znaků pomocí - se určuje rozsah a-z, 5-7 atd.</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^ negace - všechny znaky, které NEodpovídají dalšímu výrazu</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- třídy znaků</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vnější závorky [] změní třídu znaků na množinu</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:alpha:]]&nbsp;&nbsp;písmeno</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:upper:]]&nbsp;&nbsp;velké písmeno</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:lower:]]&nbsp;&nbsp;malé písmeno</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:digit:]]&nbsp;&nbsp;číslice</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:xdigit:]] hexadecimální číslice</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:alnum:]]&nbsp;&nbsp;písmeno či číslice</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:space:]]&nbsp;&nbsp;znak, který se vytiskne jako mezera</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:graph:]]&nbsp;&nbsp;znak, který má tisknutelnou podobu</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[:cntrl:]]&nbsp;&nbsp;řídicí znak</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- speciální (řídicí) znaky</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert (bell)</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backspace</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;může se použít namísto \\ (čitelnější)</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;znak ESCape</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nový řádek</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;návrat kurzoru</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tab</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u1234&nbsp;&nbsp;znak se zadaným Unikódem</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vybrané třídy znaků zapsané zkrácenou formou</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\d [[:digit:]]</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\s [[:space:]]</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\w [[:alnum:]_]&nbsp;&nbsp;jako \d a _</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\D [^[:digit:]]</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\S [^[:space:]]</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\W [^[:alnum:]_] negace \W</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příklady regulárních výrazů</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regulární výraz pro IPv4 adresu (nepřesný!)</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- znak \ zabraňuje spuštění &quot;příkazu&quot; v []</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})&quot;</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regulární výraz akceptující reálná čísla</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- zde je regulární výraz umístěný v {}, tudíž se neuvádí \ před []</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{[-+]?([0-9]+\.?[0-9]*|\.[0-9]+)([eE][-+]?[0-8]+)?}</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Použití příkazu regexp</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regexp reg_výraz řetězec</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vrací 0/1 podle toho, zda se v řetězci</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nachází vzor z regulárního výrazu</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[a-z]} xyzzy</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[a-z]} 12345</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- využití tříd znaků v regulárních výrazech</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[[:alpha:]]} xyzzy</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[[:upper:]]} xyzzy</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[[:lower:]]} xyzzy</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[[:alpha:]]} áýžřčš</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regexp volby reg_výraz řetězec</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- příkaz regexp lze zavolat s různými volbami</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- v některých případech je nutné volby ukončit pomocí --</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp -all {[a-z]} xyzzy</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp -inline {[a-z]} xyzzy</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp -inline -all {[a-z]} xyzzy</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x y z z y</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regexp reg_výraz řetězec proměnná</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% regexp {[a-z]} xyzzy vysledek</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regexp reg_výraz řetězec proměnná prom1 ... promN</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set str 66.70.7.154</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;regexp &quot;(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})&quot; $str all first second third fourth</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;$all \n $first \n $second \n $third \n $fourth \n&quot;</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- regexp a regsub</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set sample &quot;Where there is a will, There is a way.&quot;</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Match the first substring with lowercase letters only</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set result [regexp {[a-z]+} $sample match]</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;Result: $result match: $match&quot;</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Match the first two words, the first one allows uppercase</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set result [regexp {([A-Za-z]+) +([a-z]+)} $sample match sub1 sub2 ]</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;Result: $result Match: $match 1: $sub1 2: $sub2&quot;</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Replace a word</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;regsub &quot;way&quot; $sample &quot;lawsuit&quot; sample2</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;New: $sample2&quot;</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Use the -all option to count the number of &quot;words&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;Number of words: [regexp -all {[^ ]+} $sample]&quot;</font><br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 6. Práce se sockety&nbsp;&nbsp;&nbsp;&nbsp; ===================</font><br>
-<br>
-<font color="#006400">* Socket</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- vytvořený operačním systémem při nazávání připojení</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- procesy spolu mohou komunikovat stylem</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- peer to peer</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- client - server</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- jeden server může obsluhovat více klientů</font><br>
-<br>
-<font color="#006400">* Práce se sockety</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- jednoduchý echo server (typický příklad)</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- využívá následující příkazy</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;socket</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fconfigure</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileevent</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vwait</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- v TCK je obsluha řešená přes callback funkce</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% set sock [socket -server callbackFunkce $port]</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- callBack funkce je zavolána při každém vytvoření připojení</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- aby to fungovalo korektně, musí se skript dostat do smyčky událostí</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- event loop</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- dále se (pro echo server) nastaví režim vyrovnávací paměti,</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aby se buffer vyprázdnil pro každou řádku (jinak by se echo mohlo</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poslat až na konci spojení nebo při přeplnění bufferu)</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% fconfigure $sock -buffering line</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- registrace callback funkce zavolané po přijetí dat</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% fileevent $sock readable [list callbackFunkce2 $sock]</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- list xxx yyy je pouzit pro konstrukci volani callback funkce</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- test na příznak konce souboru</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% eof $sock</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;- načtení řádku se zachycením chyb</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% catch {gets file line}</font><br>
-<br>
-<br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 7. Informace poskytované VM TCL ===========</font><br>
-<br>
-<font color="#006400">Informace poskytované VM TCL</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* příkaz &quot;info&quot;</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- je vyhodnocován za běhu skriptu</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* informace o interpretru</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- lze získat jeho verzi</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info tclversion</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.5</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* informace o proměnných</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info exists promenna</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set a foo</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info exists a</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info exists b</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* globální proměnné</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info globals</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info globals glob_výraz</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* informace o příkazech</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info commands</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...........</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info commands p*</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pwd pid proc package puts</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info commands l*</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list lassign lrange lsearch lappend llength linsert lreplace</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lreverse lset lrepeat load lindex lsort</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* získání informací o procedurách</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info proc procname</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info args procname</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- info body procname</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vytvoření testovací procedury</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc plus{x y} {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[expr $x+$y]</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- získání základních informací o proceduře</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% info proc plus</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plus</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% info args plus</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x y</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% info body plus</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[expr $x+$y]</font><br>
-<br>
-<br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 8. Trasování proměnných ===================</font><br>
-<font color="#006400">Trasování proměnných</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* příkaz &quot;trace&quot;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace add variable proměnná událost callbackFunkce</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- událost: read write</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace info variable proměnná</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace remove variable proměnná událost callbackFunkce</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace variable ...</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace vdelete ...</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace vinfo proměnná</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- trasování zápisu do proměnné x</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace add variable x write tisk_write_x</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc tisk_write_x args {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global x</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;zapis hodnoty $x do promenne x&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- zrušení trasování zápisu do proměnné x</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace remove variable x write tisk_write_x</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- výpis všech argumentů předaných do trasovací funkce</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc tisk_write_x args {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#puts &quot;zapis hodnoty $x do promenne x&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach arg $args {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;tisk_write_x: $arg&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- výpis všech callback funkcí navázaných na proměnnou</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace info variable x</font><br>
-<br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 9. Trasování programu&nbsp;&nbsp; ===================</font><br>
-<font color="#006400">Trasování programu</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* opět se používá příkaz &quot;trace&quot;</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace add execution ...</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* trace add command ...</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- trasování vstupu a ukončení procedury test_proc</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc test_proc {x y} { return [expr $x+$y]}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace add execution test_proc enter test_proc_enter</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace add execution test_proc leave test_proc_leave</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc test_proc_enter args { puts &quot;test_proc enter&quot; }</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc test_proc_leave args { puts &quot;test_proc leave&quot; }</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc test_proc_enter args {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach arg $args {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;test_proc_enter: $arg&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc test_proc_leave args {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach arg $args {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;test_proc_leave: $arg&quot;</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace info execution test_proc</font><br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 10. Vytváření procesů&nbsp;&nbsp; ===================</font><br>
-<font color="#006400">Spuštění nového procesu</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* exec</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- exec ?switches? arg ?arg ...?</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;&lt; value</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;přesměrování hodnoty na standardní vstup</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; filename</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;přesměrování standardního výstupu</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt; filename</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;přesměrování standardního výstupu, připojení na konec souboru</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&gt; filename</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;přesměrování chybového výstupu</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&gt;&gt; filename</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;přesměrování chybového výstupu, připojení na konec souboru</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- exec ?switches? arg ?arg ...? &amp;</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spuštění úlohy na pozadí</font><br>
-<br>
-<br>
-<br>
-<font color="#006400">Named pipes</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Jedna z možností vytvoření komunikačního kanálu mezi procesy</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- výhoda: práce s named pipes stejná jako u souborů</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nevýhoda: jen na některých OS, omezení při vzdálené komunikaci</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Vytvoření v shellu</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ mkfifo foo</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Skript, který reaguje na každý zápis do roury</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set fifo [open &quot;foo&quot; {RDWR NONBLOCK}]</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fconfigure $fifo -blocking 1</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc read_fifo {} {</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global fifo</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gets $fifo x</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts &quot;x is $x&quot;</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileevent $fifo readable read_fifo</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Otestování funkčnosti</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ echo &quot;qwerty&quot; &gt; foo</font><br>
-<br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 11. Multithreading&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;===================</font><br>
-<font color="#006400">Multithreading</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Import balíčku s podporou multithreadingu</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;package require Thread</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Příkazy v balíčku Thread</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::create ?skript?</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vrací identifikátor nového vlákna</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::wait</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- vstup vlákna do smyčky událostí</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- používáno při thread:create se zadaným skriptem!</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- musí být až na konci skriptu</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- jen tak lze vláknu poslat nový skript pomocí thread:sent</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::send id ?skript?</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- při -async se nečeká na dokončení skriptu</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::send id ?skript? proměnná_s_výsledkem</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- lze specifikovat jméno proměnné pro uložení výsledku</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::broadcast id ?skript?</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- pošle skript do všech vláken, nečeká na dokončení</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::join id</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- čeká na dokončení vlákna id a vrátí jeho výsledek</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Demonstrační příklad</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- použití thread::create a thread:send</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set t1 [thread::create]</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set t2 [thread::create] </font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::send -async $t1 &quot;set a 1&quot; result</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::send -async $t2 &quot;set b 2&quot; result </font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# čekání na dokončení obou vláken</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# není zaručeno pořadí dokončení</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for {set i 0} {$i &lt; 2} {incr i} {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vwait result</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Mutexy (synchronizační mechanismus)</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::mutex create</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::mutex destroy mutex</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::mutex lock mutex</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thread::mutex unlock mutex</font><br>
-<br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">=================== 12. Jmenné prostory&nbsp;&nbsp;&nbsp;&nbsp; ===================</font><br>
-<font color="#006400">Jmenné prostory</font><br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Jeden ze způsobů organizace zdrojových kódů</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- zmenšení počtu globálních proměnných</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- zmenšení počtu globálních procedur</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; menší pravděpodobnost konfliktu jmen (např. přepis globální proměnné)</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Identifikátor jmenného prostoru se zapisuje před proceduru/proměnnou</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$jmenný_prostor::proměnná</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jmenný_prostor::procedura()</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Jmenné prostory lze uspořádat hierarchicky</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$jmenný_prostor::jmenný_prostor::proměnná</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jmenný_prostor::jmenný_prostor::procedura()</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Globální jmenný prostor</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&quot; - prázdný řetězec</font><br>
-<font color="#006400">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: - synonymum</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Mnohé balíčky vytváří vlastní jmenný prostor</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- viz thread::create atd.</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Vytvoření nového jmenného prostoru</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace eval Counter {</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export increment_variable</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable num 0</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proc increment_variable {} {</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable num</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;incr num</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</font><br>
-<br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace eval ::tcl::clock \</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[list variable LibDir [file dirname [info script]]]</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace eval ::tcl::clock {</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Export the subcommands</font><br>
-<br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export format</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export clicks</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export microseconds</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export milliseconds</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export scan</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export seconds</font><br>
-<font color="#bbbb00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace export add</font><br>
-<br>
-<font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp;* Přístup k procedurám a proměnným ve jmenném prostoru</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counter::bump 5</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counter::Reset</font><br>
-<font color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts $Counter::num</font><br>
-<br>
-<font color="#006400">_______________________________________________________________</font><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<font color="#006400">_</font><br>
-</font></body>
+<body>
+<pre id='vimCodeElement'>
+<span class="OtlTab0">===================== Obsah kurzu =============================</span>
+
+<span class="OtlTab1">    1. OĹĄetĹenĂ­ chyb ve skriptech</span>
+<span class="OtlTab1">    2. SmyÄka udĂĄlostĂ­</span>
+<span class="OtlTab1">    3. DynamickĂĄ tvorba kĂłdu</span>
+<span class="OtlTab1">    4. Oblast platnosti promÄnnĂ˝ch</span>
+<span class="OtlTab1">    5. RegulĂĄrnĂ­ vĂ˝razy</span>
+<span class="OtlTab1">    6. PrĂĄce se sockety</span>
+<span class="OtlTab1">    7. Informace poskytovanĂŠ VM TCL</span>
+<span class="OtlTab1">    8. TrasovĂĄnĂ­ promÄnnĂ˝ch</span>
+<span class="OtlTab1">    9. TrasovĂĄnĂ­ programu</span>
+<span class="OtlTab1">    10. VytvĂĄĹenĂ­ procesĹŻ</span>
+<span class="OtlTab1">    11. Multithreading</span>
+<span class="OtlTab1">    12. JmennĂŠ prostory</span>
+<span class="OtlTab1">    13. ObjektovĂŠ rozĹĄĂ­ĹenĂ­ incr Tcl</span>
+<span class="OtlTab1">    14. Knihovna Tcllib</span>
+<span class="OtlTab1">    15. KomunikaÄnĂ­ protokoly</span>
+<span class="OtlTab1">    16. MatematickĂŠ funkce a operace</span>
+
+
+
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">===================== 1. OĹĄetĹenĂ­ chyb ========================</span>
+
+<span class="OtlTab0">OĹĄetĹenĂ­ chyb</span>
+<span class="OtlTab1">    * PĹĂ­kaz &quot;error msg&quot;</span>
+<span class="OtlTab1">    * PĹĂ­kaz &quot;catch script&quot;</span>
+<span class="OtlTab1">    * PĹĂ­kaz &quot;catch script promÄnnĂĄ&quot;</span>
+
+<span class="OtlTab0">PĹĂ­kaz &quot;error msg&quot;</span>
+<span class="OtlTab1">    * VypĂ­ĹĄe zprĂĄvu na standardnĂ­ vĂ˝stup</span>
+<span class="OtlTab1">    * UkonÄĂ­ bÄh procedury (pokud je pouĹžit v proceduĹe)</span>
+<span class="OtlTab1">    * Lze odchytit pomocĂ­ pĹĂ­kazu &quot;catch&quot;</span>
+<span class="OtlTab1">    * DemonstraÄnĂ­ pĹĂ­klad</span>
+<span class="OtlTab2">        - procedura pro vĂ˝poÄet podĂ­lu</span>
+<span class="OtlTab2">        - pokud by mÄlo dojĂ­t k dÄlenĂ­ nulou, vypĂ­ĹĄe se chyba</span>
+
+<span class="OtlTab3">            proc div {a b} {</span>
+<span class="OtlTab3">                if {$b==0} {</span>
+<span class="OtlTab3">                    error &quot;divide by zero&quot;</span>
+<span class="OtlTab3">                } else {</span>
+<span class="OtlTab3">                    return </span><span class="otlTagRef">[expr $a/$b]</span>
+<span class="OtlTab3">               }</span>
+<span class="OtlTab3">            }</span>
+<span class="OtlTab3">            % div 4 2</span>
+<span class="OtlTab3">            2</span>
+<span class="OtlTab3">            % div 4 0</span>
+<span class="OtlTab3">            divide by zero</span>
+
+<span class="OtlTab0">PĹĂ­kaz &quot;catch script&quot;</span>
+<span class="OtlTab1">    * SpoustĂ­ skript pĹedanĂ˝ v prvnĂ­m argumentu pĹĂ­kazu</span>
+<span class="OtlTab1">    * Zachycuje vĹĄechny vĂ˝jimeÄnĂŠ stavy</span>
+<span class="OtlTab1">    * VracĂ­ 0 v pĹĂ­padÄ, Ĺže je vĹĄe ok</span>
+<span class="OtlTab2">        - TCL_OK = 0</span>
+<span class="OtlTab1">    * VracĂ­ jinou hodnotu v pĹĂ­padÄ chyby</span>
+<span class="OtlTab2">        - TCL_ERROR = 1</span>
+<span class="OtlTab2">        - TCL_RETURN = 2</span>
+<span class="OtlTab2">        - TCL_BREAK = 3</span>
+<span class="OtlTab2">        - TCL_CONTINUE = 4</span>
+<span class="OtlTab1">    * DemonstraÄnĂ­ pĹĂ­klad</span>
+<span class="OtlTab2">        - vyuĹžitĂ­ dĹĂ­ve definovanĂŠ procedury &quot;div&quot;</span>
+<span class="OtlTab3">            % catch {div 4 2}</span>
+<span class="OtlTab3">            0</span>
+<span class="OtlTab3">            % catch {div 4 0}</span>
+<span class="OtlTab3">            1</span>
+<span class="OtlTab3">            % catch {set result </span><span class="otlTagRef">[div 4 2]</span><span class="OtlTab3">}</span>
+<span class="OtlTab3">            0</span>
+<span class="OtlTab3">            % puts $result</span>
+<span class="OtlTab3">            2</span>
+<span class="OtlTab3">            % catch {set result </span><span class="otlTagRef">[div 4 0]</span><span class="OtlTab3">}</span>
+<span class="OtlTab3">            1</span>
+<span class="OtlTab3">            % puts $result</span>
+<span class="OtlTab3">            2 // pĹŻvodnĂ­ hodnota!</span>
+
+<span class="OtlTab0">PĹĂ­kaz &quot;catch script promÄnnĂĄ&quot;</span>
+<span class="OtlTab1">    * PodobnĂĄ funkcionalita, jako v pĹĂ­padÄ &quot;catch script&quot;</span>
+<span class="OtlTab1">    * PromÄnnĂĄ se nastavĂ­ na chybovou hodnotu</span>
+<span class="OtlTab1">    * ZjednoduĹĄĂ­ se nÄkterĂŠ programovĂŠ konstrukce</span>
+<span class="OtlTab1">    * DemonstraÄnĂ­ pĹĂ­klad</span>
+<span class="OtlTab2">        - otevĹe soubor pro zĂĄpis s testem, zda je vĹĄe ok</span>
+<span class="OtlTab3">            if { </span><span class="otlTagRef">[catch {open $fileName w} fid]</span><span class="OtlTab3"> } {</span>
+<span class="OtlTab3">                puts stderr &quot;Could not open $fileName for writing\n$fid&quot;</span>
+<span class="OtlTab3">                exit 1</span>
+<span class="OtlTab3">            }</span>
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 2. SmyÄka udĂĄlostĂ­   ======================</span>
+
+<span class="OtlTab0">SmyÄka udĂĄlostĂ­</span>
+<span class="OtlTab1">    * Event loop</span>
+<span class="OtlTab1">    * InternĂ­ programovĂĄ smyÄka spravovanĂĄ VM TCL</span>
+<span class="OtlTab1">    * PouĹžĂ­vĂĄna pro</span>
+<span class="OtlTab2">        - InternÄ pouĹžita v knihovnÄ Tk</span>
+<span class="OtlTab2">        - Tvorbu GUI (implicitnÄ pĹi pouĹžitĂ­ &quot;wish&quot; apod.)</span>
+<span class="OtlTab2">        - PrĂĄci se sockety</span>
+<span class="OtlTab2">        - PrĂĄci s ÄasovaÄi (timery)</span>
+<span class="OtlTab1">    * PozdÄji si ukĂĄĹžeme prĂĄci se sockety</span>
+
+<span class="OtlTab0">Vstup do smyÄky udĂĄlostĂ­</span>
+<span class="OtlTab1">    * vwait promÄnnĂĄ</span>
+<span class="OtlTab2">        - InternÄ testuje hodnotu promÄnnĂŠ</span>
+<span class="OtlTab2">        - Pokud je promÄnnĂĄ zmÄnÄna, smyÄka se ukonÄĂ­</span>
+<span class="OtlTab3">            - mnohem lepĹĄĂ­, neĹž se snaĹžit o pouĹžitĂ­ return Äi exit</span>
+<span class="OtlTab3">              coĹž ne vĹždy funguje</span>
+<span class="OtlTab2">        - MusĂ­ se jednat o globĂĄlnĂ­ promÄnnou</span>
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 3. DynamickĂĄ tvorba kĂłdu ==================</span>
+
+<span class="OtlTab0">DynamickĂĄ tvorba kĂłdu</span>
+<span class="OtlTab1">    * Tcl je v porovnĂĄnĂ­ s podobnĂ˝mi jazyky velmi dynamickĂ˝ skriptovacĂ­ jazyk</span>
+<span class="OtlTab2">        - vÄtĹĄina pĹĂ­kazĹŻ se vyhodnocuje aĹž pĹi bÄhu programu</span>
+<span class="OtlTab2">        - neprovĂĄdĂ­ se mezipĹeklad</span>
+<span class="OtlTab2">        - pĹĂ­kazy i jejich parametry jsou chĂĄpĂĄny jako ĹetÄzce</span>
+<span class="OtlTab2">        - naproti tomu Perl, Python: pĹeklad do mezikĂłdu</span>
+<span class="OtlTab3">            - i v tÄchto jazycĂ­ch vĹĄak existuje podpora pro eval()</span>
+<span class="OtlTab1">    * zĂĄklad dynamickĂŠ tvorby kĂłdu</span>
+<span class="OtlTab2">        - pĹĂ­kaz je moĹžnĂŠ uloĹžit do promÄnnĂŠ</span>
+<span class="OtlTab2">        - nĂĄslednÄ je moĹžnĂŠ tuto promÄnnou &quot;spustit&quot;</span>
+<span class="OtlTab1">    * jednoduchĂ˝ pĹĂ­klad</span>
+<span class="OtlTab2">        - uloĹženĂ­ pĹĂ­kazu do promÄnnĂŠ &quot;a&quot;</span>
+
+<span class="OtlTab3">            % set a llength</span>
+<span class="OtlTab3">            llength</span>
+<span class="OtlTab3">            % $a {1 2 3}</span>
+<span class="OtlTab3">            3</span>
+
+<span class="OtlTab2">        - uloĹženĂ­ pĹĂ­kazu do dvojice promÄnnĂ˝ch &quot;a&quot; a &quot;b&quot;</span>
+
+<span class="OtlTab3">            % set a lle</span>
+<span class="OtlTab3">            lle</span>
+<span class="OtlTab3">            % set b ngth</span>
+<span class="OtlTab3">            ngth</span>
+<span class="OtlTab3">            % # dvojice promennych ve forme parametru</span>
+<span class="OtlTab3">            % puts $a$b</span>
+<span class="OtlTab3">            llength</span>
+<span class="OtlTab3">            % # dvojice promennych ve forme prikazu</span>
+<span class="OtlTab3">            % $a$b {1 2 3}</span>
+<span class="OtlTab3">            3</span>
+
+<span class="OtlTab1">    * pĹi zĂĄpisu pĹĂ­kazĹŻ je moĹžnĂŠ vyuĹžĂ­vat interpolaci (substituci)</span>
+<span class="OtlTab1">    * a dalĹĄĂ­ pĹĂ­kazy vloĹženĂŠ do </span><span class="otlTagRef">[]</span><span class="OtlTab1"> nebo naopak do {}</span>
+<span class="OtlTab1">    * Tcl nejprve vyhodnotĂ­ vĹĄe uvnitĹ </span><span class="otlTagRef">[]</span><span class="OtlTab1"> a poslĂŠze vĂ˝sledek povaĹžuje za pĹĂ­kaz</span>
+<span class="OtlTab2">        - pouĹžitĂ­ substituce </span><span class="otlTagRef">[]</span>
+
+<span class="OtlTab3">            % </span><span class="otlTagRef">[string range &quot;Xllen&quot; 1 end]</span><span class="OtlTab3">gth {1 2 3}</span>
+<span class="OtlTab3">            3</span>
+
+<span class="OtlTab1">    * pro sloĹžitÄjĹĄĂ­ konstrukce se pouĹžĂ­vĂĄ pĹĂ­kaz eval</span>
+<span class="OtlTab2">        - pĹĂ­klad pouĹžitĂ­ pĹĂ­kazu eval</span>
+
+<span class="OtlTab3">            % eval &quot;set foo 10&quot;</span>
+<span class="OtlTab3">            10</span>
+
+<span class="OtlTab3">            % # zavorky {} zabranuji vyhodnoceni</span>
+<span class="OtlTab3">            % set myscript {puts $foo}</span>
+<span class="OtlTab3">            puts $foo</span>
+
+<span class="OtlTab3">            % eval $myscript</span>
+<span class="OtlTab3">            10</span>
+
+<span class="OtlTab1">    * eval pracuje nĂĄsledovnÄ:</span>
+<span class="OtlTab2">        - nejprve spojĂ­ svĂŠ parametry do jedinĂŠho seznamu</span>
+<span class="OtlTab2">        - vyhodnocĂ­ parametr jako pĹĂ­kaz</span>
+<span class="OtlTab2">        - vrĂĄtĂ­ vĂ˝sledek tohoto pĹĂ­kazu</span>
+<span class="OtlTab1">    * pozor na spojovĂĄnĂ­ parametrĹŻ do jedinĂŠho seznamu</span>
+<span class="OtlTab2">        - pĹĂ­klad s chybou</span>
+
+<span class="OtlTab3">            % set a {puts &quot;Procedura a&quot;}</span>
+<span class="OtlTab3">            puts &quot;Procedura a&quot;</span>
+
+<span class="OtlTab3">            % set b {puts &quot;Procedura b&quot;}</span>
+<span class="OtlTab3">            puts &quot;Procedura b&quot;</span>
+
+<span class="OtlTab3">            % # vyhodnocenĂ­ procedury A</span>
+<span class="OtlTab3">            % eval $a</span>
+<span class="OtlTab3">            Procedura a</span>
+
+<span class="OtlTab3">            % # vyhodnocenĂ­ procedury B</span>
+<span class="OtlTab3">            % eval $b</span>
+<span class="OtlTab3">            Procedura b</span>
+
+<span class="OtlTab3">            % # zde ovĹĄem dojde k chybÄ</span>
+<span class="OtlTab3">            % eval $a $b</span>
+<span class="OtlTab3">            bad argument &quot;Procedura b&quot;: should be &quot;nonewline&quot;</span>
+
+<span class="OtlTab2">        - vyuĹžitĂ­ spojenĂ­ parametrĹŻ do seznamu</span>
+
+<span class="OtlTab3">            % set print {puts}</span>
+<span class="OtlTab3">            puts</span>
+<span class="OtlTab3">            % eval $print</span>
+<span class="OtlTab3">            wrong # args: should be &quot;puts ?-nonewline? ?channelId? string&quot;</span>
+<span class="OtlTab3">            % eval $print 10</span>
+<span class="OtlTab3">            10</span>
+
+<span class="OtlTab1">    * vytvoĹenĂ­ novĂŠho typu programovĂŠ smyÄky</span>
+<span class="OtlTab2">        - procedura s dvojicĂ­ parametrĹŻ: poÄtem opakovĂĄnĂ­ a skriptem</span>
+
+<span class="OtlTab3">            proc repeat {count script} {</span>
+<span class="OtlTab3">                while {</span><span class="otlTagRef">[incr count -1]</span><span class="OtlTab3"> &gt;= 0} {</span>
+<span class="OtlTab3">                    eval $script</span>
+<span class="OtlTab3">                }</span>
+<span class="OtlTab3">            }</span>
+
+<span class="OtlTab2">        - nynĂ­ proceduru vyzkouĹĄĂ­me</span>
+
+<span class="OtlTab3">            % repeat 6 {puts Hello}</span>
+<span class="OtlTab3">            Hello</span>
+<span class="OtlTab3">            Hello</span>
+<span class="OtlTab3">            Hello</span>
+<span class="OtlTab3">            Hello</span>
+<span class="OtlTab3">            Hello</span>
+<span class="OtlTab3">            Hello</span>
+
+<span class="OtlTab2">        - sloĹžitÄjĹĄĂ­ pĹĂ­klad</span>
+
+<span class="OtlTab3">            % repeat 6 {puts </span><span class="otlTagRef">[expr 1+2]</span><span class="OtlTab3">}</span>
+<span class="OtlTab3">            3</span>
+<span class="OtlTab3">            3</span>
+<span class="OtlTab3">            3</span>
+<span class="OtlTab3">            3</span>
+<span class="OtlTab3">            3</span>
+<span class="OtlTab3">            3</span>
+
+<span class="OtlTab1">    * pĹĂ­stup k promÄnnĂ˝m ze skriptĹŻ vyhodnocovanĂ˝ch pomocĂ­ eval</span>
+<span class="OtlTab2">        - vytvoĹenĂ­ globĂĄlnĂ­ promÄnnĂŠ</span>
+
+<span class="OtlTab3">            % set x 10</span>
+<span class="OtlTab3">            10</span>
+<span class="OtlTab3">            % puts x 10</span>
+<span class="OtlTab3">            10</span>
+
+<span class="OtlTab2">        - globĂĄlnĂ­ promÄnnĂĄ je viditelnĂĄ ze skriptu v eval</span>
+
+<span class="OtlTab3">            % eval {puts $x}</span>
+<span class="OtlTab3">            10</span>
+
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 4. Oblast platnosti promÄnnĂ˝ch  ===========</span>
+
+<span class="OtlTab0">Oblast platnosti promÄnnĂ˝ch</span>
+<span class="OtlTab1">    * TCL vyhodnocuje oblast viditelnosti promÄnnĂ˝ch</span>
+<span class="OtlTab2">        - vĂĄzanĂŠ na proceduru</span>
+<span class="OtlTab2">        - vĂĄzanĂŠ na jmennĂ˝ prostor</span>
+<span class="OtlTab2">        - globĂĄlnĂ­ promÄnnĂŠ</span>
+
+<span class="OtlTab1">    * PĹĂ­kaz &quot;global&quot;</span>
+<span class="OtlTab2">        - promÄnnĂĄ s lokĂĄlnĂ­ platnostĂ­ (v proceduĹe) bude</span>
+<span class="OtlTab2">          odkazovat na globĂĄlnĂ­ promÄnnou tohoto jmĂŠna</span>
+
+<span class="OtlTab1">    * PĹĂ­kaz &quot;upvar&quot;</span>
+<span class="OtlTab2">        - navĂĄĹže jmĂŠno promÄnnĂŠ na promÄnnou s jinou</span>
+<span class="OtlTab2">          oblastĂ­ platnosti</span>
+<span class="OtlTab2">        - upvar otherVar myVar</span>
+<span class="OtlTab3">            - myVar bude referencĂ­ na otherVar</span>
+<span class="OtlTab2">        - upvar otherVar1 myVar1 otherVar2 myVar2 ...</span>
+<span class="OtlTab3">            - myVar1 bude referencĂ­ na otherVar1</span>
+<span class="OtlTab3">            - myVar2 bude referencĂ­ na otherVar2</span>
+<span class="otlTab4">                ...</span>
+<span class="OtlTab3">            - myVarN bude referencĂ­ na otherVarN</span>
+<span class="OtlTab2">        - upvar level otherVar myVar</span>
+<span class="OtlTab3">            - dokĂĄĹže odkazovat na promÄnnou v rĂĄmci zĂĄsobnĂ­ku volĂĄnĂ­</span>
+<span class="OtlTab3">              (o N ĂşrovnĂ­ vĂ˝ĹĄe od souÄasnĂŠ pozice smÄrem nahoru)</span>
+<span class="OtlTab2">        - upvar #level otherVar myVar</span>
+<span class="OtlTab3">            - dokĂĄĹže odkazovat na promÄnnou v rĂĄmci zĂĄsobnĂ­ku volĂĄnĂ­</span>
+<span class="OtlTab3">              (o N ĂşrovnĂ­ nĂ­Ĺže od globĂĄlnĂ­ ĂşrovnÄ smÄrem dolĹŻ)</span>
+
+<span class="OtlTab1">    * VyuĹžitĂ­ pĹĂ­kazu &quot;info&quot; pro test na existenci promÄnnĂŠ</span>
+<span class="OtlTab2">        - pĹĂ­kaz &quot;info exists promÄnnĂĄ&quot; vracĂ­ 1/0 podle toho</span>
+<span class="OtlTab2">          zda promÄnnĂĄ existuje</span>
+<span class="OtlTab3">            proc add {prom hodnota} {</span>
+<span class="OtlTab3">                upvar $prom p</span>
+<span class="OtlTab3">                if { </span><span class="otlTagRef">[info exists p]</span><span class="OtlTab3"> } {</span>
+<span class="OtlTab3">                    incr p $hodnota</span>
+<span class="OtlTab3">                } else {</span>
+<span class="OtlTab3">                    set p $hodnota</span>
+<span class="OtlTab3">                }</span>
+<span class="OtlTab3">            }</span>
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 5. RegulĂĄrnĂ­ vĂ˝razy     ===================</span>
+
+<span class="OtlTab0">RegulĂĄrnĂ­ vĂ˝razy v TCL</span>
+<span class="OtlTab1">    * Jedna z moĹžnostĂ­ zpracovĂĄnĂ­ ĹetÄzcĹŻ a zĂ­skĂĄvĂĄnĂ­ informacĂ­</span>
+<span class="OtlTab1">      uloĹženĂ˝ch v tÄchto ĹetÄzcĂ­ch</span>
+<span class="OtlTab1">    * Dva typy regulĂĄrnĂ­ch vĂ˝razĹŻ</span>
+<span class="OtlTab2">        - glob matching (&quot;globbing&quot;)</span>
+<span class="OtlTab2">        - &quot;skuteÄnĂŠ&quot; regulĂĄrnĂ­ vĂ˝razy</span>
+<span class="OtlTab1">    * Glob matching</span>
+<span class="OtlTab2">        - odvozeno od zĂĄstupnĂ˝ch znakĹŻ pouĹžĂ­vanĂ˝ch v shellu (Bash...)</span>
+<span class="OtlTab2">        - pouĹžĂ­vĂĄn v TCL:</span>
+<span class="OtlTab3">            - pĹĂ­kaz lsearch</span>
+<span class="OtlTab3">            - pĹĂ­kaz string match</span>
+<span class="OtlTab3">            - pĹĂ­kaz glob</span>
+<span class="OtlTab2">        - kromÄ bÄĹžnĂ˝ch znakĹŻ se pouĹžĂ­vajĂ­ speciĂĄlnĂ­ znaky:</span>
+<span class="OtlTab3">            &quot;*&quot;   zastupuje sekvenci libovolnĂ˝ch znakĹŻ</span>
+<span class="OtlTab3">            &quot;?&quot;   zastupuje jeden libovolnĂ˝ znak</span>
+<span class="OtlTab3">            &quot;</span><span class="otlTagRef">[]</span><span class="OtlTab3">&quot;  zastupuje libovolnĂ˝ znak v zĂĄvorkĂĄch</span>
+<span class="OtlTab3">            &quot;</span><span class="otlTagRef">[-]</span><span class="OtlTab3">&quot; zastupuje znak ze zadanĂŠho rozsahu, pĹ. A-Z, 0-9</span>
+<span class="OtlTab1">    * DemonstraÄnĂ­ pĹĂ­klad</span>
+<span class="OtlTab2">        - pouĹžitĂ­ pĹĂ­kazu glob</span>
+<span class="OtlTab3">            % glob t*</span>
+<span class="OtlTab3">            tzdata_issue</span>
+<span class="OtlTab3">            tomcat</span>
+<span class="OtlTab3">            test-machines.odt</span>
+<span class="OtlTab3">            temp</span>
+<span class="OtlTab3">            tcl</span>
+
+<span class="OtlTab3">            % set seznam </span><span class="otlTagRef">[glob t*]</span>
+<span class="OtlTab3">            % foreach prvek $seznam {</span>
+<span class="OtlTab3">                puts $prvek</span>
+<span class="OtlTab3">            }</span>
+<span class="OtlTab3">            tzdata_issue</span>
+<span class="OtlTab3">            tomcat</span>
+<span class="OtlTab3">            test-machines.odt</span>
+<span class="OtlTab3">            temp</span>
+<span class="OtlTab3">            tcl</span>
+
+<span class="OtlTab1">    * DemonstraÄnĂ­ pĹĂ­klad</span>
+<span class="OtlTab2">        - pouĹžitĂ­ pĹĂ­kazu string match</span>
+<span class="OtlTab3">            % set x &quot;foo&quot;</span>
+<span class="OtlTab3">            foo</span>
+<span class="OtlTab3">            % string match f* $x</span>
+<span class="OtlTab3">            1</span>
+<span class="OtlTab3">            % string match f? $x</span>
+<span class="OtlTab3">            0</span>
+<span class="OtlTab3">            % string match f?? $x</span>
+<span class="OtlTab3">            1</span>
+
+<span class="OtlTab3">            # pozor na speciĂĄlnĂ­ vĂ˝znam </span><span class="otlTagRef">[]</span><span class="OtlTab3">!</span>
+<span class="OtlTab3">            % string match </span><span class="otlTagRef">[a-z]</span><span class="OtlTab3">* $x</span>
+<span class="OtlTab3">            invalid command name &quot;a-z&quot;</span>
+<span class="OtlTab3">            % string match &quot;</span><span class="otlTagRef">[a-z]</span><span class="OtlTab3">*&quot; $x</span>
+<span class="OtlTab3">            invalid command name &quot;a-z&quot;</span>
+<span class="OtlTab3">            # toto uĹž je lepĹĄĂ­</span>
+<span class="OtlTab3">            % string match {</span><span class="otlTagRef">[a-z]</span><span class="OtlTab3">*} $x</span>
+<span class="OtlTab3">            1</span>
+
+<span class="OtlTab1">    * &quot;PlnohodnotnĂŠ&quot; regulĂĄrnĂ­ vĂ˝razy</span>
+<span class="OtlTab2">        - pĹĂ­kaz regexp</span>
+<span class="OtlTab2">        - znaky se speciĂĄlnĂ­m vĂ˝znamem</span>
+<span class="OtlTab3">            - kvalifikĂĄtory</span>
+<span class="OtlTab3">            - atomy</span>
+<span class="OtlTab3">            - znaky pro zaÄĂĄtek a konec ĹĂĄdku</span>
+<span class="OtlTab3">            - vĂ˝razy v </span><span class="otlTagRef">[]</span>
+<span class="OtlTab3">            - tĹĂ­dy znakĹŻ</span>
+<span class="OtlTab3">            - speciĂĄlnĂ­ znaky</span>
+
+<span class="OtlTab1">    * SouÄĂĄsti regulĂĄrnĂ­ch vĂ˝razĹŻ</span>
+<span class="OtlTab2">        - kvalifikĂĄtory</span>
+<span class="OtlTab3">            *     sekvence 0..n atomĹŻ</span>
+<span class="OtlTab3">            +     sekvence 1..n atomĹŻ</span>
+<span class="OtlTab3">            ?     ĹžĂĄdnĂ˝ nebo jeden atom</span>
+<span class="OtlTab3">            {m}   v zĂĄvorce je zapsĂĄn pĹesnĂ˝ poÄet atomĹŻ</span>
+<span class="OtlTab3">            {m,}  v zĂĄvorce je zapsĂĄn minimĂĄlnĂ­ poÄet atomĹŻ</span>
+<span class="OtlTab3">            {m,n} v zĂĄvorce je minimĂĄlnĂ­ a maximĂĄlnĂ­ poÄet atomĹŻ</span>
+<span class="OtlTab2">        - atomy</span>
+<span class="OtlTab3">            x  konkrĂŠtnĂ­ znak</span>
+<span class="OtlTab3">            () prĂĄzdnĂ˝ ĹetÄzec</span>
+<span class="OtlTab3">            .  jedinĂ˝ znak</span>
+<span class="OtlTab3">            \X ĹĂ­dicĂ­ znak Äi znak se zadanĂ˝m kĂłdem</span>
+<span class="OtlTab3">            (xxx) ÄĂĄst vĂ˝razu, k nĂ­Ĺž lze pozdÄji pĹistupovat (podle indexu)</span>
+<span class="OtlTab2">        - znaky pro zaÄĂĄtek a konec ĹĂĄdku</span>
+<span class="OtlTab3">            ^ nahrazuje zaÄĂĄtek ĹĂĄdku</span>
+<span class="OtlTab3">            $ nahrazuje konec ĹĂĄdku</span>
+<span class="OtlTab2">        - vĂ˝razy v </span><span class="otlTagRef">[]</span>
+<span class="OtlTab3">            lze zde zapsat mnoĹžinu znakĹŻ</span>
+<span class="OtlTab3">            pĹi rozdÄlenĂ­ znakĹŻ pomocĂ­ - se urÄuje rozsah a-z, 5-7 atd.</span>
+<span class="OtlTab3">            ^ negace - vĹĄechny znaky, kterĂŠ NEodpovĂ­dajĂ­ dalĹĄĂ­mu vĂ˝razu</span>
+<span class="OtlTab2">        - tĹĂ­dy znakĹŻ</span>
+<span class="OtlTab3">            vnÄjĹĄĂ­ zĂĄvorky </span><span class="otlTagRef">[]</span><span class="OtlTab3"> zmÄnĂ­ tĹĂ­du znakĹŻ na mnoĹžinu</span>
+<span class="OtlTab3">            </span><span class="otlTagDef">[[:alpha:]]</span><span class="OtlTab3">  pĂ­smeno</span>
+<span class="OtlTab3">            </span><span class="otlTagDef">[[:upper:]]</span><span class="OtlTab3">  velkĂŠ pĂ­smeno</span>
+<span class="OtlTab3">            </span><span class="otlTagDef">[[:lower:]]</span><span class="OtlTab3">  malĂŠ pĂ­smeno</span>
+<span class="OtlTab3">            </span><span class="otlTagDef">[[:digit:]]</span><span class="OtlTab3">  ÄĂ­slice</span>
+<span class="OtlTab3">            </span><span class="otlTagDef">[[:xdigit:]]</span><span class="OtlTab3"> hexadecimĂĄlnĂ­ ÄĂ­slice</span>
+<span class="OtlTab3">            </span><span class="otlTagDef">[[:alnum:]]</span><span class="OtlTab3">  pĂ­smeno Äi ÄĂ­slice</span>
+<span class="OtlTab3">            </span><span class="otlTagDef">[[:space:]]</span><span class="OtlTab3">  znak, kterĂ˝ se vytiskne jako mezera</span>
+<span class="OtlTab3">            </span><span class="otlTagDef">[[:graph:]]</span><span class="OtlTab3">  znak, kterĂ˝ mĂĄ tisknutelnou podobu</span>
+<span class="OtlTab3">            </span><span class="otlTagDef">[[:cntrl:]]</span><span class="OtlTab3">  ĹĂ­dicĂ­ znak</span>
+<span class="OtlTab2">        - speciĂĄlnĂ­ (ĹĂ­dicĂ­) znaky</span>
+<span class="OtlTab3">            \a      alert (bell)</span>
+<span class="OtlTab3">            \b      backspace</span>
+<span class="OtlTab3">            \B      mĹŻĹže se pouĹžĂ­t namĂ­sto \\ (ÄitelnÄjĹĄĂ­)</span>
+<span class="OtlTab3">            \e      znak ESCape</span>
+<span class="OtlTab3">            \n      novĂ˝ ĹĂĄdek</span>
+<span class="OtlTab3">            \r      nĂĄvrat kurzoru</span>
+<span class="OtlTab3">            \t      tab</span>
+<span class="OtlTab3">            \u1234  znak se zadanĂ˝m UnikĂłdem</span>
+<span class="OtlTab2">        - vybranĂŠ tĹĂ­dy znakĹŻ zapsanĂŠ zkrĂĄcenou formou</span>
+<span class="OtlTab3">            \d </span><span class="otlTagDef">[[:digit:]]</span>
+<span class="OtlTab3">            \s </span><span class="otlTagDef">[[:space:]]</span>
+<span class="OtlTab3">            \w </span><span class="otlTagRef">[[:alnum:]</span><span class="OtlTab3">_]  jako \d a _</span>
+<span class="OtlTab3">            \D </span><span class="otlTagRef">[^[:digit:]</span><span class="OtlTab3">]</span>
+<span class="OtlTab3">            \S </span><span class="otlTagRef">[^[:space:]</span><span class="OtlTab3">]</span>
+<span class="OtlTab3">            \W </span><span class="otlTagRef">[^[:alnum:]</span><span class="OtlTab3">_] negace \W</span>
+
+<span class="OtlTab1">    * PĹĂ­klady regulĂĄrnĂ­ch vĂ˝razĹŻ</span>
+<span class="OtlTab2">        - regulĂĄrnĂ­ vĂ˝raz pro IPv4 adresu (nepĹesnĂ˝!)</span>
+<span class="OtlTab2">        - znak \ zabraĹuje spuĹĄtÄnĂ­ &quot;pĹĂ­kazu&quot; v </span><span class="otlTagRef">[]</span>
+<span class="OtlTab3">            &quot;(\</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">{1,3})\.(\</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">{1,3})\.(\</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">{1,3})\.(\</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">{1,3})&quot;</span>
+<span class="OtlTab2">        - regulĂĄrnĂ­ vĂ˝raz akceptujĂ­cĂ­ reĂĄlnĂĄ ÄĂ­sla</span>
+<span class="OtlTab2">        - zde je regulĂĄrnĂ­ vĂ˝raz umĂ­stÄnĂ˝ v {}, tudĂ­Ĺž se neuvĂĄdĂ­ \ pĹed </span><span class="otlTagRef">[]</span>
+<span class="OtlTab3">            {</span><span class="otlTagRef">[-+]</span><span class="OtlTab3">?(</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">+\.?</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">*|\.</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">+)(</span><span class="otlTagRef">[eE][-+]</span><span class="OtlTab3">?</span><span class="otlTagRef">[0-8]</span><span class="OtlTab3">+)?}</span>
+
+<span class="OtlTab1">    *Â PouĹžitĂ­ pĹĂ­kazu regexp</span>
+<span class="OtlTab2">        - regexp reg_vĂ˝raz ĹetÄzec</span>
+<span class="OtlTab3">            - vracĂ­ 0/1 podle toho, zda se v ĹetÄzci</span>
+<span class="OtlTab3">              nachĂĄzĂ­ vzor z regulĂĄrnĂ­ho vĂ˝razu</span>
+<span class="Tab2">        </span><span class="Tab">    </span>
+<span class="OtlTab3">            % regexp {</span><span class="otlTagRef">[a-z]</span><span class="OtlTab3">} xyzzy</span>
+<span class="OtlTab3">            1</span>
+<span class="OtlTab3">            % regexp {</span><span class="otlTagRef">[a-z]</span><span class="OtlTab3">} 12345</span>
+<span class="OtlTab3">            0</span>
+<span class="Tab2">        </span><span class="Tab">    </span>
+<span class="OtlTab2">        - vyuĹžitĂ­ tĹĂ­d znakĹŻ v regulĂĄrnĂ­ch vĂ˝razech</span>
+<span class="OtlTab3">            % regexp {</span><span class="otlTagDef">[[:alpha:]]</span><span class="OtlTab3">} xyzzy</span>
+<span class="OtlTab3">            1</span>
+<span class="OtlTab3">            % regexp {</span><span class="otlTagDef">[[:upper:]]</span><span class="OtlTab3">} xyzzy</span>
+<span class="OtlTab3">            0</span>
+<span class="OtlTab3">            % regexp {</span><span class="otlTagDef">[[:lower:]]</span><span class="OtlTab3">} xyzzy</span>
+<span class="OtlTab3">            1</span>
+<span class="OtlTab3">            % regexp {</span><span class="otlTagDef">[[:alpha:]]</span><span class="OtlTab3">} ĂĄĂ˝ĹžĹÄĹĄ</span>
+<span class="OtlTab3">            1</span>
+
+<span class="OtlTab2">        - regexp volby reg_vĂ˝raz ĹetÄzec</span>
+<span class="OtlTab3">            - pĹĂ­kaz regexp lze zavolat s rĹŻznĂ˝mi volbami</span>
+<span class="OtlTab3">            - v nÄkterĂ˝ch pĹĂ­padech je nutnĂŠ volby ukonÄit pomocĂ­ --</span>
+<span class="Tab2">        </span><span class="Tab">    </span>
+<span class="OtlTab3">            % regexp -all {</span><span class="otlTagRef">[a-z]</span><span class="OtlTab3">} xyzzy</span>
+<span class="OtlTab3">            5</span>
+<span class="Tab2">        </span><span class="Tab">    </span>
+<span class="OtlTab3">            % regexp -inline {</span><span class="otlTagRef">[a-z]</span><span class="OtlTab3">} xyzzy</span>
+<span class="OtlTab3">            x</span>
+<span class="Tab2">        </span><span class="Tab">    </span>
+<span class="OtlTab3">            % regexp -inline -all {</span><span class="otlTagRef">[a-z]</span><span class="OtlTab3">} xyzzy</span>
+<span class="OtlTab3">            x y z z y</span>
+<span class="Tab2">        </span><span class="Tab">    </span>
+<span class="OtlTab2">        - regexp reg_vĂ˝raz ĹetÄzec promÄnnĂĄ</span>
+<span class="OtlTab3">            % regexp {</span><span class="otlTagRef">[a-z]</span><span class="OtlTab3">} xyzzy vysledek</span>
+
+<span class="OtlTab2">        - regexp reg_vĂ˝raz ĹetÄzec promÄnnĂĄ prom1 ... promN</span>
+<span class="OtlTab3">            set str 66.70.7.154</span>
+<span class="OtlTab3">            regexp &quot;(\</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">{1,3})\.(\</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">{1,3})\.(\</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">{1,3})\.(\</span><span class="otlTagRef">[0-9]</span><span class="OtlTab3">{1,3})&quot; $str all first second third fourth</span>
+<span class="OtlTab3">            puts &quot;$all \n $first \n $second \n $third \n $fourth \n&quot;</span>
+
+<span class="OtlTab2">        - regexp a regsub</span>
+<span class="OtlTab3">            set sample &quot;Where there is a will, There is a way.&quot;</span>
+
+<span class="OtlTab3">            #</span>
+<span class="OtlTab3">            # Match the first substring with lowercase letters only</span>
+<span class="OtlTab3">            #</span>
+<span class="OtlTab3">            set result </span><span class="otlTagRef">[regexp {[a-z]</span><span class="OtlTab3">+} $sample match]</span>
+<span class="OtlTab3">            puts &quot;Result: $result match: $match&quot;</span>
+
+<span class="OtlTab3">            #</span>
+<span class="OtlTab3">            # Match the first two words, the first one allows uppercase</span>
+<span class="OtlTab3">            set result </span><span class="otlTagRef">[regexp {([A-Za-z]</span><span class="OtlTab3">+) +(</span><span class="otlTagRef">[a-z]</span><span class="OtlTab3">+)} $sample match sub1 sub2 ]</span>
+<span class="OtlTab3">            puts &quot;Result: $result Match: $match 1: $sub1 2: $sub2&quot;</span>
+
+<span class="OtlTab3">            #</span>
+<span class="OtlTab3">            # Replace a word</span>
+<span class="OtlTab3">            #</span>
+<span class="OtlTab3">            regsub &quot;way&quot; $sample &quot;lawsuit&quot; sample2</span>
+<span class="OtlTab3">            puts &quot;New: $sample2&quot;</span>
+
+<span class="OtlTab3">            #</span>
+<span class="OtlTab3">            # Use the -all option to count the number of &quot;words&quot;</span>
+<span class="OtlTab3">            #</span>
+<span class="OtlTab3">            puts &quot;Number of words: </span><span class="otlTagRef">[regexp -all {[^ ]</span><span class="OtlTab3">+} $sample]&quot;</span>
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 6. PrĂĄce se sockety     ===================</span>
+
+<span class="OtlTab0">* Socket</span>
+<span class="OtlTab1">    - vytvoĹenĂ˝ operaÄnĂ­m systĂŠmem pĹi nazĂĄvĂĄnĂ­ pĹipojenĂ­</span>
+<span class="OtlTab1">    - procesy spolu mohou komunikovat stylem</span>
+<span class="OtlTab2">        - peer to peer</span>
+<span class="OtlTab2">        - client - server</span>
+<span class="OtlTab1">    - jeden server mĹŻĹže obsluhovat vĂ­ce klientĹŻ</span>
+
+<span class="OtlTab0">* PrĂĄce se sockety</span>
+<span class="OtlTab1">    - jednoduchĂ˝ echo server (typickĂ˝ pĹĂ­klad)</span>
+<span class="OtlTab1">    - vyuĹžĂ­vĂĄ nĂĄsledujĂ­cĂ­ pĹĂ­kazy</span>
+<span class="OtlTab2">        socket</span>
+<span class="OtlTab2">        fconfigure</span>
+<span class="OtlTab2">        fileevent</span>
+<span class="OtlTab2">        vwait</span>
+
+<span class="OtlTab1">    - v TCK je obsluha ĹeĹĄenĂĄ pĹes callback funkce</span>
+<span class="OtlTab2">        % set sock </span><span class="otlTagRef">[socket -server callbackFunkce $port]</span>
+<span class="OtlTab1">    - callBack funkce je zavolĂĄna pĹi kaĹždĂŠm vytvoĹenĂ­ pĹipojenĂ­</span>
+
+<span class="OtlTab1">    - aby to fungovalo korektnÄ, musĂ­ se skript dostat do smyÄky udĂĄlostĂ­</span>
+<span class="OtlTab2">        - event loop</span>
+<span class="OtlTab1">    - dĂĄle se (pro echo server) nastavĂ­ reĹžim vyrovnĂĄvacĂ­ pamÄti,</span>
+<span class="OtlTab1">      aby se buffer vyprĂĄzdnil pro kaĹždou ĹĂĄdku (jinak by se echo mohlo</span>
+<span class="OtlTab1">      poslat aĹž na konci spojenĂ­ nebo pĹi pĹeplnÄnĂ­ bufferu)</span>
+<span class="OtlTab2">        % fconfigure $sock -buffering line</span>
+<span class="Tab">    </span>
+<span class="OtlTab1">    - registrace callback funkce zavolanĂŠ po pĹijetĂ­ dat</span>
+<span class="OtlTab2">        % fileevent $sock readable </span><span class="otlTagRef">[list callbackFunkce2 $sock]</span>
+<span class="OtlTab2">        - list xxx yyy je pouzit pro konstrukci volani callback funkce</span>
+<span class="OtlTab1">    - test na pĹĂ­znak konce souboru</span>
+<span class="OtlTab2">        % eof $sock</span>
+<span class="OtlTab1">    - naÄtenĂ­ ĹĂĄdku se zachycenĂ­m chyb</span>
+<span class="OtlTab2">        % catch {gets file line}</span>
+
+
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 7. Informace poskytovanĂŠ VM TCL ===========</span>
+
+<span class="OtlTab0">Informace poskytovanĂŠ VM TCL</span>
+<span class="OtlTab1">    * pĹĂ­kaz &quot;info&quot;</span>
+<span class="OtlTab2">        - je vyhodnocovĂĄn za bÄhu skriptu</span>
+
+<span class="OtlTab1">    * informace o interpretru</span>
+<span class="OtlTab2">        - lze zĂ­skat jeho verzi</span>
+<span class="OtlTab3">            info tclversion</span>
+<span class="OtlTab3">            8.5</span>
+
+<span class="OtlTab1">    * informace o promÄnnĂ˝ch</span>
+<span class="OtlTab2">        - info exists promenna</span>
+<span class="OtlTab3">            set a foo</span>
+<span class="OtlTab3">            info exists a</span>
+<span class="OtlTab3">            1</span>
+<span class="OtlTab3">            info exists b</span>
+<span class="OtlTab3">            0</span>
+
+<span class="OtlTab1">    * globĂĄlnĂ­ promÄnnĂŠ</span>
+<span class="OtlTab2">        - info globals</span>
+<span class="OtlTab2">        - info globals glob_vĂ˝raz</span>
+
+<span class="OtlTab1">    * informace o pĹĂ­kazech</span>
+<span class="OtlTab2">        - info commands</span>
+<span class="OtlTab3">            ...........</span>
+<span class="OtlTab2">        - info commands p*</span>
+<span class="OtlTab3">            pwd pid proc package puts</span>
+<span class="OtlTab2">        - info commands l*</span>
+<span class="OtlTab3">            list lassign lrange lsearch lappend llength linsert lreplace</span>
+<span class="OtlTab3">            lreverse lset lrepeat load lindex lsort</span>
+
+<span class="OtlTab1">    * zĂ­skĂĄnĂ­ informacĂ­ o procedurĂĄch</span>
+<span class="OtlTab2">        - info proc procname</span>
+<span class="OtlTab2">        - info args procname</span>
+<span class="OtlTab2">        - info body procname</span>
+
+<span class="OtlTab1">    * DemonstraÄnĂ­ pĹĂ­klad</span>
+<span class="OtlTab2">        - vytvoĹenĂ­ testovacĂ­ procedury</span>
+<span class="OtlTab3">            proc plus{x y} {</span>
+<span class="OtlTab3">                </span><span class="otlTagRef">[expr $x+$y]</span>
+<span class="OtlTab3">            }</span>
+<span class="OtlTab2">        - zĂ­skĂĄnĂ­ zĂĄkladnĂ­ch informacĂ­ o proceduĹe</span>
+<span class="OtlTab3">            % info proc plus</span>
+<span class="OtlTab3">            plus</span>
+<span class="OtlTab3">            % info args plus</span>
+<span class="OtlTab3">            x y</span>
+<span class="OtlTab3">            % info body plus</span>
+<span class="OtlTab3">            </span><span class="otlTagRef">[expr $x+$y]</span>
+
+
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 8. TrasovĂĄnĂ­ promÄnnĂ˝ch ===================</span>
+<span class="OtlTab0">TrasovĂĄnĂ­ promÄnnĂ˝ch</span>
+<span class="OtlTab1">    * pĹĂ­kaz &quot;trace&quot;</span>
+<span class="OtlTab1">    * trace add variable promÄnnĂĄ udĂĄlost callbackFunkce</span>
+<span class="OtlTab2">        - udĂĄlost: read write</span>
+<span class="OtlTab1">    * trace info variable promÄnnĂĄ</span>
+<span class="OtlTab1">    * trace remove variable promÄnnĂĄ udĂĄlost callbackFunkce</span>
+<span class="OtlTab1">    * trace variable ...</span>
+<span class="OtlTab1">    * trace vdelete ...</span>
+<span class="OtlTab1">    * trace vinfo promÄnnĂĄ</span>
+
+<span class="OtlTab1">    * DemonstraÄnĂ­ pĹĂ­klad</span>
+
+<span class="OtlTab2">        - trasovĂĄnĂ­ zĂĄpisu do promÄnnĂŠ x</span>
+
+<span class="OtlTab3">            trace add variable x write tisk_write_x</span>
+
+<span class="OtlTab3">            proc tisk_write_x args {</span>
+<span class="OtlTab3">                global x</span>
+<span class="OtlTab3">                puts &quot;zapis hodnoty $x do promenne x&quot;</span>
+<span class="OtlTab3">            }</span>
+
+<span class="OtlTab2">        - zruĹĄenĂ­ trasovĂĄnĂ­ zĂĄpisu do promÄnnĂŠ x</span>
+
+<span class="OtlTab3">            trace remove variable x write tisk_write_x</span>
+
+<span class="OtlTab2">        - vĂ˝pis vĹĄech argumentĹŻ pĹedanĂ˝ch do trasovacĂ­ funkce</span>
+
+<span class="OtlTab3">            proc tisk_write_x args {</span>
+<span class="OtlTab3">                #puts &quot;zapis hodnoty $x do promenne x&quot;</span>
+<span class="OtlTab3">                foreach arg $args {</span>
+<span class="OtlTab3">                    puts &quot;tisk_write_x: $arg&quot;</span>
+<span class="OtlTab3">                }</span>
+<span class="OtlTab3">            }</span>
+
+<span class="OtlTab2">        - vĂ˝pis vĹĄech callback funkcĂ­ navĂĄzanĂ˝ch na promÄnnou</span>
+
+<span class="OtlTab3">            trace info variable x</span>
+
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 9. TrasovĂĄnĂ­ programu   ===================</span>
+<span class="OtlTab0">TrasovĂĄnĂ­ programu</span>
+<span class="OtlTab1">    * opÄt se pouĹžĂ­vĂĄ pĹĂ­kaz &quot;trace&quot;</span>
+<span class="OtlTab1">    * trace add execution ...</span>
+<span class="OtlTab1">    * trace add command ...</span>
+<span class="OtlTab1">    * DemonstraÄnĂ­ pĹĂ­klad</span>
+<span class="OtlTab2">        - trasovĂĄnĂ­ vstupu a ukonÄenĂ­ procedury test_proc</span>
+<span class="OtlTab3">            proc test_proc {x y} { return </span><span class="otlTagRef">[expr $x+$y]</span><span class="OtlTab3">}</span>
+<span class="OtlTab3">            trace add execution test_proc enter test_proc_enter</span>
+<span class="OtlTab3">            trace add execution test_proc leave test_proc_leave</span>
+
+<span class="OtlTab3">            proc test_proc_enter args { puts &quot;test_proc enter&quot; }</span>
+<span class="OtlTab3">            proc test_proc_leave args { puts &quot;test_proc leave&quot; }</span>
+
+<span class="OtlTab3">            proc test_proc_enter args {</span>
+<span class="OtlTab3">                foreach arg $args {</span>
+<span class="OtlTab3">                    puts &quot;test_proc_enter: $arg&quot;</span>
+<span class="OtlTab3">                }</span>
+<span class="OtlTab3">            }</span>
+
+<span class="OtlTab3">            proc test_proc_leave args {</span>
+<span class="OtlTab3">                foreach arg $args {</span>
+<span class="OtlTab3">                    puts &quot;test_proc_leave: $arg&quot;</span>
+<span class="OtlTab3">                }</span>
+<span class="OtlTab3">            }</span>
+
+<span class="OtlTab3">            trace info execution test_proc</span>
+<span class="OtlTab1">    * trace remove execution test_proc leave test_proc_leave</span>
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 10. VytvĂĄĹenĂ­ procesĹŻ   ===================</span>
+<span class="OtlTab0">SpuĹĄtÄnĂ­ novĂŠho procesu</span>
+<span class="OtlTab1">    * exec</span>
+<span class="OtlTab2">        - exec ?switches? arg ?arg ...?</span>
+<span class="OtlTab2">          &lt;&lt; value</span>
+<span class="OtlTab2">            pĹesmÄrovĂĄnĂ­ hodnoty na standardnĂ­ vstup</span>
+<span class="OtlTab2">          &gt; filename</span>
+<span class="OtlTab2">            pĹesmÄrovĂĄnĂ­ standardnĂ­ho vĂ˝stupu</span>
+<span class="OtlTab2">          &gt;&gt; filename</span>
+<span class="OtlTab2">            pĹesmÄrovĂĄnĂ­ standardnĂ­ho vĂ˝stupu, pĹipojenĂ­ na konec souboru</span>
+<span class="OtlTab2">          2&gt; filename</span>
+<span class="OtlTab2">            pĹesmÄrovĂĄnĂ­ chybovĂŠho vĂ˝stupu</span>
+<span class="OtlTab2">          2&gt;&gt; filename</span>
+<span class="OtlTab2">            pĹesmÄrovĂĄnĂ­ chybovĂŠho vĂ˝stupu, pĹipojenĂ­ na konec souboru</span>
+<span class="OtlTab2">        - exec ?switches? arg ?arg ...? &amp;</span>
+<span class="OtlTab2">          spuĹĄtÄnĂ­ Ăşlohy na pozadĂ­</span>
+
+
+
+<span class="OtlTab0">Named pipes</span>
+
+<span class="OtlTab1">    * Jedna z moĹžnostĂ­ vytvoĹenĂ­ komunikaÄnĂ­ho kanĂĄlu mezi procesy</span>
+<span class="OtlTab2">        - vĂ˝hoda: prĂĄce s named pipes stejnĂĄ jako u souborĹŻ</span>
+<span class="OtlTab2">        - nevĂ˝hoda: jen na nÄkterĂ˝ch OS, omezenĂ­ pĹi vzdĂĄlenĂŠ komunikaci</span>
+
+<span class="OtlTab1">    * VytvoĹenĂ­ v shellu</span>
+<span class="OtlTab2">        $ mkfifo foo</span>
+
+<span class="OtlTab1">    * Skript, kterĂ˝ reaguje na kaĹždĂ˝ zĂĄpis do roury</span>
+<span class="OtlTab2">        set fifo </span><span class="otlTagRef">[open &quot;foo&quot; {RDWR NONBLOCK}]</span>
+<span class="OtlTab2">        fconfigure $fifo -blocking 1</span>
+<span class="OtlTab2">        proc read_fifo {} {</span>
+<span class="OtlTab2">            global fifo</span>
+<span class="OtlTab2">            gets $fifo x</span>
+<span class="OtlTab2">            puts &quot;x is $x&quot;</span>
+<span class="OtlTab2">        }</span>
+<span class="OtlTab2">        fileevent $fifo readable read_fifo</span>
+
+<span class="OtlTab1">    * OtestovĂĄnĂ­ funkÄnosti</span>
+<span class="OtlTab2">        $ echo &quot;qwerty&quot; &gt; foo</span>
+
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 11. Multithreading      ===================</span>
+<span class="OtlTab0">Multithreading</span>
+<span class="OtlTab1">    * Import balĂ­Äku s podporou multithreadingu</span>
+<span class="OtlTab2">        package require Thread</span>
+<span class="OtlTab1">    * PĹĂ­kazy v balĂ­Äku Thread</span>
+<span class="OtlTab2">        thread::create ?skript?</span>
+<span class="OtlTab3">            - vracĂ­ identifikĂĄtor novĂŠho vlĂĄkna</span>
+
+<span class="OtlTab2">        thread::wait</span>
+<span class="OtlTab3">            - vstup vlĂĄkna do smyÄky udĂĄlostĂ­</span>
+<span class="OtlTab3">            - pouĹžĂ­vĂĄno pĹi thread:create se zadanĂ˝m skriptem!</span>
+<span class="OtlTab3">            - musĂ­ bĂ˝t aĹž na konci skriptu</span>
+<span class="OtlTab3">            - jen tak lze vlĂĄknu poslat novĂ˝ skript pomocĂ­ thread:sent</span>
+
+<span class="OtlTab2">        thread::send id ?skript?</span>
+<span class="OtlTab3">            - pĹi -async se neÄekĂĄ na dokonÄenĂ­ skriptu</span>
+
+<span class="OtlTab2">        thread::send id ?skript? promÄnnĂĄ_s_vĂ˝sledkem</span>
+<span class="OtlTab3">            - lze specifikovat jmĂŠno promÄnnĂŠ pro uloĹženĂ­ vĂ˝sledku</span>
+
+<span class="OtlTab2">        thread::broadcast id ?skript?</span>
+<span class="OtlTab3">            - poĹĄle skript do vĹĄech vlĂĄken, neÄekĂĄ na dokonÄenĂ­</span>
+
+<span class="OtlTab2">        thread::join id</span>
+<span class="OtlTab3">            - ÄekĂĄ na dokonÄenĂ­ vlĂĄkna id a vrĂĄtĂ­ jeho vĂ˝sledek</span>
+
+<span class="OtlTab1">    * DemonstraÄnĂ­ pĹĂ­klad</span>
+<span class="OtlTab2">        - pouĹžitĂ­ thread::create a thread:send</span>
+<span class="OtlTab3">            set t1 </span><span class="otlTagRef">[thread::create]</span>
+<span class="OtlTab3">            set t2 </span><span class="otlTagRef">[thread::create]</span><span class="OtlTab3"> </span>
+<span class="OtlTab3">            thread::send -async $t1 &quot;set a 1&quot; result</span>
+<span class="OtlTab3">            thread::send -async $t2 &quot;set b 2&quot; result </span>
+<span class="OtlTab3">            # ÄekĂĄnĂ­ na dokonÄenĂ­ obou vlĂĄken</span>
+<span class="OtlTab3">            # nenĂ­ zaruÄeno poĹadĂ­ dokonÄenĂ­</span>
+<span class="OtlTab3">            for {set i 0} {$i &lt; 2} {incr i} {</span>
+<span class="OtlTab3">               vwait result</span>
+<span class="OtlTab3">            }</span>
+
+<span class="OtlTab1">    * Mutexy (synchronizaÄnĂ­ mechanismus)</span>
+<span class="OtlTab2">        thread::mutex create</span>
+<span class="OtlTab2">        thread::mutex destroy mutex</span>
+<span class="OtlTab2">        thread::mutex lock mutex</span>
+<span class="OtlTab2">        thread::mutex unlock mutex</span>
+
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">=================== 12. JmennĂŠ prostory     ===================</span>
+<span class="OtlTab0">JmennĂŠ prostory</span>
+<span class="OtlTab1">    * Jeden ze zpĹŻsobĹŻ organizace zdrojovĂ˝ch kĂłdĹŻ</span>
+<span class="OtlTab2">        - zmenĹĄenĂ­ poÄtu globĂĄlnĂ­ch promÄnnĂ˝ch</span>
+<span class="OtlTab2">        - zmenĹĄenĂ­ poÄtu globĂĄlnĂ­ch procedur</span>
+<span class="OtlTab3">            -&gt; menĹĄĂ­ pravdÄpodobnost konfliktu jmen (napĹ. pĹepis globĂĄlnĂ­ promÄnnĂŠ)</span>
+
+<span class="OtlTab1">    * IdentifikĂĄtor jmennĂŠho prostoru se zapisuje pĹed proceduru/promÄnnou</span>
+<span class="OtlTab2">        $jmennĂ˝_prostor::promÄnnĂĄ</span>
+<span class="OtlTab2">        jmennĂ˝_prostor::procedura()</span>
+
+<span class="OtlTab1">    * JmennĂŠ prostory lze uspoĹĂĄdat hierarchicky</span>
+<span class="OtlTab2">        $jmennĂ˝_prostor::jmennĂ˝_prostor::promÄnnĂĄ</span>
+<span class="OtlTab2">        jmennĂ˝_prostor::jmennĂ˝_prostor::procedura()</span>
+
+<span class="OtlTab1">    * GlobĂĄlnĂ­ jmennĂ˝ prostor</span>
+<span class="OtlTab2">        &quot;&quot; - prĂĄzdnĂ˝ ĹetÄzec</span>
+<span class="OtlTab2">        :: - synonymum</span>
+
+<span class="OtlTab1">    * MnohĂŠ balĂ­Äky vytvĂĄĹĂ­ vlastnĂ­ jmennĂ˝ prostor</span>
+<span class="OtlTab2">        - viz thread::create atd.</span>
+
+<span class="OtlTab1">    *Â VytvoĹenĂ­ novĂŠho jmennĂŠho prostoru</span>
+<span class="OtlTab2">        namespace eval Counter {</span>
+<span class="OtlTab2">            namespace export increment_variable</span>
+<span class="OtlTab2">            variable num 0</span>
+
+<span class="OtlTab2">            proc increment_variable {} {</span>
+<span class="OtlTab3">                  variable num</span>
+<span class="OtlTab3">                  incr num</span>
+<span class="OtlTab2">            }</span>
+<span class="OtlTab2">        }</span>
+
+<span class="OtlTab2">        namespace eval ::tcl::clock \</span>
+<span class="OtlTab3">            </span><span class="otlTagRef">[list variable LibDir [file dirname [info script]</span><span class="OtlTab3">]]</span>
+
+<span class="OtlTab3">            namespace eval ::tcl::clock {</span>
+
+<span class="OtlTab3">            # Export the subcommands</span>
+
+<span class="OtlTab3">            namespace export format</span>
+<span class="OtlTab3">            namespace export clicks</span>
+<span class="OtlTab3">            namespace export microseconds</span>
+<span class="OtlTab3">            namespace export milliseconds</span>
+<span class="OtlTab3">            namespace export scan</span>
+<span class="OtlTab3">            namespace export seconds</span>
+<span class="OtlTab3">            namespace export add</span>
+
+<span class="OtlTab1">    * PĹĂ­stup k procedurĂĄm a promÄnnĂ˝m ve jmennĂŠm prostoru</span>
+<span class="OtlTab2">        Counter::bump 5</span>
+<span class="OtlTab2">        Counter::Reset</span>
+<span class="OtlTab2">        puts $Counter::num</span>
+
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">===================== 13. ObjektovĂŠ rozĹĄĂ­ĹenĂ­ TCL =============</span>
+
+<span class="OtlTab1">    * incr Tcl</span>
+<span class="OtlTab2">        NÄkolik skupin rozĹĄĂ­ĹenĂ­</span>
+<span class="OtlTab2">        Podpora pro OOP</span>
+<span class="OtlTab2">        PĹĂ­kazy</span>
+<span class="OtlTab3">            itcl::body</span>
+<span class="OtlTab3">            itcl::class</span>
+<span class="OtlTab3">            itcl::code</span>
+<span class="OtlTab3">            itcl::configbody</span>
+<span class="OtlTab3">            itcl::delete</span>
+<span class="OtlTab3">            itcl::ensemble</span>
+<span class="OtlTab3">            itcl::find</span>
+<span class="OtlTab3">            itcl::is</span>
+<span class="OtlTab3">            itcl::local</span>
+<span class="OtlTab3">            itcl::scope</span>
+<span class="OtlTab2">        Nebylo zapotĹebĂ­ mÄnit vlastnĂ­ intepreteter TCL</span>
+
+<span class="OtlTab0">_______________________________________________________________</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="OtlTab0">===================== 14. Knihovna Tcllib =============</span>
+
+<span class="OtlTab1">    * KĂłdovĂĄnĂ­ a dekĂłdovĂĄnĂ­, zpracovĂĄnĂ­ rĹŻznĂ˝ch formĂĄtĹŻ souborĹŻ</span>
+<span class="OtlTab1">    * KomunikaÄnĂ­ protokoly</span>
+<span class="OtlTab1">    * PokroÄilejĹĄĂ­ matematickĂŠ operace</span>
+
+<span class="OtlTab1">    * How to start with tcllib</span>
+<span class="OtlTab2">        <a href="https://wiki.tcl.tk/1773">https://wiki.tcl.tk/1773</a></span>
+
+<span class="OtlTab1">    * base64</span>
+<span class="OtlTab2">        slouĹžĂ­ ke kĂłdovĂĄnĂ­ textovĂ˝ch i binĂĄrnĂ­ch dat do ĹetÄzce</span>
+<span class="OtlTab2">        obsahuje pouze 64 tisknutelnĂ˝ch znakĹŻ kĂłdu ASCII (viz RFC 1341)</span>
+<span class="OtlTab2">        je moĹžnĂĄ i zpÄtnĂĄ konverze ĹetÄzce uloĹženĂŠho v tomto kĂłdovĂĄnĂ­ na binĂĄrnĂ­ data</span>
+<span class="OtlTab2">        tento modul je moĹžnĂŠ vyuĹžĂ­t napĹĂ­klad pĹi zpracovĂĄnĂ­ e-mailovĂ˝ch zprĂĄv</span>
+
+<span class="otlTextLeader">        |</span> package require base64
+<span class="otlTextLeader">        |</span> base64::encode parametry data
+
+<span class="OtlTab1">    * uuencode</span>
+<span class="OtlTab2">        v mnohĂŠm podobnĂ˝ pĹedchozĂ­mu modulu</span>
+<span class="OtlTab2">        i zde se pĹevĂĄdĂ­ binĂĄrnĂ­ data na textovou podobu</span>
+<span class="OtlTab2">        zde vĹĄak metodou, kterĂĄ je kompatibilnĂ­ s utilitami uuencode a uudecode</span>
+
+<span class="otlTextLeader">        |</span> package require uuencode
+<span class="otlTextLeader">        |</span> uuencode::encode
+<span class="otlTextLeader">        |</span> uuencode::decode
+
+<span class="OtlTab1">    * csv</span>
+<span class="OtlTab2">        slouĹžĂ­ k prĂĄci se soubory uloĹženĂ˝mi ve formĂĄtu CSV</span>
+<span class="OtlTab3">            Comma Separated Values</span>
+<span class="OtlTab2">        v tomto formĂĄtu se pro ĂşÄely pĹenosu uklĂĄdajĂ­ tabulky z databĂĄzĂ­</span>
+<span class="OtlTab2">        ale i Ăşdaje z tabulkovĂ˝ch procesorĹŻ</span>
+<span class="OtlTab2">        Modul csv nabĂ­zĂ­ pouĹžitĂ­ jak standardnĂ­ho CSV formĂĄtu, tak i formĂĄtu pouĹžĂ­vanĂŠho MicrosoftĂ­mi produkty</span>
+
+<span class="OtlTab1">    * asn</span>
+<span class="OtlTab2">        prĂĄce se strukturovanĂ˝mi daty uloĹženĂ˝mi v binĂĄrnĂ­ podobÄ podle standardu ASN.1</span>
+<span class="OtlTab3">            Abstract Syntax Notation</span>
+<span class="OtlTab2">        modul asn obsahuje metody pro zĂ­skĂĄnĂ­ hodnot zĂĄkladnĂ­ch i rozĹĄĂ­ĹenĂ˝ch datovĂ˝ch typĹŻ:</span>
+<span class="OtlTab3">            ĹetÄzcĹŻ, celoÄĂ­selnĂ˝ch hodnot, pravdivostnĂ­ch hodnot apod.</span>
+
+<span class="OtlTab1">    * html</span>
+<span class="OtlTab2">        modul obsahuje znaÄnĂŠ mnoĹžstvĂ­ metod, kterĂŠ slouĹžĂ­ ke generovĂĄnĂ­ znaÄek v HTML formĂĄtu</span>
+<span class="OtlTab2">        mĂ­sto programovĂŠho vytvĂĄĹenĂ­ HTML kĂłdu je tak moĹžnĂ˝ i deklarativnĂ­ zpĹŻsob zĂĄpisu strĂĄnky</span>
+<span class="OtlTab2">        kromÄ metod tvoĹĂ­cĂ­ch znaÄky pro zĂĄkladnĂ­ formĂĄtovĂĄnĂ­ je moĹžnĂŠ vytvĂĄĹet i tabulky a formulĂĄĹe</span>
+
+<span class="OtlTab1">    * htmlparse</span>
+<span class="OtlTab2">        zpracovĂĄvĂĄ ĹetÄzec, kterĂ˝ by mÄl bĂ˝t ve formĂĄtu shodnĂŠm s HTML</span>
+<span class="OtlTab2">        v tomto ĹetÄzci jsou postupnÄ hledĂĄny znaÄky HTML a pro kaĹždou znaÄku je zavolĂĄn uĹživatelem specifikovanĂ˝ pĹĂ­kaz</span>
+<span class="OtlTab2">        parser dĂĄle automaticky rozpoznĂĄ (a z dalĹĄĂ­ho zpracovĂĄnĂ­ vynechĂĄ) ĂşvodnĂ­ deklaraci âDOCTYPEâ</span>
+<span class="OtlTab2">        a poznĂĄmky zapsanĂŠ pomocĂ­ HTML znaÄek.</span>
+
+<span class="OtlTab1">    * inifile</span>
+<span class="OtlTab2">        modul slouĹžĂ­ k prĂĄci se soubory ini</span>
+<span class="OtlTab2">        v tÄchto jednoduĹĄe strukturovanĂ˝ch souborech se nachĂĄzĂ­ pojmenovanĂŠ sekce</span>
+<span class="OtlTab3">            v kaĹždĂŠ sekci neomezenĂ˝ poÄet pĂĄrĹŻ âjmĂŠno=hodnotaâ</span>
+<span class="OtlTab2">        Ăşdaje je moĹžnĂŠ jak ÄĂ­st, tak i zapisovat.</span>
+
+<span class="OtlTab1">    * md4</span>
+<span class="OtlTab2">        modul slouĹžĂ­ k vytvoĹenĂ­ hash kĂłdu ĹetÄzce Äi binĂĄrnĂ­ch dat podle normy MD4</span>
+<span class="OtlTab2">        vĂ˝sledkem je 128-bitovĂ˝ hash kĂłd, kterĂ˝ je moĹžnĂŠ zĂ­skat jak v binĂĄrnĂ­m, tak i hexadecimĂĄlnĂ­m tvaru</span>
+<span class="OtlTab3">            pĹi pouĹžitĂ­ tohoto modulu je zapotĹebĂ­ dĂĄt pozor na to, Ĺže vĂ˝stup v</span>
+<span class="OtlTab3">            hexadecimĂĄlnĂ­m tvaru je sloĹžen z Ĺady 32 hexadecimĂĄlnĂ­ch ÄĂ­slic â to</span>
+<span class="OtlTab3">            mĹŻĹže zpĹŻsobovat problĂŠmy nÄkterĂ˝m utilitĂĄm, kterĂŠ oÄekĂĄvajĂ­, Ĺže vĹždy</span>
+<span class="OtlTab3">            dvojice hexadecimĂĄlnĂ­ch ÄĂ­slic je od ostatnĂ­ch oddÄlena mezerou.</span>
+
+<span class="OtlTab1">    * md5</span>
+<span class="OtlTab2">        slouĹžĂ­ k tvorbÄ hash kĂłdĹŻ podle algoritmu popsanĂŠho v RFC 1321</span>
+<span class="OtlTab2">        formĂĄt vĂ˝stupu je stejnĂ˝ jako u pĹedchozĂ­ho modulu</span>
+<span class="OtlTab3">            buÄ binĂĄrnĂ­ tvar nebo tvar hexadecimĂĄlnĂ­.</span>
+
+<span class="OtlTab1">    * md5crypt</span>
+<span class="OtlTab2">        * je moĹžnĂŠ pouĹžĂ­t na vytvoĹenĂ­ hash kĂłdu pĹŻvodnÄ nezakryptovanĂŠÂ­ho hesla.</span>
+
+<span class="OtlTab1">    * sha1</span>
+<span class="OtlTab2">        * slouĹžĂ­, podobnÄ jako moduly md4 a md5, k vytvoĹenĂ­ podpisu (hash kĂłdu) ĹetÄzce Äi binĂĄrnĂ­ch dat</span>
+<span class="OtlTab2">        * podle algoritmu SHA1</span>
+<span class="OtlTab3">            MĂ­sto 128-bitovĂŠho kĂłdu je vĹĄak pouĹžito 160 bitĹŻ a i samotnĂ˝</span>
+<span class="OtlTab3">            algoritmus je upraven tak, aby odolal nÄkterĂ˝m kryptoanalytickĂ˝m</span>
+<span class="OtlTab3">            technikĂĄm.</span>
+
+<span class="OtlTab1">    * crc16</span>
+<span class="OtlTab2">        * pomÄrnÄ jednoduchĂ˝ modul slouĹžĂ­cĂ­ k vytvoĹenĂ­ ĹĄestnĂĄctibitovĂŠho kontrolnĂ­ho souÄtu (metodou CRC)</span>
+
+<span class="OtlTab1">    * crc32 </span>
+<span class="OtlTab2">        * lze pouĹžĂ­t pro vĂ˝poÄet dvaatĹicetibitovĂŠho kontrolnĂ­ho souÄtu (metodou CRC)</span>
+<span class="OtlTab2">        * API tohoto modulu je odliĹĄnĂŠ od modulu crc16.</span>
+
+<span class="OtlTab1">    * sum</span>
+<span class="OtlTab2">        * slouĹžĂ­ ke spoÄtenĂ­ kontrolnĂ­ho souÄtu algoritmem kompatibilnĂ­m s utilitou sum</span>
+<span class="OtlTab3">            (viz man sum)</span>
+<span class="OtlTab2">        * kromÄ ĹetÄzce je moĹžnĂŠ pracovat i se soubory.</span>
+
+<span class="OtlTab1">    * des</span>
+<span class="OtlTab2">        * umoĹžĹuje ĹĄifrovat a deĹĄifrovat data pomocĂ­ dnes jiĹž postarĹĄĂ­ho ĹĄifrovacĂ­ho standardu DES</span>
+<span class="OtlTab3">            Data Encryption Standard.</span>
+
+<span class="OtlTab1">    * rc4</span>
+<span class="OtlTab2">        * implementace proudovĂŠho ĹĄifrovacĂ­ho algoritmu RC4.</span>
+
+<span class="OtlTab1">    * jpeg</span>
+<span class="OtlTab2">        * metody slouĹžĂ­cĂ­ k zĂ­skĂĄnĂ­ dalĹĄĂ­ch informacĂ­ o uloĹženĂŠm obrĂĄzku</span>
+<span class="OtlTab2">        * prĂĄce s formĂĄtem EXIF</span>
+
+<span class="OtlTab1">    * png</span>
+<span class="OtlTab2">        * slouĹžĂ­ ke zpracovĂĄnĂ­ metainformacĂ­ z rastrovĂŠho formĂĄtu PNG</span>
+<span class="OtlTab3">            Portable Network Graphics.</span>
+
+<span class="OtlTab1">    * tar</span>
+<span class="OtlTab2">        * je moĹžnĂŠ pouĹžĂ­t pro prĂĄci se soubory (a k nim pĹĂ­sluĹĄejĂ­cĂ­mi informacemi) uloĹženĂ˝mi v tarballech.</span>
+
+
+
+<span class="OtlTab0">===================== 15. KomunikaÄnĂ­ protokoly =======================</span>
+
+<span class="OtlTab1">    * comm</span>
+<span class="OtlTab2">        jednoduchĂ˝ a pĹitom velmi mocnĂ˝ modul ĹeĹĄĂ­cĂ­ komunikaci se vzdĂĄlenÄ bÄĹžĂ­cĂ­ aplikacĂ­</span>
+<span class="OtlTab2">        k dispozici je nÄkolik pĹĂ­kazĹŻ, kterĂŠ je moĹžnĂŠ aplikaci zaslat</span>
+<span class="OtlTab2">        veĹĄkerĂĄ komunikace probĂ­hĂĄ pĹes sockety</span>
+<span class="OtlTab2">        je pĹitom moĹžnĂŠ komunikovat i mezi aplikacemi bÄĹžĂ­cĂ­mi na rĹŻznĂ˝ch operaÄnĂ­ch systĂŠmech</span>
+
+<span class="OtlTab1">    * dns</span>
+<span class="OtlTab2">        klient pro Internetovskou sluĹžbu DNS</span>
+<span class="OtlTab3">            Domain Name Service</span>
+<span class="OtlTab2">        pĹenosy jsou implicitnÄ uskuteÄĹovĂĄny pomocĂ­ TCP</span>
+<span class="OtlTab2">        je vĹĄak moĹžnĂŠ (napĹĂ­klad pro dosaĹženĂ­ vyĹĄĹĄĂ­ rychlosti) pouĹžĂ­t i UDP, ovĹĄem za podpory knihovny TclUDP.</span>
+
+<span class="OtlTab1">    * tcllib_ip</span>
+<span class="OtlTab2">        nÄkolik pĹĂ­kazĹŻ pracujĂ­cĂ­ch s IP adresami typu IPv4 i IPv6</span>
+
+<span class="OtlTab1">    * ftp</span>
+<span class="OtlTab2">        pĹĂ­kazy, pomocĂ­ nichĹž je moĹžnĂŠ vystupovat jako klient pĹi komunikaci pomocĂ­ protokolu pro pĹenos souborĹŻ</span>
+<span class="OtlTab3">            FTP â File Transfer Protocol</span>
+
+<span class="OtlTab1">    * ftpd</span>
+<span class="OtlTab2">        serverovĂĄ ÄĂĄst ĹeĹĄĂ­cĂ­ komunikaci pomocĂ­ protokolu FTP</span>
+
+<span class="OtlTab1">    * irc</span>
+<span class="OtlTab2">        pĹĂ­kazy pro komunikaci pomocĂ­ protokolu IRC</span>
+<span class="OtlTab3">            Internet Relay Chat</span>
+
+<span class="OtlTab1">    * ldap</span>
+<span class="OtlTab2">        klientskĂĄ ÄĂĄst pĹĂ­kazĹŻ pro komunikaci se servery pomocĂ­ protokolu LDAP</span>
+<span class="OtlTab2">        vÄtĹĄinou se jednĂĄ o zĂ­skĂĄvĂĄnĂ­ informacĂ­ o osobĂĄch Äi rolĂ­ch uloĹženĂ˝ch dle organizaÄnĂ­ struktury nÄjakĂŠ organizace</span>
+
+<span class="OtlTab1">    * nntp</span>
+<span class="OtlTab2">        klientskĂĄ ÄĂĄst pĹĂ­kazĹŻ umoĹžĹujĂ­cĂ­ch prĂĄci s protokolem NNTP</span>
+
+<span class="OtlTab1">    * pop3</span>
+<span class="OtlTab2">        klientskĂĄ ÄĂĄst pĹĂ­kazĹŻ umoĹžĹujĂ­cĂ­ch prĂĄci s protokolem POP3</span>
+<span class="OtlTab2">        pouĹžĂ­vĂĄ se napĹĂ­klad pĹi vytvĂĄĹenĂ­ specializovanĂ˝ch e-mailovĂ˝ch klientĹŻ</span>
+<span class="OtlTab2">        v jednoduĹĄĹĄĂ­ch programech, kterĂŠ pouze vylistujĂ­ hlaviÄky zprĂĄv.</span>
+
+<span class="OtlTab1">    * pop3d</span>
+<span class="OtlTab2">        ServerovĂĄ ÄĂĄst pĹĂ­kazĹŻ umoĹžĹujĂ­cĂ­ch prĂĄci s protokolem POP3.</span>
+
+<span class="OtlTab1">    * smtp</span>
+<span class="OtlTab2">        KlientskĂĄ ÄĂĄst pĹĂ­kazĹŻ umoĹžĹujĂ­cĂ­ch prĂĄci s protokolem SMTP</span>
+<span class="OtlTab3">            Simple Mail Transfer Protocol</span>
+<span class="OtlTab2">        VhodnĂŠ napĹĂ­klad pĹi zasĂ­lĂĄnĂ­ zprĂĄv o chybĂĄch aplikace na e-mail jejĂ­ho sprĂĄvce.</span>
+
+<span class="OtlTab1">    * smtpd</span>
+<span class="OtlTab2">        ServerovĂĄ ÄĂĄst pĹĂ­kazĹŻ umoĹžĹujĂ­cĂ­ch prĂĄci s protokolem SMTP.</span>
+
+
+
+
+<span class="OtlTab0">===================== 16. MatematickĂŠ funkce a operace =================</span>
+
+<span class="OtlTab1">    * math::bigfloat</span>
+<span class="OtlTab2">        prĂĄce s hodnotami uloĹženĂ˝mi ve formĂĄtu pohyblivĂŠ ĹĂĄdovĂŠ ÄĂĄrky o (teoreticky) libovolnĂŠ pĹesnosti a rozsahu</span>
+
+<span class="OtlTab1">    * math::bignum</span>
+<span class="OtlTab2">        prĂĄce s celoÄĂ­selnĂ˝mi hodnotami o (teoreticky) libovolnĂŠm rozsahu</span>
+
+<span class="OtlTab1">    * math::fourier</span>
+<span class="OtlTab2">        diskrĂŠtnĂ­ Fourierova transformace (DFT) a rychlĂĄ Fourierova transformace (FFT) â pouĹžĂ­vĂĄ se napĹĂ­klad pĹi zpracovĂĄnĂ­ zvuku nebo obrazu</span>
+
+<span class="OtlTab1">    * math::statistics</span>
+<span class="OtlTab2">        rĹŻznĂŠ statistickĂŠ funkce a metody</span>
+
+<span class="OtlTab1">    * math::linearalgebra</span>
+<span class="OtlTab2">        lineĂĄrnĂ­ algebra (resp. jejĂ­ zĂĄklad)</span>
+
+<span class="OtlTab1">    * math::geometry</span>
+<span class="OtlTab2">        vybranĂŠ operace ĹeĹĄĂ­cĂ­ napĹĂ­klad vzdĂĄlenost bodu od ĂşseÄky, dĂŠlku polyÄĂĄry apod.</span>
+
+<span class="OtlTab1">    * math::interpolate</span>
+<span class="OtlTab2">        rĹŻznĂŠ metody interpolace (lineĂĄrnĂ­, Lagrangeova, spline funkce âŚ)</span>
+
+<span class="OtlTab1">    * math::complexÂ­numbers</span>
+<span class="OtlTab2">        prĂĄce v komplexnĂ­ rovinÄ (vÄetnÄ komplexnĂ­ch operĂĄtorĹŻ a funkcĂ­)</span>
+
+<span class="OtlTab1">    * math::calculus</span>
+<span class="OtlTab2">        vĂ˝poÄet hodnot urÄitĂ˝ch integrĂĄlĹŻ rĹŻznĂ˝mi metodami</span>
+
+</pre>
+</body>
 </html>
+<!-- vim: set foldmethod=manual : -->

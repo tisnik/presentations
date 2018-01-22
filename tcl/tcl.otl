@@ -1,0 +1,1126 @@
+===================== Obsah kurzu =============================
+
+	1. Ošetření chyb ve skriptech
+	2. Smyčka událostí
+	3. Dynamická tvorba kódu
+	4. Oblast platnosti proměnných
+	5. Regulární výrazy
+	6. Práce se sockety
+	7. Informace poskytované VM TCL
+	8. Trasování proměnných
+	9. Trasování programu
+	10. Vytváření procesů
+	11. Multithreading
+	12. Jmenné prostory
+	13. Objektové rozšíření incr Tcl
+	14. Knihovna Tcllib
+	15. Komunikační protokoly
+	16. Matematické funkce a operace
+
+
+
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+===================== 1. Ošetření chyb ========================
+
+Ošetření chyb
+	* Příkaz "error msg"
+	* Příkaz "catch script"
+	* Příkaz "catch script proměnná"
+
+Příkaz "error msg"
+	* Vypíše zprávu na standardní výstup
+	* Ukončí běh procedury (pokud je použit v proceduře)
+	* Lze odchytit pomocí příkazu "catch"
+	* Demonstrační příklad
+		- procedura pro výpočet podílu
+		- pokud by mělo dojít k dělení nulou, vypíše se chyba
+
+			proc div {a b} {
+			    if {$b==0} {
+			        error "divide by zero"
+			    } else {
+			        return [expr $a/$b]
+			   }
+			}
+			% div 4 2
+			2
+			% div 4 0
+			divide by zero
+
+Příkaz "catch script"
+	* Spoustí skript předaný v prvním argumentu příkazu
+	* Zachycuje všechny výjimečné stavy
+	* Vrací 0 v případě, že je vše ok
+		- TCL_OK = 0
+	* Vrací jinou hodnotu v případě chyby
+		- TCL_ERROR = 1
+		- TCL_RETURN = 2
+		- TCL_BREAK = 3
+		- TCL_CONTINUE = 4
+	* Demonstrační příklad
+		- využití dříve definované procedury "div"
+			% catch {div 4 2}
+			0
+			% catch {div 4 0}
+			1
+			% catch {set result [div 4 2]}
+			0
+			% puts $result
+			2
+			% catch {set result [div 4 0]}
+			1
+			% puts $result
+			2 // původní hodnota!
+
+Příkaz "catch script proměnná"
+	* Podobná funkcionalita, jako v případě "catch script"
+	* Proměnná se nastaví na chybovou hodnotu
+	* Zjednoduší se některé programové konstrukce
+	* Demonstrační příklad
+		- otevře soubor pro zápis s testem, zda je vše ok
+			if { [catch {open $fileName w} fid] } {
+			    puts stderr "Could not open $fileName for writing\n$fid"
+			    exit 1
+			}
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 2. Smyčka událostí   ======================
+
+Smyčka událostí
+	* Event loop
+	* Interní programová smyčka spravovaná VM TCL
+	* Používána pro
+		- Interně použita v knihovně Tk
+		- Tvorbu GUI (implicitně při použití "wish" apod.)
+		- Práci se sockety
+		- Práci s časovači (timery)
+	* Později si ukážeme práci se sockety
+
+Vstup do smyčky událostí
+	* vwait proměnná
+		- Interně testuje hodnotu proměnné
+		- Pokud je proměnná změněna, smyčka se ukončí
+			- mnohem lepší, než se snažit o použití return či exit
+			  což ne vždy funguje
+		- Musí se jednat o globální proměnnou
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 3. Dynamická tvorba kódu ==================
+
+Dynamická tvorba kódu
+	* Tcl je v porovnání s podobnými jazyky velmi dynamický skriptovací jazyk
+		- většina příkazů se vyhodnocuje až při běhu programu
+		- neprovádí se mezipřeklad
+		- příkazy i jejich parametry jsou chápány jako řetězce
+		- naproti tomu Perl, Python: překlad do mezikódu
+			- i v těchto jazycích však existuje podpora pro eval()
+	* základ dynamické tvorby kódu
+		- příkaz je možné uložit do proměnné
+		- následně je možné tuto proměnnou "spustit"
+	* jednoduchý příklad
+		- uložení příkazu do proměnné "a"
+
+			% set a llength
+			llength
+			% $a {1 2 3}
+			3
+
+		- uložení příkazu do dvojice proměnných "a" a "b"
+
+			% set a lle
+			lle
+			% set b ngth
+			ngth
+			% # dvojice promennych ve forme parametru
+			% puts $a$b
+			llength
+			% # dvojice promennych ve forme prikazu
+			% $a$b {1 2 3}
+			3
+
+	* při zápisu příkazů je možné využívat interpolaci (substituci)
+	* a další příkazy vložené do [] nebo naopak do {}
+	* Tcl nejprve vyhodnotí vše uvnitř [] a posléze výsledek považuje za příkaz
+		- použití substituce []
+
+			% [string range "Xllen" 1 end]gth {1 2 3}
+			3
+
+	* pro složitější konstrukce se používá příkaz eval
+		- příklad použití příkazu eval
+
+			% eval "set foo 10"
+			10
+
+			% # zavorky {} zabranuji vyhodnoceni
+			% set myscript {puts $foo}
+			puts $foo
+
+			% eval $myscript
+			10
+
+	* eval pracuje následovně:
+		- nejprve spojí své parametry do jediného seznamu
+		- vyhodnocí parametr jako příkaz
+		- vrátí výsledek tohoto příkazu
+	* pozor na spojování parametrů do jediného seznamu
+		- příklad s chybou
+
+			% set a {puts "Procedura a"}
+			puts "Procedura a"
+
+			% set b {puts "Procedura b"}
+			puts "Procedura b"
+
+			% # vyhodnocení procedury A
+			% eval $a
+			Procedura a
+
+			% # vyhodnocení procedury B
+			% eval $b
+			Procedura b
+
+			% # zde ovšem dojde k chybě
+			% eval $a $b
+			bad argument "Procedura b": should be "nonewline"
+
+		- využití spojení parametrů do seznamu
+
+			% set print {puts}
+			puts
+			% eval $print
+			wrong # args: should be "puts ?-nonewline? ?channelId? string"
+			% eval $print 10
+			10
+
+	* vytvoření nového typu programové smyčky
+		- procedura s dvojicí parametrů: počtem opakování a skriptem
+
+			proc repeat {count script} {
+			    while {[incr count -1] >= 0} {
+			        eval $script
+			    }
+			}
+
+		- nyní proceduru vyzkoušíme
+
+			% repeat 6 {puts Hello}
+			Hello
+			Hello
+			Hello
+			Hello
+			Hello
+			Hello
+
+		- složitější příklad
+
+			% repeat 6 {puts [expr 1+2]}
+			3
+			3
+			3
+			3
+			3
+			3
+
+	* přístup k proměnným ze skriptů vyhodnocovaných pomocí eval
+		- vytvoření globální proměnné
+
+			% set x 10
+			10
+			% puts x 10
+			10
+
+		- globální proměnná je viditelná ze skriptu v eval
+
+			% eval {puts $x}
+			10
+
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 4. Oblast platnosti proměnných  ===========
+
+Oblast platnosti proměnných
+	* TCL vyhodnocuje oblast viditelnosti proměnných
+		- vázané na proceduru
+		- vázané na jmenný prostor
+		- globální proměnné
+
+	* Příkaz "global"
+		- proměnná s lokální platností (v proceduře) bude
+		  odkazovat na globální proměnnou tohoto jména
+
+	* Příkaz "upvar"
+		- naváže jméno proměnné na proměnnou s jinou
+		  oblastí platnosti
+		- upvar otherVar myVar
+			- myVar bude referencí na otherVar
+		- upvar otherVar1 myVar1 otherVar2 myVar2 ...
+			- myVar1 bude referencí na otherVar1
+			- myVar2 bude referencí na otherVar2
+				...
+			- myVarN bude referencí na otherVarN
+		- upvar level otherVar myVar
+			- dokáže odkazovat na proměnnou v rámci zásobníku volání
+			  (o N úrovní výše od současné pozice směrem nahoru)
+		- upvar #level otherVar myVar
+			- dokáže odkazovat na proměnnou v rámci zásobníku volání
+			  (o N úrovní níže od globální úrovně směrem dolů)
+
+	* Využití příkazu "info" pro test na existenci proměnné
+		- příkaz "info exists proměnná" vrací 1/0 podle toho
+		  zda proměnná existuje
+			proc add {prom hodnota} {
+			    upvar $prom p
+			    if { [info exists p] } {
+			        incr p $hodnota
+			    } else {
+			        set p $hodnota
+			    }
+			}
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 5. Regulární výrazy     ===================
+
+Regulární výrazy v TCL
+	* Jedna z možností zpracování řetězců a získávání informací
+	  uložených v těchto řetězcích
+	* Dva typy regulárních výrazů
+		- glob matching ("globbing")
+		- "skutečné" regulární výrazy
+	* Glob matching
+		- odvozeno od zástupných znaků používaných v shellu (Bash...)
+		- používán v TCL:
+			- příkaz lsearch
+			- příkaz string match
+			- příkaz glob
+		- kromě běžných znaků se používají speciální znaky:
+			"*"   zastupuje sekvenci libovolných znaků
+			"?"   zastupuje jeden libovolný znak
+			"[]"  zastupuje libovolný znak v závorkách
+			"[-]" zastupuje znak ze zadaného rozsahu, př. A-Z, 0-9
+	* Demonstrační příklad
+		- použití příkazu glob
+			% glob t*
+			tzdata_issue
+			tomcat
+			test-machines.odt
+			temp
+			tcl
+
+			% set seznam [glob t*]
+			% foreach prvek $seznam {
+			    puts $prvek
+			}
+			tzdata_issue
+			tomcat
+			test-machines.odt
+			temp
+			tcl
+
+	* Demonstrační příklad
+		- použití příkazu string match
+			% set x "foo"
+			foo
+			% string match f* $x
+			1
+			% string match f? $x
+			0
+			% string match f?? $x
+			1
+
+			# pozor na speciální význam []!
+			% string match [a-z]* $x
+			invalid command name "a-z"
+			% string match "[a-z]*" $x
+			invalid command name "a-z"
+			# toto už je lepší
+			% string match {[a-z]*} $x
+			1
+
+	* "Plnohodnotné" regulární výrazy
+		- příkaz regexp
+		- znaky se speciálním významem
+			- kvalifikátory
+			- atomy
+			- znaky pro začátek a konec řádku
+			- výrazy v []
+			- třídy znaků
+			- speciální znaky
+
+	* Součásti regulárních výrazů
+		- kvalifikátory
+			*     sekvence 0..n atomů
+			+     sekvence 1..n atomů
+			?     žádný nebo jeden atom
+			{m}   v závorce je zapsán přesný počet atomů
+			{m,}  v závorce je zapsán minimální počet atomů
+			{m,n} v závorce je minimální a maximální počet atomů
+		- atomy
+			x  konkrétní znak
+			() prázdný řetězec
+			.  jediný znak
+			\X řídicí znak či znak se zadaným kódem
+			(xxx) část výrazu, k níž lze později přistupovat (podle indexu)
+		- znaky pro začátek a konec řádku
+			^ nahrazuje začátek řádku
+			$ nahrazuje konec řádku
+		- výrazy v []
+			lze zde zapsat množinu znaků
+			při rozdělení znaků pomocí - se určuje rozsah a-z, 5-7 atd.
+			^ negace - všechny znaky, které NEodpovídají dalšímu výrazu
+		- třídy znaků
+			vnější závorky [] změní třídu znaků na množinu
+			[[:alpha:]]  písmeno
+			[[:upper:]]  velké písmeno
+			[[:lower:]]  malé písmeno
+			[[:digit:]]  číslice
+			[[:xdigit:]] hexadecimální číslice
+			[[:alnum:]]  písmeno či číslice
+			[[:space:]]  znak, který se vytiskne jako mezera
+			[[:graph:]]  znak, který má tisknutelnou podobu
+			[[:cntrl:]]  řídicí znak
+		- speciální (řídicí) znaky
+			\a      alert (bell)
+			\b      backspace
+			\B      může se použít namísto \\ (čitelnější)
+			\e      znak ESCape
+			\n      nový řádek
+			\r      návrat kurzoru
+			\t      tab
+			\u1234  znak se zadaným Unikódem
+		- vybrané třídy znaků zapsané zkrácenou formou
+			\d [[:digit:]]
+			\s [[:space:]]
+			\w [[:alnum:]_]  jako \d a _
+			\D [^[:digit:]]
+			\S [^[:space:]]
+			\W [^[:alnum:]_] negace \W
+
+	* Příklady regulárních výrazů
+		- regulární výraz pro IPv4 adresu (nepřesný!)
+		- znak \ zabraňuje spuštění "příkazu" v []
+			"(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})"
+		- regulární výraz akceptující reálná čísla
+		- zde je regulární výraz umístěný v {}, tudíž se neuvádí \ před []
+			{[-+]?([0-9]+\.?[0-9]*|\.[0-9]+)([eE][-+]?[0-8]+)?}
+
+	* Použití příkazu regexp
+		- regexp reg_výraz řetězec
+			- vrací 0/1 podle toho, zda se v řetězci
+			  nachází vzor z regulárního výrazu
+			
+			% regexp {[a-z]} xyzzy
+			1
+			% regexp {[a-z]} 12345
+			0
+			
+		- využití tříd znaků v regulárních výrazech
+			% regexp {[[:alpha:]]} xyzzy
+			1
+			% regexp {[[:upper:]]} xyzzy
+			0
+			% regexp {[[:lower:]]} xyzzy
+			1
+			% regexp {[[:alpha:]]} áýžřčš
+			1
+
+		- regexp volby reg_výraz řetězec
+			- příkaz regexp lze zavolat s různými volbami
+			- v některých případech je nutné volby ukončit pomocí --
+			
+			% regexp -all {[a-z]} xyzzy
+			5
+			
+			% regexp -inline {[a-z]} xyzzy
+			x
+			
+			% regexp -inline -all {[a-z]} xyzzy
+			x y z z y
+			
+		- regexp reg_výraz řetězec proměnná
+			% regexp {[a-z]} xyzzy vysledek
+
+		- regexp reg_výraz řetězec proměnná prom1 ... promN
+			set str 66.70.7.154
+			regexp "(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})" $str all first second third fourth
+			puts "$all \n $first \n $second \n $third \n $fourth \n"
+
+		- regexp a regsub
+			set sample "Where there is a will, There is a way."
+
+			#
+			# Match the first substring with lowercase letters only
+			#
+			set result [regexp {[a-z]+} $sample match]
+			puts "Result: $result match: $match"
+
+			#
+			# Match the first two words, the first one allows uppercase
+			set result [regexp {([A-Za-z]+) +([a-z]+)} $sample match sub1 sub2 ]
+			puts "Result: $result Match: $match 1: $sub1 2: $sub2"
+
+			#
+			# Replace a word
+			#
+			regsub "way" $sample "lawsuit" sample2
+			puts "New: $sample2"
+
+			#
+			# Use the -all option to count the number of "words"
+			#
+			puts "Number of words: [regexp -all {[^ ]+} $sample]"
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 6. Práce se sockety     ===================
+
+* Socket
+	- vytvořený operačním systémem při nazávání připojení
+	- procesy spolu mohou komunikovat stylem
+		- peer to peer
+		- client - server
+	- jeden server může obsluhovat více klientů
+
+* Práce se sockety
+	- jednoduchý echo server (typický příklad)
+	- využívá následující příkazy
+		socket
+		fconfigure
+		fileevent
+		vwait
+
+	- v TCK je obsluha řešená přes callback funkce
+		% set sock [socket -server callbackFunkce $port]
+	- callBack funkce je zavolána při každém vytvoření připojení
+
+	- aby to fungovalo korektně, musí se skript dostat do smyčky událostí
+		- event loop
+	- dále se (pro echo server) nastaví režim vyrovnávací paměti,
+	  aby se buffer vyprázdnil pro každou řádku (jinak by se echo mohlo
+	  poslat až na konci spojení nebo při přeplnění bufferu)
+		% fconfigure $sock -buffering line
+	
+	- registrace callback funkce zavolané po přijetí dat
+		% fileevent $sock readable [list callbackFunkce2 $sock]
+		- list xxx yyy je pouzit pro konstrukci volani callback funkce
+	- test na příznak konce souboru
+		% eof $sock
+	- načtení řádku se zachycením chyb
+		% catch {gets file line}
+
+
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 7. Informace poskytované VM TCL ===========
+
+Informace poskytované VM TCL
+	* příkaz "info"
+		- je vyhodnocován za běhu skriptu
+
+	* informace o interpretru
+		- lze získat jeho verzi
+			info tclversion
+			8.5
+
+	* informace o proměnných
+		- info exists promenna
+			set a foo
+			info exists a
+			1
+			info exists b
+			0
+
+	* globální proměnné
+		- info globals
+		- info globals glob_výraz
+
+	* informace o příkazech
+		- info commands
+			...........
+		- info commands p*
+			pwd pid proc package puts
+		- info commands l*
+			list lassign lrange lsearch lappend llength linsert lreplace
+			lreverse lset lrepeat load lindex lsort
+
+	* získání informací o procedurách
+		- info proc procname
+		- info args procname
+		- info body procname
+
+	* Demonstrační příklad
+		- vytvoření testovací procedury
+			proc plus{x y} {
+			    [expr $x+$y]
+			}
+		- získání základních informací o proceduře
+			% info proc plus
+			plus
+			% info args plus
+			x y
+			% info body plus
+			[expr $x+$y]
+
+
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 8. Trasování proměnných ===================
+Trasování proměnných
+	* příkaz "trace"
+	* trace add variable proměnná událost callbackFunkce
+		- událost: read write
+	* trace info variable proměnná
+	* trace remove variable proměnná událost callbackFunkce
+	* trace variable ...
+	* trace vdelete ...
+	* trace vinfo proměnná
+
+	* Demonstrační příklad
+
+		- trasování zápisu do proměnné x
+
+			trace add variable x write tisk_write_x
+
+			proc tisk_write_x args {
+			    global x
+			    puts "zapis hodnoty $x do promenne x"
+			}
+
+		- zrušení trasování zápisu do proměnné x
+
+			trace remove variable x write tisk_write_x
+
+		- výpis všech argumentů předaných do trasovací funkce
+
+			proc tisk_write_x args {
+			    #puts "zapis hodnoty $x do promenne x"
+			    foreach arg $args {
+			        puts "tisk_write_x: $arg"
+			    }
+			}
+
+		- výpis všech callback funkcí navázaných na proměnnou
+
+			trace info variable x
+
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 9. Trasování programu   ===================
+Trasování programu
+	* opět se používá příkaz "trace"
+	* trace add execution ...
+	* trace add command ...
+	* Demonstrační příklad
+		- trasování vstupu a ukončení procedury test_proc
+			proc test_proc {x y} { return [expr $x+$y]}
+			trace add execution test_proc enter test_proc_enter
+			trace add execution test_proc leave test_proc_leave
+
+			proc test_proc_enter args { puts "test_proc enter" }
+			proc test_proc_leave args { puts "test_proc leave" }
+
+			proc test_proc_enter args {
+			    foreach arg $args {
+			        puts "test_proc_enter: $arg"
+			    }
+			}
+
+			proc test_proc_leave args {
+			    foreach arg $args {
+			        puts "test_proc_leave: $arg"
+			    }
+			}
+
+			trace info execution test_proc
+	* trace remove execution test_proc leave test_proc_leave
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 10. Vytváření procesů   ===================
+Spuštění nového procesu
+	* exec
+		- exec ?switches? arg ?arg ...?
+		  << value
+		    přesměrování hodnoty na standardní vstup
+		  > filename
+		    přesměrování standardního výstupu
+		  >> filename
+		    přesměrování standardního výstupu, připojení na konec souboru
+		  2> filename
+		    přesměrování chybového výstupu
+		  2>> filename
+		    přesměrování chybového výstupu, připojení na konec souboru
+		- exec ?switches? arg ?arg ...? &
+		  spuštění úlohy na pozadí
+
+
+
+Named pipes
+
+	* Jedna z možností vytvoření komunikačního kanálu mezi procesy
+		- výhoda: práce s named pipes stejná jako u souborů
+		- nevýhoda: jen na některých OS, omezení při vzdálené komunikaci
+
+	* Vytvoření v shellu
+		$ mkfifo foo
+
+	* Skript, který reaguje na každý zápis do roury
+		set fifo [open "foo" {RDWR NONBLOCK}]
+		fconfigure $fifo -blocking 1
+		proc read_fifo {} {
+		    global fifo
+		    gets $fifo x
+		    puts "x is $x"
+		}
+		fileevent $fifo readable read_fifo
+
+	* Otestování funkčnosti
+		$ echo "qwerty" > foo
+
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 11. Multithreading      ===================
+Multithreading
+	* Import balíčku s podporou multithreadingu
+		package require Thread
+	* Příkazy v balíčku Thread
+		thread::create ?skript?
+			- vrací identifikátor nového vlákna
+
+		thread::wait
+			- vstup vlákna do smyčky událostí
+			- používáno při thread:create se zadaným skriptem!
+			- musí být až na konci skriptu
+			- jen tak lze vláknu poslat nový skript pomocí thread:sent
+
+		thread::send id ?skript?
+			- při -async se nečeká na dokončení skriptu
+
+		thread::send id ?skript? proměnná_s_výsledkem
+			- lze specifikovat jméno proměnné pro uložení výsledku
+
+		thread::broadcast id ?skript?
+			- pošle skript do všech vláken, nečeká na dokončení
+
+		thread::join id
+			- čeká na dokončení vlákna id a vrátí jeho výsledek
+
+	* Demonstrační příklad
+		- použití thread::create a thread:send
+			set t1 [thread::create]
+			set t2 [thread::create] 
+			thread::send -async $t1 "set a 1" result
+			thread::send -async $t2 "set b 2" result 
+			# čekání na dokončení obou vláken
+			# není zaručeno pořadí dokončení
+			for {set i 0} {$i < 2} {incr i} {
+			   vwait result
+			}
+
+	* Mutexy (synchronizační mechanismus)
+		thread::mutex create
+		thread::mutex destroy mutex
+		thread::mutex lock mutex
+		thread::mutex unlock mutex
+
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+=================== 12. Jmenné prostory     ===================
+Jmenné prostory
+	* Jeden ze způsobů organizace zdrojových kódů
+		- zmenšení počtu globálních proměnných
+		- zmenšení počtu globálních procedur
+			-> menší pravděpodobnost konfliktu jmen (např. přepis globální proměnné)
+
+	* Identifikátor jmenného prostoru se zapisuje před proceduru/proměnnou
+		$jmenný_prostor::proměnná
+		jmenný_prostor::procedura()
+
+	* Jmenné prostory lze uspořádat hierarchicky
+		$jmenný_prostor::jmenný_prostor::proměnná
+		jmenný_prostor::jmenný_prostor::procedura()
+
+	* Globální jmenný prostor
+		"" - prázdný řetězec
+		:: - synonymum
+
+	* Mnohé balíčky vytváří vlastní jmenný prostor
+		- viz thread::create atd.
+
+	* Vytvoření nového jmenného prostoru
+		namespace eval Counter {
+		    namespace export increment_variable
+		    variable num 0
+
+		    proc increment_variable {} {
+			      variable num
+			      incr num
+		    }
+		}
+
+		namespace eval ::tcl::clock \
+			[list variable LibDir [file dirname [info script]]]
+
+			namespace eval ::tcl::clock {
+
+			# Export the subcommands
+
+			namespace export format
+			namespace export clicks
+			namespace export microseconds
+			namespace export milliseconds
+			namespace export scan
+			namespace export seconds
+			namespace export add
+
+	* Přístup k procedurám a proměnným ve jmenném prostoru
+		Counter::bump 5
+		Counter::Reset
+		puts $Counter::num
+
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+===================== 13. Objektové rozšíření TCL =============
+
+	* incr Tcl
+		Několik skupin rozšíření
+		Podpora pro OOP
+		Příkazy
+			itcl::body
+			itcl::class
+			itcl::code
+			itcl::configbody
+			itcl::delete
+			itcl::ensemble
+			itcl::find
+			itcl::is
+			itcl::local
+			itcl::scope
+		Nebylo zapotřebí měnit vlastní intepreteter TCL
+
+_______________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================== 14. Knihovna Tcllib =============
+
+	* Kódování a dekódování, zpracování různých formátů souborů
+	* Komunikační protokoly
+	* Pokročilejší matematické operace
+
+	* How to start with tcllib
+		https://wiki.tcl.tk/1773
+
+	* base64
+		slouží ke kódování textových i binárních dat do řetězce
+		obsahuje pouze 64 tisknutelných znaků kódu ASCII (viz RFC 1341)
+		je možná i zpětná konverze řetězce uloženého v tomto kódování na binární data
+		tento modul je možné využít například při zpracování e-mailových zpráv
+
+		| package require base64
+		| base64::encode parametry data
+
+	* uuencode
+		v mnohém podobný předchozímu modulu
+		i zde se převádí binární data na textovou podobu
+		zde však metodou, která je kompatibilní s utilitami uuencode a uudecode
+
+		| package require uuencode
+		| uuencode::encode
+		| uuencode::decode
+
+	* csv
+		slouží k práci se soubory uloženými ve formátu CSV
+			Comma Separated Values
+		v tomto formátu se pro účely přenosu ukládají tabulky z databází
+		ale i údaje z tabulkových procesorů
+		Modul csv nabízí použití jak standardního CSV formátu, tak i formátu používaného Microsoftími produkty
+
+	* asn
+		práce se strukturovanými daty uloženými v binární podobě podle standardu ASN.1
+			Abstract Syntax Notation
+		modul asn obsahuje metody pro získání hodnot základních i rozšířených datových typů:
+			řetězců, celočíselných hodnot, pravdivostních hodnot apod.
+
+	* html
+		modul obsahuje značné množství metod, které slouží ke generování značek v HTML formátu
+		místo programového vytváření HTML kódu je tak možný i deklarativní způsob zápisu stránky
+		kromě metod tvořících značky pro základní formátování je možné vytvářet i tabulky a formuláře
+
+	* htmlparse
+		zpracovává řetězec, který by měl být ve formátu shodném s HTML
+		v tomto řetězci jsou postupně hledány značky HTML a pro každou značku je zavolán uživatelem specifikovaný příkaz
+		parser dále automaticky rozpozná (a z dalšího zpracování vynechá) úvodní deklaraci „DOCTYPE“
+		a poznámky zapsané pomocí HTML značek.
+
+	* inifile
+		modul slouží k práci se soubory ini
+		v těchto jednoduše strukturovaných souborech se nachází pojmenované sekce
+			v každé sekci neomezený počet párů „jméno=hodnota“
+		údaje je možné jak číst, tak i zapisovat.
+
+	* md4
+		modul slouží k vytvoření hash kódu řetězce či binárních dat podle normy MD4
+		výsledkem je 128-bitový hash kód, který je možné získat jak v binárním, tak i hexadecimálním tvaru
+			při použití tohoto modulu je zapotřebí dát pozor na to, že výstup v
+			hexadecimálním tvaru je složen z řady 32 hexadecimálních číslic – to
+			může způsobovat problémy některým utilitám, které očekávají, že vždy
+			dvojice hexadecimálních číslic je od ostatních oddělena mezerou.
+
+	* md5
+		slouží k tvorbě hash kódů podle algoritmu popsaného v RFC 1321
+		formát výstupu je stejný jako u předchozího modulu
+			buď binární tvar nebo tvar hexadecimální.
+
+	* md5crypt
+		* je možné použít na vytvoření hash kódu původně nezakryptované­ho hesla.
+
+	* sha1
+		* slouží, podobně jako moduly md4 a md5, k vytvoření podpisu (hash kódu) řetězce či binárních dat
+		* podle algoritmu SHA1
+			Místo 128-bitového kódu je však použito 160 bitů a i samotný
+			algoritmus je upraven tak, aby odolal některým kryptoanalytickým
+			technikám.
+
+	* crc16
+		* poměrně jednoduchý modul sloužící k vytvoření šestnáctibitového kontrolního součtu (metodou CRC)
+
+	* crc32 
+		* lze použít pro výpočet dvaatřicetibitového kontrolního součtu (metodou CRC)
+		* API tohoto modulu je odlišné od modulu crc16.
+
+	* sum
+		* slouží ke spočtení kontrolního součtu algoritmem kompatibilním s utilitou sum
+			(viz man sum)
+		* kromě řetězce je možné pracovat i se soubory.
+
+	* des
+		* umožňuje šifrovat a dešifrovat data pomocí dnes již postaršího šifrovacího standardu DES
+			Data Encryption Standard.
+
+	* rc4
+		* implementace proudového šifrovacího algoritmu RC4.
+
+	* jpeg
+		* metody sloužící k získání dalších informací o uloženém obrázku
+		* práce s formátem EXIF
+
+	* png
+		* slouží ke zpracování metainformací z rastrového formátu PNG
+			Portable Network Graphics.
+
+	* tar
+		* je možné použít pro práci se soubory (a k nim příslušejícími informacemi) uloženými v tarballech.
+
+
+
+===================== 15. Komunikační protokoly =======================
+
+	* comm
+		jednoduchý a přitom velmi mocný modul řešící komunikaci se vzdáleně běžící aplikací
+		k dispozici je několik příkazů, které je možné aplikaci zaslat
+		veškerá komunikace probíhá přes sockety
+		je přitom možné komunikovat i mezi aplikacemi běžícími na různých operačních systémech
+
+	* dns
+		klient pro Internetovskou službu DNS
+			Domain Name Service
+		přenosy jsou implicitně uskutečňovány pomocí TCP
+		je však možné (například pro dosažení vyšší rychlosti) použít i UDP, ovšem za podpory knihovny TclUDP.
+
+	* tcllib_ip
+		několik příkazů pracujících s IP adresami typu IPv4 i IPv6
+
+	* ftp
+		příkazy, pomocí nichž je možné vystupovat jako klient při komunikaci pomocí protokolu pro přenos souborů
+			FTP – File Transfer Protocol
+
+	* ftpd
+		serverová část řešící komunikaci pomocí protokolu FTP
+
+	* irc
+		příkazy pro komunikaci pomocí protokolu IRC
+			Internet Relay Chat
+
+	* ldap
+		klientská část příkazů pro komunikaci se servery pomocí protokolu LDAP
+		většinou se jedná o získávání informací o osobách či rolích uložených dle organizační struktury nějaké organizace
+
+	* nntp
+		klientská část příkazů umožňujících práci s protokolem NNTP
+
+	* pop3
+		klientská část příkazů umožňujících práci s protokolem POP3
+		používá se například při vytváření specializovaných e-mailových klientů
+		v jednodušších programech, které pouze vylistují hlavičky zpráv.
+
+	* pop3d
+		Serverová část příkazů umožňujících práci s protokolem POP3.
+
+	* smtp
+		Klientská část příkazů umožňujících práci s protokolem SMTP
+			Simple Mail Transfer Protocol
+		Vhodné například při zasílání zpráv o chybách aplikace na e-mail jejího správce.
+
+	* smtpd
+		Serverová část příkazů umožňujících práci s protokolem SMTP.
+
+
+
+
+===================== 16. Matematické funkce a operace =================
+
+	* math::bigfloat
+		práce s hodnotami uloženými ve formátu pohyblivé řádové čárky o (teoreticky) libovolné přesnosti a rozsahu
+
+	* math::bignum
+		práce s celočíselnými hodnotami o (teoreticky) libovolném rozsahu
+
+	* math::fourier
+		diskrétní Fourierova transformace (DFT) a rychlá Fourierova transformace (FFT) – používá se například při zpracování zvuku nebo obrazu
+
+	* math::statistics
+		různé statistické funkce a metody
+
+	* math::linearalgebra
+		lineární algebra (resp. její základ)
+
+	* math::geometry
+		vybrané operace řešící například vzdálenost bodu od úsečky, délku polyčáry apod.
+
+	* math::interpolate
+		různé metody interpolace (lineární, Lagrangeova, spline funkce …)
+
+	* math::complex­numbers
+		práce v komplexní rovině (včetně komplexních operátorů a funkcí)
+
+	* math::calculus
+		výpočet hodnot určitých integrálů různými metodami
+
