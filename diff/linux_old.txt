@@ -1,0 +1,29 @@
+Linux is a name that broadly denotes a family of free and closed-source software
+operating systems (OS) built around the Linux kernel. Typically, Linux is
+packaged in a form known as Linux distribution (or distro for short) for both
+desktop and server use. The defining component of a Linux distribution is the
+Linux kernel,[11] an operating system kernel first released on September 17,
+1991, by Linus Torvalds.[12][13][14] Many Linux distributions use the word
+"Linux" in their name. The Free Software Foundation uses the name GNU/Linux to
+refer to the operating system family, as well as specific distributions, to
+emphasize that most Linux distributions are not just the Linux kernel, and that
+they have in common not only kernel, but also numerous utilities and
+libraries, a large proportion of which are from the GNU project. This has led
+to some controversy.
+
+Linux was originally developed for personal computers based on the Intel x86
+architecture, but has since been ported to more platforms than any other
+operating system.[17] Because of the dominance of the Linux kernel-based
+Android OS on smartphones, Linux has the largest installed base of all
+general-purpose operating systems.[18] Linux is also the leading operating
+system on servers and other big iron systems such as mainframe computers, and
+the only OS used on TOP500 supercomputers (since November 2017, having before
+gradually eliminated all competitors).[19][20] It is used by around 2.3% of
+desktop computers.[21][22] The Chromebook, which runs the Linux kernel-based
+Chrome OS, dominates the US K–12 education market and represents nearly 12% of
+the sub-$300 notebook sales in the US.[23] GNU/Linux also runs on embedded
+systems—devices whose operating system is typically built into the firmware and
+is highly tailored to the system. This includes TiVo and similar devices,
+network routers, facility automation controls, televisions,[24][25] video game
+consoles and smartwatches.[26] Many smartphones and tablet computers run
+Android and other Linux derivatives.[27]
