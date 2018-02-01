@@ -1,0 +1,11 @@
+Typy zvukových čipů - PSG (Programmable Sound Generator), čipy s FM syntézou a samozřejmě i čipy určené především pro přehrávání a mixování samplů (PCM). Nás bude zajímat první skupina, která je v mnoha ohledech nejzajímavější a navíc nás PSG provázely prakticky celou érou osmibitových domácích mikropočítačů i konzolí.
+
+PSG obecně umí:
+    Multiple waveforms
+        Square
+        Triangle
+        Noise generator
+        Envelope generator
+    Filters (A or D)
+
+Obdélníkové vlny asi není zapotřebí Ataristům zdlouhavě popisovat, ovšem zajímavé je zjistit, co se skrývá pod pojmem trojúhelníková vlna. Mnoho PSG používá pro generování trojúhelníkového nebo i pilového signálu čtyřbitový čítač (tedy 16 úrovní), což znamená, že na osciloskopu uvidíme spíše různé schůdky, ale určitě ne čistý trojúhelníkový průběh (konkrétní tvar signálu je samozřejmě ovlivněn i filtry a zesilovačem, které "schůdky" trošku vyhladí).
