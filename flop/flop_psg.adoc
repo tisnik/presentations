@@ -1,11 +1,27 @@
-Typy zvukových čipů - PSG (Programmable Sound Generator), čipy s FM syntézou a samozřejmě i čipy určené především pro přehrávání a mixování samplů (PCM). Nás bude zajímat první skupina, která je v mnoha ohledech nejzajímavější a navíc nás PSG provázely prakticky celou érou osmibitových domácích mikropočítačů i konzolí.
+V tomto článku se seznámíme se všemi důležitými zvukovými a hudebními čipy, které byly používány v osmibitových herních konzolích i v osmibitových domácích mikropočítačích (i když je nutné poznamenat, že některé z těchto čipů přežily i do éry 16bitových a 32bitových strojů). U každého popisovaného čipu se budu snažit o porovnání s integrovaným obvodem POKEY, který nepochybně všichni čtenáři FLOPu velmi dobře znají (ostatně v čísle 39 vyšel velmi podrobný návod popisující všechny důležité vlastnosti tohoto čipu).
 
-PSG obecně umí:
-    Multiple waveforms
-        Square
-        Triangle
-        Noise generator
-        Envelope generator
-    Filters (A or D)
+Integrované obvody určené pro generování zvuků a hudby tvoří nedílnou a současně i velmi důležitou součást historie vývoje herních konzolí a samozřejmě i osmibitových domácích mikropočítačů. Až na několik výjimek, mezi něž patří především původní ZX Spectrum a vlastně i všechny počítače vyráběné v ČSSR, byly těmito čipy osazeny prakticky všechny úspěšné konzole a mikropočítače vyráběné od konce sedmdesátých let minulého století až po začátek let devadesátých, kdy již na trhu převažovaly šestnáctibitové a 32bitové stroje. A právě vlastnosti a nabízené možnosti zvukových čipů do značné míry určovaly oblíbenost dané platformy.
+
+V dalším textu budou popsány tyto čipy:
+
+* Integrovaný obvod TIA použitý především v herních konzolích Atari 2600 i v Atari 7800
+
+* Integrovaný obvod POKEY, který všichni nepochybně znáte
+
+* Zvukový čip Texas Instruments SN76489 (DCSG)
+
+* Zvukový čip Texas Instruments SN76477
+
+* Do třetice zvukový čip Texas Instruments, tentokrát SN76496
+
+* Zvukový subsystém konzole NES založené na čipu Ricoh 2A03/2A07
+
+* Integrovaný obvod AY-3-8910 neboli podomácku "áýčko" a jeho varianty (YM2149 atd.)
+
+* HuC6280
+
+* Na závěr nesmíme zapomenout na SID firmy MOS
+
+
 
 Obdélníkové vlny asi není zapotřebí Ataristům zdlouhavě popisovat, ovšem zajímavé je zjistit, co se skrývá pod pojmem trojúhelníková vlna. Mnoho PSG používá pro generování trojúhelníkového nebo i pilového signálu čtyřbitový čítač (tedy 16 úrovní), což znamená, že na osciloskopu uvidíme spíše různé schůdky, ale určitě ne čistý trojúhelníkový průběh (konkrétní tvar signálu je samozřejmě ovlivněn i filtry a zesilovačem, které "schůdky" trošku vyhladí).
