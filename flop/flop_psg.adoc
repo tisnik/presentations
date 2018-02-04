@@ -10,9 +10,9 @@ V dalším textu budou popsány tyto čipy:
 
 * Zvukový čip Texas Instruments SN76489 (DCSG)
 
-* Zvukový čip Texas Instruments SN76477
+* Zvukový čip Texas Instruments SN76496 (varianta DCSG)
 
-* Do třetice zvukový čip Texas Instruments, tentokrát SN76496
+* Do třetice zvukový čip Texas Instruments, tentokrát SN76477
 
 * Zvukový subsystém konzole NES založené na čipu Ricoh 2A03/2A07
 
@@ -30,7 +30,9 @@ Ještě před popisem jednotlivých čipů si musíme říct, že pod termínem 
 
 Všechny PSG, které si popíšeme dále, jsou založeny na zpracování vstupního hodinového signálu, kterým jsou řízeny interní moduly PSG. PSG mohou generovat obdélníkové signály s volitelnou frekvencí (a někdy i s konfigurovatelnou střídou), dále pak šum s volitelnou frekvencí a některé PSG navíc generují i trojúhelníkový a/nebo pilový signál (pro zvuk hudebních nástrojů je vhodnější pilový signál). Podle typu PSG můžeme na čipu očekávat i takzvaný generátor obálky (envelope generator), popř. i různé typy filtrů a propustí.
 
+V případě, že je hodinový signál přiveden na běžný čítač s výstupem propojeným s klopným obvodem T, bude takto zapojený modul generovat obdélníkový výstupní signál s frekvencí určenou počáteční hodnotou čítače (samotná konstrukce čítačů se od sebe může odlišovat, většinou však čítají směrem k nule a při podtečení se na výstupu objeví impuls přivedený do klopného obvodu). Takto vytvořené obdélníkové vlny asi není zapotřebí Ataristům zdlouhavě popisovat, ovšem zajímavé je zjistit, co se skrývá pod pojmem trojúhelníková vlna.
 
+Mnoho PSG totiž používá pro generování trojúhelníkového nebo i pilového signálu čtyřbitový čítač (tedy 16 úrovní), jehož výstup je přes jednoduchý čtyřbitový D/A převodník přiváděn na reproduktor. To znamená, že na osciloskopu uvidíme spíše různé schůdky, ale určitě ne čistý trojúhelníkový průběh. Konkrétní tvar signálu je samozřejmě ovlivněn i filtry a zesilovačem, které "schůdky" trošku vyhladí.
 
 
 
