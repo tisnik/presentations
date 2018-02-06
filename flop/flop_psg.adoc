@@ -34,9 +34,15 @@ Několik PSG totiž používá pro generování trojúhelníkového nebo i pilov
 
 Generování šumu je u naprosté většiny PSG založeno na použití posuvného registru se zpětnou vazbou (LSFR, též poly counter), přičemž bitová délka tohoto registru určuje, jak bude šum znít - zda bude skutečně "náhodný", nebo zda bude mít tak krátkou periodu, že vlastně vznikne pouze zkreslený tón. LSFR použité u zvukových generátorů mají mnoho podob a různou délku (od čtyř do sedmnácti bitů), takže se jim budeme samostatně věnovat u každého popisovaného čipu.
 
+
+
 = Integrovaný obvod TIA použitý v Atari 2600 (VCS) i v Atari 7800
 
 Nejprve si popíšeme zvukové možnosti čipu TIA neboli plným jménem Television Interface Adaptor. Jedná se o jeden z pouhých tří integrovaných obvodů tvořících ústřední prvky v minulosti velmi populární osmibitové herní konzole Atari 2600.
+
+Čip TIA se kromě generování grafického obrazu stará i o zvukovou syntézu. Ta je z dnešního pohledu dosti zvláštní. Na jednu stranu je způsob zvukové syntézy velmi jednoduchý a v některých ohledech připomíná způsob zvukové syntézy použité o několik let později v čipu POKEY v osmibitových domácích mikropočítačích Atari. Jednoduchost spočívá v možnosti generování pouze obdélníkových signálů (pravidelných popř. sice nepravidelných, ale periodických), jejichž amplituda může být nastavena na hodnoty 0-15 (řídí se tedy čtyřmi bity).
+
+Na druhou stranu však způsob interního zapojení posuvných registrů se zpětnou vazbou nabízí poměrně velké množství kombinací, které vlastně nenajdeme ani u čipu POKEY, který je jinak v oblasti generování zvuků a hudby nástupcem čipu TIA.
 
 
 
