@@ -44,7 +44,9 @@ Nejprve si popíšeme zvukové možnosti čipu TIA neboli plným jménem Televis
 
 Na druhou stranu však způsob interního zapojení posuvných registrů se zpětnou vazbou nabízí poměrně velké množství kombinací, které vlastně nenajdeme ani u čipu POKEY, který je jinak v oblasti generování zvuků a hudby nástupcem čipu TIA.
 
+Vzhledem k tomu, že se čip TIA stará jak o vytváření video signálu, tak i pro syntézu zvuků a hudby, je v něm několik modulů společných. Zejména se to týká způsobu generování základního hodinového signálu (přesněji řečeno dvojice signálů), které vstupují do zvukového systému a od jejichž frekvence se odvíjí i frekvence přehrávaných tónů.
 
+Základem všech signálů řídicích celou herní konzoli Atari 2600 je oscilátor, který u NTSC varianty generuje hodinový signál o frekvenci 3,579545 MHz a u PAL varianty poněkud nižší frekvenci 3,546894 MHz. Tento základní signál se nazývá pixel clock (v některých dokumentech též color clock), protože kromě dalších činností řídí i generování pixelů na obrazových řádcích (262 řádků a necelých 60 snímků za sekundu u NTSC, 312 řádků a necelých 50 snímků za sekundu u PAL). Současně se tento signál dělí třemi a výsledek o frekvencích 1,193182 MHz (NTSC) popř. 1,182298 MHz (PAL) slouží jako hlavní řídicí hodinový signál mikroprocesoru MOS 6507. Z tohoto důvodu se tento signál nazývá CPU clock a proto se dočteme, že hodinová frekvence konzole Atari 2600 je 1,19 MHz, což ovšem platí jen pro NTSC variantu.
 
 
 
