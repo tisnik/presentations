@@ -52,4 +52,8 @@ Oba dva výše zmíněné signály, tj. jak pixel clock, tak i CPU clock, jsou d
 
 V případě integrovaného obvodu TIA jsou programátorům k dispozici dva na sobě nezávislé programovatelné zvukové kanály. Každý z těchto kanálů je řízen trojicí řídicích registrů, celkem tedy může programátor modifikovat osm řídicích registrů: AUDF0, AUDF1, AUDC0, AUDC1, AUDV0 a AUDV1. Vzhledem k tomu, že možnosti obou zvukových kanálů jsou totožné (všechny obvody jsou zdvojeny), budeme v dalším textu popisovat pouze kanál první, který je řízený trojicí registrů AUDF0, AUDC0 a AUDV0.
 
+První řídicí registr zvukového kanálu (AUDF0), přesněji řečeno pět bitů tohoto registru určuje konstantu 1 až 32 použitou při dělení vstupní frekvence. Buď se použije frekvence pixel_clock/114 nebo CPU_clock/114. Výsledkem dělení je obdélníkový signál o frekvenci přibližně 1 kHz až 30 kHz (popř. 300 Hz až 10 kHz, opět jen přibližně), který je přiváděn do dvojice konfigurovatelných posuvných registrů (LSFR) se zpětnou vazbou. První registr má délku pěti bitů, druhý délku čtyř bitů, ovšem je možné je spojit do jediného registru o délce devíti bitů (viz další text).
+
+Tyto dva posuvné registry slouží jak pro generování čistého obdélníkového signálu, tak i pro vytváření šumu (noise generator) s různou charakteristikou. Konfigurace obou posuvných registrů je řízena registrem AUDC0, přičemž význam mají pouze čtyři spodní bity. Jednotlivé kombinace určují jak zdroj signálu (pixel_clock/114 či CPU_clock/114), tak i způsob zapojení zpětných vazeb v obou posuvných registrech.
+
 
