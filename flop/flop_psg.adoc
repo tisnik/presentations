@@ -12,7 +12,7 @@ V dalším textu budou popsány tyto čipy:
 
 * Zvukový čip Texas Instruments SN76496 (varianta DCSG)
 
-* Do třetice zvukový čip Texas Instruments, tentokrát SN76477
+* Do třetice zvukový čip Texas Instruments, tentokrát s označením SN76477
 
 * Zvukový subsystém konzole NES založené na čipu Ricoh 2A03/2A07
 
@@ -55,5 +55,7 @@ V případě integrovaného obvodu TIA jsou programátorům k dispozici dva na s
 První řídicí registr zvukového kanálu (AUDF0), přesněji řečeno pět bitů tohoto registru určuje konstantu 1 až 32 použitou při dělení vstupní frekvence. Buď se použije frekvence pixel_clock/114 nebo CPU_clock/114. Výsledkem dělení je obdélníkový signál o frekvenci přibližně 1 kHz až 30 kHz (popř. 300 Hz až 10 kHz, opět jen přibližně), který je přiváděn do dvojice konfigurovatelných posuvných registrů (LSFR) se zpětnou vazbou. První registr má délku pěti bitů, druhý délku čtyř bitů, ovšem je možné je spojit do jediného registru o délce devíti bitů (viz další text).
 
 Tyto dva posuvné registry slouží jak pro generování čistého obdélníkového signálu, tak i pro vytváření šumu (noise generator) s různou charakteristikou. Konfigurace obou posuvných registrů je řízena registrem AUDC0, přičemž význam mají pouze čtyři spodní bity. Jednotlivé kombinace určují jak zdroj signálu (pixel_clock/114 či CPU_clock/114), tak i způsob zapojení zpětných vazeb v obou posuvných registrech.
+
+Jedna z kombinací umožňuje generovat konstantní signál o hodnotě 1, což je výhodné, protože je možné zvuk jednoduše samplovat rychlou změnou obsahu registru AUDV0. Další dvě kombinace přepínají pětibitový posuvný registr do režimu, v němž se stále opakuje sekvence 0101010..., tj. posuvný registr zde slouží jako dělička vstupní frekvence dvěma (popř. šesti, protože CPU_clock=pixel_clock/3). Právě tento režim se používal při přehrávání čistých tónů (ovšem rozladěných).
 
 
