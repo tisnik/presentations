@@ -58,4 +58,8 @@ Tyto dva posuvné registry slouží jak pro generování čistého obdélníkov�
 
 Jedna z kombinací umožňuje generovat konstantní signál o hodnotě 1, což je výhodné, protože je možné zvuk jednoduše samplovat rychlou změnou obsahu registru AUDV0. Další dvě kombinace přepínají pětibitový posuvný registr do režimu, v němž se stále opakuje sekvence 0101010..., tj. posuvný registr zde slouží jako dělička vstupní frekvence dvěma (popř. šesti, protože CPU_clock=pixel_clock/3). Právě tento režim se používal při přehrávání čistých tónů (ovšem rozladěných).
 
+Další dostupný režim taktéž používá posuvný registr, tentokrát ovšem takovým způsobem, že se vstupní signál dělí hodnotou 31. Opakuje se v něm totiž sekvence 31 bitů, z nichž 13 sousedních bitů je nulových, zbytek jedničkových (to, že počet jedniček a nul není zcela totožný, se projeví ve výsledném zvuku jen nepatrně). Opět platí, že CPU_clock má třetinovou frekvenci, takže v oficiálních materiálech se hovoří o dělení konstantou 93; ve skutečnosti tato "magická" konstanta odpovídá 3*31.
+
+Další režimy již využívají oba posuvné registry pro tvorbu šumu. Pokud je použit jen čtyřbitový registr, je perioda opakování pouze 15 bitů, což je opět možné využít pro generování tónů, ovšem zkreslených. Podobně při použití pětibitového LSFR s periodou opakování 31. Spojením obou dvou registrů za sebe se generuje šum o periodě 511 bitů (podobného efektu lze docílit i u čipu POKEY).
+
 
