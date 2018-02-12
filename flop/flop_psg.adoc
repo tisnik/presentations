@@ -62,4 +62,10 @@ Další dostupný režim taktéž používá posuvný registr, tentokrát ovšem
 
 Další režimy již využívají oba posuvné registry pro tvorbu šumu. Pokud je použit jen čtyřbitový registr, je perioda opakování pouze 15 bitů, což je opět možné využít pro generování tónů, ovšem zkreslených. Podobně při použití pětibitového LSFR s periodou opakování 31. Spojením obou dvou registrů za sebe se generuje šum o periodě 511 bitů (podobného efektu lze docílit i u čipu POKEY).
 
+Nejsložitější je režim, v němž pětibitový LSFR řídil čtyřbitový LSFR: pokud se na výstupu prvního LSFR objeví jednička, provede se posun i ve čtyřbitovém LSFR; v opačném případě se druhý LSFR ignoruje. Výsledkem je pseudonáhodný signál s periodou 15*31=465 bitů (další "magická" hodnota, která není v původních materiálech nijak vysvětlena a musela být až mnohem později vydedukována ze schémat čipu TIA).
+
+Poznámka: se čtyřbitovým, pětibitovým i devítibitovým posuvným registrem se setkáme i v dále popsaném čipu POKEY, což není náhoda (ostatně i z teorie LSFR vychází, že například osmibitový posuvný registr vyžaduje mnohem složitější zapojení zpětné vazby, než registr sedmibitový nebo devítibitový, "výhodné" délky jsou 2-7 bitů, 9-11 bitů, 15 bitů a 17 bitů).
+
+Výsledný signál, nezávisle na tom, zda se jedná o čistý obdélníkový průběh či o šum, je následně zesílen 1 až šestnáctkrát na základě hodnoty posledního řídicího registru (AUDV0, AUDV1). Interně se nejedná o nic složitého - čtyři bity, resp. přesněji řečeno čtyři logické úrovně, jsou přivedeny na jednoduchou odporovou síť se čtyřmi rezistory o hodnotách 3k7, 7k5, 15k a 30k (takže se vlastně nejedná o zesílení, ale naopak o konfigurovatelné zeslabení). Výsledné napětí, které na rezistorech vznikne, je vyvedeno na výstupní pin čipu TIA (ten tedy musí obsahovat dva piny s analogovým zvukovým výstupem, každý zvukový kanál má vyhrazen jeden pin).
+
 
