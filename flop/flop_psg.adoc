@@ -68,4 +68,12 @@ Poznámka: se čtyřbitovým, pětibitovým i devítibitovým posuvným registre
 
 Výsledný signál, nezávisle na tom, zda se jedná o čistý obdélníkový průběh či o šum, je následně zesílen 1 až šestnáctkrát na základě hodnoty posledního řídicího registru (AUDV0, AUDV1). Interně se nejedná o nic složitého - čtyři bity, resp. přesněji řečeno čtyři logické úrovně, jsou přivedeny na jednoduchou odporovou síť se čtyřmi rezistory o hodnotách 3k7, 7k5, 15k a 30k (takže se vlastně nejedná o zesílení, ale naopak o konfigurovatelné zeslabení). Výsledné napětí, které na rezistorech vznikne, je vyvedeno na výstupní pin čipu TIA (ten tedy musí obsahovat dva piny s analogovým zvukovým výstupem, každý zvukový kanál má vyhrazen jeden pin).
 
+Zvuk generovaný čipem TIA je možné poměrně jednoduše rozeznat od zvuku dalších herních konzolí nebo domácích mikropočítačů, už jen z toho důvodu, že prakticky všechny noty jsou kvůli velmi krátkému čítači, který je použitý pro dělení vstupní frekvence, rozladěny. Avšak i přesto pro TIA dodnes vznikají různá více či méně vážně míněná hudební díla, a to včetně poměrně úspěšných pokusů o čtyřbitový sampling (což ovšem vyžaduje použití "supercartridgí" s dostatečně velkou EPROM, protože interní RAM o kapacitě celých 128 bajtů je samozřejmě pro tyto účely nepoužitelná).
+
+
+
+= Zvukový čip POKEY
+
+Pro čtenáře tohoto článku (a vlastně i celého FLOPu) pravděpodobně nebude žádným tajemstvím, že typickým zástupcem osmibitových domácích mikropočítačů, které využívaly pro syntézu zvuku i hudby speciální integrovaný obvod, jsou všechny osmibitové mikropočítače firmy Atari. Pro syntézu zvuku (a také několik dalších důležitých operací popsaných na konci této kapitoly) byl firmou Atari vyvinut integrovaný obvod nazvaný POKEY, jehož jméno je odvozeno od sousloví POtentiometer and KEYboard (což je zvláštní, protože mnohem větší význam má generátor zvuku a taktéž modul určený pro ovládání sériové komunikace).
+
 
