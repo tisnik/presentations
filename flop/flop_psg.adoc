@@ -78,4 +78,6 @@ Pro čtenáře tohoto článku (a vlastně i celého FLOPu) pravděpodobně nebu
 
 Tento čip není využitý pouze v domácích mikropočítačích, ale také v některých herních konzolích firmy Atari a taktéž herních automatech (ostatně pro firmu Atari představovala výroba herních konzolí i automatových her v jednu chvíli převážnou část zisků). V případě čipu POKEY se jedná o hybridní integrovaný obvod, který obsahuje jak digitální část (právě ta je použita i pro zvukovou syntézu), tak i část analogovou – tento obvod je totiž vybaven mj. i funkcí určenou pro (relativně pomalý) převod analogového signálu na osmibitové vzorky, čehož firma Atari využívala pro připojení ovladačů typu paddle ke svým počítačům i herním konzolím.
 
+V úvodním odstavci této kapitoly jsme jsme si řekli, že integrovaný obvod POKEY slouží mj. i ke zvukové syntéze. Zvuk je možné generovat s využitím čtyř zvukových kanálů (lze tedy vytvářet až čtyřhlasou polyfonii), přičemž vždy dva kanály je možné v případě potřeby spojit do kanálu jednoho, u něhož lze přesněji řídit frekvenci zvuku (v podstatě to znamená, že se dva osmibitové čítače/děliče spojí do jednoho čítače šestnáctibitového a popř. se změní zdroj vstupních hodinových signálů – viz další text). Pro ovládání zvukového subsystému se používá devět osmibitových řídicích registrů: AUDF1 až AUDF4, AUDC1 až AUDC4 a společný řídicí registr AUDCTL.
+
 
