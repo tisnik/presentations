@@ -76,4 +76,6 @@ Zvuk generovaný čipem TIA je možné poměrně jednoduše rozeznat od zvuku da
 
 Pro čtenáře tohoto článku (a vlastně i celého FLOPu) pravděpodobně nebude žádným tajemstvím, že typickým zástupcem osmibitových domácích mikropočítačů, které využívaly pro syntézu zvuku i hudby speciální integrovaný obvod, jsou všechny osmibitové mikropočítače firmy Atari. Pro syntézu zvuku (a také několik dalších důležitých operací popsaných na konci této kapitoly) byl firmou Atari vyvinut integrovaný obvod nazvaný POKEY, jehož jméno je odvozeno od sousloví POtentiometer and KEYboard (což je zvláštní, protože mnohem větší význam má generátor zvuku a taktéž modul určený pro ovládání sériové komunikace).
 
+Tento čip není využitý pouze v domácích mikropočítačích, ale také v některých herních konzolích firmy Atari a taktéž herních automatech (ostatně pro firmu Atari představovala výroba herních konzolí i automatových her v jednu chvíli převážnou část zisků). V případě čipu POKEY se jedná o hybridní integrovaný obvod, který obsahuje jak digitální část (právě ta je použita i pro zvukovou syntézu), tak i část analogovou – tento obvod je totiž vybaven mj. i funkcí určenou pro (relativně pomalý) převod analogového signálu na osmibitové vzorky, čehož firma Atari využívala pro připojení ovladačů typu paddle ke svým počítačům i herním konzolím.
+
 
