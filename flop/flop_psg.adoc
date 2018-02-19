@@ -84,4 +84,8 @@ Každý zvukový kanál produkuje obdélníkový signál s amplitudou, kterou je
 
 Závislost mezi zvolenou úrovní a napětím není přesně lineární; taktéž generovaný signál není (například po připojení na osciloskop) zcela přesně obdélníkový, čehož se dodnes využívá při tvorbě trojúhelníkových a pilových průběhů (ovšem nutno říci, že za značné pomoci mikroprocesoru, přesného časování, popř. s využitím dále zmíněného hi-pass filtru).
 
+Na vstup zvukového subsystému je přiváděn hodinový signál procesoru, který má frekvenci cca 1,79 MHz pro počítače s televizní normou NTSC a 1,77 Hz pro počítače s normou PAL. Tento signál je pro další účely dělen konstantami 28 a 114, takže vzniknou další dva signály, z nichž první má frekvenci přibližně 63 kHz a druhý necelých 16 kHz. S využitím řídicích registrů lze zvolit, který z těchto signálů se bude používat pro řízení zvukových kanálů (ovšem ne všechny možnosti je možné vybrat současně, viz dále).
+
+Frekvence zvuku v každém zvukovém kanálu je řízena děličem 1:N, který je interně implementovaný jako čítač (ostatně právě na základě čítačů obvod POKEY detekuje stlačené klávesy, generuje pseudonáhodná čísla, provádí A/D převod z ovladačů paddle a komunikuje se SIO). Pokud nejsou zvukové kanály spojeny do dvojic, je funkce čítače vlastně velmi jednoduchá: na vstup čítače je přiveden jeden ze tří hodinových signálů zmíněných výše a při každém taktu se hodnota čítače sníží o jedničku.
+
 
