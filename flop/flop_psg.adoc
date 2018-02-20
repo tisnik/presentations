@@ -88,4 +88,8 @@ Na vstup zvukového subsystému je přiváděn hodinový signál procesoru, kter
 
 Frekvence zvuku v každém zvukovém kanálu je řízena děličem 1:N, který je interně implementovaný jako čítač (ostatně právě na základě čítačů obvod POKEY detekuje stlačené klávesy, generuje pseudonáhodná čísla, provádí A/D převod z ovladačů paddle a komunikuje se SIO). Pokud nejsou zvukové kanály spojeny do dvojic, je funkce čítače vlastně velmi jednoduchá: na vstup čítače je přiveden jeden ze tří hodinových signálů zmíněných výše a při každém taktu se hodnota čítače sníží o jedničku.
 
+Při podtečení hodnoty čítače se na jeho výstupu objeví logická jednička a současně je hodnota v čítači resetována na uživatelem zvolenou hodnotu (ta je uložena v příslušném řídicím registru AUDF1 až AUDF4). Výstup čítače je použit v dalších obvodech. Například při generování čistého tónu se jedničkou, která se objeví na výstupu čítače, pouze překlopí jeden klopný obvod (takže se vlastně vstupní frekvence navíc dělí dvěma).
+
+Změnou obsahu řídicího registru obvodu POKEY je možné nakonfigurovat jednu ze tří základních kombinací zvukových kanálů:
+
 
