@@ -98,4 +98,6 @@ Změnou obsahu řídicího registru obvodu POKEY je možné nakonfigurovat jednu
 
 3. Jeden zvukový kanál řízený šestnáctibitovým děličem a dva kanály řízené děličem osmibitovým (tuto konfiguraci využívalo mnoho hudebníků, kteří přesněji řízený zvukový kanál použili pro basový hudební nástroj a další dva kanály pro perkusní nástroj – někdy samplovaný – a hlavní melodii hranou většinou na vyšších frekvencích).
 
+Poznámka: v případě, že se dva zvukové kanály spojí za sebe, dojde ke snížení současně přehrávaných zvuků na 3 nebo dokonce jen na 2, ale zvýší se přesnost čítače, protože vstupní frekvence může být dělena hodnotou 1 až 2^16. V tomto případě se však volí vyšší frekvence hodinových signálů na vstupu obvodu: z cca 16 kHz na 63 kHz nebo na CPU clock, jinak by po vydělení příliš velkou hodnotou byl na výstupu zvukových kanálů infrazvuk, který se v případě obdélníkového průběhu projevuje pouze "lupáním" membrány reproduktoru při skokové změně amplitudy.
+
 
