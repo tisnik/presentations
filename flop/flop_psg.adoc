@@ -92,4 +92,10 @@ Při podtečení hodnoty čítače se na jeho výstupu objeví logická jedničk
 
 Změnou obsahu řídicího registru obvodu POKEY je možné nakonfigurovat jednu ze tří základních kombinací zvukových kanálů:
 
+1. Čtyři samostatné zvukové kanály, přičemž frekvence každého z nich je vytvořena pomocí osmibitového děliče, na který se přivádí jeden ze dvou vstupních hodinových signálů (cca 16 kHz, cca 63 kHz). Tato konfigurace čipu POKEY je použita při práci se zvukem z Atari BASICu (známý příkaz SOUND a,b,c,d). V tomto režimu lze při standardním nastavení generovat tóny v rozsahu zhruba čtyř oktáv, ovšem výběrem odlišného hodinového signálu je možné celou škálu 256 různých tónů posunout.
+
+2. Dva zvukové kanály, přičemž frekvence každého z nich je vytvořena pomocí šestnáctibitového děliče, který vznikl spojením dvou děličů osmibitových. V takovém případě je možné na vstup děliče přivádět přímo hodinovou frekvenci procesoru, tj. vybírat mezi třemi vstupními signály cca 16 kHz, cca 63 kHz a 1,77 popř. 1,79 MHz podle televizní normy). Tónový rozsah z obou stran v tomto případě přesahuje limity lidského sluchu (infrazvuk, ultrazvuk) i možnosti zesilovačů.
+
+3. Jeden zvukový kanál řízený šestnáctibitovým děličem a dva kanály řízené děličem osmibitovým (tuto konfiguraci využívalo mnoho hudebníků, kteří přesněji řízený zvukový kanál použili pro basový hudební nástroj a další dva kanály pro perkusní nástroj – někdy samplovaný – a hlavní melodii hranou většinou na vyšších frekvencích).
+
 
