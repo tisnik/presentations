@@ -104,4 +104,6 @@ Zastavme se na chvíli u popisu subsystému pro generování šumu popř. zkresl
 
 Ovšem je možná i další kombinace využívající zmíněné poly čítače. Obvod POKEY obsahuje celkem tři poly čítače (čtyřbitový, pětibitový, sedmnáctibitový), jejichž výstup může řídit vybraný zvukový kanál. Všechny čtyři zvukové kanály se dělí o stejné poly čítače, ovšem každý zvukový kanál může mít nastavenou jinou frekvenci, tj. i výsledný zvuk bude odlišný. U sedmnáctibitového poly čítače (viz další odstavce) je vzdálenost mezi stejnými vzorky (perioda) tak velká, že ho lze považovat za generátor náhodných impulsů, který vytváří bílý šum.
 
+Princip řízení zvukového kanálu poly čítačem je ve skutečnosti velmi jednoduchý – řízení je prováděno obyčejným logickým hradlem a klopným obvodem typu D. Poly čítače sice mění hodnotu na svém výstupu velmi rychle (jsou totiž řízeny přímo hodinovým signálem mikroprocesoru, tj. cca 1,79 MHz pro počítače pracující v normě NTSC a 1,77 MHz pro počítače s televizní normou PAL), ale maximální frekvence na výstupu zvukového kanálu je kvůli zapojenému logickému hradlu a klopnému obvodu omezena frekvencí získanou pomocí děliče 1:N (neboli hodnota na výstupu klopného obvodu se nemůže měnit s větší frekvencí, než je frekvence přivedená na jeho vstup CLK).
+
 
