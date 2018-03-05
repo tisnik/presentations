@@ -51,18 +51,24 @@ class MainWindowContent(QtGui.QWidget):
         return quitButton
 
     def showMessageBox(self):
+        # tlačítka, která mají být součástí dialogu
         buttons = QtGui.QMessageBox.Yes | \
                   QtGui.QMessageBox.YesToAll | \
                   QtGui.QMessageBox.No | \
                   QtGui.QMessageBox.NoToAll | \
                   QtGui.QMessageBox.Help
+        # vytvoření dialogu
         msgBox = QtGui.QMessageBox()
+
+        # nastavení zprávy a ikony, která se má zobrazit vedle zprávy
         msgBox.setStandardButtons(buttons)
         msgBox.setText(u'Zpráva')
         msgBox.setIcon(QtGui.QMessageBox.Question)
         # msgBox.setIcon(QtGui.QMessageBox.Question)
         # msgBox.setIcon(QtGui.QMessageBox.Warning)
         # msgBox.setIcon(QtGui.QMessageBox.Critical)
+
+        # zobrazení dialogu
         print(msgBox.exec_())
 
 
