@@ -106,4 +106,8 @@ Ovšem je možná i další kombinace využívající zmíněné poly čítače.
 
 Princip řízení zvukového kanálu poly čítačem je ve skutečnosti velmi jednoduchý – řízení je prováděno obyčejným logickým hradlem a klopným obvodem typu D. Poly čítače sice mění hodnotu na svém výstupu velmi rychle (jsou totiž řízeny přímo hodinovým signálem mikroprocesoru, tj. cca 1,79 MHz pro počítače pracující v normě NTSC a 1,77 MHz pro počítače s televizní normou PAL), ale maximální frekvence na výstupu zvukového kanálu je kvůli zapojenému logickému hradlu a klopnému obvodu omezena frekvencí získanou pomocí děliče 1:N (neboli hodnota na výstupu klopného obvodu se nemůže měnit s větší frekvencí, než je frekvence přivedená na jeho vstup CLK).
 
+Je to vlastně velmi elegantní řešení, kdy si tvůrci čipu POKEY vystačili s pouhými třemi poly čítači sdílenými všemi čtyřmi zvukovými kanály (ostatně stejný minimalismus a eleganci nalezneme v high-pass filtru popsaného níže).
+
+Samotný poly čítač, tj. generátor pseudonáhodného šumu, je tvořen posuvným registrem řízeným externím hodinovým signálem. S každým taktem hodin dojde k posunu obsahu registru (tj. čtyř, pěti, sedmnácti a ve speciálním případě devíti bitů) o jednu pozici. Na vstup posuvného registru je zpětnovazební smyčkou přivedena binární hodnota získaná pomocí hradla typu XOR připojeného svými vstupy na třetí a poslední bit posuvného registru – hodnota, na výstupu hradla je tedy zapsána do první pozice.
+
 
