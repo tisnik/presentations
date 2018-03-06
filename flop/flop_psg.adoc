@@ -110,4 +110,10 @@ Je to vlastně velmi elegantní řešení, kdy si tvůrci čipu POKEY vystačili
 
 Samotný poly čítač, tj. generátor pseudonáhodného šumu, je tvořen posuvným registrem řízeným externím hodinovým signálem. S každým taktem hodin dojde k posunu obsahu registru (tj. čtyř, pěti, sedmnácti a ve speciálním případě devíti bitů) o jednu pozici. Na vstup posuvného registru je zpětnovazební smyčkou přivedena binární hodnota získaná pomocí hradla typu XOR připojeného svými vstupy na třetí a poslední bit posuvného registru – hodnota, na výstupu hradla je tedy zapsána do první pozice.
 
+Pokud vezmeme do úvahy logickou funkci, kterou hradlo typu XOR reprezentuje, dojdeme k závěru, že po inicializaci čipu POKEY může mít posuvný registr prakticky jakoukoli nenulovou hodnotu, protože i za této situace rychle dojde k jeho naplnění pseudonáhodnými daty, které se poté periodicky opakují s periodou, jejíž délka závisí na bitové délce samotného posuvného registru.
+
+Pokud má registr délku n bitů, je perioda rovna 2^n-1 taktům, protože jeden zbývající stav – samé nulové bity – tvoří samostatný (nezajímavý) cyklus. Poslední bit posuvného registru představuje i jeho finální výstup, tj. sekvenci pseudonáhodných binárních hodnot, kterou po zpracování obvodem POKEY (zejména po nastavení amplitudy) slyšíme.
+
+Zatímco čtyřbitové a pětibitové poly čítače produkují poměrně rychle se opakující pseudonáhodné sekvence (lze s nimi napodobit například zvuk leteckých motorů), sedmnáctibitový poly čítač již má délku sekvence tak dlouhou, že s ním lze generovat náhodný zvuk. Tento čítač lze také překonfigurovat tak, že se jeho délka sníží na devět bitů (což pravděpodobně souvisí se snahou přiblížit se zvukovým možnostem čipu TIA). Překonfigurování je snadné: zpětnovazební smyčka je přepojena do osmého bitu a nikoli do bitu prvního.
+
 
