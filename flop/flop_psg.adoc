@@ -116,4 +116,6 @@ Pokud má registr délku n bitů, je perioda rovna 2^n-1 taktům, protože jeden
 
 Zatímco čtyřbitové a pětibitové poly čítače produkují poměrně rychle se opakující pseudonáhodné sekvence (lze s nimi napodobit například zvuk leteckých motorů), sedmnáctibitový poly čítač již má délku sekvence tak dlouhou, že s ním lze generovat náhodný zvuk. Tento čítač lze také překonfigurovat tak, že se jeho délka sníží na devět bitů (což pravděpodobně souvisí se snahou přiblížit se zvukovým možnostem čipu TIA). Překonfigurování je snadné: zpětnovazební smyčka je přepojena do osmého bitu a nikoli do bitu prvního.
 
+Poslední zajímavou funkcí čipu POKEY související s generováním zvuků, je možnost zařadit do řetězce zpracování i takzvaný high-pass filtr. Ovšem tento název nás nesmí zmást, protože se nejedná o skutečnou analogovou či digitální horní propust, ale o "pouhý" klopný obvod typu D doplněný o hradlo. Na vstup D (data) je přiváděn výstup z jednoho zvukového kanálu, na vstup CLK (hodiny, resp. přesněji zapamatování D) pak výstup z kanálu dalšího. Současně je výstup z prvního kanálu zkombinován hradlem XOR s výstupem Q z klopného obvodu D. Co to znamená v praxi? Každá hrana, která se objeví v kanálu 1 invertuje výstup z tohoto zapojení, zatímco hrana, která se objeví v kanálu 2 výstup vynuluje (na vstupu XOR se v daném okamžiku nachází dvě shodné hodnoty).
+
 
