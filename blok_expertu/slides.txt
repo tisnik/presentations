@@ -1,0 +1,95 @@
+Vývoj otevřeného softwaru
+=========================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs@redhat.com>
+■ Datum    2018-03-08
+
+Obsah přednášky
+-------------------------------
+▶ Otevřený software
+▶ Uzavřený ⇒ otevřený software
+▶ Specifika vývoje v komunitě
+▶ Komunikace
+▶ Sledování chyb
+▶ Softskills
+▶ Workflow
+
+Otevřený software
+-------------------------------
+▶ původní význam
+    veřejně dostupné zdrojové kódy
+    licence umožňující jejich použití a modifikaci
+    reakce na limity klasického uzavřeného software
+        vendor lock
+        neopravované chyby (ve starších verzích)
+        chybějící vlastnosti
+        zákony zakazující reverse engineering
+        „zadní vrátka“
+
+Otevřený software
+-------------------------------
+▶ Nejenom vlastní zdrojové kódy
+    Wikipedia
+    Wikimedia
+    Open data
+    Open hardware
+    Dokumentace
+    Obrázky
+    Multimediální soubory
+    ...
+
+Uzavřený ⇒ otevřený software
+-------------------------------
+▶ Různé důvody pro „otevření“ software
+    Sun JDK => OpenJDK
+    Eclipse
+        IBM 2001, celková investice cca 40 M$
+        2004 Eclipse Foundation
+    OpenStack
+        původně Rackspace Hosting a NASA
+
+Specifika vývoje v komunitě
+-------------------------------
+▶ Lidé s různými cíli a zájmy
+    vs komerční vývoj s jasnými cíli
+▶ Hierarchie popř. plochá struktura
+    „katedrála/tržiště“
+
+Komunikace
+-------------------------------
+    e-mail
+    IRC
+    Slack
+    Mattermost
+    ...
+
+Sledování chyb
+-------------------------------
+    Bugzilla
+    JIRA
+    GitHub
+    GitLab (většinou interní projekty)
+
+Statistické informace
+-------------------------------
+    OpenHub
+
+Softskills
+-------------------------------
+Nutnost nepřímé komunikace s lidmi z různých kulturních oblastí
+Jazyková vybavenost (někteří používají Google Translator)
+„Vlci samotáři“
+
+Workflow
+-------------------------------
+Dnes již většinou založen na možnostech Gitu
+    Fork + pull (merge) request
+    Review process
+    CI (Continuous Integration)
+Starší způsob
+    CVS, Subversion, ...
+
+
+GitHub
+-------------------------------
+
