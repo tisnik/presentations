@@ -118,4 +118,8 @@ Zatímco čtyřbitové a pětibitové poly čítače produkují poměrně rychle
 
 Poslední zajímavou funkcí čipu POKEY související s generováním zvuků, je možnost zařadit do řetězce zpracování i takzvaný high-pass filtr. Ovšem tento název nás nesmí zmást, protože se nejedná o skutečnou analogovou či digitální horní propust, ale o "pouhý" klopný obvod typu D doplněný o hradlo. Na vstup D (data) je přiváděn výstup z jednoho zvukového kanálu, na vstup CLK (hodiny, resp. přesněji zapamatování D) pak výstup z kanálu dalšího. Současně je výstup z prvního kanálu zkombinován hradlem XOR s výstupem Q z klopného obvodu D. Co to znamená v praxi? Každá hrana, která se objeví v kanálu 1 invertuje výstup z tohoto zapojení, zatímco hrana, která se objeví v kanálu 2 výstup vynuluje (na vstupu XOR se v daném okamžiku nachází dvě shodné hodnoty).
 
+Výsledkem je tedy signál, jehož průběh vzdáleně připomíná výsledek PWM (pulsně-šířkovou modulaci) ve chvíli, kdy jsou si frekvence obou kanálů blízké. A právě k tomuto účelu je možné high-pass filtr použít, kromě dalších triků.
+
+V případě potřeby (a také dostatečného výkonu mikroprocesoru) je možné generování obdélníkového signálu zcela vypnout a řídit pouze amplitudu na výstupu každého zvukového kanálu. Tímto způsobem lze přehrávat i nasamplované zvuky, ovšem kvůli výše uvedeným vlastnostem čipu POKEY je možné použít pouze šestnáct úrovní hlasitosti, tj. jedná se o čtyřbitový sampling s dynamickým rozsahem pouze 24 dB (naproti tomu CD-Audio využívá šestnáctibitový sampling s dynamickým rozsahem 96 dB a SID používá osmibitový sampling s dynamickým rozsahem cca 48 dB, což zhruba odpovídá magnetofonovému záznamu).
+
 
