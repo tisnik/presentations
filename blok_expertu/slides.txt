@@ -28,15 +28,31 @@ Otevřený software
 
 Otevřený software
 -------------------------------
+▶ Spolupráce velkého množství vývojářů,
+  dokumentaristů, testerů atd.:
+▶ Jak malé utility tak i velké aplikace
+▶ Firefox (dnešní statistika)
+     36 802 100 řádků kódu
+     986 310 commitů (změn)
+       6 313 přispěvatelů
+      12 129 člověkoroků (COCOMO model)
+▶ Jádro Linuxu (dnešní statistika)
+     16 859 900 řádků kódu
+     711 819 commitů (změn)
+      17 417 přispěvatelů
+       5 482 člověkoroků (COCOMO model)
+
+Otevřený software
+-------------------------------
 ▶ Nejenom vlastní zdrojové kódy
-    Wikipedia
-    Wikimedia
-    Open data
-    Open hardware
-    Dokumentace
-    Obrázky
-    Multimediální soubory
-    ...
+    ■ Wikipedia
+    ■ Wikimedia
+    ■ Open data
+    ■ Open hardware
+    ■ Dokumentace
+    ■ Obrázky
+    ■ Multimediální soubory
+    ■ ...
 
 Uzavřený ⇒ otevřený software
 -------------------------------
@@ -54,6 +70,24 @@ Specifika vývoje v komunitě
     vs komerční vývoj s jasnými cíli
 ▶ Hierarchie popř. plochá struktura
     „katedrála/tržiště“
+▶ Rozhodování o dalším směřování vývoje
+    někdy řešeno formou forků
+    OpenOffice ⇒ LibreOffice
+    GNU Emacs ⇒ XEmacs
+    MySQL ⇒ MariaDB
+
+Zdrojové kódy
+-------------------------------
+Úprava zdrojových kódů velkým počtem vývojářů současně
+Možnost vracet se ke starším verzím
+Sledování, kdo změnu udělal
+Paralelní vývoj více verzí (větve, branches)
+Distribuované systémy pro správu verzí
+    Git
+    Mercurial
+    BitKeeper
+    GNU Bazaar
+    ...
 
 Komunikace
 -------------------------------
@@ -70,6 +104,15 @@ Sledování chyb
     GitHub
     GitLab (většinou interní projekty)
 
+Testování
+-------------------------------
+    CI (Continuous Integration)
+    Jednotkové testy
+    Integrační testy
+    Performance testy
+    BDD
+    ...
+
 Statistické informace
 -------------------------------
     OpenHub
@@ -77,8 +120,13 @@ Statistické informace
 Softskills
 -------------------------------
 Nutnost nepřímé komunikace s lidmi z různých kulturních oblastí
-Jazyková vybavenost (někteří používají Google Translator)
+Časové zóny
+Jazyková vybavenost
+    někteří používají Google Translator
 „Vlci samotáři“
+Formální i neformální leadeři
+Guido van Rossum
+    „Benevolent Dictator For Life“
 
 Workflow
 -------------------------------
@@ -89,7 +137,10 @@ Dnes již většinou založen na možnostech Gitu
 Starší způsob
     CVS, Subversion, ...
 
-
 GitHub
 -------------------------------
-
+1. fork
+2. vytvoření nové větve
+3. vytvoření pull requestu
+4. schválení/iterace
+5. sloučení změn do hlavní větve
