@@ -1,0 +1,9 @@
+
+Testování
+-------------------------------
+    CI (Continuous Integration)
+    Jednotkové testy
+    Integrační testy
+    Performance testy
+    BDD
+    ...

@@ -1,0 +1,10 @@
+
+Obsah přednášky
+-------------------------------
+▶ Otevřený software
+▶ Uzavřený ⇒ otevřený software
+▶ Specifika vývoje v komunitě
+▶ Komunikace
+▶ Sledování chyb
+▶ Softskills
+▶ Workflow

@@ -1,0 +1,9 @@
+
+Workflow
+-------------------------------
+Dnes již většinou založen na možnostech Gitu
+    Fork + pull (merge) request
+    Review process
+    CI (Continuous Integration)
+Starší způsob
+    CVS, Subversion, ...

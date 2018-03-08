@@ -1,0 +1,16 @@
+
+Otevřený software
+-------------------------------
+▶ Spolupráce velkého množství vývojářů,
+  dokumentaristů, testerů atd.:
+▶ Jak malé utility tak i velké aplikace
+▶ Firefox (dnešní statistika)
+     36 802 100 řádků kódu
+     986 310 commitů (změn)
+       6 313 přispěvatelů
+      12 129 člověkoroků (COCOMO model)
+▶ Jádro Linuxu (dnešní statistika)
+     16 859 900 řádků kódu
+     711 819 commitů (změn)
+      17 417 přispěvatelů
+       5 482 člověkoroků (COCOMO model)

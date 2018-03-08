@@ -1,0 +1,12 @@
+
+Specifika vývoje v komunitě
+-------------------------------
+▶ Lidé s různými cíli a zájmy
+    vs komerční vývoj s jasnými cíli
+▶ Hierarchie popř. plochá struktura
+    „katedrála/tržiště“
+▶ Rozhodování o dalším směřování vývoje
+    někdy řešeno formou forků
+    OpenOffice ⇒ LibreOffice
+    GNU Emacs ⇒ XEmacs
+    MySQL ⇒ MariaDB

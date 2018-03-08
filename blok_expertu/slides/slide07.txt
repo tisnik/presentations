@@ -1,0 +1,13 @@
+
+Zdrojové kódy
+-------------------------------
+Úprava zdrojových kódů velkým počtem vývojářů současně
+Možnost vracet se ke starším verzím
+Sledování, kdo změnu udělal
+Paralelní vývoj více verzí (větve, branches)
+Distribuované systémy pro správu verzí
+    Git
+    Mercurial
+    BitKeeper
+    GNU Bazaar
+    ...

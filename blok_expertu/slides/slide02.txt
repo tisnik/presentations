@@ -1,0 +1,12 @@
+
+Otevřený software
+-------------------------------
+▶ původní význam
+    veřejně dostupné zdrojové kódy
+    licence umožňující jejich použití a modifikaci
+    reakce na limity klasického uzavřeného software
+        vendor lock
+        neopravované chyby (ve starších verzích)
+        chybějící vlastnosti
+        zákony zakazující reverse engineering
+        „zadní vrátka“

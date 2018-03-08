@@ -1,0 +1,8 @@
+
+Komunikace
+-------------------------------
+    e-mail
+    IRC
+    Slack
+    Mattermost
+    ...

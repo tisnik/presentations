@@ -1,0 +1,10 @@
+
+Uzavřený ⇒ otevřený software
+-------------------------------
+▶ Různé důvody pro „otevření“ software
+    Sun JDK => OpenJDK
+    Eclipse
+        IBM 2001, celková investice cca 40 M$
+        2004 Eclipse Foundation
+    OpenStack
+        původně Rackspace Hosting a NASA

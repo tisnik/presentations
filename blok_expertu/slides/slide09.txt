@@ -1,0 +1,7 @@
+
+Sledování chyb
+-------------------------------
+    Bugzilla
+    JIRA
+    GitHub
+    GitLab (většinou interní projekty)

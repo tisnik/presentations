@@ -1,0 +1,8 @@
+
+GitHub
+-------------------------------
+1. fork
+2. vytvoření nové větve
+3. vytvoření pull requestu
+4. schválení/iterace
+5. sloučení změn do hlavní větve

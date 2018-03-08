@@ -1,0 +1,5 @@
+Vývoj otevřeného softwaru
+=========================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs@redhat.com>
+■ Datum    2018-03-08
