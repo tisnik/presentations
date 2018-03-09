@@ -122,4 +122,10 @@ Výsledkem je tedy signál, jehož průběh vzdáleně připomíná výsledek PW
 
 V případě potřeby (a také dostatečného výkonu mikroprocesoru) je možné generování obdélníkového signálu zcela vypnout a řídit pouze amplitudu na výstupu každého zvukového kanálu. Tímto způsobem lze přehrávat i nasamplované zvuky, ovšem kvůli výše uvedeným vlastnostem čipu POKEY je možné použít pouze šestnáct úrovní hlasitosti, tj. jedná se o čtyřbitový sampling s dynamickým rozsahem pouze 24 dB (naproti tomu CD-Audio využívá šestnáctibitový sampling s dynamickým rozsahem 96 dB a SID používá osmibitový sampling s dynamickým rozsahem cca 48 dB, což zhruba odpovídá magnetofonovému záznamu).
 
+Ve skutečnosti je možné v případě, že je to nutné, digitalizovaný zvuk přehrávat současně na všech čtyřech zvukových kanálech, čímž se počet úrovní – a tím i dynamický rozsah – nepatrně zvyšuje (součet intenzit není lineární ale logaritmický). Nasamplovaná řeč byla na osmibitových počítačích Atari použita například ve hrách Ghostbusters či Berzerk, běžněji se setkáme s nasamplovanými bicími nástroji.
+
+Kromě zvukové syntézy se integrovaný obvod POKEY používal i pro dat čtení klávesnice (přímá podpora pro maximálně 64 kláves + 3 speciálně zpracovávané klávesy Control, Shift a Break), komunikaci se zařízeními připojenými přes sériový port (jedná se o známé rozhraní SIO – Serial Input/Output), jako generátor pseudonáhodných čísel i ve funkci časovače (tři zvukové kanály bylo možné přepnout do funkce časovače, čehož se využívalo při práci s kazetovým magnetofonem).
+
+Právě sloučení mnoha různých funkcí do jediného čtyřicetipinového integrovaného obvodu umožnilo snížit celkový počet obvodů ve všech osmibitových počítačích Atari, což samozřejmě – v mnohem větší míře než dnes – souvisí i s celkovou relativně nízkou výrobní cenou počítače či konzole, jeho nižší poruchovostí apod. Jen pro upřesnění: v klasických osmibitových Atari se nacházely čtyři "velké" obvody se čtyřiceti piny – mikroprocesor MOS 6502, grafický koprocesor ANTIC, grafický čip CTIA, později GTIA a taktéž v tomto článku popsaný multifunkční obvod POKEY.
+
 
