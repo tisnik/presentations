@@ -129,3 +129,9 @@ Kromě zvukové syntézy se integrovaný obvod POKEY používal i pro dat čten�
 Právě sloučení mnoha různých funkcí do jediného čtyřicetipinového integrovaného obvodu umožnilo snížit celkový počet obvodů ve všech osmibitových počítačích Atari, což samozřejmě – v mnohem větší míře než dnes – souvisí i s celkovou relativně nízkou výrobní cenou počítače či konzole, jeho nižší poruchovostí apod. Jen pro upřesnění: v klasických osmibitových Atari se nacházely čtyři "velké" obvody se čtyřiceti piny – mikroprocesor MOS 6502, grafický koprocesor ANTIC, grafický čip CTIA, později GTIA a taktéž v tomto článku popsaný multifunkční obvod POKEY.
 
 
+
+= Zvukový čip Texas Instruments SN76489 (DCSG)
+
+Třetím PSG, s nímž se v tomto článku seznámíme, je zvukový čip Texas Instruments SN76489, který je spíše známý pod zkratkou DCSG. Tento čip byl původně navržen pro osmibitový domácí mikropočítač TI-99/A, ovšem nakonec byl použit v mnohem známějších mikropočítačích počítačích BBC Micro či Sharp MZ-800, ale i v herních konzolích společnosti Sega, konkrétně v modelech SG-1000, Sega Master System, Sega Game Gear i v Sega Genesis (aka Sega Mega Drive).
+
+
