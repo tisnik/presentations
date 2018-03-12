@@ -134,4 +134,8 @@ Právě sloučení mnoha různých funkcí do jediného čtyřicetipinového int
 
 Třetím PSG, s nímž se v tomto článku seznámíme, je zvukový čip Texas Instruments SN76489, který je spíše známý pod zkratkou DCSG. Tento čip byl původně navržen pro osmibitový domácí mikropočítač TI-99/A, ovšem nakonec byl použit v mnohem známějších mikropočítačích počítačích BBC Micro či Sharp MZ-800, ale i v herních konzolích společnosti Sega, konkrétně v modelech SG-1000, Sega Master System, Sega Game Gear i v Sega Genesis (aka Sega Mega Drive).
 
+I přesto, že zkratka DCSG znamená "Digital Complex Sound Generator", je čip SN76489 poměrně jednoduchý a v porovnání s POKEY nabízel hudebníkům menší možnosti konfigurace. Ostatně si sami můžete porovnat možnosti obou čipů porovnat po přečtení následujících odstavců.
+
+Zvukový čip SN76489 byl dodávaný v pouzdru DIL o šestnácti vývodech a umožňuje generování (obdélníkových) zvukových signálů s volitelnou frekvencí a amplitudou. SN76489 obsahuje tři tónové generátory vytvářející periodický obdélníkový signál a jeden generátor šumu s pevně danou periodou 32767 (existuje ovšem i dále zmíněná varianta SN76489A, u níž je perioda zvětšena na 65535, takže šum na tomto čipu zní odlišně od originálu).
+
 
