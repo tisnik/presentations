@@ -138,4 +138,8 @@ I přesto, že zkratka DCSG znamená "Digital Complex Sound Generator", je čip 
 
 Zvukový čip SN76489 byl dodávaný v pouzdru DIL o šestnácti vývodech a umožňuje generování (obdélníkových) zvukových signálů s volitelnou frekvencí a amplitudou. SN76489 obsahuje tři tónové generátory vytvářející periodický obdélníkový signál a jeden generátor šumu s pevně danou periodou 32767 (existuje ovšem i dále zmíněná varianta SN76489A, u níž je perioda zvětšena na 65535, takže šum na tomto čipu zní odlišně od originálu).
 
+Frekvence každého tónového generátoru je určena desetibitovou konstantou uloženou do řídicího registru čipu SN76489. Tato konstanta je použita ve frekvenční děličce (běžném čítači), přičemž reálná frekvence vytvářeného obdélníkového signálu se vypočítá z frekvence hodinového signálu poděleného konstantou 32. Typická frekvence hodinového signálu přitom u herní konzole SG-100 byla nastavena na hodnotu 3,579545 MHz pro konzole určené pro normu NTSC a 3,546893 MHz pro konzole pro normu PAL. U dalších počítačů a konzolí může být frekvence odlišná, takže se hudba a zvuky musely při přenosu na jinou platformu přeprogramovat.
+
+U každého tónového generátoru je taktéž možné určit amplitudu pomocí čtyřbitové hodnoty. Na výstupu se všechny zvukové signály sčítají, takže se rychlou změnou amplitudy a vhodným nastavením frekvencí jednotlivých zvukových kanálů dají generovat i poměrně složité melodie nebo zvuky ve hrách (v tom se od sebe TIA, POKEY ani DSCG příliš neodlišují).
+
 
