@@ -142,4 +142,5 @@ Frekvence každého tónového generátoru je určena desetibitovou konstantou u
 
 U každého tónového generátoru je taktéž možné určit amplitudu pomocí čtyřbitové hodnoty. Na výstupu se všechny zvukové signály sčítají, takže se rychlou změnou amplitudy a vhodným nastavením frekvencí jednotlivých zvukových kanálů dají generovat i poměrně složité melodie nebo zvuky ve hrách (v tom se od sebe TIA, POKEY ani DSCG příliš neodlišují).
 
+Jak jsme se již řekli v předchozích odstavci, obsahuje tento čip navíc jeden generátor šumu, který je implementován pomocí posuvného registru o šířce patnácti bitů se zpětnou vazbou (bit, který se vrací na vstup posuvného registru, je získán logickou operací nonekvivalence (XOR) vybraných bitů posuvného registru). Pro generátor šumu je možné zvolit pouze tři frekvence: Fosc/64, Fosc/128 a Fosc/256. Poněkud nešikovné je to, že obsah generátoru šumu není možné přečíst mikroprocesorem, protože by se tato funkce mohla hodit ve hrách, které mnohdy vyžadují generátor (pseudo)náhodných čísel.
 
