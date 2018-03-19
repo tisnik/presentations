@@ -1,0 +1,30 @@
+QWidget {
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+QPushButton {
+    color: #404040;
+    background-color: rgba(188, 188, 188, 50);
+    font-size: 18px;
+    border: 1px solid black;
+    outline-color: red;
+}
+
+QLabel {
+    color: #404040;
+    background-color: rgba(255, 188, 20, 0);
+    border: 0px;
+    font-size: 14px;
+}
+
+QToolBar {
+    margin: 10px;
+}
+
+QLineEdit {
+    background-color: #c0ffc0;
+    selection-background-color:  red;
+    selection-color:  white;
+    font-size: 24px;
+}

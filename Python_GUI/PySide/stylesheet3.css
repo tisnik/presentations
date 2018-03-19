@@ -1,0 +1,35 @@
+QPushButton#ok {
+    background-color: #b0ffb0;
+}
+
+QPushButton#cancel {
+    background-color: #ffb0b0;
+}
+
+QPushButton#help {
+    background-color: #b0b0ff;
+}
+
+QPushButton#ok:hover {
+    background-color: #d0ffd0;
+}
+
+QPushButton#cancel:hover {
+    background-color: #ffd0d0;
+}
+
+QPushButton#help:hover {
+    background-color: #d0d0ff;
+}
+
+QPushButton#ok:pressed {
+    background-color: #a0d0a0;
+}
+
+QPushButton#cancel:pressed {
+    background-color: #d0a0a0;
+}
+
+QPushButton#help:pressed {
+    background-color: #a0a0d0;
+}

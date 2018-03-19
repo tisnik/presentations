@@ -1,0 +1,11 @@
+QPushButton#ok {
+    background-color: #c0ffc0;
+}
+
+QPushButton#cancel {
+    background-color: #ffc0c0;
+}
+
+QPushButton#help {
+    background-color: #c0c0ff;
+}
