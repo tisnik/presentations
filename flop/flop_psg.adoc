@@ -146,3 +146,6 @@ Jak jsme se již řekli v předchozích odstavci, obsahuje tento čip navíc jed
 
 Generátor šumu zvukového čipu SN76489 může pracovat ve dvou režimech. V obou případech se používá již zmíněný posuvný registr o délce 15 či 16 bitů (podle verze čipu), jehož obsah je s každým taktem posunut doprava o jeden bit. Poslední bit posuvného registru představuje výstup z generátoru šumu. V prvním režimu je poslední bit posuvného registru spojen s bitem prvním, tj. sekvence bitů se neustále cyklicky opakuje. Původní sekvence obsahuje pouze jeden jedničkový bit, tj. výstupem je pravidelný obdélníkový signál se střídou 1:15 resp. 1:14.
 
+V režimu druhém je zpětná vazba poněkud složitější – přes logické hradlo XOR jsou na vstup prvního bitu přiváděny výstupy z bitu posledního a třináctého (popř. dvanáctého), takže výsledkem je sekvence pseudonáhodných hodnot, jejichž opakování nastane až po proběhnutí 32767 resp. 65535 stavů (poslední stav je představován samými nulami a nepoužívá se). Jedná se o totožné chování, jakého je možné docílit s využitím již popsaného zvukového čipu POKEY či TIA (i když délka periody se liší).
+
+
