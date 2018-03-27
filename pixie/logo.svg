@@ -1,4 +1,5 @@
-<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='480' height='480'><circle cx='320.000000' cy='240.000000' r='128' fill='rgb(255,255,0)' style='fill-opacity:.06'/>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='480' height='480'>
+<circle cx='320.000000' cy='240.000000' r='128' fill='rgb(255,255,0)' style='fill-opacity:.06'/>
 <circle cx='320.000000' cy='240.000000' r='128' fill='none' stroke='black'/>
 <circle cx='320.718913' cy='246.742190' r='127' fill='rgb(253,255,2)' style='fill-opacity:.06'/>
 <circle cx='320.718913' cy='246.742190' r='127' fill='none' stroke='black'/>
