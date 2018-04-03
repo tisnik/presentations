@@ -148,4 +148,8 @@ Generátor šumu zvukového čipu SN76489 může pracovat ve dvou režimech. V o
 
 V režimu druhém je zpětná vazba poněkud složitější – přes logické hradlo XOR jsou na vstup prvního bitu přiváděny výstupy z bitu posledního a třináctého (popř. dvanáctého), takže výsledkem je sekvence pseudonáhodných hodnot, jejichž opakování nastane až po proběhnutí 32767 resp. 65535 stavů (poslední stav je představován samými nulami a nepoužívá se). Jedná se o totožné chování, jakého je možné docílit s využitím již popsaného zvukového čipu POKEY či TIA (i když délka periody se liší).
 
+Čip SN76489 obsahuje celkem osm interních řídicích registrů. Tři registry, každý o šířce deseti bitů, slouží pro uložení konstanty pro děličky frekvence tónových generátorů (určují tedy výšky tónů odvozených od vstupního hodinového signálu). Další tři registry, tentokrát o šířce čtyři bity, jsou určeny pro zápis amplitudy tónových generátorů. Sedmý registr má taktéž šířku čtyři bity a určuje amplitudu generátoru šumu. A konečně poslední registr je pouze tříbitový a je určen pro řízení generátoru šumu (volba ze tří frekvencí odvozených od Fosc + režim generátoru).
+
+Vzhledem k tomu, že se do čipu SN76489 data přenáší po jednotlivých bajtech a není možné adresovat jednotlivé registry, neboť čip neobsahuje žádné piny pro zápis adresy!, je formát jednotlivých bajtů (zpráv) zvolen tak, aby bylo zcela přesně určeno, kterou hodnotu (či) hodnoty daný bajt představuje. Existují čtyři typy přenášených zpráv: nastavení spodních čtyř bitů děliče frekvence, nastavení vyšších šesti bitů děliče frekvence (dohromady tedy deset bitů), nastavení generátoru šumu a změna hlasitosti jednotlivých kanálů.
+
 
