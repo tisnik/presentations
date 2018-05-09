@@ -7,6 +7,7 @@ from math import sin, cos
 def main():
     size = 480
     with open("logo.svg", "w") as fout:
+        fout.write("<?xml version='1.0' encoding='UTF-8'?>")
         fout.write("<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='{w}' height='{h}'>\n".format(w=size, h=size))
         green = 255
         for i, r, red, blue in zip(range(0, 128), range(128, 0, -1), range(255, 0, -2), range(0, 256, 2)):
