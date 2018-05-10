@@ -131,7 +131,7 @@ def check_components(context, num, components='', ecosystem=''):
     json_data = context.response.json()
     assert json_data is not None
 
-    search_results = json_data['analysis']
+    search_results=json_data['analysis']
     assert len(search_results) == num
     for search_result in search_results:
         assert search_result['ecosystem'] == ecosystem
