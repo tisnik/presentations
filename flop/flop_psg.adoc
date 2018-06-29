@@ -152,4 +152,12 @@ V režimu druhém je zpětná vazba poněkud složitější – přes logické h
 
 Vzhledem k tomu, že se do čipu SN76489 data přenáší po jednotlivých bajtech a není možné adresovat jednotlivé registry, neboť čip neobsahuje žádné piny pro zápis adresy!, je formát jednotlivých bajtů (zpráv) zvolen tak, aby bylo zcela přesně určeno, kterou hodnotu (či) hodnoty daný bajt představuje. Existují čtyři typy přenášených zpráv: nastavení spodních čtyř bitů děliče frekvence, nastavení vyšších šesti bitů děliče frekvence (dohromady tedy deset bitů), nastavení generátoru šumu a změna hlasitosti jednotlivých kanálů.
 
+Jak je z tohoto popisu patrné, byly možnosti zvukového čipu SN76489 skutečně poněkud menší než možnosti konkurenčních čipů AY-3–8910 či POKEY, na druhou stranu ovšem lepší, než tomu bylo u čipu TIA použitého v námi oblíbené herní konzoli Atari 2600.
+
+
+
+= Zvukový čip Texas Instruments SN76496
+
+Výše popsaný čip SN76489 byl vyráběn v několika různých verzích. Původní verze byla označována pouze SN76489, popř. SN76489N v případě úzkého pouzdra DIP. Pozdější varianty, které byly označovány SN76489A a SN76489AN, se od původních verzí lišily především inverzními výstupními signály, což se projevilo na odlišném zapojení zesilovače (ale na výslednou podobu zvuku prakticky neměly žádný vliv). Maximální hodinová frekvence všech těchto čtyř čipů byla stanovena na 4 MHz, takže tyto čipy byly dobře využitelné ve všech mikropočítačích a konzolích, v nichž byly frekvence hodinového signálu odvozeny od televizních norem NTSC a PAL.
+
 
