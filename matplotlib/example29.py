@@ -9,12 +9,14 @@ from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 # funkce pro výpočet dalšího bodu Lorenzova atraktoru
 def lorenz(x, y, z, s=10, r=28, b=2.667):
     x_dot = s*(y - x)
     y_dot = r*x - y - x*z
     z_dot = x*y - b*z
     return x_dot, y_dot, z_dot
+
 
 # krok (změna času)
 dt = 0.01
@@ -45,4 +47,3 @@ ax.plot(x, y, z)
 
 # zobrazení grafu
 plt.show()
-
