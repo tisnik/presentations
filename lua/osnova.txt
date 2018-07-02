@@ -1,0 +1,31 @@
+Vznik jazyka Lua, verze Luy
+Použití jazyka Lua v SW projektech
+    Skriptovací jazyk pro různé aplikace
+    Skriptovací jazyk pro hry
+    Jazyk pro embedded zařízení
+    Lua na webových stránkách
+Syntaxe a sémantika jazyka Lua
+    Klíčová slova
+    Podporované datové typy
+    Globální objekty a funkce
+    Bloky a viditelnost proměnných
+    Podmínky
+    Programové smyčky
+    Operátory
+    Pole a asociativní pole
+Funkce jako plnohodnotný datový typ
+    Funkce, předávání parametrů funkcím, návratové hodnoty funkcí
+    Volitelné parametry funkcí, proměnný počet parametrů
+    Rekurze
+========================================================
+Uzávěry
+Metatabulky a OOP
+    Jednoduchá varianta OOP s využitím tabulek
+    Alternativní způsob deklarace metod
+    Metatabulky
+    Metametody
+    Objekty v jazyce Lua
+Koprogramy
+    Přerušení koprogramu a obnova jeho běhu
+Interpret jazyka Lua vestavěný do C-čkových programů
+Nástroj LuaRocks
