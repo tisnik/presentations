@@ -23,7 +23,7 @@ class CommandValidator(Validator):
                 if not char.isalpha():
                     break
 
-            msg = "Wrong character '{c}' on index {i}".format(c=char, i=index)
+            msg = "Wrong character '{c}' on index {i}".format(c=char, i=index+1)
             raise ValidationError(message=msg, cursor_position=index)
 
 
