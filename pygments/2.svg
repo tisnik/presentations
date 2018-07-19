@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<rect style="fill: white;" width="100%" height="100%"/>
+<g font-family="monospace" font-size="14px">
+<text x="0" y="14" xml:space="preserve"><tspan fill="#008000" font-weight="bold">for</tspan>&#160;i&#160;<tspan fill="#AA22FF" font-weight="bold">in</tspan>&#160;<tspan fill="#008000">range</tspan>(<tspan fill="#666666">1</tspan>,&#160;<tspan fill="#666666">11</tspan>):</text>
+<text x="0" y="33" xml:space="preserve">&#160;&#160;&#160;&#160;<tspan fill="#008000" font-weight="bold">print</tspan>(<tspan fill="#BA2121">&quot;</tspan><tspan fill="#BA2121">Hello&#160;world!</tspan><tspan fill="#BA2121">&quot;</tspan>)</text>
+<text x="0" y="52" xml:space="preserve"></text></g></svg>
+
