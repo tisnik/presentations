@@ -13,7 +13,8 @@ def to_snake_case(self, lexer, stream, options):
     for ttype, value in stream:
         if ttype is Name.Function or ttype is Name:
             results = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', value)
-            value = re.sub('([a-z0-9])([A-Z])', r'\1_\2', value).lower()
+            results = re.sub('([a-z0-9])([A-Z])', r'\1_\2', results)
+            value = results.lower()
         yield ttype, value
 
 

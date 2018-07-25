@@ -15,7 +15,8 @@ class CamelCaseFilter(Filter):
 
     def convert(self, name):
         results = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
-        return re.sub('([a-z0-9])([A-Z])', r'\1_\2', results).lower()
+        results = re.sub('([a-z0-9])([A-Z])', r'\1_\2', results)
+        return results.lower()
 
     def filter(self, lexer, stream):
         for ttype, value in stream:

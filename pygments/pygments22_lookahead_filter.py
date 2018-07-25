@@ -12,7 +12,8 @@ import itertools
 
 def name_to_snake_case(name):
     results = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
-    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', results).lower()
+    results = re.sub('([a-z0-9])([A-Z])', r'\1_\2', results)
+    return results.lower()
 
 
 def is_function_call_token(current_type, next_type, next_value):
@@ -60,6 +61,7 @@ print(globalVariable)
 
 print(highlight(code, PythonLexer(), TerminalFormatter()))
 
+input()
 print("-----------------------")
 
 lexer = PythonLexer()
