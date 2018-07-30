@@ -34,16 +34,13 @@ def show_status():
 checkbox1 = Checkbox('Checkbox 1')
 checkbox2 = Checkbox('Checkbox 2')
 checkbox3 = Checkbox('Checkbox 3')
-hl = HorizontalLine()
 button1 = Button('Show status', handler=show_status)
 button2 = Button('Exit', handler=exit_clicked)
 
 buttons = HSplit([checkbox1,
                   checkbox2,
                   checkbox3,
-                  hl,
                   button1,
-                  hl,
                   button2])
 
 text_area = TextArea(focusable=False)
