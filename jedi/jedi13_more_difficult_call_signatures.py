@@ -18,7 +18,11 @@ bar(1)
 baz(1,2)
 baz(foo(), bar(1))
 print(10, 20, 30, 40, 50)
-print   (10, 20, 30, 40, 50)'''
+print   (10, 20, 30, 40, 50)
+print(
+
+42)
+'''
 
 
 def print_call_signatures(script):
@@ -32,20 +36,23 @@ def print_call_signatures(script):
 
 lines = src.count('\n')
 
-script = jedi.Script(src, lines-4, len('foo('), 'test.py')
+script = jedi.Script(src, 11, len('foo('), 'test.py')
 print_call_signatures(script)
 
-script = jedi.Script(src, lines-3, len('bar(1'), 'test.py')
+script = jedi.Script(src, 12, len('bar(1'), 'test.py')
 print_call_signatures(script)
 
-script = jedi.Script(src, lines-2, len('baz(1,2'), 'test.py')
+script = jedi.Script(src, 13, len('baz(1,2'), 'test.py')
 print_call_signatures(script)
 
-script = jedi.Script(src, lines-1, len('baz(foo(), bar(1'), 'test.py')
+script = jedi.Script(src, 14, len('baz(foo(), bar(1'), 'test.py')
 print_call_signatures(script)
 
-script = jedi.Script(src, lines, len('print(10, 20, 30, 40, '), 'test.py')
+script = jedi.Script(src, 15, len('print(10, 20, 30, 40, '), 'test.py')
 print_call_signatures(script)
 
-script = jedi.Script(src, lines+1, len('print   (10, 20, 30, 40, '), 'test.py')
+script = jedi.Script(src, 16, len('print   (10, 20, 30, 40, '), 'test.py')
+print_call_signatures(script)
+
+script = jedi.Script(src, lines, 1, 'test.py')
 print_call_signatures(script)
