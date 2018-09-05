@@ -1,0 +1,3 @@
+as template_x86_64.s -o template_x86_64.o
+ld -s template_x86_64.o
+
