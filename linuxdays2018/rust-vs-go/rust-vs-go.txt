@@ -1,0 +1,39 @@
+                Go vs. Rust
+porovnání dvou progresivních kompilovaných jazyků
+==================================================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2018-09-xx
+
+Obsah přednášky (1)
+-------------------------------
+▶ Charakteristické rysy Rustu
+▶ Charakteristické rysy Go
+
+Charakteristické rysy Rustu
+-------------------------------
+▶ Multiparadigmatický jazyk
+    Funcionální rysy
+    Imperativní
+    Má některé OO rysy (ne však systém tříd)
+▶ Dostupný pro všechny „zajímavé“ systémy
+    Linux, (Free)BSD, OS X, Windows
+▶ Používaný na velkém množství architektur procesorů
+    i686, x86-64, ARMv6/v7 (32), AArch64, MIPS, PowerPC, S390
+    Cortex-A8, Cortex-A9
+    Částečně i:
+    Bare Cortex-M0, M0+, M1, M4(F), M7(F)
+        bare = bez OS, jen core library
+    (připravuje se i MSP430 - 16bit MCU!)
+    https://forge.rust-lang.org/platform-support.html
+▶ Současná verze používá LLVM backend
+    Možnosti pro další vylepšování překladu
+    (dovoluje i WebAssembly přes Emscripten)
+▶ Cíle
+    Bezpečné aplikace
+    Paralelní běh částí aplikace
+    Výkon srovnatelný s C a C++ (i pro nové prvky jazyka)
+    Překladač s rozumným chybovým hlášením
+× Poučení z chyb, které najdeme například v C/C++
+    (=, string, ptr, makrosystém, chybové stavy, výjimky)
+
