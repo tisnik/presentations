@@ -1,0 +1,42 @@
+Rešení problematiky pomalých aplikací v Pythonu
+      s využitím nástrojů Cython a Numba
+==================================================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2018-09-xx
+
+Obsah přednášky (1)
+-------------------------------
+▶ Programovací jazyk Python
+▶ Bajtkód Pythonu a jeho interpretace
+▶ Implementace Pythonu
+▶ Problematika překladu Pythonu do nativního kódu
+▶ Nástroj Cython
+▶ Nástroj Numba
+▶ Výsledky benchmarků
+▶ Další možnosti - Jython atd.
+
+Programovací jazyk Python
+-------------------------------
+
+Bajtkód Pythonu a jeho interpretace
+-------------------------------
+
+Implementace Pythonu
+-------------------------------
+
+Problematika překladu Pythonu do nativního kódu
+-------------------------------
+
+Nástroj Cython
+-------------------------------
+
+Nástroj Numba
+-------------------------------
+
+Výsledky benchmarků
+-------------------------------
+
+Další možnosti - Jython atd.
+-------------------------------
+
