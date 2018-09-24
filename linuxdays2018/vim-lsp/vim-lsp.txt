@@ -1,0 +1,47 @@
+          Language Server Protocol
+                   aneb
+Jak si vytvořit modulární IDE (nejenom) z Vimu
+==================================================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2018-09-xx
+
+Obsah přednášky (1)
+-------------------------------
+▶ Základní informace o LSP
+▶ Princip činnosti LSP
+▶ Dostupné implementace serverů
+▶ Python Language Server
+▶ Plugin vim-lsp
+▶ Instalace pluginu vim-lsp
+▶ Základní příkazy
+▶ Nastavení omnicompletion
+▶ Příklad konfigurace Vimu
+
+Základní informace o LSP
+-------------------------------
+
+Princip činnosti LSP
+-------------------------------
+
+Dostupné implementace serverů
+-------------------------------
+
+Python Language Server
+-------------------------------
+
+Plugin vim-lsp
+-------------------------------
+
+Instalace pluginu vim-lsp
+-------------------------------
+
+Základní příkazy
+-------------------------------
+
+Nastavení omnicompletion
+-------------------------------
+
+Příklad konfigurace Vimu
+-------------------------------
+
