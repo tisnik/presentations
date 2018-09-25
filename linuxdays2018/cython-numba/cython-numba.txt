@@ -6,7 +6,7 @@ Rešení problematiky pomalých aplikací v Pythonu
 ■ Datum    2018-09-xx
 
 Obsah přednášky (1)
--------------------------------
+--------------------------------------------------
 ▶ Programovací jazyk Python
 ▶ Bajtkód Pythonu a jeho interpretace
 ▶ Implementace Pythonu
@@ -17,26 +17,63 @@ Obsah přednášky (1)
 ▶ Další možnosti - Jython atd.
 
 Programovací jazyk Python
--------------------------------
+--------------------------------------------------
 
 Bajtkód Pythonu a jeho interpretace
--------------------------------
+--------------------------------------------------
 
 Implementace Pythonu
--------------------------------
+--------------------------------------------------
 
 Problematika překladu Pythonu do nativního kódu
--------------------------------
+--------------------------------------------------
+▶ Dynamický typový systém
+    def add(x, y):
+        return x + y
+▶ Je korektní přeložit do
+    int add(x, y) {
+        return x + y;
+    }
+    ◆ ???
+
+Problematika překladu Pythonu do nativního kódu
+--------------------------------------------------
+▶ Ve skutečnosti lze add použít prakticky pro libovolné typy parametrů
+    ◆ 123 + 456
+    ◆ 123. + 456
+    ◆ "hello " + "world"
+    ◆ (1,2,3) + (4,5,6)
+    ◆ [1,2,3] + [4,5,6]
+    ◆ True + True  (uff!)
+    ◆ Kdykoli v budoucnu může někdo vytvořit třídu
+      s __add__ nebo __radd__
 
 Nástroj Cython
--------------------------------
+--------------------------------------------------
+▶ Vznikl z projektu Pyrex
+▶ Nadmnožina programovacího jazyka Python
+▶ Umožňuje překlad do nativního kódu
+    ◆ Transpřeklad Cython -> C
+    ◆ Překlad C -> nativní kód (GCC, Clang...)
+▶ Výsledek překladu
+    ◆ (nativní) modul pro Python
+    ◆ Běžná spustitelná aplikace
+▶ Volitelně lze použít explicitní určení typů
+    ◆ Mnohem vyšší efektivita generovaného kódu
 
 Nástroj Numba
--------------------------------
+--------------------------------------------------
+▶ Překladač Pythonu do nativního kódu (i pro CUDA)
+    ◆ Just-in-time (JIT)
+    ◆ Ahead-of-time (AOT)
+▶ Označení funkcí/metod, které se mají JITovat 
+▶ 
+▶ 
+▶ 
 
 Výsledky benchmarků
--------------------------------
+--------------------------------------------------
 
 Další možnosti - Jython atd.
--------------------------------
+--------------------------------------------------
 
