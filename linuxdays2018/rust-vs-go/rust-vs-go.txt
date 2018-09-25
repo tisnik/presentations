@@ -6,18 +6,18 @@ porovnání dvou progresivních kompilovaných jazyků
 ■ Datum    2018-09-xx
 
 Obsah přednášky (1)
--------------------------------
+--------------------------------------------------
 ▶ Charakteristické rysy Rustu
 ▶ Charakteristické rysy Go
 
 Charakteristické rysy Rustu
--------------------------------
+--------------------------------------------------
 ▶ Multiparadigmatický jazyk
     Funcionální rysy
     Imperativní
     Má některé OO rysy (ne však systém tříd)
 ▶ Dostupný pro všechny „zajímavé“ systémy
-    Linux, (Free)BSD, OS X, Windows
+    Linux, (Free)BSD, macOS, Microsoft Windows
 ▶ Používaný na velkém množství architektur procesorů
     i686, x86-64, ARMv6/v7 (32), AArch64, MIPS, PowerPC, S390
     Cortex-A8, Cortex-A9
@@ -37,3 +37,18 @@ Charakteristické rysy Rustu
 × Poučení z chyb, které najdeme například v C/C++
     (=, string, ptr, makrosystém, chybové stavy, výjimky)
 
+Charakteristické rysy jazyka Go
+--------------------------------------------------
+▶ Multiparadigmatický jazyk
+    Procedurální
+    Objekově orientovaný
+    Podpora konstrukcí pro paralelní programování
+▶ Dostupný pro všechny „zajímavé“ systémy
+    Linux, (Free)BSD, macOS, Microsoft Windows
+▶ Současná verze používá vlastní backend
+▶ Cíle
+    Bezpečné aplikace
+    Paralelní běh částí aplikace
+    Rozumný výpočetní výkon (cílem je dosáhnout C/C++/Fortranu)
+× Poučení z chyb, které najdeme například v C/C++
+    Silný typový systém, 
