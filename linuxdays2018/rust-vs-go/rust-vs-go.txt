@@ -37,6 +37,38 @@ Charakteristické rysy Rustu
 × Poučení z chyb, které najdeme například v C/C++
     (=, string, ptr, makrosystém, chybové stavy, výjimky)
 
+Charakteristické rysy Rustu (2)
+--------------------------------------------------
+▶ Unicode řetězce (UTF-8)
+▶ Odvození typů proměnných (type inference)
+▶ Striktní typová kontrola
+▶ OOP založené strukturách (struct) a traitech
+    × třídy, objekty a rozhraní
+▶ Životní cyklus hodnot (zejména ukazatelů)
+    (borrow)
+▶ Bezpečná práce s objekty uloženými na zásobníku i haldě
+    NPE? co to znamená? :-)
+▶ Sémantiky „copy“ a „move“
+▶ Generické parametry funkcí, prvky struktur, ...
+▶ Pattern matching
+▶ Funkce jsou taktéž datovým typem
+    ⇒ lambdy atd.
+
+Správce balíčků (Cargo)
+-----------------------
+▶ Vytvoření kostry nového projektu
+▶ Nový projekt obsahuje i adresáře a soubory umožňující podporu SCM
+    - Git
+    - Mercurial
+▶ Automatická kontrola, které soubory je zapotřebí přeložit
+▶ Automatické stažení všech knihoven a jejich závislostí
+▶ Spuštění projektu s možností předání parametrů příkazového řádku.
+▶ Spuštění jednotkových testů
+▶ Spuštění benchmarků
+▶ Vyhledání knihovny v centrálním registru zaregistrovaných knihoven
+▶ Publikování vlastního balíčku v centrálním registru (crates.io)
+▶ Instalace aplikace
+
 Charakteristické rysy jazyka Go
 --------------------------------------------------
 ▶ Multiparadigmatický jazyk
