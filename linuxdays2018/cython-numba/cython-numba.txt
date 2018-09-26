@@ -21,6 +21,31 @@ Programovací jazyk Python
 
 Bajtkód Pythonu a jeho interpretace
 --------------------------------------------------
+▶ Překlad do bajtkódu před spuštěním skriptů
+    ◆ explicitně
+    ◆ automaticky
+▶ Vlastnosti bajtkódu Pythonu
+    ◆ vysokoúrovňový
+        • například v porovnání s JVM
+    ◆ malá sémantická mezera Pythonem:bajtkód
+        • velký rozdíl oproti C:asm či C:stroják
+    ◆ používá zásobník operandů
+        • podobně: JVM
+        • jinak: LuaVM, CLR
+
+Bajtkód Pythonu a jeho interpretace
+--------------------------------------------------
+▶ Instrukce nenesou informace o datovém typu operandů
+    ◆ de facto dynamické typování na úrovni VM
+▶ Příklad
+    def add(x, y):
+        return x+y
+▶ Bajtkód
+add:
+        0 LOAD_FAST           0 (x)
+        3 LOAD_FAST           1 (y)
+        6 BINARY_ADD
+        7 RETURN_VALUE
 
 Implementace Pythonu
 --------------------------------------------------
