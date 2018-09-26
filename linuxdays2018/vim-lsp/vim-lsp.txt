@@ -64,3 +64,27 @@ set bs=2                        " backspace maze vse
 set backupdir=~/temp,.          " adresar pro ulozeni zaloznich souboru
 set directory=~/temp,.          " adresar pro swapovaci soubor
 set viminfo='20,\"50,n~/temp/_viminfo
+
+Nastavení klávesových zkratek pro Python
+--------------------------------------------------
+" nastaveni pro Python
+augroup __python__
+  au!
+  au BufRead,BufNewFile *.py map <F1> :LspStatus<cr>
+  au BufRead,BufNewFile *.py map <F2> :!python2 %<cr>
+  au BufRead,BufNewFile *.py map <F3> :!python3 %<cr>
+  au BufRead,BufNewFile *.py map <F4> :LspDocumentDiagnostics<cr>
+  au BufRead,BufNewFile *.py map <F5> :LspHover<cr>
+  au BufRead,BufNewFile *.py map <F6> :LspDocumentSymbol<cr>
+  au BufRead,BufNewFile *.py map <F8> :!pep8 %<cr>
+  au BufRead,BufNewFile *.py map <F9> :!pydocstyle ./%<cr>
+  au BufRead,BufNewFile *.py map <F10> :!radon cc ./%<cr>
+  au BufRead,BufNewFile *.py map <F11> :!pudb3 %<cr>
+  au BufRead,BufNewFile *.py map <F12> <C-W><C-Z>
+  au BufRead,BufNewFile *.py imap <F12> <C-O><C-W><C-Z>
+  au BufRead,BufNewFile *.py imap <Tab> <C-X><C-O>
+  au BufRead,BufNewFile *.py highlight OverLength ctermbg=yellow ctermfg=white guibg=#592929
+  au BufRead,BufNewFile *.py match OverLength /\%99v.\+/
+  au BufRead,BufNewFile *.py setlocal omnifunc=lsp#complete
+augroup END
+ 
