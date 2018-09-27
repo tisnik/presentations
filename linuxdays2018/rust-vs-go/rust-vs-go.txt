@@ -83,4 +83,22 @@ Charakteristické rysy jazyka Go
     Paralelní běh částí aplikace
     Rozumný výpočetní výkon (cílem je dosáhnout C/C++/Fortranu)
 × Poučení z chyb, které najdeme například v C/C++
-    Silný typový systém, 
+    Silný typový systém
+
+Charakteristické rysy jazyka Go (1)
+--------------------------------------------------
+
+Vybrané společné rysy jazyků Go a Rust
+--------------------------------------------------
+▶ Podporovány společnostmi soutěžícími na poli browserů
+▶ Výsledkem překladu jsou nativní knihovny nebo spustitelné aplikace
+▶ Dobré (nekryptické) chybové zprávy překladačů
+    × chyba v šabloně v C++
+▶ Syntaxe částečně připomínající "lepší" C
+
+Největší rozdíly mezi jazyky Go a Rust
+--------------------------------------------------
+▶ vizuální porovnání programů zapsaných v Go a Rustu:
+    http://rosetta.alhur.es/compare/go/rust/#
+
+
