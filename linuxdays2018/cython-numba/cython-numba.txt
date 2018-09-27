@@ -18,6 +18,39 @@ Obsah přednášky (1)
 
 Programovací jazyk Python
 --------------------------------------------------
+▶ Dnes jeden z nejpopulárnějších jazyků
+▶ Dostupnost na většině platforem
+    ◆ na některých MCU jako MicroPython
+▶ Použití
+    ◆ Nástroje a utility ovládané z příkazového řádku
+    ◆ Aplikace s grafickým uživatelským rozhraním
+    ◆ Client-server
+        serverová část (Flask, Django, ...)
+    ◆ Numerické výpočty, symbolické výpočty
+        Numpy
+        SciPy
+        Matplotlib
+    ◆ Moderní způsoby využití Pythonu
+        AI
+        Machine Learning (Deep Learning)
+        Big data
+    ◆ Tzv. "glue" jazyk
+
+Implementace Pythonu
+--------------------------------------------------
+▶ Nejpoužívanější implementace
+    ◆ CPython
+    ◆ Pypy
+    ◆ Jython
+    ◆ Iron Python
+▶ Další implementace
+    ◆ Psyco
+    ◆ Stackles Python
+    ◆ MicroPython
+▶ Speciální implementace
+    ◆ Cython
+    ◆ RPython
+    ◆ Numba
 
 Bajtkód Pythonu a jeho interpretace
 --------------------------------------------------
@@ -47,9 +80,6 @@ add:
         6 BINARY_ADD
         7 RETURN_VALUE
 
-Implementace Pythonu
---------------------------------------------------
-
 Problematika překladu Pythonu do nativního kódu
 --------------------------------------------------
 ▶ Dynamický typový systém
@@ -72,6 +102,12 @@ Problematika překladu Pythonu do nativního kódu
     ◆ True + True  (uff!)
     ◆ Kdykoli v budoucnu může někdo vytvořit třídu
       s __add__ nebo __radd__
+
+Problematika překladu Pythonu do nativního kódu
+--------------------------------------------------
+▶ Řešení
+    ◆ Typové informace
+    ◆ JIT překlad s nebo bez typových informací
 
 Nástroj Cython
 --------------------------------------------------
