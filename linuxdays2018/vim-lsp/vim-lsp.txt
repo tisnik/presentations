@@ -67,6 +67,22 @@ set viminfo='20,\"50,n~/temp/_viminfo
 
 Nastavení klávesových zkratek pro Python
 --------------------------------------------------
+F1   zavolání funkce LspStatus
+F2   spuštění skriptu v Pythonu 2
+F3   spuštění skriptu v Pythonu 3
+F4   zavolání funkce LspDocumentDiagnostics
+F5   zavolání funkce LspHover
+F6   zavolání funkce LspDocumentSymbol
+F7   zavolání funkce 
+F8   analýza pomocí nástroje pep8
+F9   analýza pomocí nástroje pydocstyle (doc.stringy)
+F10  analýza pomocí nástroje Radon
+F11  spuštění skriptu v debuggeru PuDB
+F12  uzavření náhledového okna
+Tab  zavolání funkce omni completion
+
+Nastavení klávesových zkratek pro Python
+--------------------------------------------------
 " nastaveni pro Python
 augroup __python__
   au!
@@ -83,8 +99,18 @@ augroup __python__
   au BufRead,BufNewFile *.py map <F12> <C-W><C-Z>
   au BufRead,BufNewFile *.py imap <F12> <C-O><C-W><C-Z>
   au BufRead,BufNewFile *.py imap <Tab> <C-X><C-O>
+augroup END
+ 
+Další potenciálně užitečná nastavení
+--------------------------------------------------
+highlight OverLength ctermbg=yellow ctermfg=white guibg=#592929
+match OverLength /\%99v.\+/
+setlocal omnifunc=lsp#complete
+
+Ve .vimrc:
+--------------------------------------------------
+augroup __python__
   au BufRead,BufNewFile *.py highlight OverLength ctermbg=yellow ctermfg=white guibg=#592929
   au BufRead,BufNewFile *.py match OverLength /\%99v.\+/
   au BufRead,BufNewFile *.py setlocal omnifunc=lsp#complete
 augroup END
- 
