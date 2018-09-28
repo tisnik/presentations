@@ -114,3 +114,26 @@ augroup __python__
   au BufRead,BufNewFile *.py match OverLength /\%99v.\+/
   au BufRead,BufNewFile *.py setlocal omnifunc=lsp#complete
 augroup END
+
+Vlastní spuštění Python Language Serveru
+--------------------------------------------------
+" přidat do .vimrc
+if (executable('pyls'))
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python']
+        \ })
+endif
+
+Spuštění Python Language Serveru s logováním
+--------------------------------------------------
+" přidat do .vimrc
+if (executable('pyls'))
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'cmd': {server_info->['pyls', '-vv', '--log-file', '/tmp/pyls.txt']},
+        \ 'whitelist': ['python']
+        \ })
+endif
