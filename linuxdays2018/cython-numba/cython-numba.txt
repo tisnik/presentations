@@ -80,12 +80,40 @@ add:
         6 BINARY_ADD
         7 RETURN_VALUE
 
+Céčkový kód s přesnými informacemi o typu
+--------------------------------------------------
+▶ Jednoduchá funkce vracející součet svých parametrů
+        int add(int x, int y)
+        {
+            return x+y;
+        }
+▶ Překlad bez optimalizací
+gcc -O0 -c -S -fno-asynchronous-unwind-tables test.c
+    ◆ vygenerovaný kód (v assembleru)
+        add:
+            pushq   %rbp
+            movq    %rsp, %rbp
+            movl    %edi, -4(%rbp)
+            movl    %esi, -8(%rbp)
+            movl    -8(%rbp), %eax
+            movl    -4(%rbp), %edx
+            addl    %edx, %eax
+            popq    %rbp
+            ret
+▶ Překlad s optimalizacemi
+gcc -O0 -c -S -fno-asynchronous-unwind-tables test.c
+    ◆ vygenerovaný kód (v assembleru)
+        add:
+            leal    (%rdi,%rsi), %eax
+            ret
+▶ Lze dosáhnout podobného výsledku i pro Python?
+
 Problematika překladu Pythonu do nativního kódu
 --------------------------------------------------
 ▶ Dynamický typový systém
     def add(x, y):
         return x + y
-▶ Je korektní přeložit do
+▶ Je korektní transformovat do
     int add(x, y) {
         return x + y;
     }
