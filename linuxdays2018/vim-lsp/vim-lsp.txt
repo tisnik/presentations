@@ -6,11 +6,12 @@ Jak si vytvořit modulární IDE (nejenom) z Vimu
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
 ■ Datum    2018-09-xx
 
-Obsah přednášky (1)
--------------------------------
+Obsah přednášky
+--------------------------------------------------
 ▶ Základní informace o LSP
-▶ Princip činnosti LSP
+▶ Podpora v IDE a textových editorech
 ▶ Dostupné implementace serverů
+▶ Princip činnosti LSP
 ▶ Python Language Server
 ▶ Plugin vim-lsp
 ▶ Instalace pluginu vim-lsp
@@ -19,31 +20,89 @@ Obsah přednášky (1)
 ▶ Příklad konfigurace Vimu
 
 Základní informace o LSP
--------------------------------
+--------------------------------------------------
+▶ Univerzální protokol umožňující komunikaci mezi:
+    ◆ (programátorským) textovým editorem
+    ◆ integrovaným vývojovým prostředím (IDE)
+    ◆ nástroji pro refaktoring atd. jazyka X
+    ◆ nástroji pro refaktoring atd. jazyka Y
+    ...
 
-Princip činnosti LSP
--------------------------------
+Podpora v IDE a textových editorech
+--------------------------------------------------
+▶ 
+▶ 
+▶ 
+▶ 
 
 Dostupné implementace serverů
--------------------------------
+--------------------------------------------------
+▶ 
+▶ 
+▶ 
+▶ 
+
+Princip činnosti LSP
+--------------------------------------------------
+▶ Architektura klient-server
+    ◆ založen na JSON-RPC
+        - poměrně snadná implementace
+        - rychlé úpravy
+        - flexibilita protokolu
+    ◆ klient
+        - textový editor
+        - desktopové IDE
+        - webové IDE
+    ◆ server
+        - linter
+        - statická analýza zdrojového kódu
+        - nástroj pro vyhledávání, doskoky na definice...
+        - kontrola stylu komentářů
+        - profiler
+        - nástroj pro refaktoring
+        - "vše v jednom"
+▶ Tři typy zpráv
+    ◆ požadavek
+        - na LSP server
+    ◆ odpověď
+        - od LSP serveru
+    ◆ oznamovací zpráva, notifikace
+        - většinou od LSP serveru
+
+textDocument/didOpen ->
+textDocument/didChange ->
+<- textDocument/publishDiagnostics
+<- textDocument/didClose
+
+{'method': 'textDocument/hover', 'jsonrpc': '2.0', 'id': 4,
+ 'params': {'textDocument': {'uri': 'file:///home/ptisnovs/t.py'},
+ 'position': {'character': 0, 'line': 21}}}
+
+Jeden typ notifikace vrácené serverem klientovi:
+
+textDocument/publishDiagnostics {'uri': 'file:///home/ptisnovs/t.py',
+'diagnostics': [{'source': 'pycodestyle',
+'range': {'start': {'line': 3, 'character': 19},
+          'end': {'line': 3, 'character': 21}},
+          'message': 'W291 trailing whitespace', 'code': 'W291', 'severity': 2}]}
 
 Python Language Server
--------------------------------
+--------------------------------------------------
 
 Plugin vim-lsp
--------------------------------
+--------------------------------------------------
 
 Instalace pluginu vim-lsp
--------------------------------
+--------------------------------------------------
 
 Základní příkazy
--------------------------------
+--------------------------------------------------
 
 Nastavení omnicompletion
--------------------------------
+--------------------------------------------------
 
 Příklad konfigurace Vimu
--------------------------------
+--------------------------------------------------
 
 Základní konfigurační volby
 --------------------------------------------------
@@ -137,3 +196,4 @@ if (executable('pyls'))
         \ 'whitelist': ['python']
         \ })
 endif
+█
