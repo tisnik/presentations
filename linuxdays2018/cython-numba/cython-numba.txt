@@ -57,11 +57,11 @@ Bajtkód Pythonu a jeho interpretace
 ▶ Překlad do bajtkódu před spuštěním skriptů
     ◆ explicitně
     ◆ automaticky
-▶ Vlastnosti bajtkódu Pythonu
+▶ Vlastnosti bajtkódu Pythonu (CPythonu)
     ◆ vysokoúrovňový
         • například v porovnání s JVM
-    ◆ malá sémantická mezera Pythonem:bajtkód
-        • velký rozdíl oproti C:asm či C:stroják
+    ◆ malá sémantická mezera Python:bajtkód
+        • velký rozdíl oproti C:asm či C:strojový kód
     ◆ používá zásobník operandů
         • podobně: JVM
         • jinak: LuaVM, CLR
@@ -79,6 +79,60 @@ add:
         3 LOAD_FAST           1 (y)
         6 BINARY_ADD
         7 RETURN_VALUE
+
+Intuitivní odhad rychlejšího kódu?
+--------------------------------------------------
+▶ Kvůli vysokoúrovňovému bajtkódu je odhad složitý
+    První verze smyčky
+        for i in range(x):
+            pass
+    Druhá verze smyčky
+        i = 0
+        while i < x:
+            i += 1
+    Druhá smyčka
+        žádné "složité" objekty
+        teoreticky překlad do MOV, ADD/INC, CMP, JNZ
+        skutečnost je jiná!
+▶ Jednoduchý benchmark
+    První verze smyčky
+        timeit.timeit('for i in range(100): pass')
+        1.7635615249964758
+    Druhá verze smyčky
+        timeit.timeit('i = 0\nwhile i < 100: i += 1')
+        5.507031249995634
+▶ Analýza bajtkódu
+    První verze
+              0 SETUP_LOOP              20 (to 23)
+              3 LOAD_GLOBAL              0 (range)
+              6 LOAD_CONST               1 (100)
+              9 CALL_FUNCTION            1 (1 positional, 0 keyword pair)
+             12 GET_ITER
+        >>   13 FOR_ITER                 6 (to 22)
+             16 STORE_FAST               0 (i)
+
+             19 JUMP_ABSOLUTE           13
+        >>   22 POP_BLOCK
+        >>   23 LOAD_CONST               0 (None)
+             26 RETURN_VALUE
+    Druhá verze smyčky
+              0 LOAD_CONST               1 (0)
+              3 STORE_FAST               0 (i)
+
+              6 SETUP_LOOP              26 (to 35)
+        >>    9 LOAD_FAST                0 (i)
+             12 LOAD_CONST               2 (100)
+             15 COMPARE_OP               0 (<)
+             18 POP_JUMP_IF_FALSE       34
+
+             21 LOAD_FAST                0 (i)
+             24 LOAD_CONST               3 (1)
+             27 INPLACE_ADD
+             28 STORE_FAST               0 (i)
+             31 JUMP_ABSOLUTE            9
+        >>   34 POP_BLOCK
+        >>   35 LOAD_CONST               0 (None)
+             38 RETURN_VALUE
 
 Céčkový kód s přesnými informacemi o typu
 --------------------------------------------------
