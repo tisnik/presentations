@@ -13,29 +13,35 @@ Obsah přednášky (1)
 Charakteristické rysy Rustu
 --------------------------------------------------
 ▶ Multiparadigmatický jazyk
-    Funcionální rysy
-    Imperativní
-    Má některé OO rysy (ne však systém tříd)
+    ◆ Funcionální rysy
+    ◆ Imperativní
+    ◆ Má některé OO rysy (ne však systém tříd)
 ▶ Dostupný pro všechny „zajímavé“ systémy
-    Linux, (Free)BSD, macOS, Microsoft Windows
+    ◆ Linux, (Free)BSD, macOS, Microsoft Windows
 ▶ Používaný na velkém množství architektur procesorů
-    i686, x86-64, ARMv6/v7 (32), AArch64, MIPS, PowerPC, S390
-    Cortex-A8, Cortex-A9
-    Částečně i:
-    Bare Cortex-M0, M0+, M1, M4(F), M7(F)
-        bare = bez OS, jen core library
-    (připravuje se i MSP430 - 16bit MCU!)
-    https://forge.rust-lang.org/platform-support.html
+    ◆ i686, x86-64
+    ◆ MIPS, PowerPC, S390
+    ◆ ARMv6/v7 (32), AArch64
+    ◆ Cortex-A8, Cortex-A9
+    ◆ Částečně i:
+        - Bare Cortex-M0, M0+, M1, M4(F), M7(F)
+          bare = bez OS, jen core library
+          (připravuje se i MSP430 - 16bit MCU!)
+    ◆ https://forge.rust-lang.org/platform-support.html
 ▶ Současná verze používá LLVM backend
-    Možnosti pro další vylepšování překladu
-    (dovoluje i WebAssembly přes Emscripten)
+    ◆ Možnosti pro další vylepšování překladu
+        - dovoluje i WebAssembly přes Emscripten
 ▶ Cíle
-    Bezpečné aplikace
-    Paralelní běh částí aplikace
-    Výkon srovnatelný s C a C++ (i pro nové prvky jazyka)
-    Překladač s rozumným chybovým hlášením
+    ◆ Bezpečné aplikace
+    ◆ Paralelní běh částí aplikace
+    ◆ Výkon srovnatelný s C a C++ (i pro nové prvky jazyka)
+    ◆ Překladač s rozumným chybovým hlášením
 × Poučení z chyb, které najdeme například v C/C++
-    (=, string, ptr, makrosystém, chybové stavy, výjimky)
+    ◆ operátor =
+    ◆ řetězce
+    ◆ ukazatele
+    ◆ makrosystém
+    ◆ chybové stavy, výjimky
 
 Charakteristické rysy Rustu (2)
 --------------------------------------------------
@@ -54,8 +60,35 @@ Charakteristické rysy Rustu (2)
 ▶ Funkce jsou taktéž datovým typem
     ⇒ lambdy atd.
 
+Charakteristické rysy Rustu (3)
+--------------------------------------------------
+▶ Jednoduché věci se píšou jednoduše a stručně
+        fn main() {
+            println!("Hello world!");
+        }
+.
+× Vyžadováno příliš mnoho znalostí na začátku:
+        public class Test {
+            public static void main(String[] args) {
+                System.out.println("Hello World");
+            }
+        }
+.
+▶ "Takto přesně to musíte napsat, jinak se program nepřeloží"
+
+Rust a C/C++
+--------------------------------------------------
+▶ Syntaxe Rustu jen částečně odvozena od C/C++
+▶ Využití existujícího „ekosystému“
+    ▶ Použití již hotových C knihoven
+        - Foreign Function Interface (FFI)
+    ▶ C++ knihovny
+        - stále ještě problematické
+▶ C ⇒ Rust
+    Project Corrode
+
 Správce balíčků (Cargo)
------------------------
+--------------------------------------------------
 ▶ Vytvoření kostry nového projektu
 ▶ Nový projekt obsahuje i adresáře a soubory umožňující podporu SCM
     - Git
@@ -89,6 +122,9 @@ Charakteristické rysy jazyka Go
     Paralelní běh částí aplikace
     Rozumný výpočetní výkon
         ⇒ cílem je dosáhnout C/C++/Fortranu
+
+Charakteristické rysy jazyka Go (2)
+--------------------------------------------------
 × Poučení z chyb, které najdeme například v C/C++
     Silný typový systém
     Nepoužívají se makra založená na textové substituci
@@ -101,7 +137,7 @@ Charakteristické rysy jazyka Go
     Nepoužívají se šablony
     Nejsou podporovány výjimky (prozatím)
 
-Charakteristické rysy jazyka Go (1)
+Charakteristické rysy jazyka Go (3)
 --------------------------------------------------
 Gorutiny a kanály
 600k gorutin, 90% CPU
@@ -140,18 +176,35 @@ Vybrané společné rysy jazyků Go a Rust
 ▶ Dobré (nekryptické) chybové zprávy překladačů
     × chyba v šabloně v C++
 ▶ Syntaxe částečně připomínající "lepší" C
-"slice"
+    Go
+        package main
+        
+        import "fmt"
+        
+        func main() {
+            fmt.Println("hello world")
+        }
+    Rust
+        fn main() {
+            println!("Hello world!");
+        }
+
+typ "slice"
 
 Největší rozdíly mezi jazyky Go a Rust
 --------------------------------------------------
 ▶ vizuální porovnání programů zapsaných v Go a Rustu:
     http://rosetta.alhur.es/compare/go/rust/#
 
+charrune
+
 Zajímavosti
 --------------------------------------------------
-Rob Pike očekával, že Go začnou ve větším množství používat programátoři C++
-Ve skutečnosti se ke Go přiklánějí vývojáři v Pythonu nebo Ruby
+▶ Rob Pike očekával, že Go začnou ve větším množství používat programátoři C++
+× Ve skutečnosti se ke Go přiklánějí vývojáři v Pythonu nebo Ruby
 
 
-Less is exponentially more
-https://commandcenter.blogspot.com/2012/06/less-is-exponentially-more.html
+Odkazy
+--------------------------------------------------
+▶ Less is exponentially more
+  https://commandcenter.blogspot.com/2012/06/less-is-exponentially-more.html
