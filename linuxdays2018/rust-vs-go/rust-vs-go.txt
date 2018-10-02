@@ -8,7 +8,17 @@ porovnání dvou progresivních kompilovaných jazyků
 Obsah přednášky (1)
 --------------------------------------------------
 ▶ Charakteristické rysy Rustu
+▶ Rust a C/C++
+▶ Správce balíčků (Cargo)
 ▶ Charakteristické rysy Go
+▶ Makra v Go?
+▶ A samozřejmě oblíbené téma pro debaty...
+▶ Vybrané společné rysy jazyků Go a Rust
+▶ Porovnání Rustu a Go
+▶ Proč Go?
+▶ Proč Rust?
+▶ Zajímavosti
+▶ Odkazy
 
 Charakteristické rysy Rustu
 --------------------------------------------------
@@ -139,9 +149,9 @@ Charakteristické rysy jazyka Go (2)
 
 Charakteristické rysy jazyka Go (3)
 --------------------------------------------------
-Gorutiny a kanály
-600k gorutin, 90% CPU
-Typový systém
+▶ Gorutiny a kanály
+    600k gorutin, 90% CPU
+▶ Typový systém
     Snadné vytváření nových typů
     Generické datové typy
         chystají se
@@ -149,23 +159,25 @@ Typový systém
 
 Makra v Go?
 --------------------------------------------------
-Částečně nahraditelná:
-#ifdef _DEBUG
-puts("something");
-#else
-puts("something else");
-#endif
-
-const debug = false
-if debug {
-    fmt.Println("something")
-} else {
-    fmt.Println("something else")
-}
+▶ Céčkový přístup:
+    řeší preprocesor
+        #ifdef _DEBUG
+        puts("something");
+        #else
+        puts("something else");
+        #endif
+▶ Částečně nahraditelná:
+    řeší překladač
+        const debug = false
+        if debug {
+            fmt.Println("something")
+        } else {
+            fmt.Println("something else")
+        }
 
 A samozřejmě oblíbené téma pro debaty...
 --------------------------------------------------
-Formát zápisu programů
+▶ Formát zápisu programů
 Definován kanonický formát
 gofmt
 
@@ -188,23 +200,38 @@ Vybrané společné rysy jazyků Go a Rust
         fn main() {
             println!("Hello world!");
         }
+▶ Typ "slice"
 
-typ "slice"
-
-Největší rozdíly mezi jazyky Go a Rust
+Porovnání Rustu a Go
 --------------------------------------------------
 ▶ vizuální porovnání programů zapsaných v Go a Rustu:
     http://rosetta.alhur.es/compare/go/rust/#
 
-charrune
+Porovnání Rustu a Go - komunita, akceptace
+--------------------------------------------------
+Jazyk            Rust           Go
+Adaptace         pomalejší      rychlejší
+Tiobe index      #31 (0,396%)   #16 (1,081%)
+Stackshare       313            2780
+Stack overflow   10100          32700
+GitHub           30900 *        47500 *
+GitHub           5210 forků     6510 forků
+SO survey        73%            63% (loved)
+SO survey         6%            13% (wanted)
+
+Proč Go?
+--------------------------------------------------
+
+Proč Rust?
+--------------------------------------------------
 
 Zajímavosti
 --------------------------------------------------
 ▶ Rob Pike očekával, že Go začnou ve větším množství používat programátoři C++
 × Ve skutečnosti se ke Go přiklánějí vývojáři v Pythonu nebo Ruby
 
-
 Odkazy
 --------------------------------------------------
 ▶ Less is exponentially more
   https://commandcenter.blogspot.com/2012/06/less-is-exponentially-more.html
+
