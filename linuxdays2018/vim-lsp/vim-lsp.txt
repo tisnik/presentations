@@ -26,21 +26,66 @@ Základní informace o LSP
     ◆ integrovaným vývojovým prostředím (IDE)
     ◆ nástroji pro refaktoring atd. jazyka X
     ◆ nástroji pro refaktoring atd. jazyka Y
+    ◆ linterem
+    ◆ statickým analyzátorem kódu
     ...
 
 Podpora v IDE a textových editorech
 --------------------------------------------------
-▶ 
-▶ 
-▶ 
-▶ 
+▶ Visual Studio Code
+▶ Eclipse
+    ◆ LSP4E
+▶ Eclipse Che
+▶ Atom IDE
+    ◆ Textový editor Atom doplněný o pluginy
+▶ Vim
+    ◆ vim-lsp
+▶ Emacs
+    ◆ lsp-mode
 
 Dostupné implementace serverů
 --------------------------------------------------
-▶ 
-▶ 
-▶ 
-▶ 
+▶ Aktuální info
+
+▶ Bash
+    ◆ Bash Language Server
+▶ C# 
+    ◆ csharp-language-server-protocol
+▶ C a C++
+    ◆ VS Code C++ extension
+    ◆ clangd
+    ◆ cquery
+▶ Clojure
+    ◆ clojure-lsp
+▶ Erlang
+    ◆ sourcer
+▶ Elixir
+    ◆ elixir-ls
+▶ F#
+    ◆ F# Language Server
+▶ Go
+    ◆ sourcegraph-go
+▶ Java
+    ◆ Eclipse JDT LS
+    ◆ Java Compiler (javac) API-based Java support
+▶ Javascript-Typescript
+    ◆ javascript-typescript
+▶ Julia
+    ◆ Julia language server
+▶ Lua
+    ◆ lua-lsp
+▶ Python 
+    ◆ PyDev on VSCode
+    ◆ Python Language Server
+    ◆ Python Tools for Visual Studio
+▶ Ruby
+    ◆ solargraph
+    ◆ language_server-ruby
+    ◆ orbacle
+▶ Rust 
+    ◆ Rust Language Server
+▶ TypeScript
+    ◆ Typescript Language Server
 
 Princip činnosti LSP
 --------------------------------------------------
