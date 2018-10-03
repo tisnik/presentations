@@ -23,7 +23,7 @@ Obsah přednášky (1)
 Charakteristické rysy Rustu
 --------------------------------------------------
 ▶ Multiparadigmatický jazyk
-    ◆ Funcionální rysy
+    ◆ Funkcionální rysy
     ◆ Imperativní
     ◆ Má některé OO rysy (ne však systém tříd)
 ▶ Dostupný pro všechny „zajímavé“ systémy
@@ -219,11 +219,35 @@ GitHub           5210 forků     6510 forků
 SO survey        73%            63% (loved)
 SO survey         6%            13% (wanted)
 
-Proč Go?
+Porovnání Rustu a Go z hlediska vývojáře
 --------------------------------------------------
+Jazyk             Rust          Go
+Přístup           moderní       konzervativní
+Syntaxe           komplikovaná  jednoduchá, minimalistická
+Učící křivka      menší sklon   větší sklon
+Učící křivka      větší ampli.  menší amplituda
+Rychlost překladu pomalejší     rychlejší
+Backend           LLVM          vlastní
+Rychlost kódu     rychlejší     pomalejší
+Typový systém     rozsáhlý      bez generik
+Neměnnost         explicitní    string, další přes rozhraní
+Práce s pamětí    vlastnictví   GC
+Detekce souběhu   ano           jen nepřímo
+Závislosti        cargo         prozatím složité řešit
+
+Poznámka: souběh
+▶ Za běžné situace nemůže v Rustu nastat
+Je to zajištěno modelem vlastnictví dat (ownership)
+- existuje jen jediný vlastník dat
+- toho je možné změnit pomocí move
+- vlastnictví si lze vypůjčit (borrow)
+- ovšem v tomto případě nelze vlastnictví změnit
+(forma transakce)
+- vše je řešeno v čase překladu!
+
+Proč Go?
 
 Proč Rust?
---------------------------------------------------
 
 Zajímavosti
 --------------------------------------------------
@@ -234,4 +258,3 @@ Odkazy
 --------------------------------------------------
 ▶ Less is exponentially more
   https://commandcenter.blogspot.com/2012/06/less-is-exponentially-more.html
-
