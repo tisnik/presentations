@@ -238,12 +238,38 @@ Nástroj Numba
     ◆ Just-in-time (JIT)
     ◆ Ahead-of-time (AOT)
 ▶ Označení funkcí/metod, které se mají JITovat 
-▶ 
-▶ 
+    ◆ Odvození datových typů až v čase běhu aplikace
+▶ Backend používá LLVM
+
+Označení funkcí pro JITování
+--------------------------------------------------
+        from numba import jit
+        @jit
+        def funkce1():
+            pass
+
+Numba a funkce print
+--------------------------------------------------
+▶ „univerzální“ pythonovská varianta
 ▶ 
 
 Výsledky benchmarků
 --------------------------------------------------
+▶ CPython 2,3 versus 
+    ◆ Jython
+    ◆ RPython
+    ◆ Cython (bez úprav)
+    ◆ Cython (typy)
+    ◆ Cython (plná optimalizace)
+    ◆ ANSI C (samozřejmě kompletně přepsáno)
+▶ Numba
+    ◆ Interpret s původním kódem
+    ◆ Kód, do něhož byla pouze přidána anotace @jit
+    ◆ Varianta s jednodušší (nativní) funkcí print
+    ◆ Varianta s jednodušší (nativní) funkcí print a anotací @jit(nopython=True)
+▶ Interpret vs Cython vs Numba vs ANSI C
+    ◆ Ukazuje delší čas startu Numby vs. lepší optimalizace
+    ◆ křivky pro ANSI C a Cython s plnou optimalizací se překrývají!
 
 Další možnosti - Jython atd.
 --------------------------------------------------
