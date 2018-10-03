@@ -46,7 +46,10 @@ Podpora v IDE a textových editorech
 Dostupné implementace serverů
 --------------------------------------------------
 ▶ Aktuální info
+    ◆ https://microsoft.github.io/language-server-protocol/implementors/servers/
 
+Dostupné implementace serverů - pouze vybrané jazyky
+----------------------------------------------------
 ▶ Bash
     ◆ Bash Language Server
 ▶ C# 
@@ -114,34 +117,64 @@ Princip činnosti LSP
     ◆ oznamovací zpráva, notifikace
         - většinou od LSP serveru
 
+Požadavek - odpověď
+--------------------------------------------------
 textDocument/didOpen ->
 textDocument/didChange ->
 <- textDocument/publishDiagnostics
 <- textDocument/didClose
 
+Příklad požadavku poslaného serveru
+--------------------------------------------------
 {'method': 'textDocument/hover', 'jsonrpc': '2.0', 'id': 4,
  'params': {'textDocument': {'uri': 'file:///home/ptisnovs/t.py'},
  'position': {'character': 0, 'line': 21}}}
 
 Jeden typ notifikace vrácené serverem klientovi:
-
-textDocument/publishDiagnostics {'uri': 'file:///home/ptisnovs/t.py',
-'diagnostics': [{'source': 'pycodestyle',
-'range': {'start': {'line': 3, 'character': 19},
-          'end': {'line': 3, 'character': 21}},
-          'message': 'W291 trailing whitespace', 'code': 'W291', 'severity': 2}]}
+--------------------------------------------------
+textDocument/publishDiagnostics
+{'uri': 'file:///home/ptisnovs/t.py',
+ 'diagnostics': [{'source': 'pycodestyle',
+ 'range': {'start': {'line': 3, 'character': 19},
+           'end': {'line': 3, 'character': 21}},
+           'message': 'W291 trailing whitespace', 'code': 'W291', 'severity': 2}]}
 
 Python Language Server
 --------------------------------------------------
+pip3 install --user python-language-server
+Několik závislostí
+jedi
+python-jsonrpc-server
+pluggy
+parso
 
 Plugin vim-lsp
 --------------------------------------------------
+Zajišťuje komunikaci mezi Vimem a language serverem
+samozřejmě přes protokol LSP
+Používá některé možnosti Vimu
+Preview window
+Quickfix
+okno
+klávesové zkratky pro doskoky na chyby
+Lze upravovat klávesové zkratky
 
 Instalace pluginu vim-lsp
 --------------------------------------------------
+Repositář
+https://github.com/prabirshrestha/vim-lsp
+Vyžaduje i další modul
+https://github.com/prabirshrestha/async.vim
+:Lsp<Tab>
 
 Základní příkazy
---------------------------------------------------
+------
+
+Spuštění language serveru
+-----
+call lsp#register_server({'name': 'pyls', 'cmd': {server_info->['pyls']},
+'cmd': {server_info->['pyls']},
+'whitelist': ['python'] })
 
 Nastavení omnicompletion
 --------------------------------------------------
