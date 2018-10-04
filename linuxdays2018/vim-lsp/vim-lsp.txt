@@ -45,7 +45,7 @@ Podpora v IDE a textových editorech
 
 Dostupné implementace serverů
 --------------------------------------------------
-▶ Aktuální info
+▶ Aktuální informace o dostupných serverech
     ◆ https://microsoft.github.io/language-server-protocol/implementors/servers/
 
 Dostupné implementace serverů - pouze vybrané jazyky
@@ -58,6 +58,7 @@ Dostupné implementace serverů - pouze vybrané jazyky
     ◆ VS Code C++ extension
     ◆ clangd
     ◆ cquery
+        - (pozor - různá kvalita implementace)
 ▶ Clojure
     ◆ clojure-lsp
 ▶ Erlang
@@ -141,43 +142,62 @@ textDocument/publishDiagnostics
 
 Python Language Server
 --------------------------------------------------
-pip3 install --user python-language-server
-Několik závislostí
-jedi
-python-jsonrpc-server
-pluggy
-parso
+▶ Instalace (pro právě přihlášeného uživatele)
+      pip3 install --user python-language-server
+▶ Při instalaci se automaticky vyřeší několik závislostí
+    ◆ jedi
+    ◆ python-jsonrpc-server
+    ◆ pluggy
+    ◆ parso
+▶ Lze použít z jakéhokoli editoru
+▶ Je možné spustit explicitně
+    ◆ pyls [volby]
+    ◆ Volby
+        - použití TCP namísto stdio
+        - specifikace adresy a portu při TCP
+        - logování
+        - "ukecanost" při logování
 
 Plugin vim-lsp
 --------------------------------------------------
-Zajišťuje komunikaci mezi Vimem a language serverem
-samozřejmě přes protokol LSP
-Používá některé možnosti Vimu
-Preview window
-Quickfix
-okno
-klávesové zkratky pro doskoky na chyby
-Lze upravovat klávesové zkratky
+▶ Zajišťuje komunikaci mezi Vimem a language serverem
+    ◆ samozřejmě přes protokol LSP
+▶ Používá některé speciální možnosti Vimu
+    ◆ Preview window
+    ◆ Quickfix
+        - klávesové zkratky pro doskoky na chyby
+        - speciální režim používaný pro zachycení chybovýc zpráv
+        - používá se i při grepování atd.
+        - :cn :cp :cc 
+▶ Všechny klávesové zkratky jsou plně konfigurovatelné
 
 Instalace pluginu vim-lsp
 --------------------------------------------------
-Repositář
-https://github.com/prabirshrestha/vim-lsp
-Vyžaduje i další modul
-https://github.com/prabirshrestha/async.vim
+▶ Správci balíčků?
+    ◆ Vundle
+    ◆ Pathogen
+    ◆ Vim 8 a jeho správce balíčků
+        - :help packages
+▶ Repositář
+    ◆ https://github.com/prabirshrestha/vim-lsp
+▶ Vyžaduje i další modul
+    ◆ https://github.com/prabirshrestha/async.vim
+▶ Po instalaci rychlé otestování
 :Lsp<Tab>
 
 Základní příkazy
-------
+--------------------------------------------------
 
 Spuštění language serveru
------
+--------------------------------------------------
 call lsp#register_server({'name': 'pyls', 'cmd': {server_info->['pyls']},
 'cmd': {server_info->['pyls']},
 'whitelist': ['python'] })
 
 Nastavení omnicompletion
 --------------------------------------------------
+▶Vkládací režim
+Ctrl+X Ctrl+O
 
 Příklad konfigurace Vimu
 --------------------------------------------------
