@@ -60,6 +60,11 @@ Bajtkód Pythonu a jeho interpretace
 ▶ Překlad do bajtkódu před spuštěním skriptů
     ◆ explicitně
     ◆ automaticky
+▶ Je možné částečně ovlivnit volbami
+    ◆ -O
+        • optimalizace bajtkódu
+    ◆ -OO
+        • odstranění komentářů
 ▶ Vlastnosti bajtkódu Pythonu (CPythonu)
     ◆ vysokoúrovňový
         • například v porovnání s JVM
@@ -69,13 +74,32 @@ Bajtkód Pythonu a jeho interpretace
         • podobně: JVM
         • jinak: LuaVM, CLR
 
+Instrukce bajtkódu
+--------------------------------------------------
+▶ Práce se zásobníkem operandů
+    ◆ polymorfní chování!
+▶ Unární operátory
+▶ Binární operátory
+▶ Zkrácené binární operátory "inplace" +=
+▶ Přístup k prvkům složeného datového typu
+    ◆ řetězec, seznam, n-tice
+    ◆ polymorfní chování!
+▶ Operace s prvky seznamů
+▶ Operace s mapou (slovníkem)
+▶ Iterátory
+▶ Příkaz/funkce print
+▶ Řízení běhu programu
+▶ Konstrukce objektu, vytvoření funkce
+▶ Vytvoření uzávěru
+▶ Vyhození výjimky, zachycení výjimky
+
 Bajtkód Pythonu a jeho interpretace
 --------------------------------------------------
 ▶ Instrukce nenesou informace o datovém typu operandů
     ◆ de facto dynamické typování na úrovni VM
-▶ Příklad
-    def add(x, y):
-        return x+y
+▶ Příklad funkce napsané pro různé typy parametrů
+        def add(x, y):
+            return x+y
 ▶ Bajtkód
 add:
         0 LOAD_FAST           0 (x)
@@ -86,7 +110,7 @@ add:
 Intuitivní odhad rychlejšího kódu?
 --------------------------------------------------
 ▶ Kvůli vysokoúrovňovému bajtkódu je odhad složitý
-    První verze smyčky
+    První verze jednoduché smyčky s počitadlem
         for i in range(x):
             pass
     Druhá verze smyčky
@@ -119,7 +143,7 @@ Intuitivní odhad rychlejšího kódu?
              12 GET_ITER
         >>   13 FOR_ITER                 6 (to 22)
              16 STORE_FAST               0 (i)
-
+ 
              19 JUMP_ABSOLUTE           13
         >>   22 POP_BLOCK
         >>   23 LOAD_CONST               0 (None)
@@ -131,13 +155,13 @@ Intuitivní odhad rychlejšího kódu?
     Druhá verze smyčky
               0 LOAD_CONST               1 (0)
               3 STORE_FAST               0 (i)
-
+ 
               6 SETUP_LOOP              26 (to 35)
         >>    9 LOAD_FAST                0 (i)
              12 LOAD_CONST               2 (100)
              15 COMPARE_OP               0 (<)
              18 POP_JUMP_IF_FALSE       34
-
+ 
              21 LOAD_FAST                0 (i)
              24 LOAD_CONST               3 (1)
              27 INPLACE_ADD
@@ -148,13 +172,17 @@ Intuitivní odhad rychlejšího kódu?
              38 RETURN_VALUE
 
 Céčkový kód s přesnými informacemi o typu
---------------------------------------------------
+--------------------------
 ▶ Jednoduchá funkce vracející součet svých parametrů
     ◆ v céčku přímočarý zápis s plnou typovou informací
         int add(int x, int y)
         {
             return x+y;
         }
+    ◆ překladač má k dispozici
+        • přesný počet a typ parametrů (alokace na zásobníku)
+        • návratový typ funkce
+        • případné další informace (statická funkce?)
 
 Céčkový kód s přesnými informacemi o typu
 --------------------------------------------------
