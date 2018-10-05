@@ -3,7 +3,7 @@ Rešení problematiky pomalých aplikací v Pythonu
 ==================================================
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
-■ Datum    2018-09-xx
+■ Datum    2018-10-xx
 
 Obsah přednášky (1)
 --------------------------------------------------
@@ -20,22 +20,23 @@ Obsah přednášky (1)
 
 Programovací jazyk Python
 --------------------------------------------------
-▶ Dnes jeden z nejpopulárnějších jazyků
+▶ Dnes jeden z nejpopulárnějších programovacích jazyků
 ▶ Dostupnost na většině platforem
     ◆ na některých MCU jako MicroPython
 ▶ Použití
     ◆ Nástroje a utility ovládané z příkazového řádku
     ◆ Aplikace s grafickým uživatelským rozhraním
     ◆ Client-server
-        serverová část (Flask, Django, ...)
+        - serverová část (Flask, Django, CherryPy, ...)
     ◆ Numerické výpočty, symbolické výpočty
-        Numpy
-        SciPy
-        Matplotlib
+        - Numpy
+        - SciPy
+        - Matplotlib
     ◆ Moderní způsoby využití Pythonu
-        AI
-        Machine Learning (Deep Learning)
-        Big data
+        - AI
+        - Machine Learning (Deep Learning)
+          PyTorch
+        - Big data
     ◆ Tzv. "glue" jazyk
 
 Implementace Pythonu
@@ -80,11 +81,12 @@ Instrukce bajtkódu
     ◆ polymorfní chování!
 ▶ Unární operátory
 ▶ Binární operátory
-▶ Zkrácené binární operátory "inplace" +=
+▶ Zkrácené binární operátory
+    ◆ "inplace" +=
 ▶ Přístup k prvkům složeného datového typu
     ◆ řetězec, seznam, n-tice
     ◆ polymorfní chování!
-▶ Operace s prvky seznamů
+▶ Operace s prvky seznamů a n-tic
 ▶ Operace s mapou (slovníkem)
 ▶ Iterátory
 ▶ Příkaz/funkce print
@@ -109,26 +111,28 @@ add:
 
 Intuitivní odhad rychlejšího kódu?
 --------------------------------------------------
-▶ Kvůli vysokoúrovňovému bajtkódu je odhad složitý
-    První verze jednoduché smyčky s počitadlem
+▶ Kvůli vysokoúrovňovému bajtkódu je odhad
+    ◆ složitý
+    ◆ neintuitivní
+▶ První verze jednoduché smyčky s počitadlem
         for i in range(x):
             pass
-    Druhá verze smyčky
+▶ Druhá verze smyčky
         i = 0
         while i < x:
             i += 1
-    Druhá smyčka
-        žádné "složité" objekty
-        teoreticky překlad do MOV, ADD/INC, CMP, JNZ
-        skutečnost je ovšem jiná!
+    ◆ Druhá smyčka
+        • žádné "složité" objekty
+        • teoreticky překlad do MOV, ADD/INC, CMP, JNZ
+        • skutečnost je ovšem jiná!
 
 Intuitivní odhad rychlejšího kódu?
 --------------------------------------------------
 ▶ Jednoduchý benchmark
-    První verze smyčky
+    ◆ První verze smyčky
         timeit.timeit('for i in range(100): pass')
         1.7635615249964758
-    Druhá verze smyčky
+    ◆ Druhá verze smyčky
         timeit.timeit('i = 0\nwhile i < 100: i += 1')
         5.507031249995634
 
@@ -143,7 +147,7 @@ Intuitivní odhad rychlejšího kódu?
              12 GET_ITER
         >>   13 FOR_ITER                 6 (to 22)
              16 STORE_FAST               0 (i)
- 
+             ...
              19 JUMP_ABSOLUTE           13
         >>   22 POP_BLOCK
         >>   23 LOAD_CONST               0 (None)
@@ -155,13 +159,13 @@ Intuitivní odhad rychlejšího kódu?
     Druhá verze smyčky
               0 LOAD_CONST               1 (0)
               3 STORE_FAST               0 (i)
- 
+              ...
               6 SETUP_LOOP              26 (to 35)
         >>    9 LOAD_FAST                0 (i)
              12 LOAD_CONST               2 (100)
              15 COMPARE_OP               0 (<)
              18 POP_JUMP_IF_FALSE       34
- 
+              ...
              21 LOAD_FAST                0 (i)
              24 LOAD_CONST               3 (1)
              27 INPLACE_ADD
@@ -174,12 +178,12 @@ Intuitivní odhad rychlejšího kódu?
 Céčkový kód s přesnými informacemi o typu
 --------------------------------------------------
 ▶ Jednoduchá funkce vracející součet svých parametrů
-    ◆ v céčku přímočarý zápis s plnou typovou informací
+    ◆ V céčku přímočarý zápis s plnou typovou informací
         int add(int x, int y)
         {
             return x+y;
         }
-    ◆ překladač má k dispozici
+    ◆ Překladač má k dispozici
         • přesný počet a typ parametrů (alokace na zásobníku)
         • návratový typ funkce
         • případné další informace (statická funkce?)
@@ -204,7 +208,7 @@ gcc -O0 -c -S -fno-asynchronous-unwind-tables test.c
 Céčkový kód s přesnými informacemi o typu
 --------------------------------------------------
 ▶ Překlad s optimalizacemi
-gcc -O0 -c -S -fno-asynchronous-unwind-tables test.c
+gcc -O9 -c -S -fno-asynchronous-unwind-tables test.c
     ◆ vygenerovaný kód (v assembleru)
         add:
             leal    (%rdi,%rsi), %eax
@@ -216,7 +220,7 @@ Problematika překladu Pythonu do nativního kódu
 ▶ Dynamický typový systém
     def add(x, y):
         return x + y
-▶ Je korektní transformovat do
+▶ Je korektní takový kód transformovat do
     int add(x, y) {
         return x + y;
     }
@@ -242,6 +246,7 @@ Problematika překladu Pythonu do nativního kódu
         - Cython
         - různé přístupy (explicitní zápis, analýza)
     ◆ JIT překlad s nebo bez typových informací
+        - Numba
 
 Nástroj RPython
 --------------------------------------------------
@@ -251,10 +256,14 @@ Nástroj RPython
     ◆ V žádném případě se nejedná o klasický Python
         - prakticky vše musí jít odvodit v čase překladu
         - (ne dynamicky definované třídy, funkce, ...)
-    ◆ Projekt určený především pro tvůrce překladačů/runtime
+    ◆ Projekt určený především pro
+        - tvůrce překladačů
+        - runtime interpretrů
+        - VM
     ◆ Použití běžnými vývojáři dosti nepohodlné
         - dlouhý překlad
         - někdy nepříliš jasná chybová hlášení
+▶ ⇒ nevhodné pro běžná použití!
 
 Použití nástroje RPython
 --------------------------------------------------
@@ -283,12 +292,129 @@ Nástroj Cython
 ▶ Volitelně lze použít explicitní určení typů
     ◆ Mnohem vyšší efektivita generovaného kódu
 ▶ Další možnosti vedoucí k urychlení výsledku
- ◆ Odstranění volání GIL
- ◆ Céčkové implementace funkcí typu print
- ◆ Pole
+    ◆ Odstranění volání GIL
+    ◆ Céčkové implementace funkcí typu print
+    ◆ Pole
 
 Nástroj Cython
 ---------------------------------------
+▶ Překlad (transpřeklad) do C
+    ◆ Musíme mít k dispozici GCC, LLVM atd.
+    ◆ Tři kroky
+        - transformace Python -> ANSI C
+        - překlad ANSI C -> objektový soubor
+        - slinkování a vytvoření spustitelného souboru
+        - nebo vytvoření statické/dynamické knihovny
+▶ Příklad
+    cython --embed hello_world.py
+    gcc -O9 -I /usr/include/python3.6m -L/usr/lib64 -lpython3.6m -lm hello_world.c -o hello_world
+
+Omezení Cythonu
+---------------------------------------
+▶ Pokud není známý datový typ
+    ◆ PyObject *
+▶ Z toho vyplývají všechny další důsledky
+▶ I takto primitivní překlad dokáže kód urychlit
+    ◆ Ovšem samozřejmě má k dokonalosti daleko
+
+Postupná úprava kódu (1)
+--------------------------------------------------
+def add_two_numbers(x, y):
+    return x + y
+         ⇓
+static PyObject *__pyx_pw_13add_numbers_1_1add_two_numbers(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds);
+
+Postupná úprava kódu (2)
+--------------------------------------------------
+cdef add_two_numbers(x, y):
+    return x + y
+         ⇓
+static PyObject *__pyx_f_13add_numbers_2_add_two_numbers(PyObject *__pyx_v_x, PyObject *__pyx_v_y);
+
+Postupná úprava kódu (3)
+--------------------------------------------------
+cdef add_two_numbers(int x, int y):
+    return x + y
+         ⇓
+static PyObject *__pyx_f_13add_numbers_3_add_two_numbers(int __pyx_v_x, int __pyx_v_y);
+
+Postupná úprava kódu (4)
+--------------------------------------------------
+cdef int add_two_numbers(int x, int y):
+    return x + y
+         ⇓
+static int __pyx_f_13add_numbers_4_add_two_numbers(int __pyx_v_x, int __pyx_v_y);
+
+Zákaz volání funkcí souvisejících s GILem
+--------------------------------------------------
+▶ Odstraníme tyto řádky:
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("add_two_numbers", 0);
+    ...
+    ...
+    ...
+  __Pyx_RefNannyFinishContext();
+
+Zákaz volání funkcí souvisejících s GILem
+--------------------------------------------------
+cdef int add_two_numbers(int x, int y) nogil:
+    return x + y
+         ⇓
+static int __pyx_f_13add_numbers_5_add_two_numbers(int __pyx_v_x, int __pyx_v_y) {
+  int __pyx_r;
+  __pyx_r = (__pyx_v_x + __pyx_v_y);
+  goto __pyx_L0;
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+GIL a Pythonovské funkce
+--------------------------------------------------
+▶ Po `nogil` již není možné volat Pythonovské funkce!
+▶ Některé mají náhradu, například v libc.stdio
+.
+from libc.stdio cimport printf
+.
+cdef int add_two_numbers(int x, int y) nogil:
+    printf("%i\n", x)
+    return x + y
+         ⇓
+static int __pyx_f_13add_numbers_7_add_two_numbers(int __pyx_v_x, int __pyx_v_y) {
+  int __pyx_r;
+  (void)(printf(((char const *)"%i\n"), __pyx_v_x));
+  __pyx_r = (__pyx_v_x + __pyx_v_y);
+  goto __pyx_L0;
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+Homogenní datové struktury v Cythonu
+--------------------------------------------------
+▶ Neefektivita nehomogenních seznamů
+▶ Náhrada za
+cdef array.array byte_array = array.array('B')
+cdef array.array int_array = array.array('i')
+▶ Převod seznam → pole
+cdef array.array a = array.array('i', [1, 2, 3])
+
+Homogenní datové struktury v Cythonu
+--------------------------------------------------
+Signatura       Typ v C
+b               signed char
+B               unsigned char
+u               Py_UNICODE
+h               signed short
+H               unsigned short
+i               signed int
+I               unsigned int
+l               signed long
+L               unsigned long
+q               signed long long
+Q               unsigned long long
+f               float
+d               double
 
 Nástroj Numba
 --------------------------------------------------
@@ -297,7 +423,18 @@ Nástroj Numba
     ◆ Ahead-of-time (AOT)
 ▶ Označení funkcí/metod, které se mají JITovat 
     ◆ Odvození datových typů až v čase běhu aplikace
+    ◆ Funkce může být přeložena vícekrát!
 ▶ Backend používá LLVM
+
+Nástroj Numba
+--------------------------------------------------
+▶ Přednosti
+    ◆ Jednodušší pro vývojáře
+        - prakticky žádné změny, pouze se zavolá jiný příkaz
+▶ Zápory
+    ◆ Čas překladu do runtime
+        - viz výsledky benchmarků
+        - ovlivní spíše kratší skripty
 
 Označení funkcí pro JITování
 --------------------------------------------------
@@ -309,7 +446,68 @@ Označení funkcí pro JITování
 Numba a funkce print
 --------------------------------------------------
 ▶ „univerzální“ pythonovská varianta
-▶ 
+▶ funkčně omezená nativná varianta
+    - umožní překlad CELÉ funkce do strojového kódu
+▶ Původní kód:
+        print("P3")
+        print("{w} {h}".format(w=width, h=height))
+        print("255")
+▶ Nový kód:
+        print("P3")
+        print(width)
+        print(height)
+        print("255")
+▶ Původní kód:
+        r = palette[i][0]
+        g = palette[i][1]
+        b = palette[i][2]
+        print("{r} {g} {b}".format(r=r, g=g, b=b))
+▶ Nový kód:
+        r = palette[i][0]
+        g = palette[i][1]
+        b = palette[i][2]
+        print(r)
+        print(g)
+        print(b)
+
+Vynucení úplného překladu anotací
+--------------------------------------------------
+▶ JIT pracuje ve dvou režimech
+    - object mode
+        - podpora libovolných objektů
+        - fallback do C API Pythonu
+        - pomalejší (blíží se spíše interpretru)
+    - nopython mode
+        - nepoužívá fallback do C API Pythonu
+        - nelze tedy například použít Pythonovskou print apod.
+        - použití nativních typů
+@jit(nopython=True)
+
+Benchmark
+--------------------------------------------------
+▶ Výpočet Mandelbrotovy množiny
+▶ Cython
+    Přidání informací o datových typech
+        argumenty funkce
+        lokální proměnné
+    Argumenty
+        def calc_mandelbrot(width, height, maxiter, palette):
+         ⇓
+        cdef calc_mandelbrot(int width, int height, int maxiter, palette):
+    Lokální proměnné
+        cdef double zx
+        cdef double zy
+        cdef double zx2
+        cdef double zy2
+        cdef double cx
+        cdef double cy
+        cdef int r
+        cdef int g
+        cdef int b
+        cdef int i
+    Odstranění kontrol při dělení a odstranění GIL
+        @cython.cdivision(True)
+        cdef void calc_mandelbrot(int width, int height, int maxiter, unsigned char *palette) nogil:
 
 Výsledky benchmarků
 --------------------------------------------------
@@ -327,8 +525,9 @@ Výsledky benchmarků
     ◆ Varianta s jednodušší (nativní) funkcí print a anotací @jit(nopython=True)
 ▶ Interpret vs Cython vs Numba vs ANSI C
     ◆ Ukazuje delší čas startu Numby vs. lepší optimalizace
-    ◆ křivky pro ANSI C a Cython s plnou optimalizací se překrývají!
+    ◆ Křivky pro ANSI C a Cython s plnou optimalizací se překrývají!
 
 Další možnosti - Jython atd.
 --------------------------------------------------
-
+▶ Chcete větší výpočetní výkon?
+    ◆ Potom zapomeňte na Jython :-)
