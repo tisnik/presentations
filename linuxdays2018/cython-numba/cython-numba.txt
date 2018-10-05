@@ -172,7 +172,7 @@ Intuitivní odhad rychlejšího kódu?
              38 RETURN_VALUE
 
 Céčkový kód s přesnými informacemi o typu
---------------------------
+--------------------------------------------------
 ▶ Jednoduchá funkce vracející součet svých parametrů
     ◆ v céčku přímočarý zápis s plnou typovou informací
         int add(int x, int y)
@@ -243,8 +243,35 @@ Problematika překladu Pythonu do nativního kódu
         - různé přístupy (explicitní zápis, analýza)
     ◆ JIT překlad s nebo bez typových informací
 
+Nástroj RPython
+--------------------------------------------------
+▶ Založen na analýze grafu toku (CFG)
+▶ Snaha o automatické odvození datových typů
+▶ Nutná omezení v samotném jazyce!
+    ◆ V žádném případě se nejedná o klasický Python
+        - prakticky vše musí jít odvodit v čase překladu
+        - (ne dynamicky definované třídy, funkce, ...)
+    ◆ Projekt určený především pro tvůrce překladačů/runtime
+    ◆ Použití běžnými vývojáři dosti nepohodlné
+        - dlouhý překlad
+        - někdy nepříliš jasná chybová hlášení
+
+Použití nástroje RPython
+--------------------------------------------------
+▶ V naprosté většině případů interpretry nebo implementace VM
+    ◆ PyPy
+    ◆ Pydgin
+    ◆ RSqueak VM
+    ◆ Pixie
+    ◆ Monte
+    ◆ Typhon
+    ◆ Tulip
+    ◆ Pycket
+    ◆ Lever
+
 Nástroj Cython
 --------------------------------------------------
+▶ *** Pozor: Cython != CPython ***
 ▶ Vznikl z projektu Pyrex
 ▶ Nadmnožina programovacího jazyka Python
 ▶ Umožňuje překlad do nativního kódu
@@ -258,7 +285,10 @@ Nástroj Cython
 ▶ Další možnosti vedoucí k urychlení výsledku
  ◆ Odstranění volání GIL
  ◆ Céčkové implementace funkcí typu print
- ◆ pole
+ ◆ Pole
+
+Nástroj Cython
+---------------------------------------
 
 Nástroj Numba
 --------------------------------------------------
