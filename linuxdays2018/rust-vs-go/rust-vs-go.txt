@@ -48,6 +48,9 @@ Proč vlastně porovnávat Rust a Go?
     ◆ Dnes prakticky nutnost
         - gems
 
+Ale jedná se SKUTEČNĚ o konkurenty?
+--------------------------------------------------
+
 Charakteristické rysy Rustu
 --------------------------------------------------
 ▶ Multiparadigmatický jazyk
@@ -155,7 +158,10 @@ Charakteristické rysy jazyka Go
 ▶ Současná verze používá vlastní backend
 ▶ Cíle
     Jednoduchost, jednoznačnost
+    Jazyk postaven na jednoduchých a známých konceptech
     Bezpečné aplikace
+    Mikroslužby
+    Pro DevOps
     Použití pro rozsáhlejší aplikace psané velkým týmem
     Paralelní běh částí aplikace
     Rozumný výpočetní výkon
@@ -263,7 +269,8 @@ Práce s pamětí    vlastnictví   GC
 Detekce souběhu   ano           jen nepřímo
 Závislosti        cargo         prozatím složité řešit
 
-Poznámka: souběh
+Poznámka k souběhu
+--------------------------------------------------
 ▶ Za běžné situace nemůže v Rustu nastat
 Je to zajištěno modelem vlastnictví dat (ownership)
 - existuje jen jediný vlastník dat
@@ -274,8 +281,28 @@ Je to zajištěno modelem vlastnictví dat (ownership)
 - vše je řešeno v čase překladu!
 
 Proč Go?
+--------------------------------------------------
 
 Proč Rust?
+--------------------------------------------------
+
+Zkouška dospělosti
+--------------------------------------------------
+▶ Zcela IMHO: překlad pro DSP
+  TI řada TMS32C.... TMS32F....
+  Analog Devices SHARC DSP
+   Super Harvard Architecture Single-Chip Compute
+
+A co jazyk D?
+--------------------------------------------------
+▶ Nechme promluvit samotného autora jazyka D
+problém D - pomalá adaptace, prakticky žádný sex appeal
+Go - má strategii (networking)
+     ⇒má branding
+     stojí za ním silná a známá firma
+Rust - vývojáři musí udělat mnoho práce kvůli memory managementu
+     - skutečně tak řeší business problém?
+     - postaven na skvělých teoretických základech
 
 Zajímavosti
 --------------------------------------------------
