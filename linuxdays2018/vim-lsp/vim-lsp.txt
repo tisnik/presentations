@@ -36,6 +36,7 @@ Podpora v IDE a textových editorech
 ▶ Eclipse
     ◆ LSP4E
 ▶ Eclipse Che
+    ◆ Webové IDE
 ▶ Atom IDE
     ◆ Textový editor Atom doplněný o pluginy
 ▶ Vim
@@ -187,6 +188,26 @@ Instalace pluginu vim-lsp
 
 Základní příkazy
 --------------------------------------------------
+▶ :LspHover
+    ◆ Otevře okno s podrobnějšími informacemi o objektu,
+      který se nalézá pod kurzorem
+    ◆ Lze zavřít klávesovou zkratkou Ctrl+W Ctrl+Z.
+▶ :LspDocumentDiagnostic
+    ◆ Zobrazení výsledků produkovaných linterem a taktéž 
+      nástrojem pro kontrolu dokumentačních řetězců
+    ◆ Výsledky se zobrazí v Quickfix oknu
+    ◆ Každý řádek odpovídá jednomu problému
+▶ :LspDocumentSymbol
+    ◆ Vypíše všechny symboly (funkce, metody, třídy, proměnné)
+      nalezené v aktuálně editovaném modulu
+    ◆ Výsledky se opět zobrazí v Quickfix oknu
+        - každý řádek odpovídá jednomu nalezenému symbolu.
+▶ :LspRename
+    ◆ Přejmenování symbolu pod kurzorem (a jeho dalších výskytů)
+    ◆ Po zadání tohoto příkazu se Vim zeptá na nové jméno
+        - to následně použije
+    ◆ V případě Pythonu vyžaduje opravenou verzi.
+        - stejně mi nikdy pořádně nefungoval :-(
 
 Spuštění language serveru
 --------------------------------------------------
@@ -285,7 +306,7 @@ endif
 
 Spuštění Python Language Serveru s logováním
 --------------------------------------------------
-" přidat do .vimrc
+ přidat do .vimrc
 if (executable('pyls'))
     au User lsp_setup call lsp#register_server({
         \ 'name': 'pyls',
