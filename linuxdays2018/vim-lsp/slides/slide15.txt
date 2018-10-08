@@ -1,0 +1,8 @@
+
+Funkce
+--------------------------------------------------
+▶ lsp#enable()
+▶ lsp#disable()
+▶ lsp#register_server()
+▶ lsp#stop_server()
+▶ lsp#get_server_status()

@@ -1,0 +1,7 @@
+
+Požadavek - odpověď
+--------------------------------------------------
+textDocument/didOpen ->
+textDocument/didChange ->
+<- textDocument/publishDiagnostics
+<- textDocument/didClose

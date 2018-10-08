@@ -1,0 +1,16 @@
+
+Nastavení klávesových zkratek pro Python
+--------------------------------------------------
+F1   zavolání funkce LspStatus
+F2   spuštění skriptu v Pythonu 2
+F3   spuštění skriptu v Pythonu 3
+F4   zavolání příkazu LspDocumentDiagnostics
+F5   zavolání příkazu LspHover
+F6   zavolání příkazu LspDocumentSymbol
+F7   zavolání funkce 
+F8   analýza pomocí nástroje pep8
+F9   analýza pomocí nástroje pydocstyle (doc.stringy)
+F10  analýza pomocí nástroje Radon
+F11  spuštění skriptu v debuggeru PuDB
+F12  uzavření náhledového okna
+    Tab  zavolání funkce omni completion

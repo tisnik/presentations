@@ -1,0 +1,9 @@
+
+Jeden typ notifikace vrácené serverem klientovi:
+--------------------------------------------------
+textDocument/publishDiagnostics
+{'uri': 'file:///home/ptisnovs/t.py',
+ 'diagnostics': [{'source': 'pycodestyle',
+ 'range': {'start': {'line': 3, 'character': 19},
+           'end': {'line': 3, 'character': 21}},
+           'message': 'W291 trailing whitespace', 'code': 'W291', 'severity': 2}]}

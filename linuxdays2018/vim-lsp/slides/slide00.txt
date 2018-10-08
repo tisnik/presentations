@@ -1,0 +1,7 @@
+          Language Server Protocol
+                   aneb
+Jak si vytvořit modulární IDE (nejenom) z Vimu
+==================================================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2018-10-07

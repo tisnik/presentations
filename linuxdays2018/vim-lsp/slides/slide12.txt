@@ -1,0 +1,14 @@
+
+Instalace pluginu vim-lsp
+--------------------------------------------------
+▶ Správci balíčků?
+    ◆ Vundle
+    ◆ Pathogen
+    ◆ Vim 8 a jeho správce balíčků
+        - :help packages
+▶ Repositář
+    ◆ https://github.com/prabirshrestha/vim-lsp
+▶ Vyžaduje i další modul
+    ◆ https://github.com/prabirshrestha/async.vim
+▶ Po instalaci rychlé otestování
+    :Lsp<Tab>

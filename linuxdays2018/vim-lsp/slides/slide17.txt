@@ -1,0 +1,8 @@
+
+Spuštění language serveru
+--------------------------------------------------
+call lsp#register_server(
+    {'name': 'pyls',
+     'cmd': {server_info->['pyls']},
+     'whitelist': ['python']}
+)

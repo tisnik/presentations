@@ -1,0 +1,11 @@
+
+Základní informace o LSP
+--------------------------------------------------
+▶ Univerzální protokol umožňující komunikaci mezi:
+    ◆ (programátorským) textovým editorem
+    ◆ integrovaným vývojovým prostředím (IDE)
+    ◆ nástroji pro refaktoring atd. jazyka X
+    ◆ nástroji pro refaktoring atd. jazyka Y
+    ◆ linterem
+    ◆ statickým analyzátorem kódu
+    ...

@@ -1,0 +1,13 @@
+
+Spuštění Python Language Serveru s logováním
+--------------------------------------------------
+ přidat do .vimrc
+if (executable('pyls'))
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'cmd': {server_info->['pyls', '-vv', '--log-file', '/tmp/pyls.txt']},
+        \ 'whitelist': ['python']
+        \ })
+endif
+█

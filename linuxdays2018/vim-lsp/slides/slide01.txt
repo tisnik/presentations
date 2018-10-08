@@ -1,0 +1,13 @@
+
+Obsah přednášky
+--------------------------------------------------
+▶ Základní informace o LSP
+▶ Podpora v IDE a textových editorech
+▶ Dostupné implementace serverů
+▶ Princip činnosti LSP
+▶ Python Language Server
+▶ Plugin vim-lsp
+▶ Instalace pluginu vim-lsp
+▶ Základní příkazy
+▶ Nastavení omnicompletion
+▶ Příklad konfigurace Vimu

@@ -1,0 +1,27 @@
+
+Princip činnosti LSP
+--------------------------------------------------
+▶ Architektura klient-server
+    ◆ založen na JSON-RPC
+        - poměrně snadná implementace
+        - rychlé úpravy
+        - flexibilita protokolu
+    ◆ klient
+        - textový editor
+        - desktopové IDE
+        - webové IDE
+    ◆ server
+        - linter
+        - statická analýza zdrojového kódu
+        - nástroj pro vyhledávání, doskoky na definice...
+        - kontrola stylu komentářů
+        - profiler
+        - nástroj pro refaktoring
+        - "vše v jednom"
+▶ Tři typy zpráv
+    ◆ požadavek
+        - na LSP server
+    ◆ odpověď
+        - od LSP serveru
+    ◆ oznamovací zpráva, notifikace
+        - většinou od LSP serveru

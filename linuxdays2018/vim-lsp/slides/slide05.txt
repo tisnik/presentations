@@ -1,0 +1,43 @@
+
+Dostupné implementace serverů - pouze vybrané jazyky
+----------------------------------------------------
+▶ Bash
+    ◆ Bash Language Server
+▶ C# 
+    ◆ csharp-language-server-protocol
+▶ C a C++
+    ◆ VS Code C++ extension
+    ◆ clangd
+    ◆ cquery
+        - (pozor - různá kvalita implementace)
+▶ Clojure
+    ◆ clojure-lsp
+▶ Erlang
+    ◆ sourcer
+▶ Elixir
+    ◆ elixir-ls
+▶ F#
+    ◆ F# Language Server
+▶ Go
+    ◆ sourcegraph-go
+▶ Java
+    ◆ Eclipse JDT LS
+    ◆ Java Compiler (javac) API-based Java support
+▶ Javascript-Typescript
+    ◆ javascript-typescript
+▶ Julia
+    ◆ Julia language server
+▶ Lua
+    ◆ lua-lsp
+▶ Python 
+    ◆ PyDev on VSCode
+    ◆ Python Language Server
+    ◆ Python Tools for Visual Studio
+▶ Ruby
+    ◆ solargraph
+    ◆ language_server-ruby
+    ◆ orbacle
+▶ Rust 
+    ◆ Rust Language Server
+▶ TypeScript
+    ◆ Typescript Language Server

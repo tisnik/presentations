@@ -1,0 +1,14 @@
+
+Podpora v IDE a textových editorech
+--------------------------------------------------
+▶ Visual Studio Code
+▶ Eclipse
+    ◆ LSP4E
+▶ Eclipse Che
+    ◆ Webové IDE
+▶ Atom IDE
+    ◆ Textový editor Atom doplněný o pluginy
+▶ Vim
+    ◆ vim-lsp
+▶ Emacs
+    ◆ lsp-mode

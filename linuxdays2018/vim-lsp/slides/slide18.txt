@@ -1,0 +1,8 @@
+
+Nastavení omnicompletion
+--------------------------------------------------
+▶ Vkládací režim
+    ◆ Ctrl+X Ctrl+O
+▶ Nastavení vlastní funkce
+    set omnifunc=lsp#complete
+    ◆ samozřejmě je možné nastavit pro každý typ souboru zvlášť

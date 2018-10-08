@@ -1,0 +1,6 @@
+
+Příklad požadavku poslaného serveru
+--------------------------------------------------
+{'method': 'textDocument/hover', 'jsonrpc': '2.0', 'id': 4,
+ 'params': {'textDocument': {'uri': 'file:///home/ptisnovs/t.py'},
+ 'position': {'character': 0, 'line': 21}}}

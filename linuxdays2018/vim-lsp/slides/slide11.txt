@@ -1,0 +1,14 @@
+
+Plugin vim-lsp
+--------------------------------------------------
+▶ Zajišťuje komunikaci mezi Vimem a language serverem
+    ◆ samozřejmě přes protokol LSP
+▶ Používá některé speciální možnosti Vimu
+    ◆ Preview window
+        - uzavření Ctrl+W z nebo Ctrl+W Ctrl+Z
+    ◆ Quickfix
+        - klávesové zkratky pro doskoky na chyby
+        - speciální režim používaný pro zachycení chybových zpráv
+        - používá se i při grepování atd.
+        - :cn :cp :cc 
+▶ Všechny klávesové zkratky jsou plně konfigurovatelné

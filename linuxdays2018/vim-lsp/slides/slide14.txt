@@ -1,0 +1,19 @@
+
+Další příkazy (ne všechny musí pracovat s Pythonem)
+--------------------------------------------------
+▶ :LspDefinition
+    ◆ skok na definici symbolu
+▶ :LspTypeDefinition
+    ◆ skok na definici datového typu
+▶ :LspDocumentFormat
+    ◆ zformátování celého dokumentu (zdrojového kódu)
+▶ :LspDocumentRangeFormat
+    ◆ zformátování vybrané části dokumentu (zdrojového kódu)
+▶ :LspNextError
+    ◆ skok na výskyt další chyby získané během diagnostiky
+▶ :LspPreviousError
+    ◆ skok na výskyt předchozí chyby získané během diagnostiky
+▶ :LspImplementation
+    ◆ seznam všech implemnetací rozhraní
+▶ :LspReferences
+    ◆ všechny nalezené reference

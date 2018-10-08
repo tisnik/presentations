@@ -1,0 +1,8 @@
+
+Konfigurační volby
+--------------------------------------------------
+▶ Bežné globální proměnné s prefixem "lsp_"
+    ◆ g:lsp_auto_enable
+        - povolení modulu vim-lsp při startu Vimu
+    ◆ g:lsp_preview_keep_focus
+        - řízení přenosu kurzoru do náhledového okna

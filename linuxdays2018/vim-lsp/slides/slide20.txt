@@ -1,0 +1,20 @@
+
+Základní konfigurační volby
+--------------------------------------------------
+set nocompatible                " rezim nekompatibilni s vi, pouzivejte jako prvni volbu
+set encoding=utf-8              " interni format znaku ve Vimu (neovlivnuje nacitani a ukladani)
+set novisualbell                " pri chybe se nepipa, ale zablika obrazovka
+set hlsearch                    " zvyrazneni vysledku hledani
+set incsearch                   " zvyrazneni pri hledani
+set showmatch                   " bude se zobrazovat prislusna druha zavorka
+set showmode                    " bude se zobrazovat rezim cinnosti (-- INSERT --, -- REPLACE --, -- VISUAL -- ...)
+set showcmd                     " bude se zobrazovat prave zadavany prikaz (3dd ...)
+set ruler                       " bude se zobrazovat pravitko s pozici kurzoru
+set shiftwidth=4                " pocet mezer pri posunu bloku pomoci << a >>
+set expandtab                   " expanze znaků Tab na mezery
+set tabstop=4                   " pocet mezer odpovidajicich znaku Tab
+set bs=2                        " backspace maze vse
+ 
+set backupdir=~/temp,.          " adresar pro ulozeni zaloznich souboru
+set directory=~/temp,.          " adresar pro swapovaci soubor
+set viminfo='20,\"50,n~/temp/_viminfo

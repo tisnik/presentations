@@ -1,0 +1,18 @@
+
+Python Language Server
+--------------------------------------------------
+▶ Instalace (pro právě přihlášeného uživatele)
+      pip3 install --user python-language-server
+▶ Při instalaci se automaticky vyřeší několik závislostí
+    ◆ jedi
+    ◆ python-jsonrpc-server
+    ◆ pluggy
+    ◆ parso
+▶ Lze použít z jakéhokoli editoru
+▶ Je možné spustit explicitně
+    ◆ pyls [volby]
+    ◆ Volby
+        - použití TCP namísto stdio
+        - specifikace adresy a portu při TCP
+        - logování
+        - "ukecanost" při logování

@@ -1,0 +1,8 @@
+
+Ve .vimrc:
+--------------------------------------------------
+augroup __python__
+  au BufRead,BufNewFile *.py highlight OverLength ctermbg=yellow ctermfg=white guibg=#592929
+  au BufRead,BufNewFile *.py match OverLength /\%99v.\+/
+  au BufRead,BufNewFile *.py setlocal omnifunc=lsp#complete
+augroup END
