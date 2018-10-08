@@ -1,0 +1,18 @@
+
+Porovnání Rustu a Go z hlediska vývojáře
+--------------------------------------------------
+Jazyk             Rust           Go
+Přístup           moderní        konzervativní
+Syntaxe           komplikovaná   jednoduchá, minimalistická
+Učící křivka      menší sklon    větší sklon
+Učící křivka      větší ampli.   menší amplituda
+Rychlost překladu pomalejší      rychlejší
+Backend           LLVM           vlastní
+Linkování         static/dynamic přes -buildmode (//export!!!)
+Rychlost kódu     rychlejší      pomalejší
+Typový systém     rozsáhlý       bez generik
+Neměnnost         explicitní     string, další přes rozhraní
+Práce s pamětí    vlastnictví    GC
+Detekce souběhu   ano            jen nepřímo
+Závislosti        cargo          prozatím složité řešit
+

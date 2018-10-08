@@ -1,0 +1,13 @@
+
+Porovnání Rustu a Go - komunita, akceptace
+--------------------------------------------------
+Jazyk            Rust           Go
+Adaptace         pomalejší      rychlejší
+Tiobe index      #31 (0,396%)   #16 (1,081%)
+Stackshare       313            2780
+Stack overflow   10100          32700
+GitHub           30900 *        47500 *
+GitHub           5210 forků     6510 forků
+SO survey        79%            66% (loved)
+SO survey         8%            16% (wanted)
+(most dreaded Visual Basic 6 89.9% :-)

@@ -1,0 +1,17 @@
+
+Obsah přednášky (1)
+--------------------------------------------------
+▶ Proč vlastně porovnávat Rust a Go?
+▶ Ale jedná se SKUTEČNĚ o konkurenty?
+▶ Charakteristické rysy Rustu
+▶ Rust a C/C++
+▶ Správce balíčků (Cargo)
+▶ Charakteristické rysy Go
+▶ Makra v Go?
+▶ A samozřejmě oblíbené téma pro debaty...
+▶ Vybrané společné rysy jazyků Go a Rust
+▶ Porovnání Rustu a Go
+▶ Proč Go?
+▶ Proč Rust?
+▶ Zajímavosti
+▶ Odkazy

@@ -1,0 +1,11 @@
+
+Vlákna
+--------------------------------------------------
+▶ Go
+        go someFunction(args)
+▶ Rust
+        use std::thread;
+        let handler = thread::spawn(|| {
+            // 
+        });
+        handler.join().unwrap();

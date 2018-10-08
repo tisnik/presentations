@@ -1,0 +1,13 @@
+
+Poznámky
+--------------------------------------------------
+▶ Okolo podmínek nejsou závorky
+▶ Nepovinný středník
+▶ nil
+▶ Více návratových hodnot
+▶ Chyba je poslední navrácenou hodnotou, konvence
+▶ Použití defer, viz další slajd
+▶ Zkrácený zápis deklarace a inicializace lokálních proměnných
+    var src, err...
+    src, err := ...
+▶ Pojmenované návratové hodnoty (nepovinné)

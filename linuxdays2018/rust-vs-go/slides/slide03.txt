@@ -1,0 +1,25 @@
+
+Proč vlastně porovnávat Rust a Go?
+--------------------------------------------------
+▶ Jedná se skutečně o konkurenty?
+    ◆ Z pohledu mnoha vývojářů ano...
+▶ Vznik zhruba ve stejný čas
+    ◆ Go veřejně představeno 2009
+    ◆ Rust 2010 (teoretické práce jsou starší)
+▶ Společná snaha o vyřešení některých problémů céčka
+    ◆ bezpečná práce s paměti
+        - nutnost
+        - nikdo dnes nemůže přijít s jazykem
+          s manuální správou paměti
+    ◆ vícevláknové aplikace
+    ◆ řetězce
+    ◆ výjimečné stavy a jejich detekce/řešení/řízení
+    ◆ problémy s textovými makry
+▶ Překlad do nativního kódu
+▶ Jazyky s podporovaným ekosystémem
+    ◆ Dnes prakticky nutnost
+        - pypi
+        - Ruby Gems
+        - Rust: Cargo
+        - Go: zpočátku přístup "jedno repo, jeden master"
+        - dnes postupně vytvářený ekosystém (verzování?)

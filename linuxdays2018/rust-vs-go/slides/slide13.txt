@@ -1,0 +1,17 @@
+
+Charakteristické rysy jazyka Go (3)
+--------------------------------------------------
+▶ Správa paměti se přenáší do runtime
+▶ Gorutiny a kanály
+    ◆ 600k gorutin, 90% CPU
+▶ Typový systém
+    ◆ Snadné vytváření nových typů
+    ◆ Generické datové typy
+        chystají se
+        po stabilizaci jazyka (což nastalo)
+▶ Více imperativních rysů
+    ◆ Explicitní zápis většiny operací
+▶ Neexistuje podpora pro generické datové typy
+    ◆ Pravděpodobně se změní v další verzi Go
+▶ Více pragmaticky zaměřený jazyk
+▶ Prozatím nedosahuje tak vysokého výpočetního výkonu jako C

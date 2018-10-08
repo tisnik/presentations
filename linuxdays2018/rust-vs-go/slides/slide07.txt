@@ -1,0 +1,16 @@
+
+Charakteristické rysy Rustu (3)
+--------------------------------------------------
+▶ Jednoduché věci se píšou jednoduše a stručně
+        fn main() {
+            println!("Hello world!");
+        }
+
+× Vyžadováno příliš mnoho znalostí na začátku:
+        public class Test {
+            public static void main(String[] args) {
+                System.out.println("Hello World");
+            }
+        }
+
+▶ "Takto přesně to musíte napsat, jinak se program nepřeloží"

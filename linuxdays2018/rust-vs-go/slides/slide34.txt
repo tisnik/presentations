@@ -1,0 +1,12 @@
+
+Proč Rust?
+--------------------------------------------------
+▶ Typové kontroly
+▶ Rychlý běh programů dosahujících možností C/C++
+▶ Nezávislost na GC a jeho vlivu na rychlost
+▶ Možnost low-level práce (v případě potřeby)
+▶ Nový jazyk, který se zbavil všech podivností, které
+  se do ostatních jazyků dostaly za posledních > 30 let (C++)
+▶ Bod zlomu v adaptaci Rustu
+    ◆ Koncepce vlastnictví objektů
+▶ Správa paměti prakticky řešena jen v čase překladu

@@ -1,0 +1,11 @@
+
+Rust a C/C++
+--------------------------------------------------
+▶ Syntaxe Rustu jen částečně odvozena od C/C++
+▶ Využití existujícího „ekosystému“
+    ▶ Použití již hotových C knihoven
+        - Foreign Function Interface (FFI)
+    ▶ C++ knihovny
+        - stále ještě problematické
+▶ C ⇒ Rust
+    Project Corrode

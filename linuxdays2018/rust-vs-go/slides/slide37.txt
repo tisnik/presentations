@@ -1,0 +1,5 @@
+
+Zajímavosti
+--------------------------------------------------
+▶ Rob Pike očekával, že Go začnou ve větším množství používat programátoři C++
+× Ve skutečnosti se ke Go přiklánějí spíše vývojáři v Pythonu nebo Ruby

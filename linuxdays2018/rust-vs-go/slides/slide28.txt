@@ -1,0 +1,5 @@
+
+Porovnání Rustu a Go
+--------------------------------------------------
+▶ Vizuální porovnání programů zapsaných v Go a Rustu:
+    http://rosetta.alhur.es/compare/go/rust/#

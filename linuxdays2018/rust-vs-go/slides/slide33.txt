@@ -1,0 +1,11 @@
+
+Proč Go?
+--------------------------------------------------
+▶ Integrace s C (stávající moduly)
+▶ Rychlá učící křivka
+▶ Jednotná štábní kultura
+▶ Potřeba paralelizace
+▶ Typové kontroly
+▶ Event-driven programy
+▶ Nestarat se o správu paměti
+▶ CSP (Communicating Sequential Processes)

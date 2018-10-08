@@ -1,0 +1,14 @@
+
+Charakteristické rysy jazyka Go (2)
+--------------------------------------------------
+× Poučení z chyb, které najdeme například v C/C++
+    ◆ Silný typový systém
+    ◆ Nepoužívají se makra založená na textové substituci
+    ◆ Nepoužívají se hlavičkové soubory
+    ◆ Bezpečná práce s pamětí (+ GC)
+    ◆ Standardizovaný framework pro testování
+    ◆ Rychlé překlady
+    ◆ Syntaktické věci: ++/-- jen postfixové a nejsou to výrazy
+    ◆ Nepoužívá se ukazatelová aritmetika
+    ◆ Nepoužívají se šablony
+    ◆ Nejsou podporovány výjimky (prozatím)

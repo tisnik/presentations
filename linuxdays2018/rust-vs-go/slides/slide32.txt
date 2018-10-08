@@ -1,0 +1,54 @@
+
+Rychlost přeložených aplikací
+--------------------------------------------------
+https://benchmarksgame-team.pages.debian.net/benchmarksgame/faster/rust-go.html
+
+regex-redux
+source  secs    mem      gz      cpu    cpu load
+Rust    2.54    204,160  765     3.95   55% 30% 56% 18%
+Go     28.69    407,444  802    60.43   46% 51% 68% 46%
+
+binary-trees
+source  secs    mem      gz      cpu    cpu load
+Rust    3.98    165,920  721     14.61  90% 100% 90% 89%
+Go     28.90    471,068  654    110.50  96% 95% 95% 97%
+
+mandelbrot
+source  secs    mem      gz      cpu    cpu load
+Rust    1.75    34,176   1332    6.86   98% 98% 100% 98%
+Go      5.47    31,280   905     21.73  99% 99% 99% 100%
+
+k-nucleotide
+source  secs    mem      gz      cpu    cpu load
+Rust    5.34    138,504  1749    17.16  87% 100% 78% 58%
+Go     15.36    148,056  1722    54.61  77% 96% 95% 88%
+
+reverse-complement
+source  secs    mem      gz      cpu    cpu load
+Rust    1.61    995,100  1376    2.72   25% 81% 39% 28%
+Go      4.00    824,412   611    4.15   86% 14% 5% 1%
+
+spectral-norm
+source  secs    mem      gz      cpu    cpu load
+Rust    1.98    2,472    1126    7.86   100% 100% 99% 100%
+Go      3.95    2,412     548   15.70   100% 99% 99% 99%
+
+fannkuch-redux
+source  secs    mem     gz      cpu     cpu load
+Rust    9.60    1,752   1020    37.68   100% 96% 99% 99%
+Go     17.82    1,472    900    71.03   100% 100% 100% 100%
+
+n-body
+source  secs    mem     gz      cpu     cpu load
+Rust   13.31    1,768   1805    13.31   0% 0% 1% 100%
+Go     21.00    1,532   1200    21.00   1% 0% 0% 100%
+
+fasta
+source  secs    mem     gz      cpu     cpu load
+Rust    1.47    2,988   1906    4.97    88% 83% 90% 84%
+Go      2.07    3,168   1358    5.87    39% 83% 84% 79%
+
+pidigits
+source  secs    mem     gz      cpu     cpu load
+Rust    1.74    4,488   1366    1.74    1% 100% 1% 0%
+Go      2.04    8,976    603    2.04    1% 0% 100% 0%

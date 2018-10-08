@@ -1,0 +1,12 @@
+
+Rychlost přeložených aplikací
+--------------------------------------------------
+▶ Go - vlastní překladač
+    ◆ Self hosting
+    ◆ (bootstraping problem)
+    ◆ Rychlejší překlad
+    ◆ Méně optimalizovaný strojový kód
+    ◆ (projekt llgo - Go frontend pro LLVM)
+▶ Rust - založen na LLVM
+    ◆ Pomalejší překlad
+    ◆ Optimalizace na úrovni dalších LLVM jazyků

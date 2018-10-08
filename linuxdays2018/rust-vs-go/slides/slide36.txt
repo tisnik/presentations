@@ -1,0 +1,11 @@
+
+A co jazyk D?
+--------------------------------------------------
+▶ Nechme promluvit samotného autora jazyka D
+    ◆ problém D - pomalá adaptace, prakticky žádný sex appeal
+    ◆ Go - má strategii (networking)
+        ⇒ má branding
+          stojí za ním silná a známá firma
+    ◆ Rust - vývojáři musí udělat mnoho práce kvůli memory managementu
+        ⇒ skutečně tak řeší business problém?
+        ⇒ postaven na skvělých teoretických základech

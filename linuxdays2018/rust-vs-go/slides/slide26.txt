@@ -1,0 +1,20 @@
+
+Správa chyb
+--------------------------------------------------
+▶ Go
+        func divideWith0Check(a float32, b float32) (float32, error) {
+            if b == 0 {
+                return 0, errors.New("divide by zero error!")
+            }
+
+            return a / b, nil
+        }
+
+        func main() {
+            result, err := divideWith0Check(5, 4)
+            if err != nil {
+               log.Printf("an error occurred: %v", err)
+            } else {
+               log.Printf("The answer is: 5 / 4 = %f", result)
+            }
+        }

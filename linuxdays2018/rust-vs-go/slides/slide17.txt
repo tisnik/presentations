@@ -1,0 +1,10 @@
+
+Klíčové slovo defer
+--------------------------------------------------
+▶ defer - přidání volání do zásobníku
+▶ Funkce ze zásobníku se zavolají po ukončení aktivní funkce
+▶ Skutečné LIFO chování
+▶ Parametry se vyhodnocují v čase volání defer
+    ◆ ne při vlastním voláni funkce (to je pozdě :-)
+▶ Funkce volaná přes defer může měnit návratové kódy "hlavní" funkce
+    ◆ musí být pojmenovány

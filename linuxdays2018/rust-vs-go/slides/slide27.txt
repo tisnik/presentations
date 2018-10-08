@@ -1,0 +1,19 @@
+
+Správa chyb
+--------------------------------------------------
+▶ Rust
+        fn divide_with_0_check(a: f32, b: f32) -> Result<f32, &'static str> {
+            if b == 0.0 {
+                Err("divide by zero error!")
+            } else {
+                Ok(a / b)
+            }
+        }
+
+        fn main() {
+            match divide_with_0_check(5.0, 4.0) {
+                Err(err) => println!("{}", err),
+                Ok(result) => println!("5 / 4 = {}", result),
+            }
+        }
+

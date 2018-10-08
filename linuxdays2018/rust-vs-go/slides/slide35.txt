@@ -1,0 +1,8 @@
+
+"Zkouška dospělosti"
+--------------------------------------------------
+▶ Zcela IMHO
+    ◆ překlad pro DSP
+        -  TI řada TMS32C.... TMS32F....
+        -  Analog Devices SHARC DSP
+           Super Harvard Architecture Single-Chip Compute

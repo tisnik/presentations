@@ -1,0 +1,8 @@
+
+A samozřejmě oblíbené téma pro debaty...
+--------------------------------------------------
+▶ Formát zápisu programů
+    ◆ autoři Go: "lepší je se soustředit na vlastní vývoj"
+    ◆ Definován kanonický formát
+        - gofmt
+        - taby atd.:)

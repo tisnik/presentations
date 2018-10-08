@@ -1,0 +1,15 @@
+
+Správce balíčků (Cargo)
+--------------------------------------------------
+▶ Vytvoření kostry nového projektu
+▶ Nový projekt obsahuje i adresáře a soubory umožňující podporu SCM
+    - Git
+    - Mercurial
+▶ Automatická kontrola, které soubory je zapotřebí přeložit
+▶ Automatické stažení všech knihoven a jejich závislostí
+▶ Spuštění projektu s možností předání parametrů příkazového řádku.
+▶ Spuštění jednotkových testů
+▶ Spuštění benchmarků
+▶ Vyhledání knihovny v centrálním registru zaregistrovaných knihoven
+▶ Publikování vlastního balíčku v centrálním registru (crates.io)
+▶ Instalace aplikace

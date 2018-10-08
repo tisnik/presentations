@@ -1,0 +1,9 @@
+
+Ale jedná se SKUTEČNĚ o konkurenty?
+--------------------------------------------------
+▶ Rust míří na vývojáře používající C++ či D
+    ◆ Pravděpodobné směřování i do oblasti výkonnějších MCU
+      (tudíž složitějších aplikací)
+▶ Go směřuje spíše do oblasti, kde se používá Node.js, Python, Ruby
+    ◆ Webové služby
+    ◆ Síťové nástroje

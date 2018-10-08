@@ -1,0 +1,21 @@
+
+Vybrané společné rysy jazyků Go a Rust
+--------------------------------------------------
+▶ Podporovány společnostmi soutěžícími na poli browserů
+▶ Výsledkem překladu jsou nativní knihovny nebo spustitelné aplikace
+▶ Dobré (nekryptické) chybové zprávy překladačů
+    × chyba v šabloně v C++
+▶ Syntaxe částečně připomínající "lepší" C
+    ◆ Go
+        package main
+
+        import "fmt"
+
+        func main() {
+            fmt.Println("hello world")
+        }
+    ◆ Rust
+        fn main() {
+            println!("Hello world!");
+        }
+▶ Typ "slice"

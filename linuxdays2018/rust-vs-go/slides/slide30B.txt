@@ -1,0 +1,10 @@
+Poznámka k souběhu
+--------------------------------------------------
+▶ Za běžné situace nemůže v Rustu nastat
+    ◆ Je to zajištěno modelem vlastnictví dat (ownership)
+        - existuje jen jediný vlastník dat
+        - toho je možné změnit pomocí move
+        - vlastnictví si lze vypůjčit (borrow)
+        - ovšem v tomto případě nelze vlastnictví změnit
+          (forma transakce)
+        - vše je řešeno v čase překladu!

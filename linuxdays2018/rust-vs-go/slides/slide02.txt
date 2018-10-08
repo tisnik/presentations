@@ -1,0 +1,5 @@
+
+Proč vlastně porovnávat Rust a Go?
+--------------------------------------------------
+▶ Flamewars!
+    ◆ Nejlepší forma prokrastinace je sledování fór na Rootu...
