@@ -1,0 +1,27 @@
+
+Numba a funkce print
+--------------------------------------------------
+▶ „univerzální“ pythonovská varianta
+▶ funkčně omezená nativná varianta
+    - umožní překlad CELÉ funkce do strojového kódu
+▶ Původní kód:
+        print("P3")
+        print("{w} {h}".format(w=width, h=height))
+        print("255")
+▶ Nový kód:
+        print("P3")
+        print(width)
+        print(height)
+        print("255")
+▶ Původní kód:
+        r = palette[i][0]
+        g = palette[i][1]
+        b = palette[i][2]
+        print("{r} {g} {b}".format(r=r, g=g, b=b))
+▶ Nový kód:
+        r = palette[i][0]
+        g = palette[i][1]
+        b = palette[i][2]
+        print(r)
+        print(g)
+        print(b)

@@ -1,0 +1,8 @@
+
+Omezení Cythonu
+---------------------------------------
+▶ Pokud není známý datový typ
+    ◆ PyObject *
+▶ Z toho vyplývají všechny další důsledky
+▶ I takto primitivní překlad dokáže kód urychlit
+    ◆ Ovšem samozřejmě má k dokonalosti daleko

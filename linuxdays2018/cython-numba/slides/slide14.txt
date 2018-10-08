@@ -1,0 +1,11 @@
+
+Problematika překladu Pythonu do nativního kódu
+--------------------------------------------------
+▶ Dynamický typový systém
+    def add(x, y):
+        return x + y
+▶ Je korektní takový kód transformovat do
+    int add(int x, int y) {
+        return x + y;
+    }
+    ◆ ???

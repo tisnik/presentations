@@ -1,0 +1,9 @@
+
+Homogenní datové struktury v Cythonu
+--------------------------------------------------
+▶ Neefektivita nehomogenních seznamů
+▶ Náhrada za
+cdef array.array byte_array = array.array('B')
+cdef array.array int_array = array.array('i')
+▶ Převod seznam → pole
+cdef array.array a = array.array('i', [1, 2, 3])

@@ -1,0 +1,18 @@
+
+Nástroj Cython
+--------------------------------------------------
+▶ *** Pozor: Cython != CPython ***
+▶ Vznikl z projektu Pyrex
+▶ Nadmnožina programovacího jazyka Python
+▶ Umožňuje překlad do nativního kódu
+    ◆ Transpřeklad Cython -> C
+    ◆ Překlad C -> nativní kód (GCC, Clang...)
+▶ Výsledek překladu
+    ◆ (nativní) modul pro Python
+    ◆ Běžná spustitelná aplikace
+▶ Volitelně lze použít explicitní určení typů
+    ◆ Mnohem vyšší efektivita generovaného kódu
+▶ Další možnosti vedoucí k urychlení výsledku
+    ◆ Odstranění volání GIL
+    ◆ Céčkové implementace funkcí typu print
+    ◆ Pole

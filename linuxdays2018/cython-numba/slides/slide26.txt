@@ -1,0 +1,10 @@
+
+Zákaz volání funkcí souvisejících s GILem
+--------------------------------------------------
+▶ Odstraníme tyto řádky:
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("add_two_numbers", 0);
+    ...
+    ...
+    ...
+  __Pyx_RefNannyFinishContext();

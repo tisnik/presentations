@@ -1,0 +1,13 @@
+
+Nástroj Cython
+---------------------------------------
+▶ Překlad (transpřeklad) do C
+    ◆ Musíme mít k dispozici GCC, LLVM atd.
+    ◆ Tři kroky
+        - transformace Python -> ANSI C
+        - překlad ANSI C -> objektový soubor
+        - slinkování a vytvoření spustitelného souboru
+        - nebo vytvoření statické/dynamické knihovny
+▶ Příklad
+    cython --embed hello_world.py
+    gcc -O9 -I /usr/include/python3.6m -L/usr/lib64 -lpython3.6m -lm hello_world.c -o hello_world

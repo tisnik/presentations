@@ -1,0 +1,10 @@
+
+Intuitivní odhad rychlejšího kódu?
+--------------------------------------------------
+▶ Jednoduchý benchmark
+    ◆ První verze smyčky
+        timeit.timeit('for i in range(100): pass')
+        1.7635615249964758
+    ◆ Druhá verze smyčky
+        timeit.timeit('i = 0\nwhile i < 100: i += 1')
+        5.507031249995634

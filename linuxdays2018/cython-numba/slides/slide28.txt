@@ -1,0 +1,21 @@
+
+GIL a Pythonovské funkce
+--------------------------------------------------
+▶ Po `nogil` již není možné volat Pythonovské funkce!
+▶ Některé mají náhradu, například v libc.stdio
+
+from libc.stdio cimport printf
+
+cdef int add_two_numbers(int x, int y) nogil:
+    printf("%i\n", x)
+    return x + y
+         ⇓
+static int __pyx_f_13add_numbers_7_add_two_numbers(int __pyx_v_x, int __pyx_v_y) {
+  int __pyx_r;
+  (void)(printf(((char const *)"%i\n"), __pyx_v_x));
+  __pyx_r = (__pyx_v_x + __pyx_v_y);
+  goto __pyx_L0;
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}

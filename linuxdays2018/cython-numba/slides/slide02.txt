@@ -1,0 +1,21 @@
+
+Programovací jazyk Python
+--------------------------------------------------
+▶ Dnes jeden z nejpopulárnějších programovacích jazyků
+▶ Dostupnost na většině platforem
+    ◆ na některých MCU jako MicroPython
+▶ Použití
+    ◆ Nástroje a utility ovládané z příkazového řádku
+    ◆ Aplikace s grafickým uživatelským rozhraním
+    ◆ Client-server
+        - serverová část (Flask, Django, CherryPy, ...)
+    ◆ Numerické výpočty, symbolické výpočty
+        - Numpy
+        - SciPy
+        - Matplotlib
+    ◆ Moderní způsoby využití Pythonu
+        - AI
+        - Machine Learning (Deep Learning)
+          PyTorch
+        - Big data
+    ◆ Tzv. "glue" jazyk

@@ -1,0 +1,14 @@
+
+Bajtkód Pythonu a jeho interpretace
+--------------------------------------------------
+▶ Instrukce nenesou informace o datovém typu operandů
+    ◆ de facto dynamické typování na úrovni VM
+▶ Příklad funkce napsané pro různé typy parametrů
+        def add(x, y):
+            return x+y
+▶ Bajtkód
+add:
+        0 LOAD_FAST           0 (x)
+        3 LOAD_FAST           1 (y)
+        6 BINARY_ADD
+        7 RETURN_VALUE

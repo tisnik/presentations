@@ -1,0 +1,19 @@
+
+Bajtkód Pythonu a jeho interpretace
+--------------------------------------------------
+▶ Překlad do bajtkódu před spuštěním skriptů
+    ◆ explicitně
+    ◆ automaticky
+▶ Je možné částečně ovlivnit volbami
+    ◆ -O
+        • optimalizace bajtkódu
+    ◆ -OO
+        • odstranění komentářů
+▶ Vlastnosti bajtkódu Pythonu (CPythonu)
+    ◆ vysokoúrovňový
+        • například v porovnání s JVM
+    ◆ malá sémantická mezera Python:bajtkód
+        • velký rozdíl oproti C:asm či C:strojový kód
+    ◆ používá zásobník operandů
+        • podobně: JVM
+        • jinak: LuaVM, CLR

@@ -1,0 +1,22 @@
+
+Intuitivní odhad rychlejšího kódu?
+--------------------------------------------------
+▶ Analýza bajtkódu
+    Druhá verze smyčky
+              0 LOAD_CONST               1 (0)
+              3 STORE_FAST               0 (i)
+              ...
+              6 SETUP_LOOP              26 (to 35)
+        >>    9 LOAD_FAST                0 (i)
+             12 LOAD_CONST               2 (100)
+             15 COMPARE_OP               0 (<)
+             18 POP_JUMP_IF_FALSE       34
+              ...
+             21 LOAD_FAST                0 (i)
+             24 LOAD_CONST               3 (1)
+             27 INPLACE_ADD
+             28 STORE_FAST               0 (i)
+             31 JUMP_ABSOLUTE            9
+        >>   34 POP_BLOCK
+        >>   35 LOAD_CONST               0 (None)
+             38 RETURN_VALUE

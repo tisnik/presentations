@@ -1,0 +1,19 @@
+
+Postupná úprava kódu (4)
+--------------------------------------------------
+cdef int add_two_numbers(int x, int y):
+    return x + y
+         ⇓
+static int __pyx_f_13add_numbers_4_add_two_numbers(int __pyx_v_x, int __pyx_v_y) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("add_two_numbers", 0);
+ 
+  __pyx_r = (__pyx_v_x + __pyx_v_y);
+  goto __pyx_L0;
+ 
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}

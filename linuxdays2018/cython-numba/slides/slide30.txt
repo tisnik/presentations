@@ -1,0 +1,17 @@
+
+Homogenní datové struktury v Cythonu
+--------------------------------------------------
+Signatura       Typ v C
+b               signed char
+B               unsigned char
+u               Py_UNICODE
+h               signed short
+H               unsigned short
+i               signed int
+I               unsigned int
+l               signed long
+L               unsigned long
+q               signed long long
+Q               unsigned long long
+f               float
+d               double

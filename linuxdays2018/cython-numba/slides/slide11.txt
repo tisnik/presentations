@@ -1,0 +1,13 @@
+
+Céčkový kód s přesnými informacemi o typu
+--------------------------------------------------
+▶ Jednoduchá funkce vracející součet svých parametrů
+    ◆ V céčku přímočarý zápis s plnou typovou informací
+        int add(int x, int y)
+        {
+            return x+y;
+        }
+    ◆ Překladač má k dispozici
+        • přesný počet a typ parametrů (alokace na zásobníku)
+        • návratový typ funkce
+        • případné další informace (statická funkce?)

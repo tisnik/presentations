@@ -1,0 +1,18 @@
+
+Výsledky benchmarků
+--------------------------------------------------
+▶ CPython 2,3 versus 
+    ◆ Jython
+    ◆ RPython
+    ◆ Cython (bez úprav)
+    ◆ Cython (typy)
+    ◆ Cython (plná optimalizace)
+    ◆ ANSI C (samozřejmě kompletně přepsáno)
+▶ Numba
+    ◆ Interpret s původním kódem
+    ◆ Kód, do něhož byla pouze přidána anotace @jit
+    ◆ Varianta s jednodušší (nativní) funkcí print
+    ◆ Varianta s jednodušší (nativní) funkcí print a anotací @jit(nopython=True)
+▶ Interpret vs Cython vs Numba vs ANSI C
+    ◆ Ukazuje delší čas startu Numby vs. lepší optimalizace
+    ◆ Křivky pro ANSI C a Cython s plnou optimalizací se překrývají!

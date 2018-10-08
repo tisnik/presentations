@@ -1,0 +1,20 @@
+
+Instrukce bajtkódu
+--------------------------------------------------
+▶ Práce se zásobníkem operandů
+    ◆ polymorfní chování!
+▶ Unární operátory
+▶ Binární operátory
+▶ Zkrácené binární operátory
+    ◆ "inplace" +=
+▶ Přístup k prvkům složeného datového typu
+    ◆ řetězec, seznam, n-tice
+    ◆ polymorfní chování!
+▶ Operace s prvky seznamů a n-tic
+▶ Operace s mapou (slovníkem)
+▶ Iterátory
+▶ Příkaz/funkce print
+▶ Řízení běhu programu
+▶ Konstrukce objektu, vytvoření funkce
+▶ Vytvoření uzávěru
+▶ Vyhození výjimky, zachycení výjimky

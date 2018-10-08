@@ -1,0 +1,13 @@
+
+Vynucení úplného překladu anotací
+--------------------------------------------------
+▶ JIT pracuje ve dvou režimech
+    - object mode
+        - podpora libovolných objektů
+        - fallback do C API Pythonu
+        - pomalejší (blíží se spíše interpretru)
+    - nopython mode
+        - nepoužívá fallback do C API Pythonu
+        - nelze tedy například použít Pythonovskou print apod.
+        - použití nativních typů
+@jit(nopython=True)

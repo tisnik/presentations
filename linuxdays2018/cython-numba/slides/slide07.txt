@@ -1,0 +1,17 @@
+
+Intuitivní odhad rychlejšího kódu?
+--------------------------------------------------
+▶ Kvůli vysokoúrovňovému bajtkódu je odhad
+    ◆ složitý
+    ◆ neintuitivní
+▶ První verze jednoduché smyčky s počitadlem
+        for i in range(x):
+            pass
+▶ Druhá verze smyčky
+        i = 0
+        while i < x:
+            i += 1
+    ◆ Druhá smyčka
+        • žádné "složité" objekty
+        • teoreticky překlad do MOV, ADD/INC, CMP, JNZ
+        • skutečnost je ovšem jiná!

@@ -1,0 +1,10 @@
+
+Problematika překladu Pythonu do nativního kódu
+--------------------------------------------------
+▶ Možná řešení
+    ◆ Typové informace dostupné při překladu
+        - RPython
+        - Cython
+        - různé přístupy (explicitní zápis, analýza)
+    ◆ JIT překlad s nebo bez typových informací
+        - Numba

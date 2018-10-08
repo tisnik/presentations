@@ -1,0 +1,10 @@
+
+Nástroj Numba
+--------------------------------------------------
+▶ Překladač Pythonu do nativního kódu (i pro CUDA)
+    ◆ Just-in-time (JIT)
+    ◆ Ahead-of-time (AOT)
+▶ Označení funkcí/metod, které se mají JITovat 
+    ◆ Odvození datových typů až v čase běhu aplikace
+    ◆ Funkce může být přeložena vícekrát!
+▶ Backend používá LLVM

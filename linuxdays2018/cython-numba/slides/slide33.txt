@@ -1,0 +1,7 @@
+
+Označení funkcí pro JITování
+--------------------------------------------------
+        from numba import jit
+        @jit
+        def funkce1():
+            pass

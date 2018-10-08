@@ -1,0 +1,10 @@
+
+Céčkový kód s přesnými informacemi o typu
+--------------------------------------------------
+▶ Překlad s optimalizacemi
+gcc -O9 -c -S -fno-asynchronous-unwind-tables test.c
+    ◆ vygenerovaný kód (v assembleru)
+        add:
+            leal    (%rdi,%rsi), %eax
+            ret
+▶ Lze dosáhnout podobného výsledku i pro Python?

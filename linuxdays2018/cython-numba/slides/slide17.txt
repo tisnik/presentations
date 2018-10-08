@@ -1,0 +1,17 @@
+
+Nástroj RPython
+--------------------------------------------------
+▶ Založen na analýze grafu toku (CFG)
+▶ Snaha o automatické odvození datových typů
+▶ Nutná omezení v samotném jazyce!
+    ◆ V žádném případě se nejedná o klasický Python
+        - prakticky vše musí jít odvodit v čase překladu
+        - (ne dynamicky definované třídy, funkce, ...)
+    ◆ Projekt určený především pro
+        - tvůrce překladačů
+        - runtime interpretrů
+        - VM
+    ◆ Použití běžnými vývojáři dosti nepohodlné
+        - dlouhý překlad
+        - někdy nepříliš jasná chybová hlášení
+▶ ⇒ nevhodné pro běžná použití!

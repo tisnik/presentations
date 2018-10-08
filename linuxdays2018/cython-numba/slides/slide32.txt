@@ -1,0 +1,10 @@
+
+Nástroj Numba
+--------------------------------------------------
+▶ Přednosti
+    ◆ Jednodušší pro vývojáře
+        - prakticky žádné změny, pouze se zavolá jiný příkaz
+▶ Zápory
+    ◆ Čas překladu do runtime
+        - viz výsledky benchmarků
+        - ovlivní spíše kratší skripty

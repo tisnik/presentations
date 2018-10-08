@@ -1,0 +1,17 @@
+
+Implementace Pythonu
+--------------------------------------------------
+▶ Nejpoužívanější implementace
+    ◆ CPython
+    ◆ Pypy
+    ◆ Jython
+    ◆ Iron Python
+▶ Další implementace
+    ◆ Psyco
+    ◆ Stackles Python
+    ◆ MicroPython
+▶ Speciální implementace
+    ◆ Cython
+    ◆ RPython
+    ◆ Numba
+        - právě ty nás dnes budou zajímat

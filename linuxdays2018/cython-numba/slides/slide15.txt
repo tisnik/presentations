@@ -1,0 +1,12 @@
+
+Problematika překladu Pythonu do nativního kódu
+--------------------------------------------------
+▶ Ve skutečnosti lze add použít prakticky pro libovolné typy parametrů
+    ◆ 123 + 456
+    ◆ 123. + 456
+    ◆ "hello " + "world"
+    ◆ (1,2,3) + (4,5,6)
+    ◆ [1,2,3] + [4,5,6]
+    ◆ True + True  (uff!)
+    ◆ Kdykoli v budoucnu může někdo vytvořit třídu
+      s __add__ nebo __radd__

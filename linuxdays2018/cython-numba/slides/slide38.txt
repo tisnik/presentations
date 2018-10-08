@@ -1,0 +1,5 @@
+
+Další možnosti - Jython atd.
+--------------------------------------------------
+▶ Chcete větší výpočetní výkon?
+    ◆ Potom zapomeňte na Jython :-)

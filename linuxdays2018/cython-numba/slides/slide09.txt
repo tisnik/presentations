@@ -1,0 +1,17 @@
+
+Intuitivní odhad rychlejšího kódu?
+--------------------------------------------------
+▶ Analýza bajtkódu
+    První verze
+              0 SETUP_LOOP              20 (to 23)
+              3 LOAD_GLOBAL              0 (range)
+              6 LOAD_CONST               1 (100)
+              9 CALL_FUNCTION            1 (1 positional, 0 keyword pair)
+             12 GET_ITER
+        >>   13 FOR_ITER                 6 (to 22)
+             16 STORE_FAST               0 (i)
+             ...
+             19 JUMP_ABSOLUTE           13
+        >>   22 POP_BLOCK
+        >>   23 LOAD_CONST               0 (None)
+             26 RETURN_VALUE

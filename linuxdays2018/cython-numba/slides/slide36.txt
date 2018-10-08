@@ -1,0 +1,26 @@
+
+Benchmark
+--------------------------------------------------
+▶ Výpočet Mandelbrotovy množiny
+▶ Cython
+    Přidání informací o datových typech
+        argumenty funkce
+        lokální proměnné
+    Argumenty
+        def calc_mandelbrot(width, height, maxiter, palette):
+         ⇓
+        cdef calc_mandelbrot(int width, int height, int maxiter, palette):
+    Lokální proměnné
+        cdef double zx
+        cdef double zy
+        cdef double zx2
+        cdef double zy2
+        cdef double cx
+        cdef double cy
+        cdef int r
+        cdef int g
+        cdef int b
+        cdef int i
+    Odstranění kontrol při dělení a odstranění GIL
+        @cython.cdivision(True)
+        cdef void calc_mandelbrot(int width, int height, int maxiter, unsigned char *palette) nogil:

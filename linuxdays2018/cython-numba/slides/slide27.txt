@@ -1,0 +1,14 @@
+
+Zákaz volání funkcí souvisejících s GILem
+--------------------------------------------------
+cdef int add_two_numbers(int x, int y) nogil:
+    return x + y
+         ⇓
+static int __pyx_f_13add_numbers_5_add_two_numbers(int __pyx_v_x, int __pyx_v_y) {
+  int __pyx_r;
+  __pyx_r = (__pyx_v_x + __pyx_v_y);
+  goto __pyx_L0;
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
