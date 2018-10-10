@@ -3,7 +3,7 @@ Rešení problematiky pomalých aplikací v Pythonu
 ==================================================
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
-■ Datum    2018-10-xx
+■ Datum    2018-10-06
 
 Obsah přednášky (1)
 --------------------------------------------------
