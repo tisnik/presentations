@@ -4,7 +4,7 @@ Jak si vytvořit modulární IDE (nejenom) z Vimu
 ==================================================
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
-■ Datum    2018-09-xx
+■ Datum    2018-10-05
 
 Obsah přednášky
 --------------------------------------------------
@@ -165,6 +165,7 @@ Plugin vim-lsp
     ◆ samozřejmě přes protokol LSP
 ▶ Používá některé speciální možnosti Vimu
     ◆ Preview window
+        - uzavření Ctrl+W z nebo Ctrl+W Ctrl+Z
     ◆ Quickfix
         - klávesové zkratky pro doskoky na chyby
         - speciální režim používaný pro zachycení chybovýc zpráv
@@ -184,7 +185,7 @@ Instalace pluginu vim-lsp
 ▶ Vyžaduje i další modul
     ◆ https://github.com/prabirshrestha/async.vim
 ▶ Po instalaci rychlé otestování
-:Lsp<Tab>
+    :Lsp<Tab>
 
 Základní příkazy
 --------------------------------------------------
@@ -202,6 +203,8 @@ Základní příkazy
       nalezené v aktuálně editovaném modulu
     ◆ Výsledky se opět zobrazí v Quickfix oknu
         - každý řádek odpovídá jednomu nalezenému symbolu.
+▶ :LspWorkspaceSymbols
+    ◆ Dtto pro pracovní prostředí (většinou projekt)
 ▶ :LspRename
     ◆ Přejmenování symbolu pod kurzorem (a jeho dalších výskytů)
     ◆ Po zadání tohoto příkazu se Vim zeptá na nové jméno
@@ -209,16 +212,56 @@ Základní příkazy
     ◆ V případě Pythonu vyžaduje opravenou verzi.
         - stejně mi nikdy pořádně nefungoval :-(
 
+Další příkazy (ne všechny musí pracovat s Pythonem)
+--------------------------------------------------
+▶ :LspDefinition
+    ◆ skok na definici symbolu
+▶ :LspTypeDefinition
+    ◆ skok na definici datového typu
+▶ :LspDocumentFormat
+    ◆ zformátování celého dokumentu (zdrojového kódu)
+▶ :LspDocumentRangeFormat
+    ◆ zformátování vybrané části dokumentu (zdrojového kódu)
+▶ :LspNextError
+    ◆ skok na výskyt další chyby získané během diagnostiky
+▶ :LspPreviousError
+    ◆ skok na výskyt předchozí chyby získané během diagnostiky
+▶ :LspImplementation
+    ◆ seznam všech implemnetací rozhraní
+▶ :LspReferences
+    ◆ všechny nalezené reference
+
+Funkce
+--------------------------------------------------
+▶ lsp#enable()
+▶ lsp#disable()
+▶ lsp#register_server()
+▶ lsp#stop_server()
+▶ lsp#get_server_status
+
+Konfigurační volby
+--------------------------------------------------
+▶ Bežné globální proměnné s prefixem "lsp_"
+    ◆ g:lsp_auto_enable
+        - povolení modulu vim-lsp při startu Vimu
+    ◆ g:lsp_preview_keep_focus
+        - řízení přenosu kurzoru do náhledového okna
+
 Spuštění language serveru
 --------------------------------------------------
-call lsp#register_server({'name': 'pyls', 'cmd': {server_info->['pyls']},
-'cmd': {server_info->['pyls']},
-'whitelist': ['python'] })
+call lsp#register_server(
+    {'name': 'pyls', 'cmd': {server_info->['pyls']},
+     'cmd': {server_info->['pyls']},
+     'whitelist': ['python']}
+)
 
 Nastavení omnicompletion
 --------------------------------------------------
-▶Vkládací režim
-Ctrl+X Ctrl+O
+▶ Vkládací režim
+    ◆ Ctrl+X Ctrl+O
+▶ Nastavení vlastní funkce
+    set omnifunc=lsp#complete
+    ◆ samozřejmě je možné nastavit pro každý typ souboru zvlášť
 
 Příklad konfigurace Vimu
 --------------------------------------------------
