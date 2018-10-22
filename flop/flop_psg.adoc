@@ -160,4 +160,152 @@ Jak je z tohoto popisu patrné, byly možnosti zvukového čipu SN76489 skutečn
 
 Výše popsaný čip SN76489 byl vyráběn v několika různých verzích. Původní verze byla označována pouze SN76489, popř. SN76489N v případě úzkého pouzdra DIP. Pozdější varianty, které byly označovány SN76489A a SN76489AN, se od původních verzí lišily především inverzními výstupními signály, což se projevilo na odlišném zapojení zesilovače (ale na výslednou podobu zvuku prakticky neměly žádný vliv). Maximální hodinová frekvence všech těchto čtyř čipů byla stanovena na 4 MHz, takže tyto čipy byly dobře využitelné ve všech mikropočítačích a konzolích, v nichž byly frekvence hodinového signálu odvozeny od televizních norem NTSC a PAL.
 
+Kromě toho se ještě setkáme s variantami označovanými SN76494 popř. TMS9919, u nichž byla maximální hodinová frekvence snížena na 500 kHz (z označení TMS navíc můžeme vidět, že tyto čipy byly vyráběny i dalšími výrobci). Ve skutečnosti se jedná o prakticky shodné čipy s původním SN764789, ovšem chybí u nich vstupní dělička frekvence 1/8. Tyto varianty se používaly například i v herních automatech.
+
+Mnohem zajímavější je čip nesoucí označení SN76496, který je sice postaven na původní variantě SN76489, ovšem navíc využívá pin číslo 9, který nebyl u původní řady SN76489 zapojen. U SN76496 slouží pro vstup audio signálu (AUDIO IN), což umožňovalo kombinaci většího množství zdrojů zvuků (připomeňme si, že na výstup těchto čipů byl vyveden analogový signál vzniklý součtem všech zvukových kanálů, na rozdíl od některých pozdějších čipů s FM syntézou, které vetšinou vyžadovaly speciální D/A převodník).
+
+
+
+= Do třetice zvukový čip Texas Instruments, tentokrát SN76477
+
+Čip pojmenovaný SN76477, který taktéž vyráběla společnost Texas Instruments, se hned v několika ohledech odlišuje od všech ostatních PSG, s nimiž jsme se v tomto článku prozatím setkali. Ostatní PSG jsou totiž skutečně programovatelné resp. přesněji řečeno konfigurovatelné mikroprocesorem, který může v reálném čase modifikovat obsah řídicích registrů popř. nastavovat parametry DMA. Z pohledu mikroprocesoru (a vlastně i programátora) je tedy PSG jedním z mnoha dalších čipů, které lze relativně snadno ovládat (v BASICu pomocí POKE, v assembleru zápisem do řídicích registrů nebo portů).
+
+Čip TI SN76477 je při použití tohoto pohledu zcela odlišný, protože se generovaný zvuk řídí pomocí tlačítek, kondenzátorů, rezistorů (potenciometrů) a popř. vhodně zvoleného napětí přiloženého na zvolené piny tohoto integrovaného obvodu. Interně totiž SN76477 obsahuje klasický oscilátor, generátor šumu, generátor trojúhelníkového signálu, generátor obálky (envelope) a SLF (oscilátor s velmi nízkou frekvencí), jejichž parametry jsou řízeny zmíněnými elektronickými součástkami. Jedná se tedy spíše o čip vhodný pro bastlení popř. pro stavbu "alternativních" syntetizátorů, v nichž se kromě SN76477 použijí i další obvody (pro vytvoření smyčky atd. atd.).
+
+Klasický oscilátor může být řízen již zmíněným SLF, takže výsledek je do značné míry podobný signálu získaného FM syntézou. Generátor obálky je poněkud omezen, protože namísto běžné ADSR obálky (attack, decay, sustain, release) má obálka jen tři fáze ASR (attack, sustain, release). Rychlost fází attack a decay se, stejně jako úroveň sustain, nastavují externími součástkami (zde konkrétně děličem napětí).
+
+Důvodem, proč se o tomto poněkud neobvyklém čipu zmiňuji, je fakt, že byl použit v herních automatech, například ve slavných Space Invaders, Vanguard či Stratovox (zde společně s "ayčkem"). Mezi novější projekty založené na tomto čipu patří AxeSynth pocházející z roku 2004.
+
+
+
+= Generování zvuků a hudby na osmibitové herní konzoli NES s čipem 2A03 nebo 2A07
+
+Ústředním čipem, na němž je postavena slavná osmibitová herní konzole NES, je mikroprocesor Ricoh 2A03, popř. Ricoh 2A07 (tyto čipy se od sebe liší především odlišným časováním a jsou určeny pro různé televizní normy). Konstruktéři v případě mikroprocesoru 2A03/2A07 vsadili na osvědčenou jistotu, protože tento čip je založen na jádru oblíbeného osmibitového mikroprocesoru MOS 6502, který pravděpodobně není zapotřebí čtenářům FLOPu podrobněji představovat.
+
+V případě čipů 2A03/2A07 však došlo k určitému zjednodušení jádra původního MOS 6502. Například byl odstraněn nepříliš často používaný režim pro práci s BCD čísly, kdy se do jednoho bajtu ukládají dvě dekadické číslice 0-9 (každá do čtyř bitů - nibblu), což znamená, že rozsah ukládaných hodnot byl 00 až 99 a nikoli 0 a 255. Původní mikroprocesor MOS 6502 a jeho varianty může být do tohoto režimu přepnut pomocí instrukce SED (set decimal), přepnutí zpět zajišťuje instrukce CLD (clear decimal).
+
+Zatímco jádro mikroprocesoru bylo nepatrně zjednodušeno, byly na čip Ricoh 2A03/2A07 přidány další podpůrné moduly, díky jejichž existenci mohlo být redukováno celkové množství integrovaných obvodů, z nichž se herní konzole NES skládala. Jednalo se v první řadě o programovatelný "pomalý" časovač se základní frekvencí 240 Hz, z níž mohly být odvozeny další frekvence (48, 60, 96, 120 a 192 Hz). Dále byl na čip přidán modul pro přímý přístup do paměti a přenosy dat (DMA).
+
+V kontextu tohoto článku je pro nás však mnohem zajímavější další část určená pro práci se zvukem: šlo o programovatelné generátory obdélníkového signálu, generátor trojúhelníkového signálu a taktéž o konfigurovatelný generátor šumu tvořený posuvným registrem se zpětnou vazbou. Zapomenout nesmíme ani na modul určený pro přehrávání samplů (napojený na D/A převodník). Celý zvukový subsystém se řídil pomocí devatenácti osmibitových registrů.
+
+Zvuk či melodie mohly být tvořeny v pěti na sobě nezávislých kanálech. Jedná se o dva již zmíněné generátory obdélníkového signálu s volitelnou amplitudou, frekvencí a střídou, dále o (taktéž zmíněný) generátor trojúhelníkového signálu s volitelnou frekvencí a automaticky měněnou amplitudou, generátor šumu, u nějž bylo možné zvolit režim činnosti, amplitudu a frekvenci posunu a konečně o D/A převodník, který mohl být buď ovládán přímo programově, nebo bylo umožněno načítat zvukové vzorky (samply) uložené v paměti ROM či RAM. Zajímavé je, že zvukový subsystém neobsahoval žádné filtry, na rozdíl od (jednoduchých) filtrů nabízených čipem POKEY (Atari) či komplexnějších filtrů použitých v čipu SID (Commodore C64).
+
+Taktéž podpora pro tvarování obálky generovaných signálů byla pouze dosti jednoduchá (tuto funkcionalitu však neměl ani POKEY, kde se musela řešit programovými cestami či trikem s high-pass filtry). Čip 2A03/2A07 obsahoval dva piny, na které byl přiváděn výstup ze všech pěti zvukových kanálů. Na pin číslo 1 (ROUT) byl přiváděn výstup z obou generátorů obdélníkových signálů, zatímco výstup z ostatních třech kanálů byl přiváděn na pin číslo 2 (COUT). V herní konzoli NES byl výstup z obou kanálů sloučen a analogově sečten s mikrofonním vstupem (ten se příliš často nepoužíval) a výsledný analogový signál byl zesílen a dále zpracován.
+
+Z hlediska programátora-hudebníka se nejjednodušeji ovládaly oba generátory obdélníkových signálů, u nichž bylo možné měnit zejména tři základní parametry: amplitudu (4 bity = 16 nastavitelných úrovní), frekvenci (přibližně 54,6 Hz až 12,4 kHz podle použité televizní normy, frekvenci bylo možné měnit plynule díky použití šestnáctibitových čítačů) a střídu (1:8, 1:4, 1:2, 3:4). Každý z této dvojice kanálů se ovládal čtyřmi řídicími registry: SQx_VOL (hlasitost), SQx_SWEEP (střída), SQx_LO a SQx_HI (počáteční hodnota čítače, ze které se odvozuje frekvence zvuku). Poznámka: za "x" si doplňte číslo kanálu, tedy 1 nebo 2.
+
+U generátoru trojúhelníkového signálu se měnila jeho úroveň (4 bity = 16 úrovní) automaticky, ale programově bylo možné nastavit frekvenci změn signálu v rozsahu 27,3 Hz až 55,9 kHz (opět v závislosti na použité televizní normě). Vše se ovládalo třemi registry nazvanými TRI_LINEAR (aktuální hodnota čítače pro generování "schodů" tvořících vzestupnou i sestupnou hranu trojúhelníkového signálu, zvyšuje se automaticky), TRI_LO a TRI_HI (počáteční hodnota čítače, z něhož se odvozuje frekvence trojúhelníkového signálu).
+
+Podobně jako další popsané zvukové čipy POKEY či AY-3-8910, obsahoval i zvukový subsystém herní konzole NES generátor šumu. Ten byl vytvořen pomocí patnáctibitového posuvného registru se zpětnou vazbou: vybrané dva bity posuvného registru byly přes hradlo XOR přesunuty na jeho začátek, přičemž se obsah registru mezitím posunul o jeden bit doleva. Zvukový výstup byl generován na základě aktuálního obsahu bitu s indexem 14.
+
+Posuvný registr mohl pracovat ve dvou režimech činnosti: "krátkém" a "dlouhém". Ve "dlouhém režimu" se generovala sekvence pseudonáhodných bitů s periodou 32767 vzorků (zbývající 32768 stav nemohl být použit, protože se jednalo o nulovou hodnotu spadající mimo generovanou sekvenci; to již ostatně známe). V "krátkém režimu" byla perioda pseudonáhodného signálu kratší: 93 bitů/vzorků. Samozřejmě bylo taktéž možné měnit frekvenci posunu, a to přibližně v rozsahu 29,3 Hz až 447 kHz (opět v závislosti na tom, jaká televizní norma byla použita). Pro řízení generátoru šumu byly použity tři registry: NOISE_VOL (hlasitost, 4 bity), NOISE_LO a NOISE_HI (frekvence + výběr krátkého nebo dlouhého režimu).
+
+Zbývá nám si popsat už jen pátý kanál, jímž je D/A převodník. Ten bylo možné ovládat programově změnou jednoho řídicího registru (sedmibitová hodnota), popř. byla podporována funkce automatického přehrávání vzorků (samplů) z paměti ROM, přičemž při načítání samplu došlo k pozastavení mikroprocesoru. Při přehrávání vzorků byla frekvence nastavitelná v rozsahu 4,2 kHz až 33,5 kHz (ovšem zvolit bylo možné jen šestnáct přednastavených frekvencí). D/A převodník se ovládal čtyřmi registry nazvanými DMC_FREQ (frekvence přehrávání samplů), DMC_RAW (přímý sedmibitový výstup, pokud se nepoužije automatické přehrávání), DMC_START (adresa se vzorky, resp. konstanta, z níž se adresa vypočte) a DMC_LEN (počet vzorků).
+
+Devatenáctý a současně i poslední řídicí registr se jmenuje SND_CHN. Slouží pro povolení zvukových kanálů a pro přečtení stavu zvukového subsystému.
+
+Tento čip již nabízí v porovnání s POKEY zajímavé možnosti. Týká se to zejména 16bitových čítačů použitých při generování obdélníkových signálů (v POKEY naproti tomu bylo nutné spojit dva kanály) a generátoru trojúhelníkového signálu, který mohl být použitý pro basové linky popř. pro perkusní nástroje. Naproti tomu jsou možnosti konfigurace poly čítače mnohem omezenější.
+
+
+
+= Integrovaný obvod AY-3-8910 neboli podomácku "áýčko" a jeho varianty (YM2149 atd.)
+
+Předposledním zvukovým čipem z éry osmibitových počítačů, který si v tomto článku popíšeme, je čip AY-3-8910 firmy General Instrument (GI), později vyráběný i firmou Yamaha pod označením YM2149. Tento čip byl součástí osmibitového domácího mikropočítače ZX Spectrum 128K, herních konzolí Vectrex a Intellivision či 16/32bitového počítače Atari ST (YM2149) či CP1610. Samotné jádro čipu, které se stará o generování zvuku, firma Yamaha používala prakticky dodnes i v současných integrovaných obvodech určených pro video hry či mobilní telefony. Jedná se především o čip YM-2203 (označovaný též zkratkou OPN), který původní AY-3–8910 rozšiřuje o frekvenční modulaci (FM).
+
+Samotný zvukový čip AY-3–8910 byl vyráběn ve třech variantách označovaných AY-3–8910, AY-3–8912 a AY-3–8913. Jednotlivé varianty čipu se však nelišily způsobem generování zvuků (funkční bloky pro práci se zvukem totiž zůstávaly nezměněné), ale především počtem osmibitových vstupně/výstupních portů ovládaných přes řídicí registry (viz navazující odstavce).
+
+AY-3–8910 se totiž, podobně jako již popsaný čip POKEY, používal kromě práce se zvuky a hudbou také pro ovládání dalších zařízení; mohl například pracovat jako jednoduchý programově řízený paralelní port, rozhraní pro připojení digitálních joysticků, přepínač mezi bankami operační paměti atd. Počítače či herní konzole, které pro ovládání dalších zařízení využívaly jiný obvod (například Intel 8255), tak obsahovaly buď nejmenší a samozřejmě i nejlevnější čtyřiadvacetipinovou variantu AY-3–8913, popř. osmadvacetipinovou variantu AY-3–8912.
+
+Základní vlastnosti všech tří variant čipu AY jsou vypsány v následující tabulce:
+
+Označení čipu Počet I/O Pinů
+AY-3–8910     2         40
+AY-3–8912     1         28
+AY-3–8913     žádný     24
+
+Poslední zmíněný čip měl jeden pin nezapojený, další přidaný pin byl určen pro výběr obvodu (chip select) a navíc obsahoval testovací piny TEST IN a TEST OUT.
+
+Osmibitový domácí počítač ZX Spectrum pravděpodobně není zapotřebí čtenářům blíže představovat. V Evropě se jednalo o nejrozšířenější domácí osmibitový počítač se silnou programátorskou i uživatelskou podporou. Tento počítač, který byl po hardwarové stránce velmi jednoduchý (v porovnání s Atari až primitivní :-), bylo také velmi snadné "klonovat". Z tohoto důvodu existuje několik desítek typů klonů vyráběných v různých zemích (u nás, resp. dnes spíše v SR, se jednalo například o typovou řadu Didaktik Gama a Didaktik M).
+
+Původní ZX Spectrum sice bylo vybaveno pouze interním reproduktorem připojeným na jeden z pinů čipu ULA (bylo tedy možné vytvářet zvuk jen s využitím dvoustavového obdélníkového signálu, podobně jako později na PC-Speakeru), ale modernější verze ZX Spectra nazvaná ZX Spectrum 128K již obsahovala - kromě mnoha dalších vylepšení - i zvukový čip AY, což oproti původnímu řešení představovalo značný pokrok.
+
+Zvukový čip AY-3–8912 byl použit i v herní konzoli Vectrex, která je zajímavá především tím, že pro zobrazování používá zabudovaný vektorový displej. Aby se alespoň z malé části nahradily některé nedostatky vektorové grafiky (například praktická nemožnost vyplňování ploch a také viditelné poblikávání zobrazovaných vektorů ve složitějších obrazech), byla ke každé hře dodávána poloprůhledná fólie, která se umístila před monitor. Na fólii byl většinou nakreslen okolní herní svět.
+
+Přímo v herní konzoli byla zabudována i obrazovka Samsung 240RB40, která měla velikost cca 8×11 palců a byla postavena poněkud netradičně "nastojato". Za účelem dosažení co nejnižší ceny celé konzole byly použity černobílé výprodejové obrazovky. Ve druhé generaci se tvůrci pokoušeli použít i barevnou obrazovku, to však značným způsobem navyšovalo cenu celého systému, proto bylo od tohoto nápadu upuštěno.
+
+Kromě mikroprocesoru, pamětí a D/A převodníku s multiplexerem byla konzole osazena i v článku popisovaným zvukovým čipem AY-3–8912 (tj. "prostřední" variantou s jedním osmibitovým portem), který sloužil pro generování zvukového doprovodu, dále obvod PIA pro řízení vstupů i výstupů a nakonec digitálně-analogový převodník MC1408 (ten byl v zařízení přítomen pouze jeden, i když ve skutečnosti přes multiplexer ovládal celkem tři analogové výstupy).
+
+Další počítač, který obsahoval zvukový čip AY-3–8910 (resp. jeho variantu YM2149 od firmy Yamaha), již byl představitelem nové generace 16/32bitových strojů. Jednalo se o počítače řady Atari ST. Řada ST začínala modelem Atari 260 ST (přesněji, existoval ještě model Atari 130 ST, ten se však prakticky neprodával), který však byl poměrně rychle nahrazen třemi typy počítačů, jež svými vlastnostmi pokrývaly značnou část tehdejšího trhu s osobními počítači: Atari 520 ST, Atari 1040 ST a Atari Mega ST.
+
+Čip AY-3–8910 i všechny jeho varianty používá pro tvorbu zvuků a hudby tři samostatně nastavitelné tónové generátory, které produkují obdélníkové signály o zadané frekvenci (rozsah je 8 oktáv, každý kanál přitom obsahuje dvanáctibitový dělič), jenž jsou dále zpracovávány. Každý tónový generátor vytváří zdroj zvukového signálu pro jeden ze zvukových kanálů – celkem jsou tedy k dispozici tři zvukové kanály, přičemž výstup každého z kanálů je vyveden na samostatný pin (jedná se o analogový výstup, na který lze například přímo zapojit zesilovač).
+
+To je pro PSG velmi netypické zapojení, protože u většiny ostatních zvukových čipů jsou zvuky z jednotlivých kanálů namixovány přímo na čipu do jednoho výstupu; na druhou stranu je však možné velmi jednoduše i s pomocí pouze jediného AY-3–8910 vytvářet stereo hudbu. Kromě tónových generátorů je možné použít i generátor šumu, jehož výstup lze přivést do zvoleného (či zvolených) zvukových kanálů. Generátor šumu se často používá například pro napodobení zvuku perkusních nástrojů, podobně jako tomu je u již popsaných zvukových čipů POKEY či u dále zmíněného SIDu.
+
+Obdélníkový signál vytvářený v tónových generátorech lze upravit pomocí obálky, která je však generována poněkud netypickým způsobem (například u SIDu je použita klasická obálka typu ADSR – attack, decay, sustain, release). Obálka má u ayčka tvar digitalizovaného periodického nebo neperiodického pilového či trojúhelníkového signálu. Taktéž je možné obálku ovládat programově, což vlastně znamená, že se pomocí zápisu do jednoho z řídicích registrů mění amplituda generovaného obdélníkového signálu.
+
+Na výstupu se nachází nelineární digitálně/analogový převodník, který slouží k převodu čtyřbitové hodnoty získané modifikací obdélníkového signálu obálkou na napěťovou úroveň v rozsahu do 1,35 Voltů (při zatížení analogového výstupu obvodem s odporem 1 k). Díky použití nelineárního D/A převodníku se signál s původně lichoběžníkovým průběhem (výsledek změny amplitudy obdélníkového signálu pomocí obálky) mění na signál se "špičkami", které dodávají hudbě vytvářené na čipu AY-3–8910 typické zabarvení.
+
+Nelinearita D/A převodníku způsobuje problémy při přehrávání samplované hudby, neboť ta je většinou uložena ve formě osmibitových či šestnáctibitových vzorků s lineární závislostí mezi uloženou hodnotou a zaznamenanou úrovní. Z tohoto důvodu se při přehrávání samplované hudby na AY-3–8910 musejí používat převodní tabulky (existuje jich větší množství, liší se jak způsobem uložení, tak i konkrétními hodnotami pro převod; nesmíme také zapomínat na to, že zesilovače zapojené za AY-3–8910 nemusí mít lineární průběh a tudíž se převodní tabulky mohou mezi jednotlivými typy počítačů odlišovat).
+
+Podívejme se nyní na tento PSG z pohledu programátora. Zvukový čip AY-3–8910 je ovládán pomocí šestnácti osmibitových řídicích registrů, které jsou pojmenovány R0 až RF, jejichž stručný popis je uveden v tabulce pod odstavcem:
+
+Registr Význam
+R0  dolních osm bitů děliče frekvence hudebního kanálu A
+R1  horní čtyři bity děliče frekvence hudebního kanálu A
+R2  dolních osm bitů děliče frekvence hudebního kanálu B
+R3  horní čtyři bity děliče frekvence hudebního kanálu B
+R4  dolních osm bitů děliče frekvence hudebního kanálu C
+R5  horní čtyři bity děliče frekvence hudebního kanálu C
+R6  pět bitů děliče frekvence generátoru šumu
+R7  nastavení zvukového mixéru i směru obou I/O portů
+R8  nastavení úrovně hlasitosti hudebního kanálu A
+R9  nastavení úrovně hlasitosti hudebního kanálu B
+RA  nastavení úrovně hlasitosti hudebního kanálu C
+RB  dolních osm bitů děliče frekvence generátoru obálky
+RC  horních osm bitů děliče frekvence generátoru obálky
+RD  nastavení tvaru obálky
+RE  data I/O portu A (vstup či výstup)
+RF  data I/O portu B (vstup či výstup)
+
+Povšimněte si, že zatímco AY-3–8910 je řízen šestnácti registry, u čipu POKEY se vytvářený zvuk ovlivňoval registry devíti a čip SID měl pro stejný účel vyhrazeno dokonce 29 registrů. Řídicí registry je možné podle jejich funkce rozdělit do několika skupin. Prvních šest registrů R0 až R5 slouží pro nastavení frekvence obdélníkového signálu generovaného v každém hudebním kanálu (pro jeden hudební kanál jsou použity vždy dva sousední registry, do nichž se ukládá hodnota pro frekvenční dělič).
+
+Následuje registr R6, kterým se nastavuje frekvence šumu, registr R7 pro řízení mixéru a vstupně-výstupních portů, trojice registrů R8, R9, RA pro nastavení hlasitosti jednotlivých hudebních kanálů, dvojice registrů RB a RC pro nastavení frekvence obálky, registr RD určující tvar obálky a konečně dvojice registrů RE a RF, které jsou použity při práci se vstupně-výstupními porty. Těmito dvěma registry se nebudeme dále zabývat, neboť nemají vliv na vytvářený zvuk, ostatní registry budou naopak popsány podrobněji.
+
+Základ tónu je pro každý hudební kanál tvořen v generátoru obdélníkového signálu (square wave generator). Princip práce tohoto generátoru je velmi jednoduchý (ostatně právě proto ho můžeme nalézt jak v AY-3–8910, tak i v čipu POKEY). Frekvence pravidelného hodinového signálu přiváděného na vstup CLOCK, jenž se nachází na pinu číslo 22, je u YM2149 nejprve pomocí klopného obvodu typu T vydělena na polovinu. To, zda k vydělení skutečně dojde, závisí na stavu pinu SEL; naproti tomu u původního AY-3–8910 se toto vydělení frekvence na polovinu neprovádí nikdy. Výsledkem je signál nazvaný master clock.
+
+Poté je hodinový signál přiveden do binárních čítačů, které pracují jako frekvenční děliče (pravděpodobně jsou v AY-3–8910 skutečně použity děliče založené na binárních čítačích, které s každým hodinovým taktem sníží svoji hodnotu o jedničku, přičemž po dosažení nuly je jejich výstup invertován a do čítače se dosadí původní hodnota). Frekvence obdélníkového signálu je pro každý hudební kanál ovládána zvlášť pomocí dvojice osmibitových řídicích registrů (R0+R1 pro kanál A, R2+R3 pro kanál B a R4+R5 pro kanál C), v nichž je uloženo dvanáctibitové číslo představující hodnotu, kterou se dělí hodinový signál.
+
+Z celkem šestnácti bitů je možné nastavit pouze bitů dvanáct, což je však pro požadovaný frekvenční rozsah osmi oktáv dostatečné. Frekvence každé obdélníkové vlny se vypočte pomocí vztahu: f_square=f_master/16TP, kde TP je hodnota uložená ve dvojici řídicích registrů a f_master je frekvence hodinového signálu.
+
+Dalším primárním zdrojem signálu pro tvorbu zvuku je generátor šumu (noise generator). Výstup z tohoto generátoru (opět se jedná o binární signál, v tomto případě o náhodné pulsy) může být přiveden do libovolného hudebního kanálu, v případě potřeby i do všech kanálů, ovšem šumový generátor je pouze jeden a i jeho frekvence je pro všechny tři hudební kanály vždy stejná. Pro nastavení frekvence šumového generátoru je určeno pět bitů řídicího registru R6.
+
+Frekvence je vypočtena podle vztahu prakticky totožného se vztahem uvedeným v předchozím odstavci: f_noise=f_master/16NP, kde NP je hodnota uložená v řídicím registru R6. Vzhledem k menší maximální hodnotě, kterou lze uložit do pěti bitů (2^5-1=31 vs. 2^12-1=4095) je i frekvence vytvářeného šumu většinou mnohem vyšší než frekvence obdélníkového signálu (v případě šumu není zcela přesné hovořit o frekvenci, spíše se jedná o maximální mez frekvence).
+
+Důležitou součástí zvukového čipu AY-3–8910 je takzvaný mixér. V něm se pro každý hudební kanál zvlášť nastavuje zdroj signálu, který má být dále zpracováván. Pro každý hudební kanál lze povolit vstup obdélníkového signálu o zvolené frekvenci a vstup z generátoru šumu. V případě, že jsou pro jeden hudební kanál povoleny oba zdroje zvuku, jsou korektně smíchány (tato operace je implementačně velmi jednoduchá, neboť obdélníkový i šumový signál je binární, tudíž lze mixér realizovat pomocí logických hradel). Nastavení mixéru se provádí pomocí řídicího registru R7. Pro každý kanál jsou v tomto registru vyhrazeny dva bity – zápis nuly do příslušného bitu povoluje vstup obdélníkového signálu či šumu. Pokud jsou oba bity nastaveny na logickou jedničku, je výstup pro zvolený zvukový kanál zakázán.
+
+Nejvyšší dva bity řídicího registru R7 slouží k určení směru vstupně-výstupních portů – každý port může být nastaven buď do výstupního režimu (zápis dat) nebo do režimu vstupního (čtení dat).
+
+Hlasitost hudebních kanálů lze nastavit buď programově na jednu ze šestnácti úrovní, nebo je možné hlasitost měnit pomocí generátoru obálky popsaného v následujících odstavcích. Pro řízení hlasitosti každého hudebního kanálu je určený jeden řídicí registr – R8 až RA. Amplituda je nastavena čtyřmi bity (rychlou programovou změnou amplitudy je možné přehrávat samplované zvuky), pátým bitem řídicího registru je určeno, zda má být amplituda skutečně řízena programově nebo zda se má použít generátor obálky. Nejvyšší tři bity tohoto řídicího registru zůstávají nevyužity.
+
+Dalším funkčním blokem, který se podílí na tvarování výsledného zvuku, je takzvaný generátor obálky (envelope generator). Obálkou je možné (s využitím amplitudové modulace) ovlivnit maximální hodnoty původního obdélníkového a/nebo šumového signálu. Zatímco u dále popsaného čipu SID byly použity obálky typu ADSR (attack, decay, sustain, release), má u AY-3–8910 obálka tvar periodického či neperiodického trojúhelníkového nebo pilového signálu. Ve skutečnosti se však nejedná o analogový signál, ale o signál digitální se šestnácti úrovněmi, tj. na osciloskopu by místo čistých průběhů bylo na každé náběžné nebo sestupné patrných šestnáct "schodů".
+
+Pro nastavení frekvence změny obálky (přesněji doby čítání stavů 0–15) slouží dvojice řídicích registrů RB a RC, do nichž lze zadat šestnáctibitovou konstantu, která je použita v následujícím vztahu: f_EP=f_master/256EP, kde EP je šestnáctibitová hodnota uložená do výše zmíněné dvojice řídicích registrů RB a RC. Vzhledem ke konstantě, která se v tomto vztahu vyskytuje, má signál představovaný obálkou výrazně delší periodu, než signál obdélníkový. To odpovídá významu obálky, protože v každém cyklu obálky (t_EP=1/f_EP) se vygeneruje trojúhelníková část vlny mající šestnáct kroků – vždy se projde všemi šestnácti úrovněmi.
+
+Tvar obálky je určen nejnižšími čtyřmi bity řídicího registru RD, pomocí nichž je možné vybrat jeden z osmi tvarů obálky (ze šestnácti možných kombinací je tedy pouze osm kombinací unikátních). Tyto čtyři bity jsou pojmenovány CONT, ATT, ALT a HOLD. Bitem CONT (continue) se určuje, zda se bude obálka periodicky opakovat, bit ATT (attenuation) vybírá tvar náběžné části vlny (vzestupná či sestupná), nastavením bitu ALT (alternation) lze vynutit zrcadlové či naopak periodické opakování náběžné části vlny (tj. buď se vytváří pilový nebo trojúhelníkový signál) a konečně bitem HOLD lze zajistit "podržení" výstupu po první periodě na konstantní hodnotě.
+
+Generátor obálky se používá mnoha způsoby, například při samplingu (zde lze využít automatické vytváření vzestupných a sestupných hran), syntéze řeči atd. Je také možné vytvářet tón pouze pomocí periodicky se opakující obálky a napodobovat tak generátor pilového nebo trojúhelníkového signálu.
+
+Čip AY se samozřejmě musel nějakým způsobem připojit k adresové a datové sběrnici počítače. Předpokládalo se, že se použije osmibitová datová sběrnice multiplexovaná s dolními osmi bity sběrnice adresové. Na vstupy BDIR, BC1 a BC2 mohou být připojeny řídicí signály, na piny DA0 až DA7 se připojují multiplexované adresové a datové vodiče a vstupy A8 a !A9 slouží pro výběr čipu (to, zda jsou přímo zapojeny na adresovou sběrnici, či zda je před nimi předřazen dekodér, je již závislé na architektuře počítače).
+
+Vstupně/výstupní osmibitové porty jsou vyvedeny na piny IOA0 až IOA7 (první port) a IOB0 až IOB7 (druhý port). Posledními digitálními vstupy jsou CLOCK (hodiny, od nichž jsou odvozeny frekvence generovaných tónů) a !SEL (zamknutí hodin). Na poslední tři piny označené ANALOG A, ANALOG B a ANALOG C jsou vyvedeny výstupy ze všech tří zvukových kanálů. Tyto výstupy buď mohou být přivedeny do jednoho zesilovače (mono zvuk) nebo do více zesilovačů (stereo zvuk, tři hlasy).
+
+Již v úvodních odstavcích jsme si řekli, že pro AY-3–8910 jsou k dispozici dva osmibitové obousměrné porty a ve variantě AY-3–8912 jeden osmibitový obousměrný port (přesněji řečeno všechny tři varianty čipu AY-3–8910 oba paralelní porty interně obsahovaly, ale u variant s menším počtem kontaktů nebyl buď jeden nebo ani jeden port vyvedený na piny čipu, takže se celkový počet pinů mohl snížit z původních 40 na 28 popř. pouze 24 kontaktů).
+
+Tyto osmibitové porty, které lze přepnout do vstupního či výstupního režimu, je možné využít například po připojení digitálních joysticků, tiskárny vybavené rozhraním Centronics atd. V některých osmibitových počítačích, jejichž mikroprocesory dokázaly adresovat většinou pouze 64 kB operační paměti (MOS 6502, Motorola M6809, Intel 8080, Z80), býval jeden z portů využíván pro přepínání aktivní paměťové banky – v portu byl uložen index zvolené paměťové banky, čímž bylo možné zvýšit celkovou kapacitu paměti z původních maximálně 64 kB až na několikanásobek této hodnoty, podle toho, kolik bank bylo skutečně obsazených paměťovými čipy.
+
+Výstup z portu byl připojen na vstup CS – Chip Select paralelně zapojených paměťových pouzder – předpokladem správné funkce je, že se datové výstupy paměťových čipů přepnou do režimu vysoké impedance v případě, že čip není vybraný signálem CS.
+
+
+
+= Slavný SID firmy MOS
 
