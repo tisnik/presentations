@@ -1,3 +1,8 @@
+#!/usr/bin/python
+# vim: set fileencoding=utf-8
+
+# Demonstrační příklady využívající knihovnu Pyglet
+
 import pyglet
 
 window = pyglet.window.Window(width=640,
