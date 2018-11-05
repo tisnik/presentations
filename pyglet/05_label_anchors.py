@@ -5,6 +5,7 @@
 
 import pyglet
 
+# vytvoření okna
 window = pyglet.window.Window(width=640,
                               height=480,
                               caption="Pyglet library")
@@ -42,4 +43,5 @@ def on_draw():
     label3.draw()
 
 
+# spuštění smyčky pro zpracování událostí
 pyglet.app.run()
