@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+# vim: set fileencoding=utf-8
+
+# Demonstrační příklady využívající knihovnu Pyglet
 
 import pyglet
 from pyglet.gl import *
