@@ -3,6 +3,7 @@
 
 # Demonstrační příklady využívající knihovnu Pyglet
 
+# všechny třídy a funkce jsou obsaženy v jediném modulu pyglet
 import pyglet
 
 # vytvoření okna
