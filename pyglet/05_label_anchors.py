@@ -3,6 +3,7 @@
 
 # Demonstrační příklady využívající knihovnu Pyglet
 
+# všechny třídy a funkce jsou obsaženy v jediném modulu pyglet
 import pyglet
 
 # vytvoření okna
@@ -37,6 +38,7 @@ label3 = pyglet.text.Label("Pyglet library",
 
 @window.event
 def on_draw():
+    """Obsluha události."""
     window.clear()
     label1.draw()
     label2.draw()
