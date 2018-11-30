@@ -3,7 +3,7 @@
 
 # Demonstrační příklady využívající knihovnu Pyglet
 
-# všechny třídy a funkce jsou obsaženy v jediném modulu pyglet
+# všechny třídy a funkce jsou obsaženy v jediném modulu nazvaném pyglet
 import pyglet
 
 # vytvoření okna
@@ -14,7 +14,7 @@ window = pyglet.window.Window(width=640,
 
 @window.event
 def on_draw():
-    """Obsluha události."""
+    """Obsluha události - překreslení obsahu okna."""
     window.clear()
 
 
