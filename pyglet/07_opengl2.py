@@ -3,10 +3,14 @@
 
 # Demonstrační příklady využívající knihovnu Pyglet
 
+# všechny třídy a funkce jsou obsaženy v jediném modulu nazvaném pyglet
 import pyglet
+
+# druhý import s funkcemi převzatými z OpenGL
 from pyglet.gl import *
 
 
+# vytvoření okna
 window = pyglet.window.Window(width=640,
                               height=480,
                               caption="Pyglet+OpenGL")
@@ -14,6 +18,7 @@ window = pyglet.window.Window(width=640,
 
 @window.event
 def on_draw():
+    """Obsluha události - překreslení obsahu okna."""
     glClear(GL_COLOR_BUFFER_BIT)
     glLoadIdentity()
     glBegin(GL_TRIANGLES)
@@ -23,4 +28,5 @@ def on_draw():
     glEnd()
 
 
+# spuštění smyčky pro zpracování událostí
 pyglet.app.run()
