@@ -28,7 +28,7 @@ void print_roman(n) {
 }
 
 char *s="ABCDEFGHJKMNOPQRSTUWYZ";
-char *t="chteli byste zjistit jak to cele funguje ze";
+    char *t="chteli byste zjistit jak to cele funguje ze";
 
 void main(void) {
     int i;
