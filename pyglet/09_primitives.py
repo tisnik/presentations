@@ -3,7 +3,10 @@
 
 # Demonstrační příklady využívající knihovnu Pyglet
 
+# všechny třídy a funkce jsou obsaženy v jediném modulu nazvaném pyglet
 import pyglet
+
+# druhý import s funkcemi převzatými z OpenGL
 from pyglet.gl import *
 
 # vytvoření okna
@@ -13,6 +16,7 @@ window = pyglet.window.Window(width=450,
 
 
 def draw_points():
+    """Vykreslení bodů."""
     glColor3f(1.0, 1.0, 1.0)                # nastaveni barvy pro kresleni
     glBegin(GL_POINTS)                      # nyni zacneme vykreslovat body
     glVertex2i(50, 50)
@@ -23,6 +27,7 @@ def draw_points():
 
 
 def draw_lines():
+    """Vykreslení úseček."""
     glColor3f(1.0, 0.0, 1.0)
     glBegin(GL_LINES)                       # nyni zacneme vykreslovat usecky
     glVertex2i(150, 50)
@@ -33,6 +38,7 @@ def draw_lines():
 
 
 def draw_line_strip():
+    """Vykreslení polyčar."""
     glColor3f(0.0, 1.0, 1.0)
     glBegin(GL_LINE_STRIP)                  # nyni vykreslime polycaru
     glVertex2i(250,  50)
@@ -43,6 +49,7 @@ def draw_line_strip():
 
 
 def draw_line_loop():
+    """Vykreslení uzavřených polyčar."""
     glColor3f(1.0, 1.0, 0.0)
     glBegin(GL_LINE_LOOP)                   # nyni vykreslime uzavrenou
     glVertex2i(350, 50)                     # polycaru (nevyplneny polygon)
@@ -53,6 +60,7 @@ def draw_line_loop():
 
 
 def draw_triangles():
+    """Vykreslení trojúhelníků."""
     glColor3f(0.0, 0.0, 1.0)
     glBegin(GL_TRIANGLES)                   # vykresleni trojuhelniku
     glVertex2i(50, 150)
@@ -63,6 +71,7 @@ def draw_triangles():
 
 
 def draw_triangle_strip():
+    """Vykreslení pruhů trojúhelníků."""
     glColor3f(0.0, 1.0, 0.0)
     glBegin(GL_TRIANGLE_STRIP)              # vykresleni pruhu trojuhelniku
     glVertex2i(150, 150)
@@ -73,6 +82,7 @@ def draw_triangle_strip():
 
 
 def draw_triangle_fan():
+    """Vykreslení vrcholu složeného z trojúhelníků."""
     glColor3f(1.0, 0.0, 0.0)
     glBegin(GL_TRIANGLE_FAN)                # vykresleni trsu trojuhelniku
     glVertex2i(300, 150)
@@ -86,6 +96,7 @@ def draw_triangle_fan():
 
 
 def draw_quads():
+    """Vykreslení čtyřúhelníků."""
     glColor3f(1.0, 0.5, 0.5)
     glBegin(GL_QUADS)                       # vykresleni ctyruhelniku
     glVertex2i(50, 250)
@@ -96,6 +107,7 @@ def draw_quads():
 
 
 def draw_quad_strip():
+    """Vykreslení pruhu čtyřúhelníků."""
     glColor3f(0.5, 0.5, 1.0)
     glBegin(GL_QUAD_STRIP)                  # vykresleni pruhu ctyruhleniku
     glVertex2i(150, 250)
@@ -110,6 +122,7 @@ def draw_quad_strip():
 
 
 def draw_polygon():
+    """Vykreslení obecného polygonu."""
     glColor3f(0.5, 1.0, 0.5)
     glBegin(GL_POLYGON)                     # vykresleni konvexniho polygonu
     glVertex2i(350, 260)
@@ -125,6 +138,7 @@ def draw_polygon():
 
 @window.event
 def on_draw():
+    """Obsluha události - překreslení obsahu okna."""
     glClear(GL_COLOR_BUFFER_BIT)
     glLoadIdentity()
 
@@ -144,4 +158,5 @@ def on_draw():
     draw_polygon()
 
 
+# spuštění smyčky pro zpracování událostí
 pyglet.app.run()
