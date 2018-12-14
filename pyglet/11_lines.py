@@ -1,8 +1,12 @@
 #!/usr/bin/env python
+# vim: set fileencoding=utf-8
+
+# Demonstrační příklady využívající knihovnu Pyglet
 
 import pyglet
 from pyglet.gl import *
 
+# vytvoření okna
 window = pyglet.window.Window(width=450,
                               height=350,
                               caption="Pyglet+OpenGL")
