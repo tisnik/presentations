@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 # vim: set fileencoding=utf-8
 
+# ---------------------------------------------------------------------
+#
 # Demonstrační příklady využívající knihovnu Pyglet
+#
+# Příklad číslo 3: obsluha události - překreslení obsahu okna
+#
+# ---------------------------------------------------------------------
+
 
 # všechny třídy a funkce jsou obsaženy v jediném modulu nazvaném pyglet
 import pyglet
