@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 # vim: set fileencoding=utf-8
 
+# ---------------------------------------------------------------------
+#
 # Demonstrační příklady využívající knihovnu Pyglet
+#
+# Příklad číslo 4: použití textového návěští
+#
+# ---------------------------------------------------------------------
+
 
 # všechny třídy a funkce jsou obsaženy v jediném modulu nazvaném pyglet
 import pyglet
