@@ -1,4 +1,4 @@
-#další možnosti použití textového návěští!/usr/bin/env python
+#!/usr/bin/env python
 # vim: set fileencoding=utf-8
 
 # ---------------------------------------------------------------------
@@ -6,6 +6,7 @@
 # Demonstrační příklady využívající knihovnu Pyglet
 #
 # Příklad číslo 7: ukázka použití základních funkcí OpenGL
+#                  další možnosti použití textového návěští
 #
 # ---------------------------------------------------------------------
 
