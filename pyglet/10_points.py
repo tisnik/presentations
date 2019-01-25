@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 # vim: set fileencoding=utf-8
 
+# ---------------------------------------------------------------------
+#
 # Demonstrační příklady využívající knihovnu Pyglet
+#
+# Příklad číslo 10: ukázka použití základních funkcí OpenGL
+#                   základní vlastnosti bodů (points)
+#
+# ---------------------------------------------------------------------
 
 # všechny třídy a funkce jsou obsaženy v jediném modulu nazvaném pyglet
 import pyglet
