@@ -1,9 +1,19 @@
 #!/usr/bin/env python
 # vim: set fileencoding=utf-8
 
+# ---------------------------------------------------------------------
+#
 # Demonstrační příklady využívající knihovnu Pyglet
+#
+# Příklad číslo 12: ukázka použití základních funkcí OpenGL
+#                   základní vlastnosti trojúhelníků (triangle)
+#
+# ---------------------------------------------------------------------
 
+# všechny třídy a funkce jsou obsaženy v jediném modulu nazvaném pyglet
 import pyglet
+
+# druhý import s funkcemi převzatými z OpenGL
 from pyglet.gl import *
 
 # vytvoření okna
