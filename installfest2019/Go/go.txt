@@ -1,0 +1,195 @@
+Charakteristické rysy jazyka Go
+--------------------------------------------------
+„Less is more“
+▶ Multiparadigmatický jazyk
+    ◆ Procedurální
+    ◆ Objekově orientovaný
+    ◆ Podpora konstrukcí pro paralelní programování
+▶ Vznik
+    ◆ Snaha o přidání konstrukcí pro paralelní programování do C++
+    ◆ Serverové aplikace pro Google
+▶ Dostupný pro všechny „zajímavé“ systémy
+    ◆ Linux, (Free)BSD, macOS, Microsoft Windows
+▶ Současná verze používá vlastní backend
+
+Charakteristické rysy jazyka Go
+--------------------------------------------------
+▶ Cíle
+    ◆ Jednoduchost, jednoznačnost
+    ◆ Jazyk postaven na jednoduchých a známých konceptech
+        ⇒ Lze začít programovat po doslova několikaminutovém tutoriálu
+    ◆ Bezpečné aplikace
+    ◆ Mikroslužby
+    ◆ Skripty a nástroje pro DevOps od DevOps
+    ◆ Jazyk pro potřeby Googlu:
+        ⇒ spíše pro mladší vývojáře (C/C++, Java, Python ve škole)
+    ◆ Použití pro rozsáhlejší aplikace psané velkým týmem
+    ◆ Paralelní běh částí aplikace
+    ◆ Rozumný výpočetní výkon
+        ⇒ cílem je dosáhnout C/C++/Fortranu
+
+Charakteristické rysy jazyka Go (2)
+--------------------------------------------------
+× Poučení z chyb, které najdeme například v C/C++
+    ◆ Silný typový systém
+    ◆ Nepoužívají se makra založená na textové substituci
+    ◆ Nepoužívají se hlavičkové soubory
+    ◆ Bezpečná práce s pamětí (+ GC)
+    ◆ Standardizovaný framework pro testování
+    ◆ Rychlé překlady
+    ◆ Syntaktické věci: ++/-- jen postfixové a nejsou to výrazy
+    ◆ Nepoužívá se ukazatelová aritmetika
+    ◆ Nepoužívají se šablony
+    ◆ Nejsou podporovány výjimky (prozatím)
+
+Charakteristické rysy jazyka Go (3)
+--------------------------------------------------
+▶ Správa paměti se přenáší do runtime
+▶ Gorutiny a kanály
+    ◆ 600k gorutin, 90% CPU
+▶ Typový systém
+    ◆ Snadné vytváření nových typů
+    ◆ Generické datové typy
+        chystají se
+        po stabilizaci jazyka (což nastalo)
+▶ Více imperativních rysů
+    ◆ Explicitní zápis většiny operací
+▶ Neexistuje podpora pro generické datové typy
+    ◆ Pravděpodobně se změní v další verzi Go
+▶ Více pragmaticky zaměřený jazyk
+▶ Prozatím nedosahuje tak vysokého výpočetního výkonu jako C
+
+Makra v Go?
+--------------------------------------------------
+▶ Céčkový přístup:
+    ◆ řeší preprocesor
+        #ifdef _DEBUG
+        puts("something");
+        #else
+        puts("something else");
+        #endif
+▶ Částečně nahraditelná:
+    ◆ řeší překladač
+        const debug = false
+        if debug {
+            fmt.Println("something")
+        } else {
+            fmt.Println("something else")
+        }
+
+Look and feel Go
+--------------------------------------------------
+func CopyFile(dstName, srcName string) (written int64, err error) {
+    src, err := os.Open(srcName)
+    if err != nil {
+        return
+    }
+    defer src.Close()
+.
+    dst, err := os.Create(dstName)
+    if err != nil {
+        return
+    }
+    defer dst.Close()
+.
+    return io.Copy(dst, src)
+}
+
+Poznámky
+--------------------------------------------------
+▶ Okolo podmínek nejsou závorky
+▶ Nepovinný středník
+▶ nil
+▶ Více návratových hodnot
+▶ Chyba je poslední navrácenou hodnotou, konvence
+▶ Použití defer, viz další slajd
+▶ Zkrácený zápis deklarace a inicializace lokálních proměnných
+    var src, err...
+    src, err := ...
+▶ Pojmenované návratové hodnoty (nepovinné)
+
+Klíčové slovo defer
+--------------------------------------------------
+▶ defer - přidání volání do zásobníku
+▶ Funkce ze zásobníku se zavolají po ukončení aktivní funkce
+▶ Skutečné LIFO chování
+▶ Parametry se vyhodnocují v čase volání defer
+    ◆ ne při vlastním voláni funkce (to je pozdě :-)
+▶ Funkce volaná přes defer může měnit návratové kódy "hlavní" funkce
+    ◆ musí být pojmenovány
+
+Zpracování chybových stavů
+--------------------------------------------------
+type error interface {
+    Error() string
+}
+.
+func div(x, y int32) (int32, error) {
+        if y == 0 {
+                return -1, errors.New("takto ne!")
+        }
+        return x / y, nil
+}
+.
+func main() {
+        res, err := div(10, 3)
+        fmt.Println(res, err)
+        res, err = div(10, 0)
+        fmt.Println(res, err)
+}
+
+Gorutiny
+--------------------------------------------------
+func f(from string) {
+    for i := 0; i < 3; i++ {
+        fmt.Println(from, ":", i)
+    }
+}
+.
+func main() {
+    f("direct")
+    go f("goroutine")
+    go func(msg string) {
+        fmt.Println(msg)
+    }("going")
+
+    fmt.Scanln()
+    fmt.Println("done")
+}
+.
+func main() {
+    messages := make(chan string)
+    go func() { messages <- "ping" }()
+    msg := <-messages
+    fmt.Println(msg)
+}
+
+Jednoduchá synchronizace v Go
+------------------------------------
+func worker(done chan bool) {
+    fmt.Print("working...")
+    time.Sleep(time.Second)
+    fmt.Println("done")
+
+    // ok uz jsme hotovi, posleme zpravu kanalem
+    done <- true
+}
+.
+func main() {
+    // kanal s kapacitou == 1
+    done := make(chan bool, 1)
+.
+    // asynchronni beh
+    go worker(done)
+.
+    // cekame na zpravu
+    <-done
+}
+
+A samozřejmě oblíbené téma pro debaty...
+--------------------------------------------------
+▶ Formát zápisu programů
+    ◆ autoři Go: lepší je se soustředit na vlastní vývoj
+    ◆ Definován kanonický formát
+        - gofmt
+        - taby atd.:)
