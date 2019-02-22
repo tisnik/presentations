@@ -1,3 +1,16 @@
+Jazyk Go pro úplné začátečníky
+==============================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2019-02-xx
+
+Obsah přednášky
+-------------------------------
+▶ Charakteristické rysy jazyka Go
+▶ Struktura programů psaných v Go
+▶ Základní datové typy
+▶
+
 Charakteristické rysy jazyka Go
 --------------------------------------------------
 „Less is more“
