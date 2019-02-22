@@ -1,0 +1,57 @@
+Nástroje implementující fronty zpráv
+====================================
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2019-02-xx
+
+Obsah přednášky
+-------------------------------
+▶ Message broker a fronty zpráv
+▶ Proč používat tuto technologii?
+▶ Změna architektury aplikací
+▶ Vybrané implementace message brokerů
+▶ Redis Queue (RQ)
+▶ RabbitMQ
+▶ Apache Active MQ
+▶ Celery
+
+Message broker a fronty zpráv
+-------------------------------
+
+Proč používat tuto technologii?
+-------------------------------
+
+Změna architektury aplikací
+-------------------------------
+
+Vybrané implementace message brokerů
+------------------------------------
+▶ Redis Queue (RQ)
+▶ RabbitMQ
+▶ Apache Active MQ
+▶ Celery
+
+Redis Queue (RQ)
+-------------------------------
+▶
+▶
+▶
+
+RabbitMQ
+-------------------------------
+▶
+▶
+▶
+
+Apache Active MQ
+-------------------------------
+▶
+▶
+▶
+
+Celery
+-------------------------------
+▶
+▶
+▶
+
