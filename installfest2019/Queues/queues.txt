@@ -8,20 +8,48 @@ Obsah přednášky
 -------------------------------
 ▶ Message broker a fronty zpráv
 ▶ Proč používat tuto technologii?
-▶ Změna architektury aplikací
+▶ Modifikace architektury aplikací
+▶ Základní komunikační strategie
 ▶ Vybrané implementace message brokerů
 ▶ Redis Queue (RQ)
 ▶ RabbitMQ
 ▶ Apache Active MQ
 ▶ Celery
+▶ Další užitečné technologie
 
 Message broker a fronty zpráv
 -------------------------------
+▶ Message broker
+    ◆ 
+    ◆ 
+    ◆ 
+▶ Fronty zpráv
+    ◆ 
+    ◆ 
+    ◆ 
 
 Proč používat tuto technologii?
 -------------------------------
+▶ Minimálně deset důvodů
+    ◆ Asynchronní komunikace
+    ◆ Oddělení jednotlivých modulů aplikace
+    ◆ Možnost jasné (a centralizované) definice toku dat
+    ◆ Garance doručení posílaných zpráv (popř. jejich perzistence)
+    ◆ Garance pořadí zpráv
+    ◆ Odolnost architektury vůči výpadkům (resiliency)
+    ◆ Škálovatelnost
+    ◆ Možnost snadné redundance některých částí
+    ◆ Pružné reakce na změny zatížení systému (e-shopy)
+    ◆ Funkce vyrovnávací paměti
 
-Změna architektury aplikací
+Modifikace architektury aplikací
+-------------------------------
+▶ Možnost oddělení jednotlivých modulů
+    ◆ Původní vazby M:N
+        ◆ Někdy "mesh"
+    ◆ Nyní M:1 a 1:N
+
+Základní komunikační strategie
 -------------------------------
 
 Vybrané implementace message brokerů
@@ -30,10 +58,11 @@ Vybrané implementace message brokerů
 ▶ RabbitMQ
 ▶ Apache Active MQ
 ▶ Celery
+▶ (další užitečné technologie)
 
 Redis Queue (RQ)
 -------------------------------
-▶
+▶ Postaveno nad databází Redis
 ▶
 ▶
 
@@ -55,3 +84,8 @@ Celery
 ▶
 ▶
 
+Další užitečné technologie
+-------------------------------
+▶
+▶
+▶
