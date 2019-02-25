@@ -8,8 +8,16 @@ Obsah přednášky
 -------------------------------
 ▶ Charakteristické rysy jazyka Go
 ▶ Struktura programů psaných v Go
+▶ Klíčová slova jazyka Go
 ▶ Základní datové typy
-▶
+▶ Operátory
+▶ Řidící příkazy
+▶ Reakce na chybové stavy
+▶ Rozhraní
+▶ Metody
+▶ Gorutiny
+▶ Kanály
+▶ Balíčky
 
 Charakteristické rysy jazyka Go
 --------------------------------------------------
@@ -71,6 +79,39 @@ Charakteristické rysy jazyka Go (3)
     ◆ Pravděpodobně se změní v další verzi Go
 ▶ Více pragmaticky zaměřený jazyk
 ▶ Prozatím nedosahuje tak vysokého výpočetního výkonu jako C
+
+Klíčová slova jazyka Go
+--------------------------------------------------
+
+Základní datové typy
+--------------------------------------------------
+
+Operátory
+--------------------------------------------------
+aritmetické +   -   *   /   %
+aritmetické s přiřazením    +=  -=  *=  /=  %=
+logické &&  ||  !
+posuny a bitové operace <<  >>  &   |   ^   &^
+posuny a bitové operace s přiřazením    <<= >>= &=  |=  ^=  &^=
+relační ==  !=  <   <=  >   >=
+operace s adresami  *   &
+unární operátory    +   -   ^
+další operátory <-  :=
+
+Řidící příkazy
+--------------------------------------------------
+
+Metody
+--------------------------------------------------
+
+Gorutiny
+--------------------------------------------------
+
+Kanály
+--------------------------------------------------
+
+Balíčky
+--------------------------------------------------
 
 Makra v Go?
 --------------------------------------------------
