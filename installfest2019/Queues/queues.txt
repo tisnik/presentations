@@ -51,6 +51,27 @@ Modifikace architektury aplikací
 
 Základní komunikační strategie
 -------------------------------
+▶ PUSH-PULL
+    ◆ Zprávy se posílají do zvolené fronty
+        ◆ Jeden či více zdrojů zpráv
+        ◆ Fronty bývají jednoznačně pojmenované
+    ◆ K výstupu fronty se může připojit více workerů
+    ◆ Zpráva je doručena jednomu z nich
+        ◆ Typicky se používá nějaká forma algoritmu round-robin
+    ◆ Pokud žádný worker nemůže zprávu zpracovat zůstane ve frontě
+▶ PUB-SUB
+    ◆ Zprávy se posílají s udáním takzvaného tématu (topic)
+        ◆ Jeden či více zdrojů zpráv
+        ◆ Témata buď prosté jméno či hierarchie (cz.eshop-brno.pokladna1)
+    ◆ K výstupu fronty se může připojit více příjemců
+    ◆ Zpráva je doručena všem aktuálně připojeným příjemcům
+    ◆ Pokud žádný příjemce nemůže zprávu zpracovat bude ztracena
+
+Použití komunikačních strategií
+-------------------------------
+▶ PUSH-PULL
+▶ PUB-SUB
+    ◆ IoT čidla
 
 Vybrané implementace message brokerů
 ------------------------------------
