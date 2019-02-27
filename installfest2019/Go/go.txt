@@ -11,6 +11,7 @@ Obsah přednášky
 ▶ Klíčová slova jazyka Go
 ▶ Základní datové typy
 ▶ Operátory
+▶ Deklarace funkcí
 ▶ Řidící příkazy
 ▶ Reakce na chybové stavy
 ▶ Rozhraní
@@ -18,6 +19,7 @@ Obsah přednášky
 ▶ Gorutiny
 ▶ Kanály
 ▶ Balíčky
+▶ Základní knihovna programovacího jazyka Go
 
 Charakteristické rysy jazyka Go
 --------------------------------------------------
@@ -77,11 +79,16 @@ Charakteristické rysy jazyka Go (3)
     ◆ Explicitní zápis většiny operací
 ▶ Neexistuje podpora pro generické datové typy
     ◆ Pravděpodobně se změní v další verzi Go
-▶ Více pragmaticky zaměřený jazyk
+▶ Pragmaticky zaměřený jazyk
 ▶ Prozatím nedosahuje tak vysokého výpočetního výkonu jako C
 
 Klíčová slova jazyka Go
 --------------------------------------------------
+break     default      func    interface  select
+case      defer        go      map        struct
+chan      else         goto    package    switch
+const     fallthrough  if      range      type
+continue  for          import  return     var
 
 Základní datové typy
 --------------------------------------------------
@@ -113,6 +120,9 @@ Složené datové typy
 Zvláštní datové typy
 --------------------------------------------------
 
+Uživatelsky definované datové typy
+--------------------------------------------------
+
 Operátory
 --------------------------------------------------
 aritmetické                +   -   *   /   %
@@ -127,12 +137,38 @@ další operátory            <-  :=
 
 Řidící příkazy
 --------------------------------------------------
+▶ Příkaz return
+▶ Rozhodovací konstrukce
+▶ Programové smyčky
+▶ Příkaz goto
+▶ Speciální řízení (defer)
+
+Příkaz return
+--------------------------------------------------
+
+Rozhodovací konstrukce
+--------------------------------------------------
+
+Programové smyčky
+--------------------------------------------------
+
+Příkaz goto
+--------------------------------------------------
+
+Speciální řízení (defer)
+--------------------------------------------------
 
 Reakce na chybové stavy
 --------------------------------------------------
+▶ 
+▶ 
+▶ 
 
 Rozhraní
 --------------------------------------------------
+▶ 
+▶ 
+▶ 
 
 Metody
 --------------------------------------------------
@@ -144,6 +180,9 @@ Kanály
 --------------------------------------------------
 
 Balíčky
+--------------------------------------------------
+
+Základní knihovna programovacího jazyka Go
 --------------------------------------------------
 
 Makra v Go?
