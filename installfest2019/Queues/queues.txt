@@ -27,6 +27,14 @@ Message broker a fronty zpráv
     ◆ 
     ◆ 
     ◆ 
+▶ Publisher
+    ◆ 
+▶ Subscriber
+    ◆ 
+▶ Úlohy
+    ◆ 
+▶ Worker
+    ◆ 
 
 Proč používat tuto technologii?
 -------------------------------
@@ -59,6 +67,7 @@ Základní komunikační strategie
     ◆ Zpráva je doručena jednomu z nich
         ◆ Typicky se používá nějaká forma algoritmu round-robin
     ◆ Pokud žádný worker nemůže zprávu zpracovat zůstane ve frontě
+    ◆ (Nezpracované zprávy se mohou přesunout do jiné fronty - DLQ)
 ▶ PUB-SUB
     ◆ Zprávy se posílají s udáním takzvaného tématu (topic)
         ◆ Jeden či více zdrojů zpráv
@@ -72,6 +81,9 @@ Použití komunikačních strategií
 ▶ PUSH-PULL
 ▶ PUB-SUB
     ◆ IoT čidla
+    ◆ Aktuální stav (či změna stavu) nějakého systému
+        ◆ Tímto způsobem lze získat informace z AMQ
+    ◆ Podobné některým komunikačním protokolům (IRC)
 
 Vybrané implementace message brokerů
 ------------------------------------
@@ -84,8 +96,34 @@ Vybrané implementace message brokerů
 Redis Queue (RQ)
 -------------------------------
 ▶ Postaveno nad databází Redis
-▶
-▶
+    ◆ Strategie PUSH-PULL
+    ◆ Publisher-fronta-worker
+▶ Pravděpodobně nejjednodušší cesta k využitím message brokerů
+▶ Balíček rq na PyPI
+▶ CLI nástroj nazvaný `rq`
+    ◆ Spuštění workera
+    ◆ Pozastavení všech workerů
+    ◆ Znovuspuštění úloh, které nebyly dokončeny
+    ◆ Vymazání úloh z vybrané fronty
+    ◆ Zobrazení stavu úloh
+
+Redis Queue (RQ) - vytvoření úlohy
+
+Redis Queue (RQ) - worker
+
+Stav front
+$ rq info
+.  
+low          |██████████ 10
+failed       |██ 2
+default      | 0
+high         |██████████ 10
+4 queues, 22 jobs total
+.
+localhost.4312 idle: default
+1 workers, 4 queues
+.
+Updated: 2018-11-26 13:22:06.236766
 
 RabbitMQ
 -------------------------------
