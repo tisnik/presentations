@@ -93,6 +93,7 @@ continue  for          import  return     var
 Základní datové typy
 --------------------------------------------------
 ▶ Jednoduché datové typy
+    ◆ Pravdivostní
     ◆ Ordinální
          ■ Pravdivostní typ (boolean)
          ■ Celočíselné typy (integer)
@@ -111,27 +112,49 @@ Základní datové typy
     ◆ Rozhraní (interface)
     ◆ Kanál (channel)
 
-Jednoduché datové typy
+Pravdivostní typ
 --------------------------------------------------
-Označení          Od                  Do           Stručný popis
-int8                     -128                 127  osmibitové celé číslo se znaménkem
-int16                  -32768               32767  16bitové celé číslo se znaménkem
-int32             -2147483648          2147483647  32bitové celé číslo se znaménkem
-int64    -9223372036854775808 9223372036854775807  64bitové celé číslo se znaménkem
+▶ bool
+    ◆ true
+    ◆ false
 
-uint8           0      255                  osmibitové celé číslo bez znaménka
-uint16          0      65535                16bitové celé číslo bez znaménka
-uint32          0      4294967295           32bitové celé číslo bez znaménka
-uint64          0      18446744073709551615 64bitové celé číslo bez znaménka
+Celočíselné datové typy
+--------------------------------------------------
+Označení          Od                   Do           Stručný popis
+int8                     -128                  127  osmibitové celé číslo se znaménkem
+int16                  -32768                32767  16bitové celé číslo se znaménkem
+int32             -2147483648           2147483647  32bitové celé číslo se znaménkem
+int64    -9223372036854775808  9223372036854775807  64bitové celé číslo se znaménkem
+.
+uint8                       0                  255  osmibitové celé číslo bez znaménka
+uint16                      0                65535  16bitové celé číslo bez znaménka
+uint32                      0           4294967295  32bitové celé číslo bez znaménka
+uint64                      0 18446744073709551615  64bitové celé číslo bez znaménka
+.
+int                     různý                různý  odpovídá buď typu int32 nebo int64
+uint                    různý                různý  odpovídá buď typu uint32 nebo uint64
+.
+byte                        0                  255  alias pro typ uint8
+rune              -2147483648           2147483647  alias pro typ int32
 
-int       různý   odpovídá buď typu int32 nebo int64
-uint      různý   odpovídá buď typu uint32 nebo uint64
-
-byte      0 až 255        alias pro typ uint8
-rune      -2147483648 až 2147483647       alias pro typ int32
+Neordinální celočíselné datové typy
+--------------------------------------------------
+Označení        Rozsah hodnot                          Stručný popis
+float32         -3,4×10³⁸ až 3,4×10³⁸                  číslo s jednoduchou přesností podle IEEE 754
+float64         -1,7×10³⁰⁸ až 1,7×10³⁰⁸                číslo s dvojitou přesností podle IEEE 754
+complex64       ± rozsah float32 + i ± rozsah float32  dvojice hodnot s jednoduchou přesností
+complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojitou přesností
 
 Složené datové typy
 --------------------------------------------------
+▶ Řetězce (string)
+    ◆ podpora Unicode
+    ◆ neměnitelné (immutable)
+    ◆ [] - přístup k bajtům, ne ke znakům
+▶ Pole (array)
+▶ Řezy (slice)
+▶ Záznamy (struct)
+▶ Mapy (map)
 
 Zvláštní datové typy
 --------------------------------------------------
