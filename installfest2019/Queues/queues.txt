@@ -10,6 +10,7 @@ Obsah přednášky
 ▶ Proč používat tuto technologii?
 ▶ Modifikace architektury aplikací
 ▶ Základní komunikační strategie
+▶ Protokoly
 ▶ Vybrané implementace message brokerů
 ▶ Redis Queue (RQ)
 ▶ RabbitMQ
@@ -26,6 +27,8 @@ Message broker a fronty zpráv
 ▶ Fronty zpráv
     ◆ 
     ◆ 
+    ◆ 
+▶ Topic
     ◆ 
 ▶ Publisher
     ◆ 
@@ -54,24 +57,24 @@ Modifikace architektury aplikací
 -------------------------------
 ▶ Možnost oddělení jednotlivých modulů
     ◆ Původní vazby M:N
-        ◆ Někdy "mesh"
+        ■ Někdy "mesh"
     ◆ Nyní M:1 a 1:N
 
 Základní komunikační strategie
 -------------------------------
 ▶ PUSH-PULL
     ◆ Zprávy se posílají do zvolené fronty
-        ◆ Jeden či více zdrojů zpráv
-        ◆ Fronty bývají jednoznačně pojmenované
+        ■ Jeden či více zdrojů zpráv
+        ■ Fronty bývají jednoznačně pojmenované
     ◆ K výstupu fronty se může připojit více workerů
     ◆ Zpráva je doručena jednomu z nich
-        ◆ Typicky se používá nějaká forma algoritmu round-robin
+        ■ Typicky se používá nějaká forma algoritmu round-robin
     ◆ Pokud žádný worker nemůže zprávu zpracovat zůstane ve frontě
     ◆ (Nezpracované zprávy se mohou přesunout do jiné fronty - DLQ)
 ▶ PUB-SUB
     ◆ Zprávy se posílají s udáním takzvaného tématu (topic)
-        ◆ Jeden či více zdrojů zpráv
-        ◆ Témata buď prosté jméno či hierarchie (cz.eshop-brno.pokladna1)
+        ■ Jeden či více zdrojů zpráv
+        ■ Témata buď prosté jméno či hierarchie (cz.eshop-brno.pokladna1)
     ◆ K výstupu fronty se může připojit více příjemců
     ◆ Zpráva je doručena všem aktuálně připojeným příjemcům
     ◆ Pokud žádný příjemce nemůže zprávu zpracovat bude ztracena
@@ -79,11 +82,53 @@ Základní komunikační strategie
 Použití komunikačních strategií
 -------------------------------
 ▶ PUSH-PULL
+    ◆ Typická business logika
+        ■ Objednávky
+        ■ Potvrzovací maily
+        ■ B2B
 ▶ PUB-SUB
     ◆ IoT čidla
     ◆ Aktuální stav (či změna stavu) nějakého systému
-        ◆ Tímto způsobem lze získat informace z AMQ
+        ⇒ Tímto způsobem lze získat informace z AMQ
     ◆ Podobné některým komunikačním protokolům (IRC)
+
+Protokoly
+-------------------------------
+▶ AMQP
+    ◆ Advanced Message Queuing Protocol
+    ◆ binární protokol
+    ◆ podpora SASL a TLS
+▶ STOMP
+    ◆ Streaming Text Oriented Messaging Protocol
+    ◆ inspirován protokolem HTTP
+        ◆ (hlavičky atd.)
+    ◆ velmi jednoduchá implementace klienta
+▶ MQTT
+    ◆ Message Queuing Telemetry Transport)
+▶ CoAP
+    ◆ Constrained Application Protocol
+▶ WAMP
+    ◆ Web Application Messaging Protocol
+    ◆ založeno na WebSocketech
+    ◆ Publish-Subscribe
+    ◆ RPC
+▶ (XMPP)
+    ◆ extensible Message Oriented Middleware
+    ◆ xMOM
+
+STOMP
+------------------------------------
+▶ Pouze několik typů zpráv
+    ◆ CONNECT
+    ◆ SEND
+    ◆ SUBSCRIBE
+    ◆ UNSUBSCRIBE
+    ◆ BEGIN
+    ◆ COMMIT
+    ◆ ABORT
+    ◆ ACK
+    ◆ NACK
+    ◆ DISCONNECT
 
 Vybrané implementace message brokerů
 ------------------------------------
