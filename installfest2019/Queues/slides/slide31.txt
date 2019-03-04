@@ -1,0 +1,6 @@
+
+RabbitMQ a Python
+-------------------------------
+▶  Knihovna Pika
+    ◆  Na PyPi
+        ■ https://pypi.org/project/pika/

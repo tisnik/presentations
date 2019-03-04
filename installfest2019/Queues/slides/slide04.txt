@@ -1,0 +1,15 @@
+
+Další často používané termíny v oboru MQ
+----------------------------------------
+▶ Publisher
+    ◆ Zdroj zpráv
+    ◆ Může zprávy posílat do několika front a/nebo témat
+▶ Subscriber
+    ◆ Příjemce zpráv
+    ◆ Může zprávy přijímat z několika front a/nebo témat
+▶ Úlohy
+    ◆ Task
+    ◆ Job
+    ◆ Termín používaný ve chvíli, kdy zprávy obsahují "příkaz k práci"
+▶ Worker
+    ◆ Termín používaný pro příjemce úloh

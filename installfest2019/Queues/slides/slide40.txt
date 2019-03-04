@@ -1,0 +1,18 @@
+
+Prioritní fronty
+-------------------------------
+▶ Fronta musí být nastavena jako prioritní
+▶ Zprávy s vyšší prioritou budou přesunuty směrem k začátku front
+▶ Systém ovšem nezaručuje, že pořadí zpráv ve frontě bude přesně odpovídat zadané prioritě
+▶ Priorita zprávy specifikována celým kladným číslem popř. nulou
+    ◆ (Tolik teorie)
+    ◆ Priorita zprávy může být reprezentována jediným bajtem.
+    ◆ Prakticky jsme tedy omezeni hodnotami ležícími v rozsahu 0 až 255
+  
+channel.queue_declare(queue=queue_name, arguments={"x-max-priority": max_priority})
+  
+def open_channel(connection, queue_name='test', max_priority=10):
+    # pokus o nové vytvoření fronty ve skutečnosti neovlivní již existující frontu
+    channel = connection.channel()
+    channel.queue_declare(queue=queue_name, arguments={"x-max-priority": max_priority})
+    return channel

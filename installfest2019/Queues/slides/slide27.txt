@@ -1,0 +1,12 @@
+
+RabbitMQ
+-------------------------------
+▶ Jedna z nejúspěšnějších implementací brokera
+▶ Vyvinut v Erlangu
+    ◆ Využívá knihovny a nástroje Open Telecom Platform
+        ■ OTP
+▶ Výhody Erlangu (nejenom) v této oblasti
+    ◆ Odolnost proti selhání
+    ◆ Vysoce dostupné aplikace
+    ◆ Distribuované systémy
+    ◆ Funkcionální paradigma

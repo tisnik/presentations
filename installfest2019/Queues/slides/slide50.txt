@@ -1,0 +1,8 @@
+
+Brokeři podporovaní nástrojem Celery 
+-------------------------------
+ Broker           Současný stav   Monitoring  Vzdálené ovládání workerů
+ RabbitMQ         stabilní        ✓           ✓
+ Redis            stabilní        ✓           ✓
+ Amazon SQS       stabilní        ×           ×
+ Apache Zookeeper experimentální  ×           ×

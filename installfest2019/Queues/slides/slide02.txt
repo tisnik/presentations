@@ -1,0 +1,24 @@
+
+Message broker a fronty zpráv
+-------------------------------
+▶ Message broker
+    ◆ Aplikace či služba zajišťující přenos zpráv mezi zdroji a příjemci
+    ◆ Typicky podporuje fronty zpráv a témata (topic)
+    ◆ Další operace
+        ■ Persistence zpráv
+        ■ Ověření identity
+        ■ Práva k přístupu ke frontám a zprávám atd.
+        ■ Uživatelské rozhraní pro sledování činnosti brokera
+        ■ Programové rozhraní  -//-
+        ■ Škálování
+▶ Message queue (fronta zpráv)
+    ◆ Součást message brokera
+    ◆ Front bývá více, jsou pojmenované
+    ◆ Dvě základní operace
+        ■ Enqueue
+        ■ Dequeue (neplést s deque - oboustrannou frontou)
+    ◆ Speciální případy
+        ■ Prioritní fronty
+        ■ DLQ (Dead Letter Queue)
+        ■ Zprávy s časem, kdy má být zpráva doručena
+        ■ Zprávy s časem zahození v případě nedoručení

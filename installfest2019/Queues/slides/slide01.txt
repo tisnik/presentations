@@ -1,0 +1,15 @@
+
+Obsah přednášky
+-------------------------------
+▶ Message broker a fronty zpráv
+▶ Proč vlastně používat tuto technologii?
+▶ Modifikace architektury aplikací
+▶ Základní komunikační strategie
+▶ Protokoly
+▶ Vybrané implementace message brokerů
+    ◆ Redis Queue (RQ)
+    ◆ RabbitMQ
+    ◆ Apache Active MQ
+    ◆ Celery
+▶ Message queuing service(s)
+▶ Další užitečné technologie

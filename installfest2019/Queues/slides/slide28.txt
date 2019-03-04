@@ -1,0 +1,16 @@
+
+RabbitMQ
+-------------------------------
+▶ Rozhraní pro různé programovací jazyky (platformy)
+    ◆ Java
+    ◆ JavaScript (Node.js)
+    ◆ Python
+    ◆ Ruby
+    ◆ PHP
+    ◆ C#
+    ◆ Go
+    ◆ Elixir
+    ◆ (Java) Spring AMQP
+    ◆ Swift
+    ◆ Objective-C
+    ◆ Clojure

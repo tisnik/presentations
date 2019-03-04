@@ -1,0 +1,15 @@
+
+Proč vůbec používat tuto technologii?
+-------------------------------------
+▶ Minimálně deset důvodů
+    ◆ Asynchronní komunikace
+    ◆ Oddělení jednotlivých modulů aplikace
+    ◆ Možnost jasné (a centralizované) definice toku dat
+    ◆ Garance doručení posílaných zpráv
+        ■ (popř. zajištění jejich perzistence)
+    ◆ Garance pořadí zpráv
+    ◆ Odolnost architektury vůči výpadkům (resiliency)
+    ◆ Škálovatelnost
+    ◆ Možnost snadné redundance některých částí
+    ◆ Pružné reakce na změny zatížení systému (e-shopy)
+    ◆ Funkce vyrovnávací paměti

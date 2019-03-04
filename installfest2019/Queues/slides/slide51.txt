@@ -1,0 +1,14 @@
+
+Message queuing service
+-------------------------------
+▶ "Messaging as a Service"
+▶ Někdy je lepší použít MQ ve formě služby
+▶ Výhody/nevýhody
+    ◆ podobné jako u dalších cloudových služeb
+▶ AMQ Online
+▶ IBM MQ
+▶ Amazon Simple Queue Service
+▶ AnypointMQ
+▶ Oracle Messaging Cloud Service
+▶ Microsoft Azure Service Bus
+▶ StormMQ

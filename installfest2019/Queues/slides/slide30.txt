@@ -1,0 +1,19 @@
+
+RabbitMQ
+-------------------------------
+▶ Směrování zpráv před jejich vložením do fronty
+▶ Tzv. "exchange"
+    ◆  (screenshot)
+▶ Strategie
+    ◆  Direct
+        ■ fronta nalezena podle klíče
+        ■ klíč je součástí zprávy
+    ◆  Topic
+        ■ opět se používá klíč
+        ■ využití regulárních výrazů
+        ■ hierarchie front atd.
+    ◆  Headers
+        ■ využívá hlavičky připojené ke zprávě
+    ◆  Fanout
+        ■ zduplikování zprávy do několika front
+        ■ (přeposlání na různé servery)

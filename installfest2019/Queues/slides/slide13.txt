@@ -1,0 +1,14 @@
+
+Redis Queue (RQ)
+-------------------------------
+▶ Postaveno nad databází Redis
+    ◆ Strategie PUSH-PULL
+    ◆ Producenti ⇒ Message broker ⇒ Konzumenti
+▶ Pravděpodobně nejjednodušší cesta k využití message brokerů
+▶ Balíček `rq` dostupný na PyPI
+▶ CLI nástroj nazvaný taktéž `rq`
+    ◆ Spuštění workera
+    ◆ Pozastavení všech workerů
+    ◆ Znovuspuštění úloh, které nebyly dokončeny
+    ◆ Vymazání úloh z vybrané fronty
+    ◆ Zobrazení stavu úloh

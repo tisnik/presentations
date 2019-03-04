@@ -1,0 +1,17 @@
+
+Protokoly používané pro komunikaci
+----------------------------------
+▶ AMQP
+    ◆ Advanced Message Queuing Protocol
+    ◆ binární formát
+    ◆ podpora SASL a TLS
+▶ STOMP
+    ◆ Streaming Text Oriented Messaging Protocol
+    ◆ inspirován protokolem HTTP
+        ◆ (hlavičky atd.)
+    ◆ velmi jednoduchá implementace klienta
+    ◆ je možné otestovat například i v telnetu
+    ◆ podpora transakcí
+▶ MQTT
+    ◆ Message Queuing Telemetry Transport)
+    ◆ používán v oblasti IoT

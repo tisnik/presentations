@@ -1,0 +1,26 @@
+
+Apache Active MQ + STOMP + Python
+---------------------------------
+▶ Knihovna stomp.py
+▶ Klient ovládaný z CLI: `stomp`
+ 
+CLI klient `stomp`
+---------------------------------
+▶ Spuštění
+$ stomp
+  
+CONNECTED
+server: ActiveMQ/5.15.8
+heart-beat: 0,0
+session: ID:localhost.localdomain-38215-1549567803551-3:3
+version: 1.1
+   
+CLI klient `stomp`
+---------------------------------
+▶ Poslání zprávy
+send /queue/test hello world
+  
+MESSAGE
+content-length: 11
+expires: 0
+destination: /queue/test

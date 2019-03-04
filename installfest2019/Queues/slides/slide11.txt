@@ -1,0 +1,16 @@
+
+STOMP
+------------------------------------
+▶ Samotné příkazy posílané ve formě plain textu
+▶ Data (zprávy) mohou být binární
+▶ Pouze několik typů zpráv
+    ◆ CONNECT
+    ◆ SEND
+    ◆ SUBSCRIBE
+    ◆ UNSUBSCRIBE
+    ◆ BEGIN
+    ◆ COMMIT
+    ◆ ABORT
+    ◆ ACK
+    ◆ NACK
+    ◆ DISCONNECT

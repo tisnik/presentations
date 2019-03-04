@@ -1,0 +1,12 @@
+
+Apache Active MQ
+-------------------------------
+▶ Řízení AMQ
+        bin/activemq
+▶ Práce se zprávami bez implementace klientů
+    ◆ Producent
+        ./activemq producer --message "Hello world"
+        ./activemq producer --message "Hello world" --messageCount 1
+        ./activemq producer --payloadUrl https://www.root.cz --messageCount 1
+    ◆ Konzument
+        ./activemq consumer --transacted true

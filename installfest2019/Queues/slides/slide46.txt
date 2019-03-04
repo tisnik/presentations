@@ -1,0 +1,13 @@
+
+CLI klient `stomp`
+---------------------------------
+▶ Přihlášení se k odběru zpráv z fronty „test“:
+subscribe /queue/test
+   
+Subscribing to "/queue/test" with acknowledge set to "auto", id set to "1"
+subscription: 1
+priority: 4
+message-id: ID:localhost.localdomain-38215-1549567803551-3:3:-1:1:1
+timestamp: 1549631641256
+   
+hello world

@@ -1,0 +1,7 @@
+
+Dashboard Redis Queue pro sledování stavu front a workerů
+---------------------------------------------------------
+▶ rq-dashboard
+    ◆ Naprogramováno v Pythonu
+    ◆ Používá Flask (tj. webová aplikace)
+    ◆ (screenshot)

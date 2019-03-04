@@ -1,0 +1,30 @@
+
+Směrování zpráv do front na základě klíče a nakonfigurovaných výrazů
+--------------------------------------------------------------------
+▶ Třetí komunikační strategie
+    ◆ Prozatím jsme si ukázali "direct" a "fanout"
+▶ Založeno na klíči posílaném se zprávou
+▶ Obsah klíče je porovnáván se specifickým regulárním výrazem
+    ◆ * - libovolné slovo
+    ◆ # - libovolné množství slov
+  
+Výraz        Fronta
+europe.*     europe_queue
+asia.*       asia_queue
+americas.*   americas_queue
+*.org        org_queue
+*.*.rabbit   rabbit_queue
+#.other      other_queue
+  
+def bind_queue(channel, queue_name, routing_pattern='', exchange_name='fanout_exchange'):
+    channel.queue_declare(queue=queue_name)
+    channel.queue_bind(exchange=exchange_name,
+                       queue=queue_name,
+                       routing_key=routing_pattern)
+  
+    bind_queue(channel, 'europe_queue',
+               routing_pattern='europe.*', exchange_name='topic_exchange')
+    bind_queue(channel, 'asia_queue',
+               routing_pattern='asia.*', exchange_name='topic_exchange')
+    bind_queue(channel, 'americas_queue',
+               routing_pattern='americas.*', exchange_name='topic_exchange')

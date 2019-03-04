@@ -1,0 +1,39 @@
+
+Příkaz rabbitmqctl
+-------------------------------
+▶ Změna konfigurace serveru
+▶ Správa clusterů
+▶ Zjištění informací o tom, jaké fronty v daném okamžiku existují
+▶ Zjištění, jaké jsou k dispozici směrovače (exchange)
+  
+$ sudo rabbitmqctl node_health_check
+  
+Timeout: 70.0 seconds
+Checking health of node rabbit@localhost
+Health check passed
+  
+$ sudo rabbitmqctl list_users
+  
+Listing users
+guest   [administrator]
+  
+$ sudo rabbitmqctl list_queues
+  
+Listing queues
+t3      0
+testX   0
+test    0
+t1      2
+t2      0
+  
+$ sudo rabbitmqctl list_exchanges
+  
+Listing exchanges
+amq.topic           topic
+amq.rabbitmq.log    topic
+amq.headers         headers
+amq.fanout          fanout
+                    direct <- výchozí směrovač beze jména
+amq.rabbitmq.trace  topic
+amq.match           headers
+amq.direct          direct

@@ -1,0 +1,18 @@
+
+Příklady použití komunikačních strategií
+----------------------------------------
+▶ PUSH-PULL
+    ◆ Typická business logika
+        ■ Objednávky
+        ■ Potvrzovací maily
+        ■ B2B
+    ◆ Jenkins CI
+        ■ a podobně koncipované systémy
+▶ PUB-SUB
+    ◆ IoT čidla
+    ◆ Aktuální stav (či změna stavu) nějakého systému
+        ⇒ Tímto způsobem lze získat informace z AMQ
+        ■ (viz další slajdy)
+    ◆ Podobné některým komunikačním protokolům (IRC)
+▶ Kombinace předchozích strategií
+▶ Pipeline

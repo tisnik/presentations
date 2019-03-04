@@ -1,0 +1,7 @@
+
+Opětovné spuštění zhavarovaných úloh
+---------------------------------
+$ rq requeue --all
+  
+  Requeueing 1 jobs from failed queue
+  [####################################]  100%

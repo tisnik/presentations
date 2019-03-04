@@ -1,0 +1,8 @@
+
+Vybrané implementace message brokerů
+------------------------------------
+▶ Redis Queue (RQ)
+▶ RabbitMQ
+▶ Apache Active MQ (AMQ)
+▶ Celery
+▶ (další užitečné technologie)

@@ -1,0 +1,5 @@
+
+Další užitečné technologie
+-------------------------------
+▶ 0MQ
+▶ Nanomsg

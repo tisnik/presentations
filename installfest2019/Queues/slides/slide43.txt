@@ -1,0 +1,12 @@
+
+Podporované protokoly
+-------------------------------
+▶ AMQP 1.0
+▶ STOMP
+▶ MQTT
+▶ OpenWire
+▶ REST
+▶ RSS a Atom
+▶ WSIF
+▶ WS Notification        
+▶ XMPP

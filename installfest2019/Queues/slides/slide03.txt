@@ -1,0 +1,12 @@
+
+Topic (téma)
+-------------------------------
+▶ Topic (téma)
+    ◆ Použito při komunikaci PUB-SUB
+    ◆ Většinou textové návěští přiřazené zprávě
+    ◆ Může být hierarchické
+        ■ region.téma.podtéma
+        ■ region/téma/podtéma
+        ■ atd.
+    ◆ Některé systému umožňují deklarovat pravidla pro směrování zpráv
+        ■ routing na základě hlavičky, tématu, klíče...

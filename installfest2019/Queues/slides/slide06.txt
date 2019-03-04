@@ -1,0 +1,11 @@
+
+Modifikace architektury aplikací
+--------------------------------
+▶ Možnost oddělení jednotlivých modulů
+    ◆ Původní vazby M:N
+        ■ Někdy "mesh"
+        ■ Problémy vznikají ve chvíli, kdy nějaký uzel přestane komunikovat
+    ◆ Po zavedení message brokera M:1 a 1:N
+        ■ Producenti ⇒ Message broker ⇒ Konzumenti
+        ■ DLQ
+        ■ Opakované doručení zprávy atd.

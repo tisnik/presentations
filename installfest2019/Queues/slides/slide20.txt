@@ -1,0 +1,22 @@
+
+Redis Queue (RQ) - informace o nezpracovaných úlohách
+-----------------------------------------------------
+▶ Pamatuje se především samotný stack trace
+  
+Reading failed jobs
+['62d5d473-cc31-4738-8397-7dd18b09fe64']
+62d5d473-cc31-4738-8397-7dd18b09fe64
+default
+2018-11-28 16:24:45.094810
+2018-11-28 16:24:45.103332
+2018-11-28 16:24:47.107423
+Traceback (most recent call last):
+  File "/home/tester/.local/lib/python3.6/site-packages/rq/worker.py", line 793, in perform_job
+    rv = job.perform()
+  File "/home/tester/.local/lib/python3.6/site-packages/rq/job.py", line 599, in perform
+    self._result = self._execute()
+  File "/home/tester/.local/lib/python3.6/site-packages/rq/job.py", line 605, in _execute
+    return self.func(*self.args, **self.kwargs)
+  File "./worker.py", line 7, in do_work
+    assert False
+AssertionError

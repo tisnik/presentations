@@ -1,0 +1,15 @@
+
+Zjištění stavu front
+-------------------------------
+$ rq info
+  
+low          |██████████ 10
+failed       |██ 2
+default      | 0
+high         |██████████ 10
+4 queues, 22 jobs total
+  
+localhost.4312 idle: default
+1 workers, 4 queues
+  
+Updated: 2018-11-26 13:22:06.236766

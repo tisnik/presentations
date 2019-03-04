@@ -1,0 +1,11 @@
+
+Využití takzvaného burst režimu workerů
+---------------------------------------
+▶ Vybrané workery lze spustit v takzvaném burst režimu
+    ◆ takový worker se pokusí zpracovat všechny úlohy ze specifikované fronty
+    ◆ následně se ukončí
+▶ Jedná se o koncept dávkového zpracování
+    ◆ například do systému přidáme výkonný stroj ve chvíli, kdy je nutné dokončit nějaké úlohy
+    ◆ ovšem tento stroj se nemá stát součástí „clusteru“
+  
+$ rq worker --burst high low default

@@ -1,0 +1,10 @@
+
+Apache Active MQ
+-------------------------------
+▶ Vytvořen v Javě
+    ◆ Snadná instalace (rozbalení tarballu)
+▶ Strategie PUSH-PULL i PUB-SUB
+▶ Sledování činnosti AMQ
+    ◆ Webové rozhraní
+    ◆ JMX (JConsole)
+    ◆ Speciální témata (eventy)

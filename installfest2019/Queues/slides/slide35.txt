@@ -1,0 +1,13 @@
+
+Potvrzování zpráv
+-------------------------------
+▶ Automatické
+channel.basic_consume(on_receive,
+                      queue='test',
+                      no_ack=True)
+▶ Manuální
+channel.basic_consume(on_receive,
+                      queue='test',
+                      no_ack=False)
+▶ Potvrzení zprávy
+channel.basic_ack(delivery_tag = method.delivery_tag)

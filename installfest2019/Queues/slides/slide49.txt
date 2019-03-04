@@ -1,0 +1,11 @@
+
+Celery
+-------------------------------
+▶ Asynchronní fronty úloh pro Python
+▶ Více flexibility, zejména v porovnání s Redis Queue (RQ)
+▶ Sledování systému
+▶ Vzdálené ovládání workerů
+    ◆ (remote control)
+▶ Systém událostí
+    ◆ (events)
+▶ Návaznost na různé brokery

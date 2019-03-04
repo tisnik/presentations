@@ -1,0 +1,13 @@
+
+Další protokoly používané pro komunikaci
+----------------------------------------
+▶ CoAP
+    ◆ Constrained Application Protocol
+▶ WAMP
+    ◆ Web Application Messaging Protocol
+    ◆ založeno na WebSocketech
+    ◆ Publish-Subscribe
+    ◆ RPC
+▶ (XMPP)
+    ◆ extensible Message Oriented Middleware
+    ◆ xMOM
