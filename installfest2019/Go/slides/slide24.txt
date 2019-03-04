@@ -1,0 +1,14 @@
+
+Operátor :=
+--------------------------------------------------
+▶ Význam operátoru :=
+    ◆ deklarace proměnné
+    ◆ určení jejího typu
+    ◆ inicializace proměnné
+  
+        a := 10
+        fmt.Println(a)
+        b := "hello"
+        fmt.Println(b)
+        c := true
+        fmt.Println(c)

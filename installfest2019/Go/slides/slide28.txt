@@ -1,0 +1,13 @@
+
+Tisk obsahu záznamů a inicializace záznamů
+--------------------------------------------------
+▶ Záznamy je možné vytisknout s využitím funkce fmt.Println:
+   
+fmt.Println(user1)
+   
+▶ Inicializace záznamů
+  
+user1 := User{
+        1,
+        "Pepek",
+        "Vyskoč"}

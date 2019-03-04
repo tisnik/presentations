@@ -1,0 +1,17 @@
+
+Ovlivnění návratové hodnoty přes blok defer
+--------------------------------------------------
+func funkce1() (i int) {
+        i = 1
+        return
+}
+   
+func funkce2() (i int) {
+        defer func() { i = 2 }()
+        return 1
+}
+   
+func funkce3() (i int) {
+        defer func() { i += 2 }()
+        return 1
+}

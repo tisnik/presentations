@@ -1,0 +1,14 @@
+
+Operace s mapami
+--------------------------------------------------
+▶ Přečtení hodnoty z mapy
+    ◆ value, exist := mapa[klíč]
+   
+if exist {
+        // prvek byl nalezen
+} else {
+        // prvek nebyl nalezen
+}
+   
+▶ Vymazání hodnot z map
+    ◆ delete(mapa, klíč)

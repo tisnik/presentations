@@ -1,0 +1,9 @@
+
+Kopie polí
+--------------------------------------------------
+        a2 := a1
+ 
+▶ V Go se provede skutečná kopie pole
+    ◆ výsledkem budou dvě na sobě nezávislá pole.
+▶ V Javě (například) se jen přiřadí reference
+    ◆ dvě proměnné budou ukazovat na stejné pole.

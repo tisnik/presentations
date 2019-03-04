@@ -1,0 +1,8 @@
+
+Řídicí příkazy
+--------------------------------------------------
+▶ Příkaz return
+▶ Rozhodovací konstrukce
+▶ Programové smyčky
+▶ Příkaz goto
+▶ Speciální řízení (defer)

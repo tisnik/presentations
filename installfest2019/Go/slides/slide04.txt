@@ -1,0 +1,22 @@
+
+Charakteristické rysy jazyka Go
+--------------------------------------------------
+▶ Cíle
+    ◆ Jednoduchost, jednoznačnost
+    ◆ Jazyk postaven na jednoduchých a známých konceptech
+        ⇒ Lze začít programovat po doslova několikaminutovém tutoriálu
+        ⇒ Ovšem pokročilejší vlastnosti je potřeba nastudovat
+    ◆ Bezpečné aplikace
+    ◆ Mikroslužby
+    ◆ Skripty a nástroje pro DevOps od DevOps
+    ◆ Jazyk původně pro potřeby Googlu:
+        ⇒ spíše pro mladší vývojáře
+          (C/C++, Java, Python ve škole)
+    ◆ Použití pro rozsáhlejší aplikace psané velkým týmem
+    ◆ Paralelní běh částí aplikace
+        ⇒ komunikace mezi paralelně běžícími částmi
+    ◆ Rozumný výpočetní výkon
+        ⇒ cílem je dosáhnout výkonnosti C/C++/Fortranu
+    ◆ Rychlý překlad
+        ⇒ CI/CD
+        ⇒ lokální vývoj i rozsáhlých systémů

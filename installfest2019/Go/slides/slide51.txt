@@ -1,0 +1,24 @@
+
+Klíčové slovo fallthrough
+--------------------------------------------------
+// Pozor!!!
+func classify(x int) string {
+        switch x {
+        case 0:
+                return "nula"
+        case 2:
+        case 4:
+        case 6:
+        case 8:
+                return "sudé číslo"
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 9:
+                return "liché číslo"
+        default:
+                return "?"
+        }
+        return "X"
+}

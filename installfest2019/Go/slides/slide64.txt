@@ -1,0 +1,13 @@
+
+Speciální řízení (defer)
+--------------------------------------------------
+src, err := os.Open(srcName)
+if err != nil {
+        fmt.Printf("Cannot open file '%s' for reading\n", srcName)
+        return
+} else {
+        fmt.Printf("File '%s' opened for reading\n", srcName)
+}
+defer closeFile(src)
+// nebo přímo
+defer src.Close()

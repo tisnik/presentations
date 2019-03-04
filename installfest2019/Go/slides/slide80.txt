@@ -1,0 +1,15 @@
+
+Posílání dat do workerů
+--------------------------------------------------
+ch1 := make(chan int)
+  
+go worker(ch1)
+  
+for i := 0; i < 10; i++ {
+        select {
+        case ch1 <- 0:
+                fmt.Println("Poslána nula")
+        case ch1 <- 1:
+                fmt.Println("Poslána jednička")
+        }
+}

@@ -1,0 +1,17 @@
+
+Kombinace čtení a zápisu v konstrukci select-case
+--------------------------------------------------
+select {
+case ch1 <- 0:
+        fmt.Println("Poslána nula")
+case ch1 <- 1:
+        fmt.Println("Poslána jednička")
+case data, ok := <-ch2:
+        if ok {
+                fmt.Printf("Přijata data %d z kanálu 2\n", data)
+        }
+case data, ok := <-ch3:
+        if ok {
+                fmt.Printf("Přijata data %d z kanálu 3\n", data)
+        }
+}

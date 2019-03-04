@@ -1,0 +1,11 @@
+
+Neordinální celočíselné datové typy
+--------------------------------------------------
+▶ opět nezávislé na použité architektuře
+▶ implicitní (výchozí) hodnota = 0.0
+  
+Označení        Rozsah hodnot                          Stručný popis
+float32         -3,4×10³⁸ až 3,4×10³⁸                  číslo s jednoduchou přesností podle IEEE 754
+float64         -1,7×10³⁰⁸ až 1,7×10³⁰⁸                číslo s dvojitou přesností podle IEEE 754
+complex64       ± rozsah float32 + i ± rozsah float32  dvojice hodnot s jednoduchou přesností
+complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojitou přesností

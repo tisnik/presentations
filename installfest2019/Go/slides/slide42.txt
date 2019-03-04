@@ -1,0 +1,16 @@
+
+Operátory - výběr zajímavostí
+--------------------------------------------------
+^             negace bit po bitu (podobně jako operátor ~ v C)
+               
+&      &=     logický součin prováděný bit po bitu
+|      |=     logický součet prováděný bit po bitu
+^      ^=     logická nonekvivalence prováděná bit po bitu
+&^     &^=    maskování bitů vybraných zadanou maskou (operace AND NOT)
+ 
+Operátory/příkazy ++ a --
+--------------------------------------------------
+▶ Operátory ++ a --
+    ◆ Musí být zapsány jako příkaz
+        ◆ (proto se většinou ani neuvádí v tabulce operátorů)
+    ◆ Zapisují se vždy za operand

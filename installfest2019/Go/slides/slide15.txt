@@ -1,0 +1,12 @@
+
+Neordinální celočíselné datové typy
+--------------------------------------------------
+        var a float32 = -1.5
+        var b float32 = 1.5
+        var c float32 = 1e30
+        var d float32 = 1e-30
+ 
+        var x complex64 = -1.5 + 0i
+        var y complex64 = 1.5 + 1000i
+        var z complex64 = 1e30 + 1e30i
+        var w complex64 = 1i

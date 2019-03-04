@@ -1,0 +1,17 @@
+
+Mapy (map)
+--------------------------------------------------
+▶ Mapy (map)
+    ◆ též asociativní pole
+    ◆ (heše/hashe)
+▶ Tzv. nil map
+    ◆ var m1 map[int]string
+    ◆ var m2 map[string]User
+▶ Prázdná mapa
+    ◆ var m3 map[int]string = make(map[int]string)
+    ◆ m1 := make(map[int]string)
+▶ Přidání položek do prázdné mapy
+    ◆ m3[0] = "nula"
+    ◆ m3[1] = "jedna"
+    ◆ m3[2] = "dva"
+    ◆ m3[3] = "tri"

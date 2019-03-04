@@ -1,0 +1,22 @@
+
+Charakteristické rysy jazyka Go
+--------------------------------------------------
+„Less is more“
+▶ Multiparadigmatický jazyk
+    ◆ Procedurální
+    ◆ Objekově orientovaný
+    ◆ Podpora konstrukcí pro paralelní programování
+▶ Vznik
+    ◆ Snaha o přidání konstrukcí pro paralelní programování do C++
+    ◆ Serverové aplikace pro Google
+▶ Dostupný pro všechny „zajímavé“ systémy
+    ◆ Linux, (Free)BSD, macOS, Microsoft Windows
+▶ Pro běžné architektury
+    ◆ x86 i x86-64
+    ◆ ARMv6
+    ◆ ARMv8
+▶ I pro ty více exotické
+    ◆ s390x
+    ◆ PowerPC64 (LE)
+▶ Současná verze používá vlastní backend
+    ◆ + cgo

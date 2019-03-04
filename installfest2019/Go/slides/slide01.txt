@@ -1,0 +1,17 @@
+
+Obsah přednášky
+-------------------------------
+▶ Charakteristické rysy jazyka Go
+▶ Struktura programů psaných v Go
+▶ Klíčová slova jazyka Go
+▶ Základní datové typy
+▶ Uživatelské datové typy
+▶ Operátory
+▶ Deklarace funkcí
+▶ Řídicí příkazy
+▶ Reakce na chybové stavy
+▶ Rozhraní
+▶ Metody
+▶ Gorutiny
+▶ Kanály
+▶ Balíčky

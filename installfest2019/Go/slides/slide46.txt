@@ -1,0 +1,12 @@
+
+Příkaz zapsaný za klíčovým slovem if
+--------------------------------------------------
+func x() string {
+        if value := funkce(); value < 0 {
+                return "záporná hodnota"
+        } else if value > 0 {
+                return "kladná hodnota"
+        } else {
+                return "nula"
+        }
+}

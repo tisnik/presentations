@@ -1,0 +1,14 @@
+
+Záznamy (struct)
+--------------------------------------------------
+type User struct {
+        id      uint32
+        name    string
+        surname string
+}
+   
+var user1 User
+   
+user1.id = 1
+user1.name = "Pepek"
+user1.surname = "Vyskoč"

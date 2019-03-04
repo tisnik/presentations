@@ -1,0 +1,7 @@
+
+Kanály
+--------------------------------------------------
+▶ Technologie pro komunikaci mezi gorutinami
+▶ Speciální operátory
+▶ Kanály s kapacitou (buffery, fronty)
+▶ Základní detekce deadlocku

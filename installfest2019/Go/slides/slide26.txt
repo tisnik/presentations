@@ -1,0 +1,6 @@
+
+Záznamy (struct)
+--------------------------------------------------
+▶ Záznamy (struct)
+    ◆ viditelnost prvků podle prvního znaku názvu
+    ◆ přístup k prvkům s využitím tečkové notace

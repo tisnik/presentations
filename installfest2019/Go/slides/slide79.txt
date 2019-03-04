@@ -1,0 +1,20 @@
+
+Větev default
+--------------------------------------------------
+ch1 := make(chan int)
+ch2 := make(chan int)
+  
+go worker(ch1, 1)
+go worker(ch2, 2)
+  
+for true {
+        select {
+        case <-ch1:
+                fmt.Println("Data z kanálu 1")
+        case <-ch2:
+                fmt.Println("Data z kanálu 2")
+        default:
+                fmt.Println("Žádná data nejsou k dispozici")
+        }
+        time.Sleep(1 * time.Second)
+}

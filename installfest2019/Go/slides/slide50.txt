@@ -1,0 +1,15 @@
+
+Vyhodnocení a porovnání výsledků podmínek zapsaných ve větvích case
+-------------------------------------------------------------------
+func classify(x int) string {
+        switch {
+        case x == 0:
+                return "nula"
+        case x%2 == 0:
+                return "sudé číslo"
+        case x%2 == 1:
+                return "liché číslo"
+        default:
+                return "?"
+        }
+}

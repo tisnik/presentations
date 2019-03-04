@@ -1,0 +1,18 @@
+
+Makra v Go?
+--------------------------------------------------
+▶ Céčkový přístup:
+    ◆ řeší preprocesor
+        #ifdef _DEBUG
+        puts("something");
+        #else
+        puts("something else");
+        #endif
+▶ Částečně nahraditelná:
+    ◆ řeší překladač
+        const debug = false
+        if debug {
+            fmt.Println("something")
+        } else {
+            fmt.Println("something else")
+        }

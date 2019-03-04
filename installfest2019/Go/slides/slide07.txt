@@ -1,0 +1,8 @@
+
+Charakteristické rysy jazyka Go (4)
+--------------------------------------------------
+▶ Výsledkem překladu může být binární soubor obsahující vše potřebné
+    ⇒ jednodušší distribuce
+    ⇒ "DLL hell"
+    ⇒ Docker atd.
+    ⇒ cross překlad

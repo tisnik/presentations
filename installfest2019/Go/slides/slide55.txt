@@ -1,0 +1,7 @@
+
+Programové smyčky - podmínka na začátku smyčky
+--------------------------------------------------
+for i != 0 {
+        println(i)
+        i--
+}

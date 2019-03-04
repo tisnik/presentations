@@ -1,0 +1,16 @@
+
+Řezy (slice)
+--------------------------------------------------
+▶ Řezy (slice)
+    ◆ neobsahuje přímo prvky, ale pouze referencuje existující pole
+    ◆ podpora pro operaci "slice" pole[od:do]
+    ◆ podpora pro přidání prvků na konec řezu
+        ■ interně může dojít ke realokaci pole/vytvoření nového pole
+    ◆ interní struktura
+        ■ ukazatel na prvek pole 
+        ■ délka (počet prvků)
+        ■ kapacita
+    ◆ funkce
+        ■ make
+        ■ copy
+        ■ append

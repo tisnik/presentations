@@ -1,0 +1,24 @@
+
+Kanály
+--------------------------------------------------
+func message(id int, channel chan int) {
+        fmt.Printf("gorutina %d\n", id)
+   
+        // zápis libovolné hodnoty do kanálu
+        channel <- 1
+}
+  
+func main() {
+        channel := make(chan int)
+   
+        fmt.Println("main begin")
+        go message(1, channel)
+   
+        fmt.Println("waiting...")
+   
+        // blokující čtení z kanálu
+        code, status := <-channel
+   
+        fmt.Printf("received code: %d and status: %t\n", code, status)
+        fmt.Println("main end")
+}

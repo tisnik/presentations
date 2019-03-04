@@ -1,0 +1,14 @@
+
+Řetězce (string)
+--------------------------------------------------
+▶ Řetězce (string)
+    ◆ podpora Unicode
+    ◆ neměnitelné (immutable)
+    ◆ známá délka (žádné počítání indexu \0)
+        ⇒ ovšem udávaná v bajtech, nikoli ve znacích.
+    ◆ [] - přístup k bajtům, ne ke znakům
+    ◆ podpora konverze na byte[]
+  
+        fmt.Println("╭─────────────────────╮")
+        fmt.Println("│ příλiš žλuťΩučký kůň│")
+        fmt.Println("╰─────────────────────╯")

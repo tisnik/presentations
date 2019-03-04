@@ -1,0 +1,11 @@
+
+Ukazatele
+--------------------------------------------------
+▶ Vždy ukazatele na hodnotu určitého typu (ne void)
+▶ Implicitní hodnota je `nil`
+▶ Získání adresy unárním operátorem &
+▶ Nepřímý přístup k hodnotě unárním operátorem *
+  
+var p_i *int
+p_i = &i
+*p_i++

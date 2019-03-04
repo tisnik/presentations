@@ -1,0 +1,7 @@
+
+Zvláštní datové typy
+--------------------------------------------------
+▶ Ukazatel (pointer)
+▶ Funkce (function)
+▶ Rozhraní (interface)
+▶ Kanál (channel)

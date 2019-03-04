@@ -1,0 +1,14 @@
+
+Break a continue (s návěštím)
+--------------------------------------------------
+Exit:
+        for i := 1; i <= 10; i++ {
+                for j := 1; j <= 10; j++ {
+                        fmt.Printf("%3d ", i*j)
+                        if i*j == 42 {
+                                fmt.Println("\nodpověď nalezena!\n")
+                                break Exit
+                        }
+                }
+                fmt.Println()
+        }

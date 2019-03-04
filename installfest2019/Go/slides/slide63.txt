@@ -1,0 +1,9 @@
+
+Speciální řízení (defer)
+--------------------------------------------------
+defer on_finish()
+   
+for i := 10; i >= 0; i-- {
+        fmt.Printf("%2d\n", i)
+}
+fmt.Println("Finishing main() function")

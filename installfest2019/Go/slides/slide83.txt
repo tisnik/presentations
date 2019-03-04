@@ -1,0 +1,5 @@
+
+Balíčky
+--------------------------------------------------
+▶ klíčové slovo package 
+▶ import balíčků přes příkaz import "název_balíčku"

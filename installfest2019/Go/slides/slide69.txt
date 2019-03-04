@@ -1,0 +1,20 @@
+
+Rozhraní
+--------------------------------------------------
+▶ Datový typ
+▶ Prázdné rozhraní interface{}
+▶ Není zapotřebí specifikovat, jaký typ rozhraní implementuje!
+▶ Jedna metoda (dosti časté)
+type OpenShape interface {
+        length() float64
+}
+  
+▶ V rozhraní může být předepsáno větší množství metod:
+type ClosedShape interface {
+        area() float64
+        perimeter() float64
+}
+  
+▶ Nebo naopak nemusí být předepsána žádná metoda:
+type Shape interface {
+}

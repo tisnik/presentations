@@ -1,0 +1,22 @@
+
+Základní datové typy
+--------------------------------------------------
+▶ Jednoduché datové typy
+    ◆ Pravdivostní
+         ■ Pravdivostní typ (boolean)
+    ◆ Ordinální
+         ■ Celočíselné typy (integer)
+    ◆ Neordinální
+         ■ Hodnoty s plovoucí řádovou čárkou (float)
+         ■ Komplexní čísla (complex)
+▶ Složené datové typy
+    ◆ Řetězce (string)
+    ◆ Pole (array)
+    ◆ Řezy (slice)
+    ◆ Záznamy (struct)
+    ◆ Mapy (map)
+▶ Zvláštní datové typy
+    ◆ Ukazatel (pointer)
+    ◆ Funkce (function)
+    ◆ Rozhraní (interface)
+    ◆ Kanál (channel)

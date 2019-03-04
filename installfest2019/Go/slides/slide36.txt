@@ -1,0 +1,16 @@
+
+Ukazatel na strukturu
+--------------------------------------------------
+var u User
+   
+var p_u *User
+p_u = &u
+  
+▶ Není podporován operátor ->
+(*p_u).id = 10000
+  
+▶ Ovšem je podporována automatická dereference
+p_u.id = 20000
+  
+▶ Ukazatel na položku záznamu
+p_n = &u.name

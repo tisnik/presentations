@@ -1,0 +1,20 @@
+
+Reakce na chybové stavy
+--------------------------------------------------
+type error interface {
+    Error() string
+}
+   
+func div(x, y int32) (int32, error) {
+        if y == 0 {
+                return -1, errors.New("takto ne!")
+        }
+        return x / y, nil
+}
+  
+func main() {
+        res, err := div(10, 3)
+        fmt.Println(res, err)
+        res, err = div(10, 0)
+        fmt.Println(res, err)
+}

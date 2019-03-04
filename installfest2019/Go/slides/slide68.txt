@@ -1,0 +1,18 @@
+
+Reakce na chybové stavy - panic
+--------------------------------------------------
+func copyFile(srcName, dstName string) (written int64, err error) {
+        src, err := os.Open(srcName)
+        if err != nil {
+                panic(err)
+        }
+        defer closeFile(src)
+ 
+        dst, err := os.Create(dstName)
+        if err != nil {
+                panic(err)
+        }
+        defer closeFile(dst)
+ 
+        return io.Copy(dst, src)
+}

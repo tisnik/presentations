@@ -1,0 +1,22 @@
+
+Jednoduchá synchronizace v Go
+------------------------------------
+func worker(done chan bool) {
+    fmt.Print("working...")
+    time.Sleep(time.Second)
+    fmt.Println("done")
+  
+    // ok uz jsme hotovi, posleme zpravu kanalem
+    done <- true
+}
+  
+func main() {
+    // kanal s kapacitou == 1
+    done := make(chan bool, 1)
+  
+    // asynchronni beh
+    go worker(done)
+  
+    // cekame na zpravu
+    <-done
+}

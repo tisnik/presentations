@@ -1,0 +1,8 @@
+
+Pole bajtů tvořících řetězec
+--------------------------------------------------
+        var s string = "Hello\nworld!\nžluťoučký kůň"
+   
+        for i := 0; i < len(s); i++ {
+                fmt.Printf("%02x ", s[i])
+        }

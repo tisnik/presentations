@@ -1,0 +1,7 @@
+
+Last minute info
+--------------------------------------------------
+▶ 25.2.2019 vyšla verze Go 1.12
+▶ žádné podstatné změny v jazyku
+    ◆ nástroje
+    ◆ knihovny

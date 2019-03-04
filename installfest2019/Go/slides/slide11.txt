@@ -1,0 +1,22 @@
+
+Celočíselné datové typy
+--------------------------------------------------
+▶ nezávislé na použité architektuře
+▶ implicitní (výchozí) hodnota = 0
+  
+Označení          Od                   Do           Stručný popis
+int8                     -128                  127  osmibitové celé číslo se znaménkem
+int16                  -32768                32767  16bitové celé číslo se znaménkem
+int32             -2147483648           2147483647  32bitové celé číslo se znaménkem
+int64    -9223372036854775808  9223372036854775807  64bitové celé číslo se znaménkem
+  
+uint8                       0                  255  osmibitové celé číslo bez znaménka
+uint16                      0                65535  16bitové celé číslo bez znaménka
+uint32                      0           4294967295  32bitové celé číslo bez znaménka
+uint64                      0 18446744073709551615  64bitové celé číslo bez znaménka
+  
+int                     různý                různý  odpovídá buď typu int32 nebo int64
+uint                    různý                různý  odpovídá buď typu uint32 nebo uint64
+  
+byte                        0                  255  alias pro typ uint8
+rune              -2147483648           2147483647  alias pro typ int32

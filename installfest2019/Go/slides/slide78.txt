@@ -1,0 +1,15 @@
+
+Čekání na data posílaná přes kanály
+--------------------------------------------------
+ch1 := make(chan int)
+ch2 := make(chan int)
+  
+go worker(ch1, 1)
+go worker(ch2, 2)
+  
+select {
+case <-ch1:
+        fmt.Println("Data z kanálu 1")
+case <-ch2:
+        fmt.Println("Data z kanálu 2")
+}

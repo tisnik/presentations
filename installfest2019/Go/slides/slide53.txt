@@ -1,0 +1,6 @@
+
+Programové smyčky - klasická nekonečná smyčka
+--------------------------------------------------
+for {
+        println("Diamonds are forever")
+}

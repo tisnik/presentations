@@ -1,0 +1,10 @@
+
+Konstanty
+--------------------------------------------------
+const Pi float64 = 3.1415927
+const E = 2.71828
+   
+const z0 int = 0
+const z1 = 0
+  
+const z2 = z0 + z1

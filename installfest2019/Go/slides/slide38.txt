@@ -1,0 +1,17 @@
+
+Funkce
+--------------------------------------------------
+▶ Funkce je v Go datovým typem
+func funkce1(x int) int {
+        return 2 * x
+}
+  
+var a func(int) int
+  
+a = funkce1
+  
+fmt.Println(a)
+fmt.Println(a(10))
+  
+type two_int_param_function func(int, int) int
+var b two_int_param_function

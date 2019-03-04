@@ -1,0 +1,12 @@
+
+Operátory
+--------------------------------------------------
+aritmetické                +   -   *   /   %
+aritmetické s přiřazením   +=  -=  *=  /=  %=
+logické                    &&  ||  !
+posuny a bitové operace    <<  >>  &   |   ^   &^
+-//- s přiřazením          <<= >>= &=  |=  ^=  &^=
+relační                    ==  !=  <   <=  >   >=
+operace s adresami         *   &
+unární operátory           +   -   ^
+další operátory            <-  :=

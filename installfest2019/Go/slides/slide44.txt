@@ -1,0 +1,10 @@
+
+Příkaz return
+--------------------------------------------------
+// kontrola existence return hodnota i u nedosažitelného kódu
+func f2() int {
+        println("f2() před příkazem return")
+        return 42
+        println("f2() po příkazu return")
+        return -1
+}

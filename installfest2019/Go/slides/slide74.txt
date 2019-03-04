@@ -1,0 +1,26 @@
+
+Gorutiny
+--------------------------------------------------
+func f(from string) {
+    for i := 0; i < 3; i++ {
+        fmt.Println(from, ":", i)
+    }
+}
+  
+func main() {
+    f("direct")
+    go f("goroutine")
+    go func(msg string) {
+        fmt.Println(msg)
+    }("going")
+  
+    fmt.Scanln()
+    fmt.Println("done")
+}
+   
+func main() {
+    messages := make(chan string)
+    go func() { messages <- "ping" }()
+    msg := <-messages
+    fmt.Println(msg)
+}

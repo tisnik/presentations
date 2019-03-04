@@ -1,0 +1,7 @@
+
+Pravdivostní typ
+--------------------------------------------------
+▶ bool
+    ◆ true
+    ◆ false
+▶ neprovádí se automatická konverze z/na int!

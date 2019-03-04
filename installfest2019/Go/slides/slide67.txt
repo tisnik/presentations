@@ -1,0 +1,8 @@
+
+Reakce na chybové stavy - panic
+--------------------------------------------------
+▶ Funkce se ihned ukončí
+▶ Zavolají se případné bloky defer
+▶ Probublávání chybového stavu
+    * (defer se jakoby volá ve funkci výše)
+▶ Zachycení funkcí recover

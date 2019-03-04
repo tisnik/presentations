@@ -1,0 +1,28 @@
+
+Deklarace funkcí
+--------------------------------------------------
+▶ Funkce bez parametrů a bez návratové hodnoty
+func printHello() {
+        fmt.Println("Hello world!")
+}
+  
+▶ Funkce s jedním parametrem, bez návratové hodnoty
+func printMessage(message string) {
+        fmt.Println(message)
+}
+  
+▶ Funkce s jednou návratovou hodnotou
+func getMessage() string {
+        return "Hello world!"
+}
+  
+▶ Alternativní zápis
+func getMessage() (message string) {
+        message = "Hello world!"
+        return
+}
+  
+▶ Více návratových hodnot
+func swap(a int, b int) (int, int) {
+        return b, a
+}

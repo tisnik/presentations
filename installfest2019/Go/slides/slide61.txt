@@ -1,0 +1,29 @@
+
+Používá se `goto` vůbec?
+--------------------------------------------------
+Počet použití   Klíčové slovo
+189     fallthrough
+550     goto
+605     select
+1711    chan
+2346    interface
+2412    default
+3128    map
+3443    continue
+3831    import
+3946    defer
+4433    switch
+4709    go
+4929    const
+5308    package
+7125    else
+9418    range
+9885    struct
+12313   type
+19094   var
+22073   case
+29449   break
+29736   for
+57261   func
+77351   return
+111163  if

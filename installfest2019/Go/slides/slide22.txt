@@ -1,0 +1,9 @@
+
+Řezy (slice)
+--------------------------------------------------
+▶ Výstup bude vypadat následovně:
+Array a = [C C++ Java Python Go Rust]
+slice1 = [C++ Java Python]
+slice2 = [C C++ Java]
+slice3 = [Java Python Go Rust]
+slice4 = [C C++ Java Python Go Rust]

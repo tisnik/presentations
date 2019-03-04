@@ -1,0 +1,6 @@
+
+Operátor :=
+--------------------------------------------------
+▶ Pokud je proměnná deklarována
+    ◆ není ji možné v daném bloku deklarovat znovu
+    ◆ tudíž ani není možné použít znovu přiřazení :=.
