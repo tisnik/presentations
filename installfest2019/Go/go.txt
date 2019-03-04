@@ -50,6 +50,9 @@ Charakteristické rysy jazyka Go
     ◆ Paralelní běh částí aplikace
     ◆ Rozumný výpočetní výkon
         ⇒ cílem je dosáhnout C/C++/Fortranu
+    ◆ Rychlý překlad
+        ⇒ CI/CD
+        ⇒ lokální vývoj i rozsáhlých systémů
 
 Charakteristické rysy jazyka Go (2)
 --------------------------------------------------
@@ -57,11 +60,13 @@ Charakteristické rysy jazyka Go (2)
     ◆ Silný typový systém
     ◆ Nepoužívají se makra založená na textové substituci
     ◆ Nepoužívají se hlavičkové soubory
+    ◆ Systém balíčků, kontrola použití balíčků
     ◆ Bezpečná práce s pamětí (+ GC)
     ◆ Standardizovaný framework pro testování
     ◆ Rychlé překlady
     ◆ Syntaktické věci: ++/-- jen postfixové a nejsou to výrazy
-    ◆ Nepoužívá se ukazatelová aritmetika
+    ◆ Nepoužívá se ukazatelová aritmetika tak jako v C
+        ⇒ práce s ukazateli je do značné míry omezena
     ◆ Nepoužívají se šablony
     ◆ Nejsou podporovány výjimky (prozatím)
 
@@ -81,6 +86,13 @@ Charakteristické rysy jazyka Go (3)
     ◆ Pravděpodobně se změní v další verzi Go
 ▶ Pragmaticky zaměřený jazyk
 ▶ Prozatím nedosahuje tak vysokého výpočetního výkonu jako C
+
+Charakteristické rysy jazyka Go (4)
+--------------------------------------------------
+▶ Výsledkem překladu může být binární soubor obsahující vše potřebné
+    ⇒ jednodušší distribuce
+    ⇒ "DLL hell"
+    ⇒ Docker atd.
 
 Klíčová slova jazyka Go
 --------------------------------------------------
@@ -145,22 +157,51 @@ float64         -1,7×10³⁰⁸ až 1,7×10³⁰⁸                číslo s dv
 complex64       ± rozsah float32 + i ± rozsah float32  dvojice hodnot s jednoduchou přesností
 complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojitou přesností
 
-Složené datové typy
+Řetězce (string)
 --------------------------------------------------
 ▶ Řetězce (string)
     ◆ podpora Unicode
     ◆ neměnitelné (immutable)
     ◆ [] - přístup k bajtům, ne ke znakům
+
+Pole (array)
+--------------------------------------------------
 ▶ Pole (array)
+    ◆ měnitelné (mutable)
+
+Řezy (slice)
+--------------------------------------------------
 ▶ Řezy (slice)
+
+Záznamy (struct)
+--------------------------------------------------
 ▶ Záznamy (struct)
+
+Mapy (map)
 ▶ Mapy (map)
 
 Zvláštní datové typy
---------------------------------------------------
 
 Uživatelsky definované datové typy
---------------------------------------------------
+package main
+.
+import "fmt"
+.
+type Id uint32
+type Name string
+type Surname string
+.
+func register_user(id Id, name Name, surname Surname) {
+        fmt.Printf("Registering: %d %s %s", id, name, surname)
+}
+.
+func main() {
+        var i Id = 1
+        var n Name = "Jan"
+        var s Surname = "Novák"
+
+        register_user(i, n, s)
+}
 
 Operátory
 --------------------------------------------------
