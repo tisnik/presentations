@@ -10,6 +10,7 @@ Obsah přednášky
 ▶ Struktura programů psaných v Go
 ▶ Klíčová slova jazyka Go
 ▶ Základní datové typy
+▶ Uživatelské datové typy
 ▶ Operátory
 ▶ Deklarace funkcí
 ▶ Řidící příkazy
@@ -20,6 +21,7 @@ Obsah přednášky
 ▶ Kanály
 ▶ Balíčky
 ▶ Základní knihovna programovacího jazyka Go
+    ◆ Užitečné balíčky
 
 Charakteristické rysy jazyka Go
 --------------------------------------------------
@@ -41,15 +43,18 @@ Charakteristické rysy jazyka Go
     ◆ Jednoduchost, jednoznačnost
     ◆ Jazyk postaven na jednoduchých a známých konceptech
         ⇒ Lze začít programovat po doslova několikaminutovém tutoriálu
+        ⇒ Ovšem pokročilejší vlastnosti je potřeba nastudovat
     ◆ Bezpečné aplikace
     ◆ Mikroslužby
     ◆ Skripty a nástroje pro DevOps od DevOps
-    ◆ Jazyk pro potřeby Googlu:
-        ⇒ spíše pro mladší vývojáře (C/C++, Java, Python ve škole)
+    ◆ Jazyk původně pro potřeby Googlu:
+        ⇒ spíše pro mladší vývojáře
+          (C/C++, Java, Python ve škole)
     ◆ Použití pro rozsáhlejší aplikace psané velkým týmem
     ◆ Paralelní běh částí aplikace
+        ⇒ komunikace mezi paralelně běžícími částmi
     ◆ Rozumný výpočetní výkon
-        ⇒ cílem je dosáhnout C/C++/Fortranu
+        ⇒ cílem je dosáhnout výkonnosti C/C++/Fortranu
     ◆ Rychlý překlad
         ⇒ CI/CD
         ⇒ lokální vývoj i rozsáhlých systémů
@@ -58,6 +63,7 @@ Charakteristické rysy jazyka Go (2)
 --------------------------------------------------
 × Poučení z chyb, které najdeme například v C/C++
     ◆ Silný typový systém
+        ⇒ explicitní konverze
     ◆ Nepoužívají se makra založená na textové substituci
     ◆ Nepoužívají se hlavičkové soubory
     ◆ Systém balíčků, kontrola použití balíčků
@@ -78,8 +84,9 @@ Charakteristické rysy jazyka Go (3)
 ▶ Typový systém
     ◆ Snadné vytváření nových typů
     ◆ Generické datové typy
-        chystají se
-        po stabilizaci jazyka (což nastalo)
+        ■ chystají se
+        ■ po stabilizaci jazyka (což nastalo)
+        ■ Go 2?
 ▶ Více imperativních rysů
     ◆ Explicitní zápis většiny operací
 ▶ Neexistuje podpora pro generické datové typy
@@ -93,6 +100,7 @@ Charakteristické rysy jazyka Go (4)
     ⇒ jednodušší distribuce
     ⇒ "DLL hell"
     ⇒ Docker atd.
+    ⇒ cross překlad
 
 Klíčová slova jazyka Go
 --------------------------------------------------
@@ -106,8 +114,8 @@ Základní datové typy
 --------------------------------------------------
 ▶ Jednoduché datové typy
     ◆ Pravdivostní
-    ◆ Ordinální
          ■ Pravdivostní typ (boolean)
+    ◆ Ordinální
          ■ Celočíselné typy (integer)
     ◆ Neordinální
          ■ Hodnoty s plovoucí řádovou čárkou (float)
@@ -129,28 +137,35 @@ Pravdivostní typ
 ▶ bool
     ◆ true
     ◆ false
+▶ neprovádí se automatická konverze z/na int!
 
 Celočíselné datové typy
 --------------------------------------------------
+▶ nezávislé na použité architektuře
+▶ implicitní (výchozí) hodnota = 0
+  
 Označení          Od                   Do           Stručný popis
 int8                     -128                  127  osmibitové celé číslo se znaménkem
 int16                  -32768                32767  16bitové celé číslo se znaménkem
 int32             -2147483648           2147483647  32bitové celé číslo se znaménkem
 int64    -9223372036854775808  9223372036854775807  64bitové celé číslo se znaménkem
-.
+  
 uint8                       0                  255  osmibitové celé číslo bez znaménka
 uint16                      0                65535  16bitové celé číslo bez znaménka
 uint32                      0           4294967295  32bitové celé číslo bez znaménka
 uint64                      0 18446744073709551615  64bitové celé číslo bez znaménka
-.
+  
 int                     různý                různý  odpovídá buď typu int32 nebo int64
 uint                    různý                různý  odpovídá buď typu uint32 nebo uint64
-.
+  
 byte                        0                  255  alias pro typ uint8
 rune              -2147483648           2147483647  alias pro typ int32
 
 Neordinální celočíselné datové typy
 --------------------------------------------------
+▶ opět nezávislé na použité architektuře
+▶ implicitní (výchozí) hodnota = 0.0
+  
 Označení        Rozsah hodnot                          Stručný popis
 float32         -3,4×10³⁸ až 3,4×10³⁸                  číslo s jednoduchou přesností podle IEEE 754
 float64         -1,7×10³⁰⁸ až 1,7×10³⁰⁸                číslo s dvojitou přesností podle IEEE 754
@@ -163,15 +178,29 @@ complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojit
     ◆ podpora Unicode
     ◆ neměnitelné (immutable)
     ◆ [] - přístup k bajtům, ne ke znakům
+    ◆ podpora konverze na byte[]
 
 Pole (array)
 --------------------------------------------------
 ▶ Pole (array)
     ◆ měnitelné (mutable)
+    ◆ konstantní počet prvků
+    ◆ automatická inicializace prvků (na "nulu")
 
 Řezy (slice)
 --------------------------------------------------
 ▶ Řezy (slice)
+    ◆ neobsahuje přímo prvky, ale pouze referencuje existující pole
+    ◆ podpora pro operaci "slice" pole[od:do]
+    ◆ podpora pro přidání prvků na konec řezu
+    ◆ interní struktura
+        ■ ukazatel na prvek pole 
+        ■ délka (počet prvků)
+        ■ kapacita
+    ◆ funkce
+        ■ make
+        ■ copy
+        ■ append
 
 Záznamy (struct)
 --------------------------------------------------
