@@ -226,9 +226,53 @@ Updated: 2018-11-26 13:22:06.236766
 
 RabbitMQ
 -------------------------------
-▶
-▶
-▶
+▶ Jedna z nejúspěšnějších implementací brokera
+▶ Vyvinut v Erlangu
+    ◆ Využívá knihovny a nástroje Open Telecom Platform
+    ◆ OTP
+▶ Výhody Erlangu (nejenom) v této oblasti
+    ◆ Odolnost proti selhání
+    ◆ Vysoce dostupné aplikace
+    ◆ Distribuované systémy
+    ◆ Funkcionální paradigma
+
+RabbitMQ
+-------------------------------
+▶ Rozhraní pro programovací jazyky (platformy)
+    ◆ Java
+    ◆ JavaScript (Node.js)
+    ◆ Python
+    ◆ Ruby
+    ◆ PHP
+    ◆ C#
+    ◆ Go
+    ◆ Elixir
+    ◆ (Java) Spring AMQP
+    ◆ Swift
+    ◆ Objective-C
+    ◆ Clojure
+
+RabbitMQ
+-------------------------------
+▶ Podporované protokoly
+    ◆  AMQP
+        ■ verze 0-9-1
+        ■ 0-9
+        ■ 0-8
+    ◆  STOMP
+    ◆  MQTT
+
+RabbitMQ
+-------------------------------
+Směrování zpráv před jejich vložením do fronty
+ Strategie
+  Direct
+   fronta nalezena podle klíče
+   klíč je součástí zprávy
+  Topic
+   opět se používá klíč
+   využití regulárních výrazů
+   hierarchie front atd.
 
 Apache Active MQ
 -------------------------------
