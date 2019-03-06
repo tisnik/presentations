@@ -193,6 +193,7 @@ Pole (array)
     ◆ neobsahuje přímo prvky, ale pouze referencuje existující pole
     ◆ podpora pro operaci "slice" pole[od:do]
     ◆ podpora pro přidání prvků na konec řezu
+        ■ interně může dojít ke realokaci pole/vytvoření nového pole
     ◆ interní struktura
         ■ ukazatel na prvek pole 
         ■ délka (počet prvků)
@@ -205,25 +206,66 @@ Pole (array)
 Záznamy (struct)
 --------------------------------------------------
 ▶ Záznamy (struct)
+    ◆ viditelnost prvků podle prvního znaku názvu
+ 
+type User struct {
+        id      uint32
+        name    string
+        surname string
+}
+ 
+var user1 User
+ 
+user1.id = 1
+user1.name = "Pepek"
+user1.surname = "Vyskoč"
+ 
+Záznamy je možné vytisknout s využitím funkce fmt.Println:
+ 
+fmt.Println(user1)
+
+▶ Inicializace záznamů
+user1 := User{
+        1,
+        "Pepek",
+        "Vyskoč"}
+
+Pole záznamů
+var users = [3]User{
+        User{
+                id:      1,
+                name:    "Pepek",
+                surname: "Vyskoč"},
+        User{
+                id:      2,
+                name:    "Pepek",
+                surname: "Vyskoč"},
+        User{
+                id:      3,
+                name:    "Josef",
+                surname: "Vyskočil"},
+}
 
 Mapy (map)
 ▶ Mapy (map)
 
 Zvláštní datové typy
+--------------------------------------------------
 
 Uživatelsky definované datové typy
+--------------------------------------------------
 package main
-.
+ 
 import "fmt"
-.
+ 
 type Id uint32
 type Name string
 type Surname string
-.
+ 
 func register_user(id Id, name Name, surname Surname) {
         fmt.Printf("Registering: %d %s %s", id, name, surname)
 }
-.
+ 
 func main() {
         var i Id = 1
         var n Name = "Jan"
@@ -281,18 +323,33 @@ Rozhraní
 
 Metody
 --------------------------------------------------
+▶ 
+▶ 
+▶ 
 
 Gorutiny
 --------------------------------------------------
+▶ 
+▶ 
+▶ 
 
 Kanály
 --------------------------------------------------
+▶ 
+▶ 
+▶ 
 
 Balíčky
 --------------------------------------------------
+▶ 
+▶ 
+▶ 
 
 Základní knihovna programovacího jazyka Go
 --------------------------------------------------
+▶ 
+▶ 
+▶ 
 
 Makra v Go?
 --------------------------------------------------
@@ -320,13 +377,13 @@ func CopyFile(dstName, srcName string) (written int64, err error) {
         return
     }
     defer src.Close()
-.
+ 
     dst, err := os.Create(dstName)
     if err != nil {
         return
     }
     defer dst.Close()
-.
+ 
     return io.Copy(dst, src)
 }
 
