@@ -231,6 +231,7 @@ user1 := User{
         "Vyskoč"}
 
 Pole záznamů
+--------------------------------------------------
 var users = [3]User{
         User{
                 id:      1,
@@ -247,7 +248,46 @@ var users = [3]User{
 }
 
 Mapy (map)
+--------------------------------------------------
 ▶ Mapy (map)
+    ◆ též asociativní pole
+    ◆ heše/hashe
+▶ Tzv. nil map
+    ◆ var m1 map[int]string
+    ◆ var m2 map[string]User
+▶ Prázdná mapa
+    ◆ var m3 map[int]string = make(map[int]string)
+    ◆ m1 := make(map[int]string)
+▶ Přidání položek do prázdné mapy
+    ◆ m3[0] = "nula"
+    ◆ m3[1] = "jedna"
+    ◆ m3[2] = "dva"
+    ◆ m3[3] = "tri"
+
+Mapy a struktury
+--------------------------------------------------
+type User struct {
+        id      uint32
+        name    string
+        surname string
+}
+ 
+func main() {
+        m1 := make(map[string]User)
+        fmt.Println(m1)
+
+        m1["prvni"] = User{
+                id:      1,
+                name:    "Pepek",
+                surname: "Vyskoč"}
+
+        m1["druhy"] = User{
+                id:      2,
+                name:    "Josef",
+                surname: "Vyskočil"}
+
+        fmt.Println(m1)
+}
 
 Zvláštní datové typy
 --------------------------------------------------
