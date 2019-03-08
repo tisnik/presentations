@@ -16,6 +16,7 @@ Obsah přednášky
 ▶ RabbitMQ
 ▶ Apache Active MQ
 ▶ Celery
+▶ Message queuing service
 ▶ Další užitečné technologie
 
 Message broker a fronty zpráv
@@ -337,6 +338,10 @@ channel.start_consuming()
 
 „Dělba práce“ mezi workery
 -------------------------------
+channel.basic_qos(prefetch_count=1)
+channel.basic_consume(on_receive,
+                      queue='test',
+                      no_ack=False)
 
 Apache Active MQ
 -------------------------------
@@ -346,9 +351,36 @@ Apache Active MQ
 
 Celery
 -------------------------------
-▶
-▶
-▶
+▶ Asynchronní fronty úloh pro Python
+▶ Více flexibility, zejména v porovnání s Redis Queue (RQ)
+▶ Sledování systému
+▶ Vzdálené ovládání workerů
+  (remote control)
+▶ Systém událostí
+  (events)
+▶ Návaznost na různé brokery
+
+Brokeři podporovaní nástrojem Celery 
+-------------------------------
+ Broker           Současný stav   Monitoring  Vzdálené ovládání workerů
+ RabbitMQ         stabilní        ✓           ✓
+ Redis            stabilní        ✓           ✓
+ Amazon SQS       stabilní        ×           ×
+ Apache Zookeeper experimentální  ×           ×
+
+Message queuing service
+-------------------------------
+  "Messaging as a Service"
+  Někdy je lepší použít MQ ve formě služby
+  Výhody/nevýhody
+     podobné jako u dalších cloudových služeb
+  AMQ Online
+  IBM MQ
+  Amazon Simple Queue Service
+  AnypointMQ
+  Oracle Messaging Cloud Service
+  Microsoft Azure Service Bus
+  StormMQ
 
 Další užitečné technologie
 -------------------------------
