@@ -203,6 +203,28 @@ Pole (array)
         ■ copy
         ■ append
 
+Uživatelsky definované datové typy
+--------------------------------------------------
+package main
+  
+import "fmt"
+  
+type Id uint32
+type Name string
+type Surname string
+  
+func register_user(id Id, name Name, surname Surname) {
+        fmt.Printf("Registering: %d %s %s", id, name, surname)
+}
+  
+func main() {
+        var i Id = 1
+        var n Name = "Jan"
+        var s Surname = "Novák"
+
+        register_user(i, n, s)
+}
+
 Záznamy (struct)
 --------------------------------------------------
 ▶ Záznamy (struct)
@@ -264,6 +286,20 @@ Mapy (map)
     ◆ m3[2] = "dva"
     ◆ m3[3] = "tri"
 
+Operace s mapami
+--------------------------------------------------
+▶ Přečtení hodnoty z mapy
+    ◆ value, exist := mapa[klíč]
+ 
+if exist {
+        // prvek byl nalezen
+} else {
+        // prvek nebyl nalezen
+}
+ 
+▶ Vymazání hodnot z map
+    ◆ delete(mapa, klíč)
+
 Mapy a struktury
 --------------------------------------------------
 type User struct {
@@ -289,30 +325,41 @@ func main() {
         fmt.Println(m1)
 }
 
-Zvláštní datové typy
+Mapy a struktury, klíče jako uživatelský typ
 --------------------------------------------------
-
-Uživatelsky definované datové typy
---------------------------------------------------
-package main
+type Key struct {
+        id   uint32
+        role string
+}
  
-import "fmt"
- 
-type Id uint32
-type Name string
-type Surname string
- 
-func register_user(id Id, name Name, surname Surname) {
-        fmt.Printf("Registering: %d %s %s", id, name, surname)
+type User struct {
+        id      uint32
+        name    string
+        surname string
 }
  
 func main() {
-        var i Id = 1
-        var n Name = "Jan"
-        var s Surname = "Novák"
-
-        register_user(i, n, s)
+        m1 := make(map[Key]User)
+        fmt.Println(m1)
+ 
+        m1[Key{1, "admin"}] = User{
+                id:      1,
+                name:    "Pepek",
+                surname: "Vyskoč"}
+ 
+        m1[Key{2, "user"}] = User{
+                id:      2,
+                name:    "Josef",
+                surname: "Vyskočil"}
+ 
+        fmt.Println(m1)
 }
+
+Zvláštní datové typy
+--------------------------------------------------
+
+Ukazatele
+--------------------------------------------------
 
 Operátory
 --------------------------------------------------
