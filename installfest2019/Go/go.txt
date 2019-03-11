@@ -179,6 +179,10 @@ complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojit
     ◆ neměnitelné (immutable)
     ◆ [] - přístup k bajtům, ne ke znakům
     ◆ podpora konverze na byte[]
+  
+        fmt.Println("╭─────────────────────╮")
+        fmt.Println("│ příλiš žλuťΩučký kůň│")
+        fmt.Println("╰─────────────────────╯")
 
 Pole (array)
 --------------------------------------------------
@@ -225,6 +229,26 @@ func main() {
         register_user(i, n, s)
 }
 
+Operátor :=
+--------------------------------------------------
+▶ Význam operátoru :=
+    ◆ deklarace proměnné
+    ◆ určení jejího typu
+    ◆ inicializace proměnné
+  
+        a := 10
+        fmt.Println(a)
+        b := "hello"
+        fmt.Println(b)
+        c := true
+        fmt.Println(c)
+
+Operátor :=
+--------------------------------------------------
+▶ Pokud je proměnná deklarována
+    ◆ není ji možné v daném bloku deklarovat znovu
+    ◆ tudíž ani není možné použít znovu přiřazení :=.
+
 Záznamy (struct)
 --------------------------------------------------
 ▶ Záznamy (struct)
@@ -242,10 +266,12 @@ user1.id = 1
 user1.name = "Pepek"
 user1.surname = "Vyskoč"
  
-Záznamy je možné vytisknout s využitím funkce fmt.Println:
+Tisk obsahu záznamů a inicializace záznamů
+--------------------------------------------------
+▶ Záznamy je možné vytisknout s využitím funkce fmt.Println:
  
 fmt.Println(user1)
-
+ 
 ▶ Inicializace záznamů
 user1 := User{
         1,
@@ -428,8 +454,8 @@ Kanály
 
 Balíčky
 --------------------------------------------------
-▶ 
-▶ 
+▶ klíčové slovo package 
+▶ import balíčků přes příkaz import "název_balíčku"
 ▶ 
 
 Základní knihovna programovacího jazyka Go
