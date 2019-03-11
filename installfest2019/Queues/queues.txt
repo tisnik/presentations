@@ -154,6 +154,7 @@ Redis Queue (RQ)
     ◆ Zobrazení stavu úloh
 
 Redis Queue (RQ) - vytvoření úlohy
+-------------------------------
 from redis import Redis
 from rq import Queue
 .
@@ -167,6 +168,7 @@ for i in range(10):
     print(result)
 
 Redis Queue (RQ) - worker
+-------------------------------
 from time import sleep
 .
 .
@@ -176,6 +178,7 @@ def do_work(param):
     print("Done")
 
 Redis Queue (RQ) - "padající" worker
+-------------------------------
 from time import sleep
 .
 .
@@ -186,21 +189,22 @@ def do_work():
     print("Done")
 
 Redis Queue (RQ) - info o nezpracovaných úlohách
+------------------------------------------------
 from redis import Redis
 from rq import Queue
 from time import sleep
-
+.
 from worker import do_work
-
-
+.
+.
 q_failed = Queue("failed", connection=Redis())
-
+.
 print("Reading failed jobs")
-
+.
 job_ids = q_failed.job_ids
-
+.
 print(job_ids)
-
+.
 for job_id in job_ids:
     print(job_id)
     job = q_failed.fetch_job(job_id)
@@ -210,7 +214,40 @@ for job_id in job_ids:
     print(job.ended_at)
     print(job.exc_info)
 
-Stav front
+RQ - předávání parametrů workerům
+---------------------------------
+from redis import Redis
+from rq import Queue
+.
+from worker import do_work
+.
+.
+q_low = Queue("low", connection=Redis())
+q_high = Queue("high", connection=Redis())
+.
+.
+for i in range(10):
+    result = q_low.enqueue(do_work, i)
+    result = q_high.enqueue(do_work, i)
+    print(result)
+
+RQ - Implementace workera akceptujícího parametr
+------------------------------------------------
+from time import sleep
+.
+.
+def do_work(param):
+    print("Working, received parameter {}".format(param))
+    sleep(2)
+    print("Done")
+
+Chyba při zpracování úlohy/zprávy
+---------------------------------
+
+Získání informací o úlohách, které zhavarovaly
+----------------------------------------------
+
+Zjištění stavu front
 -------------------------------
 $ rq info
 .  
