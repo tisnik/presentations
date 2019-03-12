@@ -161,6 +161,14 @@ uint                    různý                různý  odpovídá buď typu uin
 byte                        0                  255  alias pro typ uint8
 rune              -2147483648           2147483647  alias pro typ int32
 
+Celočíselné datové typy
+--------------------------------------------------
+        var a int8 = -10
+        var b int16 = -1000
+        var c int32 = -10000
+        var d int32 = -1000000
+  
+
 Neordinální celočíselné datové typy
 --------------------------------------------------
 ▶ opět nezávislé na použité architektuře
@@ -398,6 +406,44 @@ relační                    ==  !=  <   <=  >   >=
 operace s adresami         *   &
 unární operátory           +   -   ^
 další operátory            <-  :=
+
+Deklarace funkcí
+--------------------------------------------------
+▶ Funkce bez parametrů a bez návratové hodnoty
+func printHello() {
+        fmt.Println("Hello world!")
+}
+  
+▶ Funkce s jedním parametrem, bez návratové hodnoty
+func printMessage(message string) {
+        fmt.Println(message)
+}
+    
+▶ Funkce s jednou návratovou hodnotou
+func getMessage() string {
+        return "Hello world!"
+}
+  
+▶ Alternativní zápis
+func getMessage() (message string) {
+        message = "Hello world!"
+        return
+}
+ 
+▶ Více návratových hodnot
+func swap(a int, b int) (int, int) {
+        return b, a
+}
+
+Staticky typovaný jazyk bez zbytečného "boilerplate"
+----------------------------------------------------
+func swap(a int, b int) (int, int) {
+        return b, a
+}
+  
+        x := 1
+        y := 2
+        z, w := swap(x, y)
 
 Řidící příkazy
 --------------------------------------------------
