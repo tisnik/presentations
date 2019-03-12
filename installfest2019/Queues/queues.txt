@@ -12,10 +12,10 @@ Obsah přednášky
 ▶ Základní komunikační strategie
 ▶ Protokoly
 ▶ Vybrané implementace message brokerů
-▶ Redis Queue (RQ)
-▶ RabbitMQ
-▶ Apache Active MQ
-▶ Celery
+    ◆ Redis Queue (RQ)
+    ◆ RabbitMQ
+    ◆ Apache Active MQ
+    ◆ Celery
 ▶ Message queuing service
 ▶ Další užitečné technologie
 
@@ -30,11 +30,16 @@ Message broker a fronty zpráv
     ◆ 
     ◆ 
 ▶ Topic
-    ◆ 
+    ◆ Použito při komunikaci PUB-SUB
+    ◆ Většinou textové návěští přiřazené zprávě
+    ◆ Může být hierarchické
+        ■ region.téma.podtéma
+        ■ region/téma/podtéma
+    ◆ Některé systému umožňují deklarovat pravidla pro směrování zpráv
 ▶ Publisher
-    ◆ 
+    ◆ Zdroj zpráv
 ▶ Subscriber
-    ◆ 
+    ◆ Příjemce zpráv
 ▶ Úlohy
     ◆ 
 ▶ Worker
@@ -59,7 +64,8 @@ Modifikace architektury aplikací
 ▶ Možnost oddělení jednotlivých modulů
     ◆ Původní vazby M:N
         ■ Někdy "mesh"
-    ◆ Nyní M:1 a 1:N
+    ◆ Po zavedení message brokera M:1 a 1:N
+        ■ Producenti ⇒ Message broker ⇒ Konzumenti
 
 Základní komunikační strategie
 -------------------------------
@@ -243,9 +249,40 @@ def do_work(param):
 
 Chyba při zpracování úlohy/zprávy
 ---------------------------------
+from time import sleep
+.
+.
+def do_work():
+    print("Working")
+    sleep(2)
+    assert False
+    print("Done")
 
 Získání informací o úlohách, které zhavarovaly
 ----------------------------------------------
+from redis import Redis
+from rq import Queue
+from time import sleep
+.
+from worker import do_work
+.
+.
+q_failed = Queue("failed", connection=Redis())
+.
+print("Reading failed jobs")
+.
+job_ids = q_failed.job_ids
+.
+print(job_ids)
+.
+for job_id in job_ids:
+    print(job_id)
+    job = q_failed.fetch_job(job_id)
+    print(job.origin)
+    print(job.enqueued_at)
+    print(job.started_at)
+    print(job.ended_at)
+    print(job.exc_info)
 
 Zjištění stavu front
 -------------------------------
