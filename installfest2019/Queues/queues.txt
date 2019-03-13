@@ -22,28 +22,44 @@ Obsah přednášky
 Message broker a fronty zpráv
 -------------------------------
 ▶ Message broker
-    ◆ 
-    ◆ 
-    ◆ 
-▶ Fronty zpráv
-    ◆ 
-    ◆ 
-    ◆ 
-▶ Topic
+    ◆ Aplikace či služba zajišťující přenos zpráv mezi zdroji a příjemci
+    ◆ Typicky podporuje fronty zpráv a témata (topic)
+    ◆ Další operace
+        ■ Persistence zpráv
+        ■ Ověření identity, práva k přístupu ke frontám a zprávám atd.
+        ■ Rozhraní pro sledování činnosti brokera
+        ■ Škálování
+▶ Message queue (fronta zpráv)
+    ◆ Součást message brokera
+    ◆ Front bývá více, jsou pojmenované
+    ◆ Dvě základní operace
+        ■ Enqueue
+        ■ Dequeue (neplést s deque - oboustrannou frontou)
+    ◆ Speciální případy
+        ■ Prioritní fronty
+        ■ DLQ (Dead Letter Queue)
+▶ Topic (téma)
     ◆ Použito při komunikaci PUB-SUB
     ◆ Většinou textové návěští přiřazené zprávě
     ◆ Může být hierarchické
         ■ region.téma.podtéma
         ■ region/téma/podtéma
     ◆ Některé systému umožňují deklarovat pravidla pro směrování zpráv
+
+Další často používané termíny
+-------------------------------
 ▶ Publisher
     ◆ Zdroj zpráv
+    ◆ Může zprávy posílat do několika front a/nebo témat
 ▶ Subscriber
     ◆ Příjemce zpráv
+    ◆ Může zprávy přijímat z několika front a/nebo témat
 ▶ Úlohy
-    ◆ 
+    ◆ Task
+    ◆ Job
+    ◆ Termín používaný ve chvíli, kdy zprávy obsahují "příkaz k práci"
 ▶ Worker
-    ◆ 
+    ◆ Termín používaný pro příjemce úloh
 
 Proč používat tuto technologii?
 -------------------------------
@@ -64,6 +80,7 @@ Modifikace architektury aplikací
 ▶ Možnost oddělení jednotlivých modulů
     ◆ Původní vazby M:N
         ■ Někdy "mesh"
+        ■ Problémy vznikají ve chvíli, kdy nějaký uzel přestane komunikovat
     ◆ Po zavedení message brokera M:1 a 1:N
         ■ Producenti ⇒ Message broker ⇒ Konzumenti
 
