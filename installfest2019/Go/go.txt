@@ -168,6 +168,29 @@ Celočíselné datové typy
         var c int32 = -10000
         var d int32 = -1000000
   
+        var r1 rune = 'a'
+        var r2 rune = '\x40'
+        var r3 rune = '\n'
+        var r4 rune = '\u03BB'
+  
+        var x uint8 = 10
+        var y uint8 = 010
+        var z uint8 = 0x10
+
+Explicitní konverze!
+--------------------------------------------------
+        var a int8 = -10
+        var signed_int int32 = -100000
+        var unsigned_int uint32 = 100000
+        var e float32 = 1e4
+        var f float64 = 1.5e30
+
+        var x int32 = int32(a)
+        var y int32 = int32(e)
+        var z float32 = float32(f)
+
+        var b2 uint8 = uint8(signed_int)
+        var b3 uint8 = uint8(unsigned_int)
 
 Neordinální celočíselné datové typy
 --------------------------------------------------
@@ -179,6 +202,18 @@ float32         -3,4×10³⁸ až 3,4×10³⁸                  číslo s jednod
 float64         -1,7×10³⁰⁸ až 1,7×10³⁰⁸                číslo s dvojitou přesností podle IEEE 754
 complex64       ± rozsah float32 + i ± rozsah float32  dvojice hodnot s jednoduchou přesností
 complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojitou přesností
+
+Neordinální celočíselné datové typy
+--------------------------------------------------
+        var a float32 = -1.5
+        var b float32 = 1.5
+        var c float32 = 1e30
+        var d float32 = 1e-30
+ 
+        var x complex64 = -1.5 + 0i
+        var y complex64 = 1.5 + 1000i
+        var z complex64 = 1e30 + 1e30i
+        var w complex64 = 1i
 
 Řetězce (string)
 --------------------------------------------------
