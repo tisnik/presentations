@@ -220,6 +220,8 @@ Neordinální celočíselné datové typy
 ▶ Řetězce (string)
     ◆ podpora Unicode
     ◆ neměnitelné (immutable)
+    ◆ známá délka (žádné počítání indexu \0)
+        ⇒ ovšem udávaná v bajtech, nikoli ve znacích.
     ◆ [] - přístup k bajtům, ne ke znakům
     ◆ podpora konverze na byte[]
   
@@ -227,12 +229,37 @@ Neordinální celočíselné datové typy
         fmt.Println("│ příλiš žλuťΩučký kůň│")
         fmt.Println("╰─────────────────────╯")
 
+Pole bajtů tvořících řetězec
+--------------------------------------------------
+        var s string = "Hello\nworld!\nžluťoučký kůň"
+   
+        for i := 0; i < len(s); i++ {
+                fmt.Printf("%02x ", s[i])
+        }
+
 Pole (array)
 --------------------------------------------------
 ▶ Pole (array)
     ◆ měnitelné (mutable)
     ◆ konstantní počet prvků
     ◆ automatická inicializace prvků (na "nulu")
+  
+        var a1 [10]byte
+        a2 := [10]int32{1,10,2,9,3,8,4,7,5,6}
+        var matice [10][10]float32
+ 
+        for i:= 0; i < len(a1); i++ {
+                a[i] = i*2;
+        }
+
+Kopie polí
+--------------------------------------------------
+        a2 := a1
+ 
+▶ V Go se provede skutečná kopie pole
+    ◆ výsledkem budou dvě na sobě nezávislá pole.
+▶ V Javě (například) se jen přiřadí reference
+    ◆ dvě proměnné budou ukazovat na stejné pole.
 
 Řezy (slice)
 --------------------------------------------------
@@ -249,6 +276,28 @@ Pole (array)
         ■ make
         ■ copy
         ■ append
+
+Řezy (slice)
+--------------------------------------------------
+        a := [6]string{"C", "C++", "Java", "Python", "Go", "Rust"}
+  
+        slice1 := a[1:4]
+        slice2 := a[:3]
+        slice3 := a[2:]
+        slice4 := a[:]
+  
+        fmt.Println("Array a =", a)
+        fmt.Println("slice1 =", slice1)
+        fmt.Println("slice2 =", slice2)
+        fmt.Println("slice3 =", slice3)
+        fmt.Println("slice4 =", slice4)
+
+▶ Výstup bude vypadat následovně:
+Array a = [C C++ Java Python Go Rust]
+slice1 = [C++ Java Python]
+slice2 = [C C++ Java]
+slice3 = [Java Python Go Rust]
+slice4 = [C C++ Java Python Go Rust]
 
 Uživatelsky definované datové typy
 --------------------------------------------------
