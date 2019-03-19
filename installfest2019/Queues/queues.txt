@@ -38,6 +38,7 @@ Message broker a fronty zpráv
     ◆ Speciální případy
         ■ Prioritní fronty
         ■ DLQ (Dead Letter Queue)
+        ■ Zprávy s časem, kdy má být zpráva doručena
 ▶ Topic (téma)
     ◆ Použito při komunikaci PUB-SUB
     ◆ Většinou textové návěští přiřazené zprávě
@@ -110,25 +111,34 @@ Použití komunikačních strategií
         ■ Objednávky
         ■ Potvrzovací maily
         ■ B2B
+    ◆ Jenkins CI
+        ■ a podobně koncipované systémy
 ▶ PUB-SUB
     ◆ IoT čidla
     ◆ Aktuální stav (či změna stavu) nějakého systému
         ⇒ Tímto způsobem lze získat informace z AMQ
+        ■ (viz další slajdy)
     ◆ Podobné některým komunikačním protokolům (IRC)
 
-Protokoly
--------------------------------
+Protokoly používané pro komunikaci
+----------------------------------
 ▶ AMQP
     ◆ Advanced Message Queuing Protocol
-    ◆ binární protokol
+    ◆ binární formát
     ◆ podpora SASL a TLS
 ▶ STOMP
     ◆ Streaming Text Oriented Messaging Protocol
     ◆ inspirován protokolem HTTP
         ◆ (hlavičky atd.)
     ◆ velmi jednoduchá implementace klienta
+    ◆ je možné otestovat například i v telnetu
+    ◆ podpora transakcí
 ▶ MQTT
     ◆ Message Queuing Telemetry Transport)
+    ◆ používán v oblasti IoT
+
+Další protokoly používané pro komunikaci
+----------------------------------------
 ▶ CoAP
     ◆ Constrained Application Protocol
 ▶ WAMP
@@ -158,7 +168,7 @@ Vybrané implementace message brokerů
 ------------------------------------
 ▶ Redis Queue (RQ)
 ▶ RabbitMQ
-▶ Apache Active MQ
+▶ Apache Active MQ (AMQ)
 ▶ Celery
 ▶ (další užitečné technologie)
 
@@ -166,9 +176,9 @@ Redis Queue (RQ)
 -------------------------------
 ▶ Postaveno nad databází Redis
     ◆ Strategie PUSH-PULL
-    ◆ Publisher-fronta-worker
-▶ Pravděpodobně nejjednodušší cesta k využitím message brokerů
-▶ Balíček rq na PyPI
+    ◆ Producenti ⇒ Message broker ⇒ Konzumenti
+▶ Pravděpodobně nejjednodušší cesta k využití message brokerů
+▶ Balíček rq dostupný na PyPI
 ▶ CLI nástroj nazvaný `rq`
     ◆ Spuštění workera
     ◆ Pozastavení všech workerů
@@ -177,78 +187,94 @@ Redis Queue (RQ)
     ◆ Zobrazení stavu úloh
 
 Redis Queue (RQ) - vytvoření úlohy
--------------------------------
+----------------------------------
 from redis import Redis
 from rq import Queue
-.
+ 
 from worker import do_work
-.
-.
+ 
+ 
 q = Queue(connection=Redis())
-.
+ 
 for i in range(10):
     result = q.enqueue(do_work, i)
     print(result)
 
-Redis Queue (RQ) - worker
--------------------------------
+Redis Queue (RQ) - implementace workera
+---------------------------------------
 from time import sleep
-.
-.
+ 
+ 
 def do_work(param):
     print("Working, received parameter {}".format(param))
+    # simulace práce :-)
     sleep(2)
     print("Done")
 
+Spuštění workera
+----------------
+$ rq worker
+16:59:02 RQ worker 'rq:worker:localhost.32100' started, version 0.12.0
+16:59:02 *** Listening on default...
+16:59:02 Cleaning registries for queue: default
+
 Redis Queue (RQ) - "padající" worker
--------------------------------
+------------------------------------
 from time import sleep
-.
-.
+ 
+ 
 def do_work():
     print("Working")
     sleep(2)
+    # výjimka je zachycena až samotným systémem RQ
     assert False
     print("Done")
+
+Pád workera
+-----------
 
 Redis Queue (RQ) - info o nezpracovaných úlohách
 ------------------------------------------------
 from redis import Redis
 from rq import Queue
 from time import sleep
-.
+ 
 from worker import do_work
-.
-.
+ 
+# speciální fronta s úlohami, které nebyly dokončeny
 q_failed = Queue("failed", connection=Redis())
-.
+ 
 print("Reading failed jobs")
-.
+ 
 job_ids = q_failed.job_ids
-.
+ 
 print(job_ids)
-.
+ 
 for job_id in job_ids:
     print(job_id)
     job = q_failed.fetch_job(job_id)
+    # podrobnější informace o těchto úlohách
     print(job.origin)
     print(job.enqueued_at)
     print(job.started_at)
     print(job.ended_at)
     print(job.exc_info)
 
+Redis Queue (RQ) - info o nezpracovaných úlohách
+------------------------------------------------
+
 RQ - předávání parametrů workerům
 ---------------------------------
 from redis import Redis
 from rq import Queue
-.
+ 
 from worker import do_work
-.
-.
+ 
+ 
 q_low = Queue("low", connection=Redis())
 q_high = Queue("high", connection=Redis())
-.
-.
+ 
+ 
 for i in range(10):
     result = q_low.enqueue(do_work, i)
     result = q_high.enqueue(do_work, i)
@@ -257,8 +283,8 @@ for i in range(10):
 RQ - Implementace workera akceptujícího parametr
 ------------------------------------------------
 from time import sleep
-.
-.
+ 
+ 
 def do_work(param):
     print("Working, received parameter {}".format(param))
     sleep(2)
@@ -267,8 +293,8 @@ def do_work(param):
 Chyba při zpracování úlohy/zprávy
 ---------------------------------
 from time import sleep
-.
-.
+ 
+ 
 def do_work():
     print("Working")
     sleep(2)
@@ -280,18 +306,18 @@ Získání informací o úlohách, které zhavarovaly
 from redis import Redis
 from rq import Queue
 from time import sleep
-.
+ 
 from worker import do_work
-.
-.
+ 
+ 
 q_failed = Queue("failed", connection=Redis())
-.
+ 
 print("Reading failed jobs")
-.
+ 
 job_ids = q_failed.job_ids
-.
+ 
 print(job_ids)
-.
+ 
 for job_id in job_ids:
     print(job_id)
     job = q_failed.fetch_job(job_id)
@@ -310,10 +336,10 @@ failed       |██ 2
 default      | 0
 high         |██████████ 10
 4 queues, 22 jobs total
-.
+ 
 localhost.4312 idle: default
 1 workers, 4 queues
-.
+ 
 Updated: 2018-11-26 13:22:06.236766
 
 RabbitMQ
@@ -380,19 +406,19 @@ RabbitMQ a Python
 Publisher pro RabbitMQ a Pika
 -------------------------------
 import pika
-.
+ 
 # připojení k serveru RabbitMQ a vytvoření komunikačního kanálu
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
-.
+ 
 # žádost o vytvoření či o použití fronty „test“
 channel.queue_declare(queue='test')
-.
+ 
 # poslání zprávy se strategií direct
 channel.basic_publish(exchange='',
                       routing_key='test',
                       body='Hello World!')
-. 
+ 
 print("Sent 'Hello World!'")
 # uzavření komunikace
 connection.close()
@@ -401,29 +427,29 @@ Subscriber pro RabbitMQ a Pika
 -------------------------------
 #!/usr/bin/env python
 import pika
-. 
+ 
 # připojení k serveru RabbitMQ a vytvoření komunikačního kanálu
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
-. 
+ 
 # pokus o nové vytvoření fronty ve skutečnosti neovlivní již existující frontu
 # pokud samozřejmě existuje
 channel.queue_declare(queue='test')
-. 
-. 
+ 
+ 
 # callback funkce volaná při přijetí zprávy
 def on_receive(ch, method, properties, body):
     print("Received %r" % body)
-. 
-. 
+ 
+ 
 # přihlášení se k odebírání zpráv z fronty "test"
 channel.basic_consume(on_receive,
                       queue='test',
                       no_ack=True)
-. 
+ 
 print('Waiting for messages. To exit press CTRL+C')
 print("...")
-. 
+ 
 # smyčka s odebíráním zpráv
 channel.start_consuming()
 
