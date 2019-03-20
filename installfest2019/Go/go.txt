@@ -2,7 +2,7 @@ Jazyk Go pro úplné začátečníky
 ==============================
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
-■ Datum    2019-02-xx
+■ Datum    2019-03-01
 
 Obsah přednášky
 -------------------------------
@@ -13,7 +13,7 @@ Obsah přednášky
 ▶ Uživatelské datové typy
 ▶ Operátory
 ▶ Deklarace funkcí
-▶ Řidící příkazy
+▶ Řídicí příkazy
 ▶ Reakce na chybové stavy
 ▶ Rozhraní
 ▶ Metody
@@ -22,6 +22,13 @@ Obsah přednášky
 ▶ Balíčky
 ▶ Základní knihovna programovacího jazyka Go
     ◆ Užitečné balíčky
+
+Last minute info
+--------------------------------------------------
+▶ 25.2.2019 vyšla verze Go 1.12
+▶ žádné podstatné změny v jazyku
+    ◆ nástroje
+    ◆ knihovny
 
 Charakteristické rysy jazyka Go
 --------------------------------------------------
@@ -35,7 +42,15 @@ Charakteristické rysy jazyka Go
     ◆ Serverové aplikace pro Google
 ▶ Dostupný pro všechny „zajímavé“ systémy
     ◆ Linux, (Free)BSD, macOS, Microsoft Windows
+▶ Pro běžné architektury
+    ◆ x86 i x86-64
+    ◆ ARMv6
+    ◆ ARMv8
+▶ I pro ty více exotické
+    ◆ s390x
+    ◆ PowerPC64 (LE)
 ▶ Současná verze používá vlastní backend
+    ◆ + cgo
 
 Charakteristické rysy jazyka Go
 --------------------------------------------------
@@ -292,6 +307,8 @@ Kopie polí
         fmt.Println("slice3 =", slice3)
         fmt.Println("slice4 =", slice4)
 
+Řezy (slice)
+--------------------------------------------------
 ▶ Výstup bude vypadat následovně:
 Array a = [C C++ Java Python Go Rust]
 slice1 = [C++ Java Python]
@@ -317,7 +334,7 @@ func main() {
         var i Id = 1
         var n Name = "Jan"
         var s Surname = "Novák"
-
+   
         register_user(i, n, s)
 }
 
@@ -345,15 +362,18 @@ Záznamy (struct)
 --------------------------------------------------
 ▶ Záznamy (struct)
     ◆ viditelnost prvků podle prvního znaku názvu
+    ◆ přístup k prvkům s využitím tečkové notace
  
+Záznamy (struct)
+--------------------------------------------------
 type User struct {
         id      uint32
         name    string
         surname string
 }
- 
+   
 var user1 User
- 
+   
 user1.id = 1
 user1.name = "Pepek"
 user1.surname = "Vyskoč"
