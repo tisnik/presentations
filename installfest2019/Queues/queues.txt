@@ -62,8 +62,8 @@ Další často používané termíny
 ▶ Worker
     ◆ Termín používaný pro příjemce úloh
 
-Proč používat tuto technologii?
--------------------------------
+Proč vůbec používat tuto technologii?
+-------------------------------------
 ▶ Minimálně deset důvodů
     ◆ Asynchronní komunikace
     ◆ Oddělení jednotlivých modulů aplikace
@@ -77,7 +77,7 @@ Proč používat tuto technologii?
     ◆ Funkce vyrovnávací paměti
 
 Modifikace architektury aplikací
--------------------------------
+--------------------------------
 ▶ Možnost oddělení jednotlivých modulů
     ◆ Původní vazby M:N
         ■ Někdy "mesh"
@@ -86,7 +86,7 @@ Modifikace architektury aplikací
         ■ Producenti ⇒ Message broker ⇒ Konzumenti
 
 Základní komunikační strategie
--------------------------------
+------------------------------
 ▶ PUSH-PULL
     ◆ Zprávy se posílají do zvolené fronty
         ■ Jeden či více zdrojů zpráv
@@ -104,8 +104,8 @@ Základní komunikační strategie
     ◆ Zpráva je doručena všem aktuálně připojeným příjemcům
     ◆ Pokud žádný příjemce nemůže zprávu zpracovat bude ztracena
 
-Použití komunikačních strategií
--------------------------------
+Příklady použití komunikačních strategií
+----------------------------------------
 ▶ PUSH-PULL
     ◆ Typická business logika
         ■ Objednávky
@@ -152,6 +152,8 @@ Další protokoly používané pro komunikaci
 
 STOMP
 ------------------------------------
+▶ Samotné příkazy posílané ve formě plain textu
+▶ Data (zprávy) mohou být binární
 ▶ Pouze několik typů zpráv
     ◆ CONNECT
     ◆ SEND
@@ -190,12 +192,12 @@ Redis Queue (RQ) - vytvoření úlohy
 ----------------------------------
 from redis import Redis
 from rq import Queue
- 
+  
 from worker import do_work
- 
- 
+  
+  
 q = Queue(connection=Redis())
- 
+  
 for i in range(10):
     result = q.enqueue(do_work, i)
     print(result)
@@ -203,8 +205,8 @@ for i in range(10):
 Redis Queue (RQ) - implementace workera
 ---------------------------------------
 from time import sleep
- 
- 
+  
+  
 def do_work(param):
     print("Working, received parameter {}".format(param))
     # simulace práce :-)
@@ -214,15 +216,20 @@ def do_work(param):
 Spuštění workera
 ----------------
 $ rq worker
+  
 16:59:02 RQ worker 'rq:worker:localhost.32100' started, version 0.12.0
 16:59:02 *** Listening on default...
 16:59:02 Cleaning registries for queue: default
 
 Redis Queue (RQ) - "padající" worker
 ------------------------------------
+▶ Worker může vyhodit výjimku a být ukončen 
+    ◆ Platí pro jednu úlohu
+▶ Můžeme si to vyzkoušet
+  
 from time import sleep
- 
- 
+  
+  
 def do_work():
     print("Working")
     sleep(2)
@@ -232,6 +239,9 @@ def do_work():
 
 Pád workera
 -----------
+▶ Toto chování je "očekáváno"
+    ◆ Systém se nezhroutí
+  
 16:59:03 default: worker.do_work() (c5468250-e2c5-494f-8bd8-f1f51b9a81f2)
 Working
 16:59:05 AssertionError
@@ -259,21 +269,23 @@ AssertionError
 
 Redis Queue (RQ) - info o nezpracovaných úlohách
 ------------------------------------------------
+▶ Zhavarované úlohy se ukládají do fronty "failed"
+  
 from redis import Redis
 from rq import Queue
 from time import sleep
- 
+  
 from worker import do_work
- 
+  
 # speciální fronta s úlohami, které nebyly dokončeny
 q_failed = Queue("failed", connection=Redis())
- 
+  
 print("Reading failed jobs")
- 
+  
 job_ids = q_failed.job_ids
- 
+  
 print(job_ids)
- 
+  
 for job_id in job_ids:
     print(job_id)
     job = q_failed.fetch_job(job_id)
@@ -286,6 +298,8 @@ for job_id in job_ids:
 
 Redis Queue (RQ) - info o nezpracovaných úlohách
 ------------------------------------------------
+▶ Pamatuje se především samotný stack trace
+  
 Reading failed jobs
 ['62d5d473-cc31-4738-8397-7dd18b09fe64']
 62d5d473-cc31-4738-8397-7dd18b09fe64
@@ -307,11 +321,20 @@ AssertionError
 Opětovné spuštění zhavarovaných úloh
 ---------------------------------
 $ rq requeue --all
- 
-Requeueing 1 jobs from failed queue
+  
+  Requeueing 1 jobs from failed queue
   [####################################]  100%
 
 Využití burst režimu workerů
+---------------------------------
+▶ Vybrané workery lze spustit v takzvaném burst režimu
+    ◆ takový worker se pokusí zpracovat všechny úlohy ze specifikované fronty
+    ◆ následně se ukončí
+▶ Jedná se o koncept dávkového zpracování
+    ◆ například do systému přidáme výkonný stroj ve chvíli, kdy je nutné dokončit nějaké úlohy
+    ◆ ovšem tento stroj se nemá stát součástí „clusteru“)
+  
+$ rq worker --burst high low default
 
 RQ - předávání parametrů workerům
 ---------------------------------
@@ -340,43 +363,6 @@ def do_work(param):
     sleep(2)
     print("Done")
 
-Chyba při zpracování úlohy/zprávy
----------------------------------
-from time import sleep
- 
- 
-def do_work():
-    print("Working")
-    sleep(2)
-    assert False
-    print("Done")
-
-Získání informací o úlohách, které zhavarovaly
-----------------------------------------------
-from redis import Redis
-from rq import Queue
-from time import sleep
- 
-from worker import do_work
- 
- 
-q_failed = Queue("failed", connection=Redis())
- 
-print("Reading failed jobs")
- 
-job_ids = q_failed.job_ids
- 
-print(job_ids)
- 
-for job_id in job_ids:
-    print(job_id)
-    job = q_failed.fetch_job(job_id)
-    print(job.origin)
-    print(job.enqueued_at)
-    print(job.started_at)
-    print(job.ended_at)
-    print(job.exc_info)
-
 Zjištění stavu front
 -------------------------------
 $ rq info
@@ -386,11 +372,17 @@ failed       |██ 2
 default      | 0
 high         |██████████ 10
 4 queues, 22 jobs total
- 
+  
 localhost.4312 idle: default
 1 workers, 4 queues
- 
+  
 Updated: 2018-11-26 13:22:06.236766
+
+Dashboard pro sledování stavu front a workerů
+---------------------------------------------
+▶ rq-dashboard
+    ◆ Naprogramováno v Pythonu
+    ◆ Používá Flask (tj. webová aplikace)
 
 RabbitMQ
 -------------------------------
@@ -456,19 +448,19 @@ RabbitMQ a Python
 Publisher pro RabbitMQ a Pika
 -------------------------------
 import pika
- 
+  
 # připojení k serveru RabbitMQ a vytvoření komunikačního kanálu
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
- 
+  
 # žádost o vytvoření či o použití fronty „test“
 channel.queue_declare(queue='test')
- 
+  
 # poslání zprávy se strategií direct
 channel.basic_publish(exchange='',
                       routing_key='test',
                       body='Hello World!')
- 
+  
 print("Sent 'Hello World!'")
 # uzavření komunikace
 connection.close()
@@ -477,29 +469,29 @@ Subscriber pro RabbitMQ a Pika
 -------------------------------
 #!/usr/bin/env python
 import pika
- 
+  
 # připojení k serveru RabbitMQ a vytvoření komunikačního kanálu
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
- 
+  
 # pokus o nové vytvoření fronty ve skutečnosti neovlivní již existující frontu
 # pokud samozřejmě existuje
 channel.queue_declare(queue='test')
- 
- 
+  
+  
 # callback funkce volaná při přijetí zprávy
 def on_receive(ch, method, properties, body):
     print("Received %r" % body)
- 
- 
+  
+  
 # přihlášení se k odebírání zpráv z fronty "test"
 channel.basic_consume(on_receive,
                       queue='test',
                       no_ack=True)
- 
+  
 print('Waiting for messages. To exit press CTRL+C')
 print("...")
- 
+  
 # smyčka s odebíráním zpráv
 channel.start_consuming()
 
@@ -509,6 +501,27 @@ channel.basic_qos(prefetch_count=1)
 channel.basic_consume(on_receive,
                       queue='test',
                       no_ack=False)
+
+Potvrzování zpráv
+-------------------------------
+▶ Automatické
+channel.basic_consume(on_receive,
+                      queue='test',
+                      no_ack=True)
+▶ Manuální
+channel.basic_consume(on_receive,
+                      queue='test',
+                      no_ack=False)
+▶ Potvrzení zprávy
+channel.basic_ack(delivery_tag = method.delivery_tag)
+
+Manuální potvrzování zpráv v konzumentovi
+-----------------------------------------
+from time import sleep
+from rabbitmq_connect import connect
+  
+connection, channel = connect()
+  
 
 Apache Active MQ
 -------------------------------
