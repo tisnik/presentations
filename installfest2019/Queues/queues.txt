@@ -340,14 +340,14 @@ RQ - předávání parametrů workerům
 ---------------------------------
 from redis import Redis
 from rq import Queue
- 
+  
 from worker import do_work
- 
- 
+  
+  
 q_low = Queue("low", connection=Redis())
 q_high = Queue("high", connection=Redis())
- 
- 
+  
+  
 for i in range(10):
     result = q_low.enqueue(do_work, i)
     result = q_high.enqueue(do_work, i)
@@ -356,8 +356,8 @@ for i in range(10):
 RQ - Implementace workera akceptujícího parametr
 ------------------------------------------------
 from time import sleep
- 
- 
+  
+  
 def do_work(param):
     print("Working, received parameter {}".format(param))
     sleep(2)
@@ -366,7 +366,7 @@ def do_work(param):
 Zjištění stavu front
 -------------------------------
 $ rq info
-.  
+  
 low          |██████████ 10
 failed       |██ 2
 default      | 0
@@ -522,6 +522,59 @@ from rabbitmq_connect import connect
   
 connection, channel = connect()
   
+def on_receive(ch, method, properties, body):
+    print("Received %r" % body)
+    sleep(5)
+    print("Done processing %r" % body)
+    ch.basic_ack(delivery_tag = method.delivery_tag)
+  
+  
+channel.basic_consume(on_receive,
+                      queue='test',
+                      no_ack=False)
+  
+print('Waiting for messages. To exit press CTRL+C')
+print("...")
+channel.start_consuming()
+
+Příkaz rabbitmqctl
+-------------------------------
+▶ Změna konfigurace serveru
+▶ Správa clusterů
+▶ Zjištění informací o tom, jaké fronty v daném okamžiku existují
+▶ Zjištění, jaké jsou k dispozici směrovače (exchange)
+  
+$ sudo rabbitmqctl node_health_check
+  
+Timeout: 70.0 seconds
+Checking health of node rabbit@localhost
+Health check passed
+  
+$ sudo rabbitmqctl list_users
+  
+Listing users
+guest   [administrator]
+  
+$ sudo rabbitmqctl list_queues
+  
+Listing queues
+t3      0
+testX   0
+test    0
+t1      2
+t2      0
+  
+$ sudo rabbitmqctl list_exchanges
+  
+Listing exchanges
+amq.topic       topic
+amq.rabbitmq.log        topic
+amq.headers     headers
+amq.fanout      fanout
+        direct
+amq.rabbitmq.trace      topic
+amq.match       headers
+amq.direct      direct
 
 Apache Active MQ
 -------------------------------
