@@ -626,9 +626,24 @@ Operátory/příkazy ++ a --
 
 Příkaz return
 --------------------------------------------------
+// kontrola existence return hodnota i u nedosažitelného kódu
+func f2() int {
+        println("f2() před příkazem return")
+        return 42
+        println("f2() po příkazu return")
+        return -1
+}
 
-Rozhodovací konstrukce
---------------------------------------------------
+Rozhodovací konstrukce if
+func classify_char(c rune) string {
+        if c >= 'a' && c <= 'z' {
+                return "male pismeno"
+        } else if c >= 'A' && c <= 'Z' {
+                return "velke pismeno"
+        } else {
+                return "neco jineho"
+        }
+}
 
 Programové smyčky
 --------------------------------------------------
@@ -729,13 +744,36 @@ func worker(channel chan int, worker int) {
                 } else {
                         fmt.Printf("Kanál je uzavřen pro workera %d\n", worker)
                 }
+                time.Sleep(1 * time.Second)
+        }
+}
+   
+func main() {
+        ch1 := make(chan int)
+   
+        go worker(ch1, 1)
+        go worker(ch1, 2)
+   
+        for i := 0; i < 10; i++ {
+                select {
+                case ch1 <- 0:
+                        fmt.Println("Poslána nula")
+                case ch1 <- 1:
+                        fmt.Println("Poslána jednička")
+                }
         }
 }
 
 Balíčky
+--------------------------------------------------
+▶ klíčové slovo package 
 ▶ import balíčků přes příkaz import "název_balíčku"
+▶ 
 
 Základní knihovna programovacího jazyka Go
+--------------------------------------------------
+▶ 
+▶ 
 ▶ 
 
 Makra v Go?
