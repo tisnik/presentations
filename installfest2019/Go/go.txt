@@ -561,7 +561,7 @@ func printHello() {
 func printMessage(message string) {
         fmt.Println(message)
 }
-    
+  
 ▶ Funkce s jednou návratovou hodnotou
 func getMessage() string {
         return "Hello world!"
@@ -572,7 +572,7 @@ func getMessage() (message string) {
         message = "Hello world!"
         return
 }
-   
+  
 ▶ Více návratových hodnot
 func swap(a int, b int) (int, int) {
         return b, a
@@ -635,6 +635,7 @@ func f2() int {
 }
 
 Rozhodovací konstrukce if
+--------------------------------------------------
 func classify_char(c rune) string {
         if c >= 'a' && c <= 'z' {
                 return "male pismeno"
@@ -644,6 +645,21 @@ func classify_char(c rune) string {
                 return "neco jineho"
         }
 }
+
+Příkaz zapsaný za klíčovým slovem if
+--------------------------------------------------
+func x() string {
+        if value := funkce(); value < 0 {
+                return "záporná hodnota"
+        } else if value > 0 {
+                return "kladná hodnota"
+        } else {
+                return "nula"
+        }
+}
+
+Rozvětvení běhu programu s využitím konstrukce switch
+-----------------------------------------------------
 
 Programové smyčky
 --------------------------------------------------
@@ -761,6 +777,23 @@ func main() {
                 case ch1 <- 1:
                         fmt.Println("Poslána jednička")
                 }
+        }
+}
+
+Kombinace čtení a zápisu v konstrukci select-case
+--------------------------------------------------
+select {
+case ch1 <- 0:
+        fmt.Println("Poslána nula")
+case ch1 <- 1:
+        fmt.Println("Poslána jednička")
+case data, ok := <-ch2:
+        if ok {
+                fmt.Printf("Přijata data %d z kanálu 2\n", data)
+        }
+case data, ok := <-ch3:
+        if ok {
+                fmt.Printf("Přijata data %d z kanálu 3\n", data)
         }
 }
 
