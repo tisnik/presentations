@@ -630,6 +630,33 @@ def bind_queue(channel, queue_name, routing_pattern='', exchange_name='fanout_ex
     bind_queue(channel, 'americas_queue',
                routing_pattern='americas.*', exchange_name='topic_exchange')
 
+Prioritní fronty
+-------------------------------
+▶ Fronta musí být nastavena jako prioritní
+▶ Zprávy s vyšší prioritou budou přesunuty směrem k začátku front
+▶ Systém ovšem nezaručuje, že pořadí zpráv ve frontě bude přesně odpovídat zadané prioritě
+▶ Priorita zprávy specifikována celým kladným číslem popř. nulou
+    ◆ (Tolik teorie)
+    ◆ Priorita zprávy může být reprezentována jediným bajtem.
+    ◆ Prakticky jsme tedy omezeni hodnotami ležícími v rozsahu 0 až 255
+  
+channel.queue_declare(queue=queue_name, arguments={"x-max-priority": max_priority})
+  
+def open_channel(connection, queue_name='test', max_priority=10):
+    # pokus o nové vytvoření fronty ve skutečnosti neovlivní již existující frontu
+    channel = connection.channel()
+    channel.queue_declare(queue=queue_name, arguments={"x-max-priority": max_priority})
+    return channel
+
+Specifikace priority posílané zprávy
+------------------------------------
+prop = BasicProperties(priority=priority)
+  
+channel.basic_publish(exchange='',
+                      routing_key='priority_queue_2',
+                      body='Hello World! #{i} msg with priority {p}'.format(i=i, p=priority),
+                      properties=prop)
+
 Apache Active MQ
 -------------------------------
 ▶
