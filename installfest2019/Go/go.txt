@@ -660,6 +660,61 @@ func x() string {
 
 Rozvětvení běhu programu s využitím konstrukce switch
 -----------------------------------------------------
+switch {
+}
+  
+switch {
+default:
+        println("proč jsem vlastně použil switch?")
+}
+   
+switch {
+case true:
+        println("true")
+case false:
+        println("false")
+}
+  
+switch {
+case false:
+        println("false")
+case true:
+        println("true")
+default:
+        println("default")
+}
+  
+switch {
+case false:
+        println("false")
+default:
+        println("default")
+case true:
+        println("true")
+}
+
+Porovnání výrazu s konstantami v konstrukci switch
+--------------------------------------------------
+func classify(x int) string {
+        switch x {
+        case 0:
+                return "nula"
+        case 2, 4, 6, 8:
+                return "sudé číslo"
+        case 1, 3, 5, 7, 9:
+                return "liché číslo"
+        default:
+                return "?"
+        }
+}
+
+Porovnání výrazu s vypočtenými hodnotami v konstrukci switch
+------------------------------------------------------------
+func classify(x int, zero_value int) string {
+        switch x {
+        case zero_value:
+                return "nula"
+}
 
 Programové smyčky
 --------------------------------------------------
