@@ -2,12 +2,12 @@ Nástroje implementující fronty zpráv
 ====================================
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
-■ Datum    2019-02-xx
+■ Datum    2019-03-01
 
 Obsah přednášky
 -------------------------------
 ▶ Message broker a fronty zpráv
-▶ Proč používat tuto technologii?
+▶ Proč vlastně používat tuto technologii?
 ▶ Modifikace architektury aplikací
 ▶ Základní komunikační strategie
 ▶ Protokoly
@@ -16,7 +16,7 @@ Obsah přednášky
     ◆ RabbitMQ
     ◆ Apache Active MQ
     ◆ Celery
-▶ Message queuing service
+▶ Message queuing service(s)
 ▶ Další užitečné technologie
 
 Message broker a fronty zpráv
@@ -26,8 +26,10 @@ Message broker a fronty zpráv
     ◆ Typicky podporuje fronty zpráv a témata (topic)
     ◆ Další operace
         ■ Persistence zpráv
-        ■ Ověření identity, práva k přístupu ke frontám a zprávám atd.
-        ■ Rozhraní pro sledování činnosti brokera
+        ■ Ověření identity
+        ■ Práva k přístupu ke frontám a zprávám atd.
+        ■ Uživatelské rozhraní pro sledování činnosti brokera
+        ■ Programové rozhraní  -//-
         ■ Škálování
 ▶ Message queue (fronta zpráv)
     ◆ Součást message brokera
@@ -39,16 +41,22 @@ Message broker a fronty zpráv
         ■ Prioritní fronty
         ■ DLQ (Dead Letter Queue)
         ■ Zprávy s časem, kdy má být zpráva doručena
+        ■ Zprávy s časem zahození v případě nedoručení
+
+Topic (téma)
+-------------------------------
 ▶ Topic (téma)
     ◆ Použito při komunikaci PUB-SUB
     ◆ Většinou textové návěští přiřazené zprávě
     ◆ Může být hierarchické
         ■ region.téma.podtéma
         ■ region/téma/podtéma
+        ■ atd.
     ◆ Některé systému umožňují deklarovat pravidla pro směrování zpráv
+        ■ routing na základě hlavičky, tématu, klíče...
 
-Další často používané termíny
--------------------------------
+Další často používané termíny v oboru MQ
+----------------------------------------
 ▶ Publisher
     ◆ Zdroj zpráv
     ◆ Může zprávy posílat do několika front a/nebo témat
@@ -68,7 +76,8 @@ Proč vůbec používat tuto technologii?
     ◆ Asynchronní komunikace
     ◆ Oddělení jednotlivých modulů aplikace
     ◆ Možnost jasné (a centralizované) definice toku dat
-    ◆ Garance doručení posílaných zpráv (popř. jejich perzistence)
+    ◆ Garance doručení posílaných zpráv
+        ■ (popř. zajištění jejich perzistence)
     ◆ Garance pořadí zpráv
     ◆ Odolnost architektury vůči výpadkům (resiliency)
     ◆ Škálovatelnost
@@ -84,6 +93,8 @@ Modifikace architektury aplikací
         ■ Problémy vznikají ve chvíli, kdy nějaký uzel přestane komunikovat
     ◆ Po zavedení message brokera M:1 a 1:N
         ■ Producenti ⇒ Message broker ⇒ Konzumenti
+        ■ DLQ
+        ■ Opakované doručení zprávy atd.
 
 Základní komunikační strategie
 ------------------------------
@@ -94,12 +105,14 @@ Základní komunikační strategie
     ◆ K výstupu fronty se může připojit více workerů
     ◆ Zpráva je doručena jednomu z nich
         ■ Typicky se používá nějaká forma algoritmu round-robin
-    ◆ Pokud žádný worker nemůže zprávu zpracovat zůstane ve frontě
+    ◆ Pokud žádný worker nemůže zprávu zpracovat, zůstane ve frontě
     ◆ (Nezpracované zprávy se mohou přesunout do jiné fronty - DLQ)
 ▶ PUB-SUB
     ◆ Zprávy se posílají s udáním takzvaného tématu (topic)
         ■ Jeden či více zdrojů zpráv
-        ■ Témata buď prosté jméno či hierarchie (cz.eshop-brno.pokladna1)
+        ■ Témata buď prosté jméno či hierarchie
+            cz.eshop-brno.pokladna1
+            us.eshop-nyc.pokladna42
     ◆ K výstupu fronty se může připojit více příjemců
     ◆ Zpráva je doručena všem aktuálně připojeným příjemcům
     ◆ Pokud žádný příjemce nemůže zprávu zpracovat bude ztracena
@@ -119,6 +132,8 @@ Příklady použití komunikačních strategií
         ⇒ Tímto způsobem lze získat informace z AMQ
         ■ (viz další slajdy)
     ◆ Podobné některým komunikačním protokolům (IRC)
+▶ Kombinace předchozích strategií
+▶ Pipeline
 
 Protokoly používané pro komunikaci
 ----------------------------------
@@ -180,8 +195,8 @@ Redis Queue (RQ)
     ◆ Strategie PUSH-PULL
     ◆ Producenti ⇒ Message broker ⇒ Konzumenti
 ▶ Pravděpodobně nejjednodušší cesta k využití message brokerů
-▶ Balíček rq dostupný na PyPI
-▶ CLI nástroj nazvaný `rq`
+▶ Balíček `rq` dostupný na PyPI
+▶ CLI nástroj nazvaný taktéž `rq`
     ◆ Spuštění workera
     ◆ Pozastavení všech workerů
     ◆ Znovuspuštění úloh, které nebyly dokončeny
@@ -220,6 +235,8 @@ $ rq worker
 16:59:02 RQ worker 'rq:worker:localhost.32100' started, version 0.12.0
 16:59:02 *** Listening on default...
 16:59:02 Cleaning registries for queue: default
+   
+Povšimněte si použití výchozí fronty nazvané "defaut"
 
 Redis Queue (RQ) - "padající" worker
 ------------------------------------
@@ -240,7 +257,8 @@ def do_work():
 Pád workera
 -----------
 ▶ Toto chování je "očekáváno"
-    ◆ Systém se nezhroutí
+    ◆ Systém jako celek se nezhroutí
+      (ostatně komu záleží na nějaké výjimce :-)
   
 16:59:03 default: worker.do_work() (c5468250-e2c5-494f-8bd8-f1f51b9a81f2)
 Working
@@ -267,8 +285,8 @@ Traceback (most recent call last):
 AssertionError
 16:59:05 Moving job to 'failed' queue
 
-Redis Queue (RQ) - info o nezpracovaných úlohách
-------------------------------------------------
+Redis Queue (RQ) - informace o nezpracovaných úlohách
+-----------------------------------------------------
 ▶ Zhavarované úlohy se ukládají do fronty "failed"
   
 from redis import Redis
@@ -296,8 +314,8 @@ for job_id in job_ids:
     print(job.ended_at)
     print(job.exc_info)
 
-Redis Queue (RQ) - info o nezpracovaných úlohách
-------------------------------------------------
+Redis Queue (RQ) - informace o nezpracovaných úlohách
+-----------------------------------------------------
 ▶ Pamatuje se především samotný stack trace
   
 Reading failed jobs
@@ -325,14 +343,14 @@ $ rq requeue --all
   Requeueing 1 jobs from failed queue
   [####################################]  100%
 
-Využití burst režimu workerů
----------------------------------
+Využití takzvaného burst režimu workerů
+---------------------------------------
 ▶ Vybrané workery lze spustit v takzvaném burst režimu
     ◆ takový worker se pokusí zpracovat všechny úlohy ze specifikované fronty
     ◆ následně se ukončí
 ▶ Jedná se o koncept dávkového zpracování
     ◆ například do systému přidáme výkonný stroj ve chvíli, kdy je nutné dokončit nějaké úlohy
-    ◆ ovšem tento stroj se nemá stát součástí „clusteru“)
+    ◆ ovšem tento stroj se nemá stát součástí „clusteru“
   
 $ rq worker --burst high low default
 
@@ -378,11 +396,12 @@ localhost.4312 idle: default
   
 Updated: 2018-11-26 13:22:06.236766
 
-Dashboard pro sledování stavu front a workerů
----------------------------------------------
+Dashboard Redis Queue pro sledování stavu front a workerů
+---------------------------------------------------------
 ▶ rq-dashboard
     ◆ Naprogramováno v Pythonu
     ◆ Používá Flask (tj. webová aplikace)
+    ◆ (screenshot)
 
 RabbitMQ
 -------------------------------
