@@ -714,10 +714,102 @@ func classify(x int, zero_value int) string {
         switch x {
         case zero_value:
                 return "nula"
+        case 2, 4, 6, 8:
+                return "sudé číslo"
+        case 1, 3, 5, 7, 9:
+                return "liché číslo"
+        default:
+                return "?"
+        }
+}
+
+Vyhodnocení a porovnání výsledků podmínek zapsaných ve větvích case
+-------------------------------------------------------------------
+func classify(x int) string {
+        switch {
+        case x == 0:
+                return "nula"
+        case x%2 == 0:
+                return "sudé číslo"
+        case x%2 == 1:
+                return "liché číslo"
+        default:
+                return "?"
+        }
+}
+
+Klíčové slovo fallthrough
+--------------------------------------------------
+// Pozor!!!
+func classify(x int) string {
+        switch x {
+        case 0:
+                return "nula"
+        case 2:
+        case 4:
+        case 6:
+        case 8:
+                return "sudé číslo"
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 9:
+                return "liché číslo"
+        default:
+                return "?"
+        }
+        return "X"
+}
+
+Klíčové slovo fallthrough
+--------------------------------------------------
+func classify(x int) string {
+        switch x {
+        case 0:
+                return "nula"
+        case 2:
+                fallthrough
+        case 4:
+                fallthrough
+        case 6:
+                fallthrough
+        case 8:
+                return "sudé číslo"
+        case 1:
+                fallthrough
+        case 3:
+                fallthrough
+        case 5:
+                fallthrough
+        case 7:
+                fallthrough
+        case 9:
+                return "liché číslo"
+        default:
+                return "?"
+        }
 }
 
 Programové smyčky
 --------------------------------------------------
+for {
+        println("Diamonds are forever")
+}
+
+Programové smyčky
+--------------------------------------------------
+for {
+        ...
+        ...
+        ...
+        if podmínka {
+            break
+        }
+        ...
+        ...
+        ...
+}
 
 Příkaz goto
 --------------------------------------------------
