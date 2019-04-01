@@ -417,7 +417,7 @@ RabbitMQ
 
 RabbitMQ
 -------------------------------
-▶ Rozhraní pro programovací jazyky (platformy)
+▶ Rozhraní pro různé programovací jazyky (platformy)
     ◆ Java
     ◆ JavaScript (Node.js)
     ◆ Python
@@ -444,6 +444,8 @@ RabbitMQ
 RabbitMQ
 -------------------------------
 ▶ Směrování zpráv před jejich vložením do fronty
+▶ Tzv. "exchange"
+    ◆  (screenshot)
 ▶ Strategie
     ◆  Direct
         ■ fronta nalezena podle klíče
@@ -678,9 +680,46 @@ channel.basic_publish(exchange='',
 
 Apache Active MQ
 -------------------------------
-▶
-▶
-▶
+▶ Vytvořen v Javě
+    ◆ Snadná instalace (rozbalení tarballu)
+▶ Strategie PUSH-PULL i PUB-SUB
+▶ Sledování činnosti AMQ
+    ◆ Webové rozhraní
+    ◆ JMX (JConsole)
+    ◆ Speciální témata (eventy)
+
+Podporované protokoly
+-------------------------------
+▶ AMQP 1.0
+▶ STOMP
+▶ MQTT
+▶ OpenWire
+▶ REST
+▶ RSS a Atom
+▶ WSIF
+▶ WS Notification 	 
+▶ XMPP
+
+Apache Active MQ
+-------------------------------
+▶ Řízení AMQ
+        bin/activemq
+▶ Práce se zprávami bez implementace klientů
+    ◆ Producent
+        ./activemq producer --message "Hello world"
+        ./activemq producer --message "Hello world" --messageCount 1
+        ./activemq producer --payloadUrl https://www.root.cz --messageCount 1
+    ◆ Konzument
+        ./activemq consumer --transacted true
+
+Apache Active MQ + STOMP + Python
+---------------------------------
+▶ Knihovna stomp.py
+▶ Klient ovládaný z CLI: `stomp`
+ 
+$ stomp
+  
+CONNECTED
 
 Celery
 -------------------------------
