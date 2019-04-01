@@ -791,13 +791,13 @@ func classify(x int) string {
         }
 }
 
-Programové smyčky
+Programové smyčky - klasická nekonečná smyčka
 --------------------------------------------------
 for {
         println("Diamonds are forever")
 }
 
-Programové smyčky
+Programové smyčky - podmínka uprostřed smyčky
 --------------------------------------------------
 for {
         ...
@@ -809,6 +809,54 @@ for {
         ...
         ...
         ...
+}
+
+Programové smyčky - podmínka na začátku smyčky
+--------------------------------------------------
+for i != 0 {
+        println(i)
+        i--
+}
+
+Programové smyčky - počítaná smyčka
+--------------------------------------------------
+for i := 0; i < 10; i++ {
+        println(i)
+}
+
+Programové smyčky - iterace přes datové struktury
+--------------------------------------------------
+a := [...]int{1, 2, 10, -1, 42}
+  
+for index, item := range a {
+        println(index, item)
+}
+  
+println()
+  
+s := "Hello world ěščř Σ"
+  
+for index, character := range s {
+        println(index, character)
+}
+  
+for _, item := range a {
+        println(item)
+}
+
+Programové smyčky a mapy
+--------------------------------------------------
+var m1 map[int]string = make(map[int]string)
+m1[0] = "nula"
+m1[1] = "jedna"
+m1[2] = "dva"
+m1[3] = "tri"
+m1[4] = "ctyri"
+m1[5] = "pet"
+m1[6] = "sest"
+  
+for key, val := range m1 {
+        println(key, val)
 }
 
 Příkaz goto
