@@ -717,9 +717,68 @@ Apache Active MQ + STOMP + Python
 ▶ Knihovna stomp.py
 ▶ Klient ovládaný z CLI: `stomp`
  
+CLI klient `stomp`
+---------------------------------
+▶ Spuštění
 $ stomp
   
 CONNECTED
+server: ActiveMQ/5.15.8
+heart-beat: 0,0
+session: ID:localhost.localdomain-38215-1549567803551-3:3
+version: 1.1
+   
+CLI klient `stomp`
+---------------------------------
+▶ Poslání zprávy
+send /queue/test hello world
+  
+MESSAGE
+content-length: 11
+expires: 0
+destination: /queue/test
+
+CLI klient `stomp`
+---------------------------------
+▶ Přihlášení se k odběru zpráv z fronty „test“:
+subscribe /queue/test
+   
+Subscribing to "/queue/test" with acknowledge set to "auto", id set to "1"
+subscription: 1
+priority: 4
+message-id: ID:localhost.localdomain-38215-1549567803551-3:3:-1:1:1
+timestamp: 1549631641256
+   
+hello world
+
+Producent zpráv (stomp.py)
+-------------------------------
+#!/usr/bin/env python
+   
+import time
+import stomp
+   
+   
+destination1 = "/topic/event"
+destination2 = "/topic/event2"
+  
+MESSAGES = 10
+ 
+conn = stomp.Connection(host_and_ports=[("localhost", 61613)])
+conn.start()
+conn.connect(login="admin", passcode="admin")
+  
+  
+for i in range(0, MESSAGES):
+    message = "Hello world #{i}!".format(i=i)
+    conn.send(destination1, message, persistent='true')
+    conn.send(destination2, message, persistent='true')
+ 
+ 
+conn.disconnect()
+
+Konzument zpráv (stomp.py)
+-------------------------------
 
 Celery
 -------------------------------
