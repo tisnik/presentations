@@ -20,8 +20,6 @@ Obsah přednášky
 ▶ Gorutiny
 ▶ Kanály
 ▶ Balíčky
-▶ Základní knihovna programovacího jazyka Go
-    ◆ Užitečné balíčky
 
 Last minute info
 --------------------------------------------------
@@ -199,11 +197,11 @@ Explicitní konverze!
         var unsigned_int uint32 = 100000
         var e float32 = 1e4
         var f float64 = 1.5e30
-
+  
         var x int32 = int32(a)
         var y int32 = int32(e)
         var z float32 = float32(f)
-
+   
         var b2 uint8 = uint8(signed_int)
         var b3 uint8 = uint8(unsigned_int)
 
@@ -363,7 +361,7 @@ Záznamy (struct)
 ▶ Záznamy (struct)
     ◆ viditelnost prvků podle prvního znaku názvu
     ◆ přístup k prvkům s využitím tečkové notace
- 
+
 Záznamy (struct)
 --------------------------------------------------
 type User struct {
@@ -377,7 +375,7 @@ var user1 User
 user1.id = 1
 user1.name = "Pepek"
 user1.surname = "Vyskoč"
- 
+
 Tisk obsahu záznamů a inicializace záznamů
 --------------------------------------------------
 ▶ Záznamy je možné vytisknout s využitím funkce fmt.Println:
@@ -513,6 +511,7 @@ Ukazatele
 ▶ Implicitní hodnota je `nil`
 ▶ Získání adresy unárním operátorem &
 ▶ Nepřímý přístup k hodnotě unárním operátorem *
+  
 var p_i *int
 p_i = &i
 *p_i++
@@ -532,6 +531,16 @@ p_u.id = 20000
   
 ▶ Ukazatel na položku záznamu
 p_n = &u.name
+
+Konstanty
+--------------------------------------------------
+const Pi float64 = 3.1415927
+const E = 2.71828
+   
+const z0 int = 0
+const z1 = 0
+  
+const z2 = z0 + z1
 
 Funkce
 --------------------------------------------------
@@ -859,41 +868,383 @@ for key, val := range m1 {
         println(key, val)
 }
 
+Break a continue (s návěštím)
+--------------------------------------------------
+Exit:
+        for i := 1; i <= 10; i++ {
+                for j := 1; j <= 10; j++ {
+                        fmt.Printf("%3d ", i*j)
+                        if i*j == 42 {
+                                fmt.Println("\nodpověď nalezena!\n")
+                                break Exit
+                        }
+                }
+                fmt.Println()
+        }
+
 Příkaz goto
 --------------------------------------------------
+func classify(x int) string {
+        switch x {
+        case 0:
+                return "nula"
+        case 2, 4, 6, 8:
+                goto SudeCislo
+        case 1, 3, 5, 7, 9:
+                goto LicheCislo
+        default:
+                goto JineCislo
+        }
+JineCislo:
+        return "?"
+SudeCislo:
+        return "sudé číslo"
+LicheCislo:
+        return "liché číslo"
+}
+
+Používá se `goto` vůbec?
+--------------------------------------------------
+Počet použití   Klíčové slovo
+189     fallthrough
+550     goto
+605     select
+1711    chan
+2346    interface
+2412    default
+3128    map
+3443    continue
+3831    import
+3946    defer
+4433    switch
+4709    go
+4929    const
+5308    package
+7125    else
+9418    range
+9885    struct
+12313   type
+19094   var
+22073   case
+29449   break
+29736   for
+57261   func
+77351   return
+111163  if
+
+Klíčové slovo defer
+--------------------------------------------------
+▶ defer - přidání volání do zásobníku
+▶ Funkce ze zásobníku se zavolají po ukončení aktivní funkce
+▶ Skutečné LIFO chování
+▶ Parametry se vyhodnocují v čase volání defer
+    ◆ ne při vlastním volání funkce (to je pozdě :-)
+▶ Funkce volaná přes defer může měnit návratové kódy "hlavní" funkce
+    ◆ musí být pojmenovány
 
 Speciální řízení (defer)
 --------------------------------------------------
+defer on_finish()
+   
+for i := 10; i >= 0; i-- {
+        fmt.Printf("%2d\n", i)
+}
+fmt.Println("Finishing main() function")
+
+Speciální řízení (defer)
+--------------------------------------------------
+src, err := os.Open(srcName)
+if err != nil {
+        fmt.Printf("Cannot open file '%s' for reading\n", srcName)
+        return
+} else {
+        fmt.Printf("File '%s' opened for reading\n", srcName)
+}
+defer closeFile(src)
+// nebo přímo
+defer src.Close()
+
+Ovlivnění návratové hodnoty přes blok defer
+--------------------------------------------------
+func funkce1() (i int) {
+        i = 1
+        return
+}
+   
+func funkce2() (i int) {
+        defer func() { i = 2 }()
+        return 1
+}
+   
+func funkce3() (i int) {
+        defer func() { i += 2 }()
+        return 1
+}
 
 Reakce na chybové stavy
 --------------------------------------------------
-▶ 
-▶ 
-▶ 
+type error interface {
+    Error() string
+}
+   
+func div(x, y int32) (int32, error) {
+        if y == 0 {
+                return -1, errors.New("takto ne!")
+        }
+        return x / y, nil
+}
+  
+func main() {
+        res, err := div(10, 3)
+        fmt.Println(res, err)
+        res, err = div(10, 0)
+        fmt.Println(res, err)
+}
+
+Reakce na chybové stavy - panic
+--------------------------------------------------
+▶ Funkce se ihned ukončí
+▶ Zavolají se případné bloky defer
+▶ Probublávání chybového stavu
+    * (defer se jakoby volá ve funkci výše)
+▶ Zachycení funkcí recover
+
+Reakce na chybové stavy - panic
+--------------------------------------------------
+func copyFile(srcName, dstName string) (written int64, err error) {
+        src, err := os.Open(srcName)
+        if err != nil {
+                panic(err)
+        }
+        defer closeFile(src)
+ 
+        dst, err := os.Create(dstName)
+        if err != nil {
+                panic(err)
+        }
+        defer closeFile(dst)
+ 
+        return io.Copy(dst, src)
+}
 
 Rozhraní
 --------------------------------------------------
-▶ 
-▶ 
-▶ 
+▶ Datový typ
+▶ Prázdné rozhraní interface{}
+▶ Není zapotřebí specifikovat, jaký typ rozhraní implementuje!
+▶ Jedna metoda (dosti časté)
+type OpenShape interface {
+        length() float64
+}
+  
+▶ V rozhraní může být předepsáno větší množství metod:
+type ClosedShape interface {
+        area() float64
+        perimeter() float64
+}
+  
+▶ Nebo naopak nemusí být předepsána žádná metoda:
+type Shape interface {
+}
 
 Metody
 --------------------------------------------------
-▶ 
-▶ 
-▶ 
+▶ Koncept takzvaného příjemce metody
+type Line struct {
+        x1, y1 float64
+        x2, y2 float64
+}
+  
+func (line Line) length() float64 {
+        ...
+        ...
+        ...
+}
+  
+line1 := Line{x1: 0, y1: 0, x2: 100, y2: 100}
+line_length := line1.length()
+
+Metody měnící příjemce
+--------------------------------------------------
+▶ Takto ne - sice se obsah line změní, ovšem jen lokálně
+func (line Line) translate(dx, dy float64) {
+        fmt.Printf("Translating line %v by %f %f\n", line, dx, dy)
+        line.x1 += dx
+        line.y1 += dy
+        line.x2 += dx
+        line.y2 += dy
+}
+▶ Korektní řešení (Go je v tomto případě konzistentní)
+func (line *Line) translate(dx, dy float64) {
+        fmt.Printf("Translating line %v by %f %f\n", *line, dx, dy)
+        (*line).x1 += dx
+        (*line).y1 += dy
+        (*line).x2 += dx
+        (*line).y2 += dy
+}
+
+Rozhraní jako datový typ při volání funkcí
+--------------------------------------------------
+type OpenShape interface {
+        length() float64
+}
+  
+func length(shape OpenShape) float64 {
+        return shape.length()
+}
+  
+type Line struct {
+        x1, y1 float64
+        x2, y2 float64
+}
+  
+func (line Line) length() float64 {
+        return math.Hypot(line.x1-line.x2, line.y1-line.y2)
+}
+  
+line1 := Line{x1: 0, y1: 0, x2: 100, y2: 100}
+  
+fmt.Println(line1)
+  
+line_length := length(line1)
+fmt.Println(line_length)
+
+Složitější příklad
+--------------------------------------------------
+package main
+  
+import (
+        "fmt"
+        "math"
+)
+  
+type ClosedShape interface {
+        area() float64
+}
+  
+func area(shape ClosedShape) float64 {
+        return shape.area()
+}
+  
+type Circle struct {
+        x, y   float64
+        radius float64
+}
+  
+type Ellipse struct {
+        x, y float64
+        a, b float64
+}
+  
+type Rectangle struct {
+        x, y          float64
+        width, height float64
+}
+  
+func (rect Rectangle) area() float64 {
+        return rect.width * rect.height
+}
+  
+func (circle Circle) area() float64 {
+        return math.Pi * circle.radius * circle.radius
+}
+  
+func (ellipse Ellipse) area() float64 {
+        return math.Pi * ellipse.a * ellipse.b
+}
+  
+func main() {
+        shapes := []ClosedShape{
+                Rectangle{x: 0, y: 0, width: 100, height: 100},
+                Circle{x: 0, y: 0, radius: 100},
+                Ellipse{x: 0, y: 0, a: 100, b: 50}}
+ 
+        for _, shape := range shapes {
+                fmt.Println(shape)
+                fmt.Println(area(shape))
+                fmt.Println(shape.area())
+                fmt.Println()
+        }
+}
 
 Gorutiny
 --------------------------------------------------
-▶ 
-▶ 
-▶ 
+func f(from string) {
+    for i := 0; i < 3; i++ {
+        fmt.Println(from, ":", i)
+    }
+}
+  
+func main() {
+    f("direct")
+    go f("goroutine")
+    go func(msg string) {
+        fmt.Println(msg)
+    }("going")
+  
+    fmt.Scanln()
+    fmt.Println("done")
+}
+   
+func main() {
+    messages := make(chan string)
+    go func() { messages <- "ping" }()
+    msg := <-messages
+    fmt.Println(msg)
+}
 
 Kanály
 --------------------------------------------------
-▶ 
-▶ 
-▶ 
+▶ Technologie pro komunikaci mezi gorutinami
+▶ Speciální operátory
+▶ Kanály s kapacitou (buffery, fronty)
+▶ Základní detekce deadlocku
+
+Kanály
+--------------------------------------------------
+func message(id int, channel chan int) {
+        fmt.Printf("gorutina %d\n", id)
+   
+        // zápis libovolné hodnoty do kanálu
+        channel <- 1
+}
+  
+func main() {
+        channel := make(chan int)
+   
+        fmt.Println("main begin")
+        go message(1, channel)
+   
+        fmt.Println("waiting...")
+   
+        // blokující čtení z kanálu
+        code, status := <-channel
+   
+        fmt.Printf("received code: %d and status: %t\n", code, status)
+        fmt.Println("main end")
+}
+
+Jednoduchá synchronizace v Go
+------------------------------------
+func worker(done chan bool) {
+    fmt.Print("working...")
+    time.Sleep(time.Second)
+    fmt.Println("done")
+  
+    // ok uz jsme hotovi, posleme zpravu kanalem
+    done <- true
+}
+  
+func main() {
+    // kanal s kapacitou == 1
+    done := make(chan bool, 1)
+  
+    // asynchronni beh
+    go worker(done)
+  
+    // cekame na zpravu
+    <-done
+}
 
 Čekání na data posílaná přes kanály
 --------------------------------------------------
@@ -996,13 +1347,6 @@ Balíčky
 --------------------------------------------------
 ▶ klíčové slovo package 
 ▶ import balíčků přes příkaz import "název_balíčku"
-▶ 
-
-Základní knihovna programovacího jazyka Go
---------------------------------------------------
-▶ 
-▶ 
-▶ 
 
 Makra v Go?
 --------------------------------------------------
@@ -1021,115 +1365,6 @@ Makra v Go?
         } else {
             fmt.Println("something else")
         }
-
-Look and feel Go
---------------------------------------------------
-func CopyFile(dstName, srcName string) (written int64, err error) {
-    src, err := os.Open(srcName)
-    if err != nil {
-        return
-    }
-    defer src.Close()
- 
-    dst, err := os.Create(dstName)
-    if err != nil {
-        return
-    }
-    defer dst.Close()
- 
-    return io.Copy(dst, src)
-}
-
-Poznámky
---------------------------------------------------
-▶ Okolo podmínek nejsou závorky
-▶ Nepovinný středník
-▶ nil
-▶ Více návratových hodnot
-▶ Chyba je poslední navrácenou hodnotou, konvence
-▶ Použití defer, viz další slajd
-▶ Zkrácený zápis deklarace a inicializace lokálních proměnných
-    var src, err...
-    src, err := ...
-▶ Pojmenované návratové hodnoty (nepovinné)
-
-Klíčové slovo defer
---------------------------------------------------
-▶ defer - přidání volání do zásobníku
-▶ Funkce ze zásobníku se zavolají po ukončení aktivní funkce
-▶ Skutečné LIFO chování
-▶ Parametry se vyhodnocují v čase volání defer
-    ◆ ne při vlastním voláni funkce (to je pozdě :-)
-▶ Funkce volaná přes defer může měnit návratové kódy "hlavní" funkce
-    ◆ musí být pojmenovány
-
-Zpracování chybových stavů
---------------------------------------------------
-type error interface {
-    Error() string
-}
-.
-func div(x, y int32) (int32, error) {
-        if y == 0 {
-                return -1, errors.New("takto ne!")
-        }
-        return x / y, nil
-}
-.
-func main() {
-        res, err := div(10, 3)
-        fmt.Println(res, err)
-        res, err = div(10, 0)
-        fmt.Println(res, err)
-}
-
-Gorutiny
---------------------------------------------------
-func f(from string) {
-    for i := 0; i < 3; i++ {
-        fmt.Println(from, ":", i)
-    }
-}
-.
-func main() {
-    f("direct")
-    go f("goroutine")
-    go func(msg string) {
-        fmt.Println(msg)
-    }("going")
-
-    fmt.Scanln()
-    fmt.Println("done")
-}
-.
-func main() {
-    messages := make(chan string)
-    go func() { messages <- "ping" }()
-    msg := <-messages
-    fmt.Println(msg)
-}
-
-Jednoduchá synchronizace v Go
-------------------------------------
-func worker(done chan bool) {
-    fmt.Print("working...")
-    time.Sleep(time.Second)
-    fmt.Println("done")
-
-    // ok uz jsme hotovi, posleme zpravu kanalem
-    done <- true
-}
-.
-func main() {
-    // kanal s kapacitou == 1
-    done := make(chan bool, 1)
-.
-    // asynchronni beh
-    go worker(done)
-.
-    // cekame na zpravu
-    <-done
-}
 
 A samozřejmě oblíbené téma pro debaty...
 --------------------------------------------------
