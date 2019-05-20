@@ -1,0 +1,55 @@
+Is Go language actually worth learning?
+Red Hat Developer Meetup #2
+21 May 2019
+Tags: golang, go
+
+Pavel Tišnovský <ptisnovs@redhat.com>
+Red Hat, Inc.
+
+
+
+* Introduction
+
+There are lots of interesting programming languages that you can learn.
+The question is, should you perfect them all? The answer is no, of course.
+So what about the Go language - is it worth try?
+
+In this presentation we are going to talk about Go's pros (goroutines,
+channels, GC, type systems) and cons (a language with attributes taken from the
+previous century :)
+
+
+
+* Gophers
+#The Go gopher was designed by Renee French. (http://reneefrench.blogspot.com/)
+#Source https://golang.org/doc/gopher/fiveyears.jpg
+#The design and this image is licensed under the Creative Commons 3.0 Attributions license.
+.image ./images/fiveyears.jpg _ 900
+
+
+
+* Introduction
+- Launched in November 2009 by Google
+- Rob Pike, Ken Thompson, Robert Griesemer
+- More readable replacement for C/C++/Java/...
+- „Less is more“
+
+
+
+* Introduction
+- compiled
+- statically typed
+- garbage collected
+- built-in concurrency
+- strict formatting rules
+- server-side web (PHP, Node.js, Python, Ruby, Java)
+- cloud technologies (Docker, Kubernetes, Kubernetes Operators, ...)
+- available for all interesting systems
+- and most architectures (x86-64, ARMv6, ARMv8, even s390x and PowerPC64 LE)
+- custom backend + cgo
+- exported symbols begin with Capital letter
+
+
+
+
+# finito
