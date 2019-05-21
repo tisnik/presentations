@@ -46,8 +46,47 @@ previous century :)
 - cloud technologies (Docker, Kubernetes, Kubernetes Operators, ...)
 - available for all interesting systems
 - and most architectures (x86-64, ARMv6, ARMv8, even s390x and PowerPC64 LE)
-- custom backend + cgo
+- custom back end + cgo
 - exported symbols begin with Capital letter
+
+
+
+* Goals
+- simplicity
+- unambiguity
+- performance
+- pragmatic
+- safer applications (compared to C/C++)
+- microservices
+- ease to install ("DLL hell" can't happen)
+- for DevOps from DevOps
+- fast builds (CI tools like it ;-)
+
+
+
+* Attention
+- Go is a blend of modern approaches combined with quite old ideas
+- error handling
+- no generics
+- no templates
+- no class-based OOP
+- no `try`/`catch`/`finally`
+- `goto` keyword
+- `nil` identifier
+
+
+
+* Go vs C(++)
+- stronger type system
+- no text substitution macros
+- no header files
+- package system + checks
+- safer memory operations + GC
+- standardized framework for tests
+- stricter rules (`++`/`--`, pointers, ...)
+- no templates
+- no exception handling control structures (yet?)
+- no generic data types (yet?)
 
 
 
