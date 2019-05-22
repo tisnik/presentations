@@ -90,5 +90,61 @@ previous century :)
 
 
 
+* But... we are in 21th century!
+
+.image ./images/typewriter.jpg
+
+
+
+* But... we are in 21th century!
+
+- Multi-core CPUs
+
+.image ./images/multicore_cpus.png
+
+
+
+* But... we are in 21th century!
+
+- Multi-core CPUs
+
+.image ./images/float-point-perf.png
+
+
+
+* Support for concurrency
+
+- Communicating sequential processes (a formal language etc. etc.)
+- "Don't communicate by sharing memory; share memory by communicating"
+- So called _goroutines_
+- Channels
+
+
+
+* Go fundamentals
+.play sources/01_hello.go
+
+
+
+* Go fundamentals
+- Keywords
+- Data types
+- Control structures
+- User data types
+- Interfaces
+- Goroutines
+- Channels
+
+
+
+* Keywords
+  break     default      func    interface  select
+  case      defer        go      map        struct
+  chan      else         goto    package    switch
+  const     fallthrough  if      range      type
+  continue  for          import  return     var
+
+
+
 
 # finito
