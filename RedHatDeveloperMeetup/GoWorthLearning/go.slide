@@ -24,7 +24,7 @@ previous century :)
 #The Go gopher was designed by Renee French. (http://reneefrench.blogspot.com/)
 #Source https://golang.org/doc/gopher/fiveyears.jpg
 #The design and this image is licensed under the Creative Commons 3.0 Attributions license.
-.image ./images/fiveyears.jpg _ 900
+##.image ./images/fiveyears.jpg _ 900
 
 
 
@@ -92,7 +92,7 @@ previous century :)
 
 * But... we are in 21th century!
 
-.image ./images/typewriter.jpg
+##.image ./images/typewriter.jpg
 
 
 
@@ -100,7 +100,7 @@ previous century :)
 
 - Multi-core CPUs
 
-.image ./images/multicore_cpus.png
+##.image ./images/multicore_cpus.png
 
 
 
@@ -108,7 +108,7 @@ previous century :)
 
 - Multi-core CPUs
 
-.image ./images/float-point-perf.png
+##.image ./images/float-point-perf.png
 
 
 
@@ -146,5 +146,605 @@ previous century :)
 
 
 
+* Data types
+- similar to C
+- postfix notation
+- no auto casts
+- type inference && default types
+- each type has clear zero value (0, false, "", `nil`)
+
+
+
+* Data types
+- primitive
+- composite
+- other standard types
+- user data types
+
+
+
+* Primitive data types
+- bool (`true`/`false`)
+- signed integers (`int8`, `int16`, `int32`, `int64`, `int`, `byte`)
+- unsigned integers (`uint8`, `uint16`, `uint32`, `uint64`, `uint`, `rune`)
+- with FP (`float32`, `float64`)
+- complex numbers from two FPs (`complex64`, `complex128`)
+
+
+
+* Composite data types
+- strings (immutable, Unicode support, length is known)
+- arrays (mutable, constant size, automatic initialization)
+- slices (pointer to first item, length, capacity)
+- structs (mutable)
+- maps (key+value pairs can be added, tested for existence, and deleted)
+
+
+
+* Other standard data types
+- pointers
+- functions
+- interfaces
+- channels
+
+
+
+* Structs (records)
+- a.k.a. records
+- user-defined data type (so called named structure)
+- or anonymous structure
+- dot operator to access struct members
+- initialization using {}
+- or by using named members (which is more explicit and better)
+- structs are comparable
+- pass to functions as value or via pointer (by reference)
+
+
+
+* Structs and dot operator
+.play sources/02_struct.go
+
+
+
+* Initialization of struct members (cont.)
+.play sources/03_struct_init.go
+
+
+
+* Better (more explicit) initialization of struct members
+- struct members are explicitly specified by name
+- better readability 
+- preferred approach
+
+
+
+* Better (more explicit) initialization of struct members (cont.)
+.play sources/04_better_struct_init.go
+
+
+
+* Arrays
+- basic data type in the Go programming language
+- all array items has the same type
+- (well, you can use `interface{}` to allow _dynamic typing behaviour_)
+- type of array is derived from type of items *and* array size
+- (unlike slices)
+- index in range 0..length-1
+- items indexing via [] (as in most other languages)
+
+
+
+* Basic operations with arrays
+.play sources/05_arrays.go
+
+
+
+* Matrix (two dimensional array)
+.play sources/06_arrays.go
+
+
+
+* Array copy
+- unlike slices, arrays can be copied
+.play sources/07_array_copy.go
+
+
+
+* Slices
+- proper data type in the Go programming language
+- interface to sequences (better than arrays)
+- slices are used more often than _plain_ _old_ _arrays_
+- type of slice is derived from type of items
+- slices has defined length and capacity (those numbers can be different)
+- internally a slice is triple: (pointer to the first element + `len` + `cap`)
+- so called "slice operator" `[from:to]`
+- `append` function to add a new element to slice (complicated internally)
+
+
+
+* Usage of slices
+
+.play sources/08_slices.go /package main/,/cont//
+
+
+
+* Usage of slices (cont.)
+
+.play sources/08_slices.go /cont/,/^}//
+
+
+
+* Slices and arrays as data source for them
+
+- slice can be created from any array
+- but the slice does not contain any data, just a pointer to array element
+- so any modify in slice element is reflected in an array as well
+
+.play sources/09_slice_copy.go /package main/,/cont//
+
+
+
+* Slices and arrays as data source for them (cont.)
+- modify array elements
+- then modify the same elements, but via slice
+
+.play sources/09_slice_copy.go /cont/,/^}//
+
+
+
+* Slice from slice
+- "slicing" of another slice is possible
+.play sources/10_slice_from_slice.go /package main/,/cont//
+
+
+
+* Slice from slice (cont.)
+.play sources/10_slice_from_slice.go /cont/,/^}//
+
+
+
+* Append function
+- the function `append` returns a new slice
+- the capacity of new slice can be increased (realloc magic inside!)
+.play sources/11_slice_append.go
+
+
+
+* Maps
+- a.k.a. associative array or hash
+- container for key-value pairs
+- "nil map":
+    var m1 map[int]string
+- empty map:
+    var m3 map[int]string = make(map[int]string)
+    m1 := make(map[int]string)
+
+
+
+* Maps
+- two basic operations: add/put, get, and delete
+- add/put items to a map:
+    m3[0] = "zero"
+    m3[1] = "one"
+    m3[2] = "two"
+- get item from a map:
+    m3[3] = "three"
+- delete from a map
+    delete(m3, "zero")
+
+
+
+* Pointers
+- always points to an element of some type
+- ie. `void` pointers are not supported
+- implicit pointer value is `nil`
+- operators `&` and `*,` but not `->` (actually not needed)
+- address of element can be retrieved using the `&` operator
+- access via pointer (reference in some other languages) using the `*` operator
+- automatic dereference
+
+
+
+* Basic usage of pointers
+- please note the usage of `*p_i++`
+
+.play sources/12_pointer_to_int.go
+
+
+
+* Pointer to structure
+
+.play sources/13_pointer_to_struct.go /package main/,/func main//
+
+
+
+* Functions
+- proper data type in Go
+- supports for closures
+- variadic functions
+- more return values are allowed
+- return value(s) can be named
+
+
+
+* Functions
+.play sources/14_f1.go
+.play sources/15_f2.go
+
+
+
+* Multiple return values
+.play sources/16_f3.go
+
+
+
+* Control structures
+- conditions
+- loops
+- `return` statement
+- `defer` statement
+- `goto` statement
+
+
+
+* Conditions
+- `if`
+- `if`-`else`
+- `switch`
+
+
+
+* Conditions
+- similarly to `for` loop allows init statement
+- variables declared there don't exist outside of the if block
+.play sources/17_if.go
+
+
+
+* Else statement
+- variables declared in the init statement do exist in the else block
+.play sources/18_if2.go
+
+
+
+* Switch statement
+- again allows init statement
+- like set of `if`-`else` statements
+- evaluated top-bottom, first successful case is executed
+- thus there's no break statement
+- opposite meaning - `fallthrough`
+.play sources/19_switch.go
+
+
+
+* Switch statement 2
+- Allows non-constant and non-integer values
+.play sources/20_switch2.go
+
+
+
+* Switch with no condition
+- `switch` without condition is like `switch` `true`
+.play sources/21_switch3.go
+
+
+
+* Loops
+- just `for` loop which also serves as `while` loop
+.play sources/22_for.go
+
+
+
+* Defer statement
+- `defer` is a keyword in the Go programming language
+- used to "remember" commands that will be called before `return` or exit
+- based on LIFO (stack) of remembered commands
+- parameters are evaluated when `defer` is declared (ie. in runtime)
+- (not when the specified code is called)
+- it is possible to change function return value(s) via `defer`
+
+
+* Basic usage of defer statement
+- function `on_finish()` is called before exit from `main()`
+.play sources/23_defer_basic_usage.go
+
+
+
+* Function declaration in defer statement
+- usually the function definition is part of `defer` statement
+- this function is anonymous - lambda, and usually it is a closure as well
+- (we will talk about lambdas and closures in the next lesson)
+.play sources/24_defer_func.go
+
+
+
+* Function declaration in defer statement (cont.)
+- parenthesis around lambda are not required
+.play sources/25_defer_with_parameters.go
+
+
+
+* More defer statements in one function
+- ten `defer` statements
+- LIFO behaviour
+- (check in runtime how it works)
+.play sources/26_more_defers.go
+
+
+
+* Error handling
+- error is built-in type
+[[https://blog.golang.org/error-handling-and-go]]
+#.play sources/ret.go
+
+
+
+* `goto` keyword
+- Welcome to 70's and 80's!
+##.image ./images/goto.png
+
+
+
+* `goto` keyword
+- actually not used much in real applications
+
+
+
+
+* Operators
+ arithmetic         +   -   *   /   %
+ arithmetic+assign  +=  -=  *=  /=  %=
+ logic              &&  ||  !
+ shifts and bit ops <<  >>  &   |   ^   &^
+ -//- + assign      <<= >>= &=  |=  ^=  &^=
+ relational         ==  !=  <   <=  >   >=
+ address operators  *   &
+ unary operators    +   -   ^
+ other operators    <-  :=
+
+
+
+* Interesting operators
+
+ ^             bit by bit negation (like ~ in C)
+                
+ &      &=     bit AND
+ |      |=     bit OR
+ ^      ^=     bit XOR
+ &^     &^=    bit mask (AND NOT operation)
+
+ :=            new variable declaration + initialization
+ <-            channel operations (send, receive)
+
+
+
+* ++ and --
+- must be used as statement, not in an expression
+- always written after operand (postfix variant)
+
+
+
+* Packages and Imports
+- program building blocks ("libraries")
+- imported by other programs
+- package name is the last element of the import path
+- standard packages: [[https://golang.org/pkg/]]
+
+
+
+* Threads and goroutines
+- Reminder: Threads share memory
+- Go routines are light-weighted threads, cheap to spawn
+- Internally multiplexed across thread pool
+- Spawned with simple `go` keyword
+
+* Goroutines
+.play sources/27_goroutines.go
+
+
+
+* Deadlocks
+##.image ./images/deadlock.jpg
+
+
+
+* Deadlocks
+- checked at runtime
+
+ func main() {
+         ch := make(chan bool)
+         ch <- true
+         fmt.Println(<-ch)
+ }
+
+
+
+* Channels
+- Mailboxes
+- FIFO/queues
+- Used to communicate between goroutines
+.play sources/28_channel_as_fifo.go
+
+
+
+* Channels
+- Also used to "control" the goroutines (wait for read/write)
+##.image ./images/red.png
+
+
+
+* Select statement
+.play sources/29_select_channels.go /package main/,/func main//
+
+
+
+* Select statement (cont.)
+.play sources/29_select_channels.go /func main/,/}/
+
+
+
+* Error handling
+- no `try`/`catch`/`finally`
+- explicit checks
+##.image ./images/npe.jpg
+
+
+
+* Error handling
+.play sources/30_error_handling.go /package main/,/testCopyFile/
+
+
+
+* Error handling (cont.)
+.play sources/30_error_handling.go /testCopyFile/,/DONE/
+
+
+
+* Interfaces
+##.image ./images/interface.png
+
+
+
+* Interfaces
+- set of methods required to implement such interface
+- declared via `interface` keyword:
+
+    type XI interface {
+        method1()
+        method2(int) int
+    }
+
+- interface type — variable of interface type, can hold any value implementing an interface
+- variable of interface type *I* can hold any value _implementing_ *I*
+
+
+
+* Implementing an interface
+- a.k.a. _satisfying_ an interface
+- no such keyword (`implements` or anything similar)
+- in Go: every type which implements all interface’s method automatically satisfies such interface
+
+
+
+* Embedding other interface(s)
+- embedding other interfaces is possible
+
+    type XII interface {
+        m2()
+        XI
+    }
+
+- order does not matter there
+
+
+* Circular embedding
+- disabled, detected by compiler
+
+    type I1 interface {
+        I2
+        method_i1()
+    }
+    
+    type I2 interface {
+        I3
+        method_i2()
+    }
+    
+    type I3 interface {
+        I1
+        method_i3()
+    }
+
+
+
+* Declaration of two interfaces
+.play sources/31_interface.go
+
+
+
+* Implementation of an interface
+.play sources/32_interface_implementation.go /^package main/,/^func main/
+
+
+
+* Implementation of an interface (cont.)
+.play sources/32_interface_implementation.go /^func main/,/^}/
+
+
+
+* nil != nil?
+##.image ./images/gopher.jpeg
+
+
+
+* nil != nil?
+.play sources/33_nil_is_not_nil.go
+
+
+
+* nil != nil?
+.play sources/34_three_nil_interfaces.go
+
+
+
+* Standard libraries
+- networking
+- crypto/security...
+- image encoding/decoding
+- built-in HTTP server based on goroutines!
+
+
+
+* go-fmt
+- Gofmt’s style is no one’s favorite, yet gofmt is everyone’s favorite. — Rob Pike
+- standard tool
+
+
+
+* go-test
+- `go test` - a standard unit test framework
+
+    package main
+    
+    import "testing"
+    
+    func TestSum(t *testing.T) {
+        total := Sum(5, 5)
+        if total != 10 {
+           t.Errorf("Sum was incorrect, got: %d, want: %d.", total, 10)
+        }
+    }
+
+
+
+* So...is it worth to spend time learning Go?
+- networking - YES
+- (micro)services - YES
+- scalable systems - YES
+- you like strict formatting rules - YES
+- you like strong type systems - YES
+- you like minimalism - YES
+- pretty fast compilation - YES
+- the simplest deployment - YES
+
+
+
+* So...is it worth to spend time learning Go?
+- you like classic (broken) class-bases OOP - NO
+- you like baroque languages - NO
+- you like inconsistent languages - NO
+- you like homoiconic languages - NO
+- you want to manage memory ourself - NO
+- you like to have buffer overflows - NO
+- you like really very strong type system & fast language - Rust
+
+
+
+#last slide
+* More Gophers
+#The Go gopher was designed by Renee French. (http://reneefrench.blogspot.com/)
+#Source https://golang.org/doc/gopher/bumper.png
+#The design and this image is licensed under the Creative Commons 3.0 Attributions license.
+##.image ./images/bumper.png  _ 900
 
 # finito
