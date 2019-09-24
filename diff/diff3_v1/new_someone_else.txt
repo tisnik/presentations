@@ -1,0 +1,11 @@
+První řádek původního souboru
+Druhý řádek původního souboru
+Třetí řádek původního souboru
+Čtvrtý řádek původního souboru
+Pátý řádek původního souboru
+Šestý řádek původního souboru
+Sedmý řádek původního souboru
+Osmý řádek původního souboru
+Tento řádek změnil někdo jiný
+Desátý řádek původního souboru
+Konec původního souboru
