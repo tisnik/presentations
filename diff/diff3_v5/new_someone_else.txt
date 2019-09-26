@@ -1,0 +1,9 @@
+První řádek původního souboru
+Druhý řádek původního souboru
+Třetí řádek původního souboru
+Čtvrtý řádek původního souboru
+Pátý řádek původního souboru
+Šestý řádek původního souboru
+Devátý řádek původního souboru
+Desátý řádek původního souboru
+Konec původního souboru
