@@ -1,0 +1,117 @@
+--- E_80X25.ASM	1991-12-15 13:40:00.000000000 +0100
++++ E_MY_CFG.ASM	2014-06-26 21:51:46.000000000 +0200
+@@ -1,10 +1,15 @@
+ ;E 1.4.  Copyright (C) David Nye, 1990, 1991, all rights reserved.
++; Minor changes by Tisnik 2014:
++; - changed text attributes (color and background)
++; - added support for more .bat files + F10 for quick exit
++; - Ctrl+G is Delete on most WordStar-compatible editors
++; - support for 80x50 text mode
+ 
+ IDEAL
+ ;Constants
+ 
+ LINEWIDTH       EQU 80          ;Length of string storage for line
+-SCREENLENGTH    EQU 24          ;Number of rows in display window
++SCREENLENGTH    EQU 49          ;Number of rows in display window
+ MAXLINES        EQU 8096        ;Size of arrays of line pointers
+ BUFFERLENGTH    EQU 1200h       ;Length of file buffer
+ STACKSIZE       EQU 50h         ;Length of stack
+@@ -58,9 +63,9 @@
+ 
+ ;Some defaults, use ECONFIG to change
+ 
+-attribNl        db 17h          ;Default text attributes
+-attribInv       db 70h          ;Default status line attributes
+-tabSize         db 4            ;Tab increment
++attribNl        db 1bh          ;Default text attributes
++attribInv       db 30h          ;Default status line attributes
++tabSize         db 8            ;Tab increment
+ inserting?      db -1           ;True if in insert mode
+ autoIndent?     db -1           ;True if in autoindent mode
+ startInText?    db 0            ;Set to true to start up in text mode
+@@ -209,7 +214,7 @@
+                 dw Right        ;^D
+                 dw Up           ;^E
+                 dw WordRight    ;^F
+-                dw na           ;^G or BEL
++                dw Delete       ;^G or BEL
+                 dw BackSpace    ;^H or BS
+                 dw Tab          ;^I or HT
+                 dw na           ;^J or LF
+@@ -274,10 +279,10 @@
+                 dw F4BAT        ;F4
+                 dw F5BAT        ;F5
+                 dw F6BAT        ;F6
+-                dw na           ;F7
+-                dw na           ;F8
+-                dw na           ;F9
+-                dw na           ;F10
++                dw F7BAT        ;F7
++                dw F8BAT        ;F8
++                dw F9BAT        ;F9
++                dw Exit         ;F10
+                 dw 2 DUP (na)   ;Undefined
+                 dw HomeLine     ;Home
+                 dw Up           ;Up arrow
+@@ -298,10 +303,10 @@
+                 dw F4BAT        ;#F4
+                 dw F5BAT        ;#F5
+                 dw F6BAT        ;#F6
+-                dw na           ;#F7
+-                dw na           ;#F8
+-                dw na           ;#F9
+-                dw na           ;#F10
++                dw F7BAT        ;#F7
++                dw F8BAT        ;#F8
++                dw F9BAT        ;#F9
++                dw F10BAT       ;#F10
+                 dw 20 DUP (na)  ;[^Fn, @Fn]
+                 dw na           ;^PrtSc
+                 dw WordLeft     ;^Left arrow
+@@ -2385,6 +2390,15 @@
+   lodsb
+   stosw
+   loop @@L1
++
++; we need to clear the rest of help screen by spaces
++  mov cx, 80 * 25    ; size of the rest of help screen
++  mov ah, [attribNl] ; attribute byte
++  mov al, ' '        ; character byte
++@@L2:                ; clear loop
++  stosw              ; store attribute + character into Video RAM
++  loop @@L2          ; and add +2 to pointer
++
+   mov si, OFFSET anyKeyMsg
+   call Print0
+   sub ah, ah
+@@ -2405,6 +2419,22 @@
+   mov dl, '5'
+   jmp SHORT FnBAT
+ 
++F7BAT:
++  mov dl,'7'
++  jmp SHORT FnBat
++
++F8BAT:
++  mov dl,'8'
++  jmp short FnBat
++
++F9BAT:
++  mov dl,'9'
++  jmp short FnBat
++
++F10BAT:
++  mov dl,'0'
++  jmp short FnBat
++
+ F6BAT:
+   mov dl, '6'
+ 
+@@ -2498,4 +2528,4 @@
+ 
+ 
+ EndOfProgram:
+-END Orig
+\ No newline at end of file
++END Orig
