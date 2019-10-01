@@ -1,0 +1,58 @@
+Programovací jazyk Go - workshop
+Linux Days 2019
+Tags: golang, go
+
+Pavel Tišnovský <ptisnovs@redhat.com>
+Red Hat, Inc.
+
+
+
+* Úvodní informace o workshopu
+
+* Gophers
+#The Go gopher was designed by Renee French. (http://reneefrench.blogspot.com/)
+#Source https://golang.org/doc/gopher/fiveyears.jpg
+#The design and this image is licensed under the Creative Commons 3.0 Attributions license.
+.image ./images/fiveyears.jpg _ 900
+
+
+
+* Go vs C(++)
+- stronger type system
+- no text substitution macros
+- no header files
+- package system + checks
+- safer memory operations + GC
+- standardized framework for tests
+- stricter rules (`++`/`--`, pointers, ...)
+- no templates
+- no exception handling control structures (yet?)
+- no generic data types (yet?)
+
+
+
+* Support for concurrency
+
+- Communicating sequential processes (a formal language etc. etc.)
+- "Don't communicate by sharing memory; share memory by communicating"
+- So called _goroutines_
+- Channels
+
+
+
+* Go fundamentals
+.play sources/01_hello.go
+
+
+
+* Go fundamentals
+- Keywords
+- Data types
+- Control structures
+- User data types
+- Interfaces
+- Goroutines
+- Channels
+
+
+
