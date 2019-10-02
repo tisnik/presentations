@@ -6,8 +6,11 @@ Triky ve Vimu
 
 Obsah přednášky (1)
 --------------------------------------------------
-▶
-▶
+▶ Základní konfigurační volby
+▶ Volby způsobu zobrazení textů
+▶ Chování editoru při chybě
+▶ Zvýraznění aktuálního řádku/sloupce
+▶ Taby nebo mezery?
 ▶
 
 Obsah přednášky (2)
@@ -16,6 +19,41 @@ Obsah přednášky (2)
 ▶
 ▶
 
+Základní konfigurační volby
+---------------------------
+    :set nocompatible
+    :set ruler
+    :set statusline=...
+    :set (no)expandtab
+    (:retab)
+    :set backspace=[indent,eol,start]
+    :set filetype=[dos,unix]
+    :set selection=exclusive
+        bloky se chovají podobně jako v ostatních editorech
+    :set wildmenu
+        bude se nabízet seznam souborů po TAB
+    :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o
+        soubory (masky nazvů), které se nebudou zobrazovat
+
+Volby způsobu zobrazení textů
+-----------------------------
+    :set number
+    :set list
+    :set tabstop=xxx
+    :set showmatch
+    :set matchpairs=(:),[:],{:},<:>
+
+Chování editoru při chybě
+-------------------------
+    :set novisualbell
+    :set vb t_vb="
+
+Zvýraznění aktuálního řádku/sloupce
+-----------------------------------
+    :set cursorcolumn
+    :set cursorline
+    :hi CursorLine   guibg=#2d2d2d
+    :hi CursorColumn guibg=#2d2d2d
 
 --------------------------------------------------
 --------------------------------------------------
