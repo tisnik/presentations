@@ -17,26 +17,43 @@ Red Hat, Inc.
 
 
 
-* Go vs C(++)
-- stronger type system
-- no text substitution macros
-- no header files
-- package system + checks
-- safer memory operations + GC
-- standardized framework for tests
-- stricter rules (`++`/`--`, pointers, ...)
-- no templates
-- no exception handling control structures (yet?)
-- no generic data types (yet?)
+Cíle jazyka Go
+- Jednoduchost, jednoznačnost
+- Jazyk postaven na jednoduchých a známých konceptech
+- Lze začít programovat po doslova několikaminutovém tutoriálu
+- Bezpečné aplikace
+- Mikroslužby
+- Skripty a nástroje pro DevOps od DevOps
+- Jazyk pro potřeby Googlu: spíše pro mladší vývojáře (C/C++, Java, Python ve škole)
+- Použití pro rozsáhlejší aplikace psané velkým týmem
+- Paralelní běh částí aplikace
+- Rozumný výpočetní výkon: cílem je dosáhnout C/C++/Fortranu
 
 
 
-* Support for concurrency
+Charakteristické rysy jazyka Go
+- Poučení z chyb, které najdeme například v C/C++
+- Silný typový systém
+- Nepoužívají se makra založená na textové substituci
+- Nepoužívají se hlavičkové soubory
+- Bezpečná práce s pamětí (+ GC)
+- Standardizovaný framework pro testování
+- Rychlé překlady
+- Syntaktické věci: ++/-- jen postfixové a nejsou to výrazy
+- Nepoužívá se ukazatelová aritmetika
+- Nepoužívají se šablony
+- Nejsou podporovány výjimky (prozatím)
 
-- Communicating sequential processes (a formal language etc. etc.)
+
+
+* Důležité vlastnosti Go
+
+- Správa paměti se přenáší do runtime
+- Gorutiny a kanály (600k gorutin, 90% CPU)
+- Více imperativních rysů: explicitní zápis většiny operací
+- Více pragmaticky zaměřený jazyk
+- Prozatím nedosahuje tak vysokého výpočetního výkonu jako C
 - "Don't communicate by sharing memory; share memory by communicating"
-- So called _goroutines_
-- Channels
 
 
 
@@ -55,4 +72,49 @@ Red Hat, Inc.
 - Channels
 
 
+
+* Klasický program typu "Hello world"
+.play sources/hello.go
+.code sources/run_hello.go
+.code sources/build_hello.go
+
+
+
+* Balíčky
+- každý zdrovový kód začíná deklarací `package`
+- speciální balíček `main`
+- main: main() pro spustitelné aplikace
+- workspace je definováno v proměnné `$GOPATH`
+- základní struktura: `src`, `bin`
+
+
+
+* Funkce
+.play sources/functions.go
+
+
+
+* Více návratových hodnot
+.play sources/functions2.go
+
+
+
+* Pojmenované návratové hodnoty
+.play sources/functions3.go
+
+
+
+* Konstanty
+.play sources/const.go
+
+
+
+* Proměnné
+.play sources/vars.go
+
+
+
+* Typová konverze
+- nikdy neprobíhá automaticky
+.play sources/casts.go
 
