@@ -14,7 +14,7 @@ Obsah přednášky (2)
 --------------------------------------------------
 ▶
 ▶
-▶
+▶ Odkazy na další informační zdroje
 
 
 --------------------------------------------------
@@ -29,5 +29,68 @@ Obsah přednášky (2)
 --------------------------------------------------
 --------------------------------------------------
 --------------------------------------------------
---------------------------------------------------
 
+Odkazy na další informační zdroje
+--------------------------------------------------
+Tracing (software)
+https://en.wikipedia.org/wiki/Tracing_%28software%29
+
+ltrace(1) - Linux man page
+http://linux.die.net/man/1/ltrace
+
+ltrace (Wikipedia)
+https://en.wikipedia.org/wiki/Ltrace
+
+strace(1) - Linux man page
+http://linux.die.net/man/1/strace
+
+strace (stránka projektu na SourceForge)
+https://sourceforge.net/projects/strace/
+
+strace (Wikipedia)
+https://en.wikipedia.org/wiki/Strace
+
+SystemTap (stránka projektu)
+https://sourceware.org/systemtap/
+
+SystemTap (Wiki projektu)
+https://sourceware.org/systemtap/wiki
+
+SystemTap (Wikipedia)
+https://en.wikipedia.org/wiki/SystemTap
+
+Dynamic Tracing with DTrace &amp; SystemTap
+http://myaut.github.io/dtrace-stap-book/
+
+DTrace (Wikipedia)
+https://en.wikipedia.org/wiki/DTrace
+
+GDB - Dokumentace
+http://sourceware.org/gdb/current/onlinedocs/gdb/
+
+GDB - Supported Languages
+http://sourceware.org/gdb/current/onlinedocs/gdb/Supported-Languages.html#Supported-Languages
+
+GNU Debugger (Wikipedia)
+https://en.wikipedia.org/wiki/GNU_Debugger
+
+The LLDB Debugger
+http://lldb.llvm.org/
+
+Debugger (Wikipedia)
+https://en.wikipedia.org/wiki/Debugger
+
+13 Linux Debuggers for C++ Reviewed
+http://www.drdobbs.com/testing/13-linux-debuggers-for-c-reviewed/240156817
+
+Getting started with ltrace: how does it do that?
+https://www.ellexus.com/getting-started-with-ltrace-how-does-it-do-that/
+
+Reverse Engineering Tools in Linux – strings, nm, ltrace, strace, LD_PRELOAD
+http://www.thegeekstuff.com/2012/03/reverse-engineering-tools/
+
+7 Strace Examples to Debug the Execution of a Program in Linux
+http://www.thegeekstuff.com/2011/11/strace-examples/
+
+Oracle® Solaris 11.3 DTrace (Dynamic Tracing) Guide
+http://docs.oracle.com/cd/E53394_01/html/E53395/gkwpo.html#scrolltoc
