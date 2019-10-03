@@ -118,3 +118,35 @@ Charakteristické rysy jazyka Go
 - nikdy neprobíhá automaticky
 .play sources/casts.go
 
+* Podmínky
+- Lze deklarovat proměnné platné pouze v rámci větve s podmínkou
+.play sources/if.go
+
+* Větev `else`
+- Lokální proměnné jsou platné i ve větvi `else`
+.play sources/if2.go
+
+* Programové smyčky
+- opět lze použít proměnné lokální v rámci bloku se smyčkou
+- reprezentovány jediným klíčovým slovem `for`
+.play sources/for.go
+
+* Rozvětvení
+- opět lze použít proměnné lokální v rámci bloku s rozvětvením
+- testováno shora dolů, první úspěšný test vede ke spuštění větve
+- nepoužívá se `break`
+- naopak lze použít `fallthrough` s opačným významem
+.play sources/switch.go
+
+* Rozvětvení, druhá část
+- neceločíselné hodnoty, nemusí se jednat o konstanty
+.play sources/switch2.go
+
+* Detekce a zpracování chyb
+- `error` je typ
+[[https://blog.golang.org/error-handling-and-go]]
+.play sources/ret.go
+
+* Ignorování návratových hodnot/hodnoty
+- použití '_'
+.play sources/ret2.go
