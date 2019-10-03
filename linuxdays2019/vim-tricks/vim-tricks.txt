@@ -8,6 +8,8 @@ Obsah přednášky (1)
 --------------------------------------------------
 ▶ Základní konfigurační volby
 ▶ Volby způsobu zobrazení textů
+▶ Nastavení breakindent
+▶ Chování textového kurzoru při pohybu v textu
 ▶ Chování editoru při chybě
 ▶ Zvýraznění aktuálního řádku/sloupce
 ▶ Taby nebo mezery?
@@ -42,6 +44,56 @@ Volby způsobu zobrazení textů
     :set tabstop=xxx
     :set showmatch
     :set matchpairs=(:),[:],{:},<:>
+
+Nastavení breakindent
+-------------------------------
+▶ Kombinace s linebreak a wrap
+▶ Použití
+    (La)TeX
+    AsciiDoc
+    Markdown
+    ...
+
+Nastavení breakindent (ukázky)
+-------------------------------
+1. nowrap
+2. wrap
+3. wrap + showbreak=...
+4. wrap + linebreak
+5. wrap + breakindent
+6. wrap + linebreak + breakindent
+
+Chování textového kurzoru při pohybu v textu
+--------------------------------------------
+:set cursorbind
+:set scrolloff=...
+
+Vizuální režim versus režim výběru
+----------------------------------
+Selection mode
+Visual mode
+:set selectmode=
+mouse
+key
+cmd
+
+Výběr textu
+-----------
+Vybírá se znak pod kurzorem?
+Lze vybrat znak za koncep řádku?
+:set selection=
+Hodnota      za koncem řádku   znak pod kurzorem
+old          ne                ano
+inclusive    ano               ano
+exclusive    ano               ne
+
+Režim virtuální editace
+-------------------------
+:set virtualedit
+block    povolení virtuální editace při práci s vizuálními bloky
+insert   povolení virtuální editace ve vkládacím režimu
+all      povolení virtuální editace ve všech režimech
+onemore  zajímavá volba umožňující přesun kurzoru pouze ZA poslední znak
 
 Chování editoru při chybě
 -------------------------
