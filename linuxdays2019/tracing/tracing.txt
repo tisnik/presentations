@@ -6,26 +6,49 @@
 
 Obsah přednášky (1)
 --------------------------------------------------
-▶
-▶
-▶
+▶ Trasování a ladění nativních aplikací v Linuxu
+▶ Utilita ltrace
+▶ Ukázka použití utility ltrace
+▶ Zjištění doby trvání volané funkce a filtrace výstupu
+▶ Zjištění statistiky volaných funkcí
+▶ Utilita strace
+▶ Ukázka použití utility strace
+▶ DTrace
 
 Obsah přednášky (2)
 --------------------------------------------------
-▶
+▶ SystemTap
+▶ Ukázky použití SystemTap
 ▶
 ▶ Odkazy na další informační zdroje
 
+Trasování a ladění nativních aplikací v Linuxu
+--------------------------------------------------
 
+Utilita ltrace
 --------------------------------------------------
+
+Ukázka použití utility ltrace
 --------------------------------------------------
+Zjištění doby trvání volané funkce a filtrace výstupu
 --------------------------------------------------
+
+Zjištění statistiky volaných funkcí
 --------------------------------------------------
+
+Utilita strace
 --------------------------------------------------
+
+Ukázka použití utility strace
 --------------------------------------------------
+
+Dtrace
 --------------------------------------------------
+
+SystemTap
 --------------------------------------------------
---------------------------------------------------
+
+Ukázky použití SystemTapu
 --------------------------------------------------
 --------------------------------------------------
 --------------------------------------------------
