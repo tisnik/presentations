@@ -90,63 +90,83 @@ Charakteristické rysy jazyka Go
 
 
 * Funkce
-.play sources/functions.go
+.play sources/01_func.go
 
 
 
 * Více návratových hodnot
-.play sources/functions2.go
+.play sources/02_func.go
 
 
 
 * Pojmenované návratové hodnoty
-.play sources/functions3.go
+.play sources/03_func.go
 
 
 
 * Konstanty
-.play sources/const.go
+.play sources/04_consts.go
 
 
 
 * Proměnné
-.play sources/vars.go
+.play sources/05_vars.go
 
 
 
 * Typová konverze
 - nikdy neprobíhá automaticky
-.play sources/casts.go
+.play sources/06_casts.go
 
 * Podmínky
 - Lze deklarovat proměnné platné pouze v rámci větve s podmínkou
-.play sources/if.go
+.play sources/07_if.go
 
 * Větev `else`
 - Lokální proměnné jsou platné i ve větvi `else`
-.play sources/if2.go
+.play sources/08_if_else.go
 
 * Programové smyčky
 - opět lze použít proměnné lokální v rámci bloku se smyčkou
 - reprezentovány jediným klíčovým slovem `for`
-.play sources/for.go
+.play sources/09_for.go
 
 * Rozvětvení
 - opět lze použít proměnné lokální v rámci bloku s rozvětvením
 - testováno shora dolů, první úspěšný test vede ke spuštění větve
 - nepoužívá se `break`
 - naopak lze použít `fallthrough` s opačným významem
-.play sources/switch.go
+.play sources/10_switch.go
 
 * Rozvětvení, druhá část
 - neceločíselné hodnoty, nemusí se jednat o konstanty
-.play sources/switch2.go
+.play sources/11_switch.go
+
+############################################################
 
 * Detekce a zpracování chyb
 - `error` je typ
 [[https://blog.golang.org/error-handling-and-go]]
-.play sources/ret.go
+.play sources/12_ret.go
 
 * Ignorování návratových hodnot/hodnoty
 - použití '_'
-.play sources/ret2.go
+.play sources/13_ret.go
+
+############################################################
+
+* Příkaz `defer`
+- klíčové slovo v Go
+- "zapamatování" příkazů, které budou volány před skutečným opuštěním funkce
+- založeno na zásobníku (LIFO, stack)
+- parametry jsou vyhodnoceny ve chvíli a na místě, kdy je `defer` deklarováno v runtime
+- přes `defer` lze změnit návratové hodnoty funkce
+
+* Nejjednodušší použití příkazu `defer`
+- funkce `on_finish()` je zavolána před opuštěním funkce `main()`
+.play sources/14_defer_basic_usage.go
+
+* Funkce deklarovaná přímo v `defer`
+- anonymní funkce, lambda, uzávěr
+.play sources/15_defer_func.go
+
