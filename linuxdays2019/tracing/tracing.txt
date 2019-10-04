@@ -20,16 +20,87 @@ Obsah přednášky (2)
 ▶ SystemTap
 ▶ Ukázky použití SystemTap
 ▶
+▶ GNU Debugger
+▶
+▶
 ▶ Odkazy na další informační zdroje
 
 Trasování a ladění nativních aplikací v Linuxu
 --------------------------------------------------
++----------+
+|          |
+| aplikace |
+|          |
++----------+
+     |
+     |
+     v
++----------+
+|          |
+|  glibc   |
+|          |
++----------+
+     |
+     |
+     v
++----------+
+|          |
+|  jádro   |
+|          |
++----------+
+
+Trasování a ladění nativních aplikací v Linuxu
+--------------------------------------------------
+- volaní funkcí z knihoven: ltrace
+- systémová volání: strace
+- ladění a trasování aplikací i knihoven: GNU Debugger
+- stav aplikací, knihoven i OS: SystemTap
+
+Trasování a ladění nativních aplikací v Linuxu
+--------------------------------------------------
++----------+
+|          |..... gdb
+| aplikace |
+|          |..... SystemTap
++----------+
+     |
+     |...... ltrace
+     v
++----------+
+|          |..... gdb
+|  glibc   |
+|          |..... SystemTap
++----------+
+     |
+     |...... strace
+     v
++----------+
+|          |..... SystemTap
+|  jádro   |
+|          |..... KGDB
++----------+
 
 Utilita ltrace
+--------------------------------------------------
+- trasování volání knihovních funkcí
+- vyhledání problémových či pomalých částí kódu
+- zjištění způsobů alokace a dealokace paměti
+- či pouze jednoduché trasování aplikace
+
+Zavolání ltrace
+--------------------------------------------------
+ltrace jméno_binární_aplikace parametry_aplikace
+ltrace parametry_ltrace jméno_binární_aplikace parametry_aplikace
+
+Testovaný zdrojový kód
 --------------------------------------------------
 
 Ukázka použití utility ltrace
 --------------------------------------------------
+
+Testovaný zdrojový kód
+--------------------------------------------------
+
 Zjištění doby trvání volané funkce a filtrace výstupu
 --------------------------------------------------
 
