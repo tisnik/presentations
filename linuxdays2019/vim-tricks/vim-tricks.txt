@@ -32,6 +32,7 @@ Základní konfigurační volby
     :set filetype=[dos,unix]
     :set selection=exclusive
         bloky se chovají podobně jako v ostatních editorech
+        (bude ukázáno dále)
     :set wildmenu
         bude se nabízet seznam souborů po TAB
     :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o
@@ -65,35 +66,48 @@ Nastavení breakindent (ukázky)
 
 Chování textového kurzoru při pohybu v textu
 --------------------------------------------
-:set cursorbind
 :set scrolloff=...
+scroll offset (ne scroll off)
+:set cursorbind
+význam při použití ve více oknech současně
 
 Vizuální režim versus režim výběru
 ----------------------------------
 Selection mode
 Visual mode
 :set selectmode=
-mouse
-key
-cmd
++-----------+--------+
+| Hodnota   | Význam |
++-----------+--------+
+|mouse      |        |
+|key        |        |
+|cmd        |        |
++-----------+--------+
 
 Výběr textu
 -----------
-Vybírá se znak pod kurzorem?
-Lze vybrat znak za koncep řádku?
 :set selection=
-Hodnota      za koncem řádku   znak pod kurzorem
-old          ne                ano
-inclusive    ano               ano
-exclusive    ano               ne
+Vybírá se znak pod kurzorem?
+Lze vybrat znak za koncem řádku?
++-----------+-----------------+------------------+
+| Hodnota   | Za koncem řádku | Znak pod kurzorem|
++-----------+-----------------+------------------+
+| old       | ne              | ano              |
+| inclusive | ano             | ano              |
+| exclusive | ano             | ne               |
++-----------+-----------------+------------------+
 
 Režim virtuální editace
 -------------------------
-:set virtualedit
-block    povolení virtuální editace při práci s vizuálními bloky
-insert   povolení virtuální editace ve vkládacím režimu
-all      povolení virtuální editace ve všech režimech
-onemore  zajímavá volba umožňující přesun kurzoru pouze ZA poslední znak
+:set virtualedit=
++----------+---------------------------------------------------------+
+| Hodnota  | Význam                                                  |
++----------+---------------------------------------------------------+
+| block    | povolení virtuální editace při práci s vizuálními bloky |
+| insert   | povolení virtuální editace ve vkládacím režimu          |
+| all      | povolení virtuální editace ve všech režimech            |
+| onemore  | umožňuje přesun kurzoru pouze ZA poslední znak          |
++----------+---------------------------------------------------------+
 
 Chování editoru při chybě
 -------------------------
