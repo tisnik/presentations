@@ -60,19 +60,6 @@ Charakteristické rysy jazyka Go
 * Go fundamentals
 .play sources/01_hello.go
 
-
-
-* Go fundamentals
-- Keywords
-- Data types
-- Control structures
-- User data types
-- Interfaces
-- Goroutines
-- Channels
-
-
-
 * Klasický program typu "Hello world"
 .play sources/hello.go
 .code sources/run_hello.go
@@ -169,4 +156,38 @@ Charakteristické rysy jazyka Go
 * Funkce deklarovaná přímo v `defer`
 - anonymní funkce, lambda, uzávěr
 .play sources/15_defer_func.go
+
+* Funkce deklarovaná přímo v `defer` (pokračování)
+- závorky okolo lambdy nejsou nutné
+.play sources/16_defer_func.go
+
+* Funkce deklarovaná přímo v `defer` (pokračování)
+- specifikace argumentů předaných funkci
+.play sources/17_defer_with_parameters.go
+
+* Více příkazů `defer` v jediné funkci
+- LIFO
+.play sources/18_more_defers.go
+
+* Výpočet argumentů pro volání funkce v `defer`
+.play sources/19_defer_arguments_evaluation.go
+
+* Výpočet argumentů pro volání funkce v `defer` (pole)
+.play sources/20_defer_arguments_evaluation.go
+
+* Defer a více příkazů `return`
+.play sources/21_defer_on_all_returns.go /^package main/,/^func main/
+
+* Defer a více příkazů `return` (pokračování)
+.play sources/21_defer_on_all_returns.go /^func main/,/^}/
+
+* Praktické použití `defer`
+.play sources/22_defer_practical_usage.go /^package main/,/func copyFile/
+
+* Praktické použití `defer`
+.play sources/23_defer_practical_usage.go /^func copyFile/,/^}/
+
+* Praktické použití `defer`
+.play sources/24_defer_practical_usage.go /^func main/,/^}/
+
 
