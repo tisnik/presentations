@@ -97,8 +97,37 @@ Testovaný zdrojový kód
 
 Ukázka použití utility ltrace
 --------------------------------------------------
+ltrace ./hello
+.
+__libc_start_main(0x40053d, 1, 0x7fffd2e1f5f8, 0x400560 <unfinished ...>
+puts("Hello world!"Hello world!
+)                                                                    = 13
++++ exited (status 0) +++
 
 Testovaný zdrojový kód
+--------------------------------------------------
+
+Ukázka použití utility ltrace
+--------------------------------------------------
+ltrace ./random_bitmap
+.
+__libc_start_main(0x400bf4, 1, 0x7fff18e8d758, 0x400c70 <unfinished ...>
+puts("processing:")                                    = 12
+malloc(16)                                             = 0xa11010
+malloc(921600)                                         = 0x7f45fdb46010
+memset(0x7f45fdb46010, '\0', 921600)                   = 0x7f45fdb46010
+memset(0x7f45fdb46010, '\0', 921600)                   = 0x7f45fdb46010
+open("/dev/urandom", 0, 037560470000)                  = 3
+read(3, "\270\325\332\340r8\304\354\306A\001S", 1920)  = 1920
+...
+...
+...
+vynecháno přibližně 480 řádků
+...
+...
+...
+
+Poslední testovaný zdrojový kód
 --------------------------------------------------
 
 Zjištění doby trvání volané funkce a filtrace výstupu
