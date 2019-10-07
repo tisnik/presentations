@@ -1,11 +1,11 @@
 Triky ve Vimu
-==================================================
+═══════════════════════════════════════════
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
 ■ Datum    2019-10-06
 
 Obsah přednášky (1)
---------------------------------------------------
+-------------------------------------------
 ▶ Základní konfigurační volby
 ▶ Volby způsobu zobrazení textů
 ▶ Nastavení breakindent
@@ -16,10 +16,10 @@ Obsah přednášky (1)
 ▶
 
 Obsah přednášky (2)
---------------------------------------------------
-▶
-▶
-▶
+-------------------------------------------
+▶ Nastavení pravítka
+▶ Nastavení stavového řádku
+▶ Zvýraznění syntaxe
 
 Základní konfigurační volby
 ---------------------------
@@ -45,6 +45,26 @@ Volby způsobu zobrazení textů
     :set tabstop=xxx
     :set showmatch
     :set matchpairs=(:),[:],{:},<:>
+
+Taby nebo mezery?
+-----------------
+    :syn match Tab "\t"
+    :syn match Tab2 "\t\t"
+    :hi def Tab  ctermbg=lightgreen guibg=#e0ffe0
+    :hi def Tab2 ctermbg=lightred guibg=#ffe0e0
+
+Zalamování textu
+----------------
+    :set wrap
+        pouze vizuální zalamování (do souborů se nevkládá CR)
+    :set nowrap
+        vypnutí vizuálního zalamování
+    :set linebreak
+        vizuální zalamování na hranicích slov (vhodné pro texty)
+    :set nolinebreak
+        vypnutí vizuálního zalamování na hranicích slov
+    :set tw=xxx
+        automatické zalamování na xxx sloupci (vkládá se CR)
 
 Nastavení breakindent
 -------------------------------
@@ -72,34 +92,40 @@ scroll offset (ne scroll off)
 význam při použití ve více oknech současně
 
 Vizuální režim versus režim výběru
-----------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Selection mode
 Visual mode
 :set selectmode=
-+-----------+--------+
-| Hodnota   | Význam |
-+-----------+--------+
-|mouse      |        |
-|key        |        |
-|cmd        |        |
-+-----------+--------+
+╔═════════╤════════╗
+║ Hodnota │ Význam ║
+╟─────────┼────────╢
+║ mouse   │        ║
+║ key     │        ║
+║ cmd     │        ║
+╚═════════╧════════╝
 
 Výběr textu
 -----------
 :set selection=
 Vybírá se znak pod kurzorem?
 Lze vybrat znak za koncem řádku?
-+-----------+-----------------+------------------+
-| Hodnota   | Za koncem řádku | Znak pod kurzorem|
-+-----------+-----------------+------------------+
-| old       | ne              | ano              |
-| inclusive | ano             | ano              |
-| exclusive | ano             | ne               |
-+-----------+-----------------+------------------+
+╔═══════════╤═════════════════╤═══════════════════╗
+║ Hodnota   │ Za koncem řádku │ Znak pod kurzorem ║
+╟───────────┼─────────────────┼───────────────────╢
+║ old       │ ne              │ ano               ║
+║ inclusive │ ano             │ ano               ║
+║ exclusive │ ano             │ ne                ║
+╚═══════════╧═════════════════╧═══════════════════╝
 
 Režim virtuální editace
 -------------------------
 :set virtualedit=
+╔══════════╤════════════════════╗
+║          │                    ║
+╟──────────┼────────────────────╢
+║          │                    ║
+║          │                    ║
+╚══════════╧════════════════════╝
 +----------+---------------------------------------------------------+
 | Hodnota  | Význam                                                  |
 +----------+---------------------------------------------------------+
@@ -131,7 +157,9 @@ Zvýraznění aktuálního řádku/sloupce
 --------------------------------------------------
 --------------------------------------------------
 --------------------------------------------------
+Nastavení pravítka
 --------------------------------------------------
+Nastavení stavového řádku
 --------------------------------------------------
+Zvýraznění syntaxe
 --------------------------------------------------
-
