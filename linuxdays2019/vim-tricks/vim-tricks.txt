@@ -5,7 +5,7 @@ Triky ve Vimu
 ■ Datum    2019-10-06
 
 Obsah přednášky (1)
--------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Základní konfigurační volby
 ▶ Volby způsobu zobrazení textů
 ▶ Nastavení breakindent
@@ -16,13 +16,16 @@ Obsah přednášky (1)
 ▶
 
 Obsah přednášky (2)
--------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Nastavení pravítka
 ▶ Nastavení stavového řádku
 ▶ Zvýraznění syntaxe
 
+Obsah přednášky (3)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
 Základní konfigurační volby
----------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     :set nocompatible
     :set ruler
     :set statusline=...
@@ -39,7 +42,7 @@ Základní konfigurační volby
         soubory (masky nazvů), které se nebudou zobrazovat
 
 Volby způsobu zobrazení textů
------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     :set number
     :set list
     :set tabstop=xxx
@@ -47,14 +50,14 @@ Volby způsobu zobrazení textů
     :set matchpairs=(:),[:],{:},<:>
 
 Taby nebo mezery?
------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     :syn match Tab "\t"
     :syn match Tab2 "\t\t"
     :hi def Tab  ctermbg=lightgreen guibg=#e0ffe0
     :hi def Tab2 ctermbg=lightred guibg=#ffe0e0
 
 Zalamování textu
-----------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     :set wrap
         pouze vizuální zalamování (do souborů se nevkládá CR)
     :set nowrap
@@ -67,7 +70,7 @@ Zalamování textu
         automatické zalamování na xxx sloupci (vkládá se CR)
 
 Nastavení breakindent
--------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Kombinace s linebreak a wrap
 ▶ Použití
     (La)TeX
