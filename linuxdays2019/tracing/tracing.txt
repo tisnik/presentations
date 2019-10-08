@@ -126,6 +126,14 @@ vynecháno přibližně 480 řádků
 ...
 ...
 ...
+close(3)                                               = 0
+fopen("random.bmp", "wb")                              = 0xa11030
+fwrite("BMF", 54, 1, 0xa11030)                         = 1
+printf("%d pixels written\n", 307200)                  = 22
+fwrite("\270\325\332\340r8\304\354\306A\001S", 921600, 1, 0xa11030) = 1
+fclose(0xa11030)                                       = 0
+puts("done!\n")                                        = 7
++++ exited (status 0) +++
 
 Poslední testovaný zdrojový kód
 --------------------------------------------------
