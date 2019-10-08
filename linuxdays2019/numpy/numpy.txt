@@ -64,6 +64,7 @@ complex128   komplexní číslo (dvojice)   2×float64
 
 Kódy skalárních datových typů
 --------------------------------------------------
+- jednoznakové kódy je možné použít namísto jména typu
 formát       kód
 bool         '?'      
 int8         'b'      
@@ -99,16 +100,62 @@ Nejmenší kladná normalizovaná hodnota: 6,104×10⁻⁵
 
 Datová struktura ndarray
 --------------------------------------------------
-představuje obecné n-dimenzionální pole
-interní způsob uložení dat zcela odlišný od Pythonovských seznamů či n-tic
-homogenní datová struktura
+Představuje obecné n-dimenzionální pole
+Interní způsob uložení dat zcela odlišný od Pythonovských seznamů či n-tic
+Homogenní datová struktura
 -> menší flexibilita
 -> menší paměťové nároky
 -> vyšší výpočetní rychlost díky použití nativního kódu
 
+Datová struktura ndarray
 --------------------------------------------------
+* Základní strukturovaný datový typ knihovny Numpy
+* Volitelný počet dimenzí
+* vektory
+* matice
+* pole s větším počtem dimenzí
+* Volitelný typ prvků
+* Volitelné uspořádání prvků
+* podle zvyklostí jazyka Fortran
+* podle zvyklostí jazyka C
+
+* Konstrukce polí
 --------------------------------------------------
+- numpy.array
+
+* Konstruktor numpy.array
 --------------------------------------------------
+- parametry
+array(object, dtype=None, copy=True, order=None, subok=False, ndmin=0)
+
+Order
+--------------------------------------------------
+Hodnota Význam
+'C'     prvky jsou uspořádány jako v jazyku C      
+'F'     prvky jsou uspořádány jako v jazyku Fortran      
+'A'     ponecháme na implementaci, který způsob uspořádání zvolit      
+
+Order - rozdíl v uspořádání
+--------------------------------------------------
+- 2D matice tak, jak ji vidí uživatel (logická struktura)
+| 1 2 3 |
+| 4 5 6 |
+| 7 8 9 |
+- Uložení v operační paměti
+1 2 3 4 5 6 7 8 9 - 'C'
+1 4 7 2 5 8 3 6 9 - 'F'
+
+Příklady použití funkce numpy.array
+-----------------------------------
+# vytvoření pole ze seznamu
+numpy.array([1,2,3,4])
+array([1, 2, 3, 4])
+
+Příklady použití funkce numpy.array
+-----------------------------------
+# vytvoření pole z typu 'range'
+numpy.array(range(10))
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 Další podbalíčky, které nalezneme v knihovně ndarray
 ----------------------------------------------------
