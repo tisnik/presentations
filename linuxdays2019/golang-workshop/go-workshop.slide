@@ -190,4 +190,59 @@ Charakteristické rysy jazyka Go
 * Praktické použití `defer`
 .play sources/24_defer_practical_usage.go /^func main/,/^}/
 
+* Příkaz `defer` a návratové hodnoty
+- je možné měnit návratové hodnoty funkcí přes `defer`
+- (funguje protože funkce deklarovaná v defer je uzávěr)
+- návratové hodnoty funkcí musí být pojmenovány!
+- velmi často používáno pro nastavení chybové hodnoty `err`
+
+* Příkaz `defer` a návratové hodnoty
+.play sources/25_defer_return_values.go
+
+* Příkaz `defer` a návratové hodnoty
+.play sources/26_defer_return_values.go
+
+############################################################
+
+* Struktury (záznamy)
+- uživatelem definový datový typ
+- nebo anonymní struktura
+- pro přístup k prvkům struktury se používá operátor tečky
+- inicializace v {}
+- popř. se používá explicitní pojmenování prvků
+- struktury lze porovnávat
+- předání do funkce hodnotou nebo přes ukazatel (referencí)
+
+* Základ práce se strukturami
+.play sources/27_struct.go
+
+* Inicializace struktur (céčkový přístup)
+.play sources/28_struct_init.go
+
+* Vylepšená inicializace
+.play sources/29_better_struct_init.go
+
+* Porovnání struktur operátory == a !=
+.play sources/30_struct_comparison.go /package main/,/^func main//
+
+* Porovnání struktur operátory == a !=
+.play sources/30_struct_comparison.go /^func main/,/^}/
+
+############################################################
+
+* Pole (arrays)
+
+############################################################
+
+* Řezy (slices)
+
+############################################################
+
+* Ukazatele
+
+############################################################
+
+* Mapy
+
+############################################################
 
