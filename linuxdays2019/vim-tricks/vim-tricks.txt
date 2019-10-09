@@ -79,7 +79,7 @@ Nastavení breakindent
     ...
 
 Nastavení breakindent (ukázky)
--------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 1. nowrap
 2. wrap
 3. wrap + showbreak=...
@@ -88,7 +88,7 @@ Nastavení breakindent (ukázky)
 6. wrap + linebreak + breakindent
 
 Chování textového kurzoru při pohybu v textu
---------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 :set scrolloff=...
 scroll offset (ne scroll off)
 :set cursorbind
@@ -108,7 +108,7 @@ Visual mode
 ╚═════════╧════════╝
 
 Výběr textu
------------
+‾‾‾‾‾‾‾‾‾‾‾
 :set selection=
 Vybírá se znak pod kurzorem?
 Lze vybrat znak za koncem řádku?
@@ -121,7 +121,7 @@ Lze vybrat znak za koncem řádku?
 ╚═══════════╧═════════════════╧═══════════════════╝
 
 Režim virtuální editace
--------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 :set virtualedit=
 ╔══════════╤════════════════════╗
 ║          │                    ║
