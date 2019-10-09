@@ -8,6 +8,11 @@ Red Hat, Inc.
 
 
 * Úvodní informace o workshopu
+-
+-
+-
+
+
 
 * Gophers
 #The Go gopher was designed by Renee French. (http://reneefrench.blogspot.com/)
@@ -17,7 +22,7 @@ Red Hat, Inc.
 
 
 
-Cíle jazyka Go
+* Vybrané cíle programovacího jazyka Go
 - Jednoduchost, jednoznačnost
 - Jazyk postaven na jednoduchých a známých konceptech
 - Lze začít programovat po doslova několikaminutovém tutoriálu
@@ -27,11 +32,11 @@ Cíle jazyka Go
 - Jazyk pro potřeby Googlu: spíše pro mladší vývojáře (C/C++, Java, Python ve škole)
 - Použití pro rozsáhlejší aplikace psané velkým týmem
 - Paralelní běh částí aplikace
-- Rozumný výpočetní výkon: cílem je dosáhnout C/C++/Fortranu
+- Rozumný výpočetní výkon: cílem je dosáhnout výkonnosti C/C++/Fortranu
 
 
 
-Charakteristické rysy jazyka Go
+* Charakteristické rysy jazyka Go
 - Poučení z chyb, které najdeme například v C/C++
 - Silný typový systém
 - Nepoužívají se makra založená na textové substituci
@@ -57,13 +62,23 @@ Charakteristické rysy jazyka Go
 
 
 
-* Go fundamentals
-.play sources/01_hello.go
+* Klíčová slova jazyka Go
+break     default      func    interface  select
+case      defer        go      map        struct
+chan      else         goto    package    switch
+const     fallthrough  if      range      type
+continue  for          import  return     var
+
+
+
+############################################################
+
+
 
 * Klasický program typu "Hello world"
 .play sources/hello.go
-.code sources/run_hello.go
-.code sources/build_hello.go
+.code sources/run-hello.go
+.code sources/build-hello.go
 
 
 
@@ -77,68 +92,119 @@ Charakteristické rysy jazyka Go
 
 
 * Funkce
-.play sources/01_func.go
+- základní stavební prvek zajišťující dekompozici řešeného problému
+.play sources/01-functions.go
 
 
 
 * Více návratových hodnot
-.play sources/02_func.go
+.play sources/02-functions.go
 
 
 
 * Pojmenované návratové hodnoty
-.play sources/03_func.go
+.play sources/03-functions.go
 
 
 
 * Konstanty
-.play sources/04_consts.go
+.play sources/04-constants.go
 
 
 
 * Proměnné
-.play sources/05_vars.go
+.play sources/05-variables.go
+
+
+
+* Základní datové typy
+- Jednoduché datové typy
+- Složené datové typy
+- Zvláštní datové typy
+
+
+
+* Jednoduché datové typy
+- Pravdivostní (boolean)
+- Ordinální (celočíselné typy, integer)
+- Neordinální (float, komplexní čísla)
+
+
+
+* Složené datové typy
+- Řetězce (string)
+- Pole (array)
+- Řezy (slice)
+- Záznamy (struct)
+- Mapy (map)
+
+
+
+* Zvláštní datové typy
+- Ukazatel (pointer)
+- Funkce (function)
+- Rozhraní (interface)
+- Kanál (channel)
 
 
 
 * Typová konverze
 - nikdy neprobíhá automaticky
-.play sources/06_casts.go
+.play sources/06-casts.go
+
+
 
 * Podmínky
 - Lze deklarovat proměnné platné pouze v rámci větve s podmínkou
-.play sources/07_if.go
+.play sources/07-if.go
+
+
 
 * Větev `else`
 - Lokální proměnné jsou platné i ve větvi `else`
-.play sources/08_if_else.go
+.play sources/08-if-else.go
+
+
 
 * Programové smyčky
 - opět lze použít proměnné lokální v rámci bloku se smyčkou
 - reprezentovány jediným klíčovým slovem `for`
-.play sources/09_for.go
+.play sources/09-for.go
+
+
 
 * Rozvětvení
 - opět lze použít proměnné lokální v rámci bloku s rozvětvením
 - testováno shora dolů, první úspěšný test vede ke spuštění větve
 - nepoužívá se `break`
 - naopak lze použít `fallthrough` s opačným významem
-.play sources/10_switch.go
+.play sources/10-switch.go
+
+
 
 * Rozvětvení, druhá část
 - neceločíselné hodnoty, nemusí se jednat o konstanty
-.play sources/11_switch.go
+.play sources/11-switch.go
+
+
 
 ############################################################
 
+
+
 * Detekce a zpracování chyb
+- nikoli pouze rozhodnutí "vznikla/nevznikla chyba"
 - `error` je typ
 [[https://blog.golang.org/error-handling-and-go]]
-.play sources/12_ret.go
+.play sources/12-ret.go
+
+
 
 * Ignorování návratových hodnot/hodnoty
-- použití '_'
+- použití '_' ve funkci zástupného jména proměnné
 .play sources/13_ret.go
+
+
 
 ############################################################
 
@@ -149,60 +215,94 @@ Charakteristické rysy jazyka Go
 - parametry jsou vyhodnoceny ve chvíli a na místě, kdy je `defer` deklarováno v runtime
 - přes `defer` lze změnit návratové hodnoty funkce
 
+
+
 * Nejjednodušší použití příkazu `defer`
 - funkce `on_finish()` je zavolána před opuštěním funkce `main()`
-.play sources/14_defer_basic_usage.go
+.play sources/14-defer-basic-usage.go
+
+
 
 * Funkce deklarovaná přímo v `defer`
 - anonymní funkce, lambda, uzávěr
-.play sources/15_defer_func.go
+.play sources/15-defer-func.go
+
+
 
 * Funkce deklarovaná přímo v `defer` (pokračování)
 - závorky okolo lambdy nejsou nutné
-.play sources/16_defer_func.go
+.play sources/16-defer-func.go
+
+
 
 * Funkce deklarovaná přímo v `defer` (pokračování)
 - specifikace argumentů předaných funkci
-.play sources/17_defer_with_parameters.go
+.play sources/17-defer-with-parameters.go
+
+
 
 * Více příkazů `defer` v jediné funkci
-- LIFO
-.play sources/18_more_defers.go
+- LIFO (Last In, First Out)
+.play sources/18-more-defers.go
+
+
 
 * Výpočet argumentů pro volání funkce v `defer`
-.play sources/19_defer_arguments_evaluation.go
+.play sources/19-defer-arguments-evaluation.go
+
+
 
 * Výpočet argumentů pro volání funkce v `defer` (pole)
-.play sources/20_defer_arguments_evaluation.go
+.play sources/20-defer-arguments-evaluation.go
+
+
 
 * Defer a více příkazů `return`
-.play sources/21_defer_on_all_returns.go /^package main/,/^func main/
+.play sources/21-defer-on-all-returns.go /^package main/,/^func main/
+
+
 
 * Defer a více příkazů `return` (pokračování)
-.play sources/21_defer_on_all_returns.go /^func main/,/^}/
+.play sources/21-defer-on-all-returns.go /^func main/,/^}/
+
+
 
 * Praktické použití `defer`
-.play sources/22_defer_practical_usage.go /^package main/,/func copyFile/
+.play sources/22-defer-practical-usage.go /^package main/,/func copyFile/
+
+
 
 * Praktické použití `defer`
-.play sources/23_defer_practical_usage.go /^func copyFile/,/^}/
+.play sources/23-defer-practical-usage.go /^func copyFile/,/^}/
+
+
 
 * Praktické použití `defer`
-.play sources/24_defer_practical_usage.go /^func main/,/^}/
+.play sources/24-defer-practical-usage.go /^func main/,/^}/
+
+
 
 * Příkaz `defer` a návratové hodnoty
 - je možné měnit návratové hodnoty funkcí přes `defer`
-- (funguje protože funkce deklarovaná v defer je uzávěr)
+- (funguje protože funkce deklarovaná v `defer` je uzávěr)
 - návratové hodnoty funkcí musí být pojmenovány!
 - velmi často používáno pro nastavení chybové hodnoty `err`
 
-* Příkaz `defer` a návratové hodnoty
-.play sources/25_defer_return_values.go
+
 
 * Příkaz `defer` a návratové hodnoty
-.play sources/26_defer_return_values.go
+.play sources/25-defer-return-values.go
+
+
+
+* Příkaz `defer` a návratové hodnoty
+.play sources/26-defer-return-values.go
+
+
 
 ############################################################
+
+
 
 * Struktury (záznamy)
 - uživatelem definový datový typ
