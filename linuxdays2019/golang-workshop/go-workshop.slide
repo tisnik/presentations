@@ -331,6 +331,20 @@ continue  for          import  return     var
 ############################################################
 
 * Pole (arrays)
+- základní homogenní datová kolekce v Go
+- všechny prvky pole mají stejný typ
+- (lze použít `interface{}` pro pole libovolných hodnot)
+- typ pole je odvozen od typu prvků *a* velikosti pole
+- (na rozdíl od řezů)
+- index prvků je v rozsashu 0..délka-1
+- umožňuje indexaci prvků přes selektor []
+
+* Základní operace s poli
+
+* Matice (dvourozměrná pole)
+
+* Kopie polí
+- pole lze kopírovat jako celek (na rozdíl od řezů)
 
 ############################################################
 
