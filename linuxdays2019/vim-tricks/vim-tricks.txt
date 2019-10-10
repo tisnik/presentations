@@ -123,28 +123,39 @@ Lze vybrat znak za koncem řádku?
 Režim virtuální editace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 :set virtualedit=
-╔══════════╤════════════════════╗
-║          │                    ║
-╟──────────┼────────────────────╢
-║          │                    ║
-║          │                    ║
-╚══════════╧════════════════════╝
-+----------+---------------------------------------------------------+
-| Hodnota  | Význam                                                  |
-+----------+---------------------------------------------------------+
-| block    | povolení virtuální editace při práci s vizuálními bloky |
-| insert   | povolení virtuální editace ve vkládacím režimu          |
-| all      | povolení virtuální editace ve všech režimech            |
-| onemore  | umožňuje přesun kurzoru pouze ZA poslední znak          |
-+----------+---------------------------------------------------------+
+╔══════════╤═════════════════════════════════════════════════════════╗
+║ Hodnota  │  Význam                                                 ║
+╟──────────┼─────────────────────────────────────────────────────────╢
+║ block    │ povolení virtuální editace při práci s vizuálními bloky ║
+║ insert   │ povolení virtuální editace ve vkládacím režimu          ║
+║ all      │ povolení virtuální editace ve všech režimech            ║
+║ onemore  │ umožňuje přesun kurzoru pouze ZA poslední znak          ║
+╚══════════╧═════════════════════════════════════════════════════════╝
+
+Volba mousemodel
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Volba keymodel
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Celkové chování editoru
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:behave mswin
+:behave xterm
+╔════════════╤════════════════════╤══════════╗
+║ Volba      │ mswin              │ xterm    ║
+╟────────────┼────────────────────┼──────────╢
+║ selectmode │ mouse, key         │ ""       ║
+║ mousemodel │ popup              │ extend   ║
+║ keymodel   │ startstel, stopsel │ ""       ║
+║ selection  │ exclusive          │ inclusive║
+╚════════════╧════════════════════╧══════════╝
 
 Chování editoru při chybě
--------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     :set novisualbell
     :set vb t_vb="
 
 Zvýraznění aktuálního řádku/sloupce
------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     :set cursorcolumn
     :set cursorline
     :hi CursorLine   guibg=#2d2d2d
