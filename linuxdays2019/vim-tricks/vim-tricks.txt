@@ -97,15 +97,29 @@ význam při použití ve více oknech současně
 Vizuální režim versus režim výběru
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Selection mode
+- částečně podobné chování editorů v MS Windows
+- po výběru a stisku viditelného znaku se:
+   - výběr vymaže
+   - editor se přepne do insert režimu
+   - lze vybírat pomocí Shift+šipky atd.
+   - pohyb bez Shift režim výběru ukončí
+   - Esc taktéž režim výběru ukončí
 Visual mode
-:set selectmode=
-╔═════════╤════════╗
-║ Hodnota │ Význam ║
-╟─────────┼────────╢
-║ mouse   │        ║
-║ key     │        ║
-║ cmd     │        ║
-╚═════════╧════════╝
+- výběr začíná v, V, Ctrl+V
+- lze nastavit i další možnosti pomocí :set selectmode
+- fungují zde běžné operátory c, y, d
+- obnovení původního výběru: gv
+
+Vizuální režim versus režim výběru
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:set selectmode=seznam_hodnot
+╔═════════╤═════════════════════════════════╗
+║ Hodnota │ Význam                          ║
+╟─────────┼─────────────────────────────────╢
+║ mouse   │ select mode pomocí myši         ║
+║ key     │ select mode pomocí shift+šipky  ║
+║ cmd     │ select mode začíná v, V, Ctrl+V ║
+╚═════════╧═════════════════════════════════╝
 
 Výběr textu
 ‾‾‾‾‾‾‾‾‾‾‾
