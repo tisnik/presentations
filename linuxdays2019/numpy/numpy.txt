@@ -10,7 +10,7 @@ Obsah přednášky (1)
 ▶ Knihovna Numpy
 ▶ Skalární datové typy
 ▶ Datová struktura ndarray
-▶ Konstruktory struktury ndarray
+▶ Konstruktory datové struktury ndarray
 ▶
 
 Obsah přednášky (2)
@@ -111,17 +111,22 @@ Datová struktura ndarray
 --------------------------------------------------
 * Základní strukturovaný datový typ knihovny Numpy
 * Volitelný počet dimenzí
-* vektory
-* matice
-* pole s větším počtem dimenzí
+* Vektory
+* Matice
+* Pole s větším počtem dimenzí
 * Volitelný typ prvků
 * Volitelné uspořádání prvků
-* podle zvyklostí jazyka Fortran
-* podle zvyklostí jazyka C
+* Podle zvyklostí jazyka Fortran
+* Podle zvyklostí jazyka C
+
+* Tvar (shape) pole
+--------------------------------------------------
 
 * Konstrukce polí
 --------------------------------------------------
 - numpy.array
+- numpy.zeros
+- numpy.ones
 
 * Konstruktor numpy.array
 --------------------------------------------------
@@ -234,6 +239,14 @@ numpy.zeros((2,2),dtype=numpy.complex)
 .
 array([[ 0.+0.j,  0.+0.j],
        [ 0.+0.j,  0.+0.j]])
+
+Konstruktor numpy.ones
+----------------------------------------------------
+- vektor či matice s prvky nastavenými na jedničku
+
+Volání konstruktoru numpy.ones
+--------------------------------
+numpy.ones(shape, dtype=None, order='C')
 
 Další podbalíčky, které nalezneme v knihovně ndarray
 ----------------------------------------------------
