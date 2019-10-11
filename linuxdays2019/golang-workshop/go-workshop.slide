@@ -349,6 +349,23 @@ continue  for          import  return     var
 ############################################################
 
 * Řezy (slices)
+- plnohodnotný datový typ v Go
+- rozhraní pro sekvence (lepší než pole)
+- typicky se řezy používají častěji, než "stará dobrá" pole
+- typ řezu je odvozen od typu prvků
+- interně řez obsahuje: referenci na první prvek, délka, kapacita
+- takzvaný "slice operator"  `[from:to]`
+- funkce `append` pro přidání nového elementu do řezu (interně s možnou realokací)
+
+* Použití řezů
+
+* Použití řezů (pokračování)
+
+* Pole v roli zdroje dat pro řezy
+
+- řez může být (a bývá) vytvořen přímo z pole
+- řezy ve skutečnosti žádná data neobsahují, pouze ukazatel/referenci na prvek
+- takže jakákoli modifikace prvku v řezu se projeví v poli
 
 ############################################################
 
