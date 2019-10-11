@@ -203,6 +203,21 @@ done!
 
 Odstranění informací o funkcích, které nás nezajímají
 -----------------------------------------------------
+ltrace -e -read ./random_bitmap
+.
+random_bitmap->__libc_start_main(0x400bf4, 1, 0x7fff7c9456e8, 0x400c70 <unfinished ...>
+random_bitmap->puts("processing:")                              = 12
+random_bitmap->malloc(16 <unfinished ...>
+libc.so.6->(0x7f7140a97bd0, 0x7fff7c945550, 0x7fff7c945540, 0)  = 0x7f7140ffa4c0
+<... malloc resumed> )                                          = 0x1ee3010
+random_bitmap->malloc(921600)                                   = 0x7f7140ef3010
+random_bitmap->memset(0x7f7140ef3010, '\0', 921600)             = 0x7f7140ef3010
+random_bitmap->memset(0x7f7140ef3010, '\0', 921600)             = 0x7f7140ef3010
+random_bitmap->open("/dev/urandom", 0, 010077240000)            = 3
+random_bitmap->close(3)                                         = 0
+random_bitmap->fopen("random.bmp", "wb" <unfinished ...>
+libc.so.6->memalign(568, 0x400cf4, 1, 0)                        = 0x1ee3030
+
 Zjištění statistiky volaných funkcí
 --------------------------------------------------
 
