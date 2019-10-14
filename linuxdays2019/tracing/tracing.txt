@@ -1,11 +1,11 @@
              Trasování v Linuxu
-==================================================
+══════════════════════════════════════════════════
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
 ■ Datum    2019-10-06
 
 Obsah přednášky (1)
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Trasování a ladění nativních aplikací v Linuxu
 ▶ Utilita ltrace
 ▶ Ukázka použití utility ltrace
@@ -16,7 +16,7 @@ Obsah přednášky (1)
 ▶ DTrace
 
 Obsah přednášky (2)
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ SystemTap
 ▶ Ukázky použití SystemTap
 ▶
@@ -26,7 +26,7 @@ Obsah přednášky (2)
 ▶ Odkazy na další informační zdroje
 
 Trasování a ladění nativních aplikací v Linuxu
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 +----------+
 |          |
 | aplikace |
@@ -50,14 +50,13 @@ Trasování a ladění nativních aplikací v Linuxu
 +----------+
 
 Trasování a ladění nativních aplikací v Linuxu
---------------------------------------------------
-- volaní funkcí z knihoven: ltrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 - systémová volání: strace
 - ladění a trasování aplikací i knihoven: GNU Debugger
 - stav aplikací, knihoven i OS: SystemTap
 
 Trasování a ladění nativních aplikací v Linuxu
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 +----------+
 |          |..... gdb
 | aplikace |
@@ -81,22 +80,22 @@ Trasování a ladění nativních aplikací v Linuxu
 +----------+
 
 Utilita ltrace
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 - trasování volání knihovních funkcí
 - vyhledání problémových či pomalých částí kódu
 - zjištění způsobů alokace a dealokace paměti
 - či pouze jednoduché trasování aplikace
 
 Zavolání ltrace
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ltrace jméno_binární_aplikace parametry_aplikace
 ltrace parametry_ltrace jméno_binární_aplikace parametry_aplikace
 
 Testovaný zdrojový kód
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Ukázka použití utility ltrace
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ltrace ./hello
 .
 __libc_start_main(0x40053d, 1, 0x7fffd2e1f5f8, 0x400560 <unfinished ...>
@@ -105,10 +104,10 @@ puts("Hello world!"Hello world!
 +++ exited (status 0) +++
 
 Testovaný zdrojový kód
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Ukázka použití utility ltrace
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ltrace ./random_bitmap
 .
 __libc_start_main(0x400bf4, 1, 0x7fff18e8d758, 0x400c70 <unfinished ...>
@@ -217,6 +216,17 @@ random_bitmap->open("/dev/urandom", 0, 010077240000)            = 3
 random_bitmap->close(3)                                         = 0
 random_bitmap->fopen("random.bmp", "wb" <unfinished ...>
 libc.so.6->memalign(568, 0x400cf4, 1, 0)                        = 0x1ee3030
+<... fopen resumed> )                                           = 0x1ee3030
+random_bitmap->fwrite("BMF", 54, 1, 0x1ee3030)                  = 1
+random_bitmap->printf("%d pixels written\n", 307200307200 pixels written
+)                                    = 22
+random_bitmap->fwrite("Z\226\314H7\316\301\306\340\367iI\324O\332|\005\035![BL\325u\271\335L", 921600, 1, 0x1ee3030) = 1
+random_bitmap->fclose(0x1ee3030 <unfinished ...>
+libc.so.6->(0x1ee3030, 0, 0x1ee3110, 0xfbad000c)                = 1
+<... fclose resumed> )                                          = 0
+random_bitmap->puts("done!\n)                                   = 7
+libc.so.6->_dl_find_dso_for_object(0x7f7140dd1d90, 0x7f7140dd26c8, 1, -1) = 0x7f7140fd5690
++++ exited (status 0) +++
 
 Zjištění statistiky volaných funkcí
 --------------------------------------------------
