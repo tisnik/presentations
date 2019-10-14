@@ -97,18 +97,19 @@ význam při použití ve více oknech současně
 Vizuální režim versus režim výběru
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Selection mode
-- částečně podobné chování editorů v MS Windows
-- po výběru a stisku viditelného znaku se:
+▶ částečně podobné chování editorů v MS Windows
+▶ po výběru a stisku viditelného znaku se:
    - výběr vymaže
    - editor se přepne do insert režimu
    - lze vybírat pomocí Shift+šipky atd.
+   - (viz dále popsaná volba keymodel)
    - pohyb bez Shift režim výběru ukončí
    - Esc taktéž režim výběru ukončí
 Visual mode
-- výběr začíná v, V, Ctrl+V
-- lze nastavit i další možnosti pomocí :set selectmode
-- fungují zde běžné operátory c, y, d
-- obnovení původního výběru: gv
+▶ výběr začíná v, V, Ctrl+V
+▶ lze nastavit i další možnosti pomocí :set selectmode
+▶ fungují zde běžné operátory c, y, d
+▶ obnovení původního výběru: gv
 
 Vizuální režim versus režim výběru
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -134,6 +135,29 @@ Lze vybrat znak za koncem řádku?
 ║ exclusive │ ano             │ ne                ║
 ╚═══════════╧═════════════════╧═══════════════════╝
 
+Výběr vertikálních bloků, práce s bloky
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ standardně Ctrl+V
+▶ IMHO lepší :noremap ,v <C-V>
+    - nekoliduje s případným mapováním Ctrl+V na "paste"
+▶ běžné operátory c, y, d
+▶ při "yank" a "delete" se zapamatuje, že se jedná o blok
+    - jak?
+    - trik s Ctrl+J
+▶ možnost kombinace s "virtualedit" při nestejně dlouhých řádcích
+    - viz další slajd
+
+Vertikální bloky a funkce typu "najdi a nahraď"
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ po výběru bloku stisk :
+▶ lze zapsat například
+- :'<,'>s-foo-bar-g
+▶ ovšem náhrada se provede v celém rozsahu textu od prvního vybraného řádku do řádku posledního
+▶ lze náhradu provést skutečně jen ve vybraném bloku?
+▶ řešení
+- použití \%V
+- :'<,'>s-\%Vfoo-bar-g
+
 Režim virtuální editace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 :set virtualedit=
@@ -146,10 +170,27 @@ Režim virtuální editace
 ║ onemore  │ umožňuje přesun kurzoru pouze ZA poslední znak          ║
 ╚══════════╧═════════════════════════════════════════════════════════╝
 
+Režim virtuální editace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(ukázka s vertikálními bloky)
+
 Volba mousemodel
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+- určuje chování myši
+    - rozdíl X/MS Windows
+    - většinou se týká pravého tlačítka myši
+
 Volba keymodel
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+- týká se výběru bloků pomocí Shift+posun
+:set keymodel
+╔═══════════════════╤════════════════════════════════════════╗
+║ Volba             │ Význam                                 ║
+╟───────────────────┼────────────────────────────────────────╢
+║ startsel, stopsel │ výběr pomocí Shift+šipky               ║
+║ ""                │ skok na další slovo pomocí Shift+šipky ║
+╚═══════════════════╧════════════════════════════════════════╝
+
 Celkové chování editoru
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 :behave mswin
