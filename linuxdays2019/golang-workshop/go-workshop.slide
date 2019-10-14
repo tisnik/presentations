@@ -8,9 +8,26 @@ Red Hat, Inc.
 
 
 * Úvodní informace o workshopu
--
--
--
+- Vybrané cíle programovacího jazyka Go
+- Charakteristické rysy jazyka Go
+- Důležité vlastnosti Go
+- Klíčová slova jazyka Go
+- Balíčky
+- Funkce, návratové hodnoty, více návratových hodnot
+- Konstanty, proměnné, základní datové typy jazyka
+- Podmínky, programové smyčky, rozvětvení
+- Detekce a zpracování chyb, příkaz `defer`
+- Struktury
+- Pole a řezy
+
+* Úvodní informace o workshopu (pokračování)
+- Ukazatele
+- Mapy
+- Rozhraní
+- Metody
+- Gorutiny
+- Kanály
+- Balíčky (podruhé)
 
 
 
@@ -52,7 +69,6 @@ Red Hat, Inc.
 
 
 * Důležité vlastnosti Go
-
 - Správa paměti se přenáší do runtime
 - Gorutiny a kanály (600k gorutin, 90% CPU)
 - Více imperativních rysů: explicitní zápis většiny operací
@@ -63,11 +79,8 @@ Red Hat, Inc.
 
 
 * Klíčová slova jazyka Go
-break     default      func    interface  select
-case      defer        go      map        struct
-chan      else         goto    package    switch
-const     fallthrough  if      range      type
-continue  for          import  return     var
+# uloženo v externím souboru
+.code keywords.txt
 
 
 
@@ -76,9 +89,9 @@ continue  for          import  return     var
 
 
 * Klasický program typu "Hello world"
-.play sources/hello.go
-.code sources/run-hello.go
-.code sources/build-hello.go
+.play sources/00-hello.go
+.code sources/00-run-hello.go
+.code sources/00-build-hello.go
 
 
 
@@ -93,31 +106,42 @@ continue  for          import  return     var
 
 * Funkce
 - základní stavební prvek zajišťující dekompozici řešeného problému
+- klíčové slovo `func`
+- jméno funkce
+- jména a typy parametrů (může být prázdné)
+- typy návratových hodnot (nepovinné)
+- tělo funkce (může být prázdné)
 .play sources/01-functions.go
 
 
 
 * Více návratových hodnot
+- uzavření typů návratových hodnot do kulatých závorek
 .play sources/02-functions.go
 
 
 
 * Pojmenované návratové hodnoty
+- návratové hodnoty mohou být pojmenovány
+- (stejně jako parametry funkce)
 .play sources/03-functions.go
 
 
 
 * Konstanty
+- klíčové slovo `const`
 .play sources/04-constants.go
 
 
 
 * Proměnné
+- klíčové slovo `var`
+- kontrola použití lokální proměnné překladačem
 .play sources/05-variables.go
 
 
 
-* Základní datové typy
+* Základní datové typy jazyka
 - Jednoduché datové typy
 - Složené datové typy
 - Zvláštní datové typy
@@ -149,19 +173,19 @@ continue  for          import  return     var
 
 
 * Typová konverze
-- nikdy neprobíhá automaticky
+- nikdy neprobíhá v Go automaticky!
 .play sources/06-casts.go
 
 
 
 * Podmínky
-- Lze deklarovat proměnné platné pouze v rámci větve s podmínkou
+- lze deklarovat proměnné platné pouze v rámci větve s podmínkou
 .play sources/07-if.go
 
 
 
 * Větev `else`
-- Lokální proměnné jsou platné i ve větvi `else`
+- lokální proměnné jsou platné i ve větvi `else`
 .play sources/08-if-else.go
 
 
@@ -196,17 +220,21 @@ continue  for          import  return     var
 - nikoli pouze rozhodnutí "vznikla/nevznikla chyba"
 - `error` je typ
 [[https://blog.golang.org/error-handling-and-go]]
+- často použito společně s `defer`
 .play sources/12-ret.go
 
 
 
 * Ignorování návratových hodnot/hodnoty
 - použití '_' ve funkci zástupného jména proměnné
-.play sources/13_ret.go
+- v opačném případě detekce chyby překladačem
+.play sources/13-ret.go
 
 
 
 ############################################################
+
+
 
 * Příkaz `defer`
 - klíčové slovo v Go
@@ -273,12 +301,12 @@ continue  for          import  return     var
 
 
 * Praktické použití `defer`
-.play sources/23-defer-practical-usage.go /^func copyFile/,/^}/
+.play sources/22-defer-practical-usage.go /^func copyFile/,/^}/
 
 
 
 * Praktické použití `defer`
-.play sources/24-defer-practical-usage.go /^func main/,/^}/
+.play sources/22-defer-practical-usage.go /^func main/,/^}/
 
 
 
@@ -291,12 +319,7 @@ continue  for          import  return     var
 
 
 * Příkaz `defer` a návratové hodnoty
-.play sources/25-defer-return-values.go
-
-
-
-* Příkaz `defer` a návratové hodnoty
-.play sources/26-defer-return-values.go
+.play sources/24-defer-return-values.go
 
 
 
@@ -313,22 +336,58 @@ continue  for          import  return     var
 - struktury lze porovnávat
 - předání do funkce hodnotou nebo přes ukazatel (referencí)
 
+
+
 * Základ práce se strukturami
-.play sources/27_struct.go
+.play sources/25-struct.go
+
+
 
 * Inicializace struktur (céčkový přístup)
-.play sources/28_struct_init.go
+.play sources/26-struct-init.go
+
+
 
 * Vylepšená inicializace
-.play sources/29_better_struct_init.go
+.play sources/27-better-struct-init.go
+
+
 
 * Porovnání struktur operátory == a !=
-.play sources/30_struct_comparison.go /package main/,/^func main//
+.play sources/28-struct-comparison.go /package main/,/^func main//
+
+
 
 * Porovnání struktur operátory == a !=
-.play sources/30_struct_comparison.go /^func main/,/^}/
+.play sources/28-struct-comparison.go /^func main/,/^}/
+
+
+
+* Předání struktur do funkcí
+- hodnotou
+- referencí
+.play sources/29-print-user.go /package main/,/^func main//
+
+
+
+* Předání struktur do funkcí (pokračování)
+.play sources/29-print-user.go /^func main/,/^}/
+
+
+
+* Anonymní struktura
+- pouze stačí deklarace nové proměnné se specifikací jejího typu jako `struct` _typy_
+
+    var employee struct {  
+            firstName, lastName string
+            age int
+    }
+
+
 
 ############################################################
+
+
 
 * Pole (arrays)
 - základní homogenní datová kolekce v Go
@@ -339,14 +398,27 @@ continue  for          import  return     var
 - index prvků je v rozsashu 0..délka-1
 - umožňuje indexaci prvků přes selektor []
 
-* Základní operace s poli
 
-* Matice (dvourozměrná pole)
+
+* Základní operace s poli
+.play sources/30-arrays.go
+
+
+
+* Matice (dvourozměrné pole)
+.play sources/31-arrays.go
+
+
 
 * Kopie polí
-- pole lze kopírovat jako celek (na rozdíl od řezů)
+- na rozdíl od řezů je možné celá pole zkopírovat operátorem =
+.play sources/32-array-copy.go
+
+
 
 ############################################################
+
+
 
 * Řezy (slices)
 - plnohodnotný datový typ v Go
@@ -357,15 +429,55 @@ continue  for          import  return     var
 - takzvaný "slice operator"  `[from:to]`
 - funkce `append` pro přidání nového elementu do řezu (interně s možnou realokací)
 
+
+
 * Použití řezů
+.play sources/33-slices.go /package main/,/cont//
+
+
 
 * Použití řezů (pokračování)
+.play sources/33-slices.go /cont/,/^}//
+
+
 
 * Pole v roli zdroje dat pro řezy
-
 - řez může být (a bývá) vytvořen přímo z pole
 - řezy ve skutečnosti žádná data neobsahují, pouze ukazatel/referenci na prvek
 - takže jakákoli modifikace prvku v řezu se projeví v poli
+
+.play sources/34-slice-copy.go /package main/,/cont//
+
+
+
+* Pole v roli zdroje dat pro řezy (pokračování)
+- modifikace prvků pole (přímo)
+- další modifikace prvků, ovšem nepřímo (přes řez)
+
+.play sources/34-slice-copy.go /cont/,/^}//
+
+
+
+* Řez vytvořený z jiného řezu
+- "slicing" je možné aplikovat i na další řez
+
+.play sources/35-slice-from-slice.go /package main/,/cont//
+
+
+
+* Řez vytvořený z jiného řezu (pokračování)
+
+.play sources/35-slice-from-slice.go /cont/,/^}//
+
+
+
+* Funkce append
+- funkce `append` vrací nový řez
+- kapacita pro nový řez může být zvětšena (realokace, interní algoritmus Go)
+
+.play sources/36-slice-append.go
+
+
 
 ############################################################
 
@@ -374,6 +486,19 @@ continue  for          import  return     var
 ############################################################
 
 * Mapy
+
+############################################################
+
+
+
+* Rozhraní
+- Datový typ
+- Prázdné rozhraní interface{}
+- Není zapotřebí specifikovat, jaký typ rozhraní implementuje!
+- Jedna metoda (dosti časté)
+- V rozhraní může být předepsáno větší množství metod:
+- Nebo naopak nemusí být předepsána žádná metoda:
+
 
 ############################################################
 
