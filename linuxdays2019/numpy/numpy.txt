@@ -1,11 +1,11 @@
 Numpy
-==================================================
+══════════════════════════════════════════════════
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
 ■ Datum    2019-10-06
 
 Obsah přednášky (1)
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Programovací jazyk Python
 ▶ Knihovna Numpy
 ▶ Skalární datové typy
@@ -14,7 +14,7 @@ Obsah přednášky (1)
 ▶
 
 Obsah přednášky (2)
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Další podbalíčky, které nalezneme v knihovně ndarray
 ▶
 ▶ Odkazy na další informační zdroje
@@ -247,6 +247,83 @@ Konstruktor numpy.ones
 Volání konstruktoru numpy.ones
 --------------------------------
 numpy.ones(shape, dtype=None, order='C')
+
+Příklady použití konstruktoru numpy.zeros
+-----------------------------------------
+# jednorozměrný vektor s deseti prvky
+numpy.ones(10)
+array([ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.])
+
+# matice se třemi řádky a čtyřmi sloupci
+numpy.ones((3,4))
+
+array([[ 1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.]])
+
+# matice se třemi řádky a čtyřmi sloupci
+# s explicitní specifikací typu prvků
+numpy.ones((3,4), dtype=int)
+
+array([[1, 1, 1, 1],
+       [1, 1, 1, 1],
+       [1, 1, 1, 1]])
+
+# trojrozměrné pole s prvky typu int
+numpy.ones((3,4,5), dtype=int)
+
+array([[[1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1]],
+
+       [[1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1]],
+
+       [[1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1]]])
+
+# trojrozměrné pole s prvky typu int
+# (oproti předchozímu příkladu se velikosti v jednotlivých dimenzích liší)
+numpy.ones((5,4,3), dtype=int)
+
+array([[[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]],
+
+       [[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]],
+
+       [[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]],
+
+       [[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]],
+
+       [[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]]])
+
+# zde může být použití typu komplexní číslo možná poněkud překvapující,
+# ovšem stále platí, že 1=1+0j
+numpy.ones((3,2),dtype=numpy.complex)
+
+array([[ 1.+0.j,  1.+0.j],
+       [ 1.+0.j,  1.+0.j],
+       [ 1.+0.j,  1.+0.j]])
+</pre>
 
 Další podbalíčky, které nalezneme v knihovně ndarray
 ----------------------------------------------------
