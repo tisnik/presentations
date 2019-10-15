@@ -10,25 +10,38 @@ Obsah přednášky (1)
 ▶ Knihovna Numpy
 ▶ Skalární datové typy
 ▶ Datová struktura ndarray
+▶ Tvar n-dimenzionálního pole
 ▶ Konstruktory datové struktury ndarray
 ▶
 
 Obsah přednášky (2)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶
+▶
+▶
+▶
 ▶ Další podbalíčky, které nalezneme v knihovně ndarray
 ▶
 ▶ Odkazy na další informační zdroje
 
 Programovací jazyk Python
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Dnes jeden z nejpopulárnějších programovacích jazyků
+    ◆ viz například Tiobe index
+    ◆ 
 ▶ Dostupnost na většině platforem
     ◆ na některých MCU jako MicroPython
-▶ Použití
+▶ Python 2 Python 3
+    ◆ 
+
+Programovací jazyk Python
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Typické použití Pythonu
     ◆ Nástroje a utility ovládané z příkazového řádku
     ◆ Aplikace s grafickým uživatelským rozhraním
     ◆ Client-server
         - serverová část (Flask, Django, CherryPy, ...)
+        - klient (Brython, spíše technologické demo)
     ◆ Numerické výpočty, symbolické výpočty
         - Numpy
         - SciPy
@@ -39,14 +52,19 @@ Programovací jazyk Python
           PyTorch
         - Big data
     ◆ Tzv. "glue" jazyk
+    ◆ Vestavitelný interpret Pythonu
 
 Knihovna Numpy
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ 
+▶ 
+▶ 
 
 Skalární datové typy
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 https://docs.scipy.org/doc/numpy/user/basics.types.html
-formát       popis                       rozsah
+╔═════════╤═════════╤═════════════════════════════════╗
+║ Formát  │ Popis   │ Rozsah                          ║
 bool         uloženo po bajtech          True/False
 int8         celočíselný se znaménkem   -128..127
 int16        celočíselný se znaménkem   -32768..32767
