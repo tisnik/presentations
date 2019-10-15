@@ -7,6 +7,7 @@ Triky ve Vimu
 Obsah přednášky (1)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Základní konfigurační volby
+▶ Vyhledávání v textu
 ▶ Volby způsobu zobrazení textů
 ▶ Nastavení breakindent
 ▶ Chování textového kurzoru při pohybu v textu
@@ -20,6 +21,7 @@ Obsah přednášky (2)
 ▶ Nastavení pravítka
 ▶ Nastavení stavového řádku
 ▶ Zvýraznění syntaxe
+▶ Užitečné externí nástroje
 
 Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -41,6 +43,33 @@ Základní konfigurační volby
     :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o
         soubory (masky nazvů), které se nebudou zobrazovat
 
+Vyhledávání v textu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Nalezení slova pod kurzorem
+Směrem ke konci textu
+*   celá slova
+g*  i části slov
+Směrem k začátku textu
+#   celá slova
+g#  i části slov
+Vyhledání (a doskok) na párovou závorku
+%
+Vyhledání se zobrazením výskytů A čísel řádků
+:g/tab/#
+:set ignorecase 
+:set smartcase
+v command režimu:
+Ctrl+R Ctrl+W
+vložení slova (jako *) na příkazovou řádku
+ideální pro příkaz /
+Ctrl+R Ctrl+A
+vložení slova (jako #) na příkazovou řádku
+ideální pro příkaz /
+Zobrazení historie hledání
+:his s
+Zobrazení okna s historií hledání
+q/
+
 Volby způsobu zobrazení textů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     :set number
@@ -48,6 +77,17 @@ Volby způsobu zobrazení textů
     :set tabstop=xxx
     :set showmatch
     :set matchpairs=(:),[:],{:},<:>
+    :set display
+
+Zobrazení řídicích znaků
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Ve formátu ^znak
+    například ^K
+▶ Hexa hodnota znaku
+    například <0b>
+▶ Změna nastavení
+    :set display=
+    :set display=uhex
 
 Taby nebo mezery?
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -68,6 +108,12 @@ Zalamování textu
         vypnutí vizuálního zalamování na hranicích slov
     :set tw=xxx
         automatické zalamování na xxx sloupci (vkládá se CR)
+
+Volba wrap a řádky na konci obrazovky
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Buď @ v případě dlouhého řádku (dlouhodobá tradice)
+▶ Popř. "zobraz co nejvíce skutečného textu"
+:set display+=lastline
 
 Nastavení breakindent
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -232,3 +278,7 @@ Nastavení stavového řádku
 --------------------------------------------------
 Zvýraznění syntaxe
 --------------------------------------------------
+Užitečné externí nástroje
+--------------------------------------------------
+fmt
+tablign
