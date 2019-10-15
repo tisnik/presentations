@@ -481,7 +481,61 @@ Red Hat, Inc.
 
 ############################################################
 
+
+
 * Ukazatele
+- vždy musí ukazovat na element určitého typu
+- to znamená, že `void` ukazatele vůbec nejsou podporovány
+- (a `void` ani není klíčové nebo rezervované slovo)
+- implicitní "nulová" hodnota ukazatele je `nil`
+- adresa elementu (proměnné...) se získá operátorem `&`
+- přístup k elementu přes ukazatel (reference) pomocí operátoru `*`
+
+
+
+* Základní práce s ukazateli
+- poznámka: použití příkazu `*p_i++`
+
+.play sources/37-pointer-to-int.go
+
+
+
+* Ukazatel na strukturu
+- plně typovaný ukazatel
+
+.play sources/38-pointer-to-struct.go /package main/,/func main//
+
+
+
+* Ukazatel na strukturu (pokračování)
+- poznámka: možnosti použití `p_u.id` namísto `(*p_u).id`
+- v Go neexistuje operátor `->`
+
+.play sources/38-pointer-to-struct.go /func main/,/^}//
+
+
+
+* Ukazatel na vybraný prvek struktury
+- použitelné a přenositelné řešení
+
+.play sources/39-pointer-to-struct-item.go /package main/,/func main//
+
+
+
+* Ukazatel na vybraný prvek struktury (pokračování)
+.play sources/39-pointer-to-struct-item.go /func main/,/^}//
+
+
+
+* Ukazatel na prvek uložený v poli
+.play sources/40-pointer-to-array.go /package main/,/cont//
+
+
+
+* Ukazatel na prvek uložený v poli (pokračování)
+.play sources/40-pointer-to-array.go /cont/,/^}//
+
+
 
 ############################################################
 
