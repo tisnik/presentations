@@ -135,7 +135,7 @@ puts("done!\n")                                        = 7
 +++ exited (status 0) +++
 
 Poslední testovaný zdrojový kód
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ltrace ./fractal_renderer
 .
 __libc_start_main(0x400ec2, 1, 0x7fff0293d968, 0x400f60 <unfinished ...>
@@ -163,7 +163,7 @@ puts("done!\n")                          = 7
 - zde můžeme vidět, že jasně dominuje volání funkce sin z knihovny libm
 
 Časová razítka volání funkcí
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ltrace -t ./hello
 .
 20:17:06 __libc_start_main(0x40053d, 1, 0x7fff74550708, 0x400560 <unfinished ...>
@@ -171,7 +171,7 @@ ltrace -t ./hello
 20:17:06 +++ exited (status 0) +++
 
 Větší přesnost časových razítek
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ltrace -tt ./hello
 .
 20:49:54.521242 __libc_start_main(0x40053d, 1, 0x7fff78e06dd8, 0x400560 <unfinished ...>
@@ -179,7 +179,7 @@ ltrace -tt ./hello
 20:49:54.522886 +++ exited (status 0) +++
 
 Zjištění doby trvání volané funkce a filtrace výstupu
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ltrace -r ./hello
 .
   0.000000 __libc_start_main(0x40053d, 1, 0x7fffdd8d7208, 0x400560 <unfinished ...>
