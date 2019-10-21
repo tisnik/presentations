@@ -1,4 +1,4 @@
-Triky ve Vimu
+              Triky ve Vimu
 ═══════════════════════════════════════════
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
@@ -9,21 +9,31 @@ Obsah přednášky (1)
 ▶ Základní konfigurační volby
 ▶ Vyhledávání v textu
 ▶ Volby způsobu zobrazení textů
-▶ Nastavení breakindent
+▶ Taby nebo mezery?
+▶ Nastavení wrap/showbreak/linebreak/breakindent
 ▶ Chování textového kurzoru při pohybu v textu
+▶ Vizuální režim a režim výběru
+▶ Režim virtuální editace
+▶ Chování myši, výběr bloků přes Shift+..., celkové chování Vimu
 ▶ Chování editoru při chybě
 ▶ Zvýraznění aktuálního řádku/sloupce
-▶ Taby nebo mezery?
-▶
 
 Obsah přednášky (2)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Varianty příkazu map
+▶ Varianty příkazu abbreviation
+▶ Digraphs
+▶ Užitečné využití klávesy Caps Lock
+▶ Scrolling dvou a více bufferů současně
+
+Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Nastavení pravítka
 ▶ Nastavení stavového řádku
 ▶ Zvýraznění syntaxe
 ▶ Užitečné externí nástroje
 
-Obsah přednášky (3)
+Obsah přednášky (4)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Základní konfigurační volby
@@ -70,6 +80,9 @@ Zobrazení historie hledání
 Zobrazení okna s historií hledání
 q/
 
+Nahrazení
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
 Volby způsobu zobrazení textů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     :set number
@@ -79,6 +92,8 @@ Volby způsobu zobrazení textů
     :set matchpairs=(:),[:],{:},<:>
     :set display
 
+Relativní čísla řádků
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Zobrazení řídicích znaků
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Ve formátu ^znak
@@ -262,6 +277,7 @@ Zvýraznění aktuálního řádku/sloupce
     :hi CursorLine   guibg=#2d2d2d
     :hi CursorColumn guibg=#2d2d2d
 
+Digraphs
 --------------------------------------------------
 --------------------------------------------------
 --------------------------------------------------
