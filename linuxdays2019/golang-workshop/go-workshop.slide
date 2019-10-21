@@ -539,7 +539,49 @@ Red Hat, Inc.
 
 ############################################################
 
+
+
 * Mapy
+- Datový typ
+- Obsahuje dvojice klíč-hodnota
+- Typ klíče i hodnoty známý při vytváření mapy
+- Koncept takzvané `nil mapy` (nil map)
+    var m1 map[int]string
+- Koncept prázdné mapy (empty map)
+    var m3 map[int]string = make(map[int]string)
+    m1 := make(map[int]string)
+
+
+* Mapy
+- všechny základní operace: add/put, get, and delete
+- přidání prvků do mapy:
+    m3[0] = "zero"
+    m3[1] = "one"
+    m3[2] = "two"
+- získání (přečtení) prvku z mapy:
+    m3[2]
+- smazání prvku z mapy:
+    delete(m3, "zero")
+
+
+
+* Neinicializovaná mapa ("nil map")
+- v praxi se příliš často nepoužívá
+.play sources/41-uninitialized-map.go
+
+
+
+* Prázdná mapa
+- připravená pro přidávání dalších prvků
+.play sources/42-initialized-map.go
+
+
+
+* Prázdná mapa (častěji používaný idiom)
+.play sources/43-initialized-map.go
+
+
+
 
 ############################################################
 
