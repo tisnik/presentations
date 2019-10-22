@@ -27,23 +27,23 @@ Obsah přednášky (2)
 
 Trasování a ladění nativních aplikací v Linuxu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-+----------+
+╔══════════╗
 |          |
 | aplikace |
 |          |
 +----------+
      |
      |
-     v
-+----------+
+     ↓
+╔══════════╗
 |          |
 |  glibc   |
 |          |
 +----------+
      |
      |
-     v
-+----------+
+     ↓
+╔══════════╗
 |          |
 |  jádro   |
 |          |
@@ -51,29 +51,33 @@ Trasování a ladění nativních aplikací v Linuxu
 
 Trasování a ladění nativních aplikací v Linuxu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-- systémová volání: strace
-- ladění a trasování aplikací i knihoven: GNU Debugger
-- stav aplikací, knihoven i OS: SystemTap
+▶ Systémová volání
+    ◆ strace
+▶ Ladění a trasování aplikací i knihoven
+    ◆ ltrace
+    ◆ GNU Debugger
+▶ Stav aplikací, knihoven i OS
+    ◆ SystemTap
 
 Trasování a ladění nativních aplikací v Linuxu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-+----------+
+╔══════════╗
 |          |..... gdb
 | aplikace |
 |          |..... SystemTap
 +----------+
      |
      |...... ltrace
-     v
-+----------+
+     ↓
+╔══════════╗
 |          |..... gdb
 |  glibc   |
 |          |..... SystemTap
 +----------+
      |
      |...... strace
-     v
-+----------+
+     ↓
+╔══════════╗
 |          |..... SystemTap
 |  jádro   |
 |          |..... KGDB
@@ -81,23 +85,33 @@ Trasování a ladění nativních aplikací v Linuxu
 
 Utilita ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-- trasování volání knihovních funkcí
-- vyhledání problémových či pomalých částí kódu
-- zjištění způsobů alokace a dealokace paměti
-- či pouze jednoduché trasování aplikace
+▶ Trasování volání knihovních funkcí
+▶ Vyhledání problémových či pomalých částí kódu
+▶ Zjištění způsobů alokace a dealokace paměti
+▶ Či pouze jednoduché trasování aplikace
+
+Utilita ltrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ ltrace --help
+
+Usage: ltrace [option ...] [command [arg ...]]
+Trace library calls of a given program.
+.
+  -a, --align=COLUMN  align return values in a secific column.
+  -A ARRAYLEN         maximum number of array elements to print.
 
 Zavolání ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-ltrace jméno_binární_aplikace parametry_aplikace
-ltrace parametry_ltrace jméno_binární_aplikace parametry_aplikace
+$ ltrace jméno_binární_aplikace parametry_aplikace
+$ ltrace parametry_ltrace jméno_binární_aplikace parametry_aplikace
 
 Testovaný zdrojový kód
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Ukázka použití utility ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-ltrace ./hello
-.
+$ ltrace ./hello
+     ↓
 __libc_start_main(0x40053d, 1, 0x7fffd2e1f5f8, 0x400560 <unfinished ...>
 puts("Hello world!"Hello world!
 )                                                                    = 13
@@ -108,7 +122,7 @@ Testovaný zdrojový kód
 
 Ukázka použití utility ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-ltrace ./random_bitmap
+$ ltrace ./random_bitmap
 .
 __libc_start_main(0x400bf4, 1, 0x7fff18e8d758, 0x400c70 <unfinished ...>
 puts("processing:")                                    = 12
@@ -136,7 +150,7 @@ puts("done!\n")                                        = 7
 
 Poslední testovaný zdrojový kód
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-ltrace ./fractal_renderer
+$ ltrace ./fractal_renderer
 .
 __libc_start_main(0x400ec2, 1, 0x7fff0293d968, 0x400f60 <unfinished ...>
 puts("processing:")                      = 12
@@ -160,7 +174,7 @@ fclose(0xf7f030)                         = 0
 puts("done!\n")                          = 7
 +++ exited (status 0) +++
 .
-- zde můžeme vidět, že jasně dominuje volání funkce sin z knihovny libm
+▶ zde můžeme vidět, že jasně dominuje volání funkce sin z knihovny libm
 
 Časová razítka volání funkcí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -172,7 +186,7 @@ ltrace -t ./hello
 
 Větší přesnost časových razítek
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-ltrace -tt ./hello
+$ ltrace -tt ./hello
 .
 20:49:54.521242 __libc_start_main(0x40053d, 1, 0x7fff78e06dd8, 0x400560 <unfinished ...>
 20:49:54.521862 puts("Hello world!")
@@ -180,7 +194,7 @@ ltrace -tt ./hello
 
 Zjištění doby trvání volané funkce a filtrace výstupu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-ltrace -r ./hello
+$ ltrace -r ./hello
 .
   0.000000 __libc_start_main(0x40053d, 1, 0x7fffdd8d7208, 0x400560 <unfinished ...>
   0.000479 puts("Hello world!")           = 13
@@ -188,7 +202,7 @@ ltrace -r ./hello
 
 Filtrace informací o vybrané funkci/funkcích
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-ltrace -e malloc+free+open+close ./random_bitmap
+$ ltrace -e malloc+free+open+close ./random_bitmap
 .
 processing:
 random_bitmap->malloc(16)                                                               = 0x2137010
@@ -202,7 +216,7 @@ done!
 
 Odstranění informací o funkcích, které nás nezajímají
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-ltrace -e -read ./random_bitmap
+$ ltrace -e -read ./random_bitmap
 .
 random_bitmap->__libc_start_main(0x400bf4, 1, 0x7fff7c9456e8, 0x400c70 <unfinished ...>
 random_bitmap->puts("processing:")                              = 12
@@ -250,65 +264,65 @@ Ukázky použití SystemTapu
 
 Odkazy na další informační zdroje
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Tracing (software)
-https://en.wikipedia.org/wiki/Tracing_%28software%29
+▶ Tracing (software)
+    ◆ https://en.wikipedia.org/wiki/Tracing_%28software%29
 
-ltrace(1) - Linux man page
-http://linux.die.net/man/1/ltrace
+▶ ltrace(1) - Linux man page
+    ◆ http://linux.die.net/man/1/ltrace
 
-ltrace (Wikipedia)
-https://en.wikipedia.org/wiki/Ltrace
+▶ ltrace (Wikipedia)
+    ◆ https://en.wikipedia.org/wiki/Ltrace
 
-strace(1) - Linux man page
-http://linux.die.net/man/1/strace
+▶ strace(1) - Linux man page
+    ◆ http://linux.die.net/man/1/strace
 
-strace (stránka projektu na SourceForge)
-https://sourceforge.net/projects/strace/
+▶ strace (stránka projektu na SourceForge)
+    ◆ https://sourceforge.net/projects/strace/
 
-strace (Wikipedia)
-https://en.wikipedia.org/wiki/Strace
+▶ strace (Wikipedia)
+    ◆ https://en.wikipedia.org/wiki/Strace
 
-SystemTap (stránka projektu)
-https://sourceware.org/systemtap/
+▶ SystemTap (stránka projektu)
+    ◆ https://sourceware.org/systemtap/
 
-SystemTap (Wiki projektu)
-https://sourceware.org/systemtap/wiki
+▶ SystemTap (Wiki projektu)
+    ◆ https://sourceware.org/systemtap/wiki
 
-SystemTap (Wikipedia)
-https://en.wikipedia.org/wiki/SystemTap
+▶ SystemTap (Wikipedia)
+    ◆ https://en.wikipedia.org/wiki/SystemTap
 
-Dynamic Tracing with DTrace &amp; SystemTap
-http://myaut.github.io/dtrace-stap-book/
+▶ Dynamic Tracing with DTrace &amp; SystemTap
+    ◆ http://myaut.github.io/dtrace-stap-book/
 
-DTrace (Wikipedia)
-https://en.wikipedia.org/wiki/DTrace
+▶ DTrace (Wikipedia)
+    ◆ https://en.wikipedia.org/wiki/DTrace
 
-GDB - Dokumentace
-http://sourceware.org/gdb/current/onlinedocs/gdb/
+▶ GDB - Dokumentace
+    ◆ http://sourceware.org/gdb/current/onlinedocs/gdb/
 
-GDB - Supported Languages
-http://sourceware.org/gdb/current/onlinedocs/gdb/Supported-Languages.html#Supported-Languages
+▶ GDB - Supported Languages
+    ◆ http://sourceware.org/gdb/current/onlinedocs/gdb/Supported-Languages.html#Supported-Languages
 
-GNU Debugger (Wikipedia)
-https://en.wikipedia.org/wiki/GNU_Debugger
+▶ GNU Debugger (Wikipedia)
+    ◆ https://en.wikipedia.org/wiki/GNU_Debugger
 
-The LLDB Debugger
-http://lldb.llvm.org/
+▶ The LLDB Debugger
+    ◆ http://lldb.llvm.org/
 
-Debugger (Wikipedia)
-https://en.wikipedia.org/wiki/Debugger
+▶ Debugger (Wikipedia)
+    ◆ https://en.wikipedia.org/wiki/Debugger
 
-13 Linux Debuggers for C++ Reviewed
-http://www.drdobbs.com/testing/13-linux-debuggers-for-c-reviewed/240156817
+▶ 13 Linux Debuggers for C++ Reviewed
+    ◆ http://www.drdobbs.com/testing/13-linux-debuggers-for-c-reviewed/240156817
 
-Getting started with ltrace: how does it do that?
-https://www.ellexus.com/getting-started-with-ltrace-how-does-it-do-that/
+▶ Getting started with ltrace: how does it do that?
+    ◆ https://www.ellexus.com/getting-started-with-ltrace-how-does-it-do-that/
 
-Reverse Engineering Tools in Linux – strings, nm, ltrace, strace, LD_PRELOAD
-http://www.thegeekstuff.com/2012/03/reverse-engineering-tools/
+▶ Reverse Engineering Tools in Linux – strings, nm, ltrace, strace, LD_PRELOAD
+    ◆ http://www.thegeekstuff.com/2012/03/reverse-engineering-tools/
 
-7 Strace Examples to Debug the Execution of a Program in Linux
-http://www.thegeekstuff.com/2011/11/strace-examples/
+▶ 7 Strace Examples to Debug the Execution of a Program in Linux
+    ◆ http://www.thegeekstuff.com/2011/11/strace-examples/
 
-Oracle® Solaris 11.3 DTrace (Dynamic Tracing) Guide
-http://docs.oracle.com/cd/E53394_01/html/E53395/gkwpo.html#scrolltoc
+▶ Oracle® Solaris 11.3 DTrace (Dynamic Tracing) Guide
+    ◆ http://docs.oracle.com/cd/E53394_01/html/E53395/gkwpo.html#scrolltoc
