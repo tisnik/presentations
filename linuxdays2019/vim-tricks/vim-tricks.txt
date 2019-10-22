@@ -35,6 +35,7 @@ Obsah přednášky (3)
 
 Obsah přednášky (4)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Další klávesové zkratky
 
 Základní konfigurační volby
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -82,7 +83,17 @@ q/
 
 Nahrazení
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Jediný výskyt
+:s/foo/bar/
+Všechny výskyty
+:s/foo/bar/g
+Výskyty schválené uživatelem
+:s/foo/bar/gc
+Všechny výskyty public=>public int, ovšem jen pokud již není nahrazeno
+:s/public\( int\)\@!/public int/g
 
+Přesuny textu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Volby způsobu zobrazení textů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     :set number
@@ -298,3 +309,9 @@ Užitečné externí nástroje
 --------------------------------------------------
 fmt
 tablign
+
+Další klávesové zkratky
+--------------------------------------------------
+Pohyb v historii pozic kurzoru
+g;
+g,
