@@ -582,6 +582,41 @@ Red Hat, Inc.
 
 
 
+* Mapy a struktury
+.play sources/44-map-and-struct.go /^package main/,/^func main/
+
+
+
+* Mapy a struktury (pokračování)
+.play sources/44-map-and-struct.go /^func main/,/^}/
+
+
+
+* Struktury lze použít ve funkci klíčů
+.play sources/45-map-and-struct-B.go /^package main/,/^func main/
+
+
+
+* Struktury lze použít ve funkci klíčů (pokračování)
+.play sources/45-map-and-struct-B.go /^func main/,/^}/
+
+
+
+* Čtení prvků (hodnot) z mapy
+.play sources/46-map-nonexistent-values.go
+
+
+
+* Neexistující prvky (klíč+hodnota)
+.play sources/47-reading-from-maps.go
+
+
+
+* Neexistující prvky (klíč+hodnota)
+.play sources/47-reading-from-maps.go /cont/,/^}/
+
+
+
 
 ############################################################
 
