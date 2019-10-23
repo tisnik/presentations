@@ -88,35 +88,34 @@ https://docs.scipy.org/doc/numpy/user/basics.types.html
 ╚════════════╧═══════════════════════════╧═══════════════════════════════╝
 
 Kódy skalárních datových typů
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 - jednoznakové kódy je možné použít namísto jména typu
 ╔════════════╤══════╗
-║ Formát     │ Kód  ║
+║  Formát    │ Kód  ║
 ╟────────────┼──────╢
-║            │      ║
-║formát       kód
-║bool         '?'      
-║int8         'b'      
-║int16        'h'      
-║int32        'i'      
-║int64        'l'      
-║uint8        'B'      
-║uint16       'H'      
-║uint32       'I'      
-║uint64       'L'      
-║float16      'e'      
-║float32      'f'      
-║float64      'd'      
-║complex64    'F'      
-║complex128   'D'      
+║ formát     │ kód  ║
+║ bool       │ '?'  ║
+║ int8       │ 'b'  ║
+║ int16      │ 'h'  ║
+║ int32      │ 'i'  ║
+║ int64      │ 'l'  ║
+║ uint8      │ 'B'  ║
+║ uint16     │ 'H'  ║
+║ uint32     │ 'I'  ║
+║ uint64     │ 'L'  ║
+║ float16    │ 'e'  ║
+║ float32    │ 'f'  ║
+║ float64    │ 'd'  ║
+║ complex64  │ 'F'  ║
+║ complex128 │ 'D'  ║
 ╚════════════╧══════╝
 
 Datový typ single
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Datový typ double
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Datový typ float16
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Celkový počet bitů (bytů):   16 (2)
 Bitů pro znaménko:            1
 Bitů pro exponent:            5
@@ -129,31 +128,32 @@ Nejmenší kladná nenulová hodnota:      5,960×10⁻⁸
 Nejmenší kladná normalizovaná hodnota: 6,104×10⁻⁵
 
 Datová struktura ndarray
---------------------------------------------------
-Představuje obecné n-dimenzionální pole
-Interní způsob uložení dat zcela odlišný od Pythonovských seznamů či n-tic
-Homogenní datová struktura
--> menší flexibilita
--> menší paměťové nároky
--> vyšší výpočetní rychlost díky použití nativního kódu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Představuje obecné n-dimenzionální pole
+▶ Interní způsob uložení dat zcela odlišný od Pythonovských seznamů či n-tic
+▶ Homogenní datová struktura
+    ◆ menší flexibilita
+    ◆ menší paměťové nároky
+    ◆ vyšší výpočetní rychlost díky použití nativního kódu
+    ◆ obecně lepší využití cache
 
-Datová struktura ndarray
---------------------------------------------------
-* Základní strukturovaný datový typ knihovny Numpy
-* Volitelný počet dimenzí
-* Vektory
-* Matice
-* Pole s větším počtem dimenzí
-* Volitelný typ prvků
-* Volitelné uspořádání prvků
-* Podle zvyklostí jazyka Fortran
-* Podle zvyklostí jazyka C
+Datová struktura ndarray (pokračování)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Základní strukturovaný datový typ knihovny Numpy
+▶ Volitelný počet dimenzí
+    ◆ vektory
+    ◆ matice
+    ◆ pole s větším počtem dimenzí
+▶ Volitelný typ prvků
+▶ Volitelné uspořádání prvků
+    ◆ podle zvyklostí jazyka Fortran
+    ◆ podle zvyklostí jazyka C
 
-* Tvar (shape) pole
---------------------------------------------------
+▶ Tvar (shape) n-dimenzionálního pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 * Konstrukce polí
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 - numpy.array
 - numpy.zeros
 - numpy.ones
