@@ -25,6 +25,7 @@ Obsah přednášky (2)
 ▶ Digraphs
 ▶ Užitečné využití klávesy Caps Lock
 ▶ Scrolling dvou a více bufferů současně
+▶ Režim "ex"
 
 Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -39,61 +40,71 @@ Obsah přednášky (4)
 
 Základní konfigurační volby
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Vypnutí kompatibility s editorem Vi
     :set nocompatible
+▶ Zobrazení pravítka
     :set ruler
+▶ Zobrazení pravítka
     :set statusline=...
+▶ Expanze či zákaz expanze tabů
     :set (no)expandtab
-    (:retab)
+    :retab
+▶ Chování klávesy backspace
     :set backspace=[indent,eol,start]
+▶ Nastavení typu souboru (konce řádků)
     :set filetype=[dos,unix]
+▶ Chování bloků
     :set selection=exclusive
-        bloky se chovají podobně jako v ostatních editorech
-        (bude ukázáno dále)
+    bloky se chovají podobně jako v ostatních editorech
+    (bude ukázáno dále)
+▶ Seznam souborů atd. po TAB
     :set wildmenu
-        bude se nabízet seznam souborů po TAB
+▶ Některé soubory je vhodné ignorovat
     :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o
-        soubory (masky nazvů), které se nebudou zobrazovat
 
 Vyhledávání v textu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Nalezení slova pod kurzorem
-Směrem ke konci textu
-*   celá slova
-g*  i části slov
-Směrem k začátku textu
-#   celá slova
-g#  i části slov
-Vyhledání (a doskok) na párovou závorku
-%
-Vyhledání se zobrazením výskytů A čísel řádků
-:g/tab/#
-:set ignorecase 
-:set smartcase
-v command režimu:
-Ctrl+R Ctrl+W
-vložení slova (jako *) na příkazovou řádku
-ideální pro příkaz /
-Ctrl+R Ctrl+A
-vložení slova (jako #) na příkazovou řádku
-ideální pro příkaz /
-Zobrazení historie hledání
-:his s
-Zobrazení okna s historií hledání
-q/
+▶ Nalezení slova pod kurzorem
+    Směrem ke konci textu
+        *   celá slova
+        g*  i části slov
+    Směrem k začátku textu
+        #   celá slova
+        g#  i části slov
+▶ Vyhledání (a doskok) na párovou závorku
+    %
+▶ Vyhledání se zobrazením výskytů A čísel řádků
+    :g/tab/#
+    :set ignorecase 
+    :set smartcase
+▶ V command režimu
+    Ctrl+R Ctrl+W
+        vložení slova (jako *) na příkazovou řádku
+        ideální pro příkaz /
+    Ctrl+R Ctrl+A
+        vložení slova (jako #) na příkazovou řádku
+        ideální pro příkaz /
+▶ Zobrazení historie hledání
+    :his s
+▶ Zobrazení okna s historií hledání
+    q/
 
 Nahrazení
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Jediný výskyt
-:s/foo/bar/
-Všechny výskyty
-:s/foo/bar/g
-Výskyty schválené uživatelem
-:s/foo/bar/gc
-Všechny výskyty public=>public int, ovšem jen pokud již není nahrazeno
-:s/public\( int\)\@!/public int/g
+▶ Jediný výskyt
+    :s/foo/bar/
+▶ Všechny výskyty
+    :s/foo/bar/g
+▶ Výskyty schválené uživatelem
+    :s/foo/bar/gc
+▶ Všechny výskyty public => public int, ovšem jen pokud již není nahrazeno
+    :s/public\( int\)\@!/public int/g
+▶ Zopakování posledního příkazu pro náhradu
+    :&
 
 Přesuny textu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
 Volby způsobu zobrazení textů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     :set number
@@ -117,6 +128,8 @@ Zobrazení řídicích znaků
 
 Taby nebo mezery?
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Viditelné přes :set list
+▶ Lze vytvořit zvláštní syntaktické kategorie
     :syn match Tab "\t"
     :syn match Tab2 "\t\t"
     :hi def Tab  ctermbg=lightgreen guibg=#e0ffe0
@@ -124,22 +137,23 @@ Taby nebo mezery?
 
 Zalamování textu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Pouze vizuální zalamování (do souborů se nevkládá CR)
     :set wrap
-        pouze vizuální zalamování (do souborů se nevkládá CR)
+▶ Vypnutí vizuálního zalamování
     :set nowrap
-        vypnutí vizuálního zalamování
+▶ Vizuální zalamování na hranicích slov (vhodné pro texty)
     :set linebreak
-        vizuální zalamování na hranicích slov (vhodné pro texty)
+▶ Vypnutí vizuálního zalamování na hranicích slov
     :set nolinebreak
-        vypnutí vizuálního zalamování na hranicích slov
+▶ Automatické zalamování na xxx sloupci (vkládá se CR)
     :set tw=xxx
-        automatické zalamování na xxx sloupci (vkládá se CR)
 
 Volba wrap a řádky na konci obrazovky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Buď @ v případě dlouhého řádku (dlouhodobá tradice)
+▶ Buď @ v případě dlouhého řádku
+    dlouhodobá tradice
 ▶ Popř. "zobraz co nejvíce skutečného textu"
-:set display+=lastline
+    :set display+=lastline
 
 Nastavení breakindent
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -210,7 +224,8 @@ Lze vybrat znak za koncem řádku?
 Výběr vertikálních bloků, práce s bloky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ standardně Ctrl+V
-▶ IMHO lepší :noremap ,v <C-V>
+▶ IMHO lepší nastavení
+    :noremap ,v <C-V>
     - nekoliduje s případným mapováním Ctrl+V na "paste"
 ▶ běžné operátory c, y, d
 ▶ při "yank" a "delete" se zapamatuje, že se jedná o blok
@@ -223,12 +238,12 @@ Vertikální bloky a funkce typu "najdi a nahraď"
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ po výběru bloku stisk :
 ▶ lze zapsat například
-- :'<,'>s-foo-bar-g
+    :'<,'>s-foo-bar-g
 ▶ ovšem náhrada se provede v celém rozsahu textu od prvního vybraného řádku do řádku posledního
 ▶ lze náhradu provést skutečně jen ve vybraném bloku?
 ▶ řešení
 - použití \%V
-- :'<,'>s-\%Vfoo-bar-g
+    :'<,'>s-\%Vfoo-bar-g
 
 Režim virtuální editace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -278,11 +293,17 @@ Celkové chování editoru
 
 Chování editoru při chybě
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Pípnutí
+    kolegové vás budou mít moc rádi
+Krátký "záblesk" celé obrazovky
+    dosti nepříjemné
+Řešením je vypnutí obou způsobů
     :set novisualbell
     :set vb t_vb="
 
 Zvýraznění aktuálního řádku/sloupce
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Může se hodit při editacích YAML souborů apod.
     :set cursorcolumn
     :set cursorline
     :hi CursorLine   guibg=#2d2d2d
@@ -298,7 +319,11 @@ Digraphs
 --------------------------------------------------
 --------------------------------------------------
 --------------------------------------------------
+Režim "ex"
 --------------------------------------------------
+Q
+vi - návrat zpět
+
 Nastavení pravítka
 --------------------------------------------------
 Nastavení stavového řádku
@@ -312,6 +337,14 @@ tablign
 
 Další klávesové zkratky
 --------------------------------------------------
+Zobrazení informace o pozici kurzoru v dokumentu
+    gCtrl+G
+Zobrazení kódu znaku pod kurzorem
+    ga
+Zobrazení UTF-8 sekvence pro znak pod kurzorem
+    g8
+Znaky pro otestování
+    ■▶╝
 Pohyb v historii pozic kurzoru
-g;
-g,
+    g;
+    g,
