@@ -93,7 +93,7 @@ Utilita ltrace
 Utilita ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace --help
-
+     ↓
 Usage: ltrace [option ...] [command [arg ...]]
 Trace library calls of a given program.
 .
@@ -123,7 +123,7 @@ Testovaný zdrojový kód
 Ukázka použití utility ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace ./random_bitmap
-.
+     ↓
 __libc_start_main(0x400bf4, 1, 0x7fff18e8d758, 0x400c70 <unfinished ...>
 puts("processing:")                                    = 12
 malloc(16)                                             = 0xa11010
@@ -151,7 +151,7 @@ puts("done!\n")                                        = 7
 Poslední testovaný zdrojový kód
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace ./fractal_renderer
-.
+     ↓
 __libc_start_main(0x400ec2, 1, 0x7fff0293d968, 0x400f60 <unfinished ...>
 puts("processing:")                      = 12
 malloc(16)                               = 0xf7f010
@@ -179,7 +179,7 @@ puts("done!\n")                          = 7
 Časová razítka volání funkcí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ltrace -t ./hello
-.
+     ↓
 20:17:06 __libc_start_main(0x40053d, 1, 0x7fff74550708, 0x400560 <unfinished ...>
 20:17:06 puts("Hello world!")                                                           = 13
 20:17:06 +++ exited (status 0) +++
@@ -187,7 +187,7 @@ ltrace -t ./hello
 Větší přesnost časových razítek
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace -tt ./hello
-.
+     ↓
 20:49:54.521242 __libc_start_main(0x40053d, 1, 0x7fff78e06dd8, 0x400560 <unfinished ...>
 20:49:54.521862 puts("Hello world!")
 20:49:54.522886 +++ exited (status 0) +++
@@ -195,7 +195,7 @@ $ ltrace -tt ./hello
 Zjištění doby trvání volané funkce a filtrace výstupu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace -r ./hello
-.
+     ↓
   0.000000 __libc_start_main(0x40053d, 1, 0x7fffdd8d7208, 0x400560 <unfinished ...>
   0.000479 puts("Hello world!")           = 13
   0.000985 +++ exited (status 0) +++
@@ -203,7 +203,7 @@ $ ltrace -r ./hello
 Filtrace informací o vybrané funkci/funkcích
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace -e malloc+free+open+close ./random_bitmap
-.
+     ↓
 processing:
 random_bitmap->malloc(16)                                                               = 0x2137010
 random_bitmap->malloc(921600)                                                           = 0x7f4fb333c010
@@ -217,7 +217,7 @@ done!
 Odstranění informací o funkcích, které nás nezajímají
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace -e -read ./random_bitmap
-.
+     ↓
 random_bitmap->__libc_start_main(0x400bf4, 1, 0x7fff7c9456e8, 0x400c70 <unfinished ...>
 random_bitmap->puts("processing:")                              = 12
 random_bitmap->malloc(16 <unfinished ...>
@@ -244,7 +244,25 @@ libc.so.6->_dl_find_dso_for_object(0x7f7140dd1d90, 0x7f7140dd26c8, 1, -1) = 0x7f
 
 Zjištění statistiky volaných funkcí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ volba -c
+$ ltrace -c ./hello
+     ↓
+Hello world!
+.
+% time     seconds  usecs/call     calls      function
+------ ----------- ----------- --------- --------------------
+100.00    0.000455         455         1 puts
+------ ----------- ----------- --------- --------------------
+100.00    0.000455                     1 total
+.
+▶ zde nedošlo k většímu překvapení
 
+Zjištění statistiky volaných funkcí (2)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Zjištění statistiky volaných funkcí (3)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Zjištění statistiky volaných funkcí (4)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Utilita strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
