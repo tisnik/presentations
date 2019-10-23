@@ -617,6 +617,50 @@ Red Hat, Inc.
 
 
 
+* Mazání prvku z mapy
+.play sources/48-delete-from-map.go /^package main/,/^func main/
+
+
+
+* Mazání prvku z mapy (pokračování)
+.play sources/48-delete-from-map.go /^func main/,/^}/
+
+
+
+############################################################
+
+* Programové smyčky a klauzule `range`
+- klíčové slovo `range` použité ve smyčce `for`
+- procházení polem, řezem, mapou atd.
+- vrací i index příslušného prvku
+
+
+
+* Procházení všemi prvky pole
+.play sources/49-for-range-1.go
+
+
+
+* Indexy mohou být ignorovány
+.play sources/50-for-range-2.go
+
+
+
+* Procházení všemi prvky řezu
+.play sources/51-for-range-3.go
+
+
+
+* Procházení glyfy v Unicode
+.play sources/52-for-range-4.go
+
+
+
+* Procházení mapou
+- v každé iteraci se vrací klíč+hodnota
+.play sources/53-for-range-map.go
+
+
 
 ############################################################
 
