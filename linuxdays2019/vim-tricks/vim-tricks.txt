@@ -26,6 +26,7 @@ Obsah přednášky (2)
 ▶ Užitečné využití klávesy Caps Lock
 ▶ Scrolling dvou a více bufferů současně
 ▶ Režim "ex"
+▶ Režim "ed"
 
 Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -73,6 +74,9 @@ Vyhledávání v textu
         g#  i části slov
 ▶ Vyhledání (a doskok) na párovou závorku
     %
+
+Vyhledávání v textu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Vyhledání se zobrazením výskytů A čísel řádků
     :g/tab/#
     :set ignorecase 
@@ -84,6 +88,9 @@ Vyhledávání v textu
     Ctrl+R Ctrl+A
         vložení slova (jako #) na příkazovou řádku
         ideální pro příkaz /
+
+Vyhledávání v textu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Zobrazení historie hledání
     :his s
 ▶ Zobrazení okna s historií hledání
@@ -101,9 +108,6 @@ Nahrazení
     :s/public\( int\)\@!/public int/g
 ▶ Zopakování posledního příkazu pro náhradu
     :&
-
-Přesuny textu
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Volby způsobu zobrazení textů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -319,10 +323,38 @@ Digraphs
 --------------------------------------------------
 --------------------------------------------------
 --------------------------------------------------
+
 Režim "ex"
 --------------------------------------------------
 Q
 vi - návrat zpět
+
+Režim "ed"
+--------------------------------------------------
+"ed"
+Ideový předchůdce editoru Vi (který je předchůdcem Vimu)
+Příkazy editoru "ed" se zadávají v command režimu
+Obecný tvar příkazů
+    :[address [,address]]command[parameters]
+Adresy
+    . aktuální řádek
+    $ poslední řádek
+    2 druhý řádek
+    - předchozí řádek
+    + následující řádek
+    +2 relativní řádek +2
+    -2 relativní řádek -2
+    0  nad prvním řádkem (například pro move atd.)
+    /foobar/ řádek s textem odpovídajícím regexpu
+    ?foobar? řádek s textem odpovídajícím regexpu
+Příkazy "ed"u
+    a append
+    c change
+    d delete
+    m move (musí se zadat další adresa cíle)
+    :.m$
+    :.m-2
+Parametry příkazů
 
 Nastavení pravítka
 --------------------------------------------------
