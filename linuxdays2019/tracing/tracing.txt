@@ -259,10 +259,37 @@ Hello world!
 
 Zjištění statistiky volaných funkcí (2)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+ltrace -c ./random_bitmap
+     ↓
+% time     seconds  usecs/call     calls      function
+------ ----------- ----------- --------- --------------------
+ 97.81    0.228395         475       480 read
+  0.73    0.001701         850         2 fwrite
+  0.44    0.001032         516         2 memset
+  0.29    0.000670         335         2 puts
+  0.24    0.000559         279         2 malloc
+  0.13    0.000299         299         1 fclose
+  0.10    0.000245         245         1 fopen
+  0.10    0.000231         231         1 printf
+  0.09    0.000214         214         1 open
+  0.07    0.000174         174         1 close
+------ ----------- ----------- --------- --------------------
+100.00    0.233520                   493 total
+.
+▶ Povšimněte si, že funkce read() se volala přesně 480x
+    ◆ to odpovídá zdrojovému kódu
+
 Zjištění statistiky volaných funkcí (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ ltrace -c ./fractal_renderer
+     ↓
+% time     seconds  usecs/call     calls      function
+------ ----------- ----------- --------- --------------------
+ 99.99   72.237624         117    614400 sin
+  0.00    0.001307         653         2 fwrite
 Zjištění statistiky volaných funkcí (4)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+     ↓
 Utilita strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
