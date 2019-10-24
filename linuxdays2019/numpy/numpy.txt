@@ -149,29 +149,29 @@ Datová struktura ndarray (pokračování)
     ◆ podle zvyklostí jazyka Fortran
     ◆ podle zvyklostí jazyka C
 
-▶ Tvar (shape) n-dimenzionálního pole
+Tvar (shape) n-dimenzionálního pole
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-* Konstrukce polí
+Konstrukce polí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 - numpy.array
 - numpy.zeros
 - numpy.ones
 
 * Konstruktor numpy.array
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 - parametry
 array(object, dtype=None, copy=True, order=None, subok=False, ndmin=0)
 
 Order
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Hodnota Význam
 'C'     prvky jsou uspořádány jako v jazyku C      
 'F'     prvky jsou uspořádány jako v jazyku Fortran      
 'A'     ponecháme na implementaci, který způsob uspořádání zvolit      
 
 Order - rozdíl v uspořádání
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 - 2D matice tak, jak ji vidí uživatel (logická struktura)
 | 1 2 3 |
 | 4 5 6 |
@@ -181,39 +181,39 @@ Order - rozdíl v uspořádání
 1 4 7 2 5 8 3 6 9 - 'F'
 
 Příklady použití funkce numpy.array
------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # vytvoření pole ze seznamu
 numpy.array([1,2,3,4])
 array([1, 2, 3, 4])
 
 Příklady použití funkce numpy.array
------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # vytvoření pole z typu 'range'
 numpy.array(range(10))
 array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 Příklady použití funkce numpy.array
------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # explicitní specifikace typu všech prvků pole
 numpy.array(range(10), dtype=numpy.float)
 array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9.])
 
 Příklady použití funkce numpy.array
------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # explicitní specifikace uspořádání prvků pole
 # (nemá velký význam pro 1D pole=vektory)
 numpy.array(range(10), order='C')
 array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 Příklady použití funkce numpy.array
------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # explicitní specifikace uspořádání prvků pole
 # (nemá velký význam pro 1D pole=vektory)
 numpy.array(range(10), order='F')
 array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 Příklady použití funkce numpy.array
------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # vytvoření dvourozměrné matice
 numpy.array([[1,2,3],[4,5,6]])
 array([[1, 2, 3],
