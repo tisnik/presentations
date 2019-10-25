@@ -220,28 +220,28 @@ array([[1, 2, 3],
        [4, 5, 6]])
 
 Konstruktor numpy.zeros
------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 - vektor nebo matice s nulovými prvky
 - poměrně častý požadavek
 
 Volání konstruktoru numpy.zeros
---------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 zeros(shape, dtype=float, order='C')
 
 Příklady použití konstruktoru numpy.zeros
------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # jednorozměrný vektor s jediným prvkem
 numpy.zeros(1)
 array([ 0.])
 
 Příklady použití konstruktoru numpy.zeros
------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # jednorozměrný vektor s deseti prvky
 numpy.zeros(10)
 array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])
 
 Příklady použití konstruktoru numpy.zeros
------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # matice o velikosti 5x5 prvků, každý prvek je typu float
 numpy.zeros((5,5))
 .
@@ -252,7 +252,7 @@ array([[ 0.,  0.,  0.,  0.,  0.],
        [ 0.,  0.,  0.,  0.,  0.]])
 
 Příklady použití konstruktoru numpy.zeros
------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # matice o velikosti 5x5 prvků, každý prvek je typu int
 numpy.zeros((5,5),dtype=int)
 .
@@ -263,7 +263,7 @@ array([[0, 0, 0, 0, 0],
        [0, 0, 0, 0, 0]])
 
 Příklady použití konstruktoru numpy.zeros
------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # použití komplexních čísel
 numpy.zeros((2,2),dtype=numpy.complex)
 .
@@ -271,11 +271,11 @@ array([[ 0.+0.j,  0.+0.j],
        [ 0.+0.j,  0.+0.j]])
 
 Konstruktor numpy.ones
-----------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 - vektor či matice s prvky nastavenými na jedničku
 
 Volání konstruktoru numpy.ones
---------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 numpy.ones(shape, dtype=None, order='C')
 
 Příklady použití konstruktoru numpy.zeros
