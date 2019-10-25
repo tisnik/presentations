@@ -287,14 +287,38 @@ $ ltrace -c ./fractal_renderer
 ------ ----------- ----------- --------- --------------------
  99.99   72.237624         117    614400 sin
   0.00    0.001307         653         2 fwrite
-Zjištění statistiky volaných funkcí (4)
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-     ↓
+  0.00    0.000695         347         2 puts
+  0.00    0.000672         336         2 memset
+  0.00    0.000487         487         1 fclose
+  0.00    0.000409         409         1 fopen
+  0.00    0.000338         169         2 malloc
+  0.00    0.000160         160         1 printf
+------ ----------- ----------- --------- --------------------
+100.00   72.241692                614411 total
+.
+▶ Podle očekávání
+    ◆ nejvíce času se celkově (kumulativně) strávilo ve funkci sin
+    ◆ (ovšem z volaných funkcí je nejrychlejší)
+
 Utilita strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zjištění (trasování) systémových volání
+▶ Nezávisle na tom, kde volání vzniklo (aplikace, knihovna)
+    ◆ typicky v knihovně glibc
+▶ Aplikace se spuští přes strace 
+▶ Alternativně připojení k běžízí aplikace přes -p{pid}
+▶ Význam mnoha přepínačů shodný s ltrace
 
 Ukázka použití utility strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ strace ./hello
+munmap(0x7fd1af1fc000, 132679)          = 0
+fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 7), ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd1af21c000
+write(1, "Hello world!\n", 13Hello world!
+)          = 13
+exit_group(0)                           = ?
++++ exited with 0 +++
 
 Dtrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
