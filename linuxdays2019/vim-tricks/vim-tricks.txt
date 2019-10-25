@@ -39,6 +39,14 @@ Obsah přednášky (4)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Další klávesové zkratky
 
+Začínáme
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Otevření souboru editovaného minule
+$ vim
+    otevře se prázdný nepojmenovaný dokument
+Ctrl+o Ctrl+o
+...voilà
+
 Základní konfigurační volby
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Vypnutí kompatibility s editorem Vi
@@ -63,6 +71,15 @@ Základní konfigurační volby
 ▶ Některé soubory je vhodné ignorovat
     :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o
 
+Kde se změnilo nastavení konkrétní volby???
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Může se jednat o více míst
+    systémový .vimrc
+    uživatelský .vimrc
+    .vimrc v aktuálním adresáři
+
+:verbose set nocompatible?
+:verbose map <Space>
 Vyhledávání v textu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Nalezení slova pod kurzorem
@@ -111,15 +128,29 @@ Nahrazení
 
 Volby způsobu zobrazení textů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Zobrazení čísel řádků
     :set number
+Zobrazení relativních čísel (aktuální řádek=0)
+    :set relativenumber
+Zkombinovat lze i obě předchozí volby
+    relativní řádky + aktuální řádek má absolutní index
+Zobrazení řídicích znaků
     :set list
+Způsob "zobrazení" tabulačních zarážek
     :set tabstop=xxx
+Rychlý doskok na párovou závorku
     :set showmatch
+Definice párových znaků (typicky závorek)
     :set matchpairs=(:),[:],{:},<:>
+Způsob zobrazení řídicích znaků
     :set display
+    (viz další slajdy)
 
 Relativní čísla řádků
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Pomáhá při mnoha operacích typu 5j 10dd atd.
+    :set relativenumber
+
 Zobrazení řídicích znaků
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Ve formátu ^znak
