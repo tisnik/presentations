@@ -77,9 +77,10 @@ Může se jednat o více míst
     systémový .vimrc
     uživatelský .vimrc
     .vimrc v aktuálním adresáři
-
+Zjištění zdroje poslední změny
 :verbose set nocompatible?
 :verbose map <Space>
+
 Vyhledávání v textu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Nalezení slova pod kurzorem
@@ -125,6 +126,16 @@ Nahrazení
     :s/public\( int\)\@!/public int/g
 ▶ Zopakování posledního příkazu pro náhradu
     :&
+
+Vložení výsledku příkazu do souboru na aktuální řádek
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:.!date
+:.!whoami
+
+Hexa editor (současný soubor)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:%!xxd
+:%!xxd -r
 
 Volby způsobu zobrazení textů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -214,6 +225,21 @@ Chování textového kurzoru při pohybu v textu
 scroll offset (ne scroll off)
 :set cursorbind
 význam při použití ve více oknech současně
+
+Stroj času zabudovaný do Vimu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+g-
+g+
+    Pochopitelně lze zkombinovat s počtem opakování
+:earlier {count}        přechod na předchozí stav souboru
+:earlier {N}s           lze zadat časový interval v sekundách
+:earlier {N}m           nebo minutách
+:earlier {N}h           dokonce i hodinách
+:earlier {N}d           pokud pracujete nepřetržitě několik dnů... :-)
+Postupné odvolání změn
+    Ctrl+R
+Opak operace :earlier
+:later
 
 Vizuální režim versus režim výběru
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
