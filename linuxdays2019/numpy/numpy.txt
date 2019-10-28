@@ -112,8 +112,12 @@ Kódy skalárních datových typů
 
 Datový typ single
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Celkový počet bitů (bytů):   32 (4)
+
 Datový typ double
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Celkový počet bitů (bytů):   64 (8)
+
 Datový typ float16
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Celkový počet bitů (bytů):   16 (2)
@@ -135,7 +139,7 @@ Datová struktura ndarray
     ◆ menší flexibilita
     ◆ menší paměťové nároky
     ◆ vyšší výpočetní rychlost díky použití nativního kódu
-    ◆ obecně lepší využití cache
+    ◆ obecně lepší využití cache a rychlejší přístup k prvkům
 
 Datová struktura ndarray (pokračování)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -152,23 +156,28 @@ Datová struktura ndarray (pokračování)
 Tvar (shape) n-dimenzionálního pole
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-Konstrukce polí
+Konstrukce n-dimenzionálních polí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-- numpy.array
-- numpy.zeros
-- numpy.ones
+▶ Několik typů konstruktorů
+    ◆ numpy.array
+    ◆ numpy.zeros
+    ◆ numpy.ones
+▶ Konverzní funkce
 
-* Konstruktor numpy.array
+Konstruktor numpy.array
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 - parametry
 array(object, dtype=None, copy=True, order=None, subok=False, ndmin=0)
 
 Order
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Hodnota Význam
-'C'     prvky jsou uspořádány jako v jazyku C      
-'F'     prvky jsou uspořádány jako v jazyku Fortran      
-'A'     ponecháme na implementaci, který způsob uspořádání zvolit      
+╔═════════╤══════════════════════════════════════════════════════╗
+║ Hodnota │ Význam                                               ║
+╟─────────┼──────────────────────────────────────────────────────╢
+║ 'C'     │ prvky jsou uspořádány jako v jazyku C                ║
+║ 'F'     │ prvky jsou uspořádány jako v jazyku Fortran          ║
+║ 'A'     │ ponecháme na implementaci, který způsob uspořádání zvolit        ║
+╚═════════╧════════╝
 
 Order - rozdíl v uspořádání
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -279,7 +288,7 @@ Volání konstruktoru numpy.ones
 numpy.ones(shape, dtype=None, order='C')
 
 Příklady použití konstruktoru numpy.zeros
------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # jednorozměrný vektor s deseti prvky
 numpy.ones(10)
 array([ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.])
@@ -356,7 +365,7 @@ array([[ 1.+0.j,  1.+0.j],
 </pre>
 
 Další podbalíčky, které nalezneme v knihovně ndarray
-----------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 doc         obsahuje dokumentaci ke knihovně i k základním konstrukcím a operacím
 lib         základní funkce používané i některými dalšími podbalíčky
 random      funkce pro využití generátorů pseudonáhodných číselných hodnot
@@ -368,10 +377,10 @@ f2py        (jednosměrné) rozhraní mezi Fortranem a Pythonem
 distutils   další pomocné nástroje, které přímo nesouvisí s výpočty
             nad vektory a maticemi, ale se způsobem balíčkování
 
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Odkazy na další informační zdroje
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 * Numpy Home Page
   http://www.numpy.org/
 * NumPy v1.10 Manual
