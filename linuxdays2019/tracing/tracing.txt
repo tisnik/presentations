@@ -312,6 +312,7 @@ Utilita strace
 Ukázka použití utility strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ strace ./hello
+     ↓
 execve("./hello", ["./hello"], [/* 53 vars */]) = 0
 brk(0)                                  = 0xa52000
 access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
@@ -343,6 +344,12 @@ write(1, "Hello world!\n", 13Hello world!
 )          = 13
 exit_group(0)                           = ?
 +++ exited with 0 +++
+
+Ukázka použití utility strace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ U každého systémového volání jsou uvedeny parametry
+▶ Inteligentní nahrazení číselných konstant za symbolické konstanty
+    ◆ PROT_READ atd.
 
 Dtrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
