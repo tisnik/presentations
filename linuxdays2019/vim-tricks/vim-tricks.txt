@@ -241,6 +241,24 @@ Postupné odvolání změn
 Opak operace :earlier
 :later
 
+Trocha matematiky
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Zvýšení a snížení hodnoty, na které je kurzor nebo první hodnoty ZA kurzorem
+    CTRL+A
+    CTRL+X
+Doskok na první číslo (jedno jaké)
+    CTRL+A CTRL+X
+Výpočty ve vkládacím režimu
+    CTRL+R=6*7
+    CTRL+R=0xffffffff
+    CTRL+R=pow(2,10)
+
+Zneužití speciálního registru =
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Vložení sekvence čísel do souboru v insert režimu
+    CTRL+R=range(1,10)
+    CTRL+R=range(10,0,-2)
+
 Vizuální režim versus režim výběru
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Selection mode
@@ -437,3 +455,16 @@ Znaky pro otestování
 Pohyb v historii pozic kurzoru
     g;
     g,
+Otevření soubor, na jehož názvu se nachází kurzor
+    gf
+
+Vtípky
+--------------------------------------------------
+:help holy-grail
+:Ni!
+:help showmatch
+    podívejte se na NOTE:
+:help UserGettingBored
+:smile
+Příkaz :Sexplore je možné zkrátit na tři znaky
+
