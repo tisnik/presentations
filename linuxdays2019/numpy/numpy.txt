@@ -308,7 +308,7 @@ Příklady použití konstruktoru numpy.zeros
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # matice se třemi řádky a čtyřmi sloupci
 numpy.ones((3,4))
-
+          ↓
 array([[ 1.,  1.,  1.,  1.],
        [ 1.,  1.,  1.,  1.],
        [ 1.,  1.,  1.,  1.]])
@@ -318,67 +318,68 @@ Příklady použití konstruktoru numpy.zeros
 # matice se třemi řádky a čtyřmi sloupci
 # s explicitní specifikací typu prvků
 numpy.ones((3,4), dtype=int)
-
+          ↓
 array([[1, 1, 1, 1],
        [1, 1, 1, 1],
        [1, 1, 1, 1]])
 
+Příklady použití konstruktoru numpy.zeros
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # trojrozměrné pole s prvky typu int
 numpy.ones((3,4,5), dtype=int)
-
+          ↓
 array([[[1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1]],
-
        [[1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1]],
-
        [[1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1]]])
 
+Příklady použití konstruktoru numpy.zeros
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # trojrozměrné pole s prvky typu int
 # (oproti předchozímu příkladu se velikosti v jednotlivých dimenzích liší)
 numpy.ones((5,4,3), dtype=int)
-
+          ↓
 array([[[1, 1, 1],
         [1, 1, 1],
         [1, 1, 1],
         [1, 1, 1]],
-
        [[1, 1, 1],
         [1, 1, 1],
         [1, 1, 1],
         [1, 1, 1]],
-
        [[1, 1, 1],
         [1, 1, 1],
         [1, 1, 1],
         [1, 1, 1]],
-
        [[1, 1, 1],
         [1, 1, 1],
         [1, 1, 1],
         [1, 1, 1]],
-
        [[1, 1, 1],
         [1, 1, 1],
         [1, 1, 1],
         [1, 1, 1]]])
 
+Příklady použití konstruktoru numpy.zeros
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # zde může být použití typu komplexní číslo možná poněkud překvapující,
 # ovšem stále platí, že 1=1+0j
 numpy.ones((3,2),dtype=numpy.complex)
-
+          ↓
 array([[ 1.+0.j,  1.+0.j],
        [ 1.+0.j,  1.+0.j],
        [ 1.+0.j,  1.+0.j]])
-</pre>
 
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Další podbalíčky, které nalezneme v knihovně ndarray
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 doc         obsahuje dokumentaci ke knihovně i k základním konstrukcím a operacím
