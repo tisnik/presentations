@@ -41,11 +41,11 @@ Obsah přednášky (4)
 
 Začínáme
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Otevření souboru editovaného minule
+▶ Otevření souboru editovaného minule
 $ vim
     otevře se prázdný nepojmenovaný dokument
-Ctrl+o Ctrl+o
-...voilà
+▶ Poté stisknout Ctrl+o Ctrl+o
+    ...voilà
 
 Základní konfigurační volby
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -60,6 +60,9 @@ Základní konfigurační volby
     :retab
 ▶ Chování klávesy backspace
     :set backspace=[indent,eol,start]
+
+Základní konfigurační volby (pokračování)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Nastavení typu souboru (konce řádků)
     :set filetype=[dos,unix]
 ▶ Chování bloků
@@ -390,6 +393,7 @@ Může se hodit při editacích YAML souborů apod.
 
 Digraphs
 --------------------------------------------------
+:set digraphs
 --------------------------------------------------
 --------------------------------------------------
 --------------------------------------------------
@@ -400,12 +404,12 @@ Digraphs
 --------------------------------------------------
 
 Režim "ex"
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Q
 vi - návrat zpět
 
 Režim "ed"
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 "ed"
 Ideový předchůdce editoru Vi (který je předchůdcem Vimu)
 Příkazy editoru "ed" se zadávají v command režimu
@@ -429,21 +433,20 @@ Příkazy "ed"u
     m move (musí se zadat další adresa cíle)
     :.m$
     :.m-2
-Parametry příkazů
 
 Nastavení pravítka
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Nastavení stavového řádku
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Zvýraznění syntaxe
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Užitečné externí nástroje
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 fmt
 tablign
 
 Další klávesové zkratky
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Zobrazení informace o pozici kurzoru v dokumentu
     gCtrl+G
 Zobrazení kódu znaku pod kurzorem
@@ -459,7 +462,7 @@ Otevření soubor, na jehož názvu se nachází kurzor
     gf
 
 Vtípky
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 :help holy-grail
 :Ni!
 :help showmatch
@@ -468,3 +471,7 @@ Vtípky
 :smile
 Příkaz :Sexplore je možné zkrátit na tři znaky
 
+Odkazy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Nejbrutálnější sada tipů a triků
+zzapper.co.uk/vimtips.html
