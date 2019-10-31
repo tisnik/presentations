@@ -6,8 +6,11 @@
 
 Obsah přednášky (1)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Začínáme...
 ▶ Základní konfigurační volby
 ▶ Vyhledávání v textu
+▶ Nahrazení
+▶ Volání externích nástrojů, změna aktuálního dokumentu
 ▶ Volby způsobu zobrazení textů
 ▶ Taby nebo mezery?
 ▶ Nastavení wrap/showbreak/linebreak/breakindent
@@ -39,11 +42,11 @@ Obsah přednášky (4)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Další klávesové zkratky
 
-Začínáme
+Začínáme...
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Otevření souboru editovaného minule
 $ vim
-    otevře se prázdný nepojmenovaný dokument
+    ◆ otevře se prázdný nepojmenovaný dokument
 ▶ Poté stisknout Ctrl+o Ctrl+o
     ...voilà
 
@@ -53,7 +56,7 @@ Základní konfigurační volby
     :set nocompatible
 ▶ Zobrazení pravítka
     :set ruler
-▶ Zobrazení pravítka
+▶ Zobrazení a nastavení obsahu pravítka
     :set statusline=...
 ▶ Expanze či zákaz expanze tabů
     :set (no)expandtab
@@ -67,8 +70,8 @@ Základní konfigurační volby (pokračování)
     :set filetype=[dos,unix]
 ▶ Chování bloků
     :set selection=exclusive
-    bloky se chovají podobně jako v ostatních editorech
-    (bude ukázáno dále)
+    ◆ bloky se chovají podobně jako v ostatních editorech
+    ◆ (bude ukázáno dále)
 ▶ Seznam souborů atd. po TAB
     :set wildmenu
 ▶ Některé soubory je vhodné ignorovat
@@ -76,21 +79,22 @@ Základní konfigurační volby (pokračování)
 
 Kde se změnilo nastavení konkrétní volby???
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Může se jednat o více míst
-    systémový .vimrc
-    uživatelský .vimrc
-    .vimrc v aktuálním adresáři
-Zjištění zdroje poslední změny
-:verbose set nocompatible?
-:verbose map <Space>
+▶ Může se jednat o více míst
+    ◆ systémový .vimrc
+    ◆ uživatelský .vimrc
+    ◆ .vimrc v aktuálním adresáři
+    ◆ atc.
+▶ Zjištění zdroje poslední změny
+    :verbose set nocompatible?
+    :verbose map <Space>
 
 Vyhledávání v textu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Nalezení slova pod kurzorem
-    Směrem ke konci textu
+    ◆ směrem ke konci textu
         *   celá slova
         g*  i části slov
-    Směrem k začátku textu
+    ◆ směrem k začátku textu
         #   celá slova
         g#  i části slov
 ▶ Vyhledání (a doskok) na párovou závorku
@@ -102,11 +106,11 @@ Vyhledávání v textu
     :g/tab/#
     :set ignorecase 
     :set smartcase
-▶ V command režimu
-    Ctrl+R Ctrl+W
+▶ V příkazovém režimu (command mode)
+    ◆ Ctrl+R Ctrl+W
         vložení slova (jako *) na příkazovou řádku
         ideální pro příkaz /
-    Ctrl+R Ctrl+A
+    ◆ Ctrl+R Ctrl+A
         vložení slova (jako #) na příkazovou řádku
         ideální pro příkaz /
 
@@ -116,12 +120,15 @@ Vyhledávání v textu
     :his s
 ▶ Zobrazení okna s historií hledání
     q/
+    ◆ (uzavře se pomocí :q)
 
 Nahrazení
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Jediný výskyt
-    :s/foo/bar/
-▶ Všechny výskyty
+▶ Jediný výskyt na řádku
+    :s/foo/bar/foo
+▶ Jediný výskyt na každém řádku v celém souboru
+    :%s/foo/bar/
+▶ Všechny výskyty na řádku
     :s/foo/bar/g
 ▶ Výskyty schválené uživatelem
     :s/foo/bar/gc
@@ -135,7 +142,7 @@ Vložení výsledku příkazu do souboru na aktuální řádek
 :.!date
 :.!whoami
 
-Hexa editor (současný soubor)
+Hexa editor (aplikace současný soubor)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 :%!xxd
 :%!xxd -r
@@ -433,6 +440,15 @@ Příkazy "ed"u
     m move (musí se zadat další adresa cíle)
     :.m$
     :.m-2
+
+Režim "ed"
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Přesun řádku obsahujícího text "LinuxDays" na konec souboru
+:/user-friendly/m$
+Změna všech znaků "-" na předchozím řádku za "&mdash;"
+:-1s/–/\&mdash;/g        Replace every occurrence of the string ‘–‘ by ‘&mdash;’ in the preceding line
+Obalení aktuální řádky (může vizuálně přesahovat jeden řádek) do značky pro odstavec
+:s/.*/<p>\r&\r<\/p>/     Wrap the line between <p> and </p>
 
 Nastavení pravítka
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
