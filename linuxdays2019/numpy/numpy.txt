@@ -1,4 +1,4 @@
-Numpy
+                    Numpy
 ══════════════════════════════════════════════════
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
@@ -12,7 +12,10 @@ Obsah přednášky (1)
 ▶ Datová struktura ndarray
 ▶ Tvar n-dimenzionálního pole
 ▶ Konstruktory datové struktury ndarray
-▶
+    ◆ numpy.array
+    ◆ numpy.zeros
+    ◆ numpy.ones
+    ◆ numpy.arange
 
 Obsah přednášky (2)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -28,6 +31,7 @@ Programovací jazyk Python
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Dnes jeden z nejpopulárnějších programovacích jazyků
     ◆ viz například Tiobe index
+    ◆ 
     ◆ 
 ▶ Dostupnost na většině platforem
     ◆ na některých MCU jako MicroPython
@@ -113,10 +117,16 @@ Kódy skalárních datových typů
 Datový typ single
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Celkový počet bitů (bytů):   32 (4)
+Bitů pro znaménko:            1
+Bitů pro exponent:            8
+Bitů pro mantisu:            23
 
 Datový typ double
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Celkový počet bitů (bytů):   64 (8)
+Bitů pro znaménko:            1
+Bitů pro exponent:           11
+Bitů pro mantisu:            52
 
 Datový typ float16
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -155,6 +165,10 @@ Datová struktura ndarray (pokračování)
 
 Tvar (shape) n-dimenzionálního pole
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Popisuje organizaci a uspořádání prvků v poli
+▶ Příklady tvarů
+▶ Tvar je možné změnit
+    ◆ operace "reshape"
 
 Konstrukce n-dimenzionálních polí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -192,14 +206,14 @@ Order - rozdíl v uspořádání
 Příklady použití funkce numpy.array
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # vytvoření pole ze seznamu
-numpy.array([1,2,3,4])
+>>> numpy.array([1,2,3,4])
           ↓
 array([1, 2, 3, 4])
 
 Příklady použití funkce numpy.array
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # vytvoření pole z typu 'range'
-numpy.array(range(10))
+>>> numpy.array(range(10))
           ↓
 array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
@@ -207,7 +221,7 @@ Příklady použití funkce numpy.array
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # explicitní specifikace typu všech prvků pole
 # (interně se provádí přetypování)
-numpy.array(range(10), dtype=numpy.float)
+>>> numpy.array(range(10), dtype=numpy.float)
           ↓
 array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9.])
 
@@ -215,7 +229,7 @@ Příklady použití funkce numpy.array
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # explicitní specifikace uspořádání prvků pole
 # (nemá velký význam pro 1D pole=vektory)
-numpy.array(range(10), order='C')
+>>> numpy.array(range(10), order='C')
           ↓
 array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
@@ -223,14 +237,14 @@ Příklady použití funkce numpy.array
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # explicitní specifikace uspořádání prvků pole
 # (nemá velký význam pro 1D pole=vektory)
-numpy.array(range(10), order='F')
+>>> numpy.array(range(10), order='F')
           ↓
 array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 Příklady použití funkce numpy.array
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # vytvoření dvourozměrné matice
-numpy.array([[1,2,3],[4,5,6]])
+>>> numpy.array([[1,2,3],[4,5,6]])
           ↓
 array([[1, 2, 3],
        [4, 5, 6]])
@@ -238,30 +252,30 @@ array([[1, 2, 3],
 Konstruktor numpy.zeros
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Vektor nebo matice s nulovými prvky
-▶ Poměrně častý požadavek
+▶ Poměrně častý požadavek v praxi
 
 Volání konstruktoru numpy.zeros
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-zeros(shape, dtype=float, order='C')
+>>> zeros(shape, dtype=float, order='C')
 
 Příklady použití konstruktoru numpy.zeros
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # jednorozměrný vektor s jediným prvkem
-numpy.zeros(1)
+>>> numpy.zeros(1)
           ↓
 array([ 0.])
 
 Příklady použití konstruktoru numpy.zeros
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # jednorozměrný vektor s deseti prvky
-numpy.zeros(10)
+>>> numpy.zeros(10)
           ↓
 array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])
 
 Příklady použití konstruktoru numpy.zeros
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # matice o velikosti 5x5 prvků, každý prvek je typu float
-numpy.zeros((5,5))
+>>> numpy.zeros((5,5))
           ↓
 array([[ 0.,  0.,  0.,  0.,  0.],
        [ 0.,  0.,  0.,  0.,  0.],
@@ -272,7 +286,7 @@ array([[ 0.,  0.,  0.,  0.,  0.],
 Příklady použití konstruktoru numpy.zeros
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # matice o velikosti 5x5 prvků, každý prvek je typu int
-numpy.zeros((5,5),dtype=int)
+>>> numpy.zeros((5,5),dtype=int)
           ↓
 array([[0, 0, 0, 0, 0],
        [0, 0, 0, 0, 0],
@@ -283,7 +297,7 @@ array([[0, 0, 0, 0, 0],
 Příklady použití konstruktoru numpy.zeros
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # použití komplexních čísel
-numpy.zeros((2,2),dtype=numpy.complex)
+>>> numpy.zeros((2,2),dtype=numpy.complex)
           ↓
 array([[ 0.+0.j,  0.+0.j],
        [ 0.+0.j,  0.+0.j]])
@@ -295,38 +309,38 @@ Konstruktor numpy.ones
 
 Volání konstruktoru numpy.ones
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-numpy.ones(shape, dtype=None, order='C')
+>>> numpy.ones(shape, dtype=None, order='C')
 
-Příklady použití konstruktoru numpy.zeros
+Příklady použití konstruktoru numpy.ones
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # jednorozměrný vektor s deseti prvky
-numpy.ones(10)
+>>> numpy.ones(10)
           ↓
 array([ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.])
 
-Příklady použití konstruktoru numpy.zeros
+Příklady použití konstruktoru numpy.ones
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # matice se třemi řádky a čtyřmi sloupci
-numpy.ones((3,4))
+>>> numpy.ones((3,4))
           ↓
 array([[ 1.,  1.,  1.,  1.],
        [ 1.,  1.,  1.,  1.],
        [ 1.,  1.,  1.,  1.]])
 
-Příklady použití konstruktoru numpy.zeros
+Příklady použití konstruktoru numpy.ones
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # matice se třemi řádky a čtyřmi sloupci
 # s explicitní specifikací typu prvků
-numpy.ones((3,4), dtype=int)
+>>> numpy.ones((3,4), dtype=int)
           ↓
 array([[1, 1, 1, 1],
        [1, 1, 1, 1],
        [1, 1, 1, 1]])
 
-Příklady použití konstruktoru numpy.zeros
+Příklady použití konstruktoru numpy.ones
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # trojrozměrné pole s prvky typu int
-numpy.ones((3,4,5), dtype=int)
+>>> numpy.ones((3,4,5), dtype=int)
           ↓
 array([[[1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1],
@@ -341,11 +355,11 @@ array([[[1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1]]])
 
-Příklady použití konstruktoru numpy.zeros
+Příklady použití konstruktoru numpy.ones
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # trojrozměrné pole s prvky typu int
 # (oproti předchozímu příkladu se velikosti v jednotlivých dimenzích liší)
-numpy.ones((5,4,3), dtype=int)
+>>> numpy.ones((5,4,3), dtype=int)
           ↓
 array([[[1, 1, 1],
         [1, 1, 1],
@@ -368,16 +382,24 @@ array([[[1, 1, 1],
         [1, 1, 1],
         [1, 1, 1]]])
 
-Příklady použití konstruktoru numpy.zeros
+Příklady použití konstruktoru numpy.ones
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # zde může být použití typu komplexní číslo možná poněkud překvapující,
 # ovšem stále platí, že 1=1+0j
-numpy.ones((3,2),dtype=numpy.complex)
+>>> numpy.ones((3,2),dtype=numpy.complex)
           ↓
 array([[ 1.+0.j,  1.+0.j],
        [ 1.+0.j,  1.+0.j],
        [ 1.+0.j,  1.+0.j]])
 
+Funkce numpy.arange
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Array+range
+▶ Podobné jako xrange/range
+    ◆ ovšem návratovou hodnotou je ndarray
+
+Použití funkce
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Další podbalíčky, které nalezneme v knihovně ndarray
