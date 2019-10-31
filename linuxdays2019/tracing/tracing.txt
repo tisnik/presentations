@@ -8,11 +8,11 @@ Obsah přednášky (1)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Trasování a ladění nativních aplikací v Linuxu
 ▶ Utilita ltrace
-▶ Ukázka použití utility ltrace
-▶ Zjištění doby trvání volané funkce a filtrace výstupu
-▶ Zjištění statistiky volaných funkcí
+    ◆ ukázka použití utility ltrace
+    ◆ zjištění doby trvání volané funkce a filtrace výstupu
+    ◆ zjištění statistiky volaných funkcí
 ▶ Utilita strace
-▶ Ukázka použití utility strace
+    ◆ ukázka použití utility strace
 ▶ DTrace
 
 Obsah přednášky (2)
@@ -28,26 +28,26 @@ Obsah přednášky (2)
 Trasování a ladění nativních aplikací v Linuxu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ╔══════════╗
-|          |
-| aplikace |
-|          |
-+----------+
-     |
-     |
+║          ║
+║ aplikace ║
+║          ║
+╚══════════╝
+     │
+     │
      ↓
 ╔══════════╗
-|          |
-|  glibc   |
-|          |
-+----------+
-     |
-     |
+║          ║
+║  glibc   ║
+║          ║
+╚══════════╝
+     │
+     │
      ↓
 ╔══════════╗
-|          |
-|  jádro   |
-|          |
-+----------+
+║          ║
+║  jádro   ║
+║          ║
+╚══════════╝
 
 Trasování a ladění nativních aplikací v Linuxu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -56,32 +56,39 @@ Trasování a ladění nativních aplikací v Linuxu
 ▶ Ladění a trasování aplikací i knihoven
     ◆ ltrace
     ◆ GNU Debugger
-▶ Stav aplikací, knihoven i OS
+▶ Stav aplikací
     ◆ SystemTap
+▶ Front-end ke zdrojům dat z kernelu
+    ◆ SystemTap
+    ◆ ftrace
+    ◆ perf
+    ◆ catapult
+    ◆ bpftrace
+    ◆ ...
 
 Trasování a ladění nativních aplikací v Linuxu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ╔══════════╗
-|          |..... gdb
-| aplikace |
-|          |..... SystemTap
-+----------+
-     |
-     |...... ltrace
+║          ║..... gdb
+║ aplikace ║
+║          ║..... SystemTap
+╚══════════╝
+     │
+     │...... ltrace
      ↓
 ╔══════════╗
-|          |..... gdb
-|  glibc   |
-|          |..... SystemTap
-+----------+
-     |
-     |...... strace
+║          ║..... gdb
+║  glibc   ║
+║          ║..... SystemTap
+╚══════════╝
+     │
+     │...... strace
      ↓
 ╔══════════╗
-|          |..... SystemTap
-|  jádro   |
-|          |..... KGDB
-+----------+
+║          ║..... SystemTap, bpftrace
+║  jádro   ║
+║          ║..... KGDB
+╚══════════╝
 
 Utilita ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -92,20 +99,25 @@ Utilita ltrace
 
 Utilita ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Ovládání z příkazové řádky
 $ ltrace --help
      ↓
 Usage: ltrace [option ...] [command [arg ...]]
 Trace library calls of a given program.
-.
+...
+...
+...
   -a, --align=COLUMN  align return values in a secific column.
   -A ARRAYLEN         maximum number of array elements to print.
 
 Zavolání ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zavolání ltrace bez parametrů
 $ ltrace jméno_binární_aplikace parametry_aplikace
+▶ Zavolání ltrace s předáním parametrů
 $ ltrace parametry_ltrace jméno_binární_aplikace parametry_aplikace
 
-Testovaný zdrojový kód
+Testovaný zdrojový kód - program "Hello world"
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Ukázka použití utility ltrace
@@ -117,8 +129,8 @@ puts("Hello world!"Hello world!
 )                                                                    = 13
 +++ exited (status 0) +++
 
-Testovaný zdrojový kód
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Testovaný zdrojový kód - bitmapa s náhodným obsahem
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Ukázka použití utility ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -148,8 +160,8 @@ fclose(0xa11030)                                       = 0
 puts("done!\n")                                        = 7
 +++ exited (status 0) +++
 
-Poslední testovaný zdrojový kód
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Poslední testovaný zdrojový kód - vykreslení fraktálu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace ./fractal_renderer
      ↓
 __libc_start_main(0x400ec2, 1, 0x7fff0293d968, 0x400f60 <unfinished ...>
@@ -178,22 +190,30 @@ puts("done!\n")                          = 7
 
 Časová razítka volání funkcí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-ltrace -t ./hello
+▶ Někdy nám může dostačovat sekundová přesnost
+$ ltrace -t ./hello
      ↓
 20:17:06 __libc_start_main(0x40053d, 1, 0x7fff74550708, 0x400560 <unfinished ...>
-20:17:06 puts("Hello world!")                                                           = 13
+20:17:06 puts("Hello world!")                       = 13
 20:17:06 +++ exited (status 0) +++
 
 Větší přesnost časových razítek
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Většinou však budeme vyžadovat větší přesnost časových razítek
 $ ltrace -tt ./hello
      ↓
 20:49:54.521242 __libc_start_main(0x40053d, 1, 0x7fff78e06dd8, 0x400560 <unfinished ...>
 20:49:54.521862 puts("Hello world!")
 20:49:54.522886 +++ exited (status 0) +++
 
-Zjištění doby trvání volané funkce a filtrace výstupu
+Použití časových razítek používajících UNIX time
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ ltrace -ttt ./hello
+     ↓
+...
+
+Zjištění doby trvání volané funkce a filtrace výstupu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace -r ./hello
      ↓
   0.000000 __libc_start_main(0x40053d, 1, 0x7fffdd8d7208, 0x400560 <unfinished ...>
@@ -202,13 +222,14 @@ $ ltrace -r ./hello
 
 Filtrace informací o vybrané funkci/funkcích
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Můžeme snadno vybrat ty funkce, o nichž potřebujeme získat další informace
 $ ltrace -e malloc+free+open+close ./random_bitmap
      ↓
 processing:
-random_bitmap->malloc(16)                                                               = 0x2137010
-random_bitmap->malloc(921600)                                                           = 0x7f4fb333c010
-random_bitmap->open("/dev/urandom", 0, 026320350000)                                    = 3
-random_bitmap->close(3)                                                                 = 0
+random_bitmap->malloc(16)                              = 0x2137010
+random_bitmap->malloc(921600)                          = 0x7f4fb333c010
+random_bitmap->open("/dev/urandom", 0, 026320350000)   = 3
+random_bitmap->close(3)                                = 0
 307200 pixels written
 done!
 .
@@ -216,6 +237,7 @@ done!
 
 Odstranění informací o funkcích, které nás nezajímají
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Povšimněte si znaku - před jménem funkce
 $ ltrace -e -read ./random_bitmap
      ↓
 random_bitmap->__libc_start_main(0x400bf4, 1, 0x7fff7c9456e8, 0x400c70 <unfinished ...>
