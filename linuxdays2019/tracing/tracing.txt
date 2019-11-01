@@ -9,8 +9,14 @@ Obsah přednášky (1)
 ▶ Trasování a ladění nativních aplikací v Linuxu
 ▶ Utilita ltrace
     ◆ ukázka použití utility ltrace
+    ◆ časová razítka volání
     ◆ zjištění doby trvání volané funkce a filtrace výstupu
+    ◆ filtrace informací
     ◆ zjištění statistiky volaných funkcí
+    ◆ další možnosti nabízené nástrojem ltrace
+
+Obsah přednášky (2)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Utilita strace
     ◆ ukázka použití utility strace
 ▶ DTrace
@@ -206,11 +212,15 @@ $ ltrace -tt ./hello
 20:49:54.521862 puts("Hello world!")
 20:49:54.522886 +++ exited (status 0) +++
 
-Použití časových razítek používajících UNIX time
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Použití časových razítek vypsaných ve formátu UNIX time
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace -ttt ./hello
      ↓
+1569690376.636835 __libc_start_main(0x8049780, 1, 0xbfa41934, 0x8052c50, 0x8052c40 <unfinished ...>
 ...
+...
+...
+1569690376.672622 +++ exited (status 0) +++
 
 Zjištění doby trvání volané funkce a filtrace výstupu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -281,7 +291,8 @@ Hello world!
 
 Zjištění statistiky volaných funkcí (2)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-ltrace -c ./random_bitmap
+▶ Nyní vyzkoušíme přepínač -c společně s programem pro generování bitmapy
+$ ltrace -c ./random_bitmap
      ↓
 % time     seconds  usecs/call     calls      function
 ------ ----------- ----------- --------- --------------------
@@ -303,6 +314,7 @@ ltrace -c ./random_bitmap
 
 Zjištění statistiky volaných funkcí (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Nakonec vyzkoušíme přepínač -c společně s programem pro vykreslení fraktálu
 $ ltrace -c ./fractal_renderer
      ↓
 % time     seconds  usecs/call     calls      function
@@ -322,12 +334,20 @@ $ ltrace -c ./fractal_renderer
     ◆ nejvíce času se celkově (kumulativně) strávilo ve funkci sin
     ◆ (ovšem z volaných funkcí je nejrychlejší)
 
+Další možnosti nabízené nástrojem ltrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Dekódování (demangle) jmen metod a funkcí z C++
+▶ Sledování procesů, které vznikly zavoláním
+    ◆ fork()
+    ◆ clone()
+
 Utilita strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Zjištění (trasování) systémových volání
 ▶ Nezávisle na tom, kde volání vzniklo (aplikace, knihovna)
     ◆ typicky v knihovně glibc
 ▶ Aplikace se spuští přes strace 
+    ◆ prakticky stejné použití, jako u nástroje ltrace
 ▶ Alternativně připojení k běžízí aplikace přes -p{pid}
 ▶ Význam mnoha přepínačů shodný s ltrace
 
