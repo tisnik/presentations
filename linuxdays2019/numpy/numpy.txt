@@ -398,8 +398,33 @@ Funkce numpy.arange
 ▶ Podobné jako xrange/range
     ◆ ovšem návratovou hodnotou je ndarray
 
-Použití funkce
+Použití funkce numpy.arange
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# při použití jednoho parametru má tento parametr význam hodnoty "stop"
+# vytvoří se vektor s prvky od 0 do "stop" (kromě)
+>>> numpy.arange(10)
+          ↓
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+Použití funkce numpy.arange
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# specifikace hodnot "start" (včetně) a "stop" (kromě)
+>>> numpy.arange(10, 20)
+          ↓
+array([10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+
+Použití funkce numpy.arange
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# třetí nepovinný parametr určuje krok použitý při generování prvků vektoru
+>>> numpy.arange(10, 20, 2)
+          ↓
+array([10, 12, 14, 16, 18])
+
+# krok může být samozřejmě záporný
+>>> numpy.arange(20, 10, -2)
+          ↓
+array([20, 18, 16, 14, 12])
+
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Další podbalíčky, které nalezneme v knihovně ndarray
