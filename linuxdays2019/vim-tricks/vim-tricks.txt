@@ -15,14 +15,15 @@ Obsah přednášky (1)
 ▶ Taby nebo mezery?
 ▶ Nastavení wrap/showbreak/linebreak/breakindent
 ▶ Chování textového kurzoru při pohybu v textu
+▶ Stroj času zabudovaný do Vimu
+
+Obsah přednášky (2)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Vizuální režim a režim výběru
 ▶ Režim virtuální editace
 ▶ Chování myši, výběr bloků přes Shift+..., celkové chování Vimu
 ▶ Chování editoru při chybě
 ▶ Zvýraznění aktuálního řádku/sloupce
-
-Obsah přednášky (2)
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Varianty příkazu map
 ▶ Varianty příkazu abbreviation
 ▶ Digraphs
@@ -139,45 +140,49 @@ Nahrazení
 
 Vložení výsledku příkazu do souboru na aktuální řádek
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-:.!date
-:.!whoami
+    :.!date
+    :.!whoami
 
 Hexa editor (aplikace současný soubor)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-:%!xxd
-:%!xxd -r
+▶ Nástroj xxd je součástí instalace Vimu (vim-enhanced)
+    :%!xxd
+    :%!xxd -r
 
 Volby způsobu zobrazení textů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Zobrazení čísel řádků
+▶ Zobrazení čísel řádků
     :set number
-Zobrazení relativních čísel (aktuální řádek=0)
+▶ Zobrazení relativních čísel (aktuální řádek=0)
     :set relativenumber
-Zkombinovat lze i obě předchozí volby
-    relativní řádky + aktuální řádek má absolutní index
-Zobrazení řídicích znaků
+▶ Zkombinovat lze i obě předchozí volby
+    ◆ relativní řádky + aktuální řádek má absolutní index
+▶ Zobrazení řídicích znaků
     :set list
-Způsob "zobrazení" tabulačních zarážek
+
+Volby způsobu zobrazení textů (pokračování)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Způsob "zobrazení" tabulačních zarážek
     :set tabstop=xxx
-Rychlý doskok na párovou závorku
+▶ Rychlý doskok na párovou závorku
     :set showmatch
-Definice párových znaků (typicky závorek)
+▶ Definice párových znaků (typicky závorek)
     :set matchpairs=(:),[:],{:},<:>
-Způsob zobrazení řídicích znaků
+▶ Způsob zobrazení řídicích znaků
     :set display
-    (viz další slajdy)
+    ◆ (viz další slajdy)
 
 Relativní čísla řádků
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Pomáhá při mnoha operacích typu 5j 10dd atd.
+▶ Pomáhá při mnoha operacích typu 5j 10dd atd.
     :set relativenumber
 
 Zobrazení řídicích znaků
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Ve formátu ^znak
-    například ^K
+    ◆ například ^K
 ▶ Hexa hodnota znaku
-    například <0b>
+    ◆ například <0b>
 ▶ Změna nastavení
     :set display=
     :set display=uhex
@@ -201,24 +206,32 @@ Zalamování textu
     :set linebreak
 ▶ Vypnutí vizuálního zalamování na hranicích slov
     :set nolinebreak
+▶ Označení zalomených (obrazových) řádků znakem/znaky
+    :set showbreak=.
+    :set showbreak=\|
 ▶ Automatické zalamování na xxx sloupci (vkládá se CR)
+    :set textwidth=xxx
     :set tw=xxx
 
 Volba wrap a řádky na konci obrazovky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Buď @ v případě dlouhého řádku
-    dlouhodobá tradice
+    ◆ dlouhodobá tradice
 ▶ Popř. "zobraz co nejvíce skutečného textu"
     :set display+=lastline
 
 Nastavení breakindent
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Bere do úvahy odsazení řádku
+    ◆ obrazovkové řádky jsou odsazané též
 ▶ Kombinace s linebreak a wrap
+▶ Samozřejmě též se showbreak
 ▶ Použití
-    (La)TeX
-    AsciiDoc
-    Markdown
-    ...
+    ◆ (La)TeX
+    ◆ AsciiDoc
+    ◆ Markdown
+    ◆ plain old ASCII text
+    ◆ ...
 
 Nastavení breakindent (ukázky)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -231,25 +244,33 @@ Nastavení breakindent (ukázky)
 
 Chování textového kurzoru při pohybu v textu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-:set scrolloff=...
-scroll offset (ne scroll off)
-:set cursorbind
-význam při použití ve více oknech současně
+▶ Dostatek zobrazeného textu před/za aktuálním řádkem
+    :set scrolloff=...
+    ◆ scroll offset (ne scroll off)
+▶ Naváže dvě (či více oken) pro synchronizaci posunu
+    :set cursorbind
+    ◆ význam při použití ve více oknech současně
 
 Stroj času zabudovaný do Vimu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-g-
-g+
-    Pochopitelně lze zkombinovat s počtem opakování
-:earlier {count}        přechod na předchozí stav souboru
-:earlier {N}s           lze zadat časový interval v sekundách
-:earlier {N}m           nebo minutách
-:earlier {N}h           dokonce i hodinách
-:earlier {N}d           pokud pracujete nepřetržitě několik dnů... :-)
-Postupné odvolání změn
+▶ Takzvané "undo branches"
+▶ Posun mezi jednotlivými verzemi dokumentu
+    g-
+    g+
+    ◆ pochopitelně lze zkombinovat s počtem opakování
+
+Stroj času zabudovaný do Vimu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Posun na předchozí verze dokumentu
+    :earlier {count}   přechod na předchozí stav souboru
+    :earlier {N}s      lze zadat časový interval v sekundách
+    :earlier {N}m      nebo minutách
+    :earlier {N}h      dokonce i hodinách
+    :earlier {N}d      pokud pracujete nepřetržitě několik dnů... :-)
+▶ Opak operace :earlier
+    :later
+▶ Postupné odvolání změn
     Ctrl+R
-Opak operace :earlier
-:later
 
 Trocha matematiky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
