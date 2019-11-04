@@ -19,10 +19,15 @@ Obsah přednášky (1)
 
 Obsah přednášky (2)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Trocha matematiky
+▶ Zneužití speciálního registru = (vložení číselné sekvence)
 ▶ Vizuální režim a režim výběru
+▶ Výběr vertikálních bloků, práce s bloky
+▶ Vertikální bloky a funkce typu "najdi a nahraď"
 ▶ Režim virtuální editace
 ▶ Chování myši, výběr bloků přes Shift+..., celkové chování Vimu
 ▶ Chování editoru při chybě
+
 ▶ Zvýraznění aktuálního řádku/sloupce
 ▶ Varianty příkazu map
 ▶ Varianty příkazu abbreviation
@@ -274,38 +279,49 @@ Stroj času zabudovaný do Vimu
 
 Trocha matematiky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Zvýšení a snížení hodnoty, na které je kurzor nebo první hodnoty ZA kurzorem
-    CTRL+A
-    CTRL+X
-Doskok na první číslo (jedno jaké)
-    CTRL+A CTRL+X
-Výpočty ve vkládacím režimu
-    CTRL+R=6*7
-    CTRL+R=0xffffffff
-    CTRL+R=pow(2,10)
+▶ Zvýšení a snížení hodnoty, na které je kurzor nebo první hodnoty ZA kurzorem
+    ◆ CTRL+A
+    ◆ CTRL+X
+▶ (Trik) doskok na první číslo (jedno jaké, s několika výjimkami)
+    ◆ CTRL+A CTRL+X
+▶ Výpočty ve vkládacím režimu
+    ◆ CTRL+R=6*7
+    ◆ CTRL+R=0xffffffff
+    ◆ CTRL+R=pow(2,10)
 
 Zneužití speciálního registru =
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Vložení sekvence čísel do souboru v insert režimu
-    CTRL+R=range(1,10)
-    CTRL+R=range(10,0,-2)
+▶ Vložení sekvence čísel do souboru v insert režimu
+    ◆ CTRL+R=range(1,10)
+    ◆ CTRL+R=range(1,20,3)
+    ◆ CTRL+R=range(10,0,-2)
 
 Vizuální režim versus režim výběru
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Selection mode
-▶ částečně podobné chování editorů v MS Windows
-▶ po výběru a stisku viditelného znaku se:
-   - výběr vymaže
-   - editor se přepne do insert režimu
-   - lze vybírat pomocí Shift+šipky atd.
-   - (viz dále popsaná volba keymodel)
-   - pohyb bez Shift režim výběru ukončí
-   - Esc taktéž režim výběru ukončí
-Visual mode
-▶ výběr začíná v, V, Ctrl+V
-▶ lze nastavit i další možnosti pomocí :set selectmode
-▶ fungují zde běžné operátory c, y, d
-▶ obnovení původního výběru: gv
+▶ Selection mode
+    ◆ částečně podobné chování editorů v MS Windows
+    ◆ lze vybírat pomocí Shift+šipky atd.
+        - (viz dále popsaná volba keymodel)
+    ◆ pohyb bez Shift režim výběru ukončí
+        - Esc taktéž režim výběru ukončí
+    ◆ po výběru a stisku viditelného znaku se:
+        - výběr (vybraný text) vymaže
+        - editor se přepne do insert režimu
+    ◆ lze nastavit i další možnosti pomocí
+    :set selectmode
+    :set selection
+    :set keymodel
+
+Vizuální režim versus režim výběru
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Visual mode
+    ◆ výběr začíná v, V, Ctrl+V
+        - ovšem tato volba může chování změnit
+    :set selectmode
+    ◆ fungují zde běžné operátory c, y, d
+    ◆ obnovení původního výběru: gv
+    ◆ lze nastavit i další možnosti pomocí
+    :set selection
 
 Vizuální režim versus režim výběru
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -321,8 +337,8 @@ Vizuální režim versus režim výběru
 Výběr textu
 ‾‾‾‾‾‾‾‾‾‾‾
 :set selection=
-Vybírá se znak pod kurzorem?
-Lze vybrat znak za koncem řádku?
+    ◆ vybírá se znak pod kurzorem?
+    ◆ lze vybrat znak za koncem řádku?
 ╔═══════════╤═════════════════╤═══════════════════╗
 ║ Hodnota   │ Za koncem řádku │ Znak pod kurzorem ║
 ╟───────────┼─────────────────┼───────────────────╢
@@ -333,26 +349,26 @@ Lze vybrat znak za koncem řádku?
 
 Výběr vertikálních bloků, práce s bloky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ standardně Ctrl+V
+▶ Standardně klávesová zkratka Ctrl+V
 ▶ IMHO lepší nastavení
     :noremap ,v <C-V>
-    - nekoliduje s případným mapováním Ctrl+V na "paste"
-▶ běžné operátory c, y, d
-▶ při "yank" a "delete" se zapamatuje, že se jedná o blok
-    - jak?
-    - trik s Ctrl+J
-▶ možnost kombinace s "virtualedit" při nestejně dlouhých řádcích
-    - viz další slajd
+    ◆ nekoliduje s případným mapováním Ctrl+V na "paste"
+▶ Běžné operátory c, y, d
+▶ Při "yank" a "delete" se zapamatuje, že se jedná o blok
+    ◆ jak?
+    ◆ trik s Ctrl+J
+▶ Možnost kombinace s "virtualedit" při nestejně dlouhých řádcích
+    ◆ viz další slajd
 
 Vertikální bloky a funkce typu "najdi a nahraď"
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ po výběru bloku stisk :
-▶ lze zapsat například
+▶ Po výběru bloku stisk :
+▶ Lze zapsat například
     :'<,'>s-foo-bar-g
-▶ ovšem náhrada se provede v celém rozsahu textu od prvního vybraného řádku do řádku posledního
-▶ lze náhradu provést skutečně jen ve vybraném bloku?
-▶ řešení
-- použití \%V
+▶ Ovšem náhrada se provede v celém rozsahu textu od prvního vybraného řádku do řádku posledního
+▶ Lze náhradu provést skutečně jen ve vybraném vertikálním bloku?
+▶ Řešení
+    ◆ použití \%V
     :'<,'>s-\%Vfoo-bar-g
 
 Režim virtuální editace
@@ -373,13 +389,13 @@ Režim virtuální editace
 
 Volba mousemodel
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-- určuje chování myši
-    - rozdíl X/MS Windows
-    - většinou se týká pravého tlačítka myši
+▶ Určuje chování myši
+    ◆ rozdíl X/MS Windows
+    ◆ většinou se týká pravého popř. prostředního tlačítka myši
 
 Volba keymodel
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-- týká se výběru bloků pomocí Shift+posun
+▶ Týká se výběru bloků pomocí Shift+posun
 :set keymodel
 ╔═══════════════════╤════════════════════════════════════════╗
 ║ Volba             │ Význam                                 ║
@@ -390,8 +406,9 @@ Volba keymodel
 
 Celkové chování editoru
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-:behave mswin
-:behave xterm
+▶ Nastavení několika voleb jediným příkazem :behave
+    :behave mswin
+    :behave xterm
 ╔════════════╤════════════════════╤══════════╗
 ║ Volba      │ mswin              │ xterm    ║
 ╟────────────┼────────────────────┼──────────╢
@@ -403,11 +420,12 @@ Celkové chování editoru
 
 Chování editoru při chybě
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Pípnutí
-    kolegové vás budou mít moc rádi
-Krátký "záblesk" celé obrazovky
-    dosti nepříjemné
-Řešením je vypnutí obou způsobů
+▶ Pípnutí
+    ◆ kolegové vás budou mít moc rádi
+▶ Krátký "záblesk" celé obrazovky
+    ◆ dosti nepříjemné
+    ◆ pomalé (terminálové sekvence atd.)
+▶ Řešením je vypnutí obou způsobů
     :set novisualbell
     :set vb t_vb="
 
