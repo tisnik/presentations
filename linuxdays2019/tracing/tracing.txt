@@ -13,6 +13,7 @@ Obsah přednášky (1)
     ◆ zjištění doby trvání volané funkce a filtrace výstupu
     ◆ filtrace informací
     ◆ zjištění statistiky volaných funkcí
+    ◆ připojení k běžízí aplikaci
     ◆ další možnosti nabízené nástrojem ltrace
 
 Obsah přednášky (2)
@@ -21,7 +22,7 @@ Obsah přednášky (2)
     ◆ ukázka použití utility strace
 ▶ DTrace
 
-Obsah přednášky (2)
+Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ SystemTap
 ▶ Ukázky použití SystemTap
@@ -222,8 +223,9 @@ $ ltrace -ttt ./hello
 ...
 1569690376.672622 +++ exited (status 0) +++
 
-Zjištění doby trvání volané funkce a filtrace výstupu
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Zjištění doby trvání mezi voláními funkce a filtrace výstupu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ volba -r zajistí výpis relativních časů (offsetů)
 $ ltrace -r ./hello
      ↓
   0.000000 __libc_start_main(0x40053d, 1, 0x7fffdd8d7208, 0x400560 <unfinished ...>
@@ -334,12 +336,26 @@ $ ltrace -c ./fractal_renderer
     ◆ nejvíce času se celkově (kumulativně) strávilo ve funkci sin
     ◆ (ovšem z volaných funkcí je nejrychlejší)
 
+Připojení k běžící aplikaci
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Terminál číslo 1
+$ bash
+$ echo $$
+12345
+▶ Terminál číslo 2
+$ ltrace -p 12345
+▶ Terminál číslo 1
+[Enter]
+
 Další možnosti nabízené nástrojem ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Dekódování (demangle) jmen metod a funkcí z C++
 ▶ Sledování procesů, které vznikly zavoláním
     ◆ fork()
     ◆ clone()
+▶ Odsazení výstupu u funkcí volaných z jiných funkcí
+    ◆ podstatným způsobem může zajistit lepší čitelnost
+    ◆ (dnes neuvedeno na příkladech - malá plocha slajdů)
 
 Utilita strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -349,6 +365,7 @@ Utilita strace
 ▶ Aplikace se spuští přes strace 
     ◆ prakticky stejné použití, jako u nástroje ltrace
 ▶ Alternativně připojení k běžízí aplikace přes -p{pid}
+    ◆ opět totožné s ltrace
 ▶ Význam mnoha přepínačů shodný s ltrace
 
 Ukázka použití utility strace
@@ -399,6 +416,12 @@ Ukázka použití utility strace
 Ukázka použití utility strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Filtrace syscallů
+
+Zobrazení tabulky volaných funkcí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ strace -c whoami
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
 
 Dtrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
