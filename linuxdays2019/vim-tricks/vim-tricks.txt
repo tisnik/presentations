@@ -1,4 +1,4 @@
-              Triky ve Vimu
+       Triky ve Vimu (i bez pluginů)
 ═══════════════════════════════════════════
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
@@ -27,26 +27,20 @@ Obsah přednášky (2)
 ▶ Režim virtuální editace
 ▶ Chování myši, výběr bloků přes Shift+..., celkové chování Vimu
 ▶ Chování editoru při chybě
-
 ▶ Zvýraznění aktuálního řádku/sloupce
-▶ Varianty příkazu map
-▶ Varianty příkazu abbreviation
-▶ Digraphs
-▶ Užitečné využití klávesy Caps Lock
-▶ Scrolling dvou a více bufferů současně
-▶ Režim "ex"
-▶ Režim "ed"
+▶ Digraphs (dvouznaky)
 
 Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Nastavení pravítka
-▶ Nastavení stavového řádku
+▶ Režim "ex"
+▶ Režim "ed"
+▶ Zobrazení informací o pozici v textu a o vybraném znaku
+▶ Další klávesové zkratky
 ▶ Zvýraznění syntaxe
 ▶ Užitečné externí nástroje
-
-Obsah přednášky (4)
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Další klávesové zkratky
+▶ Lepší využití klávesy Caps Lock
+▶ Vtípky
+▶ Odkazy
 
 Začínáme...
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -431,37 +425,58 @@ Chování editoru při chybě
 
 Zvýraznění aktuálního řádku/sloupce
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Může se hodit při editacích YAML souborů apod.
+▶ Může se hodit při editacích YAML souborů apod.
     :set cursorcolumn
     :set cursorline
+▶ Změna barvy aktuálního řádku a/nebo sloupce
     :hi CursorLine   guibg=#2d2d2d
     :hi CursorColumn guibg=#2d2d2d
+▶ Poměrně "podivné" chování při nastavení :wrap
 
 Digraphs
---------------------------------------------------
-:set digraphs
---------------------------------------------------
---------------------------------------------------
---------------------------------------------------
---------------------------------------------------
---------------------------------------------------
---------------------------------------------------
---------------------------------------------------
---------------------------------------------------
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Umožňuje vložení vybraného (Unicode) znaku do textu
+▶ Povolení tohoto režimu
+    :set digraph
+▶ Použití dvouznaků
+    ◆ Ctrl+K znak1 znak2
+        - dostupné vždy
+    ◆ znak1 BACKSPACE znak2
+        - jen při povolené volbě :digraphs
+        - emuluje a vylepšuje chování psacího stroje
+        - klasické BACKSPACE po delším časovém intervalu
+
+Digraphs (dvouznaky)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zobrazení všech dvouznaků
+    :digraphs
+▶ Registrace nového dvouznaku
+    :digraphs znak1 znak2 kód_unicode_znaku
+▶ Například
+    :digraphs o` 243
+    :digraphs o/ 248
+    :digraphs O/ 216
+    :digraphs 12 189
+▶ Výsledky
+    ò
+    ø
+    Ø
+    ½
 
 Režim "ex"
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Q
-vi - návrat zpět
+▶ Klávesa Q
+    ◆ někdy stisknuta omylem
+    ◆ vi - návrat zpět
 
 Režim "ed"
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 "ed"
-Ideový předchůdce editoru Vi (který je předchůdcem Vimu)
-Příkazy editoru "ed" se zadávají v command režimu
-Obecný tvar příkazů
+▶ Ideový předchůdce editoru Vi (který je předchůdcem Vimu)
+▶ Příkazy editoru "ed" se zadávají v command režimu
+▶ Obecný tvar příkazů
     :[address [,address]]command[parameters]
-Adresy
+▶ Adresy
     . aktuální řádek
     $ poslední řádek
     2 druhý řádek
@@ -472,61 +487,82 @@ Adresy
     0  nad prvním řádkem (například pro move atd.)
     /foobar/ řádek s textem odpovídajícím regexpu
     ?foobar? řádek s textem odpovídajícím regexpu
-Příkazy "ed"u
+
+Režim "ed" (pokračování)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Příkazy "ed"u
     a append
     c change
     d delete
     m move (musí se zadat další adresa cíle)
     :.m$
     :.m-2
+    :1m$
 
-Režim "ed"
+Režim "ed" (složitejší příklady)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Přesun řádku obsahujícího text "LinuxDays" na konec souboru
-:/user-friendly/m$
-Změna všech znaků "-" na předchozím řádku za "&mdash;"
-:-1s/–/\&mdash;/g        Replace every occurrence of the string ‘–‘ by ‘&mdash;’ in the preceding line
-Obalení aktuální řádky (může vizuálně přesahovat jeden řádek) do značky pro odstavec
-:s/.*/<p>\r&\r<\/p>/     Wrap the line between <p> and </p>
+▶ Přesun řádku obsahujícího text "LinuxDays" na konec souboru
+    :/LinuxDays/m$
+▶ Přesun řádku obsahujícího text "LinuxDays" na začátek souboru
+    :/LinuxDays/m$
+▶ Změna všech znaků "-" na předchozím řádku za "&mdash;"
+    :-1s/–/\&mdash;/g
+▶ Obalení aktuální řádky (může vizuálně přesahovat jeden řádek) do značky pro odstavec
+    :s/.*/<p>\r&\r<\/p>/
 
-Nastavení pravítka
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Nastavení stavového řádku
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Zvýraznění syntaxe
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Užitečné externí nástroje
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-fmt
-tablign
+Zobrazení informací o pozici v textu a o vybraném znaku
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zobrazení informace o pozici kurzoru v dokumentu
+    gCtrl+G
+▶ Zobrazení kódu znaku pod kurzorem
+    ga
+▶ Zobrazení UTF-8 sekvence pro znak pod kurzorem
+    g8
+▶ Znaky pro otestování
+    ■▶╝
 
 Další klávesové zkratky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Zobrazení informace o pozici kurzoru v dokumentu
-    gCtrl+G
-Zobrazení kódu znaku pod kurzorem
-    ga
-Zobrazení UTF-8 sekvence pro znak pod kurzorem
-    g8
-Znaky pro otestování
-    ■▶╝
-Pohyb v historii pozic kurzoru
+▶ Pohyb v historii pozic kurzoru
     g;
     g,
-Otevření soubor, na jehož názvu se nachází kurzor
+▶ Otevření soubor, na jehož názvu se nachází kurzor
     gf
+
+Zvýraznění syntaxe
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:hi Tab2 ctermbg=lightred   guibg=#ffe0e0
+:hi Tab3 ctermbg=lightblue  guibg=#e0e0ff
+:hi Tab4 ctermbg=lightcyan  guibg=#ffffe0
+
+Užitečné externí nástroje
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ xxd
+▶ fmt
+▶ tablign
+▶ sort
+▶ grep
+▶ cut
+▶ m4
+
+Lepší využití klávesy Caps Lock
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Nelze provést ve Vimu!
+▶ Přepínání mezi národními variantami klávesnice
+▶ Caps Lock ve funkci klávesy Esc
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 Vtípky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 :help holy-grail
 :Ni!
 :help showmatch
-    podívejte se na NOTE:
+    podívejte se na sekci NOTE:
 :help UserGettingBored
 :smile
 Příkaz :Sexplore je možné zkrátit na tři znaky
 
 Odkazy
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Nejbrutálnější sada tipů a triků
+Pravděpodobně nejbrutálnější sada tipů a triků
 zzapper.co.uk/vimtips.html
