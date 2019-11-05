@@ -422,6 +422,25 @@ Zobrazení tabulky volaných funkcí
 $ strace -c whoami
 % time     seconds  usecs/call     calls    errors syscall
 ------ ----------- ----------- --------- --------- ----------------
+100.00    0.000087          12         7           munmap
+  0.00    0.000000           0        10           read
+  0.00    0.000000           0         1           write
+  0.00    0.000000           0        39        13 open
+  0.00    0.000000           0        30           close
+  0.00    0.000000           0         1           execve
+  0.00    0.000000           0         7         7 access
+  0.00    0.000000           0         3           brk
+  0.00    0.000000           0         8           mprotect
+  0.00    0.000000           0         2           _llseek
+  0.00    0.000000           0        34           mmap2
+  0.00    0.000000           0        26           fstat64
+  0.00    0.000000           0         1           geteuid32
+  0.00    0.000000           0         1           fcntl64
+  0.00    0.000000           0         1           set_thread_area
+  0.00    0.000000           0         2           socket
+  0.00    0.000000           0         2         2 connect
+100.00    0.000087                   175        22 total
+
 
 Dtrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
