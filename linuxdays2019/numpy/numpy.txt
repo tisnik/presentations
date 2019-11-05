@@ -444,7 +444,25 @@ Použití funkce numpy.arange
           ↓
 array([ 0.+0.j,  2.+0.j,  4.+0.j,  6.+0.j,  8.+0.j])
 
+Funkce numpy.linspace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Při znalosti první a poslední hodnoty ve vektoru
+▶ Zadává se
+    ◆ počáteční hodnota
+    ◆ koncová hodnota
+    ◆ počet prvků vektoru (implicitně 50 prvků)
 
+Použití funkce numpy.linspace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# pokud se nespecifikuje počet prvků, bude se předpokládat, že výsledný
+# vektor má mít padesát prvků
+>>> numpy.linspace(0, 1)
+          ↓
+array([ 0.        ,  0.02040816,  0.04081633,  0.06122449,  0.08163265,
+        0.10204082,  0.12244898,  0.14285714,  0.16326531,  0.18367347,
+        0.71428571,  0.73469388,  0.75510204,  0.7755102 ,  0.79591837,
+        0.81632653,  0.83673469,  0.85714286,  0.87755102,  0.89795918,
+        0.91836735,  0.93877551,  0.95918367,  0.97959184,  1.        ])
 
 
 
