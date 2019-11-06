@@ -531,9 +531,37 @@ Další klávesové zkratky
 
 Zvýraznění syntaxe
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Dvojice příkazů
+    :syntax 
+    :highlight
+▶ První příkaz
+    :syntax 
+▶ Parametry: typ určení textu + jméno + samotné určení
+▶ Druhý příkaz
+
+Zvýraznění syntaxe
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:syn match Tab "\t"
+:syn match Tab2 "\t\t"
+:syn match Tab3 "\t\t\t"
+:syn match Tab4 "\t\t\t\t"
+:hi Tab  ctermbg=lightgreen guibg=#e0ffe0
 :hi Tab2 ctermbg=lightred   guibg=#ffe0e0
 :hi Tab3 ctermbg=lightblue  guibg=#e0e0ff
 :hi Tab4 ctermbg=lightcyan  guibg=#ffffe0
+
+Zvýraznění syntaxe
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:syn match vimcommand "\:.*"
+:syn match odrazka1 "^\%d9654.*"
+:syn match odrazka2 "^    [^:].*""
+:syn match odrazka3 "^        .*"
+:syn match nadpis "^[A-Z].*"
+:hi odrazka1 ctermfg=lightgreen guifg=darkgreen
+:hi odrazka2 ctermfg=yellow   guifg=brown
+:hi odrazka3 ctermfg=lightcyan  guifg=red
+:hi nadpis   ctermfg=white  guifg=blue
+:hi vimcommand ctermbg=yellow  guibg=#c0ffc0
 
 Užitečné externí nástroje
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
