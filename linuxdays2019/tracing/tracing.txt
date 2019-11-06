@@ -20,6 +20,10 @@ Obsah přednášky (2)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Utilita strace
     ◆ ukázka použití utility strace
+    ◆ zobrazení tabulky volaných funkcí
+    ◆ časy volání syscallů
+    ◆ časy trvání volaných syscallů
+    ◆ další možnosti nabízené nástrojem strace
 ▶ DTrace
 
 Obsah přednášky (3)
@@ -417,6 +421,17 @@ Ukázka použití utility strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Filtrace syscallů
 
+Časy volání syscallů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Stejné přepínače jako v případě nástroje ltrace
+$ strace -t whoami
+$ strace -tt whoami
+$ strace -ttt whoami
+$ strace -r whoami
+
+Časy trvání volaných syscallů
+$ strace -T whoami
+
 Zobrazení tabulky volaných funkcí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ strace -c whoami
@@ -439,8 +454,14 @@ $ strace -c whoami
   0.00    0.000000           0         1           set_thread_area
   0.00    0.000000           0         2           socket
   0.00    0.000000           0         2         2 connect
+------ ----------- ----------- --------- --------- ----------------
 100.00    0.000087                   175        22 total
 
+Další možnosti nabízené nástrojem strace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Dekódování (demangle) jmen metod a funkcí z C++
+▶ Sledování procesů, které vznikly zavoláním
+    ◆ fork()
 
 Dtrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
