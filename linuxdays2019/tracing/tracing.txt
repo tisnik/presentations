@@ -420,6 +420,7 @@ Ukázka použití utility strace
 Ukázka použití utility strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Filtrace syscallů
+$ strace -e trace=open,close whoami
 
 Časy volání syscallů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -430,7 +431,12 @@ $ strace -ttt whoami
 $ strace -r whoami
 
 Časy trvání volaných syscallů
-$ strace -T whoami
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ strace -r whoami
+close(1)                            = 0 <0.000046>
+munmap(0xb7c4a000, 4096)            = 0 <0.000071>
+close(2)                            = 0 <0.000044>
+exit_group(0)                       = ?
 
 Zobrazení tabulky volaných funkcí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -456,6 +462,17 @@ $ strace -c whoami
   0.00    0.000000           0         2         2 connect
 ------ ----------- ----------- --------- --------- ----------------
 100.00    0.000087                   175        22 total
+
+Setřídení tabulky podle zvoleného sloupce
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ strace -c -S calls whoami
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 44.44    0.000088           2        39        13 open
+ 55.56    0.000110          16         7         7 access
+  0.00    0.000000           0         7           munmap
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000198                   175        22 total
 
 Další možnosti nabízené nástrojem strace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
