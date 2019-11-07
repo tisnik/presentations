@@ -37,6 +37,7 @@ Obsah přednášky (3)
 ▶ Zobrazení informací o pozici v textu a o vybraném znaku
 ▶ Další klávesové zkratky
 ▶ Zvýraznění syntaxe
+▶ Pravítko a stavový řádek
 ▶ Užitečné externí nástroje
 ▶ Lepší využití klávesy Caps Lock
 ▶ Vtípky
@@ -57,6 +58,7 @@ Základní konfigurační volby
 ▶ Zobrazení pravítka
     :set ruler
 ▶ Zobrazení a nastavení obsahu pravítka
+    :set laststatus=...
     :set statusline=...
 ▶ Expanze či zákaz expanze tabů
     :set (no)expandtab
@@ -519,7 +521,7 @@ Zobrazení informací o pozici v textu a o vybraném znaku
 ▶ Zobrazení UTF-8 sekvence pro znak pod kurzorem
     g8
 ▶ Znaky pro otestování
-    ■▶╝
+    ■▶╝🂠
 
 Další klávesové zkratky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -536,8 +538,12 @@ Zvýraznění syntaxe
     :highlight
 ▶ První příkaz
     :syntax 
-▶ Parametry: typ určení textu + jméno + samotné určení
+    ◆ bez parametrů vypíše syntaktické skupiny
+    ◆ parametry: typ určení textu + jméno + samotné určení
 ▶ Druhý příkaz
+    :highlight
+    ◆ bez parametrů vypíše vazbu syntaktické skupiny na "barvičky"
+    ◆ parametry: jméno term= cterm= ctermfg= ctermbg= guifg= guibg=
 
 Zvýraznění syntaxe
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -562,6 +568,21 @@ Zvýraznění syntaxe
 :hi odrazka3 ctermfg=lightcyan  guifg=red
 :hi nadpis   ctermfg=white  guifg=blue
 :hi vimcommand ctermbg=yellow  guibg=#c0ffc0
+
+Pravítko a stavový řádek
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Název parametru Typ parametru  Význam
+ruler            pravdivostní  povolení zobrazení pravítka
+showcmd          pravdivostní  povolení zobrazení příkazu
+                               během jeho zápisu na pravítku
+showmode         pravdivostní  povolení zobrazení aktuálně
+                               nastaveného režimu editoru na pravítku
+rulerformat      řetězec       definice formátu zobrazení
+                               informací na pravítku
+statusline       řetězec       definice formátu zobrazení
+                               informací na stavovém řádku
+laststatus       číslo 0, 1, 2 řízení způsobu zobrazení stavového
+                               řádku pro nejspodnější okno editoru
 
 Užitečné externí nástroje
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -594,3 +615,15 @@ Odkazy
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Pravděpodobně nejbrutálnější sada tipů a triků
 zzapper.co.uk/vimtips.html
+
+.      _____________________
+.     < Děkuji za pozornost >
+.      ---------------------
+.       \
+.        \   \_\_    _/_/
+.         \      \__/
+.                (oo)\_______
+.                (__)\       )\/\
+.                    ||----w |
+.                    ||     ||
+.     
