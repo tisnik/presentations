@@ -23,6 +23,8 @@ Obsah přednášky (2)
     ◆ zobrazení tabulky volaných funkcí
     ◆ časy volání syscallů
     ◆ časy trvání volaných syscallů
+    ◆ zobrazení tabulky volaných syscallů
+    ◆ setřídění tabulky podle zvoleného sloupce
     ◆ další možnosti nabízené nástrojem strace
 ▶ DTrace
 
@@ -438,7 +440,7 @@ munmap(0xb7c4a000, 4096)            = 0 <0.000071>
 close(2)                            = 0 <0.000044>
 exit_group(0)                       = ?
 
-Zobrazení tabulky volaných funkcí
+Zobrazení tabulky volaných syscallů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ strace -c whoami
 % time     seconds  usecs/call     calls    errors syscall
@@ -469,8 +471,22 @@ $ strace -c -S calls whoami
 % time     seconds  usecs/call     calls    errors syscall
 ------ ----------- ----------- --------- --------- ----------------
  44.44    0.000088           2        39        13 open
+  0.00    0.000000           0        34           mmap2
+  0.00    0.000000           0        30           close
+  0.00    0.000000           0        26           fstat64
+  0.00    0.000000           0        10           read
+  0.00    0.000000           0         8           mprotect
  55.56    0.000110          16         7         7 access
   0.00    0.000000           0         7           munmap
+  0.00    0.000000           0         3           brk
+  0.00    0.000000           0         2           _llseek
+  0.00    0.000000           0         2           socket
+  0.00    0.000000           0         2         2 connect
+  0.00    0.000000           0         1           write
+  0.00    0.000000           0         1           execve
+  0.00    0.000000           0         1           geteuid32
+  0.00    0.000000           0         1           fcntl64
+  0.00    0.000000           0         1           set_thread_area
 ------ ----------- ----------- --------- --------- ----------------
 100.00    0.000198                   175        22 total
 
@@ -482,9 +498,14 @@ Další možnosti nabízené nástrojem strace
 
 Dtrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-
-Ukázky použití Dtrace
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Jeden z pokročilejších nástrojl pro sledování a trasování
+▶ Dostupné na
+    ◆ Solaris
+    ◆ FreeBSD
+    ◆ macOS
+▶ Ovšem nikoli na Linuxu!
+    ◆ licenční problémy
+▶ Nutnost vytvoření alternativ k Dtrace
 
 SystemTap
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
