@@ -10,16 +10,17 @@ Obsah přednášky (1)
 ▶ Knihovna Numpy
 ▶ Skalární datové typy
 ▶ Datová struktura ndarray
-▶ Tvar n-dimenzionálního pole
+▶ Tvar (shape) n-dimenzionálního pole
 ▶ Konstruktory datové struktury ndarray
     ◆ numpy.array
     ◆ numpy.zeros
     ◆ numpy.ones
     ◆ numpy.arange
+    ◆ numpy.linspace
 
 Obsah přednášky (2)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶
+▶ Přetypování prvků v poli
 ▶
 ▶
 ▶
@@ -518,9 +519,37 @@ Použití funkce numpy.linspace
 array([ 0.00000000+0.j        ,  0.11111111+0.11111111j,
         0.22222222+0.22222222j,  0.33333333+0.33333333j,
         0.44444444+0.44444444j,  0.55555556+0.55555556j,
+        0.66666667+0.66666667j,  0.77777778+0.77777778j,
+        0.88888889+0.88888889j,  1.00000000+1.j        ])
 
-
+Přetypování prvků v poli
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Dva způsoby
+    ◆ specifikace názvu datového typu
+        - numpy.float32
+        - numpy.int32
+        - numpy.complex128
+        - ...
+    ◆ přím
+
+Přetypování prvků v poli
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+numpy.int64([1,2,3,4])
+
+# přetypování
+numpy.float16([1,2,3,4])
+array([ 1.,  2.,  3.,  4.], dtype=float16)
+
+# vektor čísel typu float
+numpy.linspace(0, 1, 10)
+
+array([ 0.        ,  0.11111111,  0.22222222,  0.33333333,  0.44444444,
+        0.55555556,  0.66666667,  0.77777778,  0.88888889,  1.        ])
+
+# přetypování na vektor celých čísel
+numpy.int32(numpy.linspace(0, 1, 10))
+array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1], dtype=int32)
+
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Další podbalíčky, které nalezneme v knihovně ndarray
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
