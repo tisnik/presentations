@@ -612,6 +612,14 @@ Kód  Význam
 %(   začátek skupiny značek/textu, kterým lze jako celku přiřadit šířku
 %)   konec skupiny značek/textu, kterým lze jako celku přiřadit šířku
 
+Barvy na pravítku
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:highlight RulerFileName guifg=#cc8080 ctermfg=red
+:highlight RulerColumn   guifg=#cccc80 ctermfg=yellow
+:highlight RulerLine     guifg=#80cc80 ctermfg=green
+:highlight RulerOffset   guifg=#8080cc ctermfg=blue
+:set rulerformat=%40(%#RulerFileName#%t:\ %#RulerColumn#%c\ %#RulerLine#%l/%L\ \ %#RulerOffset#%o\ %#Normal#[%b=0x%B]%)
+
 Užitečné externí nástroje
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ xxd
