@@ -27,16 +27,22 @@ Obsah přednášky (2)
     ◆ setřídění tabulky podle zvoleného sloupce
     ◆ další možnosti nabízené nástrojem strace
 ▶ DTrace
+    ◆ základní informace o nástroji DTrace
 
 Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ SystemTap
-▶ Ukázky použití SystemTap
-▶
+    ◆ ukázky použití SystemTap
 ▶ GNU Debugger
-▶
-▶
+    ◆ tracepointy
+▶ bpftrace
 ▶ Odkazy na další informační zdroje
+
+Poznámka: zvýrazněné řádky
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Na slajdech budeme používat tyto barvy
+$ příkaz_spuštěný_běžným_uživatelem
+# příkaz_spuštěný_rootem
 
 Trasování a ladění nativních aplikací v Linuxu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -496,17 +502,31 @@ Další možnosti nabízené nástrojem strace
 ▶ Sledování procesů, které vznikly zavoláním
     ◆ fork()
 
-Dtrace
+DTrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ D=dynamic
 ▶ Jeden z pokročilejších nástrojl pro sledování a trasování
 ▶ Dostupné na
-    ◆ Solaris
+    ◆ Solaris/OpenSolaris
     ◆ FreeBSD
     ◆ macOS
-▶ Ovšem nikoli na Linuxu!
+▶ Původně nikoli na Linuxu!
     ◆ licenční problémy
-▶ Nutnost vytvoření alternativ k Dtrace
+    ◆ první verze pro Linux v roce 2008
+    ◆ verze pro Windows 10 letos
+    ◆ portace pro QNX
 
+Základní informace o nástroj DTrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Takzvané sondy (probe)
+    ◆ krátké skripty spuštěné při vzniku události
+    ◆ v jádře
+    ◆ v aplikaci
+▶ Samotná sonda má přístup k zásobníkovému rámci
+    ◆ lokální proměnné
+    ◆ parametry
+
+Základní informace o nástroj DTrace
 SystemTap
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
@@ -516,6 +536,8 @@ Ukázky použití SystemTapu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 GNU Debugger
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+bpftrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Odkazy na další informační zdroje
