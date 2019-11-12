@@ -20,8 +20,10 @@ Obsah přednášky (1)
 
 Obsah přednášky (2)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Přetypování prvků v poli
-▶
+▶ Základní operace s n-dimenzionálními poli 
+    ◆ přetypování prvků v poli
+    ◆ zjištění tvaru pole
+    ◆ změna tvaru pole
 ▶
 ▶
 ▶ Další podbalíčky, které nalezneme v knihovně ndarray
@@ -167,9 +169,16 @@ Datová struktura ndarray (pokračování)
 Tvar (shape) n-dimenzionálního pole
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Popisuje organizaci a uspořádání prvků v poli
+    ◆ n-tice obsahující rozměry pole v jednotlivých dimenzích
 ▶ Příklady tvarů
+    ◆ (10,) - vektor s deseti prvky
+    ◆ (2, 3) - dvourozměrná matice se dvěma řádky a třemi sloupci
+    ◆ (2, 3, 4) - trojrozměrné pole
+▶ Tvar je možné zjistit
+    ◆ atribut "shape"
+    ◆ funkce numpy.shape
 ▶ Tvar je možné změnit
-    ◆ operace "reshape"
+    ◆ funkce numpy.reshape
 
 Konstrukce n-dimenzionálních polí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -525,15 +534,19 @@ array([ 0.00000000+0.j        ,  0.11111111+0.11111111j,
 Přetypování prvků v poli
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Dva způsoby
-    ◆ specifikace názvu datového typu
-        - numpy.float32
-        - numpy.int32
-        - numpy.complex128
+    ◆ konverzní funkce
+        - numpy.float32()
+        - numpy.int32()
+        - numpy.complex128()
         - ...
-    ◆ přím
+    ◆ použití metody astype
 
 Přetypování prvků v poli
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# změna typu
+numpy.float32(1.0)
+
+# přetypování
 numpy.int64([1,2,3,4])
 
 # přetypování
@@ -550,7 +563,20 @@ array([ 0.        ,  0.11111111,  0.22222222,  0.33333333,  0.44444444,
 numpy.int32(numpy.linspace(0, 1, 10))
 array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1], dtype=int32)
 
+Použití metody astype
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+a=numpy.arange(0, 10)
+
+a.astype(numpy.complex64)
+array([ 0.+0.j,  1.+0.j,  2.+0.j,  3.+0.j,  4.+0.j,  5.+0.j,  6.+0.j,
+        7.+0.j,  8.+0.j,  9.+0.j], dtype=complex64)
+
+Zjištění tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+Změna tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
 Další podbalíčky, které nalezneme v knihovně ndarray
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 doc         obsahuje dokumentaci ke knihovně i k základním konstrukcím a operacím
