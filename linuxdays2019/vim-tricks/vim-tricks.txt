@@ -571,18 +571,21 @@ Zvýraznění syntaxe
 
 Pravítko a stavový řádek
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Název parametru Typ parametru  Význam
-ruler            pravdivostní  povolení zobrazení pravítka
-showcmd          pravdivostní  povolení zobrazení příkazu
-                               během jeho zápisu na pravítku
-showmode         pravdivostní  povolení zobrazení aktuálně
-                               nastaveného režimu editoru na pravítku
-rulerformat      řetězec       definice formátu zobrazení
-                               informací na pravítku
-statusline       řetězec       definice formátu zobrazení
-                               informací na stavovém řádku
-laststatus       číslo 0, 1, 2 řízení způsobu zobrazení stavového
-                               řádku pro nejspodnější okno editoru
+╔═══════════════╤═════════════════╤═══════════════════╗
+║Název parametru│ Typ parametru   │Význam             ║
+╟───────────────┼─────────────────┼───────────────────╢
+ │ │ ║
+║ruler            pravdivostní  povolení zobrazení pravítka
+║showcmd          pravdivostní  povolení zobrazení příkazu
+║                               během jeho zápisu na pravítku
+║showmode         pravdivostní  povolení zobrazení aktuálně
+║                               nastaveného režimu editoru na pravítku
+║rulerformat      řetězec       definice formátu zobrazení
+║                               informací na pravítku
+║statusline       řetězec       definice formátu zobrazení
+║                               informací na stavovém řádku
+║laststatus       číslo 0, 1, 2 řízení způsobu zobrazení stavového
+║                               řádku pro nejspodnější okno editoru
 
 Volba :rulerformat
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -619,6 +622,10 @@ Barvy na pravítku
 :highlight RulerLine     guifg=#80cc80 ctermfg=green
 :highlight RulerOffset   guifg=#8080cc ctermfg=blue
 :set rulerformat=%40(%#RulerFileName#%t:\ %#RulerColumn#%c\ %#RulerLine#%l/%L\ \ %#RulerOffset#%o\ %#Normal#[%b=0x%B]%)
+
+Stavový řádek
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:setlocal statusline=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 
 Užitečné externí nástroje
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
