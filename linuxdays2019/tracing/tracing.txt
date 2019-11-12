@@ -28,6 +28,7 @@ Obsah přednášky (2)
     ◆ další možnosti nabízené nástrojem strace
 ▶ DTrace
     ◆ základní informace o nástroji DTrace
+    ◆ příklad naprogramované sondy
 
 Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -525,11 +526,36 @@ Základní informace o nástroj DTrace
 ▶ Samotná sonda má přístup k zásobníkovému rámci
     ◆ lokální proměnné
     ◆ parametry
+▶ Pro zápis sond se používá jazyk D
+    ◆ ovšem ne D z http://dlang.org
 
-Základní informace o nástroj DTrace
+Příklad naprogramované sondy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    #pragma D option flowindent
+    .
+    syscall::write:entry
+    /pid == $target/    
+    {
+            printf("Written %d bytes\n", arg2);
+    }
+
 SystemTap
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Použití
+    ◆ události v kernelu
+    ◆ události v userspace
+    ◆ samozřejmě i syscally
+▶ Základní koncept podobný DTrace
+    ◆ sondy
+    ◆ deklarace, kdy se má sonda spustit
+▶ Instalace
+    ◆ záleží na distribuci, obecně složitější
+    ◆ pomocný nástroj stap-prep
+        - poradí, které balíčky nainstalovat
+        - někdy je i nainstaluje
 
+Konstrola instalace SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Ukázky použití SystemTapu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
