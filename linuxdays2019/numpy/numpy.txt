@@ -543,24 +543,27 @@ Přetypování prvků v poli
 
 Přetypování prvků v poli
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-# změna typu
-numpy.float32(1.0)
-
 # přetypování
-numpy.int64([1,2,3,4])
-
+>>> numpy.int64([1,2,3,4])
+          ↓
+array([1, 2, 3, 4], dtype=int32)
+.
 # přetypování
-numpy.float16([1,2,3,4])
+>>> numpy.float16([1,2,3,4])
+          ↓
 array([ 1.,  2.,  3.,  4.], dtype=float16)
 
+Přetypování prvků v poli
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # vektor čísel typu float
-numpy.linspace(0, 1, 10)
-
+>>> numpy.linspace(0, 1, 10)
+          ↓
 array([ 0.        ,  0.11111111,  0.22222222,  0.33333333,  0.44444444,
         0.55555556,  0.66666667,  0.77777778,  0.88888889,  1.        ])
-
+.
 # přetypování na vektor celých čísel
-numpy.int32(numpy.linspace(0, 1, 10))
+>>> numpy.int32(numpy.linspace(0, 1, 10))
+          ↓
 array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1], dtype=int32)
 
 Použití metody astype
@@ -573,9 +576,50 @@ array([ 0.+0.j,  1.+0.j,  2.+0.j,  3.+0.j,  4.+0.j,  5.+0.j,  6.+0.j,
 
 Zjištění tvaru pole
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Atribut shape
+▶ Funkce numpy.shape
+
+Zjištění tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# jednorozměrný vektor
+a=numpy.array([1,2,3])
+
+# dvourozměrná matice
+b=numpy.array([[1,2,3],[4,5,6]])
+
+# tvar vektoru
+a.shape
+(3,)
+
+# tvar matice
+b.shape
+(2, 3)
+
+# trojrozměrné pole
+c=numpy.zeros((2,3,4))
+
+c
+array([[[ 0.,  0.,  0.,  0.],
+        [ 0.,  0.,  0.,  0.],
+        [ 0.,  0.,  0.,  0.]],
+
+       [[ 0.,  0.,  0.,  0.],
+        [ 0.,  0.,  0.,  0.],
+        [ 0.,  0.,  0.,  0.]]])
+
+# tvar trojrozměrného pole
+c.shape
+(2, 3, 4)
+
+# další trojrozměrné pole, tentokrát vytvořené explicitně
+d=numpy.array([[[1,2], [3,4]], [[5,6], [7,8]]])
+
+numpy.shape(d)
+(2, 2, 2)
 
 Změna tvaru pole
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Funkce numpy.reshape
 
 Další podbalíčky, které nalezneme v knihovně ndarray
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
