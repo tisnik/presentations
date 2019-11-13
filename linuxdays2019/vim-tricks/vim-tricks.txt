@@ -571,21 +571,21 @@ Zvýraznění syntaxe
 
 Pravítko a stavový řádek
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-╔═══════════════╤═════════════════╤═══════════════════╗
-║Název parametru│ Typ parametru   │Význam             ║
-╟───────────────┼─────────────────┼───────────────────╢
- │ │ ║
-║ruler            pravdivostní  povolení zobrazení pravítka
-║showcmd          pravdivostní  povolení zobrazení příkazu
-║                               během jeho zápisu na pravítku
-║showmode         pravdivostní  povolení zobrazení aktuálně
-║                               nastaveného režimu editoru na pravítku
-║rulerformat      řetězec       definice formátu zobrazení
-║                               informací na pravítku
-║statusline       řetězec       definice formátu zobrazení
-║                               informací na stavovém řádku
-║laststatus       číslo 0, 1, 2 řízení způsobu zobrazení stavového
-║                               řádku pro nejspodnější okno editoru
+╔═══════════════╤═══════════════╤══════════════════════════════════════╗
+║Název parametru│ Typ parametru │Význam                                ║
+╟───────────────┼───────────────┼──────────────────────────────────────╢
+║ ruler         │ pravdivostní  │povolení zobrazení pravítka           ║
+║ showcmd       │ pravdivostní  │povolení zobrazení příkazu            ║
+║               │               │během jeho zápisu na pravítku         ║
+║ showmode      │ pravdivostní  │povolení zobrazení aktuálně           ║
+║               │               │nastaveného režimu editoru na pravítku║
+║ rulerformat   │ řetězec       │definice formátu zobrazení            ║
+║               │               │informací na pravítku                 ║
+║ statusline    │ řetězec       │definice formátu zobrazení            ║
+║               │               │informací na stavovém řádku           ║
+║ laststatus    │ číslo 0, 1, 2 │řízení způsobu zobrazení stavového    ║
+║               │               │řádku pro nejspodnější okno editoru   ║
+╚═══════════════╧═══════════════╧══════════════════════════════════════╝
 
 Volba :rulerformat
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -596,24 +596,27 @@ Volba :rulerformat
 
 Volba :rulerformat
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Kód  Význam
-%f   jméno souboru s relativní cestou
-%F   jméno souboru s plnou cestou
-%t   pouze jméno souboru
-%y   typ souboru
-%m   příznak, že soubor byl změněn (modified)
-%r   příznak, že soubor je určen jen pro čtení (read-only)
-%l   číslo řádku, na němž se nachází kurzor
-%L   celkový počet řádků v souboru
-%c   číslo sloupce, na němž se nachází kurzor
-%v   číslo virtuálního sloupce (viz poznámka o linebreak)
-%o   offset od začátku souboru (začíná se od jedničky)
-%b   hodnota znaku pod textovým kurzorem v dekadické soustavě
-%B   hodnota znaku pod textovým kurzorem v hexadecimální soustavě
-%##  mezi znaky ## je vloženo jméno skupiny definované příkazem highlight (viz další text)
-%{}  mezi znaky {} je vloženo volání uživatelské funkce (viz další text)
-%(   začátek skupiny značek/textu, kterým lze jako celku přiřadit šířku
-%)   konec skupiny značek/textu, kterým lze jako celku přiřadit šířku
+╔════╤════════════════════════════════════════════════════════════╗
+║Kód │ Význam                                                     ║
+╟────┼────────────────────────────────────────────────────────────╢
+║%f  │jméno souboru s relativní cestou                            ║
+║%F  │jméno souboru s plnou cestou                                ║
+║%t  │pouze jméno souboru                                         ║
+║%y  │typ souboru                                                 ║
+║%m  │příznak, že soubor byl změněn (modified)                    ║
+║%r  │příznak, že soubor je určen pro čtení (read-only)           ║
+║%l  │číslo řádku, na němž se nachází kurzor                      ║
+║%L  │celkový počet řádků v souboru                               ║
+║%c  │číslo sloupce, na němž se nachází kurzor                    ║
+║%v  │číslo virtuálního sloupce                                   ║
+║%o  │offset od začátku souboru (začíná se od jedničky)           ║
+║%b  │hodnota znaku pod textovým kurzorem v deka                  ║
+║%B  │hodnota znaku pod textovým kurzorem v hexa                  ║
+║%## │mezi znaky ## je vloženo jméno skupiny definované highlight ║
+║%{} │mezi znaky {} je vloženo volání uživatelské funkce          ║
+║%(  │začátek skupiny značek/textu, kterým lze přiřadit šířku     ║
+║%)  │konec skupiny značek/textu, kterým lze přiřadit šířku       ║
+╚════╧════════════════════════════════════════════════════════════╝
 
 Barvy na pravítku
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
