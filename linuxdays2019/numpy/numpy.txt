@@ -1,4 +1,4 @@
-                    Numpy
+                    NumPy
 ══════════════════════════════════════════════════
 ■ Autor    Pavel Tišnovský, Red Hat
 ■ Email    <ptisnovs 0x40 redhat 0x2e com>
@@ -7,7 +7,7 @@
 Obsah přednášky (1)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Programovací jazyk Python
-▶ Knihovna Numpy
+▶ Knihovna NumPy
 ▶ Skalární datové typy
 ▶ Datová struktura ndarray
 ▶ Tvar (shape) n-dimenzionálního pole
@@ -15,6 +15,7 @@ Obsah přednášky (1)
     ◆ numpy.array
     ◆ numpy.zeros
     ◆ numpy.ones
+    ◆ numpy.eye
     ◆ numpy.arange
     ◆ numpy.linspace
 
@@ -24,22 +25,30 @@ Obsah přednášky (2)
     ◆ přetypování prvků v poli
     ◆ zjištění tvaru pole
     ◆ změna tvaru pole
-▶
-▶
+    ◆ výběr prvků v poli
+    ◆ slicing
+▶ Další operace s n-dimenzionálními poli 
+    ◆ operátory
+    ◆ násobení matic
+    ◆ determinant
+    ◆ inverzní matice
+▶ Vyřešení systému lineárních rovnic
+▶ Vektorizace
+▶ Broadcasting
 ▶ Další podbalíčky, které nalezneme v knihovně ndarray
-▶
 ▶ Odkazy na další informační zdroje
 
 Programovací jazyk Python
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Dnes jeden z nejpopulárnějších programovacích jazyků
-    ◆ viz například Tiobe index
-    ◆ 
-    ◆ 
+    ◆ viz například TIOBE programming community index
+        - https://www.tiobe.com/tiobe-index/
+    ◆ Popř. statistika dostupná na OpenHubu
+        - https://www.openhub.net/languages/compare
 ▶ Dostupnost na většině platforem
     ◆ na některých MCU jako MicroPython
-▶ Python 2 Python 3
-    ◆ 
+▶ P̶y̶t̶h̶o̶n̶ ̶2̶ Python 3
+    ◆ všechny ukázky pro Python 3.6+
 
 Programovací jazyk Python
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -50,7 +59,7 @@ Programovací jazyk Python
         - serverová část (Flask, Django, CherryPy, ...)
         - klient (Brython, spíše technologické demo)
     ◆ Numerické výpočty, symbolické výpočty
-        - Numpy
+        - NumPy
         - SciPy
         - Matplotlib
     ◆ Moderní způsoby využití Pythonu
@@ -61,11 +70,22 @@ Programovací jazyk Python
     ◆ Tzv. "glue" jazyk
     ◆ Vestavitelný interpret Pythonu
 
-Knihovna Numpy
+Knihovna NumPy
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ 
-▶ 
-▶ 
+▶ Výslovnosti
+    ◆ [nəmpᴧɪ]
+    ◆ [nəmpi]
+▶ Historie
+    ◆ matrix package
+    ◆ Numeric
+    ◆ NumPy
+▶ Podpora pro n-dimenzionální pole
+    ◆ + nové funkce
+    ◆ + nové operátory
+▶ Kooperace s dalšími knihovnami a frameworky
+    ◆ SciPy
+    ◆ Matplotlib
+    ◆ OpenCV
 
 Skalární datové typy
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -148,6 +168,7 @@ Datová struktura ndarray
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Představuje obecné n-dimenzionální pole
 ▶ Interní způsob uložení dat zcela odlišný od Pythonovských seznamů či n-tic
+    ◆ "pohled" na kontinuální blok hodnot
 ▶ Homogenní datová struktura
     ◆ menší flexibilita
     ◆ menší paměťové nároky
@@ -156,7 +177,7 @@ Datová struktura ndarray
 
 Datová struktura ndarray (pokračování)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Základní strukturovaný datový typ knihovny Numpy
+▶ Základní strukturovaný datový typ knihovny NumPy
 ▶ Volitelný počet dimenzí
     ◆ vektory
     ◆ matice
@@ -186,6 +207,9 @@ Konstrukce n-dimenzionálních polí
     ◆ numpy.array
     ◆ numpy.zeros
     ◆ numpy.ones
+    ◆ numpy.eye
+    ◆ numpy.arange
+    ◆ numpy.linspace
 ▶ Konverzní funkce
 
 Konstruktor numpy.array
@@ -209,6 +233,7 @@ Order - rozdíl v uspořádání
 | 1 2 3 |
 | 4 5 6 |
 | 7 8 9 |
+ 
 ▶ Uložení v operační paměti
 1 2 3 4 5 6 7 8 9 - 'C'
 1 4 7 2 5 8 3 6 9 - 'F'
@@ -401,6 +426,27 @@ Příklady použití konstruktoru numpy.ones
 array([[ 1.+0.j,  1.+0.j],
        [ 1.+0.j,  1.+0.j],
        [ 1.+0.j,  1.+0.j]])
+
+Konstruktor numpy.eye
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Jednotková matice
+▶ Uvádí se její velikost
+>>> numpy.eye(1)
+      ↓
+array([[1.]])
+ 
+>>> numpy.eye(5)
+      ↓
+array([[1., 0., 0., 0., 0.],
+       [0., 1., 0., 0., 0.],
+       [0., 0., 1., 0., 0.],
+       [0., 0., 0., 1., 0.],
+       [0., 0., 0., 0., 1.]])
+ 
+>>> numpy.eye(2,10)
+      ↓
+array([[1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 1., 0., 0., 0., 0., 0., 0., 0., 0.]])
 
 Funkce numpy.arange
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
