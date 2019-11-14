@@ -7,36 +7,51 @@
 Obsah přednášky (1)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Trasování a ladění nativních aplikací v Linuxu
-▶ Utilita ltrace
-    ◆ ukázka použití utility ltrace
+▶ Nástroj ltrace
+    ◆ ukázka použití nástroje ltrace
     ◆ časová razítka volání
     ◆ zjištění doby trvání volané funkce a filtrace výstupu
     ◆ filtrace informací
     ◆ zjištění statistiky volaných funkcí
-    ◆ připojení k běžízí aplikaci
+    ◆ připojení k běžící aplikaci
     ◆ další možnosti nabízené nástrojem ltrace
 
 Obsah přednášky (2)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Utilita strace
-    ◆ ukázka použití utility strace
+▶ Nástroj strace
+    ◆ ukázka použití nástroje strace
     ◆ zobrazení tabulky volaných funkcí
     ◆ časy volání syscallů
     ◆ časy trvání volaných syscallů
     ◆ zobrazení tabulky volaných syscallů
     ◆ setřídění tabulky podle zvoleného sloupce
     ◆ další možnosti nabízené nástrojem strace
-▶ DTrace
+▶ Nástroj DTrace
     ◆ základní informace o nástroji DTrace
     ◆ příklad naprogramované sondy
 
 Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ SystemTap
-    ◆ ukázky použití SystemTap
+▶ Nástroj SystemTap
+    ◆ základní informace o nástroji SystemTap
+    ◆ instalace, pomocný nástroj stap-prep
+    ◆ ukázky použití SystemTap (různé sondy)
+    ◆ backtrace u vybraných funkcí/syscallů
+    ◆ získání a výpis statisických informací
+    ◆ tisk histogramů
 ▶ GNU Debugger
+    ◆ rozhraní s příkazovým řádkem
     ◆ tracepointy
-▶ bpftrace
+    ◆
+
+Obsah přednášky (4)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ BPF (Berkeley Packet Filter) a eBPF
+    ◆ front endy pro eBPF
+▶ Nástroj bpftrace
+    ◆
+    ◆ příklady použití
+    ◆
 ▶ Odkazy na další informační zdroje
 
 Poznámka: zvýrazněné řádky
@@ -48,7 +63,7 @@ $ příkaz_spuštěný_běžným_uživatelem
 výstup (tisk) je zobrazen pod šipkou
 
 Trasování a ladění nativních aplikací v Linuxu
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ╔══════════╗
 ║          ║
 ║ aplikace ║
@@ -72,7 +87,7 @@ Trasování a ladění nativních aplikací v Linuxu
 ╚══════════╝
 
 Trasování a ladění nativních aplikací v Linuxu
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Systémová volání
     ◆ strace
 ▶ Ladění a trasování aplikací i knihoven
@@ -132,7 +147,7 @@ Trace library calls of a given program.
   -a, --align=COLUMN  align return values in a secific column.
   -A ARRAYLEN         maximum number of array elements to print.
 
-Zavolání ltrace
+Zavolání nástroje ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Zavolání ltrace bez parametrů
 $ ltrace jméno_binární_aplikace parametry_aplikace
@@ -183,6 +198,9 @@ puts("done!\n")                                        = 7
 +++ exited (status 0) +++
 
 Poslední testovaný zdrojový kód - vykreslení fraktálu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+Ukázka použití utility ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 $ ltrace ./fractal_renderer
      ↓
@@ -558,6 +576,9 @@ SystemTap
 
 Konstrola instalace SystemTapu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Skript převzatý z dokumentace SystemTapu
+    ◆ přepípač -v: verbose režim
+    ◆ přepínač -e: zadání skripti na příkazovém řádku
 # stap -v -e 'probe vfs.read {printf("read performed\n"); exit()}'
      ↓
 Pass 1: parsed user script and 118 library scripts using 233764virt/36948res/7372shr/29452data kb, in 200usr/30sys/471real ms.
@@ -567,6 +588,34 @@ Pass 4: compiled C into "stap_5ec9a356f694741098a16e111db111c9_1654.ko" in 16650
 Pass 5: starting run.
 read performed
 Pass 5: run completed in 20usr/60sys/440real ms.
+
+Vybrané typy sond
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ begin
+    ◆ spuštěna po inicializaci SystemTapu
+▶ end
+    ◆ opak předchozí sondy
+▶ oneshot
+    ◆ spuštěna jen jedenkrát
+▶ never
+    ◆ nikdy nebude spuštěna
+
+Vybrané typy sond
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ process(jméno).begin
+▶ process(jméno).end
+▶ process(PID).begin
+▶ process(PID).end
+    ◆ spuštění či naopak ukončení procesu
+▶ syscall.open
+▶ syscall.write
+    ◆ ruzné typy syscallů
+▶ process().function().call
+
+Výpis všech typů sond, filtrace syscallů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# stap --dump-probe-types
+# stap --dump-probe-aliases |grep ^syscall
 
 Ukázky použití SystemTapu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
