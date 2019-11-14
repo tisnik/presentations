@@ -28,7 +28,7 @@ Obsah přednášky (2)
 ▶ Chování myši, výběr bloků přes Shift+..., celkové chování Vimu
 ▶ Chování editoru při chybě
 ▶ Zvýraznění aktuálního řádku/sloupce
-▶ Digraphs (dvouznaky)
+▶ Digraphs (dvojznaky)
 
 Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -224,7 +224,7 @@ Volba wrap a řádky na konci obrazovky
 Nastavení breakindent
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Bere do úvahy odsazení řádku
-    ◆ obrazovkové řádky jsou odsazané též
+    ◆ obrazovkové řádky jsou odsazené též
 ▶ Kombinace s linebreak a wrap
 ▶ Samozřejmě též se showbreak
 ▶ Použití
@@ -435,12 +435,12 @@ Zvýraznění aktuálního řádku/sloupce
     :hi CursorColumn guibg=#2d2d2d
 ▶ Poměrně "podivné" chování při nastavení :wrap
 
-Digraphs
+Digraphs (dvojznaky)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Umožňuje vložení vybraného (Unicode) znaku do textu
 ▶ Povolení tohoto režimu
     :set digraph
-▶ Použití dvouznaků
+▶ Použití dvojznaků
     ◆ Ctrl+K znak1 znak2
         - dostupné vždy
     ◆ znak1 BACKSPACE znak2
@@ -448,11 +448,11 @@ Digraphs
         - emuluje a vylepšuje chování psacího stroje
         - klasické BACKSPACE po delším časovém intervalu
 
-Digraphs (dvouznaky)
+Digraphs (dvojznaky)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Zobrazení všech dvouznaků
+▶ Zobrazení všech dvojznaků
     :digraphs
-▶ Registrace nového dvouznaku
+▶ Registrace nového dvojznaku
     :digraphs znak1 znak2 kód_unicode_znaku
 ▶ Například
     :digraphs o` 243
@@ -501,11 +501,11 @@ Režim "ed" (pokračování)
     :.m-2
     :1m$
 
-Režim "ed" (složitejší příklady)
+Režim "ed" (složitější příklady)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Přesun řádku obsahujícího text "LinuxDays" na konec souboru
-    :/LinuxDays/m$
 ▶ Přesun řádku obsahujícího text "LinuxDays" na začátek souboru
+    :/LinuxDays/m0
+▶ Přesun řádku obsahujícího text "LinuxDays" na konec souboru
     :/LinuxDays/m$
 ▶ Změna všech znaků "-" na předchozím řádku za "&mdash;"
     :-1s/–/\&mdash;/g
@@ -644,6 +644,7 @@ Lepší využití klávesy Caps Lock
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Nelze provést ve Vimu!
 ▶ Přepínání mezi národními variantami klávesnice
+setxkbmap -layout 'cz_qwerty,us' -option 'grp:switch,grp:caps_toggle,grp_led:caps'
 ▶ Caps Lock ve funkci klávesy Esc
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
