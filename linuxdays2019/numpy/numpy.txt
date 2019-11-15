@@ -475,7 +475,7 @@ Použití funkce numpy.arange
 >>> numpy.arange(10, 20, 2)
           ↓
 array([10, 12, 14, 16, 18])
-
+ 
 # krok může být samozřejmě záporný
 >>> numpy.arange(20, 10, -2)
           ↓
@@ -593,7 +593,7 @@ Přetypování prvků v poli
 >>> numpy.int64([1,2,3,4])
           ↓
 array([1, 2, 3, 4], dtype=int32)
-.
+ 
 # přetypování
 >>> numpy.float16([1,2,3,4])
           ↓
@@ -606,7 +606,7 @@ Přetypování prvků v poli
           ↓
 array([ 0.        ,  0.11111111,  0.22222222,  0.33333333,  0.44444444,
         0.55555556,  0.66666667,  0.77777778,  0.88888889,  1.        ])
-.
+ 
 # přetypování na vektor celých čísel
 >>> numpy.int32(numpy.linspace(0, 1, 10))
           ↓
@@ -614,49 +614,92 @@ array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1], dtype=int32)
 
 Použití metody astype
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-a=numpy.arange(0, 10)
-
-a.astype(numpy.complex64)
+>>> a=numpy.arange(0, 10)
+>>> a.astype(numpy.complex64)
+  ↓
 array([ 0.+0.j,  1.+0.j,  2.+0.j,  3.+0.j,  4.+0.j,  5.+0.j,  6.+0.j,
         7.+0.j,  8.+0.j,  9.+0.j], dtype=complex64)
 
-Zjištění tvaru pole
+Zjištění počtu dimenzí a tvaru pole
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Atribut ndim
 ▶ Atribut shape
 ▶ Funkce numpy.shape
 
-Zjištění tvaru pole
+Zjištění počtu dimenzí tvaru pole
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # jednorozměrný vektor
-a=numpy.array([1,2,3])
-
-# dvourozměrná matice
-b=numpy.array([[1,2,3],[4,5,6]])
-
+>>> a=numpy.array([1,2,3])
+ 
+# počet dimenzí vektoru
+>>> a.ndim
+  ↓
+  1
+ 
 # tvar vektoru
-a.shape
+>>> a.shape
+  ↓
 (3,)
 
+Zjištění základních informací o poli
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# jednorozměrný vektor
+>>> a=numpy.array([1,2,3])
+>>> a.dtype.name
+  ↓
+'int64'
+ 
+>>> a.itemsize
+  ↓
+  8
+ 
+>>> a.size
+  ↓
+  3
+
+Tisk velkých polí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+>>> print(numpy.arange(10000).reshape(100,100))
+     ↓
+[[   0    1    2 ...   97   98   99]
+ [ 100  101  102 ...  197  198  199]
+ [ 200  201  202 ...  297  298  299]
+ ...
+ [9700 9701 9702 ... 9797 9798 9799]
+ [9800 9801 9802 ... 9897 9898 9899]
+ [9900 9901 9902 ... 9997 9998 9999]]
+
+Zjištění tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# dvourozměrná matice
+>>> b=numpy.array([[1,2,3],[4,5,6]])
+ 
 # tvar matice
-b.shape
+>>> b.shape
+  ↓
 (2, 3)
 
+Zjištění tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # trojrozměrné pole
-c=numpy.zeros((2,3,4))
-
-c
+>>> c=numpy.zeros((2,3,4))
+>>> c
+    ↓
 array([[[ 0.,  0.,  0.,  0.],
         [ 0.,  0.,  0.,  0.],
         [ 0.,  0.,  0.,  0.]],
-
        [[ 0.,  0.,  0.,  0.],
         [ 0.,  0.,  0.,  0.],
+        [ 0.,  0.,  0.,  0.],
         [ 0.,  0.,  0.,  0.]]])
-
-# tvar trojrozměrného pole
-c.shape
+        [ 0.,  0.,  0.,  0.]]# tvar trojrozměrného pole
+ 
+>>> c.shape
+    ↓
 (2, 3, 4)
 
+Zjištění tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # další trojrozměrné pole, tentokrát vytvořené explicitně
 d=numpy.array([[[1,2], [3,4]], [[5,6], [7,8]]])
 
