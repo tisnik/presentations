@@ -701,14 +701,52 @@ array([[[ 0.,  0.,  0.,  0.],
 Zjištění tvaru pole
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # další trojrozměrné pole, tentokrát vytvořené explicitně
-d=numpy.array([[[1,2], [3,4]], [[5,6], [7,8]]])
-
-numpy.shape(d)
+>>> d=numpy.array([[[1,2], [3,4]], [[5,6], [7,8]]])
+>>> numpy.shape(d)
+    ↓
 (2, 2, 2)
 
 Změna tvaru pole
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Funkce numpy.reshape
+    ◆ nevytváří nové pole s jiným tvarem
+    ◆ "pouze" změna pohledu na pole
+    ◆ ⇒ nelze měnit počet prvků
+
+Změna tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# běžná matice se dvěma řádky a třemi sloupci
+>>> b=numpy.array([[1,2,3],[4,5,6]])
+ 
+# změna tvaru matice na 3x2 prvky
+>>> numpy.reshape(b,(3,2))
+    ↓
+array([[1, 2],
+       [3, 4],
+       [5, 6]])
+        
+# zde vlastně dostaneme původní matici
+>>> numpy.reshape(b,(2,3))
+    ↓
+array([[1, 2, 3],
+       [4, 5, 6]])
+
+Změna tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# vytvoření matice s jediným řádkem
+>>> numpy.reshape(b,(1,6))
+    ↓
+array([[1, 2, 3, 4, 5, 6]])
+ 
+# vytvoření matice s jediným sloupcem
+>>> numpy.reshape(b,(6,1))
+    ↓
+array([[1],
+       [2],
+       [3],
+       [4],
+       [5],
+       [6]])
 
 Další podbalíčky, které nalezneme v knihovně ndarray
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
