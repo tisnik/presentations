@@ -676,7 +676,51 @@ probe begin(1)
     print("Hello");
 }
 
+Ukázky použití SystemTapu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Sonda, která vypíše ID uživatele
+probe begin
+{
+  printf ("hello %d\n", uid())
+  exit ()
+}
+▶ Spuštění (pod rootem)
+# stap hello2.stp
+     ↓
+hello 0
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Sonda reagujicí každou sekundu na časovač
+probe timer.ms(1000)
+{
+  printf ("tiktak\n")
+}
+▶ Spuštění (pod rootem)
+# stap clock.stp
+     ↓
+tiktak
+tiktak
+tiktak
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Reakce na spuštění programu nazvaného "hello"
+▶ Reakce na ukončení tohoto programu
+▶ Reakce na vstup do funkce main
+probe process("hello").begin
+{
+  printf ("started\n")
+}
+probe process("hello").end
+{
+    printf ("finished\n")
+}
+probe process("hello").function("main")
+{
+    printf ("main function\n")
+}
+
 GNU Debugger
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 bpftrace
