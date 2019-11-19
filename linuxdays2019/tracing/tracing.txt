@@ -721,6 +721,40 @@ probe process("hello").function("main")
     printf ("main function\n")
 }
 
+Výpis PID každého spuštěného procesu "ls"
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+probe begin
+{
+    println("STAP prepared");
+}
+probe process("ls").begin
+{
+    printf("ls with PID=%d started\n", pid());
+}
+probe process("ls").end
+{
+    printf("ls with PID=%d finished\n", pid());
+}
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Registrace a spuštění sondy
+# stap process.stp
+▶ Spuštění programu ./hello v jiném terminálu
+$ ./hello
+▶ Zprávy vypsané sondou
+    started
+    main function
+    finished
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Výpis informací o všech otevřených souborech/zařízeních
+probe syscall.open
+{
+    filename = user_string($filename);
+    printf("ls opened file %s\n", filename);
+}
 GNU Debugger
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 bpftrace
