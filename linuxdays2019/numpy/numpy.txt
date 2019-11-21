@@ -820,6 +820,33 @@ array([0, 1, 2, 3])
 >>> m[0,2]
 2
 
+Výběr prvků pomocí indexů uložených v jiném poli
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+>>> a=numpy.arange(12)
+array([10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+ 
+>>> b=numpy.array([1,2,9,8,5])
+>>> a[b]
+array([11, 12, 19, 18, 15])
+ 
+>>> b=numpy.array([1,2,-1,8,5])
+>>> a[b]
+array([11, 12, 19, 18, 15])
+
+Výběr prvků pomocí indexů uložených v jiném poli
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# dtto ale s dvourozměrným polem
+>>> m1=numpy.array([[1,2,3],[4,5,6],[7,8,9]])
+array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
+       
+>>> m2=numpy.array([0,2,1])
+>>> m1[m2]
+array([[1, 2, 3],
+       [7, 8, 9],
+       [4, 5, 6]])
+
 Další podbalíčky, které nalezneme v knihovně ndarray
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 doc         obsahuje dokumentaci ke knihovně i k základním konstrukcím a operacím
