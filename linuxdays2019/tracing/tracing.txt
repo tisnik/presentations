@@ -800,6 +800,37 @@ probe syscall.open
     }
 }
 
+Použití automaticky vypisovaných globálních proměnných
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+global read_count=0
+global write_count=0
+global read_bytes=0
+global write_bytes=0
+global unused_variable=0
+probe syscall.open
+{
+    filename = user_string($filename);
+    printf("ls opened file %s\n", filename);
+}
+probe syscall.read
+{
+    bytes=$count
+    into=$fd
+    read_bytes += bytes
+    printf("read %d bytes from file descriptor %d\n", bytes, into);
+    read_count++
+    if (read_count>10000) exit()
+}
+probe syscall.write
+{
+    bytes=$count
+    into=$fd
+    write_bytes += bytes
+    printf("write %d bytes to file descriptor %d\n", bytes, into);
+    write_count++
+    if (write_count>10000) exit()
+}
+
 GNU Debugger
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 bpftrace
