@@ -831,6 +831,39 @@ probe syscall.write
     if (write_count>10000) exit()
 }
 
+Sledování dalších syscallů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ U jednotlivých syscallů máme k dispizici další informace
+    ◆ u write je to: buf, dount, fd
+global pid=-1
+probe begin
+{
+    println("STAP prepared");
+}
+probe process("ls").begin
+{
+    pid=pid()
+    printf("ls with PID=%d started\n", pid());
+}
+probe process("ls").end
+{
+    printf("ls with PID=%d finished\n", pid());
+}
+probe syscall.open
+{
+    filename = user_string($filename);
+    if (pid==pid()) {
+        printf("ls opened file %s\n", filename);
+    }
+}
+probe syscall.write
+{
+    bytes=$count
+    into=$fd
+    if (pid==pid()) {
+        printf("write %d bytes to file descriptor %d\n", bytes, into);
+    }
+}
 GNU Debugger
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 bpftrace
