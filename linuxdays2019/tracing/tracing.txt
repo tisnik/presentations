@@ -917,6 +917,38 @@ probe process(@1).end
     printf("ls with PID=%d finished\n", pid());
 }
 
+Výpis volaných funkcí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Použití žolíkového znaku *
+probe process("ls").function("*").call
+{
+    println(ppfunc());
+}
+
+Výpis backtrace zvolené volané funkce
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Použití explicitního jména funkce
+probe process("ls").function("xmalloc").call
+{
+    println(ppfunc());
+    print_ubacktrace();
+}
+
+Výpis backtrace zvolené volané funkce
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+xmalloc
+ 0x4112f0 : xmalloc+0x0/0x20 [/usr/bin/ls]
+ 0x4051c8 : sort_files+0x148/0x190 [/usr/bin/ls]
+ 0x403c72 : main+0x12e2/0x2160 [/usr/bin/ls]
+ 0x7f51b4e71700 [/usr/lib64/libc-2.21.so+0x20700/0x3c1000]
+xmalloc
+ 0x4112f0 : xmalloc+0x0/0x20 [/usr/bin/ls]
+ 0x4060fc : calculate_columns+0xcc/0x2d0 [/usr/bin/ls]
+ 0x407abe : print_current_files+0x33e/0x4e0 [/usr/bin/ls]
+ 0x403d73 : main+0x13e3/0x2160 [/usr/bin/ls]
+ 0x7f51b4e71700 [/usr/lib64/libc-2.21.so+0x20700/0x3c1000]
+ls with PID=5278 finished
+
 GNU Debugger
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 bpftrace
