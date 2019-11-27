@@ -958,6 +958,32 @@ array([[ 0,  2,  4],
        [10, 12, 14],
        [20, 22, 24]])
 
+Operátory
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Základní operátory jsou přetížené
+▶ Prvky matice + skalár
+>>> a1=numpy.array([[1,2,3], [4,5,6], [7,8,9]])
+>>> a1+100
+    ↓
+array([[101, 102, 103],
+       [104, 105, 106],
+       [107, 108, 109]])
+>>> a1*2
+array([[ 2,  4,  6],
+       [ 8, 10, 12],
+       [14, 16, 18]])
+
+Operátory
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+>>> m=numpy.reshape(numpy.arange(25),(5,5))
+m%2
+    ↓
+array([[0, 1, 0, 1, 0],
+       [1, 0, 1, 0, 1],
+       [0, 1, 0, 1, 0],
+       [1, 0, 1, 0, 1],
+       [0, 1, 0, 1, 0]])
+
 Další podbalíčky, které nalezneme v knihovně ndarray
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 doc         obsahuje dokumentaci ke knihovně i k základním konstrukcím a operacím
