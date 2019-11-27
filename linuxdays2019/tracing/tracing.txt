@@ -949,6 +949,30 @@ xmalloc
  0x7f51b4e71700 [/usr/lib64/libc-2.21.so+0x20700/0x3c1000]
 ls with PID=5278 finished
 
+Uživatelem definované funkce
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Základní tvar
+function count_add(arg1, arg2) {
+    return arg1 + arg2
+}
+▶ Explicitní uvedení návratové hodnoty
+function concatenate:string(arg1:long, arg2) {
+    return sprintf("%d%s", arg1, arg2)
+}
+
+Statistika a histogramy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Přidání hodnoty do pole operátorem <<<
+▶ Vytvoření histogramu z pole @hist_log
+▶ Další funkce
+    ◆ @count()      počet prvků (vzorků)
+    ◆ @sum          součet (suma) hodnot prvků
+    ◆ @min          nalezení vzorku sminimální hodnotou
+    ◆ @max          nalezení vzorku smaximální hodnotou
+    ◆ @avg          výpočet průměrné hodnoty
+    ◆ @hist_linear  normální histogram slineární osou  
+    ◆ @hist_log     histogram slogaritmickou osou
+
 GNU Debugger
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 bpftrace
