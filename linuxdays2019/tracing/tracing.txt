@@ -973,6 +973,23 @@ Statistika a histogramy
     ◆ @hist_linear  normální histogram slineární osou  
     ◆ @hist_log     histogram slogaritmickou osou
 
+Statistika a histogramy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+global histogram
+probe begin {
+    printf("Capturing...\n")
+}
+probe netdev.transmit {
+    histogram <<< length
+}
+probe netdev.receive {
+    histogram <<< length
+}
+probe end {
+    printf( "\n" )
+    print( @hist_log(histogram) )
+}
+
 GNU Debugger
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 bpftrace
