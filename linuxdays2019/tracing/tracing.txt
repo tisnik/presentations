@@ -990,72 +990,356 @@ probe end {
     print( @hist_log(histogram) )
 }
 
+Statistika a histogramy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+global reads
+global writes
+global read_write_count=0
+probe process("ls").begin
+{
+    printf("ls with PID=%d started\n", pid());
+}
+probe process("ls").end
+{
+    printf("ls with PID=%d finished\n", pid());
+}
+probe syscall.open
+{
+    filename = user_string($filename);
+    printf("ls opened file %s\n", filename);
+}
+probe syscall.read
+{
+    bytes=$count
+    into=$fd
+    reads <<< bytes
+    printf("read %d bytes from file descriptor %d\n", bytes, into);
+    read_write_count++
+    if (read_write_count>10000) exit()
+}
+probe syscall.write
+{
+    bytes=$count
+    into=$fd
+    writes <<< bytes
+    printf("write %d bytes to file descriptor %d\n", bytes, into);
+    read_write_count++
+    if (read_write_count>10000) exit()
+}
+probe end
+{
+    println("Reads:")
+    print(@hist_linear(reads, 0, 1000, 100))
+    println()
+    println("Writes:")
+    print(@hist_linear(writes, 0, 1000, 100))
+}
+
+Statistika a histogramy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Reads:
+value |-------------------------------------------------- count
+    0 |                                                       0
+  100 |                                                       2
+  200 |                                                       0
+  300 |@                                                     10
+      ~
+  800 |                                                       0
+  900 |                                                       0
+ 1000 |                                                       1
+>1000 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  35621
+
+Statistika a histogramy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Writes:
+value |-------------------------------------------------- count
+    0 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  17940
+  100 |@@@@@@@@@@@@@@@@@@@@@@@@@@                          9492
+  200 |@                                                    468
+  300 |@@                                                   873
+  400 |@@                                                  1070
+  500 |                                                     211
+  600 |                                                      91
+  700 |                                                      26
+  800 |                                                      12
+  900 |                                                       1
+ 1000 |                                                       5
+>1000 |                                                     147
+
+Statistické informace vypsané po ukončení procesu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+global reads
+global writes
+global read_write_count=0
+probe syscall.open
+{
+    filename = user_string($filename);
+    printf("ls opened file %s\n", filename);
+}
+probe syscall.read
+{
+    bytes=$count
+    into=$fd
+    reads <<< bytes
+    printf("read %d bytes from file descriptor %d\n", bytes, into);
+    read_write_count++
+    if (read_write_count>10000) exit()
+}
+probe syscall.write
+{
+    bytes=$count
+    into=$fd
+    writes <<< bytes
+    printf("write %d bytes to file descriptor %d\n", bytes, into);
+    read_write_count++
+    if (read_write_count>10000) exit()
+}
+probe end
+{
+    println("Reads:")
+    printf("Count: %d operations\n", @count(reads))
+    printf("Total: %d bytes\n", @sum(reads))
+    printf("Min:   %d bytes\n", @min(reads))
+    printf("Max:   %d bytes\n", @max(reads))
+    printf("Avg:   %d bytes/operation\n", @avg(reads))
+    println()
+    println("Writes:")
+    printf("Count: %d operations\n", @count(writes))
+    printf("Total: %d bytes\n", @sum(writes))
+    printf("Min:   %d bytes\n", @min(writes))
+    printf("Max:   %d bytes\n", @max(writes))
+    printf("Avg:   %d bytes/operation\n", @avg(writes))
+}
+
+Statistické informace vypsané po ukončení procesu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Reads:
+Count: 5003 operations
+Total: 538640392 bytes
+Min:   8196 bytes
+Max:   131072 bytes
+Avg:   107663 bytes/operation
+Writes:
+Count: 4999 operations
+Total: 828740 bytes
+Min:   40 bytes
+Max:   2312 bytes
+Avg:   165 bytes/operation
+
 GNU Debugger
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Vyvíjen od roku 1986
+▶ Portace na mnoho OS
+    ◆ Unixy
+    ◆ Linux
+    ◆ ale například i DOS
+▶ Portace na všechny významné architektury CPU
+    ◆ x86
+    ◆ x86-64
+    ◆ ARM (32bit, většina rodin)
+    ◆ AArch64
+    ◆ MIPS
+    ◆ PowerPC
+
+GNU Debugger
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Kooperace s překladači z rodiny GNU i dalšími překladači
+    ◆ Ada
+    ◆ C
+    ◆ C++
+    ◆ Go
+    ◆ Objective-C
+    ◆ D
+    ◆ Fortran
+    ◆ Modula-2
+    ◆ Pascal
+    ◆ Java
+    ◆ ...
+▶ Chování GNU Debuggeru ovlivněno jazykem
+    ◆ formát výpisu hexadecimálních hodnot
+    ◆ struktury záznamů
+    ◆ ...
+
+GNU Debugger
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Ovládání
+    ◆ příkazový řádek
+    ◆ TUI
+    ◆ Frontend (GUI, různá IDE) přes protokol
+    ◆ "stub" přidaný přímo do laděné aplikace
+▶ Příkazový řádek
+    ◆ jednoznakové a dvojznakové zkratky příkazů
+        - bt=backtrace
+        - c=continue
+        - f=frame
+    ◆ Tab completion
+    ◆ historie příkazového řádku
+▶ gdbtui
+
+GNU Debugger a trasování
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Tracepoints
+    ◆ zjištění stavu procesu bez jeho (po)zastavení
+
+Sledování přímo v kernelu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zdroj dat -> Extrakce dat -> Frontend
+▶ LTTng - Linux Trace Toolkit, next generation
+▶ LKST - Linux Kernel State Tracer
+
+Sledování přímo v kernelu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Zdroj dat   -> extrakce dat -> frontend
+╔═══════════╗  ╔═══════════╗  ╔═════════════╗
+║kprobes    ║  ║ perf      ║  ║ perf        ║
+║tracepoints║  ║ ftrace    ║  ║ ftrace      ║
+║uprobes    ║  ║ eBPF      ║  ║ kernelshark ║
+║           ║  ║ SystemTap ║  ║ catapult    ║
+║           ║  ║           ║  ║ bcc         ║
+║           ║  ║           ║  ║ sysdig      ║
+║           ║  ║           ║  ║ LTTng       ║
+╚═══════════╝  ╚═══════════╝  ╚═════════════╝
+
+BPF (eBPF)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ eBPF (extended Berkeley Packet Filter)
+    ◆ Přidán do kernelů řady 4.x
+    ◆ Statické a dynamické trasování
+    ◆ Profilování
+
+Front endy pro BPF
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ BCC
+    ◆ pro tvorbu komplexnějších nástrojů
+▶ bpftrace
+    ◆ hodí se i pro kratší skripty a one-linery
+
+BCC
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ BPF Compiler Collection
+    ◆ front endy pro
+    ◆ Python
+    ◆ Lua
+    ◆ C++
+    ◆ Go
+
 bpftrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Ve Fedoře od verze 28
+# bpftrace 
+USAGE:
+    bpftrace [options] filename
+    bpftrace [options] -e 'program'
+.
+OPTIONS:
+    -B MODE        output buffering mode ('line', 'full', or 'none')
+
+Otestování funkcionality bpftrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# bpftrace -e 'BEGIN { printf("Hello BPF!\n"); exit(); }'
+Attaching 1 probe...
+Hello BPF!
+
+Všechny dostupné sondy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# bpftrace -l 'tracepoint:syscalls:sys_enter_*'
+tracepoint:syscalls:sys_enter_socket
+tracepoint:syscalls:sys_enter_socketpair
+tracepoint:syscalls:sys_enter_bind
+...
+tracepoint:syscalls:sys_enter_sysctl
+tracepoint:syscalls:sys_enter_exit
+tracepoint:syscalls:sys_enter_exit_group
+tracepoint:syscalls:sys_enter_waitid
+...
+
+Výpis všech souborů, které jsou otevírány
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# bpftrace -e 'tracepoint:syscalls:sys_enter_openat { printf("%s %s\n", comm, str(args->filename)); }'
+bash /etc/profile.d/which2.sh
+bash /etc/profile.d/sh.local
+bash /etc/bashrc
+bash /root/.bash_profile
+bash /root/.bashrc
+bash /etc/bashrc
+bash /root/.bash_history
+bash /root/.bash_history
+bash /root/.inputrc
+bash /etc/inputrc
+
+Histogram s výsledky sondy sys_exit_read
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ bash
+$ echo $$
+12345
+# bpftrace -e 'tracepoint:syscalls:sys_exit_read /pid == 12345/ { @bytes = hist(args->ret); }'
+Attaching 1 probe...
+^C
+@bytes: 
+[1]                   13 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[2, 4)                 0 |                                                    |
+[4, 8)                 0 |                                                    |
+[8, 16)                0 |                                                    |
+[16, 32)               1 |@@@@                                                |
+
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# bpftrace -e 'kretprobe:vfs_read { @bytes = lhist(retval, 0, 2000, 200); }'
+Attaching 1 probe...
+^C
+@bytes: 
+[0, 200)               8 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[200, 400)             1 |@@@@@@                                              |
+[400, 600)             1 |@@@@@@                                              |
+[600, 800)             1 |@@@@@@                                              |
+[800, 1000)            1 |@@@@@@                                              |
+[1000, 1200)           0 |                                                    |
+[1200, 1400)           0 |                                                    |
+[1400, 1600)           0 |                                                    |
+[1600, 1800)           0 |                                                    |
+[1800, 2000)           0 |                                                    |
+[2000, ...)            1 |@@@@@@                                              |
 
 Odkazy na další informační zdroje
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Tracing (software)
     ◆ https://en.wikipedia.org/wiki/Tracing_%28software%29
-
 ▶ ltrace(1) - Linux man page
     ◆ http://linux.die.net/man/1/ltrace
-
 ▶ ltrace (Wikipedia)
     ◆ https://en.wikipedia.org/wiki/Ltrace
-
 ▶ strace(1) - Linux man page
     ◆ http://linux.die.net/man/1/strace
-
 ▶ strace (stránka projektu na SourceForge)
     ◆ https://sourceforge.net/projects/strace/
-
 ▶ strace (Wikipedia)
     ◆ https://en.wikipedia.org/wiki/Strace
-
 ▶ SystemTap (stránka projektu)
     ◆ https://sourceware.org/systemtap/
-
 ▶ SystemTap (Wiki projektu)
     ◆ https://sourceware.org/systemtap/wiki
-
 ▶ SystemTap (Wikipedia)
     ◆ https://en.wikipedia.org/wiki/SystemTap
-
 ▶ Dynamic Tracing with DTrace &amp; SystemTap
     ◆ http://myaut.github.io/dtrace-stap-book/
-
 ▶ DTrace (Wikipedia)
     ◆ https://en.wikipedia.org/wiki/DTrace
-
 ▶ GDB - Dokumentace
     ◆ http://sourceware.org/gdb/current/onlinedocs/gdb/
-
 ▶ GDB - Supported Languages
     ◆ http://sourceware.org/gdb/current/onlinedocs/gdb/Supported-Languages.html#Supported-Languages
-
 ▶ GNU Debugger (Wikipedia)
     ◆ https://en.wikipedia.org/wiki/GNU_Debugger
-
 ▶ The LLDB Debugger
     ◆ http://lldb.llvm.org/
-
 ▶ Debugger (Wikipedia)
     ◆ https://en.wikipedia.org/wiki/Debugger
-
 ▶ 13 Linux Debuggers for C++ Reviewed
     ◆ http://www.drdobbs.com/testing/13-linux-debuggers-for-c-reviewed/240156817
-
 ▶ Getting started with ltrace: how does it do that?
     ◆ https://www.ellexus.com/getting-started-with-ltrace-how-does-it-do-that/
-
 ▶ Reverse Engineering Tools in Linux – strings, nm, ltrace, strace, LD_PRELOAD
     ◆ http://www.thegeekstuff.com/2012/03/reverse-engineering-tools/
-
 ▶ 7 Strace Examples to Debug the Execution of a Program in Linux
     ◆ http://www.thegeekstuff.com/2011/11/strace-examples/
-
 ▶ Oracle® Solaris 11.3 DTrace (Dynamic Tracing) Guide
     ◆ http://docs.oracle.com/cd/E53394_01/html/E53395/gkwpo.html#scrolltoc
