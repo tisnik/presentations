@@ -1,0 +1,19 @@
+
+Režim "ed"
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+"ed"
+▶ Ideový předchůdce editoru Vi (který je předchůdcem Vimu)
+▶ Příkazy editoru "ed" se zadávají v command režimu
+▶ Obecný tvar příkazů
+    :[address [,address]]command[parameters]
+▶ Adresy
+    . aktuální řádek
+    $ poslední řádek
+    2 druhý řádek
+    - předchozí řádek
+    + následující řádek
+    +2 relativní řádek +2
+    -2 relativní řádek -2
+    0  nad prvním řádkem (například pro move atd.)
+    /foobar/ řádek s textem odpovídajícím regexpu
+    ?foobar? řádek s textem odpovídajícím regexpu

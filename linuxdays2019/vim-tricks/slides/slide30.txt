@@ -1,0 +1,11 @@
+
+Vizuální režim versus režim výběru
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:set selectmode=seznam_hodnot
+╔═════════╤═════════════════════════════════╗
+║ Hodnota │ Význam                          ║
+╟─────────┼─────────────────────────────────╢
+║ mouse   │ select mode pomocí myši         ║
+║ key     │ select mode pomocí shift+šipky  ║
+║ cmd     │ select mode začíná v, V, Ctrl+V ║
+╚═════════╧═════════════════════════════════╝

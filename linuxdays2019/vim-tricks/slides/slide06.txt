@@ -1,0 +1,13 @@
+
+Základní konfigurační volby (pokračování)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Nastavení typu souboru (konce řádků)
+    :set filetype=[dos,unix]
+▶ Chování bloků
+    :set selection=exclusive
+    ◆ bloky se chovají podobně jako v ostatních editorech
+    ◆ (bude ukázáno dále)
+▶ Seznam souborů atd. po TAB
+    :set wildmenu
+▶ Některé soubory je vhodné ignorovat
+    :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o

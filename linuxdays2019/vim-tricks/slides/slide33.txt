@@ -1,0 +1,11 @@
+
+Vertikální bloky a funkce typu "najdi a nahraď"
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Po výběru bloku stisk :
+▶ Lze zapsat například
+    :'<,'>s-foo-bar-g
+▶ Ovšem náhrada se provede v celém rozsahu textu od prvního vybraného řádku do řádku posledního
+▶ Lze náhradu provést skutečně jen ve vybraném vertikálním bloku?
+▶ Řešení
+    ◆ použití \%V
+    :'<,'>s-\%Vfoo-bar-g

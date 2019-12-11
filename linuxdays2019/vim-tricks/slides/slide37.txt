@@ -1,0 +1,11 @@
+
+Volba keymodel
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Týká se výběru bloků pomocí Shift+posun
+:set keymodel
+╔═══════════════════╤════════════════════════════════════════╗
+║ Volba             │ Význam                                 ║
+╟───────────────────┼────────────────────────────────────────╢
+║ startsel, stopsel │ výběr pomocí Shift+šipky               ║
+║ ""                │ skok na další slovo pomocí Shift+šipky ║
+╚═══════════════════╧════════════════════════════════════════╝

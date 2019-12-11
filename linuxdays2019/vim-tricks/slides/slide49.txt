@@ -1,0 +1,14 @@
+
+Zvýraznění syntaxe
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Dvojice příkazů
+    :syntax 
+    :highlight
+▶ První příkaz
+    :syntax 
+    ◆ bez parametrů vypíše syntaktické skupiny
+    ◆ parametry: typ určení textu + jméno + samotné určení
+▶ Druhý příkaz
+    :highlight
+    ◆ bez parametrů vypíše vazbu syntaktické skupiny na "barvičky"
+    ◆ parametry: jméno term= cterm= ctermfg= ctermbg= guifg= guibg=

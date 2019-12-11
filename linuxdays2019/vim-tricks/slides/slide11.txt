@@ -1,0 +1,15 @@
+
+Nahrazení
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Jediný výskyt na řádku
+    :s/foo/bar/foo
+▶ Jediný výskyt na každém řádku v celém souboru
+    :%s/foo/bar/
+▶ Všechny výskyty na řádku
+    :s/foo/bar/g
+▶ Výskyty schválené uživatelem
+    :s/foo/bar/gc
+▶ Všechny výskyty public => public int, ovšem jen pokud již není nahrazeno
+    :s/public\( int\)\@!/public int/g
+▶ Zopakování posledního příkazu pro náhradu
+    :&

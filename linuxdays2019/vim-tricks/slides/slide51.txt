@@ -1,0 +1,13 @@
+
+Zvýraznění syntaxe
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:syn match vimcommand "\:.*"
+:syn match odrazka1 "^\%d9654.*"
+:syn match odrazka2 "^    [^:].*""
+:syn match odrazka3 "^        .*"
+:syn match nadpis "^[A-Z].*"
+:hi odrazka1 ctermfg=lightgreen guifg=darkgreen
+:hi odrazka2 ctermfg=yellow   guifg=brown
+:hi odrazka3 ctermfg=lightcyan  guifg=red
+:hi nadpis   ctermfg=white  guifg=blue
+:hi vimcommand ctermbg=yellow  guibg=#c0ffc0

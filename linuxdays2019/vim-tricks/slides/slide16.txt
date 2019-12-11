@@ -1,0 +1,5 @@
+
+Relativní čísla řádků
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Pomáhá při mnoha operacích typu 5j 10dd atd.
+    :set relativenumber

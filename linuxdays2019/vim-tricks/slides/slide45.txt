@@ -1,0 +1,11 @@
+
+Režim "ed" (pokračování)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Příkazy "ed"u
+    a append
+    c change
+    d delete
+    m move (musí se zadat další adresa cíle)
+    :.m$
+    :.m-2
+    :1m$

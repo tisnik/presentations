@@ -1,0 +1,7 @@
+
+Lepší využití klávesy Caps Lock
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Nelze provést ve Vimu!
+▶ Přepínání mezi národními variantami klávesnice
+▶ Caps Lock ve funkci klávesy Esc
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'

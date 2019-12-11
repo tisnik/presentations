@@ -1,0 +1,14 @@
+
+Celkové chování editoru
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Nastavení několika voleb jediným příkazem :behave
+    :behave mswin
+    :behave xterm
+╔════════════╤════════════════════╤══════════╗
+║ Volba      │ mswin              │ xterm    ║
+╟────────────┼────────────────────┼──────────╢
+║ selectmode │ mouse, key         │ ""       ║
+║ mousemodel │ popup              │ extend   ║
+║ keymodel   │ startstel, stopsel │ ""       ║
+║ selection  │ exclusive          │ inclusive║
+╚════════════╧════════════════════╧══════════╝

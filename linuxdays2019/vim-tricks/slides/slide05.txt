@@ -1,0 +1,15 @@
+
+Základní konfigurační volby
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Vypnutí kompatibility s editorem Vi
+    :set nocompatible
+▶ Zobrazení pravítka
+    :set ruler
+▶ Zobrazení a nastavení obsahu pravítka
+    :set laststatus=...
+    :set statusline=...
+▶ Expanze či zákaz expanze tabů
+    :set (no)expandtab
+    :retab
+▶ Chování klávesy backspace
+    :set backspace=[indent,eol,start]

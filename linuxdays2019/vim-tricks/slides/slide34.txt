@@ -1,0 +1,12 @@
+
+Režim virtuální editace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:set virtualedit=
+╔══════════╤═════════════════════════════════════════════════════════╗
+║ Hodnota  │  Význam                                                 ║
+╟──────────┼─────────────────────────────────────────────────────────╢
+║ block    │ povolení virtuální editace při práci s vizuálními bloky ║
+║ insert   │ povolení virtuální editace ve vkládacím režimu          ║
+║ all      │ povolení virtuální editace ve všech režimech            ║
+║ onemore  │ umožňuje přesun kurzoru pouze ZA poslední znak          ║
+╚══════════╧═════════════════════════════════════════════════════════╝

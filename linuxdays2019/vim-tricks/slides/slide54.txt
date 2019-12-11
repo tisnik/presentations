@@ -1,0 +1,24 @@
+
+Volba :rulerformat
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+╔════╤════════════════════════════════════════════════════════════╗
+║Kód │ Význam                                                     ║
+╟────┼────────────────────────────────────────────────────────────╢
+║%f  │jméno souboru s relativní cestou                            ║
+║%F  │jméno souboru s plnou cestou                                ║
+║%t  │pouze jméno souboru                                         ║
+║%y  │typ souboru                                                 ║
+║%m  │příznak, že soubor byl změněn (modified)                    ║
+║%r  │příznak, že soubor je určen pro čtení (read-only)           ║
+║%l  │číslo řádku, na němž se nachází kurzor                      ║
+║%L  │celkový počet řádků v souboru                               ║
+║%c  │číslo sloupce, na němž se nachází kurzor                    ║
+║%v  │číslo virtuálního sloupce                                   ║
+║%o  │offset od začátku souboru (začíná se od jedničky)           ║
+║%b  │hodnota znaku pod textovým kurzorem v deka                  ║
+║%B  │hodnota znaku pod textovým kurzorem v hexa                  ║
+║%## │mezi znaky ## je vloženo jméno skupiny definované highlight ║
+║%{} │mezi znaky {} je vloženo volání uživatelské funkce          ║
+║%(  │začátek skupiny značek/textu, kterým lze přiřadit šířku     ║
+║%)  │konec skupiny značek/textu, kterým lze přiřadit šířku       ║
+╚════╧════════════════════════════════════════════════════════════╝

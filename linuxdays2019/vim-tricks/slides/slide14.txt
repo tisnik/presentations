@@ -1,0 +1,11 @@
+
+Volby způsobu zobrazení textů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zobrazení čísel řádků
+    :set number
+▶ Zobrazení relativních čísel (aktuální řádek=0)
+    :set relativenumber
+▶ Zkombinovat lze i obě předchozí volby
+    ◆ relativní řádky + aktuální řádek má absolutní index
+▶ Zobrazení řídicích znaků
+    :set list

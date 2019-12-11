@@ -1,0 +1,5 @@
+       Triky ve Vimu (i bez pluginů)
+═══════════════════════════════════════════
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2019-10-06

@@ -1,0 +1,8 @@
+
+Vyhledávání v textu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zobrazení historie hledání
+    :his s
+▶ Zobrazení okna s historií hledání
+    q/
+    ◆ (uzavře se pomocí :q)

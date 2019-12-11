@@ -1,0 +1,13 @@
+
+Digraphs
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Umožňuje vložení vybraného (Unicode) znaku do textu
+▶ Povolení tohoto režimu
+    :set digraph
+▶ Použití dvouznaků
+    ◆ Ctrl+K znak1 znak2
+        - dostupné vždy
+    ◆ znak1 BACKSPACE znak2
+        - jen při povolené volbě :digraphs
+        - emuluje a vylepšuje chování psacího stroje
+        - klasické BACKSPACE po delším časovém intervalu

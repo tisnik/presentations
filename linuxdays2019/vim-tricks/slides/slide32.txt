@@ -1,0 +1,13 @@
+
+Výběr vertikálních bloků, práce s bloky
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Standardně klávesová zkratka Ctrl+V
+▶ IMHO lepší nastavení
+    :noremap ,v <C-V>
+    ◆ nekoliduje s případným mapováním Ctrl+V na "paste"
+▶ Běžné operátory c, y, d
+▶ Při "yank" a "delete" se zapamatuje, že se jedná o blok
+    ◆ jak?
+    ◆ trik s Ctrl+J
+▶ Možnost kombinace s "virtualedit" při nestejně dlouhých řádcích
+    ◆ viz další slajd

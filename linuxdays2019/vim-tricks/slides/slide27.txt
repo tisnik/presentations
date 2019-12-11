@@ -1,0 +1,7 @@
+
+Zneužití speciálního registru =
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Vložení sekvence čísel do souboru v insert režimu
+    ◆ CTRL+R=range(1,10)
+    ◆ CTRL+R=range(1,20,3)
+    ◆ CTRL+R=range(10,0,-2)

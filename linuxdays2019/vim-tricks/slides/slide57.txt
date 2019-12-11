@@ -1,0 +1,10 @@
+
+Užitečné externí nástroje
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ xxd
+▶ fmt
+▶ tablign
+▶ sort
+▶ grep
+▶ cut
+▶ m4

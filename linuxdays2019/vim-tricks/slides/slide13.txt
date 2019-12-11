@@ -1,0 +1,6 @@
+
+Hexa editor (aplikace současný soubor)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Nástroj xxd je součástí instalace Vimu (vim-enhanced)
+    :%!xxd
+    :%!xxd -r

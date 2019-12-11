@@ -1,0 +1,10 @@
+
+Zobrazení řídicích znaků
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Ve formátu ^znak
+    ◆ například ^K
+▶ Hexa hodnota znaku
+    ◆ například <0b>
+▶ Změna nastavení
+    :set display=
+    :set display=uhex

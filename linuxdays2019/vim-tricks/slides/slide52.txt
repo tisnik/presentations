@@ -1,0 +1,18 @@
+
+Pravítko a stavový řádek
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+╔═══════════════╤═══════════════╤══════════════════════════════════════╗
+║Název parametru│ Typ parametru │Význam                                ║
+╟───────────────┼───────────────┼──────────────────────────────────────╢
+║ ruler         │ pravdivostní  │povolení zobrazení pravítka           ║
+║ showcmd       │ pravdivostní  │povolení zobrazení příkazu            ║
+║               │               │během jeho zápisu na pravítku         ║
+║ showmode      │ pravdivostní  │povolení zobrazení aktuálně           ║
+║               │               │nastaveného režimu editoru na pravítku║
+║ rulerformat   │ řetězec       │definice formátu zobrazení            ║
+║               │               │informací na pravítku                 ║
+║ statusline    │ řetězec       │definice formátu zobrazení            ║
+║               │               │informací na stavovém řádku           ║
+║ laststatus    │ číslo 0, 1, 2 │řízení způsobu zobrazení stavového    ║
+║               │               │řádku pro nejspodnější okno editoru   ║
+╚═══════════════╧═══════════════╧══════════════════════════════════════╝

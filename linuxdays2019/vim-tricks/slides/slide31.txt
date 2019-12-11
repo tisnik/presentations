@@ -1,0 +1,13 @@
+
+Výběr textu
+‾‾‾‾‾‾‾‾‾‾‾
+:set selection=
+    ◆ vybírá se znak pod kurzorem?
+    ◆ lze vybrat znak za koncem řádku?
+╔═══════════╤═════════════════╤═══════════════════╗
+║ Hodnota   │ Za koncem řádku │ Znak pod kurzorem ║
+╟───────────┼─────────────────┼───────────────────╢
+║ old       │ ne              │ ano               ║
+║ inclusive │ ano             │ ano               ║
+║ exclusive │ ano             │ ne                ║
+╚═══════════╧═════════════════╧═══════════════════╝

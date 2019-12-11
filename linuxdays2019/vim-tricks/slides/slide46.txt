@@ -1,0 +1,11 @@
+
+Režim "ed" (složitejší příklady)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Přesun řádku obsahujícího text "LinuxDays" na konec souboru
+    :/LinuxDays/m$
+▶ Přesun řádku obsahujícího text "LinuxDays" na začátek souboru
+    :/LinuxDays/m$
+▶ Změna všech znaků "-" na předchozím řádku za "&mdash;"
+    :-1s/–/\&mdash;/g
+▶ Obalení aktuální řádky (může vizuálně přesahovat jeden řádek) do značky pro odstavec
+    :s/.*/<p>\r&\r<\/p>/

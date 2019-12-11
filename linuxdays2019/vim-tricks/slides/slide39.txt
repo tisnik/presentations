@@ -1,0 +1,11 @@
+
+Chování editoru při chybě
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Pípnutí
+    ◆ kolegové vás budou mít moc rádi
+▶ Krátký "záblesk" celé obrazovky
+    ◆ dosti nepříjemné
+    ◆ pomalé (terminálové sekvence atd.)
+▶ Řešením je vypnutí obou způsobů
+    :set novisualbell
+    :set vb t_vb="

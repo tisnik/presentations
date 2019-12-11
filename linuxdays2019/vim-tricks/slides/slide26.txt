@@ -1,0 +1,12 @@
+
+Trocha matematiky
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zvýšení a snížení hodnoty, na které je kurzor nebo první hodnoty ZA kurzorem
+    ◆ CTRL+A
+    ◆ CTRL+X
+▶ (Trik) doskok na první číslo (jedno jaké, s několika výjimkami)
+    ◆ CTRL+A CTRL+X
+▶ Výpočty ve vkládacím režimu
+    ◆ CTRL+R=6*7
+    ◆ CTRL+R=0xffffffff
+    ◆ CTRL+R=pow(2,10)

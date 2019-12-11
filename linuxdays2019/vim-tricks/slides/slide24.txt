@@ -1,0 +1,8 @@
+
+Stroj času zabudovaný do Vimu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Takzvané "undo branches"
+▶ Posun mezi jednotlivými verzemi dokumentu
+    g-
+    g+
+    ◆ pochopitelně lze zkombinovat s počtem opakování

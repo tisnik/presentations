@@ -1,0 +1,17 @@
+
+Zalamování textu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Pouze vizuální zalamování (do souborů se nevkládá CR)
+    :set wrap
+▶ Vypnutí vizuálního zalamování
+    :set nowrap
+▶ Vizuální zalamování na hranicích slov (vhodné pro texty)
+    :set linebreak
+▶ Vypnutí vizuálního zalamování na hranicích slov
+    :set nolinebreak
+▶ Označení zalomených (obrazových) řádků znakem/znaky
+    :set showbreak=.
+    :set showbreak=\|
+▶ Automatické zalamování na xxx sloupci (vkládá se CR)
+    :set textwidth=xxx
+    :set tw=xxx

@@ -1,0 +1,13 @@
+
+Nastavení breakindent
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Bere do úvahy odsazení řádku
+    ◆ obrazovkové řádky jsou odsazané též
+▶ Kombinace s linebreak a wrap
+▶ Samozřejmě též se showbreak
+▶ Použití
+    ◆ (La)TeX
+    ◆ AsciiDoc
+    ◆ Markdown
+    ◆ plain old ASCII text
+    ◆ ...

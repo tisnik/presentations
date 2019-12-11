@@ -1,0 +1,17 @@
+
+Digraphs (dvouznaky)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zobrazení všech dvouznaků
+    :digraphs
+▶ Registrace nového dvouznaku
+    :digraphs znak1 znak2 kód_unicode_znaku
+▶ Například
+    :digraphs o` 243
+    :digraphs o/ 248
+    :digraphs O/ 216
+    :digraphs 12 189
+▶ Výsledky
+    ò
+    ø
+    Ø
+    ½

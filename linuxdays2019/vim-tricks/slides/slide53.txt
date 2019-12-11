@@ -1,0 +1,7 @@
+
+Volba :rulerformat
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:set rulerformat=%t%y
+:set rulerformat=%t\ %y
+:set rulerformat=%c\ %l/%L
+:set rulerformat=%o\ [%b=0x%B]

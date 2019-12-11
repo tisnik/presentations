@@ -1,0 +1,12 @@
+
+Volby způsobu zobrazení textů (pokračování)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Způsob "zobrazení" tabulačních zarážek
+    :set tabstop=xxx
+▶ Rychlý doskok na párovou závorku
+    :set showmatch
+▶ Definice párových znaků (typicky závorek)
+    :set matchpairs=(:),[:],{:},<:>
+▶ Způsob zobrazení řídicích znaků
+    :set display
+    ◆ (viz další slajdy)

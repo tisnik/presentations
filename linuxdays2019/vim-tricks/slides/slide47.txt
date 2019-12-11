@@ -1,0 +1,11 @@
+
+Zobrazení informací o pozici v textu a o vybraném znaku
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zobrazení informace o pozici kurzoru v dokumentu
+    gCtrl+G
+▶ Zobrazení kódu znaku pod kurzorem
+    ga
+▶ Zobrazení UTF-8 sekvence pro znak pod kurzorem
+    g8
+▶ Znaky pro otestování
+    ■▶╝🂠

@@ -1,0 +1,13 @@
+
+Stroj času zabudovaný do Vimu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Posun na předchozí verze dokumentu
+    :earlier {count}   přechod na předchozí stav souboru
+    :earlier {N}s      lze zadat časový interval v sekundách
+    :earlier {N}m      nebo minutách
+    :earlier {N}h      dokonce i hodinách
+    :earlier {N}d      pokud pracujete nepřetržitě několik dnů... :-)
+▶ Opak operace :earlier
+    :later
+▶ Postupné odvolání změn
+    Ctrl+R

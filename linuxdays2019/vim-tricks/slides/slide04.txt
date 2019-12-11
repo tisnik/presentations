@@ -1,0 +1,8 @@
+
+Začínáme...
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Otevření souboru editovaného minule
+$ vim
+    ◆ otevře se prázdný nepojmenovaný dokument
+▶ Poté stisknout Ctrl+o Ctrl+o
+    ...voilà

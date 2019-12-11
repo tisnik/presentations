@@ -1,0 +1,11 @@
+
+Kde se změnilo nastavení konkrétní volby???
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Může se jednat o více míst
+    ◆ systémový .vimrc
+    ◆ uživatelský .vimrc
+    ◆ .vimrc v aktuálním adresáři
+    ◆ atc.
+▶ Zjištění zdroje poslední změny
+    :verbose set nocompatible?
+    :verbose map <Space>

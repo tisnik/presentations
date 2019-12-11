@@ -1,0 +1,6 @@
+
+Volba mousemodel
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Určuje chování myši
+    ◆ rozdíl X/MS Windows
+    ◆ většinou se týká pravého popř. prostředního tlačítka myši

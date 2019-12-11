@@ -1,0 +1,11 @@
+
+Vizuální režim versus režim výběru
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Visual mode
+    ◆ výběr začíná v, V, Ctrl+V
+        - ovšem tato volba může chování změnit
+    :set selectmode
+    ◆ fungují zde běžné operátory c, y, d
+    ◆ obnovení původního výběru: gv
+    ◆ lze nastavit i další možnosti pomocí
+    :set selection

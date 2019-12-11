@@ -1,0 +1,8 @@
+
+Další klávesové zkratky
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Pohyb v historii pozic kurzoru
+    g;
+    g,
+▶ Otevření soubor, na jehož názvu se nachází kurzor
+    gf

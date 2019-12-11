@@ -1,0 +1,5 @@
+
+Vložení výsledku příkazu do souboru na aktuální řádek
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    :.!date
+    :.!whoami

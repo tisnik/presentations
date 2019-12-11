@@ -1,0 +1,16 @@
+
+Vizuální režim versus režim výběru
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Selection mode
+    ◆ částečně podobné chování editorů v MS Windows
+    ◆ lze vybírat pomocí Shift+šipky atd.
+        - (viz dále popsaná volba keymodel)
+    ◆ pohyb bez Shift režim výběru ukončí
+        - Esc taktéž režim výběru ukončí
+    ◆ po výběru a stisku viditelného znaku se:
+        - výběr (vybraný text) vymaže
+        - editor se přepne do insert režimu
+    ◆ lze nastavit i další možnosti pomocí
+    :set selectmode
+    :set selection
+    :set keymodel

@@ -1,0 +1,9 @@
+
+Taby nebo mezery?
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Viditelné přes :set list
+▶ Lze vytvořit zvláštní syntaktické kategorie
+    :syn match Tab "\t"
+    :syn match Tab2 "\t\t"
+    :hi def Tab  ctermbg=lightgreen guibg=#e0ffe0
+    :hi def Tab2 ctermbg=lightred guibg=#ffe0e0

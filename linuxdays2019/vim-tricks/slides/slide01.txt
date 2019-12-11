@@ -1,0 +1,13 @@
+
+Obsah přednášky (1)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Začínáme...
+▶ Základní konfigurační volby
+▶ Vyhledávání v textu
+▶ Nahrazení
+▶ Volání externích nástrojů, změna aktuálního dokumentu
+▶ Volby způsobu zobrazení textů
+▶ Taby nebo mezery?
+▶ Nastavení wrap/showbreak/linebreak/breakindent
+▶ Chování textového kurzoru při pohybu v textu
+▶ Stroj času zabudovaný do Vimu

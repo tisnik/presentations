@@ -1,0 +1,7 @@
+
+Volba wrap a řádky na konci obrazovky
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Buď @ v případě dlouhého řádku
+    ◆ dlouhodobá tradice
+▶ Popř. "zobraz co nejvíce skutečného textu"
+    :set display+=lastline

@@ -1,0 +1,13 @@
+
+Obsah přednášky (2)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Trocha matematiky
+▶ Zneužití speciálního registru = (vložení číselné sekvence)
+▶ Vizuální režim a režim výběru
+▶ Výběr vertikálních bloků, práce s bloky
+▶ Vertikální bloky a funkce typu "najdi a nahraď"
+▶ Režim virtuální editace
+▶ Chování myši, výběr bloků přes Shift+..., celkové chování Vimu
+▶ Chování editoru při chybě
+▶ Zvýraznění aktuálního řádku/sloupce
+▶ Digraphs (dvouznaky)

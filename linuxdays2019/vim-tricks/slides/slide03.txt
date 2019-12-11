@@ -1,0 +1,13 @@
+
+Obsah přednášky (3)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Režim "ex"
+▶ Režim "ed"
+▶ Zobrazení informací o pozici v textu a o vybraném znaku
+▶ Další klávesové zkratky
+▶ Zvýraznění syntaxe
+▶ Pravítko a stavový řádek
+▶ Užitečné externí nástroje
+▶ Lepší využití klávesy Caps Lock
+▶ Vtípky
+▶ Odkazy

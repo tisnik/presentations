@@ -1,0 +1,12 @@
+
+Vyhledávání v textu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Nalezení slova pod kurzorem
+    ◆ směrem ke konci textu
+        *   celá slova
+        g*  i části slov
+    ◆ směrem k začátku textu
+        #   celá slova
+        g#  i části slov
+▶ Vyhledání (a doskok) na párovou závorku
+    %

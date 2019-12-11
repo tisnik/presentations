@@ -1,0 +1,9 @@
+
+Chování textového kurzoru při pohybu v textu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Dostatek zobrazeného textu před/za aktuálním řádkem
+    :set scrolloff=...
+    ◆ scroll offset (ne scroll off)
+▶ Naváže dvě (či více oken) pro synchronizaci posunu
+    :set cursorbind
+    ◆ význam při použití ve více oknech současně

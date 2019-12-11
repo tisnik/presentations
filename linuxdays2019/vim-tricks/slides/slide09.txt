@@ -1,0 +1,14 @@
+
+Vyhledávání v textu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Vyhledání se zobrazením výskytů A čísel řádků
+    :g/tab/#
+    :set ignorecase 
+    :set smartcase
+▶ V příkazovém režimu (command mode)
+    ◆ Ctrl+R Ctrl+W
+        vložení slova (jako *) na příkazovou řádku
+        ideální pro příkaz /
+    ◆ Ctrl+R Ctrl+A
+        vložení slova (jako #) na příkazovou řádku
+        ideální pro příkaz /

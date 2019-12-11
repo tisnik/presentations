@@ -1,0 +1,11 @@
+
+Zvýraznění syntaxe
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+:syn match Tab "\t"
+:syn match Tab2 "\t\t"
+:syn match Tab3 "\t\t\t"
+:syn match Tab4 "\t\t\t\t"
+:hi Tab  ctermbg=lightgreen guibg=#e0ffe0
+:hi Tab2 ctermbg=lightred   guibg=#ffe0e0
+:hi Tab3 ctermbg=lightblue  guibg=#e0e0ff
+:hi Tab4 ctermbg=lightcyan  guibg=#ffffe0
