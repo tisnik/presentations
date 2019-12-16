@@ -23,7 +23,7 @@ Obsah přednášky (2)
 ▶ Zneužití speciálního registru = (vložení číselné sekvence)
 ▶ Vizuální režim a režim výběru
 ▶ Výběr vertikálních bloků, práce s bloky
-▶ Vertikální bloky a funkce typu "najdi a nahraď"
+▶ Vertikální bloky a funkce typu „najdi a nahraď“
 ▶ Režim virtuální editace
 ▶ Chování myši, výběr bloků přes Shift+..., celkové chování Vimu
 ▶ Chování editoru při chybě
@@ -32,8 +32,8 @@ Obsah přednášky (2)
 
 Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Režim "ex"
-▶ Režim "ed"
+▶ Režim „ex“
+▶ Režim „ed“
 ▶ Zobrazení informací o pozici v textu a o vybraném znaku
 ▶ Další klávesové zkratky
 ▶ Zvýraznění syntaxe
@@ -163,7 +163,7 @@ Volby způsobu zobrazení textů
 
 Volby způsobu zobrazení textů (pokračování)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Způsob "zobrazení" tabulačních zarážek
+▶ Způsob „zobrazení“ tabulačních zarážek
     :set tabstop=xxx
 ▶ Rychlý doskok na párovou závorku
     :set showmatch
@@ -218,7 +218,7 @@ Volba wrap a řádky na konci obrazovky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Buď @ v případě dlouhého řádku
     ◆ dlouhodobá tradice
-▶ Popř. "zobraz co nejvíce skutečného textu"
+▶ Popř. „zobraz co nejvíce skutečného textu“
     :set display+=lastline
 
 Nastavení breakindent
@@ -254,7 +254,7 @@ Chování textového kurzoru při pohybu v textu
 
 Stroj času zabudovaný do Vimu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Takzvané "undo branches"
+▶ Takzvané „undo branches“
 ▶ Posun mezi jednotlivými verzemi dokumentu
     g-
     g+
@@ -348,16 +348,16 @@ Výběr vertikálních bloků, práce s bloky
 ▶ Standardně klávesová zkratka Ctrl+V
 ▶ IMHO lepší nastavení
     :noremap ,v <C-V>
-    ◆ nekoliduje s případným mapováním Ctrl+V na "paste"
+    ◆ nekoliduje s případným mapováním Ctrl+V na „paste“
 ▶ Běžné operátory c, y, d
-▶ Při "yank" a "delete" se zapamatuje, že se jedná o blok
+▶ Při „yank“ a „delete“ se zapamatuje, že se jedná o blok
     ◆ jak?
     ◆ trik s Ctrl+J
-▶ Možnost kombinace s "virtualedit" při nestejně dlouhých řádcích
+▶ Možnost kombinace s „virtualedit“ při nestejně dlouhých řádcích
     ◆ viz další slajd
 
-Vertikální bloky a funkce typu "najdi a nahraď"
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Vertikální bloky a funkce typu „najdi a nahraď“
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Po výběru bloku stisk :
 ▶ Lze zapsat například
     :'<,'>s-foo-bar-g
@@ -418,7 +418,7 @@ Chování editoru při chybě
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Pípnutí
     ◆ kolegové vás budou mít moc rádi
-▶ Krátký "záblesk" celé obrazovky
+▶ Krátký „záblesk“ celé obrazovky
     ◆ dosti nepříjemné
     ◆ pomalé (terminálové sekvence atd.)
 ▶ Řešením je vypnutí obou způsobů
@@ -433,7 +433,7 @@ Zvýraznění aktuálního řádku/sloupce
 ▶ Změna barvy aktuálního řádku a/nebo sloupce
     :hi CursorLine   guibg=#2d2d2d
     :hi CursorColumn guibg=#2d2d2d
-▶ Poměrně "podivné" chování při nastavení :wrap
+▶ Poměrně „podivné“ chování při nastavení :wrap
 
 Digraphs (dvojznaky)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -465,17 +465,17 @@ Digraphs (dvojznaky)
     Ø
     ½
 
-Režim "ex"
+Režim „ex“
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Klávesa Q
     ◆ někdy stisknuta omylem
     ◆ vi - návrat zpět
 
-Režim "ed"
+Režim „ed“
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-"ed"
+„ed“
 ▶ Ideový předchůdce editoru Vi (který je předchůdcem Vimu)
-▶ Příkazy editoru "ed" se zadávají v command režimu
+▶ Příkazy editoru „ed“ se zadávají v command režimu
 ▶ Obecný tvar příkazů
     :[address [,address]]command[parameters]
 ▶ Adresy
@@ -490,9 +490,9 @@ Režim "ed"
     /foobar/ řádek s textem odpovídajícím regexpu
     ?foobar? řádek s textem odpovídajícím regexpu
 
-Režim "ed" (pokračování)
+Režim „ed“ (pokračování)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Příkazy "ed"u
+▶ Příkazy „ed“u
     a append
     c change
     d delete
@@ -501,13 +501,13 @@ Režim "ed" (pokračování)
     :.m-2
     :1m$
 
-Režim "ed" (složitější příklady)
+Režim „ed“ (složitější příklady)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Přesun řádku obsahujícího text "LinuxDays" na začátek souboru
+▶ Přesun řádku obsahujícího text „LinuxDays“ na začátek souboru
     :/LinuxDays/m0
-▶ Přesun řádku obsahujícího text "LinuxDays" na konec souboru
+▶ Přesun řádku obsahujícího text „LinuxDays“ na konec souboru
     :/LinuxDays/m$
-▶ Změna všech znaků "-" na předchozím řádku za "&mdash;"
+▶ Změna všech znaků „-“ na předchozím řádku za „&mdash“;
     :-1s/–/\&mdash;/g
 ▶ Obalení aktuální řádky (může vizuálně přesahovat jeden řádek) do značky pro odstavec
     :s/.*/<p>\r&\r<\/p>/
@@ -542,7 +542,7 @@ Zvýraznění syntaxe
     ◆ parametry: typ určení textu + jméno + samotné určení
 ▶ Druhý příkaz
     :highlight
-    ◆ bez parametrů vypíše vazbu syntaktické skupiny na "barvičky"
+    ◆ bez parametrů vypíše vazbu syntaktické skupiny na „barvičky“
     ◆ parametry: jméno term= cterm= ctermfg= ctermbg= guifg= guibg=
 
 Zvýraznění syntaxe
