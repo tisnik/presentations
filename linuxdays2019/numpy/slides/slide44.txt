@@ -1,0 +1,7 @@
+
+Použití funkce numpy.arange
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# specifikace hodnot „start“ (včetně) a „stop“ (kromě)
+>>> numpy.arange(10, 20)
+          ↓
+array([10, 11, 12, 13, 14, 15, 16, 17, 18, 19])

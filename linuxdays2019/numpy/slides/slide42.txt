@@ -1,0 +1,6 @@
+
+Funkce numpy.arange
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Array+range
+▶ Podobné jako xrange/range
+    ◆ ovšem návratovou hodnotou je ndarray

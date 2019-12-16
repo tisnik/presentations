@@ -1,0 +1,18 @@
+
+Vyřešení systému lineárních rovnic
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Triviální příklad - jedna rovnice o jedné neznámé
+▶ Rovnice 2x = 10
+▶ Maticově
+    ◆ levá strana rovnice
+    ◆ pravá strana rovnice
+  
+▶ Řešení lze získat následovně
+# levá strana rovnice (koeficienty)
+>>> a=numpy.array([[2]])
+  
+# pravá strana rovnice
+>>> b=numpy.array([10])
+>>> numpy.linalg.solve(a,b)
+    ↓
+array([ 5.])

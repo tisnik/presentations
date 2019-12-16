@@ -1,0 +1,10 @@
+
+Otestování - výsledkem musí být jednotková matice
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+>>> m=numpy.array([[0,1,0],[1,1,1],[0,1,1]])
+>>> m2=numpy.linalg.inv(m)
+   
+>>> numpy.dot(m,m2)
+array([[ 1.,  0.,  0.],
+       [ 0.,  1.,  0.],
+       [ 0.,  0.,  1.]])

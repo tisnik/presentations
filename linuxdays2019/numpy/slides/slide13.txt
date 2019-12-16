@@ -1,0 +1,12 @@
+
+Datová struktura ndarray (pokračování)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Základní strukturovaný datový typ knihovny NumPy
+▶ Volitelný počet dimenzí
+    ◆ vektory
+    ◆ matice
+    ◆ pole s větším počtem dimenzí
+▶ Volitelný typ prvků
+▶ Volitelné uspořádání prvků
+    ◆ podle zvyklostí jazyka Fortran
+    ◆ podle zvyklostí jazyka C

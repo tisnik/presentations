@@ -1,0 +1,13 @@
+
+Datový typ float16
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Celkový počet bitů (bytů):   16 (2)
+Bitů pro znaménko:            1
+Bitů pro exponent:            5
+Bitů pro mantisu:            10
+BIAS (offset exponentu):     15
+Přesnost:                    5-6 číslic
+Maximální hodnota:           65504
+Minimální hodnota:          -65504
+Nejmenší kladná nenulová hodnota:      5,960×10⁻⁸
+Nejmenší kladná normalizovaná hodnota: 6,104×10⁻⁵

@@ -1,0 +1,18 @@
+
+Změna tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# běžná matice se dvěma řádky a třemi sloupci
+>>> b=numpy.array([[1,2,3],[4,5,6]])
+    
+# změna tvaru matice na 3x2 prvky
+>>> numpy.reshape(b,(3,2))
+    ↓
+array([[1, 2],
+       [3, 4],
+       [5, 6]])
+        
+# zde vlastně dostaneme původní matici
+>>> numpy.reshape(b,(2,3))
+    ↓
+array([[1, 2, 3],
+       [4, 5, 6]])

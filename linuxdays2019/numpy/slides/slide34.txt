@@ -1,0 +1,7 @@
+
+Příklady použití konstruktoru numpy.ones
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# jednorozměrný vektor s deseti prvky
+>>> numpy.ones(10)
+          ↓
+array([ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.])

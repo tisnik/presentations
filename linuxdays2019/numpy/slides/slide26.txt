@@ -1,0 +1,4 @@
+
+Volání konstruktoru numpy.zeros
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+>>> zeros(shape, dtype=float, order='C')

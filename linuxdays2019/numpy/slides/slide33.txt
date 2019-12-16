@@ -1,0 +1,4 @@
+
+Volání konstruktoru numpy.ones
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+>>> numpy.ones(shape, dtype=None, order='C')

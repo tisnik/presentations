@@ -1,0 +1,12 @@
+
+Programovací jazyk Python
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Dnes jeden z nejpopulárnějších programovacích jazyků
+    ◆ viz například TIOBE programming community index
+        - https://www.tiobe.com/tiobe-index/
+    ◆ Popř. statistika dostupná na OpenHubu
+        - https://www.openhub.net/languages/compare
+▶ Dostupnost na většině platforem
+    ◆ na některých MCU jako MicroPython
+▶ P̶y̶t̶h̶o̶n̶ ̶2̶ Python 3
+    ◆ všechny ukázky pro Python 3.6+

@@ -1,0 +1,7 @@
+
+Obsah přednášky (3)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Využití matic
+    ◆ vyřešení systému lineárních rovnic
+▶ Další podbalíčky, které nalezneme v knihovně ndarray
+▶ Odkazy na další informační zdroje

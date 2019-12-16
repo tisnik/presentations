@@ -1,0 +1,12 @@
+
+Přetypování prvků v poli
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# přetypování
+>>> numpy.int64([1,2,3,4])
+          ↓
+array([1, 2, 3, 4], dtype=int32)
+   
+# přetypování
+>>> numpy.float16([1,2,3,4])
+          ↓
+array([ 1.,  2.,  3.,  4.], dtype=float16)

@@ -1,0 +1,9 @@
+
+Konstruktor numpy.eye
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Vytvoří se jednotková matice
+▶ Uvádí se její velikost
+▶ Lze ovšem vytvořit i nečtvercovou matici
+>>> numpy.eye(1)
+      ↓
+array([[1.]])

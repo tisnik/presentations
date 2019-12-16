@@ -1,0 +1,14 @@
+
+Výpočet determinantu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+>>> import numpy
+>>> import numpy.linalg
+    
+>>> m=numpy.array([[0,1,0],[1,1,1],[0,1,1]])
+>>> m
+array([[0, 1, 0],
+       [1, 1, 1],
+       [0, 1, 1]])
+    
+>>> numpy.linalg.det(m)
+-1.0

@@ -1,0 +1,11 @@
+
+Datová struktura ndarray
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Představuje obecné n-dimenzionální pole
+▶ Interní způsob uložení dat zcela odlišný od Pythonovských seznamů či n-tic
+    ◆ „pohled“ na kontinuální blok hodnot
+▶ Homogenní datová struktura
+    ◆ menší flexibilita
+    ◆ menší paměťové nároky
+    ◆ vyšší výpočetní rychlost díky použití nativního kódu
+    ◆ obecně lepší využití cache a rychlejší přístup k prvkům

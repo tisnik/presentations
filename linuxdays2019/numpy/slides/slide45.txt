@@ -1,0 +1,12 @@
+
+Použití funkce numpy.arange
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# třetí nepovinný parametr určuje krok použitý při generování prvků vektoru
+>>> numpy.arange(10, 20, 2)
+          ↓
+array([10, 12, 14, 16, 18])
+   
+# krok může být samozřejmě záporný
+>>> numpy.arange(20, 10, -2)
+          ↓
+array([20, 18, 16, 14, 12])

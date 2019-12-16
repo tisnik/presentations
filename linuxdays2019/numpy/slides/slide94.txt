@@ -1,0 +1,14 @@
+
+Relační operátory: pole vs skalární hodnota
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+>>> a=numpy.arange(12)
+   
+>>> a
+array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])
+   
+>>> a==5
+array([False, False, False, False,  True, False, False, False, False, False], dtype=bool)
+   
+>>> a<6
+array([ True,  True,  True,  True,  True,  True, False, False, False,
+       False, False, False], dtype=bool)

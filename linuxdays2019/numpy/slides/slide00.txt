@@ -1,0 +1,5 @@
+                    NumPy
+══════════════════════════════════════════════════
+■ Autor    Pavel Tišnovský, Red Hat
+■ Email    <ptisnovs 0x40 redhat 0x2e com>
+■ Datum    2019-10-05

@@ -1,0 +1,10 @@
+
+Přetypování prvků v poli
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Dva způsoby
+    ◆ konverzní funkce
+        - numpy.float32()
+        - numpy.int32()
+        - numpy.complex128()
+        - ...
+    ◆ použití metody astype

@@ -1,0 +1,7 @@
+
+Vliv parametru order na (zdánlivou) změnu tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Parametr „order“ použit u konstruktoru numpy.array
+▶ Lze použít i u numpy.reshape
+    ◆ opět změna pohledu
+    ◆ nikoli reorganizace prvků v paměti

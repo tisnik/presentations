@@ -1,0 +1,16 @@
+
+Výběr prvků na základě podmínky - filtrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+>>> a=numpy.arange(12)
+>>> a
+array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])
+   
+>>> a<6
+array([ True,  True,  True,  True,  True,  True, False, False, False,
+       False, False, False], dtype=bool)
+  
+>>> a[a<6]
+array([0, 1, 2, 3, 4, 5])
+  
+>>> a[a%2 == 0]
+array([ 0,  2,  4,  6,  8, 10])

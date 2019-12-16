@@ -1,0 +1,13 @@
+
+Zjištění počtu dimenzí tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# jednorozměrný vektor
+>>> a=numpy.array([1,2,3])
+    
+# počet dimenzí vektoru
+>>> a.ndim
+  1
+    
+# tvar vektoru
+>>> a.shape
+(3,)

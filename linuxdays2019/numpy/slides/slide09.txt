@@ -1,0 +1,7 @@
+
+Datový typ single
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Celkový počet bitů (bytů):   32 (4)
+Bitů pro znaménko:            1
+Bitů pro exponent:            8
+Bitů pro mantisu:            23

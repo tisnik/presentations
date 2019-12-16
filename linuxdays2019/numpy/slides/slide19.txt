@@ -1,0 +1,7 @@
+
+Příklady použití funkce numpy.array
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# vytvoření pole ze seznamu
+>>> numpy.array([1,2,3,4])
+          ↓
+array([1, 2, 3, 4])

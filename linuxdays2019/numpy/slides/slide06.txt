@@ -1,0 +1,18 @@
+
+Knihovna NumPy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Výslovnosti
+    ◆ [nəmpᴧɪ]
+    ◆ [numpᴧɪ]
+    ◆ [nəmpi]
+▶ Historie
+    ◆ matrix package
+    ◆ Numeric
+    ◆ NumPy
+▶ Podpora pro n-dimenzionální pole
+    ◆ + nové funkce
+    ◆ + nové (přetížené) operátory
+▶ Kooperace s dalšími knihovnami a frameworky
+    ◆ SciPy
+    ◆ Matplotlib
+    ◆ OpenCV

@@ -1,0 +1,8 @@
+
+Použití funkce numpy.arange
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# při použití jednoho parametru má tento parametr význam hodnoty „stop“
+# vytvoří se vektor s prvky od 0 do „stop“ (kromě)
+>>> numpy.arange(10)
+          ↓
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])

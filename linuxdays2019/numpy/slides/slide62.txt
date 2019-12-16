@@ -1,0 +1,13 @@
+
+Zjištění základních informací o poli
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# jednorozměrný vektor
+>>> a=numpy.array([1,2,3])
+>>> a.dtype.name
+'int64'
+   
+>>> a.itemsize
+  8
+   
+>>> a.size
+  3

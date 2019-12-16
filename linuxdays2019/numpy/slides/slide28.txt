@@ -1,0 +1,7 @@
+
+Příklady použití konstruktoru numpy.zeros
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# jednorozměrný vektor s deseti prvky
+>>> numpy.zeros(10)
+          ↓
+array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])

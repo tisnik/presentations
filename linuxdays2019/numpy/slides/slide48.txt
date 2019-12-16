@@ -1,0 +1,8 @@
+
+Funkce numpy.linspace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Při znalosti první a poslední hodnoty ve vektoru
+▶ Zadává se
+    ◆ počáteční hodnota
+    ◆ koncová hodnota
+    ◆ počet prvků vektoru (implicitně 50 prvků)

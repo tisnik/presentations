@@ -1,0 +1,11 @@
+
+Příklady použití konstruktoru numpy.zeros
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# matice o velikosti 5x5 prvků, každý prvek je typu float
+>>> numpy.zeros((5,5))
+          ↓
+array([[ 0.,  0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.,  0.]])

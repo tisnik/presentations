@@ -1,0 +1,6 @@
+
+Konstruktor numpy.ones
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Vektor či matice s prvky nastavenými na jedničku
+▶ (nejedná se o jednotkovou matici!)
+    ◆ viz konstruktor numpy.eye

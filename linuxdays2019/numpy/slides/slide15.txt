@@ -1,0 +1,11 @@
+
+Konstrukce n-dimenzionálních polí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Několik typů konstruktorů
+    ◆ numpy.array
+    ◆ numpy.zeros
+    ◆ numpy.ones
+    ◆ numpy.eye
+    ◆ numpy.arange
+    ◆ numpy.linspace
+▶ Konverzní funkce

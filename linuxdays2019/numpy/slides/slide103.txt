@@ -1,0 +1,11 @@
+
+Funkce vyššího řádu apply_along_axis
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ (Anonymní) funkce, které se předává řádek/sloupec/matice n-1 dimenze
+▶ Opět se specifikuje osa
+>>> a1=numpy.array([[1,2,3], [4,5,6], [7,8,9]])
+>>> numpy.apply_along_axis(lambda v:v[1], 0, a1)
+array([4, 5, 6])
+   
+>>> numpy.apply_along_axis(lambda v:v[1], 1, a1)
+array([2, 5, 8])

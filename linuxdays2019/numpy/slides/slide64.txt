@@ -1,0 +1,10 @@
+
+Zjištění tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# dvourozměrná matice
+>>> b=numpy.array([[1,2,3],[4,5,6]])
+    
+# tvar matice
+>>> b.shape
+  ↓
+(2, 3)

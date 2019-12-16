@@ -1,0 +1,15 @@
+
+Obsah přednášky (2)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Základní operace s n-dimenzionálními poli 
+    ◆ přetypování prvků v poli
+    ◆ zjištění tvaru pole
+    ◆ změna tvaru pole
+    ◆ výběr prvků v poli
+    ◆ slicing
+▶ Další operace s n-dimenzionálními poli 
+    ◆ operátory
+    ◆ násobení matic
+    ◆ determinant
+    ◆ inverzní matice
+    ◆ filtrace

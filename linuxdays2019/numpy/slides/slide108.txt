@@ -1,0 +1,9 @@
+
+Odkazy na další informační zdroje
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+* NumPy Home Page
+  http://www.numpy.org/
+* NumPy v1.10 Manual
+  http://docs.scipy.org/doc/numpy/index.html
+* NumPy (Wikipedia)
+  https://en.wikipedia.org/wiki/NumPy

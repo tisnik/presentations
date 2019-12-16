@@ -1,0 +1,6 @@
+
+Konstruktor numpy.zeros
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Vektor nebo matice s nulovými prvky
+▶ Poměrně častý požadavek v praxi
+    ◆ opět lze zvolit interní uspořádání prvků

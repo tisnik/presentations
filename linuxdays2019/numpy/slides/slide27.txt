@@ -1,0 +1,7 @@
+
+Příklady použití konstruktoru numpy.zeros
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# jednorozměrný vektor s jediným prvkem
+>>> numpy.zeros(1)
+          ↓
+array([ 0.])

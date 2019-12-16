@@ -1,0 +1,7 @@
+
+Změna tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Funkce numpy.reshape
+    ◆ nevytváří nové pole s jiným tvarem
+    ◆ „pouze“ změna pohledu na pole
+    ◆ ⇒ nelze měnit počet prvků

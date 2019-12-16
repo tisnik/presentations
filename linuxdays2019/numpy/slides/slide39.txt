@@ -1,0 +1,10 @@
+
+Příklady použití konstruktoru numpy.ones
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# zde může být použití typu komplexní číslo možná poněkud překvapující,
+# ovšem stále platí, že 1=1+0j
+>>> numpy.ones((3,2),dtype=numpy.complex)
+          ↓
+array([[ 1.+0.j,  1.+0.j],
+       [ 1.+0.j,  1.+0.j],
+       [ 1.+0.j,  1.+0.j]])

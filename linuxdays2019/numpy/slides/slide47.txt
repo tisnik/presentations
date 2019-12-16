@@ -1,0 +1,7 @@
+
+Použití funkce numpy.arange
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# použití komplexních konstant
+>>> numpy.arange(0+0j, 10+10j, 2+0j)
+          ↓
+array([ 0.+0.j,  2.+0.j,  4.+0.j,  6.+0.j,  8.+0.j])

@@ -1,0 +1,8 @@
+
+Příklady použití konstruktoru numpy.zeros
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# použití komplexních čísel
+>>> numpy.zeros((2,2),dtype=numpy.complex)
+          ↓
+array([[ 0.+0.j,  0.+0.j],
+       [ 0.+0.j,  0.+0.j]])

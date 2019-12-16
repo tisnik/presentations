@@ -1,0 +1,27 @@
+
+Příklady použití konstruktoru numpy.ones
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# trojrozměrné pole s prvky typu int
+# (oproti předchozímu příkladu se velikosti v jednotlivých dimenzích liší)
+>>> numpy.ones((5,4,3), dtype=int)
+          ↓
+array([[[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]],
+       [[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]],
+       [[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]],
+       [[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]],
+       [[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]]])

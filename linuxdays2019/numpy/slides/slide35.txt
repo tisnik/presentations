@@ -1,0 +1,9 @@
+
+Příklady použití konstruktoru numpy.ones
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# matice se třemi řádky a čtyřmi sloupci
+>>> numpy.ones((3,4))
+          ↓
+array([[ 1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.]])

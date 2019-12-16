@@ -1,0 +1,6 @@
+
+Zjištění počtu dimenzí a tvaru pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Atribut ndim
+▶ Atribut shape
+▶ Funkce numpy.shape

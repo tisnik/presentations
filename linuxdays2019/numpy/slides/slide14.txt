@@ -1,0 +1,14 @@
+
+Tvar (shape) n-dimenzionálního pole
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Popisuje organizaci a uspořádání prvků v poli
+    ◆ n-tice obsahující rozměry pole v jednotlivých dimenzích
+▶ Příklady tvarů
+    ◆ (10,) - vektor s deseti prvky
+    ◆ (2, 3) - dvourozměrná matice se dvěma řádky a třemi sloupci
+    ◆ (2, 3, 4) - trojrozměrné pole
+▶ Tvar je možné zjistit
+    ◆ atribut „shape“
+    ◆ funkce numpy.shape
+▶ Tvar je možné změnit
+    ◆ funkce numpy.reshape

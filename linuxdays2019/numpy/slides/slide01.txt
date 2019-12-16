@@ -1,0 +1,15 @@
+
+Obsah přednášky (1)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Programovací jazyk Python
+▶ Knihovna NumPy
+▶ Skalární datové typy
+▶ Datová struktura ndarray
+▶ Tvar (shape) n-dimenzionálního pole
+▶ Konstruktory datové struktury ndarray
+    ◆ numpy.array
+    ◆ numpy.zeros
+    ◆ numpy.ones
+    ◆ numpy.eye
+    ◆ numpy.arange
+    ◆ numpy.linspace

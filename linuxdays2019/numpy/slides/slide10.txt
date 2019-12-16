@@ -1,0 +1,7 @@
+
+Datový typ double
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Celkový počet bitů (bytů):   64 (8)
+Bitů pro znaménko:            1
+Bitů pro exponent:           11
+Bitů pro mantisu:            52

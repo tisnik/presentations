@@ -1,0 +1,5 @@
+
+Konstruktor numpy.array
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ parametry
+array(object, dtype=None, copy=True, order=None, subok=False, ndmin=0)
