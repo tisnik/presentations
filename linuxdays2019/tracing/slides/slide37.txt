@@ -1,0 +1,6 @@
+
+Další možnosti nabízené nástrojem strace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Dekódování (demangle) jmen metod a funkcí z C++
+▶ Sledování procesů, které vznikly zavoláním
+    ◆ fork()

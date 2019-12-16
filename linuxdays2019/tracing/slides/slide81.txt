@@ -1,0 +1,19 @@
+
+Breakpointy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) break main
+Breakpoint 1 at 0x40054c: file hello.c, line 10.
+   
+(gdb) run
+Starting program: /home/tester/temp/presentations/tracing/hello 
+    
+Breakpoint 1, main (argc=1, argv=0x7fffffffe158) at hello.c:10
+10          print_hello();
+  
+(gdb) n
+Hello world!
+11          return 0;
+   
+(gdb) c
+Continuing.
+[Inferior 1 (process 7040) exited normally]

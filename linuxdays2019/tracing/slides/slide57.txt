@@ -1,0 +1,27 @@
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Výpis informací o všech otevřených souborech/zařízeních
+probe syscall.open
+{
+    filename = user_string($filename);
+    printf("ls opened file %s\n", filename);
+}
+  
+▶ Ukázka výstupu
+STAP prepared
+ls with PID=22086 started
+ls opened file /etc/ld.so.cache
+ls opened file /lib64/libselinux.so.1
+ls opened file /lib64/libcap.so.2
+ls opened file /lib64/libacl.so.1
+ls opened file /lib64/libc.so.6
+ls opened file /lib64/libpcre.so.1
+ls opened file /lib64/libdl.so.2
+ls opened file /lib64/libattr.so.1
+ls opened file /lib64/libpthread.so.0
+ls opened file /usr/lib/locale/locale-archive
+ls with PID=22086 finished
+   
+▶ Lze porovnat s:
+$ strace -e trace=open ls

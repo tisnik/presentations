@@ -1,0 +1,28 @@
+
+Ukázka použití utility ltrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ ltrace ./random_bitmap
+     ↓
+__libc_start_main(0x400bf4, 1, 0x7fff18e8d758, 0x400c70 <unfinished ...>
+puts("processing:")                                    = 12
+malloc(16)                                             = 0xa11010
+malloc(921600)                                         = 0x7f45fdb46010
+memset(0x7f45fdb46010, '\0', 921600)                   = 0x7f45fdb46010
+memset(0x7f45fdb46010, '\0', 921600)                   = 0x7f45fdb46010
+open("/dev/urandom", 0, 037560470000)                  = 3
+read(3, "\270\325\332\340r8\304\354\306A\001S", 1920)  = 1920
+...
+...
+...
+vynecháno přibližně 480 řádků
+...
+...
+...
+close(3)                                               = 0
+fopen("random.bmp", "wb")                              = 0xa11030
+fwrite("BMF", 54, 1, 0xa11030)                         = 1
+printf("%d pixels written\n", 307200)                  = 22
+fwrite("\270\325\332\340r8\304\354\306A\001S", 921600, 1, 0xa11030) = 1
+fclose(0xa11030)                                       = 0
+puts("done!\n")                                        = 7
++++ exited (status 0) +++

@@ -1,0 +1,11 @@
+
+Vybrané typy sond (triviální příklady)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ begin
+    ◆ spuštěna po inicializaci SystemTapu
+▶ end
+    ◆ opak předchozí sondy
+▶ oneshot
+    ◆ spuštěna jen jedenkrát
+▶ never
+    ◆ nikdy nebude spuštěna

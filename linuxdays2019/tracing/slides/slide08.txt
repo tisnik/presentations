@@ -1,0 +1,24 @@
+
+Trasování a ladění nativních aplikací v Linuxu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+╔══════════╗
+║          ║..... gdb
+║ aplikace ║
+║          ║..... SystemTap
+╚══════════╝
+     │
+     │...... ltrace
+     ↓
+╔══════════╗
+║          ║..... gdb
+║  glibc   ║
+║          ║..... SystemTap
+╚══════════╝
+     │
+     │...... strace
+     ↓
+╔══════════╗
+║          ║..... SystemTap, bpftrace
+║  jádro   ║
+║          ║..... KGDB
+╚══════════╝

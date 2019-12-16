@@ -1,0 +1,8 @@
+
+Zavolání nástroje ltrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zavolání ltrace bez parametrů
+$ ltrace jméno_binární_aplikace parametry_aplikace
+   
+▶ Zavolání ltrace s předáním parametrů
+$ ltrace parametry_ltrace jméno_binární_aplikace parametry_aplikace

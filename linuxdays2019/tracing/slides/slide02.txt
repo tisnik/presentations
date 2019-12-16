@@ -1,0 +1,14 @@
+
+Obsah přednášky (2)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Nástroj „strace“
+    ◆ ukázka použití nástroje strace
+    ◆ zobrazení tabulky volaných funkcí
+    ◆ časy volání syscallů
+    ◆ časy trvání volaných syscallů
+    ◆ zobrazení tabulky volaných syscallů
+    ◆ setřídění tabulky podle zvoleného sloupce
+    ◆ další možnosti nabízené nástrojem strace
+▶ Nástroj „DTrace“
+    ◆ základní informace o nástroji DTrace
+    ◆ příklad naprogramované sondy

@@ -1,0 +1,9 @@
+
+Větší přesnost časových razítek
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Většinou však budeme vyžadovat větší přesnost časových razítek
+$ ltrace -tt ./hello
+     ↓
+20:49:54.521242 __libc_start_main(0x40053d, 1, 0x7fff78e06dd8, 0x400560 <unfinished ...>
+20:49:54.521862 puts("Hello world!")
+20:49:54.522886 +++ exited (status 0) +++

@@ -1,0 +1,15 @@
+
+GNU Debugger
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Vyvíjen od roku 1986
+▶ Portace na mnoho OS
+    ◆ Unixy
+    ◆ Linux
+    ◆ ale například i DOS
+▶ Portace na všechny významné architektury CPU
+    ◆ x86
+    ◆ x86-64
+    ◆ ARM (32bit, většina rodin)
+    ◆ AArch64
+    ◆ MIPS
+    ◆ PowerPC

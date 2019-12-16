@@ -1,0 +1,7 @@
+
+BPF (eBPF)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ eBPF (extended Berkeley Packet Filter)
+    ◆ Přidán do kernelů řady 4.x
+    ◆ Statické a dynamické trasování
+    ◆ Profilování

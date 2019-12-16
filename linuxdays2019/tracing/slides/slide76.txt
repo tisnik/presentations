@@ -1,0 +1,16 @@
+
+GNU Debugger
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Ovládání
+    ◆ příkazový řádek
+    ◆ TUI
+    ◆ Frontend (GUI, různá IDE) přes protokol
+    ◆ „stub“ přidaný přímo do laděné aplikace
+▶ Příkazový řádek
+    ◆ jednoznakové a dvojznakové zkratky příkazů
+        - bt=backtrace
+        - c=continue
+        - f=frame
+    ◆ Tab completion
+    ◆ historie příkazového řádku
+▶ gdbtui

@@ -1,0 +1,19 @@
+
+GNU Debugger
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Kooperace s překladači z rodiny GNU i dalšími překladači
+    ◆ Ada
+    ◆ C
+    ◆ C++
+    ◆ Go
+    ◆ Objective-C
+    ◆ D
+    ◆ Fortran
+    ◆ Modula-2
+    ◆ Pascal
+    ◆ Java
+    ◆ ...
+▶ Chování GNU Debuggeru ovlivněno jazykem
+    ◆ formát výpisu hexadecimálních hodnot
+    ◆ struktury záznamů
+    ◆ ...

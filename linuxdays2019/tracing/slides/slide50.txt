@@ -1,0 +1,9 @@
+
+Sonda typu oneshot
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Provede se přesně jedenkrát
+   
+probe oneshot
+{
+    println("Hello world!");
+}

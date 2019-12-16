@@ -1,0 +1,10 @@
+
+Lze použít i středníky atd.
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Může být výhodné - některé editory lze zapnout do „C“ režimu
+   
+probe begin
+{
+    printf ("hello world\n");
+    exit ();
+}

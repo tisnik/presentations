@@ -1,0 +1,17 @@
+
+Trasování a ladění nativních aplikací v Linuxu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Systémová volání
+    ◆ strace
+▶ Ladění a trasování aplikací i knihoven
+    ◆ ltrace
+    ◆ GNU Debugger
+▶ Stav aplikací
+    ◆ SystemTap
+▶ Front-end ke zdrojům dat z kernelu
+    ◆ SystemTap
+    ◆ ftrace
+    ◆ perf
+    ◆ catapult
+    ◆ bpftrace
+    ◆ ...

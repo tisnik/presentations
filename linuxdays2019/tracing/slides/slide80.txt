@@ -1,0 +1,7 @@
+
+Orientace v kódu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) info sharedlibrary
+From                To                  Syms Read   Shared Object Library
+0x00007ffff7ddaae0  0x00007ffff7df54e0  Yes (*)     /lib64/ld-linux-x86-64.so.2
+(*): Shared library is missing debugging information.

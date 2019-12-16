@@ -1,0 +1,13 @@
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Registrace a spuštění sondy
+# stap process.stp
+  
+▶ Spuštění programu ./hello v jiném terminálu
+$ ./hello
+   
+▶ Zprávy vypsané sondou
+    started
+    main function
+    finished

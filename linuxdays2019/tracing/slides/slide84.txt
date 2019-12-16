@@ -1,0 +1,17 @@
+
+Parametry breakpointů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) break factorial
+Breakpoint 1 at 0x40053b: file factorial.c, line 5.
+   
+(gdb) info breakpoints
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x000000000040053b in factorial at factorial.c:5
+   
+(gdb) ignore 1 5
+Will ignore next 5 crossings of breakpoint 1.
+   
+(gdb) info b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x000000000040053b in factorial at factorial.c:5
+        ignore next 5 hits

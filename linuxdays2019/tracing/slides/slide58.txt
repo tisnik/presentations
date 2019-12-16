@@ -1,0 +1,29 @@
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Použití správného PID
+▶ Globální proměnné ve skriptech
+    ◆ obsah těchto proměnných se automaticky vypíše na konci
+    ◆ pokud se do proměnné jen zapisuje
+      
+global pid=-1
+probe begin
+{
+    println("STAP prepared");
+}
+probe process("ls").begin
+{
+    pid=pid()
+    printf("ls with PID=%d started\n", pid());
+}
+probe process("ls").end
+{
+    printf("ls with PID=%d finished\n", pid());
+}
+probe syscall.open
+{
+    filename = user_string($filename);
+    if (pid==pid()) {
+        printf("ls opened file %s\n", filename);
+    }
+}

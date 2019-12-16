@@ -1,0 +1,8 @@
+
+Začátek historie
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) bt -4
+#3  0x000000000040055f in factorial (n=6) at factorial.c:6
+#4  0x000000000040055f in factorial (n=7) at factorial.c:6
+#5  0x000000000040055f in factorial (n=8) at factorial.c:6
+#6  0x0000000000400583 in main (argc=1, argv=0x7fffffffe1c8) at factorial.c:11

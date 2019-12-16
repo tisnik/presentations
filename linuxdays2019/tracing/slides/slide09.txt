@@ -1,0 +1,7 @@
+
+Utilita ltrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Trasování volání knihovních funkcí
+▶ Vyhledání problémových či pomalých částí kódu
+▶ Zjištění způsobů alokace a dealokace paměti
+▶ Či pouze jednoduché trasování aplikace

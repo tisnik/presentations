@@ -1,0 +1,10 @@
+
+Další možnosti nabízené nástrojem ltrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Dekódování (demangle) jmen metod a funkcí z C++
+▶ Sledování procesů, které vznikly zavoláním
+    ◆ fork()
+    ◆ clone()
+▶ Odsazení výstupu u funkcí volaných z jiných funkcí
+    ◆ podstatným způsobem může zajistit lepší čitelnost
+    ◆ (dnes neuvedeno na příkladech - malá plocha slajdů)

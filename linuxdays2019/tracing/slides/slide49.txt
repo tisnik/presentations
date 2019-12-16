@@ -1,0 +1,4 @@
+
+Zápis sondy přímo na příkazovém řádku
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# stap -e 'probe begin {printf("Hello world!\n");exit();}'

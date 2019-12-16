@@ -1,0 +1,7 @@
+
+Otestování funkcionality bpftrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Skript je zadán přímo na příkazové řádce přes „-e“
+# bpftrace -e 'BEGIN { printf("Hello BPF!\n"); exit(); }'
+Attaching 1 probe...
+Hello BPF!

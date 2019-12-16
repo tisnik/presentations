@@ -1,0 +1,11 @@
+
+bpftrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Ve Fedoře od verze 28
+# bpftrace 
+USAGE:
+    bpftrace [options] filename
+    bpftrace [options] -e 'program'
+.
+OPTIONS:
+    -B MODE        output buffering mode ('line', 'full', or 'none')

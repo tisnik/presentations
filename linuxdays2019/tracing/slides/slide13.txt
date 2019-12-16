@@ -1,0 +1,9 @@
+
+Ukázka použití utility ltrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ ltrace ./hello
+     ↓
+__libc_start_main(0x40053d, 1, 0x7fffd2e1f5f8, 0x400560 <unfinished ...>
+puts("Hello world!"Hello world!
+)                                                                    = 13
++++ exited (status 0) +++

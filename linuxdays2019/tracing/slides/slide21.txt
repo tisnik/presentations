@@ -1,0 +1,9 @@
+
+Zjištění doby trvání mezi voláními funkce a filtrace výstupu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ volba -r zajistí výpis relativních časů (offsetů)
+$ ltrace -r ./hello
+     ↓
+  0.000000 __libc_start_main(0x40053d, 1, 0x7fffdd8d7208, 0x400560 <unfinished ...>
+  0.000479 puts("Hello world!")           = 13
+  0.000985 +++ exited (status 0) +++

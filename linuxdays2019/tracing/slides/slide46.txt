@@ -1,0 +1,14 @@
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Sonda, která pouze vypíše zprávu a ukončí se
+probe begin
+{
+    printf ("hello world\n")
+    exit ()
+}
+   
+▶ Spuštění
+$ stap hello.stp
+     ↓
+hello world

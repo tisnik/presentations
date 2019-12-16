@@ -1,0 +1,15 @@
+
+Zjištění statistiky volaných funkcí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ volba -c
+$ ltrace -c ./hello
+     ↓
+Hello world!
+   
+% time     seconds  usecs/call     calls      function
+------ ----------- ----------- --------- --------------------
+100.00    0.000455         455         1 puts
+------ ----------- ----------- --------- --------------------
+100.00    0.000455                     1 total
+   
+▶ zde nedošlo k většímu překvapení

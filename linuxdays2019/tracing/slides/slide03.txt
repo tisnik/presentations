@@ -1,0 +1,14 @@
+
+Obsah přednášky (3)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Nástroj „SystemTap“
+    ◆ základní informace o nástroji SystemTap
+    ◆ instalace, pomocný nástroj stap-prep
+    ◆ ukázky použití SystemTap (různé sondy)
+    ◆ backtrace u vybraných funkcí/syscallů
+    ◆ získání a výpis statisických informací
+    ◆ tisk histogramů
+▶ GNU Debugger
+    ◆ rozhraní s příkazovým řádkem
+    ◆ tracepointy
+    ◆ atd.

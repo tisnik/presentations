@@ -1,0 +1,15 @@
+
+Filtrace informací o vybrané funkci/funkcích
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Můžeme snadno vybrat ty funkce, o nichž potřebujeme získat další informace
+$ ltrace -e malloc+free+open+close ./random_bitmap
+     ↓
+processing:
+random_bitmap->malloc(16)                              = 0x2137010
+random_bitmap->malloc(921600)                          = 0x7f4fb333c010
+random_bitmap->open("/dev/urandom", 0, 026320350000)   = 3
+random_bitmap->close(3)                                = 0
+307200 pixels written
+done!
+   
++++ exited (status 0) +++

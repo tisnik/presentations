@@ -1,0 +1,9 @@
+
+Orientace v kódu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) info functions
+    All defined functions:
+       
+    File hello.c:
+    int main(int, char **);
+    void print_hello();

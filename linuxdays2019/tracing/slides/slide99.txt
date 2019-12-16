@@ -1,0 +1,14 @@
+
+Výpis všech souborů, které jsou otevírány
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# bpftrace -e 'tracepoint:syscalls:sys_enter_openat { printf("%s %s\n", comm, str(args->filename)); }'
+bash /etc/profile.d/which2.sh
+bash /etc/profile.d/sh.local
+bash /etc/bashrc
+bash /root/.bash_profile
+bash /root/.bashrc
+bash /etc/bashrc
+bash /root/.bash_history
+bash /root/.bash_history
+bash /root/.inputrc
+bash /etc/inputrc

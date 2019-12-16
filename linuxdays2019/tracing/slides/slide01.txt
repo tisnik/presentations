@@ -1,0 +1,12 @@
+
+Obsah přednášky (1)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Trasování a ladění nativních aplikací v Linuxu
+▶ Nástroj „ltrace“
+    ◆ ukázka použití nástroje ltrace
+    ◆ časová razítka volání
+    ◆ zjištění doby trvání volané funkce a filtrace výstupu
+    ◆ filtrace informací
+    ◆ zjištění statistiky volaných funkcí
+    ◆ připojení k běžící aplikaci
+    ◆ další možnosti nabízené nástrojem ltrace

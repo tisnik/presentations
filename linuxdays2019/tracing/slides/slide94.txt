@@ -1,0 +1,7 @@
+
+Front endy pro BPF
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ BCC
+    ◆ pro tvorbu komplexnějších nástrojů
+▶ bpftrace
+    ◆ hodí se i pro kratší skripty a one-linery

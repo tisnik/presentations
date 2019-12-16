@@ -1,0 +1,14 @@
+
+DTrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ D=dynamic
+▶ Jeden z pokročilejších nástrojl pro sledování a trasování
+▶ Dostupné na
+    ◆ Solaris/OpenSolaris
+    ◆ FreeBSD
+    ◆ macOS
+▶ Původně nikoli na Linuxu!
+    ◆ licenční problémy
+    ◆ první verze pro Linux v roce 2008
+    ◆ verze pro Windows 10 letos
+    ◆ portace pro QNX

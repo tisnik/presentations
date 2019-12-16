@@ -1,0 +1,12 @@
+
+Vybrané typy sond (složitější sondy)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ process(jméno).begin
+▶ process(jméno).end
+▶ process(PID).begin
+▶ process(PID).end
+    ◆ spuštění či naopak ukončení procesu
+▶ syscall.open
+▶ syscall.write
+    ◆ ruzné typy syscallů
+▶ process().function().call

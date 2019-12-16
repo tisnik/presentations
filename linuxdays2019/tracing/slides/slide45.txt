@@ -1,0 +1,5 @@
+
+Výpis všech typů sond, filtrace syscallů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# stap --dump-probe-types
+# stap --dump-probe-aliases |grep ^syscall

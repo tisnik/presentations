@@ -1,0 +1,9 @@
+
+Obsah přednášky (4)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ BPF (Berkeley Packet Filter) a eBPF
+    ◆ front endy pro eBPF
+▶ Nástroj bpftrace
+    ◆ základní informace o nástroji bpftrace
+    ◆ příklady použití
+▶ Odkazy na další informační zdroje

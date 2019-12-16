@@ -1,0 +1,13 @@
+
+Všechny dostupné sondy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+# bpftrace -l 'tracepoint:syscalls:sys_enter_*'
+tracepoint:syscalls:sys_enter_socket
+tracepoint:syscalls:sys_enter_socketpair
+tracepoint:syscalls:sys_enter_bind
+...
+tracepoint:syscalls:sys_enter_sysctl
+tracepoint:syscalls:sys_enter_exit
+tracepoint:syscalls:sys_enter_exit_group
+tracepoint:syscalls:sys_enter_waitid
+...

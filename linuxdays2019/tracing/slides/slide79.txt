@@ -1,0 +1,26 @@
+
+Orientace v kódu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) list
+1       #include <stdio.h>
+2
+3       void print_hello()
+4       {
+5           puts("Hello world!");
+6       }
+7
+8       int main(int argc, char **argv)
+9       {
+10          print_hello();
+     
+(gdb) list main
+4       {
+5           puts("Hello world!");
+6       }
+7
+8       int main(int argc, char **argv)
+9       {
+10          print_hello();
+11          return 0;
+12      }
+13

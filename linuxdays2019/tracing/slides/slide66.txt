@@ -1,0 +1,12 @@
+
+Uživatelem definované funkce
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Základní tvar
+function count_add(arg1, arg2) {
+    return arg1 + arg2
+}
+   
+▶ Explicitní uvedení návratové hodnoty
+function concatenate:string(arg1:long, arg2) {
+    return sprintf("%d%s", arg1, arg2)
+}

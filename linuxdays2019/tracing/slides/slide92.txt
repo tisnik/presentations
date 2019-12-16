@@ -1,0 +1,13 @@
+
+Sledování přímo v kernelu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Zdroj dat   -> extrakce dat -> frontend
+╔═══════════╗  ╔═══════════╗  ╔═════════════╗
+║kprobes    ║  ║ perf      ║  ║ perf        ║
+║tracepoints║  ║ ftrace    ║  ║ ftrace      ║
+║uprobes    ║  ║ eBPF      ║  ║ kernelshark ║
+║           ║  ║ SystemTap ║  ║ catapult    ║
+║           ║  ║           ║  ║ bcc         ║
+║           ║  ║           ║  ║ sysdig      ║
+║           ║  ║           ║  ║ LTTng       ║
+╚═══════════╝  ╚═══════════╝  ╚═════════════╝

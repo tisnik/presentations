@@ -1,0 +1,10 @@
+
+Příklad naprogramované sondy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    #pragma D option flowindent
+    .
+    syscall::write:entry
+    /pid == $target/    
+    {
+            printf("Written %d bytes\n", arg2);
+    }

@@ -1,0 +1,6 @@
+
+Sledování přímo v kernelu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Zdroj dat -> Extrakce dat -> Frontend
+▶ LTTng - Linux Trace Toolkit, next generation
+▶ LKST - Linux Kernel State Tracer

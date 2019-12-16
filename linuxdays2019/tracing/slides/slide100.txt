@@ -1,0 +1,15 @@
+
+Histogram s výsledky sondy sys_exit_read
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ bash
+$ echo $$
+12345
+# bpftrace -e 'tracepoint:syscalls:sys_exit_read /pid == 12345/ { @bytes = hist(args->ret); }'
+Attaching 1 probe...
+^C
+@bytes: 
+[1]                   13 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+[2, 4)                 0 |                                                    |
+[4, 8)                 0 |                                                    |
+[8, 16)                0 |                                                    |
+[16, 32)               1 |@@@@                                                |

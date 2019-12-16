@@ -1,0 +1,21 @@
+
+Více sond stejného typu s uvedením pořadí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Libovolné celočíselné hodnoty
+   
+probe begin(3)
+{
+    println(" !");
+}
+probe begin(100)
+{
+    exit();
+}
+probe begin(2)
+{
+    print(" world");
+}
+probe begin(1)
+{
+    print("Hello");
+}

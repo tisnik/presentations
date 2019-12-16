@@ -1,0 +1,13 @@
+
+GNU Debugger a trasování
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Tracepoints
+    ◆ zjištění stavu procesu bez jeho (po)zastavení
+▶ Přidání ladicích informací
+$ gcc -g -ansi -pedantic -Wall -o hello hello.c
+▶ Spuštění debuggeru
+$ gdb hello
+...
+...
+...
+Reading symbols from hello...done.

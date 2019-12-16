@@ -1,0 +1,9 @@
+
+Časová razítka volání funkcí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Někdy nám může dostačovat sekundová přesnost
+$ ltrace -t ./hello
+     ↓
+20:17:06 __libc_start_main(0x40053d, 1, 0x7fff74550708, 0x400560 <unfinished ...>
+20:17:06 puts("Hello world!")                       = 13
+20:17:06 +++ exited (status 0) +++

@@ -1,0 +1,29 @@
+
+Odstranění informací o funkcích, které nás nezajímají
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Povšimněte si znaku - před jménem funkce
+$ ltrace -e -read ./random_bitmap
+     ↓
+random_bitmap->__libc_start_main(0x400bf4, 1, 0x7fff7c9456e8, 0x400c70 <unfinished ...>
+random_bitmap->puts("processing:")                              = 12
+random_bitmap->malloc(16 <unfinished ...>
+libc.so.6->(0x7f7140a97bd0, 0x7fff7c945550, 0x7fff7c945540, 0)  = 0x7f7140ffa4c0
+<... malloc resumed> )                                          = 0x1ee3010
+random_bitmap->malloc(921600)                                   = 0x7f7140ef3010
+random_bitmap->memset(0x7f7140ef3010, '\0', 921600)             = 0x7f7140ef3010
+random_bitmap->memset(0x7f7140ef3010, '\0', 921600)             = 0x7f7140ef3010
+random_bitmap->open("/dev/urandom", 0, 010077240000)            = 3
+random_bitmap->close(3)                                         = 0
+random_bitmap->fopen("random.bmp", "wb" <unfinished ...>
+libc.so.6->memalign(568, 0x400cf4, 1, 0)                        = 0x1ee3030
+<... fopen resumed> )                                           = 0x1ee3030
+random_bitmap->fwrite("BMF", 54, 1, 0x1ee3030)                  = 1
+random_bitmap->printf("%d pixels written\n", 307200307200 pixels written
+)                                    = 22
+random_bitmap->fwrite("Z\226\314H7\316\301\306\340\367iI\324O\332|\005\035![BL\325u\271\335L", 921600, 1, 0x1ee3030) = 1
+random_bitmap->fclose(0x1ee3030 <unfinished ...>
+libc.so.6->(0x1ee3030, 0, 0x1ee3110, 0xfbad000c)                = 1
+<... fclose resumed> )                                          = 0
+random_bitmap->puts("done!\n)                                   = 7
+libc.so.6->_dl_find_dso_for_object(0x7f7140dd1d90, 0x7f7140dd26c8, 1, -1) = 0x7f7140fd5690
++++ exited (status 0) +++

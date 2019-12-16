@@ -1,0 +1,13 @@
+
+Statistika a histogramy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Přidání hodnoty do pole operátorem <<<
+▶ Vytvoření histogramu z pole @hist_log
+▶ Další funkce
+    ◆ @count()      počet prvků (vzorků)
+    ◆ @sum          součet (suma) hodnot prvků
+    ◆ @min          nalezení vzorku sminimální hodnotou
+    ◆ @max          nalezení vzorku smaximální hodnotou
+    ◆ @avg          výpočet průměrné hodnoty
+    ◆ @hist_linear  normální histogram slineární osou  
+    ◆ @hist_log     histogram slogaritmickou osou

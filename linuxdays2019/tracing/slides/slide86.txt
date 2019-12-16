@@ -1,0 +1,9 @@
+
+Poslední čtyři volání
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) bt 4
+#0  factorial (n=3) at factorial.c:5
+#1  0x000000000040055f in factorial (n=4) at factorial.c:6
+#2  0x000000000040055f in factorial (n=5) at factorial.c:6
+#3  0x000000000040055f in factorial (n=6) at factorial.c:6
+(More stack frames follow...)

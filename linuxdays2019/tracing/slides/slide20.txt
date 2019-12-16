@@ -1,0 +1,10 @@
+
+Použití časových razítek vypsaných ve formátu UNIX time
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ ltrace -ttt ./hello
+     ↓
+1569690376.636835 __libc_start_main(0x8049780, 1, 0xbfa41934, 0x8052c50, 0x8052c40 <unfinished ...>
+...
+...
+...
+1569690376.672622 +++ exited (status 0) +++

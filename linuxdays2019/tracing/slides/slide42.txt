@@ -1,0 +1,16 @@
+
+Konstrola instalace SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Skript převzatý z dokumentace SystemTapu
+    ◆ přepípač -v: verbose režim
+    ◆ přepínač -e: zadání skripti na příkazovém řádku
+   
+# stap -v -e 'probe vfs.read {printf("read performed\n"); exit()}'
+     ↓
+Pass 1: parsed user script and 118 library scripts using 233764virt/36948res/7372shr/29452data kb, in 200usr/30sys/471real ms.
+Pass 2: analyzed script: 1 probe, 1 function, 4 embeds, 0 globals using 372776virt/170852res/8824shr/168464data kb, in 3560usr/400sys/4282real ms.
+Pass 3: translated to C into "/tmp/stapWy5VWo/stap_5ec9a356f694741098a16e111db111c9_1654_src.c" using 372776virt/171052res/9024shr/168464data kb, in 10usr/10sys/19real ms.
+Pass 4: compiled C into "stap_5ec9a356f694741098a16e111db111c9_1654.ko" in 16650usr/3190sys/20283real ms.
+Pass 5: starting run.
+read performed
+Pass 5: run completed in 20usr/60sys/440real ms.

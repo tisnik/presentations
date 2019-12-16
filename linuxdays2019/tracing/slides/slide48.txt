@@ -1,0 +1,8 @@
+
+Funkce println() namísto složitější printf()
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+probe begin
+{
+    println("Hello world!");
+    exit();
+}

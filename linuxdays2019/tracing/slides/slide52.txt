@@ -1,0 +1,15 @@
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Sonda, která vypíše ID uživatele
+   
+probe begin
+{
+  printf ("hello %d\n", uid())
+  exit ()
+}
+   
+▶ Spuštění (pod rootem)
+# stap hello2.stp
+     ↓
+hello 0

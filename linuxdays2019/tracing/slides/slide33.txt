@@ -1,0 +1,8 @@
+
+Časy volání syscallů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Stejné přepínače jako v případě nástroje ltrace
+$ strace -t whoami
+$ strace -tt whoami
+$ strace -ttt whoami
+$ strace -r whoami

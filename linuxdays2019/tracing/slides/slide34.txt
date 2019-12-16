@@ -1,0 +1,8 @@
+
+Časy trvání volaných syscallů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ strace -r whoami
+close(1)                            = 0 <0.000046>
+munmap(0xb7c4a000, 4096)            = 0 <0.000071>
+close(2)                            = 0 <0.000044>
+exit_group(0)                       = ?

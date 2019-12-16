@@ -1,0 +1,13 @@
+
+Připojení k běžící aplikaci
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Terminál číslo 1
+$ bash
+$ echo $$
+12345
+   
+▶ Terminál číslo 2
+$ ltrace -p 12345
+    
+▶ Terminál číslo 1
+[Enter]

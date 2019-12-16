@@ -1,0 +1,19 @@
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Reakce na spuštění programu nazvaného „hello“
+▶ Reakce na ukončení tohoto programu
+▶ Reakce na vstup do funkce main
+  
+probe process("hello").begin
+{
+  printf ("started\n")
+}
+probe process("hello").end
+{
+    printf ("finished\n")
+}
+probe process("hello").function("main")
+{
+    printf ("main function\n")
+}

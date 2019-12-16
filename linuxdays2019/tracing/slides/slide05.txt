@@ -1,0 +1,8 @@
+
+Poznámka: zvýrazněné řádky
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Na slajdech budeme používat tyto barvy
+$ příkaz_spuštěný_běžným_uživatelem
+# příkaz_spuštěný_rootem
+     ↓
+výstup (tisk) je většinou zobrazen pod šipkou

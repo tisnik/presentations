@@ -1,0 +1,22 @@
+
+Zjištění statistiky volaných funkcí (3)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Nakonec vyzkoušíme přepínač -c společně s programem pro vykreslení fraktálu
+$ ltrace -c ./fractal_renderer
+     ↓
+% time     seconds  usecs/call     calls      function
+------ ----------- ----------- --------- --------------------
+ 99.99   72.237624         117    614400 sin
+  0.00    0.001307         653         2 fwrite
+  0.00    0.000695         347         2 puts
+  0.00    0.000672         336         2 memset
+  0.00    0.000487         487         1 fclose
+  0.00    0.000409         409         1 fopen
+  0.00    0.000338         169         2 malloc
+  0.00    0.000160         160         1 printf
+------ ----------- ----------- --------- --------------------
+100.00   72.241692                614411 total
+   
+▶ Podle očekávání
+    ◆ nejvíce času se celkově (kumulativně) strávilo ve funkci sin
+    ◆ (ovšem z volaných funkcí je nejrychlejší)

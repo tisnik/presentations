@@ -1,0 +1,17 @@
+
+Zobrazení hodnot
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) print(i)
+ $1 = 30
+  
+(gdb) print(argc>0)
+ $2 = 1
+  
+(gdb) print(atoi("42"))
+ $3 = 42
+  
+(gdb) print(isdigit('4'))
+ $4 = 2048
+  
+(gdb) print(isdigit('a'))
+ $5 = 0

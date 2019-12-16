@@ -1,0 +1,5 @@
+
+Ukázka použití utility strace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Filtrace syscallů
+$ strace -e trace=open,close whoami

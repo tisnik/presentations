@@ -1,0 +1,12 @@
+
+Základní informace o nástroj DTrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Takzvané sondy (probe)
+    ◆ krátké skripty spuštěné při vzniku události
+    ◆ v jádře
+    ◆ v aplikaci
+▶ Samotná sonda má přístup k zásobníkovému rámci
+    ◆ lokální proměnné
+    ◆ parametry
+▶ Pro zápis sond se používá jazyk D
+    ◆ ovšem ne D z http://dlang.org

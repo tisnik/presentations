@@ -1,0 +1,6 @@
+
+Ladění zhavarovaných aplikací
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ulimit -c unlimited
+$./npe 
+Segmentation fault (core dumped)

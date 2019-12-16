@@ -1,0 +1,9 @@
+
+Výpis volaných funkcí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Použití žolíkového znaku „*“
+  
+probe process("ls").function("*").call
+{
+    println(ppfunc());
+}

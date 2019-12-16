@@ -1,0 +1,15 @@
+
+Výpis PID každého spuštěného procesu „ls“
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+probe begin
+{
+    println("STAP prepared");
+}
+probe process("ls").begin
+{
+    printf("ls with PID=%d started\n", pid());
+}
+probe process("ls").end
+{
+    printf("ls with PID=%d finished\n", pid());
+}

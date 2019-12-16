@@ -1,0 +1,10 @@
+
+Výpis backtrace zvolené volané funkce (zadání sondy)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Použití explicitního jména funkce
+   
+probe process("ls").function("xmalloc").call
+{
+    println(ppfunc());
+    print_ubacktrace();
+}

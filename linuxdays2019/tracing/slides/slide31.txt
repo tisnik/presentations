@@ -1,0 +1,9 @@
+
+Ukázka použití utility strace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ U každého systémového volání jsou uvedeny parametry
+▶ Inteligentní nahrazení číselných konstant za symbolické konstanty
+    ◆ PROT_READ atd.
+▶ Vypisuje se i návratová hodnota z volaného bloku
+    ◆ opět s využitím symbolické konstanty, kde to dává smysl
+    ◆ alternativně se vypíše i zpráva "No such file or directory"

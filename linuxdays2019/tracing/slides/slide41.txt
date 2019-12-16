@@ -1,0 +1,15 @@
+
+SystemTap
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Použití
+    ◆ události v kernelu
+    ◆ události v userspace
+    ◆ samozřejmě i syscally
+▶ Základní koncept podobný DTrace
+    ◆ sondy
+    ◆ deklarace, kdy se má sonda spustit
+▶ Instalace
+    ◆ záleží na distribuci, obecně složitější
+    ◆ pomocný nástroj stap-prep
+        - poradí, které balíčky nainstalovat
+        - někdy je i nainstaluje

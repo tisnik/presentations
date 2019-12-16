@@ -1,0 +1,28 @@
+
+Ukázka použití utility ltrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ ltrace ./fractal_renderer
+     ↓
+__libc_start_main(0x400ec2, 1, 0x7fff0293d968, 0x400f60 <unfinished ...>
+puts("processing:")                      = 12
+malloc(16)                               = 0xf7f010
+malloc(921600)                           = 0x7fb63dc5a010
+memset(0x7fb63dc5a010, '\0', 921600)     = 0x7fb63dc5a010
+memset(0x7fb63dc5a010, '\0', 921600)     = 0x7fb63dc5a010
+sin(0xf7f010, 1000, 0, 0xf7f010)         = 0x3fa11111
+...
+...
+...
+vynechána další volání funkce sin - 614400x !!!
+...
+...
+...
+fopen("result.bmp", "wb")                = 0xf7f030
+fwrite("BMF", 54, 1, 0xf7f030)           = 1
+printf("%d pixels written\n", 307200)    = 22
+fwrite("z\036zz\036zz\036zz\036zz\036zz\036zz\036zz\036zz\036zz\036zz\036"..., 921600, 1, 0xf7f030) = 1
+fclose(0xf7f030)                         = 0
+puts("done!\n")                          = 7
++++ exited (status 0) +++
+   
+▶ zde můžeme vidět, že jasně dominuje volání funkce sin z knihovny libm

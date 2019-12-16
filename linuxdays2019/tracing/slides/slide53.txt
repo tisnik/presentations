@@ -1,0 +1,16 @@
+
+Ukázky použití SystemTapu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Sonda reagujicí každou sekundu na časovač
+   
+probe timer.ms(1000)
+{
+  printf ("tiktak\n")
+}
+   
+▶ Spuštění (pod rootem)
+# stap clock.stp
+     ↓
+tiktak
+tiktak
+tiktak

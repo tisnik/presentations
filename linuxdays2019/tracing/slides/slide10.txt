@@ -1,0 +1,13 @@
+
+Utilita ltrace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Ovládání z příkazové řádky
+$ ltrace --help
+     ↓
+Usage: ltrace [option ...] [command [arg ...]]
+Trace library calls of a given program.
+...
+...
+...
+  -a, --align=COLUMN  align return values in a secific column.
+  -A ARRAYLEN         maximum number of array elements to print.

@@ -1,0 +1,16 @@
+
+Specifikace jména procesu na příkazové řádce
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Volání
+# stap check.stp whoami
+   
+▶ Sondy
+probe process(@1).begin
+{
+    pid=pid()
+    printf("ls with PID=%d started\n", pid());
+}
+probe process(@1).end
+{
+    printf("ls with PID=%d finished\n", pid());
+}

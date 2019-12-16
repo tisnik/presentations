@@ -1,0 +1,15 @@
+
+Statistické informace vypsané po ukončení procesu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+ Reads:
+ Count: 5003 operations
+ Total: 538640392 bytes
+ Min:   8196 bytes
+ Max:   131072 bytes
+ Avg:   107663 bytes/operation
+ Writes:
+ Count: 4999 operations
+ Total: 828740 bytes
+ Min:   40 bytes
+ Max:   2312 bytes
+ Avg:   165 bytes/operation
