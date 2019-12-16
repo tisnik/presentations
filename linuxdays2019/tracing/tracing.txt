@@ -7,7 +7,7 @@
 Obsah přednášky (1)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Trasování a ladění nativních aplikací v Linuxu
-▶ Nástroj ltrace
+▶ Nástroj „ltrace“
     ◆ ukázka použití nástroje ltrace
     ◆ časová razítka volání
     ◆ zjištění doby trvání volané funkce a filtrace výstupu
@@ -18,7 +18,7 @@ Obsah přednášky (1)
 
 Obsah přednášky (2)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Nástroj strace
+▶ Nástroj „strace“
     ◆ ukázka použití nástroje strace
     ◆ zobrazení tabulky volaných funkcí
     ◆ časy volání syscallů
@@ -26,13 +26,13 @@ Obsah přednášky (2)
     ◆ zobrazení tabulky volaných syscallů
     ◆ setřídění tabulky podle zvoleného sloupce
     ◆ další možnosti nabízené nástrojem strace
-▶ Nástroj DTrace
+▶ Nástroj „DTrace“
     ◆ základní informace o nástroji DTrace
     ◆ příklad naprogramované sondy
 
 Obsah přednášky (3)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Nástroj SystemTap
+▶ Nástroj „SystemTap“
     ◆ základní informace o nástroji SystemTap
     ◆ instalace, pomocný nástroj stap-prep
     ◆ ukázky použití SystemTap (různé sondy)
@@ -42,16 +42,15 @@ Obsah přednášky (3)
 ▶ GNU Debugger
     ◆ rozhraní s příkazovým řádkem
     ◆ tracepointy
-    ◆
+    ◆ atd.
 
 Obsah přednášky (4)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ BPF (Berkeley Packet Filter) a eBPF
     ◆ front endy pro eBPF
 ▶ Nástroj bpftrace
-    ◆
+    ◆ základní informace o nástroji bpftrace
     ◆ příklady použití
-    ◆
 ▶ Odkazy na další informační zdroje
 
 Poznámka: zvýrazněné řádky
@@ -60,7 +59,7 @@ Poznámka: zvýrazněné řádky
 $ příkaz_spuštěný_běžným_uživatelem
 # příkaz_spuštěný_rootem
      ↓
-výstup (tisk) je zobrazen pod šipkou
+výstup (tisk) je většinou zobrazen pod šipkou
 
 Trasování a ladění nativních aplikací v Linuxu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -151,11 +150,12 @@ Zavolání nástroje ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Zavolání ltrace bez parametrů
 $ ltrace jméno_binární_aplikace parametry_aplikace
+   
 ▶ Zavolání ltrace s předáním parametrů
 $ ltrace parametry_ltrace jméno_binární_aplikace parametry_aplikace
 
-Testovaný zdrojový kód - program "Hello world"
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Testovaný zdrojový kód - program typu „Hello world“
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Ukázka použití utility ltrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -225,7 +225,7 @@ fwrite("z\036zz\036zz\036zz\036zz\036zz\036zz\036zz\036zz\036zz\036zz\036"..., 9
 fclose(0xf7f030)                         = 0
 puts("done!\n")                          = 7
 +++ exited (status 0) +++
-.
+   
 ▶ zde můžeme vidět, že jasně dominuje volání funkce sin z knihovny libm
 
 Časová razítka volání funkcí
@@ -277,7 +277,7 @@ random_bitmap->open("/dev/urandom", 0, 026320350000)   = 3
 random_bitmap->close(3)                                = 0
 307200 pixels written
 done!
-.
+   
 +++ exited (status 0) +++
 
 Odstranění informací o funkcích, které nás nezajímají
@@ -315,13 +315,13 @@ Zjištění statistiky volaných funkcí
 $ ltrace -c ./hello
      ↓
 Hello world!
-.
+   
 % time     seconds  usecs/call     calls      function
 ------ ----------- ----------- --------- --------------------
 100.00    0.000455         455         1 puts
 ------ ----------- ----------- --------- --------------------
 100.00    0.000455                     1 total
-.
+   
 ▶ zde nedošlo k většímu překvapení
 
 Zjištění statistiky volaných funkcí (2)
@@ -343,7 +343,7 @@ $ ltrace -c ./random_bitmap
   0.07    0.000174         174         1 close
 ------ ----------- ----------- --------- --------------------
 100.00    0.233520                   493 total
-.
+   
 ▶ Povšimněte si, že funkce read() se volala přesně 480x
     ◆ to odpovídá zdrojovému kódu
 
@@ -364,7 +364,7 @@ $ ltrace -c ./fractal_renderer
   0.00    0.000160         160         1 printf
 ------ ----------- ----------- --------- --------------------
 100.00   72.241692                614411 total
-.
+   
 ▶ Podle očekávání
     ◆ nejvíce času se celkově (kumulativně) strávilo ve funkci sin
     ◆ (ovšem z volaných funkcí je nejrychlejší)
@@ -375,8 +375,10 @@ Připojení k běžící aplikaci
 $ bash
 $ echo $$
 12345
+   
 ▶ Terminál číslo 2
 $ ltrace -p 12345
+    
 ▶ Terminál číslo 1
 [Enter]
 
@@ -579,6 +581,7 @@ Konstrola instalace SystemTapu
 ▶ Skript převzatý z dokumentace SystemTapu
     ◆ přepípač -v: verbose režim
     ◆ přepínač -e: zadání skripti na příkazovém řádku
+   
 # stap -v -e 'probe vfs.read {printf("read performed\n"); exit()}'
      ↓
 Pass 1: parsed user script and 118 library scripts using 233764virt/36948res/7372shr/29452data kb, in 200usr/30sys/471real ms.
@@ -589,7 +592,7 @@ Pass 5: starting run.
 read performed
 Pass 5: run completed in 20usr/60sys/440real ms.
 
-Vybrané typy sond
+Vybrané typy sond (triviální příklady)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ begin
     ◆ spuštěna po inicializaci SystemTapu
@@ -600,7 +603,7 @@ Vybrané typy sond
 ▶ never
     ◆ nikdy nebude spuštěna
 
-Vybrané typy sond
+Vybrané typy sond (složitější sondy)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ process(jméno).begin
 ▶ process(jméno).end
@@ -625,6 +628,7 @@ probe begin
     printf ("hello world\n")
     exit ()
 }
+   
 ▶ Spuštění
 $ stap hello.stp
      ↓
@@ -632,6 +636,8 @@ hello world
 
 Lze použít i středníky atd.
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Může být výhodné - některé editory lze zapnout do „C“ režimu
+   
 probe begin
 {
     printf ("hello world\n");
@@ -652,6 +658,8 @@ Zápis sondy přímo na příkazovém řádku
 
 Sonda typu oneshot
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Provede se přesně jedenkrát
+   
 probe oneshot
 {
     println("Hello world!");
@@ -659,6 +667,8 @@ probe oneshot
 
 Více sond stejného typu s uvedením pořadí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Libovolné celočíselné hodnoty
+   
 probe begin(3)
 {
     println(" !");
@@ -679,11 +689,13 @@ probe begin(1)
 Ukázky použití SystemTapu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Sonda, která vypíše ID uživatele
+   
 probe begin
 {
   printf ("hello %d\n", uid())
   exit ()
 }
+   
 ▶ Spuštění (pod rootem)
 # stap hello2.stp
      ↓
@@ -692,10 +704,12 @@ hello 0
 Ukázky použití SystemTapu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Sonda reagujicí každou sekundu na časovač
+   
 probe timer.ms(1000)
 {
   printf ("tiktak\n")
 }
+   
 ▶ Spuštění (pod rootem)
 # stap clock.stp
      ↓
@@ -705,9 +719,10 @@ tiktak
 
 Ukázky použití SystemTapu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Reakce na spuštění programu nazvaného "hello"
+▶ Reakce na spuštění programu nazvaného „hello“
 ▶ Reakce na ukončení tohoto programu
 ▶ Reakce na vstup do funkce main
+  
 probe process("hello").begin
 {
   printf ("started\n")
@@ -721,7 +736,7 @@ probe process("hello").function("main")
     printf ("main function\n")
 }
 
-Výpis PID každého spuštěného procesu "ls"
+Výpis PID každého spuštěného procesu „ls“
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 probe begin
 {
@@ -740,8 +755,10 @@ Ukázky použití SystemTapu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Registrace a spuštění sondy
 # stap process.stp
+  
 ▶ Spuštění programu ./hello v jiném terminálu
 $ ./hello
+   
 ▶ Zprávy vypsané sondou
     started
     main function
@@ -755,6 +772,7 @@ probe syscall.open
     filename = user_string($filename);
     printf("ls opened file %s\n", filename);
 }
+  
 ▶ Ukázka výstupu
 STAP prepared
 ls with PID=22086 started
@@ -769,6 +787,7 @@ ls opened file /lib64/libattr.so.1
 ls opened file /lib64/libpthread.so.0
 ls opened file /usr/lib/locale/locale-archive
 ls with PID=22086 finished
+   
 ▶ Lze porovnat s:
 $ strace -e trace=open ls
 
@@ -778,6 +797,7 @@ Ukázky použití SystemTapu
 ▶ Globální proměnné ve skriptech
     ◆ obsah těchto proměnných se automaticky vypíše na konci
     ◆ pokud se do proměnné jen zapisuje
+      
 global pid=-1
 probe begin
 {
@@ -807,6 +827,7 @@ global write_count=0
 global read_bytes=0
 global write_bytes=0
 global unused_variable=0
+   
 probe syscall.open
 {
     filename = user_string($filename);
@@ -833,8 +854,9 @@ probe syscall.write
 
 Sledování dalších syscallů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ U jednotlivých syscallů máme k dispizici další informace
+▶ U jednotlivých syscallů máme k dispozici další informace
     ◆ u write je to: buf, dount, fd
+  
 global pid=-1
 probe begin
 {
@@ -864,6 +886,7 @@ probe syscall.write
         printf("write %d bytes to file descriptor %d\n", bytes, into);
     }
 }
+   
 ▶ Výsledek (zkrácený)
 write 67 bytes to file descriptor 1
 write 55 bytes to file descriptor 1
@@ -871,6 +894,7 @@ write 55 bytes to file descriptor 1
 Opis řetězců zapisovaných do souborů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 global pid=-1
+   
 probe begin
 {
     println("STAP prepared");
@@ -906,6 +930,7 @@ Specifikace jména procesu na příkazové řádce
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Volání
 # stap check.stp whoami
+   
 ▶ Sondy
 probe process(@1).begin
 {
@@ -919,34 +944,38 @@ probe process(@1).end
 
 Výpis volaných funkcí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Použití žolíkového znaku *
+▶ Použití žolíkového znaku „*“
+  
 probe process("ls").function("*").call
 {
     println(ppfunc());
 }
 
-Výpis backtrace zvolené volané funkce
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Výpis backtrace zvolené volané funkce (zadání sondy)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Použití explicitního jména funkce
+   
 probe process("ls").function("xmalloc").call
 {
     println(ppfunc());
     print_ubacktrace();
 }
 
-Výpis backtrace zvolené volané funkce
+Výpis backtrace zvolené volané funkce (spuštění)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 xmalloc
  0x4112f0 : xmalloc+0x0/0x20 [/usr/bin/ls]
  0x4051c8 : sort_files+0x148/0x190 [/usr/bin/ls]
  0x403c72 : main+0x12e2/0x2160 [/usr/bin/ls]
  0x7f51b4e71700 [/usr/lib64/libc-2.21.so+0x20700/0x3c1000]
+    
 xmalloc
  0x4112f0 : xmalloc+0x0/0x20 [/usr/bin/ls]
  0x4060fc : calculate_columns+0xcc/0x2d0 [/usr/bin/ls]
  0x407abe : print_current_files+0x33e/0x4e0 [/usr/bin/ls]
  0x403d73 : main+0x13e3/0x2160 [/usr/bin/ls]
  0x7f51b4e71700 [/usr/lib64/libc-2.21.so+0x20700/0x3c1000]
+    
 ls with PID=5278 finished
 
 Uživatelem definované funkce
@@ -955,6 +984,7 @@ Uživatelem definované funkce
 function count_add(arg1, arg2) {
     return arg1 + arg2
 }
+   
 ▶ Explicitní uvedení návratové hodnoty
 function concatenate:string(arg1:long, arg2) {
     return sprintf("%d%s", arg1, arg2)
@@ -976,6 +1006,7 @@ Statistika a histogramy
 Statistika a histogramy
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 global histogram
+   
 probe begin {
     printf("Capturing...\n")
 }
@@ -995,6 +1026,7 @@ Statistika a histogramy
 global reads
 global writes
 global read_write_count=0
+   
 probe process("ls").begin
 {
     printf("ls with PID=%d started\n", pid());
@@ -1035,7 +1067,7 @@ probe end
     print(@hist_linear(writes, 0, 1000, 100))
 }
 
-Statistika a histogramy
+Statistika a histogramy - ukázka výstupu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Reads:
 value |-------------------------------------------------- count
@@ -1049,7 +1081,7 @@ value |-------------------------------------------------- count
  1000 |                                                       1
 >1000 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  35621
 
-Statistika a histogramy
+Statistika a histogramy - ukázka výstupu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Writes:
 value |-------------------------------------------------- count
@@ -1071,6 +1103,7 @@ Statistické informace vypsané po ukončení procesu
 global reads
 global writes
 global read_write_count=0
+   
 probe syscall.open
 {
     filename = user_string($filename);
@@ -1113,18 +1146,18 @@ probe end
 
 Statistické informace vypsané po ukončení procesu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Reads:
-Count: 5003 operations
-Total: 538640392 bytes
-Min:   8196 bytes
-Max:   131072 bytes
-Avg:   107663 bytes/operation
-Writes:
-Count: 4999 operations
-Total: 828740 bytes
-Min:   40 bytes
-Max:   2312 bytes
-Avg:   165 bytes/operation
+ Reads:
+ Count: 5003 operations
+ Total: 538640392 bytes
+ Min:   8196 bytes
+ Max:   131072 bytes
+ Avg:   107663 bytes/operation
+ Writes:
+ Count: 4999 operations
+ Total: 828740 bytes
+ Min:   40 bytes
+ Max:   2312 bytes
+ Avg:   165 bytes/operation
 
 GNU Debugger
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -1166,7 +1199,7 @@ GNU Debugger
     ◆ příkazový řádek
     ◆ TUI
     ◆ Frontend (GUI, různá IDE) přes protokol
-    ◆ "stub" přidaný přímo do laděné aplikace
+    ◆ „stub“ přidaný přímo do laděné aplikace
 ▶ Příkazový řádek
     ◆ jednoznakové a dvojznakové zkratky příkazů
         - bt=backtrace
@@ -1236,6 +1269,7 @@ OPTIONS:
 
 Otestování funkcionality bpftrace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Skript je zadán přímo na příkazové řádce přes „-e“
 # bpftrace -e 'BEGIN { printf("Hello BPF!\n"); exit(); }'
 Attaching 1 probe...
 Hello BPF!
@@ -1282,7 +1316,8 @@ Attaching 1 probe...
 [8, 16)                0 |                                                    |
 [16, 32)               1 |@@@@                                                |
 
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Nastavení dalších vlastností histogramu - rozsah, krok (ovlivní počet řádků)
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 # bpftrace -e 'kretprobe:vfs_read { @bytes = lhist(retval, 0, 2000, 200); }'
 Attaching 1 probe...
 ^C
