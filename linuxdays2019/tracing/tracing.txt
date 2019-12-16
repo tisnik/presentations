@@ -1213,6 +1213,182 @@ GNU Debugger a trasování
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Tracepoints
     ◆ zjištění stavu procesu bez jeho (po)zastavení
+▶ Přidání ladicích informací
+$ gcc -g -ansi -pedantic -Wall -o hello hello.c
+▶ Spuštění debuggeru
+$ gdb hello
+...
+...
+...
+Reading symbols from hello...done.
+
+Orientace v kódu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) info functions
+    All defined functions:
+       
+    File hello.c:
+    int main(int, char **);
+    void print_hello();
+
+Orientace v kódu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) list
+1       #include <stdio.h>
+2
+3       void print_hello()
+4       {
+5           puts("Hello world!");
+6       }
+7
+8       int main(int argc, char **argv)
+9       {
+10          print_hello();
+     
+(gdb) list main
+4       {
+5           puts("Hello world!");
+6       }
+7
+8       int main(int argc, char **argv)
+9       {
+10          print_hello();
+11          return 0;
+12      }
+13
+
+Orientace v kódu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) info sharedlibrary
+From                To                  Syms Read   Shared Object Library
+0x00007ffff7ddaae0  0x00007ffff7df54e0  Yes (*)     /lib64/ld-linux-x86-64.so.2
+(*): Shared library is missing debugging information.
+
+Breakpointy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) break main
+Breakpoint 1 at 0x40054c: file hello.c, line 10.
+   
+(gdb) run
+Starting program: /home/tester/temp/presentations/tracing/hello 
+    
+Breakpoint 1, main (argc=1, argv=0x7fffffffe158) at hello.c:10
+10          print_hello();
+  
+(gdb) n
+Hello world!
+11          return 0;
+   
+(gdb) c
+Continuing.
+[Inferior 1 (process 7040) exited normally]
+
+Zobrazení hodnot
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) print(i)
+ $1 = 30
+  
+(gdb) print(argc>0)
+ $2 = 1
+  
+(gdb) print(atoi("42"))
+ $3 = 42
+  
+(gdb) print(isdigit('4'))
+ $4 = 2048
+  
+(gdb) print(isdigit('a'))
+ $5 = 0
+
+Parametry breakpointů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+#include <stdio.h>
+   
+short factorial(short n)
+{
+    if (n==0 || n==1) return 1;
+    return n*factorial(n-1);
+}
+  
+int main(int argc, char **argv)
+{
+    printf("%d\n", factorial(8));
+    return 0;
+}
+
+Parametry breakpointů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) break factorial
+Breakpoint 1 at 0x40053b: file factorial.c, line 5.
+   
+(gdb) info breakpoints
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x000000000040053b in factorial at factorial.c:5
+   
+(gdb) ignore 1 5
+Will ignore next 5 crossings of breakpoint 1.
+   
+(gdb) info b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x000000000040053b in factorial at factorial.c:5
+        ignore next 5 hits
+
+Výpis obsahu zásobníkových rámců
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Po zastavení po pěti průchodem breakpointem
+(gdb) bt
+#0  factorial (n=3) at factorial.c:5
+#1  0x000000000040055f in factorial (n=4) at factorial.c:6
+#2  0x000000000040055f in factorial (n=5) at factorial.c:6
+#3  0x000000000040055f in factorial (n=6) at factorial.c:6
+#4  0x000000000040055f in factorial (n=7) at factorial.c:6
+#5  0x000000000040055f in factorial (n=8) at factorial.c:6
+#6  0x0000000000400583 in main (argc=1, argv=0x7fffffffe158) at factorial.c:11
+
+Poslední čtyři volání
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) bt 4
+#0  factorial (n=3) at factorial.c:5
+#1  0x000000000040055f in factorial (n=4) at factorial.c:6
+#2  0x000000000040055f in factorial (n=5) at factorial.c:6
+#3  0x000000000040055f in factorial (n=6) at factorial.c:6
+(More stack frames follow...)
+
+Začátek historie
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+(gdb) bt -4
+#3  0x000000000040055f in factorial (n=6) at factorial.c:6
+#4  0x000000000040055f in factorial (n=7) at factorial.c:6
+#5  0x000000000040055f in factorial (n=8) at factorial.c:6
+#6  0x0000000000400583 in main (argc=1, argv=0x7fffffffe1c8) at factorial.c:11
+
+Ladění zhavarovaných aplikací
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+void set_mem(int *address, int value)
+{
+    *address = value;
+}
+   
+int main(int argc, char **argv)
+{
+    set_mem((int*)0, 42);
+    return 0;
+}
+  
+$ gcc -g -Wall -ansi -pedantic npe.c
+$ ./npe 
+Segmentation fault
+
+Ladění zhavarovaných aplikací
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+$ulimit -c unlimited
+$./npe 
+Segmentation fault (core dumped)
+
+GDB TUI
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ GDB TUI
+$ gdbtui hello
 
 Sledování přímo v kernelu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
