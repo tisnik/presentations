@@ -2,7 +2,7 @@
 Nahrazení
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Jediný výskyt na řádku
-    :s/foo/bar/foo
+    :s/foo/bar/
 ▶ Jediný výskyt na každém řádku v celém souboru
     :%s/foo/bar/
 ▶ Všechny výskyty na řádku
