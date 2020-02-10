@@ -308,6 +308,7 @@ int main(void)
 
     puts("\n<h2>Výpočet funkce cos() optimalizovanou metodou CORDIC</h2>\n");
     puts("<table>");
+    printf("<tr><th>Úhel</th><th>cos FP</th><th>cos FX</th><th>Abs.chyba</th><th>Rel.chyba</th></tr>\n");
     for (i=0; i<=90; i++) {                 /* výpočetní smyčka */
         delta=deg2rad(i);                   /* převod úhlu na radiány */
         cosfx=fx_cos_cordic_optim(fp2fx(delta));  /* aplikace algoritmu CORDIC */
