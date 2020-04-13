@@ -1,0 +1,29 @@
+Pět nejpoužívanějších jazyků v Red Hatu
+=======================================
+
+Popularita programovacích jazyků ve světě
+=========================================
+
+Jak je tomu v Red Hatu?
+-----------------------
+Mnoho hledisek
+- podle produktů
+- podle počtu vývojářů
+- nesmíme zapomenout na QA!
+- podle počtu napsaných řádků
+- podle počtu změněných řádků
+- kdy se statistika vytvářela
+
+Jak je tomu v Red Hatu?
+-----------------------
+C
+Python
+Java
+Go
+JavaScript
+
+Další jazyky používané v Red Hatu
+---------------------------------
+Ruby
+Groovy
+Rust
