@@ -1,0 +1,72 @@
+Jak se sám střelit do nohy vlastním kódem
+=========================================
+
+Odpověď
+-------
+Učme se od zkušenějších, jaké dělat chyby :-)
+
+Slavné (a patřičně drahé) SW chyby
+==================================
+
+Mariner 1
+---------
+- jediná chybějící pomlčka
+- kolizní kurz zpět na zemi
+- => inženýři poslali signál pro samodestrukci
+- škoda 18 milionů dolarů (tehdejších)
+
+NASA’s Mars Climate Orbiter
+---------------------------
+- jednotlivé moduly vyráběné různými firmami
+- převody mezi metrickou a imperiální soustavou
+- nikdo řádně neotestoval
+- škoda 127 milionů dolarů
+
+Ariane 5 Flight 501
+-------------------
+- silnější raketové motory, než u předchozích modelů
+- SW ukládal mezivýsledky do 16 bitů (pro starší model postačující)
+- "tichá" konverze 64 bitů -> 16 bitů -> přetečení
+- škoda 8 miliard raketa + 500 milionů vybavení, která nesla
+
+Morrisův červ
+-------------
+- taktéž známý jako Internet worm
+- Morris, tehdy student, 23let
+- nástroj pro změření počtu počítačů připojených k internetu
+- zneužíval chybu v Sendmailu atd.
+- ověření, zda již počítač nebyl infikován obsahovalo "chybu":
+      - s pravděpodobností 1:7 byl počítač znovu nakažen, i když hlásil nakažení
+- škoda odhadována v rozmezí 100 000 až 10 milionů dolarů
+- tříletá podmínka, 10 000 pokuty + 400 hodin veřejně prospěšných prací
+
+Heathrow Terminal 5 Opening
+---------------------------
+- nový systém pro odbavování zavazadel
+- sice byl testován, ale ne pro reálná data (a počty zavazadel: 1200)
+- v reálném světě: SW nestíhal
+- 500 letů odvoláno
+- 42000 zavazadel nebylo odbaveno!
+
+Boeing 737 Max
+--------------
+- špatný HW (neodpovídá US zákonům)
+- nutnost "tiché" SW/FW opravy
+- naprosto špatný návrh, (ne)testování, neproškolení pilotů
+- dvě havárie, 338 mrtvých
+- 400 letadel uzemněno
+- přibližně 40 miliard dolarů ztráty (ale bude vyšší)
+
+Odkazy
+------
+11 of the most costly software errors in history
+https://raygun.com/blog/costly-software-errors-history/
+
+Morris worm
+https://en.wikipedia.org/wiki/Morris_worm
+
+Lion Air Flight 610
+https://en.wikipedia.org/wiki/Lion_Air_Flight_610
+
+Ethiopian Airlines Flight 302
+https://en.wikipedia.org/wiki/Ethiopian_Airlines_Flight_302
