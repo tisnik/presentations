@@ -57,16 +57,165 @@ Boeing 737 Max
 - 400 letadel uzemněno
 - přibližně 40 miliard dolarů ztráty (ale bude vyšší)
 
+Další drahé SW chyby
+====================
+- záměna čárky za tečku ve Fortranu (opět kosmický program)
+
+.
+
+.
+
+.
+
+.
+
+Stará chyba - ovšem může se objevit i v nových jazycích?
+--------------------------------------------------------
+
+.
+
+Apple goto fail
+---------------
+- přidaný skok způsobil chybné zpracování SSL připojení
+- nebylo odhaleno v rámci "review" kódu
+- (jeden z důvodů, proč je Go striktnější, co se týká bloků kódu)
+
+.
+
+.
+
+.
+
+.
+
+Problematické obraty v Pythonu
+------------------------------
+- výchozí parametr, který je referencí
+- modifikace seznamu ve smyčce typu for-each
+- dědění a třídní proměnné
+- nelokální proměnné
+
+Výchozí parametr, který je referencí
+------------------------------------
+
+.
+
+Modifikace seznamu ve smyčce typu for-each
+------------------------------------------
+
+.
+
+Dědění a třídní proměnné
+------------------------
+
+.
+
+.
+
+.
+
+.
+
+Nelokální proměnné
+------------------
+
+.
+
+.
+
+.
+
+Jeden z vítězů o nejkratší kód způsobující nejvíce chybových hlášení
+--------------------------------------------------------------------
+
+.
+
+Problematické obraty v Javě
+---------------------------
+- prázdný blok catch
+- porovnávání řetězců
+- porovnávání referencí
+- překrytí metod + chyba ve jméně
+- skrytý NPE
+
+Prázdný blok catch
+------------------
+
+.
+
+Porovnávání řetězců
+-------------------
+
+.
+
+Porovnávání referencí
+---------------------
+
+.
+
+.
+
+Překrytí metod + chyba ve jméně
+-------------------------------
+
+.
+
+Skrytý NPE
+----------
+
+.
+
+Problematické obraty v Go
+-------------------------
+- automaticky vytvářené lokální proměnné
+- použití referencí
+- gorutiny a uzávěry
+- práce s hodnotou nil
+
+Automaticky vytvářené lokální proměnné
+--------------------------------------
+
+.
+
+.
+
+.
+
+Použití referencí
+-----------------
+
+.
+
+.
+
+Gorutiny a uzávěry
+------------------
+
+.
+
+.
+
+.
+
+Práce s hodnotou nil
+--------------------
+
+.
+
+.
+
+.
+
 Odkazy
 ------
 11 of the most costly software errors in history
 https://raygun.com/blog/costly-software-errors-history/
-
+.
 Morris worm
 https://en.wikipedia.org/wiki/Morris_worm
-
+.
 Lion Air Flight 610
 https://en.wikipedia.org/wiki/Lion_Air_Flight_610
-
+.
 Ethiopian Airlines Flight 302
 https://en.wikipedia.org/wiki/Ethiopian_Airlines_Flight_302
