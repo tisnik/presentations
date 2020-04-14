@@ -1,0 +1,3 @@
+
+Automaticky vytvářené lokální proměnné
+--------------------------------------

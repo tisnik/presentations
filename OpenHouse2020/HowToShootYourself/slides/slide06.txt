@@ -1,0 +1,11 @@
+
+Morrisův červ
+-------------
+- taktéž známý jako Internet worm
+- Morris, tehdy student, 23let
+- nástroj pro změření počtu počítačů připojených k internetu
+- zneužíval chybu v Sendmailu atd.
+- ověření, zda již počítač nebyl infikován obsahovalo "chybu":
+      - s pravděpodobností 1:7 byl počítač znovu nakažen, i když hlásil nakažení
+- škoda odhadována v rozmezí 100 000 až 10 milionů dolarů
+- tříletá podmínka, 10 000 pokuty + 400 hodin veřejně prospěšných prací

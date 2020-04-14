@@ -1,0 +1,8 @@
+
+Heathrow Terminal 5 Opening
+---------------------------
+- nový systém pro odbavování zavazadel
+- sice byl testován, ale ne pro reálná data (a počty zavazadel: 1200)
+- v reálném světě: SW nestíhal
+- 500 letů odvoláno
+- 42000 zavazadel nebylo odbaveno!

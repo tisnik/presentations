@@ -1,4 +1,4 @@
-public class JavaRefefences {
+public class JavaRefefences2 {
     public static void main(String[] args) {
         Integer i = 12345678;
         Integer j = 12345677;

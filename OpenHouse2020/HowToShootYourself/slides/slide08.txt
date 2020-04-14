@@ -1,0 +1,9 @@
+
+Boeing 737 Max
+--------------
+- špatný HW (neodpovídá US zákonům)
+- nutnost "tiché" SW/FW opravy
+- naprosto špatný návrh, (ne)testování, neproškolení pilotů
+- dvě havárie, 338 mrtvých
+- 400 letadel uzemněno
+- přibližně 40 miliard dolarů ztráty (ale bude vyšší)

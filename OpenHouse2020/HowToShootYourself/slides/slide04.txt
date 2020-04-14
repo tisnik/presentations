@@ -1,0 +1,7 @@
+
+NASA’s Mars Climate Orbiter
+---------------------------
+- jednotlivé moduly vyráběné různými firmami
+- převody mezi metrickou a imperiální soustavou
+- nikdo řádně neotestoval
+- škoda 127 milionů dolarů

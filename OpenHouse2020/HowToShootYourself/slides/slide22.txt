@@ -1,0 +1,3 @@
+
+Výchozí parametr, který je referencí
+------------------------------------

@@ -1,0 +1,7 @@
+
+Problematické obraty v Go
+-------------------------
+- automaticky vytvářené lokální proměnné
+- použití referencí
+- gorutiny a uzávěry
+- práce s hodnotou nil

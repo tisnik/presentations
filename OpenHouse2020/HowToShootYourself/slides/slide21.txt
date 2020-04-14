@@ -1,0 +1,7 @@
+
+Problematické obraty v Pythonu
+------------------------------
+- výchozí parametr, který je referencí
+- modifikace seznamu ve smyčce typu for-each
+- dědění a třídní proměnné
+- nelokální proměnné

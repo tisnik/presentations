@@ -1,0 +1,7 @@
+
+Ariane 5 Flight 501
+-------------------
+- silnější raketové motory, než u předchozích modelů
+- SW ukládal mezivýsledky do 16 bitů (pro starší model postačující)
+- "tichá" konverze 64 bitů -> 16 bitů -> přetečení
+- škoda 8 miliard raketa + 500 milionů vybavení, která nesla

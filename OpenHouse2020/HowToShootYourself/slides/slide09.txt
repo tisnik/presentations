@@ -1,0 +1,4 @@
+
+Další drahé SW chyby
+====================
+- záměna čárky za tečku ve Fortranu (opět kosmický program USA)

@@ -1,0 +1,6 @@
+
+Apple goto fail
+---------------
+- přidaný skok způsobil chybné zpracování SSL připojení
+- nebylo odhaleno v rámci "review" kódu
+- (jeden z důvodů, proč je Go striktnější, co se týká bloků kódu)

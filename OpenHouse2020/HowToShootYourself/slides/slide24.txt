@@ -1,0 +1,3 @@
+
+Modifikace seznamu ve smyčce typu for-each
+------------------------------------------

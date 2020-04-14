@@ -1,0 +1,8 @@
+
+Problematické obraty v Javě
+---------------------------
+- prázdný blok catch
+- porovnávání řetězců
+- porovnávání referencí
+- překrytí metod + chyba ve jméně
+- skrytý NPE
