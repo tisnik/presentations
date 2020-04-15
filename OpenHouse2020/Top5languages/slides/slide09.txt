@@ -1,0 +1,5 @@
+
+Nezapomínat na QA!
+------------------
+- důležitá součást všech projektů
+- automatizace QA procesů na všech úrovních

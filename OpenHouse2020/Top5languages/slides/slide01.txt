@@ -1,0 +1,8 @@
+
+Popularita programovacích jazyků ve světě
+=========================================
+- Několik různých metodik, jak popularitu měřit
+- Tiobe index
+- PYPL (PopularitY of Programming Languages)
+- OpenHub (pro zaregistrované repositáře)
+- StackOverflow (každoroční dotazníky)

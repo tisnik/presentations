@@ -1,0 +1,5 @@
+
+Platforma
+---------
+- Kernel + moduly a ovladače
+- Další tooling

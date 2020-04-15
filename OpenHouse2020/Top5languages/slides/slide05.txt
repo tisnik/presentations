@@ -1,0 +1,9 @@
+
+Portfolio Red Hatu
+------------------
+- Linux (platforma)
+- Middleware (JBoss, AMQ, 3scale, ...)
+- Virtualizace
+- Kontejnerizace
+- Cloud
+- Storage

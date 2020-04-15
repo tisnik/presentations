@@ -1,0 +1,13 @@
+
+Middleware
+----------
+- Původně typická oblast Javy
+- Dnes rozsáhlejší zaměření
+- JBoss EAP
+- JBoss Web Server
+- Data Grid
+- AMQ (Broker)
+- Application Migration Toolkit
+- Process Automation Manager
+- Decision Manager
+- Runtimes

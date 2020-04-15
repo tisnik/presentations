@@ -1,0 +1,10 @@
+
+Jak je tomu v Red Hatu?
+-----------------------
+Mnoho hledisek
+- podle produktů
+- podle počtu vývojářů
+- nesmíme zapomenout na QA!
+- podle počtu napsaných řádků
+- podle počtu změněných řádků
+- kdy se statistika vytvářela

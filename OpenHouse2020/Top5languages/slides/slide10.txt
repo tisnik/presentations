@@ -1,0 +1,8 @@
+
+Jak je tomu v Red Hatu?
+-----------------------
+- C
+- Python
+- Java
+- Go
+- JavaScript

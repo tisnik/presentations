@@ -1,0 +1,5 @@
+
+Kontejnerizace
+--------------
+- OpenShift Container Platform
+- Docker, Podman, Kubernetes

@@ -1,0 +1,7 @@
+
+Jazyky ve výuce
+---------------
+- Vizuální (Scratch, Blockly)
+- Python
+- Java (Minecraft, Robots, ...)
+- Pascal, Delphi atd.
