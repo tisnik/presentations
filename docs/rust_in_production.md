@@ -193,6 +193,105 @@ fn main() {
 }
 ```
 
+### Typ `Option`
+
+```rust
+fn div(x: i32, y: i32) -> Option<i32> {
+    if y != 0 {
+        Some(x / y)
+    } else {
+        None
+    }
+}
+
+fn main() {
+    let z1 = div(2, 1);
+    println!("{:?}", z1);
+
+    let z2 = div(2, 0);
+    println!("{:?}", z2);
+}
+```
+
+### Typ `Result`
+
+```rust
+fn div(x: i32, y: i32) -> Result<i32, &'static str> {
+    if y != 0 {
+        Ok(x / y)
+    } else {
+        Err("Divide by zero!")
+    }
+}
+
+fn main() {
+    let z1 = div(2, 1);
+    println!("{:?}", z1);
+
+    let z2 = div(2, 0);
+    println!("{:?}", z2);
+}
+```
+
+### Typ `Result` a pattern matching
+
+```rust
+fn div(x: i32, y: i32) -> Result<i32, &'static str> {
+    if y != 0 {
+        Ok(x / y)
+    } else {
+        Err("Divide by zero!")
+    }
+}
+
+fn print_div_result(result: Result<i32, &'static str>) {
+    match result {
+        Ok(value)  => println!("value: {}", value),
+        Err(error) => println!("error: {}", error),
+    }
+}
+
+fn main() {
+    let z1 = div(2, 1);
+    print_div_result(z1);
+
+    let z2 = div(2, 0);
+    print_div_result(z2);
+}
+```
+
+### Použití typu `Result` při výpočtech
+
+```rust
+fn div(x: i32, y: i32) -> Result<i32, &'static str> {
+    if y != 0 {
+        Ok(x / y)
+    } else {
+        Err("Divide by zero!")
+    }
+}
+
+fn print_div_result(result: Result<i32, &'static str>) {
+    match result {
+        Ok(value)  => println!("value: {}", value),
+        Err(error) => println!("error: {}", error),
+    }
+}
+
+fn inc(x: i32) -> i32 {
+    x + 1
+}
+
+fn main() {
+    let z0 = div(0, 1);
+    print_div_result(z0);
+    print_div_result(z0.map(inc));
+    let z2 = div(2, 0);
+    print_div_result(z2);
+    print_div_result(z2.map(inc));
+}
+```
+
 ### Anonymní funkce jsou hodnotami
 
 
@@ -402,9 +501,138 @@ fn main() {
 }
 ```
 
+### Arc
+
+* Taktéž počítání referencí, ovšem atomické
+* Arc::clone()
+* Deref trait
+
+```rust
+fn start_threads() {
+    let c = Arc::new(Complex::new(1.0, 1.0));
+    for id in 0..10 {
+        let owner = ComplexNumberOwner { id: id, value: c.clone() };
+        // move protože objekt může přežít toto vlákno
+        thread::spawn(move || {
+                owner.print();
+                delay(400);
+        });
+    }
+}
+```
+
+### Pole
+
+* V Rustu považováno za primitivní datový typ
+* Dva typy konstruktorů
+* Zjištění délky pole za běhu programu
+* Přístup k prvkům přes indexy
+* Indexy začínají od nuly (C-like  × Fortran, Lua)
+* „Slice polí“ (efektivní operace)
+
+```rust
+fn main() {
+    let array = [10, 20, 30, 40];
+    // délka pole
+    println!("array has {} items", array.len());
+    // range + délka pole
+    for i in 0..array.len() {
+        println!("item #{} = {}", i + 1, array[i]);
+    }
+    // for-each
+    for i in array.iter() {
+        println!("{}", i);
+    }
+}
+```
+
+```rust
+fn main() {
+    let array = [1; 10];
+    // délka pole
+    println!("array has {} items", array.len());
+    // range + délka pole
+    for i in 0..array.len() {
+        println!("item #{} = {}", i + 1, array[i]);
+    }
+    // for-each
+    for i in array.iter() {
+        println!("{}", i);
+    }
+}
+```
+
+### Vektory
+
+```rust
+fn main() {
+    let vector = vec![1, 2, 3, 4, 5];
+    // délka vektoru
+    println!("vector has {} items", vector.len());
+    // range + délka pole
+    for i in 0..vector.len() {
+        println!("item #{} = {}", i + 1, vector[i]);
+    }
+    // for-each
+    for item in vector.iter() {
+        println!("{}", item);
+    }
+    // také funguje
+    for item in &vector {
+        println!("{}", item);
+    }
+}
+```
+
+### „Slice“ polí a vektorů
+
+```rust
+fn main() {
+    let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let array2 = &array[2..6];
+    for i in array2.iter() {
+        println!("{}", i);
+    }
+}
+```
+
+```rust
+fn main() {
+    let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let array2 = &array[5..];
+    for i in array2.iter() {
+        println!("{}", i);
+    }
+}
+```
+
+```rust
+fn main() {
+    let vector = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    println!("vector has {} items", vector.len());
+    let slice = &vector[3..7];
+    println!("slice has {} items", slice.len());
+}
+```
+
 ---
 
 ## Vlákna
+
+
+```rust
+use std::thread;
+
+fn main() {
+    println!("Starting");
+    for i in 1..10 {
+        thread::spawn(move || {
+            println!("Hello from a thread #{}", i);
+        });
+    }
+    println!("Stopping");
+}
+```
 
 ---
 
@@ -445,9 +673,34 @@ fn main() {
 
 ![images/cargo.png](images/cargo.png)
 
+
+### Základní funkce
+
+* Vytvoření kostry nového projektu
+* Nový projekt obsahuje i adresáře a soubory umožňující podporu SCM
+    - Git
+    - Mercurial
+* Automatická kontrola, které soubory je zapotřebí přeložit
+* Automatické stažení všech knihoven a jejich závislostí
+* Spuštění projektu s možností předání parametrů příkazového řádku.
+* Spuštění jednotkových testů
+* Spuštění benchmarků
+* Vyhledání knihovny v centrálním registru zaregistrovaných knihoven
+* Publikování vlastního balíčku v centrálním registru (crates.io)
+* Instalace aplikace
+
+### Statistika (tento týden)
+
 * [https://crates.io/](https://crates.io/)
 * 4,444,104,010 downloads
 * 49,047 Crates in stock
+
+### `Cargo.toml`
+
+* [https://doc.rust-lang.org/cargo/reference/manifest.html](https://doc.rust-lang.org/cargo/reference/manifest.html)
+
+```
+```
 
 ---
 
