@@ -1,0 +1,23 @@
+title: Prezentace
+description: Prezentace
+baseurl: "/presentations"
+url: "https://tisnik.github.io"
+
+heading_anchors: true
+search_enabled: false
+
+aux_links:
+  "Github repository":
+    - "https://github.com/tisnik/presentations"
+
+footer_content: "Copyright &copy; 2019, 2020 Pavel Tisnovsky"
+
+# Build settings
+markdown: kramdown
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+
+theme: jekyll-theme-leap-day
