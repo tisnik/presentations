@@ -11,4 +11,4 @@ layout: default
 * [Použití programovacího jazyka Rust na produkčním systému](rust_in_production.md)
 * [Materials for assembly language workshop](assembler.md)
 * [Go vs. Rust: porovnání dvou progresivních kompilovaných jazyků](rust_vs_go.md)
-
+* [Nástroje implementující fronty zpráv](queues.md)
