@@ -49,6 +49,8 @@ se aplikace psané v Rustu zabezpečují.
 * Nároky na systémové zdroje
     - Více RAM -> větší náklady v kontejnerizovaném světě
 
+![images/real_world.jpg](images/real_world.jpg)
+
 ---
 
 ## Popularita a rozšířenost Rustu
@@ -76,11 +78,13 @@ se aplikace psané v Rustu zabezpečují.
 
 ![images/stat_openhub.png](images/stat_openhub.png)
 
-![]()
+![images/rust_tiobe_index.png](images/rust_tiobe_index.png)
 
 ---
 
 ## Charakteristické rysy Rustu
+
+![images/rust_tree.png](images/rust_tree.png)
 
 * Cíle
     - Bezpečné aplikace
@@ -92,6 +96,8 @@ se aplikace psané v Rustu zabezpečují.
 * Poučení z chyb, které najdeme například v C/C++ nebo v Javě
     - (=, string, ptr, makrosystém)
     - NPE
+
+![images/npe.jpg](images/npe.jpg)
 
 ---
 
@@ -152,6 +158,87 @@ se aplikace psané v Rustu zabezpečují.
 
 ## Rust versus Go
 
+![images/rust_go.png](images/rust_go.png)
+
+* Jedná se skutečně o konkurenty?
+    - Z pohledu mnoha vývojářů ano...
+* Vznik zhruba ve stejný čas
+    - Go veřejně představeno 2009
+    - Rust 2010 (teoretické práce jsou starší)
+* Společná snaha o vyřešení některých problémů céčka
+    - bezpečná práce s paměti
+        - nutnost
+        - nikdo dnes nemůže přijít s jazykem
+          s manuální správou paměti
+    - vícevláknové aplikace
+    - řetězce
+    - výjimečné stavy a jejich detekce/řešení/řízení
+    - problémy s textovými makry
+* Překlad do nativního kódu
+* Jazyky s podporovaným ekosystémem
+    - Dnes prakticky nutnost
+        - pypi
+        - Ruby Gems
+        - Rust: Cargo
+        - Go: zpočátku přístup "jedno repo, jeden master"
+        - dnes postupně vytvářený ekosystém okolo Go mod
+
+### Dobře, ale jedná se SKUTEČNĚ o konkurenty?
+
+* Rust míří na vývojáře používající C++ či D
+    - Pravděpodobné směřování i do oblasti výkonnějších MCU
+      (tudíž složitějších aplikací)
+* Go směřuje spíše do oblasti, kde se používá Node.js, Python, Ruby
+    - Webové služby
+    - Síťové nástroje
+
+### A samozřejmě oblíbené téma pro debaty...
+
+* Formát zápisu programů
+    - autoři Go: lepší je se soustředit na vlastní vývoj
+    - Definován kanonický formát
+        - gofmt
+        - taby atd.:)
+
+### Vybrané společné rysy jazyků Go a Rust
+
+* Podporovány společnostmi soutěžícími na poli browserů
+* Výsledkem překladu jsou nativní knihovny nebo spustitelné aplikace
+* Dobré (nekryptické) chybové zprávy překladačů
+    - × chyba v šabloně v C++
+* Syntaxe částečně připomínající "lepší" C
+
+### Porovnání Rustu a Go z hlediska vývojáře
+
+```
+Jazyk             Rust           Go
+Přístup           moderní        konzervativní
+Syntaxe           komplikovaná   jednoduchá, minimalistická
+Učící křivka      menší sklon    větší sklon
+Učící křivka      větší ampli.   menší amplituda
+Rychlost překladu pomalejší      rychlejší
+Backend           LLVM           vlastní
+Linkování         static/dynamic přes -buildmode (//export!!!)
+Rychlost kódu     rychlejší      pomalejší
+Typový systém     rozsáhlý       bez generik
+Neměnnost         explicitní     string, další přes rozhraní
+Práce s pamětí    vlastnictví    GC
+Detekce souběhu   ano            jen nepřímo
+Závislosti        cargo          Go moduly
+```
+
+### Rychlost přeložených aplikací
+
+* Go - vlastní překladač
+    - Self hosting
+    - (bootstraping problem)
+    - Rychlejší překlad
+    - Méně optimalizovaný strojový kód
+    - (projekt llgo - Go frontend pro LLVM)
+* Rust - založen na LLVM
+    - Pomalejší překlad
+    - Optimalizace na úrovni dalších LLVM jazyků
+
 ---
 
 ## Komunikace s překladačem
@@ -173,6 +260,21 @@ error[E0382]: use of moved value: `c`
 Generate the longest error message in C++
 [http://tinyurl.com/longest-error-message](http://tinyurl.com/longest-error-message)
 ```
+
+### Další příklad
+
+```rust
+fn foo(a int32) {
+  println!(a)
+}
+
+fn main() {
+  let x:i32 = 10
+  foo(x);
+}
+```
+
+![images/rust_error.png](images/rust_error.png)
 
 ---
 
@@ -699,7 +801,59 @@ fn main() {
 
 * [https://doc.rust-lang.org/cargo/reference/manifest.html](https://doc.rust-lang.org/cargo/reference/manifest.html)
 
+```toml
+[package]
+name = "projectXYZ"
+version = "0.1.0"
+authors = ["Pepa z depa <pepa@openalt.cz>"]
+
+[dependencies]
+rand = "0.3.14"
 ```
+
+### Použití nástroje Cargo
+
+```
+$ cargo build
+    Compiling project1 v0.1.0 (file:///home/tester/temp/project1)
+    Finished debug [unoptimized + debuginfo] target(s) in 0.37 secs
+```
+
+```
+$ cargo build
+    Finished debug [unoptimized + debuginfo] target(s) in 0.0 secs
+```
+
+```
+$ cargo run
+    Finished debug [unoptimized + debuginfo] target(s) in 0.0 secs
+     Running `target/debug/project1`
+Hello, world!
+```
+
+### Použití nástroje Cargo
+
+```
+$ cargo test
+   Compiling project1 v0.1.0 (file:///home/tester/temp/project1)
+    Finished debug [unoptimized + debuginfo] target(s) in 0.43 secs
+     Running target/debug/project1-b888664ab405e319
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured
+```
+
+### Použití nástroje Cargo
+
+```
+$ cargo install
+   Compiling libc v0.2.17
+   Compiling rand v0.3.14
+   Compiling projectXYZ v0.1.0 (file:///home/tester/temp/projectXYZ)
+    Finished release [optimized] target(s) in 5.88 secs
+  Installing /home/tester/.cargo/bin/projectXYZ
+warning: be sure to add `/home/tester/.cargo/bin` to your PATH to be able to run the installed binaries
 ```
 
 ---
