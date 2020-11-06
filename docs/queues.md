@@ -25,23 +25,23 @@
     - Aplikace či služba zajišťující přenos zpráv mezi zdroji a příjemci
     - Typicky podporuje fronty zpráv a témata (topic)
     - Další operace
-        ■ Persistence zpráv
-        ■ Ověření identity
-        ■ Práva k přístupu ke frontám a zprávám atd.
-        ■ Uživatelské rozhraní pro sledování činnosti brokera
-        ■ Programové rozhraní  -//-
-        ■ Škálování
+        - Persistence zpráv
+        - Ověření identity
+        - Práva k přístupu ke frontám a zprávám atd.
+        - Uživatelské rozhraní pro sledování činnosti brokera
+        - Programové rozhraní  -//-
+        - Škálování
 * Message queue (fronta zpráv)
     - Součást message brokera
     - Front bývá více, jsou pojmenované
     - Dvě základní operace
-        ■ Enqueue
-        ■ Dequeue (neplést s deque - oboustrannou frontou)
+        - Enqueue
+        - Dequeue (neplést s deque - oboustrannou frontou)
     - Speciální případy
-        ■ Prioritní fronty
-        ■ DLQ (Dead Letter Queue)
-        ■ Zprávy s časem, kdy má být zpráva doručena
-        ■ Zprávy s časem zahození v případě nedoručení
+        - Prioritní fronty
+        - DLQ (Dead Letter Queue)
+        - Zprávy s časem, kdy má být zpráva doručena
+        - Zprávy s časem zahození v případě nedoručení
 
 ## Topic (téma)
 
@@ -49,11 +49,11 @@
     - Použito při komunikaci PUB-SUB
     - Většinou textové návěští přiřazené zprávě
     - Může být hierarchické
-        ■ region.téma.podtéma
-        ■ region/téma/podtéma
-        ■ atd.
+        - region.téma.podtéma
+        - region/téma/podtéma
+        - atd.
     - Některé systému umožňují deklarovat pravidla pro směrování zpráv
-        ■ routing na základě hlavičky, tématu, klíče...
+        - routing na základě hlavičky, tématu, klíče...
 
 ## Další často používané termíny v oboru MQ
 
@@ -77,7 +77,7 @@
     - Oddělení jednotlivých modulů aplikace
     - Možnost jasné (a centralizované) definice toku dat
     - Garance doručení posílaných zpráv
-        ■ (popř. zajištění jejich perzistence)
+        - (popř. zajištění jejich perzistence)
     - Garance pořadí zpráv
     - Odolnost architektury vůči výpadkům (resiliency)
     - Škálovatelnost
@@ -89,30 +89,30 @@
 
 * Možnost oddělení jednotlivých modulů
     - Původní vazby M:N
-        ■ Někdy "mesh"
-        ■ Problémy vznikají ve chvíli, kdy nějaký uzel přestane komunikovat
+        - Někdy "mesh"
+        - Problémy vznikají ve chvíli, kdy nějaký uzel přestane komunikovat
     - Po zavedení message brokera M:1 a 1:N
-        ■ Producenti ⇒ Message broker ⇒ Konzumenti
-        ■ DLQ
-        ■ Opakované doručení zprávy atd.
+        - Producenti ⇒ Message broker ⇒ Konzumenti
+        - DLQ
+        - Opakované doručení zprávy atd.
 
 ## Základní komunikační strategie
 
 * PUSH-PULL
     - Zprávy se posílají do zvolené fronty
-        ■ Jeden či více zdrojů zpráv
-        ■ Fronty bývají jednoznačně pojmenované
+        - Jeden či více zdrojů zpráv
+        - Fronty bývají jednoznačně pojmenované
     - K výstupu fronty se může připojit více workerů
     - Zpráva je doručena jednomu z nich
-        ■ Typicky se používá nějaká forma algoritmu round-robin
+        - Typicky se používá nějaká forma algoritmu round-robin
     - Pokud žádný worker nemůže zprávu zpracovat, zůstane ve frontě
     - (Nezpracované zprávy se mohou přesunout do jiné fronty - DLQ)
 * PUB-SUB
     - Zprávy se posílají s udáním takzvaného tématu (topic)
-        ■ Jeden či více zdrojů zpráv
-        ■ Témata buď prosté jméno či hierarchie
-            cz.eshop-brno.pokladna1
-            us.eshop-nyc.pokladna42
+        - Jeden či více zdrojů zpráv
+        - Témata buď prosté jméno či hierarchie
+            - `cz.eshop-brno.pokladna1`
+            - `us.eshop-nyc.pokladna42`
     - K výstupu fronty se může připojit více příjemců
     - Zpráva je doručena všem aktuálně připojeným příjemcům
     - Pokud žádný příjemce nemůže zprávu zpracovat bude ztracena
@@ -121,16 +121,16 @@
 
 * PUSH-PULL
     - Typická business logika
-        ■ Objednávky
-        ■ Potvrzovací maily
-        ■ B2B
+        - Objednávky
+        - Potvrzovací maily
+        - B2B
     - Jenkins CI
-        ■ a podobně koncipované systémy
+        - a podobně koncipované systémy
 * PUB-SUB
     - IoT čidla
     - Aktuální stav (či změna stavu) nějakého systému
-        ⇒ Tímto způsobem lze získat informace z AMQ
-        ■ (viz další slajdy)
+        - Tímto způsobem lze získat informace z AMQ
+        - (viz další slajdy)
     - Podobné některým komunikačním protokolům (IRC)
 * Kombinace předchozích strategií
 * Pipeline
@@ -170,16 +170,16 @@
 * Samotné příkazy posílané ve formě plain textu
 * Data (zprávy) mohou být binární
 * Pouze několik typů zpráv
-    - CONNECT
-    - SEND
-    - SUBSCRIBE
-    - UNSUBSCRIBE
-    - BEGIN
-    - COMMIT
-    - ABORT
-    - ACK
-    - NACK
-    - DISCONNECT
+    - `CONNECT`
+    - `SEND`
+    - `SUBSCRIBE`
+    - `UNSUBSCRIBE`
+    - `BEGIN`
+    - `COMMIT`
+    - `ABORT`
+    - `ACK`
+    - `NACK`
+    - `DISCONNECT`
 
 ## Vybrané implementace message brokerů
 
@@ -205,6 +205,7 @@
 
 ## Redis Queue (RQ) - vytvoření úlohy
 
+```python
 from redis import Redis
 from rq import Queue
   
@@ -216,9 +217,11 @@ q = Queue(connection=Redis())
 for i in range(10):
     result = q.enqueue(do_work, i)
     print(result)
+```
 
 ## Redis Queue (RQ) - implementace workera
 
+```python
 from time import sleep
   
   
@@ -227,15 +230,20 @@ def do_work(param):
     # simulace práce :-)
     sleep(2)
     print("Done")
+```
 
 ## Spuštění workera
 
+```bash
 $ rq worker
-  
+```
+
+```
 16:59:02 RQ worker 'rq:worker:localhost.32100' started, version 0.12.0
 16:59:02 *** Listening on default...
 16:59:02 Cleaning registries for queue: default
-   
+```
+
 Povšimněte si použití výchozí fronty nazvané "defaut"
 
 ## Redis Queue (RQ) - "padající" worker
@@ -244,6 +252,7 @@ Povšimněte si použití výchozí fronty nazvané "defaut"
     - Platí pro jednu úlohu
 * Můžeme si to vyzkoušet
   
+```python
 from time import sleep
   
   
@@ -253,13 +262,15 @@ def do_work():
     # výjimka je zachycena až samotným systémem RQ
     assert False
     print("Done")
+```
 
 ## Pád workera
 
 * Toto chování je "očekáváno"
     - Systém jako celek se nezhroutí
-      (ostatně komu záleží na nějaké výjimce :-)
-  
+    - (ostatně komu záleží na nějaké výjimce :-)
+
+```
 16:59:03 default: worker.do_work() (c5468250-e2c5-494f-8bd8-f1f51b9a81f2)
 Working
 16:59:05 AssertionError
@@ -284,11 +295,13 @@ Traceback (most recent call last):
     assert False
 AssertionError
 16:59:05 Moving job to 'failed' queue
+```
 
 ## Redis Queue (RQ) - informace o nezpracovaných úlohách
 
 * Zhavarované úlohy se ukládají do fronty "failed"
   
+```python
 from redis import Redis
 from rq import Queue
 from time import sleep
@@ -313,11 +326,13 @@ for job_id in job_ids:
     print(job.started_at)
     print(job.ended_at)
     print(job.exc_info)
+```
 
 ## Redis Queue (RQ) - informace o nezpracovaných úlohách
 
 * Pamatuje se především samotný stack trace
   
+```
 Reading failed jobs
 ['62d5d473-cc31-4738-8397-7dd18b09fe64']
 62d5d473-cc31-4738-8397-7dd18b09fe64
@@ -335,13 +350,18 @@ Traceback (most recent call last):
   File "./worker.py", line 7, in do_work
     assert False
 AssertionError
+```
 
 ## Opětovné spuštění zhavarovaných úloh
-## 
+
+```bash
 $ rq requeue 
-  
+```
+
+```
   Requeueing 1 jobs from failed queue
   [####################################]  100%
+```
 
 ## Využití takzvaného burst režimu workerů
 
@@ -351,11 +371,14 @@ $ rq requeue
 * Jedná se o koncept dávkového zpracování
     - například do systému přidáme výkonný stroj ve chvíli, kdy je nutné dokončit nějaké úlohy
     - ovšem tento stroj se nemá stát součástí „clusteru“
- ##  
+
+```bash
 $ rq worker 
+```
 
 ## RQ - předávání parametrů workerům
 
+```python
 from redis import Redis
 from rq import Queue
   
@@ -370,9 +393,11 @@ for i in range(10):
     result = q_low.enqueue(do_work, i)
     result = q_high.enqueue(do_work, i)
     print(result)
+```
 
 ## RQ - Implementace workera akceptujícího parametr
 
+```python
 from time import sleep
   
   
@@ -380,11 +405,15 @@ def do_work(param):
     print("Working, received parameter {}".format(param))
     sleep(2)
     print("Done")
+```
 
 ## Zjištění stavu front
 
+```bash
 $ rq info
+```
   
+```
 low          |██████████ 10
 failed       |██ 2
 default      | 0
@@ -395,6 +424,7 @@ localhost.4312 idle: default
 1 workers, 4 queues
   
 Updated: 2018-11-26 13:22:06.236766
+```
 
 ## Dashboard Redis Queue pro sledování stavu front a workerů
 
@@ -435,9 +465,9 @@ Updated: 2018-11-26 13:22:06.236766
 
 * Podporované protokoly
     -  AMQP
-        ■ verze 0-9-1
-        ■ 0-9
-        ■ 0-8
+        - verze 0-9-1
+        - 0-9
+        - 0-8
     -  STOMP
     -  MQTT
 
@@ -448,26 +478,27 @@ Updated: 2018-11-26 13:22:06.236766
     -  (screenshot)
 * Strategie
     -  Direct
-        ■ fronta nalezena podle klíče
-        ■ klíč je součástí zprávy
+        - fronta nalezena podle klíče
+        - klíč je součástí zprávy
     -  Topic
-        ■ opět se používá klíč
-        ■ využití regulárních výrazů
-        ■ hierarchie front atd.
+        - opět se používá klíč
+        - využití regulárních výrazů
+        - hierarchie front atd.
     -  Headers
-        ■ využívá hlavičky připojené ke zprávě
+        - využívá hlavičky připojené ke zprávě
     -  Fanout
-        ■ zduplikování zprávy do několika front
-        ■ (přeposlání na různé servery)
+        - zduplikování zprávy do několika front
+        - (přeposlání na různé servery)
 
 ## RabbitMQ a Python
 
 *  Knihovna Pika
     -  Na PyPi
-        ■ https://pypi.org/project/pika/
+        - https://pypi.org/project/pika/
 
 ## Publisher pro RabbitMQ a Pika
 
+```python
 import pika
   
 # připojení k serveru RabbitMQ a vytvoření komunikačního kanálu
@@ -485,9 +516,11 @@ channel.basic_publish(exchange='',
 print("Sent 'Hello World!'")
 # uzavření komunikace
 connection.close()
+```
 
 ## Subscriber pro RabbitMQ a Pika
 
+```python
 #!/usr/bin/env python
 import pika
   
@@ -515,29 +548,44 @@ print("...")
   
 # smyčka s odebíráním zpráv
 channel.start_consuming()
+```
 
 ## „Dělba práce“ mezi workery
 
+```python
 channel.basic_qos(prefetch_count=1)
 channel.basic_consume(on_receive,
                       queue='test',
                       no_ack=False)
+```
 
 ## Potvrzování zpráv
 
 * Automatické
+
+```python
 channel.basic_consume(on_receive,
                       queue='test',
                       no_ack=True)
+```
+
 * Manuální
+
+```python
 channel.basic_consume(on_receive,
                       queue='test',
                       no_ack=False)
+```
+
 * Potvrzení zprávy
+
+```python
 channel.basic_ack(delivery_tag = method.delivery_tag)
+```
 
 ## Manuální potvrzování zpráv v konzumentovi
 
+```python
 from time import sleep
 from rabbitmq_connect import connect
   
@@ -557,36 +605,52 @@ channel.basic_consume(on_receive,
 print('Waiting for messages. To exit press CTRL+C')
 print("...")
 channel.start_consuming()
+```
 
-## Příkaz rabbitmqctl
+## Příkaz `rabbitmqctl`
 
 * Změna konfigurace serveru
 * Správa clusterů
 * Zjištění informací o tom, jaké fronty v daném okamžiku existují
 * Zjištění, jaké jsou k dispozici směrovače (exchange)
   
+```bash
 $ sudo rabbitmqctl node_health_check
+```
   
+```
 Timeout: 70.0 seconds
 Checking health of node rabbit@localhost
 Health check passed
+```
   
+```bash
 $ sudo rabbitmqctl list_users
+```
   
+```
 Listing users
 guest   [administrator]
+```
   
+```bash
 $ sudo rabbitmqctl list_queues
+```
   
+```
 Listing queues
 t3      0
 testX   0
 test    0
 t1      2
 t2      0
+```
   
+```bash
 $ sudo rabbitmqctl list_exchanges
+```
   
+```
 Listing exchanges
 amq.topic           topic
 amq.rabbitmq.log    topic
@@ -596,9 +660,11 @@ amq.fanout          fanout
 amq.rabbitmq.trace  topic
 amq.match           headers
 amq.direct          direct
+```
 
 ## Rozvětvení (fanout) zpráv do většího množství front
 
+```python
 def use_fanout(channel, exchange_name='fanout_exchange'):
     print(exchange_name)
     channel.exchange_declare(exchange=exchange_name,
@@ -608,9 +674,13 @@ use_fanout(channel)
 bind_queue(channel, 'fronta1')
 bind_queue(channel, 'fronta2')
 bind_queue(channel, 'fronta3')
+```
   
+```bash
 $ sudo rabbitmqctl list_queues
+```
   
+```
 Listing queues
 t3      0
 testX   0
@@ -620,6 +690,7 @@ t2      0
 fronta2 1
 fronta1 1
 fronta3 1
+```
 
 ## Směrování zpráv do front na základě klíče a nakonfigurovaných výrazů
 
@@ -627,9 +698,10 @@ fronta3 1
     - Prozatím jsme si ukázali "direct" a "fanout"
 * Založeno na klíči posílaném se zprávou
 * Obsah klíče je porovnáván se specifickým regulárním výrazem
-    - * - libovolné slovo
-    - # - libovolné množství slov
-  
+    - `*` - libovolné slovo
+    - `#` - libovolné množství slov
+
+```  
 Výraz        Fronta
 europe.*     europe_queue
 asia.*       asia_queue
@@ -637,7 +709,9 @@ americas.*   americas_queue
 *.org        org_queue
 *.*.rabbit   rabbit_queue
 #.other      other_queue
-  
+```
+
+```python
 def bind_queue(channel, queue_name, routing_pattern='', exchange_name='fanout_exchange'):
     channel.queue_declare(queue=queue_name)
     channel.queue_bind(exchange=exchange_name,
@@ -650,6 +724,7 @@ def bind_queue(channel, queue_name, routing_pattern='', exchange_name='fanout_ex
                routing_pattern='asia.*', exchange_name='topic_exchange')
     bind_queue(channel, 'americas_queue',
                routing_pattern='americas.*', exchange_name='topic_exchange')
+```
 
 ## Prioritní fronty
 
@@ -661,6 +736,7 @@ def bind_queue(channel, queue_name, routing_pattern='', exchange_name='fanout_ex
     - Priorita zprávy může být reprezentována jediným bajtem.
     - Prakticky jsme tedy omezeni hodnotami ležícími v rozsahu 0 až 255
   
+```python
 channel.queue_declare(queue=queue_name, arguments={"x-max-priority": max_priority})
   
 def open_channel(connection, queue_name='test', max_priority=10):
@@ -668,15 +744,18 @@ def open_channel(connection, queue_name='test', max_priority=10):
     channel = connection.channel()
     channel.queue_declare(queue=queue_name, arguments={"x-max-priority": max_priority})
     return channel
+```
 
 ## Specifikace priority posílané zprávy
 
+```python
 prop = BasicProperties(priority=priority)
   
 channel.basic_publish(exchange='',
                       routing_key='priority_queue_2',
                       body='Hello World! #{i} msg with priority {p}'.format(i=i, p=priority),
                       properties=prop)
+```
 
 ## Apache Active MQ
 
@@ -705,44 +784,56 @@ channel.basic_publish(exchange='',
 * Řízení AMQ
         bin/activemq
 * Práce se zprávami bez implementace klientů
-    - Producen## t
-        ./activemq producer##  
-        ./activemq producer##  
-        ./activemq producer 
-    - Konzumen## t
-        ./activemq consumer 
+    - Producent
+        `./activemq producer##`
+        `./activemq producer##`
+        `./activemq producer`
+    - Konzument
+        `./activemq consumer`
 
 ## Apache Active MQ + STOMP + Python
 
-* Knihovna stomp.py
+* Knihovna `stomp.py`
 * Klient ovládaný z CLI: `stomp`
  
 ## CLI klient `stomp`
 
 * Spuštění
+
+```bash
 $ stomp
-  
+```
+
+```
 CONNECTED
 server: ActiveMQ/5.15.8
 heart-beat: 0,0
 session: ID:localhost.localdomain-38215-1549567803551-3:3
 version: 1.1
+```
    
 ## CLI klient `stomp`
 
 * Poslání zprávy
+```
 send /queue/test hello world
+```
   
+```
 MESSAGE
 content-length: 11
 expires: 0
 destination: /queue/test
+```
 
 ## CLI klient `stomp`
 
 * Přihlášení se k odběru zpráv z fronty „test“:
+```
 subscribe /queue/test
+```
    
+```
 Subscribing to "/queue/test" with acknowledge set to "auto", id set to "1"
 subscription: 1
 priority: 4
@@ -750,9 +841,11 @@ message-id: ID:localhost.localdomain-38215-1549567803551-3:3:-1:1:1
 timestamp: 1549631641256
    
 hello world
+```
 
 ## Producent zpráv (stomp.py)
 
+```python
 #!/usr/bin/env python
    
 import time
@@ -776,9 +869,11 @@ for i in range(0, MESSAGES):
  
  
 conn.disconnect()
+```
 
 ## Konzument zpráv (stomp.py)
 
+```python
 #!/usr/bin/env python
   
 import time
@@ -810,6 +905,8 @@ print("Waiting for messages...")
    
 while True:
     time.sleep(10)
+```
+
 
 ## Celery
 
@@ -824,11 +921,13 @@ while True:
 
 ## Brokeři podporovaní nástrojem Celery 
 
+```
  Broker           Současný stav   Monitoring  Vzdálené ovládání workerů
  RabbitMQ         stabilní        ✓           ✓
  Redis            stabilní        ✓           ✓
  Amazon SQS       stabilní        ×           ×
  Apache Zookeeper experimentální  ×           ×
+```
 
 ## Message queuing service
 
