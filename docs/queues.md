@@ -438,7 +438,7 @@ Updated: 2018-11-26 13:22:06.236766
 * Jedna z nejúspěšnějších implementací brokera
 * Vyvinut v Erlangu
     - Využívá knihovny a nástroje Open Telecom Platform
-        ■ OTP
+        - OTP
 * Výhody Erlangu (nejenom) v této oblasti
     - Odolnost proti selhání
     - Vysoce dostupné aplikace
@@ -494,7 +494,7 @@ Updated: 2018-11-26 13:22:06.236766
 
 *  Knihovna Pika
     -  Na PyPi
-        - https://pypi.org/project/pika/
+        - [https://pypi.org/project/pika/](https://pypi.org/project/pika/)
 
 ## Publisher pro RabbitMQ a Pika
 
@@ -785,11 +785,11 @@ channel.basic_publish(exchange='',
         bin/activemq
 * Práce se zprávami bez implementace klientů
     - Producent
-        `./activemq producer##`
-        `./activemq producer##`
-        `./activemq producer`
+        - `./activemq producer##`
+        - `./activemq producer##`
+        - `./activemq producer`
     - Konzument
-        `./activemq consumer`
+        - `./activemq consumer`
 
 ## Apache Active MQ + STOMP + Python
 
@@ -815,6 +815,7 @@ version: 1.1
 ## CLI klient `stomp`
 
 * Poslání zprávy
+
 ```
 send /queue/test hello world
 ```
@@ -829,6 +830,7 @@ destination: /queue/test
 ## CLI klient `stomp`
 
 * Přihlášení se k odběru zpráv z fronty „test“:
+
 ```
 subscribe /queue/test
 ```
