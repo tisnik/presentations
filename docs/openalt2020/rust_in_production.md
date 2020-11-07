@@ -9,7 +9,7 @@
 
 Jazyk Rust se stává mezi programátory stále populárnější alternativou k C++ na
 straně jedné a k jazykům vybavených automatickým správcem paměti (GC) na straně
-druhé.  Na této přednášce si řekneme, které vlastnosti Rustu zjednodušují jeho
+druhé. Na této přednášce si řekneme, které vlastnosti Rustu zjednodušují jeho
 použití v produkčních systémech, které knihovny se nejčastěji používají a jak
 se aplikace psané v Rustu zabezpečují.
 
@@ -34,8 +34,9 @@ se aplikace psané v Rustu zabezpečují.
 * Správce balíčků (Cargo)
 * Vybrané balíčky
 * Nasazení aplikací
-* Alternativní řešení
 * Web Assembly
+* Rozhraní s Pythonem
+* Dokumentace
 
 ---
 
@@ -48,6 +49,7 @@ se aplikace psané v Rustu zabezpečují.
 * Dostatek vývojářů
 * Nároky na systémové zdroje
     - Více RAM -> větší náklady v kontejnerizovaném světě
+* API a komunikace s dalšími (mikro)službami
 
 ![images/real_world.jpg](images/real_world.jpg)
 
@@ -71,7 +73,7 @@ se aplikace psané v Rustu zabezpečují.
 
 ### Rozšířenost Rustu
 
-* Mnoho statistických informací
+* Dostupných mnoho statistických informací
     - Můžeme jim věřit?
 
 ![images/stat_pypl.png](images/stat_pypl.png)
@@ -99,6 +101,9 @@ se aplikace psané v Rustu zabezpečují.
 
 ![images/npe.jpg](images/npe.jpg)
 
+* Další info
+    - [Programovací jazyk Rust: náhrada C nebo slepá cesta?](https://www.root.cz/clanky/programovaci-jazyk-rust-nahrada-c-nebo-slepa-cesta/)
+
 ---
 
 ## Charakteristické rysy Rustu
@@ -114,11 +119,13 @@ se aplikace psané v Rustu zabezpečují.
     - RISC-V
     - Bare Cortex-M0, M0+, M1, M4(F), M7(F) bare = bez OS, jen core library
     - (dokonce i pro MSP430 - 16bit MCU!)
-    - [https://forge.rust-lang.org/platform-support.html](https://forge.rust-lang.org/platform-support.html)
-    - [https://doc.rust-lang.org/nightly/rustc/platform-support.html](https://doc.rust-lang.org/nightly/rustc/platform-support.html)
+    - [Platform Support (1)](https://forge.rust-lang.org/platform-support.html)
+    - [Platform Support (2)](https://doc.rust-lang.org/nightly/rustc/platform-support.html)
 * Současná verze používá LLVM backend
     - Možnosti pro další vylepšování překladu (dovoluje i WebAssembly přes Emscripten i přímo)
     - [https://www.rust-lang.org/what/wasm](https://www.rust-lang.org/what/wasm)
+* Další info
+    - [Object-Orientation in Rust](https://stevedonovan.github.io/rust-gentle-intro/object-orientation.html)
 
 ---
 
@@ -151,8 +158,7 @@ se aplikace psané v Rustu zabezpečují.
     - C++ knihovny
         - Stále ještě v některých případech problematické
 * C ⇒ Rust
-    - Project Corrode
-    - [https://github.com/jameysharp/corrode](https://github.com/jameysharp/corrode)
+    - [Project Corrode](https://github.com/jameysharp/corrode)
 
 ---
 
@@ -239,11 +245,25 @@ Závislosti        cargo          Go moduly
     - Pomalejší překlad
     - Optimalizace na úrovni dalších LLVM jazyků
 
+### Více info
+
+* [Rust vs Go in 2020](https://medium.com/@devathon_/rust-vs-go-in-2020-1d472b5ee15)
+* [Go vs Rust: Which is Better and Why?](https://appinventiv.com/blog/go-vs-rust/)
+
 ---
+
+## Některé význačné rysy Rustu
+
+![images/rust_logo.png](images/rust_logo.png)
 
 ## Komunikace s překladačem
 
-### Chybová hlášení překladače
+* Chybová hlášení musí být přesná a ideálně obsahovat nápovědu
+* Ne všechny programovací jazyky toto dodržují
+    - Generate the longest error message in C++
+        - [http://tinyurl.com/longest-error-message](http://tinyurl.com/longest-error-message)
+
+### Chybová hlášení překladače Rustu
 
 ```
 error[E0382]: use of moved value: `c`
@@ -255,13 +275,11 @@ error[E0382]: use of moved value: `c`
    |        ^ value used here after move
    |
    = note: move occurs because `c` has type `std::rc::Rc<Complex>`, which does not implement the `Copy` trait
-    vs:
-    ↓
-Generate the longest error message in C++
-[http://tinyurl.com/longest-error-message](http://tinyurl.com/longest-error-message)
 ```
 
 ### Další příklad
+
+* Několik začátečnických chyb v programovém kódu:
 
 ```rust
 fn foo(a int32) {
@@ -274,11 +292,30 @@ fn main() {
 }
 ```
 
+* Výsledek běhu překladače Rustu:
+
 ![images/rust_error.png](images/rust_error.png)
 
 ---
 
 ## Datové typy
+
+* Skalární
+    - celá čísla `i8`, `u128` atd.
+    - s plovoucí řádovou čárkou
+    - pravdivostní
+    - znak
+* Složené
+    - n-tice
+    - pole
+    - struktury
+    - enum
+* Odvozené
+    - vektory
+    - řetězce
+    - ...
+* Další info
+    - [Rust: struktury, n-tice a vlastnictví objektů](https://www.root.cz/clanky/rust-struktury-n-tice-a-vlastnictvi-objektu/)
 
 ### Odvození typů
 
@@ -296,6 +333,11 @@ fn main() {
 ```
 
 ### Typ `Option`
+
+* Nahrazuje koncept `null`
+* Lze použít pattern matching
+* Další info
+    - [Datový typ Option v programovacím jazyku Rust](https://www.root.cz/clanky/datovy-typ-option-v-programovacim-jazyku-rust/)
 
 ```rust
 fn div(x: i32, y: i32) -> Option<i32> {
@@ -316,6 +358,11 @@ fn main() {
 ```
 
 ### Typ `Result`
+
+* Nahrazuje koncept `null` popř. speciálních chybových hodnot
+* Lze použít pattern matching
+* Další info
+    - [Reakce na chyby v programovacím jazyku Rust](https://www.root.cz/clanky/reakce-na-chyby-v-programovacim-jazyku-rust/)
 
 ```rust
 fn div(x: i32, y: i32) -> Result<i32, &'static str> {
@@ -362,6 +409,9 @@ fn main() {
 }
 ```
 
+* Další info
+    - [Rust: funkce, lambda výrazy a rozhodovací konstrukce match](https://www.root.cz/clanky/rust-funkce-lambda-vyrazy-a-rozhodovaci-konstrukce-match/)
+
 ### Použití typu `Result` při výpočtech
 
 ```rust
@@ -396,7 +446,6 @@ fn main() {
 
 ### Anonymní funkce jsou hodnotami
 
-
 ```rust
 fn main() {
     let is_odd = |x: i32| x & 1 == 1;
@@ -409,8 +458,10 @@ fn main() {
 }
 ```
 
-### (Anonymní) funkce jsou hodnotami
+* Další info
+    - [Rust: funkce, lambda výrazy a rozhodovací konstrukce match](https://www.root.cz/clanky/rust-funkce-lambda-vyrazy-a-rozhodovaci-konstrukce-match/)
 
+### (Anonymní) funkce jsou hodnotami
 
 ```rust
 fn main() {
@@ -431,7 +482,7 @@ fn main() {
 * Neměnitelné hodnoty
     - Výchozí modifikátor
     - Lze změnit pomocí `mut`
-* Rozsah (range)
+* Rozsah (`range`)
 * Řídicí struktury
     - Vrací hodnotu
 * Anonymní funkce
@@ -447,6 +498,8 @@ fn main() {
 * Unsafe bloky
 
 ### Tabulka faktoriálů
+
+* Použití anonymních funkcí a funkcí vyššího řádu
 
 ```rust
 fn main() {
@@ -471,6 +524,8 @@ fn main() {
 
 ### Pattern matching
 
+* Je nutné uvést všechny možné větve
+    - hlídáno překladačem
 
 ```rust
 // matching (nejjednodušší varianta)
@@ -486,6 +541,7 @@ fn main() {
 }
 ```
 
+### Pattern matching: složitější konstrukce
 
 ```rust
 // matching, složitější ukázka
@@ -521,6 +577,9 @@ fn main() {
     - Přetěžování operátorů
         - Přetížení = implementace traitu
 * Generické funkce
+* Další info
+    - [Programovací jazyk Rust: metody a traity](https://www.root.cz/clanky/programovaci-jazyk-rust-metody-a-traity/)
+    - [Generické typy v programovacím jazyku Rust](https://www.root.cz/clanky/genericke-typy-v-programovacim-jazyku-rust/)
 
 ---
 
@@ -532,6 +591,10 @@ fn main() {
 * Arc
 * Pole a vektory
     - slice
+* Další info
+    - [Správa paměti v programovacím jazyku Rust s počítáním referencí](https://www.root.cz/clanky/sprava-pameti-v-programovacim-jazyku-rust-s-pocitanim-referenci/)
+    - [Práce s poli v programovacím jazyku Rust](https://www.root.cz/clanky/prace-s-poli-v-programovacim-jazyku-rust/)
+    - [Práce s vektory v programovacím jazyku Rust](https://www.root.cz/clanky/prace-s-vektory-v-programovacim-jazyku-rust/)
 
 ### Box
 
@@ -539,7 +602,7 @@ fn main() {
 * „Obaluje“ vlastní objekt (číslo, strukturu, pole)
 * Trait Deref - snadný přístup k obalenému objektu
 * Hlídání životnosti objektu i ukazatele
-* Nemůže být NULL/nil
+* Nemůže být `NULL`/`nil`
 
 ```rust
 fn main() {
@@ -558,9 +621,9 @@ fn print_complex(c: Box<Complex>) {
 ### Rc
 
 * Počítání referencí
-* Rc::clone()
+* `Rc::clone()`
 * Pokud čítač dosáhne nuly, je Rc i objekt jím vlastněný zrušen
-* Automatická dereference (Deref trait)
+* Automatická dereference (`Deref` trait)
 
 ```rust
 fn main() {
@@ -606,8 +669,10 @@ fn main() {
 ### Arc
 
 * Taktéž počítání referencí, ovšem atomické
-* Arc::clone()
-* Deref trait
+    - obecně pomalejší
+    - možnost přístupu z více vláken
+* `Arc::clone()`
+* `Deref` trait
 
 ```rust
 fn start_threads() {
@@ -629,7 +694,7 @@ fn start_threads() {
 * Dva typy konstruktorů
 * Zjištění délky pole za běhu programu
 * Přístup k prvkům přes indexy
-* Indexy začínají od nuly (C-like  × Fortran, Lua)
+* Indexy začínají od nuly (C-like × Fortran, Lua)
 * „Slice polí“ (efektivní operace)
 
 ```rust
@@ -721,6 +786,12 @@ fn main() {
 
 ## Vlákna
 
+* Konformní práce s vlákny velmi důležitá, zejména v současnosti
+
+![images/Amdahl.png](images/Amdahl.png)
+
+* Více info
+    - [Programovací jazyk Rust: vlákna a sdílení objektů mezi nimi](https://www.root.cz/clanky/programovaci-jazyk-rust-vlakna-a-sdileni-objektu-mezi-nimi/)
 
 ```rust
 use std::thread;
@@ -771,6 +842,29 @@ fn main() {
 
 ---
 
+### Jednotkové testy v Rustu
+
+* Spouštěné přes `cargo test`
+
+```rust
+#[test]
+fn ok_test() {
+}
+
+#[test]
+fn failure() {
+    assert!(false);
+}
+```
+
+### Další testy
+
+* `mockiato` - mocking
+* `mockito` - HTTP mocking
+* `rust-fuzz/afl.rs ` - fuzzer postavený nad AFL
+
+---
+
 ## Správce balíčků (Cargo)
 
 ![images/cargo.png](images/cargo.png)
@@ -790,6 +884,8 @@ fn main() {
 * Vyhledání knihovny v centrálním registru zaregistrovaných knihoven
 * Publikování vlastního balíčku v centrálním registru (crates.io)
 * Instalace aplikace
+* Další info
+    - [Cargo: správce projektů a balíčků pro programovací jazyk Rust](https://mojefedora.cz/cargo-spravce-projektu-a-balicku-pro-programovaci-jazyk-rust/)
 
 ### Statistika (tento týden)
 
@@ -799,6 +895,7 @@ fn main() {
 
 ### `Cargo.toml`
 
+* De facto popis projektu/modulu
 * [https://doc.rust-lang.org/cargo/reference/manifest.html](https://doc.rust-lang.org/cargo/reference/manifest.html)
 
 ```toml
@@ -813,16 +910,22 @@ rand = "0.3.14"
 
 ### Použití nástroje Cargo
 
+* První překlad a sestavení
+
 ```
 $ cargo build
     Compiling project1 v0.1.0 (file:///home/tester/temp/project1)
     Finished debug [unoptimized + debuginfo] target(s) in 0.37 secs
 ```
 
+* Další překlad a sestavení
+
 ```
 $ cargo build
     Finished debug [unoptimized + debuginfo] target(s) in 0.0 secs
 ```
+
+* Spuštění
 
 ```
 $ cargo run
@@ -832,6 +935,8 @@ Hello, world!
 ```
 
 ### Použití nástroje Cargo
+
+* Jednotkové testy
 
 ```
 $ cargo test
@@ -845,6 +950,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured
 ```
 
 ### Použití nástroje Cargo
+
+* Instalace modulu
 
 ```
 $ cargo install
@@ -866,27 +973,81 @@ warning: be sure to add `/home/tester/.cargo/bin` to your PATH to be able to run
 
 ### Databáze
 
-### API
+* `mysql-proxy-rs`
+* `rust-postgres`
+* `redis-rs`
+* `mongo-rust-driver`
 
-### Logging
+### ORM
 
-### Tracing
+* `diesel`
 
-### Metriky
+### Data processing
 
-### Benchmarks
+* `ndarray`
+* Více info
+    - [Rust: knihovna ndarray pro práci s n-rozměrnými poli](https://www.root.cz/clanky/rust-knihovna-ndarray-pro-praci-s-n-rozmernymi-poli/)
+    - [Programovací jazyk Rust: knihovna ndarray pro práci s n-rozměrnými poli (2)](https://www.root.cz/clanky/programovaci-jazyk-rust-knihovna-ndarray-pro-praci-s-n-rozmernymi-poli-2/)
+    - [Programovací jazyk Rust: knihovna ndarray pro práci s n-rozměrnými poli (dokončení)](https://www.root.cz/clanky/programovaci-jazyk-rust-knihovna-ndarray-pro-praci-s-n-rozmernymi-poli-dokonceni/)
+
+### Web
+
+* `cargo-web`
+* `hyper` (HTTP client)
+* `Gotham` (web framework)
+* `tiny-http`
+* `Iron` (založeno na konceptu middleware)
+    - [https://github.com/iron/iron](https://github.com/iron/iron)
+
+### API a message brokery
+
+* `futures-jsonrpc`
+* `nanomsg-rs`
+* `stomp-rs`
+* `rust-zmq`
 
 ---
 
 ## Nasazení aplikací
 
----
-
-## Alternativní řešení
+* Kontejnerizace
+* Statické linkování
+* Více info
+    - [Linkage](https://doc.rust-lang.org/reference/linkage.html)
+    - [Packaging a Rust web service using Docker](https://blog.logrocket.com/packaging-a-rust-web-service-using-docker/)
 
 ---
 
 ## Web Assembly
+
+---
+
+## Rozhraní s Pythonem
+
+* Name mangling lze zakázat
+* `ctypes` nebo `CFFI`
+* Více info
+    - [Programovací jazyk Rust: rozhraní mezi Rustem a Pythonem](https://www.root.cz/clanky/programovaci-jazyk-rust-rozhrani-mezi-rustem-a-pythonem/)
+
+```rust
+#[no_mangle]
+pub extern fn add_integers(x: i32, y: i32) -> i32 {
+    x + y
+}
+```
+
+```python
+#!/usr/bin/env python3
+import ctypes
+ 
+testlib1 = ctypes.CDLL("target/debug/libtest1.so")
+ 
+result = testlib1.add_integers(1, 2)
+print("1 + 2 = {}".format(result))
+ 
+result = testlib1.add_integers(1.5, 2)
+print("1.5 + 2 = {}".format(result))
+```
 
 ---
 
@@ -899,3 +1060,7 @@ warning: be sure to add `/home/tester/.cargo/bin` to your PATH to be able to run
 
 ---
 
+## Odkazy
+
+* For Complex Applications, Rust is as Productive as Kotlin
+  [https://ferrous-systems.com/blog/rust-as-productive-as-kotlin/](https://ferrous-systems.com/blog/rust-as-productive-as-kotlin/)
