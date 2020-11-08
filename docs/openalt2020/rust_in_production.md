@@ -2,7 +2,10 @@
 
 * Pavel Tišnovský, Red Hat
     - `ptisnovs@redhat.com`
-* [https://tisnik.github.io/presentations/openalt2020/rust_in_production.html](https://tisnik.github.io/presentations/openalt2020/rust_in_production.html)
+* Prezentace:
+    - [https://tisnik.github.io/presentations/openalt2020/rust_in_production.html](https://tisnik.github.io/presentations/openalt2020/rust_in_production.html)
+* Zdrojový kód prezentace:
+    - [https://github.com/tisnik/presentations/blob/master/openalt2020/rust_in_production.md](https://github.com/tisnik/presentations/blob/master/openalt2020/rust_in_production.md)
 
 ---
 
