@@ -15,6 +15,8 @@ layout: default
 ### Linux Days 2015
 ### Linux Days 2017
 ### Linux Days 2018
+* [Go vs. Rust: porovnání dvou progresivních kompilovaných jazyků](linuxdays2018/rust_vs_go.md)
+
 ### Linux Days 2019
 
 ### Red Hat OpenHouse 2020
@@ -28,5 +30,4 @@ layout: default
 * [Jazyk Python - tvorba testů s využitím knihovny Behave ](BDD_cz.md)
 * [Behavior-driven development (BDD) & Behavior-driven testing (BDT)](BDD_en.md)
 * [Behavior-driven development (BDD) & Behavior-driven testing (BDT) in 15 minutes](BDD_en_15_minutes.md)
-* [Go vs. Rust: porovnání dvou progresivních kompilovaných jazyků](rust_vs_go.md)
 * [Nástroje implementující fronty zpráv](queues.md)
