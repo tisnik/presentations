@@ -2,6 +2,10 @@
 * Autor    Pavel Tišnovský, Red Hat
 * Email    <ptisnovs 0x40 redhat 0x2e com>
 * Datum    2018-10-07
+* Prezentace:
+    - [https://tisnik.github.io/presentations/linuxdays2018/rust_vs_go.html](https://tisnik.github.io/presentations/linuxdays2018/rust_vs_go.html)
+* Zdrojový kód prezentace:
+    - [https://github.com/tisnik/presentations/blob/master/linuxdays2018/rust-vs-go/rust-vs-go.txt](https://github.com/tisnik/presentations/blob/master/linuxdays2018/rust-vs-go/rust-vs-go.txt)
 
 ## Obsah přednášky (1)
 
