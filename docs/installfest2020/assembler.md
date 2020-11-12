@@ -1,6 +1,12 @@
 # installfest-2020-assembler
 Materials for assembly language workshop
 
+* Prezentace:
+    - [https://tisnik.github.io/presentations/installfest2020/assembler.html](https://tisnik.github.io/presentations/installfest2020/assembler.html)
+* Zdrojový kód prezentace:
+    - [https://github.com/tisnik/presentations/blob/master/installfest2020/README.md](https://github.com/tisnik/presentations/blob/master/installfest2020/README.md)
+
+
 ```
    _____                              ___.   .__                
   /  _  \   ______ ______ ____   _____\_ |__ |  |   ___________ 
