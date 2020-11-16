@@ -6,6 +6,8 @@ layout: default
 ## Odkazy na texty prezentací
 
 ### InstallFest 2015
+* [Pluginy pro Vim](installfest2015/vim.md)
+
 ### InstallFest 2016
 ### InstallFest 2019
 ### InstallFest 2020
