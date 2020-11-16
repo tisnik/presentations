@@ -3,6 +3,11 @@
 * Autor    Pavel Tišnovský, Red Hat
 * Email    <ptisnovs 0x40 redhat 0x2e com>
 * Datum    2019-03-01
+* Prezentace:
+    - [https://tisnik.github.io/presentations/installfest2019/queues.html](https://tisnik.github.io/presentations/installfest2019/queues.html)
+* Zdrojový kód prezentace:
+    - [https://github.com/tisnik/presentations/blob/master/installfest2019/Queues/queues.md](https://github.com/tisnik/presentations/blob/master/installfest2019/Queues/queues.md)
+
 
 ## Obsah přednášky
 
