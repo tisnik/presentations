@@ -7,6 +7,7 @@ layout: default
 
 ### InstallFest 2015
 * [Pluginy pro Vim](installfest2015/vim.md)
+* [Mikroprocesory ARM](installfest2015/arm.md)
 
 ### InstallFest 2016
 ### InstallFest 2019
