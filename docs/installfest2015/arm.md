@@ -6,7 +6,7 @@
 * Prezentace:
     - [https://tisnik.github.io/presentations/installfest2015/arm.html](https://tisnik.github.io/presentations/installfest2015/arm.html)
 * Zdrojový kód prezentace ve formátu Markdown:
-    - [https://github.com/tisnik/presentations/blob/master/installfest2015/arm.md](https://github.com/tisnik/presentations/blob/master/installfest2015/vim.md)
+    - [https://github.com/tisnik/presentations/blob/master/installfest2015/arm.md](https://github.com/tisnik/presentations/blob/master/installfest2015/arm.md)
 * Zdrojový kód prezentace v plain textu:
     - [https://github.com/tisnik/presentations/blob/master/installfest2015/arm/arm.txt](https://github.com/tisnik/presentations/blob/master/installfest2015/arm/arm.txt)
 
@@ -476,10 +476,10 @@ Cortex-M7     ano   ano kompletně         kompletně
     - Alokace registrů → optimalizující překladač
 * Řešení
     - 27/37 registrů
-        - 30 pracovních, PC, CPSR, 5xSPSR
-        - 15 registrů viditelných r0..r14
-        - r13 Stack Pointer
-        - r14 Link Register
+        - 30 pracovních, `PC`, `CPSR`, 5x`SPSR`
+        - 15 registrů viditelných `r0`..`r14`
+        - `r13` Stack Pointer
+        - `r14` Link Register
     - Šířka registrů 32 bitů
     - Rozdělení do banků, které se překrývají
     - Pro každý stav procesoru zvláštní bank
@@ -510,7 +510,7 @@ Cortex-M7     ano   ano kompletně         kompletně
 * Aritmetické operace
 * Logické a bitové operace
 * Skoky a změna režimu procesoru
-* Práce se stavovými registry CPSR a SPSR
+* Práce se stavovými registry `CPSR` a `SPSR`
 * Práce se semafory
 * Instrukce koprocesoru(ů)
 
@@ -530,7 +530,7 @@ Cortex-M7     ano   ano kompletně         kompletně
 
 ## Velmi často používaný příklad
 
-```
+```C
 int gcd(int a, int b) {
    while (a != b) {
       if (a > b) a = a - b;
@@ -587,8 +587,8 @@ int gcd(int a, int b) {
 * Přepínání mezi stavem ARM a stavem Thumb
     - Nutno přepínat, protože instrukce nejsou kompatibilní
 * Rozdělení registrů
-    - Lo registers r0-r7
-    - Hi registers r8-r15
+    - Lo registers `r0`-`r7`
+    - Hi registers `r8`-`r15`
     - Některé instrukce pracují pouze s jednou skupinou
         - Ušetří se bity v instrukci
 
@@ -600,41 +600,41 @@ int gcd(int a, int b) {
     - Branch
     - Branch and link
 * Aritmetické a logické operace
-    - OP Rd, Rn, Rm
-        - omezení na r0..r7
+    - `OP Rd, Rn, Rm`
+        - omezení na `r0`..`r7`
         - tři bity pro výběr registru v instr.slovu
     - Výjimky
-        - ADD Rd, Rn, konstanta
-        - ADD Rd, Rm - jeden z registrů r8..r15
-        - CMP Rm, Rn - dtto
-        - MOV Rd, Rm - dtto
+        - `ADD Rd, Rn`, konstanta
+        - `ADD Rd, Rm` - jeden z registrů `r8`..`r15`
+        - `CMP Rm, Rn` - dtto
+        - `MOV Rd, Rm` - dtto
 
 ## Instrukční sada Thumb (T32)
 
 * Aritmetické instrukce
-    - ADD, ADC, SUB, SBC
-    - MUL, NEG
+    - `ADD`, `ADC`, `SUB`, `SBC`
+    - `MUL`, `NEG`
 * Logické operace
-    - AND, EOR, ORR
+    - `AND`, `EOR`, `ORR`
 * Rotace a posuny
-    - ASR, LSL, LSR, ROR
+    - `ASR`, `LSL`, `LSR`, `ROR`
 * Porovnání a nastavení příznaků
-    - CMP, CMN, TST
+    - `CMP`, `CMN`, `TST`
 * Skoky
-    - B,   BL,   BX,  BLX (link, exchange)
+    - `B`,   `BL`,   `BX`,  `BLX` (link, exchange)
 * Přesuny dat
-    - MOV, MVN            - move (not)
-    - POP, PUSH
+    - `MOV`, `MVN` - move (not)
+    - `POP`, `PUSH`
 * Operace typu LOAD a STORE
-    - LDR, LDRH, LRRB
+    - `LDR`, `LDRH`, `LRRB`
         - load (word, halfword, byte)
-    - LDRSH, LDRSB
+    - `LDRSH`, `LDRSB`
         - sign extend (na word)
-    - STR, STRH, STRB
+    - `STR`, `STRH`, `STRB`
         - store (word, halfword, byte)
-    - LDMIA, STMIA
+    - `LDMIA`, `STMIA`
         - vektor registrů 
-    - STXH, STXB, UXTH, UXTB
+    - `STXH`, `STXB`, `UXTH`, `UXTB`
         - sign/zero extend
 
 ## Instrukční sada Thumb-2
@@ -654,41 +654,41 @@ int gcd(int a, int b) {
 * Bitové operace
     - Bit Field Clear
     - Bit Field Insert
-* IT
+* `IT`
     - Instrukce odpovídající konstrukci if-then-else
     - (viz následující slajd)
-* CBZ
+* `CBZ`
     - Compare and Branch on Zero
-* CBNZ
+* `CBNZ`
     - Compare and Branch on Non-Zero
 
 ## IT
 
-* IT{pattern} {condition}
+* `IT{pattern} {condition}`
     - až čtyři instrukce provedené na základě testu
     - (pozitivní/negativní výsledek)
 * {pattern}
-    - T-then
-    - E-else
+    - `T`-then
+    - `E`-else
 * první instrukce
     - provedena při splnění podmínky {condition}
 * druhá instrukce
-    - T-podmínka
-    - E-inverze podmínky
+    - `T`-podmínka
+    - `E`-inverze podmínky
 * třetí a čtvrtá instrukce
     - dtto
 * {condition}
-    - EQ NE GT GE LT LE
-    - CS CC  carry
-    - PL MI HI LS
+    - `EQ` `NE` `GT` `GE` `LT` `LE`
+    - `CS` `CC`  carry
+    - `PL` `MI` `HI` `LS`
 
 ## IT
 
 ```
 CMP r0, r1
 ITE EQ
-MOVEQ r0, r2 ; vetev "then"
-MOVNE r0, r3 ; vetev "else"
+MOVEQ r0, r2 ; větev "then"
+MOVNE r0, r3 ; větev "else"
 ```
 
 ## Instrukční sada A64
@@ -707,9 +707,9 @@ MOVNE r0, r3 ; vetev "else"
     - 31 univerzálních registrů
     - 32.registr
         - liší se v závislosti na kontextu
-        - buď nula (ZR)
-        - nebo Stack pointer (SR)
-    - PC není přímo dostupný
+        - buď nula (`ZR`)
+        - nebo Stack pointer (`SR`)
+    - `PC` není přímo dostupný
 
 ## Operace
 
@@ -785,11 +785,11 @@ MOVNE r0, r3 ; vetev "else"
     - Double
     - Extended
 * Registry
-    - f0..f7
+    - `f0`..`f7`
         - šířka 80bitů
-    - FPSR
+    - `FPSR`
         - Floating Point Status Register
-    - FPCR
+    - `FPCR`
         - Floating Point Control Register
 * Podpora pro "rychlé" násobení a dělení
     - Jen pro "single"
@@ -801,8 +801,8 @@ MOVNE r0, r3 ; vetev "else"
 * Podpora pro typy half, single a double
     - IEEE 754
 * Registry
-    - d0..d15
-    - s0..s31 (stínové registry pro single)
+    - `d0`..`d15`
+    - `s0`..`s31` (stínové registry pro single)
 * SIMD operace (s vektory)
     - 8*single
     - 4*double
@@ -841,9 +841,9 @@ MOVNE r0, r3 ; vetev "else"
     - Nezávislé na hlavní ALU
     - U některých jader více NEON jednotek
 * 32 nových registrů
-    - d0..d31 (64bitů/registr)
+    - `d0`..`d31` (64bitů/registr)
 * Sdružení registrů do párů
-    - q0..q15 (128 bitů/pár)
+    - `q0`..`q15` (128 bitů/pár)
 * Vektory
     - 8x8 bitů (obrazová data)
     - 4x16 bitů (zvukové vzorky)
