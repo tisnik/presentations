@@ -181,16 +181,112 @@ Ukončení procesu funkcí "exit"
 
 Syscally a GNU Assembler
 ------------------------
+
+Kostra programu v assembleru
+----------------------------
+# Linux kernel system call table
+sys_exit=1
+
+.section .text
+        .global _start          # tento symbol ma byt dostupny i linkeru
+
+_start:
+        movl  $sys_exit,%eax    # cislo sycallu pro funkci "exit"
+        movl  $0,%ebx           # exit code = 0
+        int   $0x80             # volani Linuxoveho kernelu
+
+# Linux kernel system call table
+sys_exit=60
+
+.section .text
+        .global _start          # tento symbol ma byt dostupny i linkeru
+
+_start:
+        movl  $sys_exit,%eax    # cislo sycallu pro funkci "exit"
+        movl  $0,%edi           # exit code = 0
+        syscall                 # volani Linuxoveho kernelu
+
 „Hello world“ v assembleru
+--------------------------
+# Linux kernel system call table
+sys_exit=1
+sys_write=4
+
+
+.section .data
+
+hello_lbl:
+        .string "Hello World!\n"
+
+
+.section .text
+        .global _start          # tento symbol ma byt dostupny i linkeru
+
+_start:
+        mov   $sys_write, %eax  # cislo syscallu pro funkci "write"
+        mov   $1,%ebx           # standardni vystup
+        mov   $hello_lbl,%ecx   # adresa retezce, ktery se ma vytisknout
+        mov   $13,%edx          # pocet znaku, ktere se maji vytisknout
+        int   $0x80             # volani Linuxoveho kernelu
+
+        movl  $sys_exit,%eax    # cislo sycallu pro funkci "exit"
+        movl  $0,%ebx           # exit code = 0
+        int   $0x80             # volani Linuxoveho kernelu
 
 Volání funkcí ze standardní céčkové knihovny
 --------------------------------------------
 
 puts
 ----
+.intel_syntax noprefix
+
+
+.section .data
+hello_world_message:
+        .asciz "Hello world!\n"    # zprava, ktera se ma vytisknout na standardni vystup
+
+
+.section .text
+        .global main               # tento symbol ma byt dostupny i linkeru
+
+main:
+        sub  rsp, 8                # zajistit zarovnani RSP na adresu delitelnou 16
+
+                                   # jedinym parametrem je adresa zpravy
+        mov  rdi, offset hello_world_message
+        call puts                  # volani funkce 'puts' ze standardni knihovny
+
+        add  rsp, 8                # obnoveni puvodni hodnoty RSP
+
+        xor  eax, eax              # navratova hodnota (exit status)
+        ret                        # ukonceni aplikace
 
 printf
 ------
+.intel_syntax noprefix
+
+
+.section .data
+hello_world_message:
+        .asciz "Hello world!\n"    # zprava, ktera se ma vytisknout na standardni vystup
+
+
+.section .text
+        .global main               # tento symbol ma byt dostupny i linkeru
+
+main:
+        sub  rsp, 8                # zajistit zarovnani RSP na adresu delitelnou 16
+
+                                   # jedinym parametrem je adresa zpravy
+        mov  rdi, offset hello_world_message
+        xor  al, al                # pocet parametru predanych ve vektorovych registrech
+        call printf                # volani funkce 'printf' ze standardni knihovny
+
+        add  rsp, 8                # obnoveni puvodni hodnoty RSP
+
+        xor  eax, eax              # navratova hodnota (exit status)
+
+        ret                        # ukonceni aplikace
 
 Assembler v C
 -------------
