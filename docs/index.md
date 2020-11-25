@@ -9,7 +9,11 @@ layout: default
 * [Pluginy pro Vim](installfest2015/vim.md)
 * [Mikroprocesory ARM](installfest2015/arm.md)
 
-### InstallFest 2016
+### InstallFest 2017
+* [Assembler](installfest2017/assembly.md)
+* [Programovací jazyk Rust](installfest2017/rust.md)
+* [Novinky ve Vimu 8](installfest2017/vim8.md)
+
 ### InstallFest 2019
 * [Nástroje implementující fronty zpráv](installfest2019/queues.md)
 
