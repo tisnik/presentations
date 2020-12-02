@@ -35,6 +35,11 @@ layout: default
 ### JBug
 ### Red Hat Developer Meetup
 
+### Coffee talks
+
+* [What are variables good for?](coffee-talks/clojure_vars.md)
+* [Fast Python possible?](coffee-talks/fast_python.md)
+
 ### Ostatní
 * [Jazyk Python - tvorba testů s využitím knihovny Behave ](BDD_cz.md)
 * [Behavior-driven development (BDD) & Behavior-driven testing (BDT)](BDD_en.md)
