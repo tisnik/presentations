@@ -126,6 +126,6 @@ def funkce1():
 * Numba #3: native `print` function
 * Numba #4: native `print` function + @jit(nopython=True)
 
-![images/benchmark_1.png](images/benchmark_1.png)
-![images/benchmark_2.png](images/benchmark_2.png)
+![images/benchmarks_1.png](images/benchmarks_1.png)
+![images/benchmarks_2.png](images/benchmarks_2.png)
 
