@@ -14,6 +14,7 @@
 
 ### Generational garbage collectors
 
+1. Based on assumption that objects usually die young
 1. Used in Python VM and in JVM as well
 1. Heap is splitted into so called generations
     * 3 generations in Python VM
@@ -42,20 +43,41 @@
 
 1. Eden space for newly created objects
 1. Two survivor spaces
+    * one space to be freed
 
 ![young generation](images/GC2.png)
 
-1. Objects are created in eden
+Objects are created in eden
 
 ![young generation](images/GC3.png)
 
-1. When eden is full, objects are moved into selected survivor space
+When eden is full, objects are moved into selected survivor space
 
 ![young generation](images/GC4.png)
 
-1. At the end of this operation, eden is free
+At the end of this operation, eden is free
 
 ![young generation](images/GC5.png)
+
+After many cycles of empying eden, the survivor space gets full:
+1. *Regular GC* starts
+1. Live objects are moved into second survivor space
+1. "Survive counter" is increased by one
+1. This means the space is compact
+
+![young generation](images/GC6.png)
+
+At the end of *regular GC*, one survivor space if free and second is compacted
+
+![young generation](images/GC7.png)
+
+After many cycles the survivor space is going to be full:
+1. Object that survive many cycles of *regular GC* is moved into old generation area
+
+![Young and old generations](images/GC1.png)
+
+*Full GC* needs to be started from time to time on old area. It is slow, but usually
+many object survives.
 
 #### More speedup possible
 
