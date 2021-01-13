@@ -87,6 +87,7 @@
 
 * Based on Redis
 * Simple controlling from Python
+* DLQ support
 
 ![RQ](images/mq_rq.png)
 
@@ -117,12 +118,18 @@ def do_work(param):
     print("Done")
 ```
 
-#### RabbitMQ
+#### Redis Queue (RQ) - start the worker
 
-* The most advanced MQ
+```bash
+$ rq worker
+```
+
+### RabbitMQ
+
+* The most advanced message broker
 * Written in Erlang
 * Priority queues possible
-* Interfaces for
+* Interfaces for various languages
     - Java
     - JavaScript (Node.js)
     - Python
@@ -135,12 +142,13 @@ def do_work(param):
     - Swift
     - Objective-C
     - Clojure
+* Ability to configure fan-out
 
 ![Push-pull](images/mq_rabbitmq3.png)
 
 #### Celery
 
-* For Python
+* For Python (the same as for RQ)
 * More flexible than RQ
 * Monitoring etc.
 * Remote control for workers
