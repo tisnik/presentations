@@ -29,6 +29,14 @@
 * Consumer groups
 * Acking messages in consumer groups
 
+### Messages
+
+* Have a structure (key+value)
+* Have an ID
+   - two parts
+   - usually Unix timestamp in ms
+   - sequence number within that ms
+
 ### New commands
 
 * `XADD`
@@ -61,7 +69,7 @@ xadd stream1 1 x 10 y 20
 xadd stream1 2 x 10 y 20
 ```
 
-* ID is splitted into two parts: main number + sequence number
+* ID is splitted into two parts: main number (timestamp) + sequence number
 
 ```
 xadd stream2 0-1 data first
