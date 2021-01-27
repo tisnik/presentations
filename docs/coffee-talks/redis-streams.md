@@ -103,6 +103,26 @@ xrevrange stream1 + -
 xread BLOCK 0 streams streamA streamB $ $
 ```
 
+* Acking messages
+
+```
+XADD streamZ * foo 42
+XGROUP CREATE streamZ groupZ $
+
+XADD streamZ * m 1
+XADD streamZ * m 2
+XADD streamZ * m 3
+XADD streamZ * m 4
+XADD streamZ * m 5
+XADD streamZ * m 6
+
+XREADGROUP GROUP groupZ consumer1 COUNT 1 STREAMS streamZ >
+XREADGROUP GROUP groupZ consumer1 STREAMS streamZ >
+
+XACK streamZ groupZ 1611603108014-0
+XPENDING streamZ groupZ
+```
+
 ### Python
 
 * Message producer
@@ -130,7 +150,7 @@ messages = list(stream)
 print(messages)
 ```
 
-* Blocked read
+* Blocking read (waiting for new message)
 
 ```python
 from walrus import Database
