@@ -41,6 +41,9 @@ layout: default
 * [Fast Python possible?](coffee-talks/fast_python.md)
 * [Garbage collectors](coffee-talks/gc.md)
 * [Message brokers](coffee-talks/queues.md)
+* [ARM processors](coffee-talks/arm.md)
+* [Redis streams](coffee-talks/redis-streams.md)
+* [DSP](coffee-talks/dsp.md)
 
 ### Ostatní
 * [Jazyk Python - tvorba testů s využitím knihovny Behave ](BDD_cz.md)
