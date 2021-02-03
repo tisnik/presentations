@@ -8,13 +8,13 @@
 ![Convolution filter](images/dsp_filter.png)
 
 ### FIR
-![FIR](images/dsp_fir.png")
+![FIR](images/dsp_fir.png)
 
 ### Discrete Fourier transform
-![DFT](images/dsp_dft.png")
+![DFT](images/dsp_dft.png)
 
 ### Discrete cosine transform (JPEG, MPEG, ...)
-![DFT](images/dsp_dct.png")
+![DCT](images/dsp_dct.png)
 
 ### Common operations?
 
@@ -47,7 +47,7 @@
 * All blocks can run in parallel
 * Saturation arithmetic
 
-![TMS32010](images/dsp_tms_320.jpg)
+![TMS32010](images/dsp_tms320.jpg)
 
 ## TMS32010 internals
 
