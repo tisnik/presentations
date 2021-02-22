@@ -9,6 +9,16 @@
         \/     \/     \/     \/      \/    \/          \/       
 ```
 
+* Pavel Tišnovský
+    - `tisnik 0x40 centrum 0x2e cz>`
+* Datum: 2017-02-28
+* Prezentace:
+    - [https://tisnik.github.io/presentations/installfest2017/assembly.html](https://tisnik.github.io/presentations/installfest2017/assembly.html)
+* Zdrojový kód prezentace ve formátu Markdown:
+    - [https://github.com/tisnik/presentations/blob/master/installfest2017/assembly.md](https://github.com/tisnik/presentations/blob/master/installfest2017/assembly.md)
+* Zdrojový kód prezentace v plain textu:
+    - [https://github.com/tisnik/presentations/blob/master/installfest2017/Assembly/asm.txt](https://github.com/tisnik/presentations/blob/master/installfest2017/Assembly/asm.txt)
+
 ## Proč assembler?
 
 1. Větší efektivita využití CPU
