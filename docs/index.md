@@ -48,6 +48,6 @@ layout: default
 * [BDD](coffee-talks/bdd.md)
 
 ### Ostatní
-* [Jazyk Python - tvorba testů s využitím knihovny Behave ](BDD_cz.md)
-* [Behavior-driven development (BDD) & Behavior-driven testing (BDT)](BDD_en.md)
-* [Behavior-driven development (BDD) & Behavior-driven testing (BDT) in 15 minutes](BDD_en_15_minutes.md)
+* [Jazyk Python - tvorba testů s využitím knihovny Behave ](other/BDD_cz.md)
+* [Behavior-driven development (BDD) & Behavior-driven testing (BDT)](other/BDD_en.md)
+* [Behavior-driven development (BDD) & Behavior-driven testing (BDT) in 15 minutes](other/BDD_en_15_minutes.md)
