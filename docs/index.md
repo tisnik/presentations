@@ -45,6 +45,7 @@ layout: default
 * [Redis streams](coffee-talks/redis-streams.md)
 * [DSP](coffee-talks/dsp.md)
 * [Forth](coffee-talks/forth.md)
+* [BDD](coffee-talks/bdd.md)
 
 ### Ostatní
 * [Jazyk Python - tvorba testů s využitím knihovny Behave ](BDD_cz.md)
