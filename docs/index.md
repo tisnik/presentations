@@ -46,6 +46,7 @@ layout: default
 * [ARM processors](coffee-talks/arm.md)
 * [Redis streams](coffee-talks/redis-streams.md)
 * [DSP](coffee-talks/dsp.md)
+* [Tracing](coffee-talks/tracing.md)
 * [Forth](coffee-talks/forth.md)
 * [BDD](coffee-talks/bdd.md)
 
