@@ -29,6 +29,8 @@ layout: default
 ### Linux Days 2019
 
 ### Red Hat OpenHouse 2020
+### DevConf 2021
+
 ### OpenAlt 2020
 * [Použití programovacího jazyka Rust na produkčním systému](openalt2020/rust_in_production.md)
 
