@@ -49,6 +49,7 @@ layout: default
 * [Tracing](coffee-talks/tracing.md)
 * [Forth](coffee-talks/forth.md)
 * [BDD](coffee-talks/bdd.md)
+* [Floating Point Arithmetic](coffee-talks/fp.md)
 
 ### Ostatní
 * [Jazyk Python - tvorba testů s využitím knihovny Behave ](other/BDD_cz.md)
