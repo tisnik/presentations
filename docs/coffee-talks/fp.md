@@ -11,7 +11,7 @@
 * m - mantissa (always positive for IEEE754)
 * s - signum bit (positive/negative)
 
-###
+### Many forms of FP was/is used
 
 <table>
 <tr><th>Computer/system</th><th>Width (b)</th><th>Base</th><th>Exponent (b)</th><th>Mantissa (b)</th></tr>
@@ -45,7 +45,7 @@
 * William "Velvel" Morton Kahan, University of California
 * Designed to avoid many common errors in production code
     - and this is problem as many developers just don't care
-* 1977
+* 1977, first draft
 * 1980, the Intel 8087 chip
 * Later Intel i80287, Intel i80387, Intel i80487, Motorola M68881, Motorola M68882
 * Now supported by most CPUs in the world
@@ -81,7 +81,8 @@
 * All algebraic rules are supported
 * Conversion from int to float is w/o losing data
 * Conversion from long to double is w/o losing data
-* Ariane 5 Explosion | A Very Costly Coding Error: https://www.youtube.com/watch?v=5tJPXYA0Nec
+* Ariane 5 Explosion
+    - a Very Costly Coding Error: https://www.youtube.com/watch?v=5tJPXYA0Nec
 
 ### An example
 
