@@ -64,4 +64,3 @@ def on_draw():
     draw_quad(50, 50) 
 
 pyglet.app.run()
-
