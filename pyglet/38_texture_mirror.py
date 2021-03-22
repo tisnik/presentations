@@ -63,4 +63,5 @@ def on_draw():
     glEnable(GL_TEXTURE_2D)
     draw_quad(50, 50) 
 
+
 pyglet.app.run()
