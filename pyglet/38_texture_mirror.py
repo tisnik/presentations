@@ -34,7 +34,6 @@ def on_resize(width, height):
     glViewport(0, 0, width, height)           # viditelna oblast pres cele okno
 
 
-
 def draw_quad(x, y):
     glBegin(GL_QUADS)
 
