@@ -39,7 +39,7 @@ def on_draw():
     glClear(GL_COLOR_BUFFER_BIT)                # vymazani bitovych rovin barvoveho bufferu
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
-    draw_triangle_strip(50, 50) 
+    draw_triangle_strip(50, 50)
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
     draw_triangle_strip(50, 200)
