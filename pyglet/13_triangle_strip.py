@@ -30,6 +30,7 @@ def draw_triangle_strip(x, y):
     glVertex2i(x+300, y) 
     glEnd() 
 
+
 @window.event
 def on_draw():
     glClear(GL_COLOR_BUFFER_BIT)
