@@ -13,7 +13,7 @@ window = pyglet.window.Window(width=450,
 
 
 def draw_triangle_strip(x, y):
-    glBegin(GL_TRIANGLE_STRIP) 
+    glBegin(GL_TRIANGLE_STRIP)
     glColor3f(1.0, 0.0, 0.0)                 # kazdy vertex bude vykresleny jinou barvou
     glVertex2i(x, y)
     glColor3f(0.0, 0.0, 1.0)
