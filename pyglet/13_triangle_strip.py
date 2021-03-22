@@ -42,7 +42,7 @@ def on_draw():
     draw_triangle_strip(50, 50) 
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
-    draw_triangle_strip(50, 200) 
+    draw_triangle_strip(50, 200)
 
 
 pyglet.app.run()
