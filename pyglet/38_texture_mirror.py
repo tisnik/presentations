@@ -42,7 +42,7 @@ def draw_quad(x, y):
     glVertex2i(x, y) 
 
     glTexCoord2f(2.0, 0.0)
-    glVertex2i(x+400, y) 
+    glVertex2i(x+400, y)
 
     glTexCoord2f(2.0, 2.0)
     glVertex2i(x+400, y+400)
