@@ -27,7 +27,7 @@ def draw_triangle_strip(x, y):
     glColor3f(1.0, 0.0, 1.0) 
     glVertex2i(x+250, y+80) 
     glColor3f(1.0, 1.0, 1.0) 
-    glVertex2i(x+300, y) 
+    glVertex2i(x+300, y)
     glEnd()
 
 
