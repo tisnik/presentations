@@ -61,7 +61,7 @@ def draw_triangles():
     glVertex2i(50, 150)
     glVertex2i(100, 150)
     glVertex2i(100, 200)
-    glVertex2i( 50, 200)
+    glVertex2i(50, 200)
     glEnd()
 
 
