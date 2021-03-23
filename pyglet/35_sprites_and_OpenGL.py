@@ -53,6 +53,7 @@ def draw_line_loop():
     glVertex2i(350, 100)
     glEnd()
 
+
 def draw_triangles():
     glColor3f(0.0, 0.0, 1.0)
     glBegin(GL_TRIANGLES)                   # vykresleni trojuhelniku
