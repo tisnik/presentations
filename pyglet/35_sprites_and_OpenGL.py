@@ -124,6 +124,7 @@ def draw_polygon():
     glVertex2i(350, 280)
     glEnd()
 
+
 @window.event
 def on_draw():
     glClear(GL_COLOR_BUFFER_BIT)
