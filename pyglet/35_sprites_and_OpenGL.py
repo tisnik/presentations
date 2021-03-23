@@ -44,6 +44,7 @@ def draw_line_strip():
     glVertex2i(250, 100)
     glEnd()
 
+
 def draw_line_loop():
     glColor3f(1.0, 1.0, 0.0)
     glBegin(GL_LINE_LOOP)                   # nyni vykreslime uzavrenou polycaru
