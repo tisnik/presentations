@@ -59,6 +59,7 @@ def draw_triangles():
     glVertex2i( 50, 200)
     glEnd()
 
+
 def draw_triangle_strip():
     glColor3f(0.0, 1.0, 0.0)
     glBegin(GL_TRIANGLE_STRIP)              # vykresleni pruhu trojuhelniku
