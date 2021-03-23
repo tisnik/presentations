@@ -102,6 +102,7 @@ def draw_quad_strip():
     glVertex2i(300, 300)
     glEnd()
 
+
 def draw_polygon():
     glColor3f(0.5, 1.0, 0.5)
     glBegin(GL_POLYGON)                     # vykresleni konvexniho polygonu
