@@ -48,7 +48,8 @@ recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambd
 image.save("patternC_x3y3.png")
 
 mez = 15.0
-recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x,y : x**4 + y**4)
+recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez,
+                   lambda x,y: x**4 + y**4)
 image.save("patternC_x4y4.png")
 
 mez = 60.0
