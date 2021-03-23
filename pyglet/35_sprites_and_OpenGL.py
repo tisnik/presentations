@@ -162,4 +162,3 @@ def update(dt):
 
 pyglet.clock.schedule_interval(update, 1/60.)
 pyglet.app.run()
-
