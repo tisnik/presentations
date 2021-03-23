@@ -153,6 +153,7 @@ def update(dt):
         sprite.y = window.height - sprite.height
         sprite.dy = -sprite.dy
 
+
 pyglet.clock.schedule_interval(update, 1/60.)
 pyglet.app.run()
 
