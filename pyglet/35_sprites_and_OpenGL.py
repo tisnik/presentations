@@ -23,6 +23,7 @@ def draw_points():
     glVertex2i( 50, 100)
     glEnd()
 
+
 def draw_lines():
     glColor3f(1.0, 0.0, 1.0)
     glBegin(GL_LINES)                       # nyni zacneme vykreslovat usecky
