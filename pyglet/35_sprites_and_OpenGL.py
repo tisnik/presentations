@@ -146,6 +146,7 @@ def on_draw():
 
     sprite.draw()
 
+
 def update(dt):
     sprite.x += sprite.dx * dt * 200
     sprite.y += sprite.dy * dt * 200
