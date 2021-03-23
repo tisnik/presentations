@@ -21,7 +21,7 @@ def draw_points():
     glVertex2i(50,  50)
     glVertex2i(100,  50)
     glVertex2i(100, 100)
-    glVertex2i( 50, 100)
+    glVertex2i(50, 100)
     glEnd()
 
 
