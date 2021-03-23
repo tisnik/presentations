@@ -72,6 +72,7 @@ def draw_triangle_strip():
     glVertex2i(200, 150)
     glEnd()
 
+
 def draw_triangle_fan():
     glColor3f(1.0, 0.0, 0.0)
     glBegin(GL_TRIANGLE_FAN)                # vykresleni trsu trojuhelniku
