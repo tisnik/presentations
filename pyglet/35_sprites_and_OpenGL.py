@@ -97,6 +97,7 @@ def draw_quads():
     glVertex2i( 50, 300)
     glEnd()
 
+
 def draw_quad_strip():
     glColor3f(0.5, 0.5, 1.0)
     glBegin(GL_QUAD_STRIP)                  # vykresleni pruhu ctyruhleniku
