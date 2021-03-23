@@ -32,6 +32,7 @@ def draw_lines():
     glVertex2i(150, 100)
     glEnd()
 
+
 def draw_line_strip():
     glColor3f(0.0, 1.0, 1.0)
     glBegin(GL_LINE_STRIP)                  # nyni vykreslime polycaru
