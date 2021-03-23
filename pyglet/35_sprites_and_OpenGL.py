@@ -88,7 +88,7 @@ def draw_triangle_fan():
 def draw_quads():
     glColor3f(1.0, 0.5, 0.5)
     glBegin(GL_QUADS)                       # vykresleni ctyruhelniku
-    glVertex2i( 50, 250)
+    glVertex2i(50, 250)
     glVertex2i(100, 250)
     glVertex2i(100, 300)
     glVertex2i( 50, 300)
