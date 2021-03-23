@@ -14,6 +14,7 @@ sprite = pyglet.sprite.Sprite(image)
 sprite.dx = 1
 sprite.dy = 1
 
+
 def draw_points():
     glColor3f(1.0, 1.0, 1.0)                # nastaveni barvy pro kresleni
     glBegin(GL_POINTS)                      # nyni zacneme vykreslovat body
