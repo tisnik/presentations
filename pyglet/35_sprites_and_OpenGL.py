@@ -94,7 +94,7 @@ def draw_quads():
     glVertex2i(50, 250)
     glVertex2i(100, 250)
     glVertex2i(100, 300)
-    glVertex2i( 50, 300)
+    glVertex2i(50, 300)
     glEnd()
 
 
