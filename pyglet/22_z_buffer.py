@@ -89,7 +89,7 @@ def draw_roof():
     glColor3f(0.0, 0.0, 0.0)
     glVertex3f(-5.0,  5.0,  5.0)
     glVertex3f(-5.0,  5.0, -5.0)
-    glVertex3f( 0.0, 11.0,  0.0)
+    glVertex3f(0.0, 11.0,  0.0)
     glEnd()
 
 
