@@ -39,7 +39,6 @@ def on_resize(width, height):
     glViewport(0, 0, width, height)           # viditelna oblast pres cele okno
 
 
-
 def draw_walls():
     glBegin(GL_QUADS)                         # vykresleni otevrene krychle - sten domecku
     glColor3f(0.0, 0.0, 1.0)                  # modra barva steny
