@@ -18,6 +18,7 @@ sprite.x = window.width / 2
 sprite.y = window.height / 2
 sprite.t = 0
 
+
 @window.event
 def on_draw():
     window.clear()
