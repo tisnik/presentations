@@ -61,7 +61,7 @@ def draw_walls():
     glVertex3f(-5.0,  5.0, -5.0)
 
     glColor3f(1.0, 1.0, 0.0)                  # zluta barva steny
-    glVertex3f( 5.0, -5.0, -5.0)
+    glVertex3f(5.0, -5.0, -5.0)
     glVertex3f(5.0, -5.0,  5.0)
     glVertex3f(5.0,  5.0,  5.0)
     glVertex3f(5.0,  5.0, -5.0)
