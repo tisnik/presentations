@@ -64,7 +64,7 @@ def draw_walls():
     glVertex3f( 5.0, -5.0, -5.0)
     glVertex3f( 5.0, -5.0,  5.0)
     glVertex3f( 5.0,  5.0,  5.0)
-    glVertex3f( 5.0,  5.0, -5.0)
+    glVertex3f(5.0,  5.0, -5.0)
     glEnd()
 
 
