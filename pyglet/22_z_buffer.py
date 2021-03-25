@@ -68,7 +68,6 @@ def draw_walls():
     glEnd()
 
 
-
 def draw_roof():
     glBegin(GL_TRIANGLES)                      # vykresleni strechy domecku z trojuhelniku
     glColor3f(0.0, 1.0, 1.0)
