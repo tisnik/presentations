@@ -27,5 +27,6 @@ def update(dt):
     sprite.t += 1
     sprite.scale = 5.0 * math.sin(sprite.t/10.)
 
+
 pyglet.clock.schedule_interval(update, 1/60.)
 pyglet.app.run()
