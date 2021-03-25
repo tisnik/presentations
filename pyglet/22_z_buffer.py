@@ -31,8 +31,6 @@ def init():
     glDepthFunc(GL_LESS)                      # funkce pro testovani fragmentu
 
 
-
-
 @window.event
 def on_resize(width, height):
     init()
