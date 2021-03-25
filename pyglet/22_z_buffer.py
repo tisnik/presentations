@@ -109,7 +109,6 @@ def clear_buffers(depthBufferEnabled):
         glClear(GL_COLOR_BUFFER_BIT)          # vymazani vsech bitovych rovin barvoveho bufferu
 
 
-
 @window.event
 def on_draw():
     global r1, r2
