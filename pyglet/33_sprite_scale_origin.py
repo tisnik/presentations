@@ -23,6 +23,7 @@ def on_draw():
     window.clear()
     sprite.draw()
 
+
 def update(dt):
     sprite.t += 1
     sprite.scale = 5.0 * math.sin(sprite.t/10.)
