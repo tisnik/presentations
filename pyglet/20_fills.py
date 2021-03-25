@@ -114,6 +114,5 @@ def on_draw():
     glEnd()
 
 
-
 pyglet.app.run()
 
