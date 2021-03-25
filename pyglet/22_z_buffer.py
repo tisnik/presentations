@@ -149,5 +149,4 @@ def on_draw():
     draw_roof()
 
 
-
 pyglet.app.run()
