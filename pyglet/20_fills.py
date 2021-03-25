@@ -88,7 +88,7 @@ def on_draw():
     glVertex3f( 5.0, -5.0, -5.0)
     glVertex3f( 5.0, -5.0,  5.0)
     glVertex3f(5.0,  5.0,  5.0)
-    glVertex3f( 5.0,  5.0, -5.0)
+    glVertex3f(5.0,  5.0, -5.0)
     glEnd()
 
     glBegin(GL_TRIANGLES)                      # vykresleni strechy domecku z trojuhelniku
