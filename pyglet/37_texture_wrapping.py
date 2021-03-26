@@ -50,7 +50,7 @@ def draw_quad(x, y):
     glTexCoord2f(0.0, 2.0)
     glVertex2i(x, y+400) 
 
-    glEnd() 
+    glEnd()
 
 
 @window.event
