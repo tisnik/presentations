@@ -13,6 +13,7 @@ sprite = pyglet.sprite.Sprite(image)
 sprite.x = window.width / 2
 sprite.y = window.height / 2
 
+
 @window.event
 def on_draw():
     window.clear()
