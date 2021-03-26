@@ -29,7 +29,6 @@ def clear_buffers():
     glClear(GL_COLOR_BUFFER_BIT)              # vymazani vsech bitovych rovin barvoveho bufferu
 
 
-
 def set_projection():
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()                          # nahrat jednotkovou matici
