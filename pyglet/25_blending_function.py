@@ -24,7 +24,6 @@ def on_resize(width, height):
     glViewport(0, 0, width, height)           # viditelna oblast pres cele okno
 
 
-
 def clear_buffers():
     glClear(GL_COLOR_BUFFER_BIT)              # vymazani vsech bitovych rovin barvoveho bufferu
 
