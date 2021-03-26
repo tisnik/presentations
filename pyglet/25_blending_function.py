@@ -35,7 +35,6 @@ def set_projection():
     glLoadIdentity()                          # nahrat jednotkovou matici
 
 
-
 def draw_background_plane():
     border = 10
     glDisable(GL_BLEND)                       # zakaz blendingu
