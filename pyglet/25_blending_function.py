@@ -60,7 +60,6 @@ def draw_square_with_blending(x, y, sfactor, dfactor):
     glEnd()
 
 
-
 @window.event
 def on_draw():
     clear_buffers()
