@@ -17,7 +17,6 @@ def init():
     glDisable(GL_CULL_FACE)                   # zadne hrany ani steny se nebudou odstranovat
 
 
-
 @window.event
 def on_resize(width, height):
     init()
