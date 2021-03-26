@@ -75,7 +75,7 @@ def on_draw():
         sfactor = sfactors[y]
         for x in xrange(0, 6):
             dfactor = dfactors[x]
-            draw_square_with_blending( 50+60*x, 50+60*y, sfactor, dfactor)
+            draw_square_with_blending(50+60*x, 50+60*y, sfactor, dfactor)
 
 
 pyglet.app.run()
