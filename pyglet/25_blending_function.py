@@ -48,7 +48,6 @@ def draw_background_plane():
     glEnd()
 
 
-
 def draw_square_with_blending(x, y, sfactor, dfactor):
     glBlendFunc(sfactor, dfactor)
     glColor4f(1.0, 1.0, 0.0, 0.7)
