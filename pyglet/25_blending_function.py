@@ -78,5 +78,4 @@ def on_draw():
             draw_square_with_blending( 50+60*x, 50+60*y, sfactor, dfactor)
 
 
-
 pyglet.app.run()
