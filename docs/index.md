@@ -34,6 +34,9 @@ layout: default
 ### OpenAlt 2020
 * [Použití programovacího jazyka Rust na produkčním systému](openalt2020/rust_in_production.md)
 
+### Flop
+* [Zvukové a hudební čipy využívané v osmibitových mikropočítačích a herních konzolích](flop/flop_psg.md)
+
 ### JBug
 ### Red Hat Developer Meetup
 
