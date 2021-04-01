@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.1">
+  <object class="tk.Menu" id="MainMenu">
+    <child>
+      <object class="tk.Menuitem.Submenu" id="FileMenu">
+        <property name="font">TkDefaultFont</property>
+        <property name="label" translatable="yes">File</property>
+        <property name="relief">raised</property>
+        <property name="state">normal</property>
+        <property name="tearoff">true</property>
+        <property name="underline">0</property>
+        <child>
+          <object class="tk.Menuitem.Command" id="Command_New">
+            <property name="accelerator">Ctrl+N</property>
+            <property name="compound">left</property>
+            <property name="image">document-new.png</property>
+            <property name="label" translatable="yes">New</property>
+            <property name="state">normal</property>
+            <property name="underline">0</property>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Menuitem.Command" id="Command_Open">
+            <property name="accelerator">Ctrl+O</property>
+            <property name="compound">left</property>
+            <property name="image">document-open.png</property>
+            <property name="label" translatable="yes">Open</property>
+            <property name="underline">0</property>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Menuitem.Separator" id="Separator_1" />
+        </child>
+        <child>
+          <object class="tk.Menuitem.Command" id="Command_Quit">
+            <property name="accelerator">Ctrl+Q</property>
+            <property args="" cbtype="simple" name="command" type="command">on_command_quit_selected</property>
+            <property name="compound">left</property>
+            <property name="image">application-exit.png</property>
+            <property name="label" translatable="yes">Quit</property>
+            <property name="underline">0</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Menuitem.Submenu" id="EditMenu">
+        <property name="label" translatable="yes">Edit</property>
+        <property name="underline">0</property>
+        <child>
+          <object class="tk.Menuitem.Command" id="Command_Cut">
+            <property name="accelerator">Ctrl+X</property>
+            <property name="compound">left</property>
+            <property name="image">edit-cut.png</property>
+            <property name="label" translatable="yes">Cut</property>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Menuitem.Command" id="Command_Copy">
+            <property name="accelerator">Ctrl+C</property>
+            <property name="compound">left</property>
+            <property name="image">edit-copy.png</property>
+            <property name="label" translatable="yes">Copy</property>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Menuitem.Command" id="Command_Paste">
+            <property name="accelerator">Ctrl+P</property>
+            <property name="compound">left</property>
+            <property name="image">edit-paste.png</property>
+            <property name="label" translatable="yes">Paste</property>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Menuitem.Separator" id="Separator_2" />
+        </child>
+        <child>
+          <object class="tk.Menuitem.Command" id="Command_Delete">
+            <property name="accelerator">Delete</property>
+            <property name="compound">left</property>
+            <property name="image">edit-delete.png</property>
+            <property name="label" translatable="yes">Delete</property>
+            <property name="state">disabled</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="ttk.Frame" id="MainWindow">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <layout manager="grid">
+      <property name="column">0</property>
+      <property name="propagate">True</property>
+      <property name="row">0</property>
+    </layout>
+    <child>
+      <object class="ttk.Button" id="Button_Hello">
+        <property args="" cbtype="simple" name="command" type="command">on_button_clicked</property>
+        <property name="compound">top</property>
+        <property name="state">normal</property>
+        <property name="text" translatable="yes">Quit</property>
+        <property name="underline">0</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
