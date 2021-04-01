@@ -134,7 +134,7 @@
     - no objects
     - no interfaces
 
-![images/object.jpg](images/object.jpg)
+![images/object.png](images/object.png)
 
 * Values life cycle checked by compiler
     - ownership
