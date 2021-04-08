@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.1">
+  <object class="ttk.Frame" id="MainWindow">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <layout manager="pack">
+      <property name="propagate">True</property>
+      <property name="side">top</property>
+    </layout>
+    <child>
+      <object class="tk.Canvas" id="canvas">
+        <property name="height">350</property>
+        <layout manager="pack">
+          <property name="anchor">center</property>
+          <property name="expand">true</property>
+          <property name="fill">both</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="button_draw">
+        <property cbtype="simple" name="command" type="command">on_draw_button_click</property>
+        <property name="text" translatable="yes">Draw!</property>
+        <layout manager="pack">
+          <property name="expand">false</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="quit">
+        <property cbtype="simple" name="command" type="command">on_quit_button_click</property>
+        <property name="text" translatable="yes">Quit</property>
+        <layout manager="pack">
+          <property name="expand">false</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
