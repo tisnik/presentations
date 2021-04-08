@@ -25,7 +25,7 @@ class Example7App(pygubu.TkApplication):
         # step #3: Create the mainwindow
         self.mainwindow = builder.get_object('MainWindow', self.master)
 
-        # step $4: Configure callbacks
+        # step #4: Configure callbacks
         builder.connect_callbacks(self)
 
         root.bind('<Control-q>', lambda event: self.on_button_exit_click())

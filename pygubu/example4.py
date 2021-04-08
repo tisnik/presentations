@@ -28,7 +28,7 @@ class Example4App(pygubu.TkApplication):
         self.mainmenu = menu = builder.get_object('MainMenu', self.master)
         self.set_menu(menu)
 
-        # step $5: Configure callbacks
+        # step #5: Configure callbacks
         builder.connect_callbacks(self)
 
     def on_button_clicked(self):

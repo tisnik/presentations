@@ -28,7 +28,7 @@ class Example5App(pygubu.TkApplication):
         self.mainmenu = menu = builder.get_object('MainMenu', self.master)
         self.set_menu(menu)
 
-        # step $5: Configure callbacks
+        # step #5: Configure callbacks
         builder.connect_callbacks(self)
 
         root.bind('<Control-q>', lambda event: self.on_command_quit_selected())
