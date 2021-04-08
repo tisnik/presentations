@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.1">
+  <object class="ttk.Frame" id="MainWindow">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <layout manager="pack">
+      <property name="propagate">True</property>
+      <property name="side">top</property>
+    </layout>
+    <child>
+      <object class="ttk.Entry" id="text_entry">
+        <property name="textvariable">string:input_text</property>
+        <layout manager="pack">
+          <property name="anchor">center</property>
+          <property name="padx">10</property>
+          <property name="pady">10</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="button_display_text">
+        <property cbtype="simple" name="command" type="command">on_button_display_text_click</property>
+        <property name="compound">left</property>
+        <property name="image">display.png</property>
+        <property name="text" translatable="yes">Display text</property>
+        <layout manager="pack">
+          <property name="expand">true</property>
+          <property name="fill">x</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="button_quit">
+        <property cbtype="simple" name="command" type="command">on_quit_button_click</property>
+        <property name="compound">left</property>
+        <property name="image">application-exit.png</property>
+        <property name="text" translatable="yes">Quit</property>
+        <layout manager="pack">
+          <property name="expand">true</property>
+          <property name="fill">x</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
