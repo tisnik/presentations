@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.1">
+  <object class="ttk.Frame" id="MainWindow">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <layout manager="pack">
+      <property name="propagate">True</property>
+      <property name="side">top</property>
+    </layout>
+    <child>
+      <object class="ttk.Checkbutton" id="checkbutton_a">
+        <property name="offvalue">no</property>
+        <property name="onvalue">yes</property>
+        <property name="state">normal</property>
+        <property name="text" translatable="yes">Selection A</property>
+        <property name="variable">string:checkbutton_a</property>
+        <layout manager="pack">
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Checkbutton" id="checkbutton_b">
+        <property name="offvalue">no</property>
+        <property name="onvalue">yes</property>
+        <property name="state">normal</property>
+        <property name="text" translatable="yes">Selection B</property>
+        <property name="variable">string:checkbutton_b</property>
+        <layout manager="pack">
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Checkbutton" id="checkbutton_c">
+        <property name="offvalue">no</property>
+        <property name="onvalue">yes</property>
+        <property name="state">normal</property>
+        <property name="text" translatable="yes">Selection C</property>
+        <property name="variable">string:checkbutton_c</property>
+        <layout manager="pack">
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="button_display_values">
+        <property cbtype="simple" name="command" type="command">on_button_display_selections_click</property>
+        <property name="compound">left</property>
+        <property name="image">display.png</property>
+        <property name="text" translatable="yes">Display selections</property>
+        <layout manager="pack">
+          <property name="expand">true</property>
+          <property name="fill">x</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="button_quit">
+        <property cbtype="simple" name="command" type="command">on_quit_button_click</property>
+        <property name="compound">left</property>
+        <property name="image">application-exit.png</property>
+        <property name="text" translatable="yes">Quit</property>
+        <layout manager="pack">
+          <property name="expand">true</property>
+          <property name="fill">x</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
