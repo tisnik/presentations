@@ -207,6 +207,27 @@
         - `gofmt`
         - tabs etc.
 
+### Commmon Rust and Go properties
+
+* Both are supported by companies that compete on web browsers area
+* Compiles to native code (libraries, executables)
+* Good compiler messages
+    - non cryptic
+    - see one char typo in C++ template
+* Syntax is similar to "better" C
+
+### Rust and Go comparisons from developer perspective
+
+```
+Language          Rust           Go
+Approach          modern         conservative
+Syntax            complicated    simple, minimalistic
+Learning curve    lower slope    higher slove
+Learning curve    higher maximum lower maximum
+Compiler speed    slower         faster
+Backend           LLVM           custom
+```
+
 ---
 
 ## Communication with compiler
