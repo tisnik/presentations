@@ -134,7 +134,7 @@
     - no objects
     - no interfaces
 
-![images/object.png](images/object.png)
+![images/object.jpg](images/object.jpg)
 
 * Values life cycle checked by compiler
     - ownership
@@ -226,11 +226,46 @@ Learning curve    lower slope    higher slove
 Learning curve    higher maximum lower maximum
 Compiler speed    slower         faster
 Backend           LLVM           custom
+Linking           static/dynamic via -buildmode (//export!!!)
+Code speed        faster         slower
+Type system       huge           without generics (yet)
+Immutability      explicit       string, other via interfaces
+Memory management ownership      GC
+Race condition c. yes            not direcly
+Dependency mngm.  cargo          Go modules
 ```
+
+### Final code speed
+
+* Go
+    - custom compiler
+    - self hosting
+    - (bootstraping problem)
+    - faster compilation
+    - less optimized machine code
+    - (llgo project - Go frontend for LLVM)
+* Rust
+    - based onLLVM
+    - slower compilation
+    - optimization at the same level as other LLVM compilers
+
+### More information
+
+* [Rust vs Go in 2020](https://medium.com/@devathon_/rust-vs-go-in-2020-1d472b5ee15)
+* [Go vs Rust: Which is Better and Why?](https://appinventiv.com/blog/go-vs-rust/)
+
+---
+
+## Selected Rust properties
+
+
+![images/rust_logo.png](images/rust_logo.png)
 
 ---
 
 ## Communication with compiler
+
+* Error messages must be precise and should contain help/hint
 
 ---
 
