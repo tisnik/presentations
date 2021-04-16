@@ -326,9 +326,60 @@ fn main() {
     let x = 6;
     let y = 7;
     let z;
+    // now compiler knows types of all variables
+    z = x * y;
+    println!("{} * {} = {}", x, y, z);
 }
 ```
 
+### Data type `Option`
+
+* Used to replace `null` or `nil` usage
+    - Semantically different from `Result` data type
+* Two variants:
+    - `Some` value
+    - `None`
+* It is possible to use pattern matching to work with this type
+* An example:
+
+```rust
+fn div(x: i32, y: i32) -> Option<i32> {
+    if y != 0 {
+        Some(x / y)
+    } else {
+        None
+    }
+}
+
+fn main() {
+    let z1 = div(2, 1);
+    println!("{:?}", z1);
+
+    let z2 = div(2, 0);
+    println!("{:?}", z2);
+}
+```
+
+### Data type `Result`
+
+* Used to replace `null` or `nil` usage, or special error values
+    - Semantically different from `Option` data type
+* Two variants:
+    - `Ok` value
+    - `Err` error value
+* It is possible to use pattern matching to work with this type
+* An example:
+
+```rust
+fn div(x: i32, y: i32) -> Result<i32, &'static str> {
+    if y != 0 {
+        Ok(x / y)
+    } else {
+        Err("Divide by zero!")
+    }
+}
+
+```
 ---
 
 ## Other interesting parts of Rust
