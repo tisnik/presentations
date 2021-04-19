@@ -1,0 +1,90 @@
+{"description":"FIXME: write description",
+ "compile-path":
+ "\/home\/ptisnovs\/src\/presentations\/edn\/edn2json\/target\/default\/classes",
+ "deploy-repositories":
+ [["clojars",
+   {"url":"https:\/\/repo.clojars.org\/",
+    "password":"gpg",
+    "username":"gpg"}]],
+ "group":"edn2json",
+ "license":
+ {"name":"EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0",
+  "url":"https:\/\/www.eclipse.org\/legal\/epl-2.0\/"},
+ "project-edn":{"output-file":"details.clj"},
+ "resource-paths":
+ ["\/home\/ptisnovs\/src\/presentations\/edn\/edn2json\/dev-resources",
+  "\/home\/ptisnovs\/src\/presentations\/edn\/edn2json\/resources"],
+ "name":"edn2json",
+ "checkout-deps-shares":
+ ["source-paths", "test-paths", "resource-paths", "compile-path",
+  "#'leiningen.core.classpath\/checkout-deps-paths"],
+ "source-paths":
+ ["\/home\/ptisnovs\/src\/presentations\/edn\/edn2json\/src"],
+ "eval-in":"subprocess",
+ "repositories":
+ [["central",
+   {"url":"https:\/\/repo1.maven.org\/maven2\/", "snapshots":false}],
+  ["clojars", {"url":"https:\/\/repo.clojars.org\/"}]],
+ "test-paths":
+ ["\/home\/ptisnovs\/src\/presentations\/edn\/edn2json\/test"],
+ "target-path":
+ "\/home\/ptisnovs\/src\/presentations\/edn\/edn2json\/target\/default",
+ "prep-tasks":["javac", "compile"],
+ "native-path":
+ "\/home\/ptisnovs\/src\/presentations\/edn\/edn2json\/target\/default\/native",
+ "offline?":false,
+ "root":"\/home\/ptisnovs\/src\/presentations\/edn\/edn2json",
+ "pedantic?":"ranges",
+ "clean-targets":["target-path"],
+ "plugins":
+ [["lein-project-edn", "0.3.0"], ["ultra", "0.6.0"],
+  ["lein-kibit", "0.1.8"]],
+ "url":"http:\/\/example.com\/FIXME",
+ "profiles":
+ {"uberjar":
+  {"aot":["all"],
+   "jvm-opts":["-Dclojure.compiler.direct-linking=true"]},
+  "repl":
+  {"dependencies":[["whidbey", "RELEASE"]],
+   "repl-options":
+   {"init":
+    ["do", null, ["require", "'whidbey.repl"], ["init!", null]],
+    "custom-init":["do", null, ["update-print-fn!"]],
+    "nrepl-context":{"interactive-eval":{"printer":"render-str"}}}}},
+ "plugin-repositories":
+ [["central",
+   {"url":"https:\/\/repo1.maven.org\/maven2\/", "snapshots":false}],
+  ["clojars", {"url":"https:\/\/repo.clojars.org\/"}]],
+ "aliases":{"downgrade":"upgrade"},
+ "version":"0.1.0-SNAPSHOT",
+ "jar-exclusions":["#\"^\\.\"", "#\"\\Q\/.\\E\""],
+ "main":"edn2json.core",
+ "global-vars":{},
+ "uberjar-exclusions":["#\"(?i)^META-INF\/[^\/]*\\.(SF|RSA|DSA)$\""],
+ "jvm-opts":
+ ["-XX:-OmitStackTraceInFastThrow", "-XX:+TieredCompilation",
+  "-XX:TieredStopAtLevel=1"],
+ "dependencies":
+ [["clojure", "1.10.1"], ["data.json", "2.2.0"],
+  ["nrepl", "0.7.0", "exclusions", [["clojure"]]],
+  ["clojure-complete", "0.2.5", "exclusions", [["clojure"]]],
+  ["ultra", "0.6.0"]],
+ "release-tasks":
+ [["vcs", "assert-committed"],
+  ["change", "version", "leiningen.release\/bump-version", "release"],
+  ["vcs", "commit"], ["vcs", "tag"], ["deploy"],
+  ["change", "version", "leiningen.release\/bump-version"],
+  ["vcs", "commit"], ["vcs", "push"]],
+ "repl-options":
+ {"init":
+  ["do",
+   ["do", ["require", "'ultra.hardcore"], ["require", "'whidbey.repl"],
+    ["init!", null],
+    ["configure!",
+     {"repl":
+      {"print-meta":false,
+       "map-delimiter":"",
+       "print-fallback":"print",
+       "sort-keys":true}}]]]},
+ "test-selectors":{"default":["constantly", true]},
+ "monkeypatch-clojure-test":false}
