@@ -1,0 +1,15 @@
+{:tag :first,
+ :attrs nil,
+ :content
+ [{:tag :second,
+   :attrs {:value "A"},
+   :content
+   [{:tag :third,
+     :attrs nil,
+     :content [{:tag :fourth, :attrs nil, :content ["Hello A"]}]}]}
+  {:tag :second,
+   :attrs {:value "B"},
+   :content
+   [{:tag :third,
+     :attrs nil,
+     :content [{:tag :fourth, :attrs nil, :content ["Hello B"]}]}]}]}

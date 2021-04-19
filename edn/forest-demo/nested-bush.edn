@@ -1,0 +1,5 @@
+[{:tag :first}
+ [{:value "A", :tag :second}
+  [{:tag :third} [{:tag :fourth, :value "Hello A"}]]]
+ [{:value "B", :tag :second}
+  [{:tag :third} [{:tag :fourth, :value "Hello B"}]]]]

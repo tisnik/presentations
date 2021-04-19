@@ -1,0 +1,14 @@
+{:tag :first,
+ :tupelo.forest/kids
+ [{:value "A",
+   :tag :second,
+   :tupelo.forest/kids
+   [{:tag :third,
+     :tupelo.forest/kids
+     [{:tag :fourth, :value "Hello A", :tupelo.forest/kids []}]}]}
+  {:value "B",
+   :tag :second,
+   :tupelo.forest/kids
+   [{:tag :third,
+     :tupelo.forest/kids
+     [{:tag :fourth, :value "Hello B", :tupelo.forest/kids []}]}]}]}
