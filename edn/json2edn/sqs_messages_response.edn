@@ -1,0 +1,20 @@
+{:Messages
+ [{:MessageId "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+   :ReceiptHandle "123",
+   :MD5OfBody "cafe0000cafe0000cafe0000cafe0000",
+   :Body
+   "{\"Records\": [{\"s3\": {\"object\": {\"key\": \"7307752/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/20200609125740-0123456789abcdef0123456789abcdef\",\"size\": 11805,\"eTag\": \"beef0000beef0000beef0000beef0000\",\"sequencer\": \"005EDF87444DDF7525\"}}}]}",
+   :Attributes
+   {:SenderId "321123",
+    :ApproximateFirstReceiveTimestamp "1591707477622",
+    :ApproximateReceiveCount "1",
+    :SentTimestamp "1591707468964"}}],
+ :ResponseMetadata
+ {:RequestId "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+  :HTTPStatusCode 200,
+  :HTTPHeaders
+  {:x-amzn-requestid "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+   :date "Tue, 09 Jun 2020 12:57:57 GMT",
+   :content-type "text/xml",
+   :content-length "22437"},
+  :RetryAttempts 0}}
