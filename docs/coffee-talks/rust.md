@@ -433,6 +433,48 @@ fn print_div_result(result: Result<i32, &'static str>) {
     }
 }
 
+fn inc(x: i32) -> i32 {
+    x + 1
+}
+
+fn main() {
+    let z0 = div(0, 1);
+    print_div_result(z0);
+    print_div_result(z0.map(inc));
+    let z2 = div(2, 0);
+    print_div_result(z2);
+    print_div_result(z2.map(inc));
+}
+```
+
+### Anonymous functions are values
+
+* First-class citizens in the Rust programming language
+
+```rust
+fn main() {
+    let is_odd = |x: i32| x & 1 == 1;
+    //let is_even = |x: i32| !is_odd(x);
+    let square = |x: i32| x*x;
+    for x in 0..10 {
+        println!("{}*{}={}, {} is {} number",
+                 x, x, square(x), x, if is_odd(x) {"odd"} else {"even"})
+    }
+}
+```
+
+### Anonymous functions are values (cont.)
+
+```rust
+fn main() {
+    let is_odd = |x: i32| x & 1 == 1;
+    //let is_even = |x: i32| !is_odd(x);
+    let square = |x: i32| x*x;
+    for x in 0..10 {
+        println!("{}*{}={}, {} is {} number",
+                 x, x, square(x), x, if is_odd(x) {"odd"} else {"even"})
+    }
+}
 ```
 
 ---
