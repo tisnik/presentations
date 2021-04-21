@@ -588,6 +588,83 @@ fn main() {
 
 ## Memory management
 
+* Stack versus heap
+* Box
+* Rc
+* Arc
+* Arrays and vectors
+    - slice
+
+### Box
+
+* Allocated on heap
+* „Envelop“ the object or value (number, structure, array, ...)
+* Trait Deref - it is possible to access the object/value
+* Liveness of objekct and pointer to it
+* Can not be `NULL`/`nil`
+
+```rust
+fn main() {
+    let x = Box::new(42);
+    println!("{}", x);
+}
+
+let c = Box::new(Complex::new(1.0, 2.0));
+
+// deref
+fn print_complex(c: Box<Complex>) {
+    println!("Complex number: {:}+{:}i", c.real, c.imag);
+}
+```
+
+### Rc
+
+* Reference-counted envelope
+* `Rc::clone()`
+* If counter==0, object can be deallocated
+* Automatic dereference (`Deref` trait)
+
+```rust
+fn main() {
+    println!("main begin");
+    let c = Rc::new(Complex::new(0.0, 0.0));
+    c.print();
+    {
+        println!("inner block begin");
+        let c2 = Rc::new(Complex::new(0.0, 0.0));
+        c2.print();
+        {
+            println!("inmost block begin");
+            let c3 = Rc::new(Complex::new(0.0, 0.0));
+            c3.print();
+            println!("inmost block end");
+        }
+        println!("inner block end");
+    }
+    println!("main end");
+}
+
+// one object that is shared three times
+fn main() {
+    println!("main begin");
+    let c = Rc::new(Complex::new(0.0, 0.0));
+    c.print();
+    {
+        println!("inner block begin");
+        let c2 = c.clone();
+        c2.print();
+        {
+            println!("inmost block begin");
+            let c3 = c.clone();
+            c3.print();
+            println!("inmost block end");
+        }
+        println!("inner block end");
+    }
+    println!("main end");
+}
+```
+
 ---
 
 ## Threads
