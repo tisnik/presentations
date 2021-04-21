@@ -481,6 +481,69 @@ fn main() {
 
 ## Other interesting parts of Rust
 
+* Immutable variables
+    - Initial condition for all values
+    - Possible to change them via `mut`
+* Range (`range`)
+* Control structures
+    - Return value!
+* Anonymous functions
+* Higher order functios
+    - `map`
+    - `filter`
+    - `take`
+    - `take_while`
+    - `fold`
+    - Infinite sequences
+* Pattern matching
+* Macros
+* Unsafe blocks
+
+### Factorial table
+
+* Anonymous functions
+* Higher order functions
+
+```rust
+fn main() {
+    for n in 1..10 {
+        let fact = (1..n + 1).fold(1, |prod, x| prod * x);
+        println!("{}! = {}", n, fact);
+    }
+}
+```
+
+### Infinite sequences
+
+```rust
+fn main() {
+    let iter1 = 1..;
+    let iter2 = iter1.filter(|x| x % 2 == 0);
+    let iter3 = iter2.take(10);
+    let suma  = iter3.fold(0, |sum, x| sum + x);
+    println!("sum = {}", suma);
+}
+```
+
+### Pattern matching
+
+* All possible paths needs to be covered by code
+    - it is checked by compiler, ie in compilation time
+
+```rust
+// matching (simplest variant)
+fn main() {
+    let x: i32 = 1;
+    match x {
+        0 => println!("zero"),
+        1 => println!("one"),
+        2 => println!("two"),
+        3 => println!("three"),
+        _ => println!("something else"),
+    }
+}
+```
+
 ---
 
 ## Object oriented programming in Rust
