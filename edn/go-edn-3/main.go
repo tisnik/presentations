@@ -29,11 +29,13 @@ func main() {
 	}
 
 	fmt.Println("users")
-	usersEDN, _ := edn.Marshal(users)
+	usersEDN, err := edn.Marshal(users)
 	fmt.Println(string(usersEDN))
+	fmt.Println(err)
 	fmt.Println()
 
-	usersPrettyEDN, _ := edn.MarshalPPrint(users, nil)
+	usersPrettyEDN, err := edn.MarshalPPrint(users, nil)
 	fmt.Println(string(usersPrettyEDN))
+	fmt.Println(err)
 	fmt.Println()
 }

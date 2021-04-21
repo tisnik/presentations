@@ -31,20 +31,24 @@ func main() {
 		"Vyskoč"}
 
 	fmt.Println("user1")
-	user1EDN, _ := edn.Marshal(user1)
+	user1EDN, err := edn.Marshal(user1)
 	fmt.Println(string(user1EDN))
-
+	fmt.Println(err)
 	fmt.Println()
-	user1PrettyEDN, _ := edn.MarshalPPrint(user1, nil)
+
+	user1PrettyEDN, err := edn.MarshalPPrint(user1, nil)
 	fmt.Println(string(user1PrettyEDN))
+	fmt.Println(err)
 	fmt.Println()
 
 	fmt.Println("user2")
-	user2EDN, _ := edn.Marshal(user2)
+	user2EDN, err := edn.Marshal(user2)
 	fmt.Println(string(user2EDN))
-
+	fmt.Println(err)
 	fmt.Println()
-	user2PrettyEDN, _ := edn.MarshalPPrint(user2, nil)
+
+	user2PrettyEDN, err := edn.MarshalPPrint(user2, nil)
 	fmt.Println(string(user2PrettyEDN))
+	fmt.Println(err)
 	fmt.Println()
 }
