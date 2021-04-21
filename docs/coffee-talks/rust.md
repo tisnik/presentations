@@ -544,9 +544,45 @@ fn main() {
 }
 ```
 
+### Pattern matching: slightly more complicated construction
+
+```rust
+// matching, more complicated
+fn classify(x:i32) -> &'static str {
+    match x {
+        0         => "zero",
+        1 | 2     => "one or two",
+        3 | 4 | 5 => "from three to five",
+        10 ... 20 => "from ten to twenty",
+        _         => "something else",
+    }
+}
+
+fn main() {
+    for x in 0..10 {
+        println!("{}:{}", x, classify(x))
+    }
+}
+```
+
 ---
 
 ## Object oriented programming in Rust
+
+* Object ownership
+    - Reference
+    - „move“ semantic
+    - „copy“ semantic
+* Traits
+    - Combination trait+structure+methods
+* Constructors and destructors
+    - Trait „Drop“
+    - Operator overloading
+        - Overloading = trait implementation
+* Generic functions
+* More info (in Czech)
+    - [Programovací jazyk Rust: metody a traity](https://www.root.cz/clanky/programovaci-jazyk-rust-metody-a-traity/)
+    - [Generické typy v programovacím jazyku Rust](https://www.root.cz/clanky/genericke-typy-v-programovacim-jazyku-rust/)
 
 ---
 
