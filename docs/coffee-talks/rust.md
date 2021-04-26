@@ -619,7 +619,7 @@ fn print_complex(c: Box<Complex>) {
 
 ### Rc
 
-* Reference-counted envelope
+* Reference-counted envelope over "real" object/value
 * `Rc::clone()`
 * If counter==0, object can be deallocated
 * Automatic dereference (`Deref` trait)
@@ -665,6 +665,28 @@ fn main() {
 }
 ```
 
+### Arc
+
+* Also based on reference counting, but thread-safe
+    - slower than Rc
+    - but it is possible to use object from multiple threads
+* `Arc::clone()`
+* `Deref` trait
+
+```rust
+fn start_threads() {
+    let c = Arc::new(Complex::new(1.0, 1.0));
+    for id in 0..10 {
+        let owner = ComplexNumberOwner { id: id, value: c.clone() };
+        // move semantic
+        // because object can live longer than current thread
+        thread::spawn(move || {
+                owner.print();
+                delay(400);
+        });
+    }
+}
+```
 ---
 
 ## Threads
