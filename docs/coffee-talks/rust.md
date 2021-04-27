@@ -687,6 +687,34 @@ fn start_threads() {
     }
 }
 ```
+
+### Arrays
+
+* Primitive type in Rust programming language
+* Two types of constructors
+* It is possible to figure out array length in runtime
+* Items are accessed via index/indexes
+* Indexing starts from zero
+    - like in C, Java, BASIC
+    - unlike in Fortran, Lua
+* „Array slices“
+    - very effective operation
+
+```rust
+fn main() {
+    let array = [10, 20, 30, 40];
+    // délka pole
+    println!("array has {} items", array.len());
+    // range + délka pole
+    for i in 0..array.len() {
+        println!("item #{} = {}", i + 1, array[i]);
+    }
+    // for-each
+    for i in array.iter() {
+        println!("{}", i);
+    }
+}
+```
 ---
 
 ## Threads
