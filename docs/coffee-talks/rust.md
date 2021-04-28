@@ -702,19 +702,73 @@ fn start_threads() {
 
 ```rust
 fn main() {
+    // first type of array constructor
     let array = [10, 20, 30, 40];
-    // délka pole
+
+    // array length in runtime
     println!("array has {} items", array.len());
-    // range + délka pole
+
+    // range construct + array length
     for i in 0..array.len() {
         println!("item #{} = {}", i + 1, array[i]);
     }
-    // for-each
+
+    // for-each loop over array
     for i in array.iter() {
         println!("{}", i);
     }
 }
 ```
+
+```rust
+fn main() {
+    // second type of array constructor
+    let array = [1; 10];
+
+    // array length in runtime
+    println!("array has {} items", array.len());
+
+    // range construct + array length
+    for i in 0..array.len() {
+        println!("item #{} = {}", i + 1, array[i]);
+    }
+
+    // for-each loop over array
+    for i in array.iter() {
+        println!("{}", i);
+    }
+}
+```
+
+### Vectors
+
+* Usually constructed using `vec!` macro
+
+```rust
+fn main() {
+    // vector construction using macro
+    let vector = vec![1, 2, 3, 4, 5];
+
+    // vector length in runtime
+    println!("vector has {} items", vector.len());
+
+    // range construct + vector length
+    for i in 0..vector.len() {
+        println!("item #{} = {}", i + 1, vector[i]);
+    }
+
+    // for-each loop over vector
+    for item in vector.iter() {
+        println!("{}", item);
+    }
+
+    // this is even shorter
+    for item in &vector {
+        println!("{}", item);
+    }
+}
+```
+
 ---
 
 ## Threads
