@@ -14,3 +14,25 @@ Série      Označení na čipu Technologie
 6582 A     6582 A           H-MOS
 8580 R5    8580R5           H-MOS
 
+## Poznámky k jednotlivým čipům
+
+6581     původní dostupná varianta, R1 se neprodávala            
+6581 R3  vyráběna do roku 1986, někdy též označena jako 6581 CBM 
+6581 R4  vyráběna v průběhu roku 1986                            
+6581 R4  vyráběna od konce roku 1986 do roku 1990                
+6582 A   vyráběna okolo roku 1992 (některé kusy i později)       
+8580R5   vyráběna v letech 1987 až 1992                          
+
+## Zapojení vývodů SIDu
+
+Podívejme se nyní na zapojení vývodů čipu SID:
+
+Obrázek 1
+
+Zde můžeme vidět, že se jedná o poměrně malý integrovaný obvod s 28 piny, na rozdíl od "konkurenčního" čtyřicetipinového čipu POKEY, jenž měl poměrně velké množství pinů určených pro připojení klávesnice a pro další "neakustické" účely. Část pinů čipu SID je digitální (dvoustavová), například část určená pro připojení k adresové a datové sběrnici (úrovně odpovídají technologii N-MOS a H-MOS), další piny jsou analogové – vstup zvuku, výstup zvuku, připojení kondenzátorů pro filtry atd. Navíc SID vyžaduje dvoje napájecí napětí – standardních 5 V a poměrně nestandardních 9 V pro analogovou část (novější verze mají toto napětí snížené, takže čip vyzařuje méně tepla).
+
+## Vývoj zvukového čipu SID
+
+## Bloková struktura čipu SID
+
+## Generování akustických signálů
