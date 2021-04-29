@@ -769,9 +769,74 @@ fn main() {
 }
 ```
 
+### „Slice“ from array
+
+```rust
+fn main() {
+    // array constructor
+    let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    // slice constructor
+    let array2 = &array[2..6];
+
+    // iteration over slice
+    for i in array2.iter() {
+        println!("{}", i);
+    }
+}
+```
+
+```rust
+fn main() {
+    // array constructor
+    let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    // slice constructor
+    let array2 = &array[5..];
+
+    // iteration over slice
+    for i in array2.iter() {
+        println!("{}", i);
+    }
+}
+```
+
+### „Slice“ from vector
+
+
+```rust
+fn main() {
+    // vector constructor
+    let vector = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    println!("vector has {} items", vector.len());
+
+    // slice constructor
+    let slice = &vector[3..7];
+    println!("slice has {} items", slice.len());
+}
+```
 ---
 
 ## Threads
+
+* It is required to be able to work with threads
+    - especially on current hardware
+
+![images/Amdahl.png](images/Amdahl.png)
+
+```rust
+use std::thread;
+
+fn main() {
+    println!("Starting");
+    for i in 1..10 {
+        thread::spawn(move || {
+            println!("Hello from a thread #{}", i);
+        });
+    }
+    println!("Stopping");
+}
+```
 
 ---
 
