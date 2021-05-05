@@ -842,13 +842,61 @@ fn main() {
 
 ## Testing
 
+* Applications and services are getting more and more complicated
+* CI/CD
+* Main problems
+
+### A classic test pyramid
+
+* Business part
+    - Beta tests
+    - Alpha tests
+    - Acceptance tests
+* Technology part
+    - UI tests
+    - API tests
+    - Integration tests
+    - Component tests
+    - Unit tests
+* Other tests and related technologies
+    - Benchmarks
+
+### Unit tests in Rust programming language
+
+* Usually started via command `cargo test`
+
+```rust
+#[test]
+fn ok_test() {
+}
+
+#[test]
+fn failure() {
+    assert!(false);
+}
+```
+
+### Other tests in Rust
+
+* `mockiato` - mocking
+* `mockito` - HTTP mocking
+* `rust-fuzz/afl.rs ` - fuzzer based on the great AFL tool
+
 ---
 
 ## Package manager (Cargo)
 
+![images/cargo.png](images/cargo.png)
+
+### Cargo operations
+
 ---
 
 ## Selected useful packages
+
+### Some statistic for this week
+
+* [https://crates.io/](https://crates.io/)
 
 ---
 
