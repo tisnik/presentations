@@ -25,6 +25,12 @@ Série      Označení na čipu Technologie
 6582 A   vyráběna okolo roku 1992 (některé kusy i později)       
 8580R5   vyráběna v letech 1987 až 1992                          
 
+## Vývoj zvukového čipu SID
+
+Vývoj zvukového čipu SID vedl Robert "Bob" Yannes, který později založil firmu Ensoniq vyrábějící zvukové syntetizéry i zvukové karty určené pro profesionální a poloprofesionální použití. Vzhledem ke značně krátkému termínu, kdy měl být čip SID dokončený, došlo k poměrně nepříjemné věci známé například i ze softwarového vývoje – tvorba dokumentace k finální verzi čipu se odložila a ve skutečnosti nebyla nikdy ve své úplnosti dopsána. To vedlo k zajímavému paradoxu – zvukový čip sice pracoval (a to velmi dobře, zejména když vezmeme v úvahu jeho minimalistický hardware poplatný době vzniku a technologickým možnostem), ale existující dokumentace (platná pro vývojové verze) neodpovídala finálnímu výrobku, což pro mnoho lidí znamenalo určitou formu dobrodružství při hledání všech možností, které tento čip pro tvorbu hudby poskytoval.
+
+SID se nicméně i přes tento malý handicap rozšířil, v neposlední řadě i díky úspěchu osmibitového domácího mikropočítače Commodore C64, kterého se prodalo několik desítek milionů kusů. Časopis Byte dokonce SID zařadil mezi dvacet nejdůležitějších čipů v historii počítačů. Unikátní zvukové možnosti SIDu jsou dodnes využívány v některých syntetizérech, především v SIDStation. Dále je SID použit v HardSIDu a MSSIAH, s velkou pravděpodobností pak ještě v dalších podobně koncipovaných zvukových zařízeních.
+
 ## Zapojení vývodů SIDu
 
 Podívejme se nyní na zapojení vývodů čipu SID:
