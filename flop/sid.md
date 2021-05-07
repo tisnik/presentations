@@ -37,10 +37,13 @@ Podívejme se nyní na zapojení vývodů čipu SID:
 
 Obrázek 1
 
-Zde můžeme vidět, že se jedná o poměrně malý integrovaný obvod s 28 piny, na rozdíl od "konkurenčního" čtyřicetipinového čipu POKEY, jenž měl poměrně velké množství pinů určených pro připojení klávesnice, sériové sběrnice a pro další veskrze "neakustické" účely. Část pinů čipu SID je digitální (dvoustavová), například část určená pro připojení k adresové a datové sběrnici (úrovně odpovídají technologii N-MOS a H-MOS), další piny jsou analogové – vstup zvuku, výstup zvuku, připojení kondenzátorů pro filtry atd. Navíc SID vyžaduje dvoje napájecí napětí – standardních 5 V a poměrně nestandardních 9 V pro analogovou část (novější verze mají toto napětí snížené, takže čip vyzařuje méně tepla).
-
-## Vývoj zvukového čipu SID
+Na tomto zapojení můžeme vidět, že se jedná o poměrně malý integrovaný obvod s 28 piny, na rozdíl od "konkurenčního" čtyřicetipinového čipu POKEY (Atari), jenž měl poměrně velké množství pinů určených pro připojení klávesnice, sériové sběrnice a pro další veskrze "neakustické" účely. Část pinů čipu SID je digitální (dvoustavová), například část určená pro připojení k adresové a datové sběrnici (úrovně odpovídají technologii N-MOS a H-MOS). Další piny jsou ovšem analogové – vstup zvuku, výstup zvuku, připojení kondenzátorů pro filtry atd. Navíc SID vyžaduje dvoje napájecí napětí, a to konkrétně standardních 5 V a navíc i poměrně nestandardních 9 V pro analogovou část (novější verze mají toto napětí snížené, takže čip vyzařuje méně tepla, nehledě na jednodušší zapojení celého počítače či zvukového zařízení).
 
 ## Bloková struktura čipu SID
 
-## Generování akustických signálů
+Na druhém obrázku je zobrazena bloková struktura zvukového čipu SID. Z tohoto obrázku je patrné, že existuje více navzájem propojených bloků, ve kterých se zvuky vytváří a modifikují. Některé bloky jsou sestaveny z digitálních prvků, další bloky jsou čistě analogové, což přispívá k unikátnímu (a mnohdy i snadno rozpoznatelnému) zvuku.
+
+Obrázek 2
+
+## Stručný popis celého zvukového řetězce
+
