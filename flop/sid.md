@@ -47,3 +47,7 @@ Obrázek 2
 
 ## Stručný popis celého zvukového řetězce
 
+Základ celého řetězce, ve kterém zvuk vzniká, tvoří tři generátory periodického signálu, jehož tvar může být obdélníkový s nastavitelnou střídou, trojúhelníkový či pilový (SID nedokáže automaticky vygenerovat sinusovku, podobně jako mnoho dalších zvukových čipů osmibitové éry, na druhou stranu je tón generovaný sinusovkou plochý, tedy i bez vyšších harmonických). Tón, resp. přesněji řečeno periodický signál, který vychází z generátoru, je upraven v amplitudovém modulátoru, jenž dokáže amplitudu měnit na základě obálky specifikované čtveřicí hodnot známých pod souhrnným označením ADSR, neboli attack, decay, sustain a release. Před vstupem signálu do amplitudového modulátoru lze dva vybrané zvukové signály podrobit kruhové modulaci (ring modulation), jejíž použití taktéž vede k vytvoření unikátních a pro SID typických zvuků.
+
+## Koncová analogová část - filtrace
+
