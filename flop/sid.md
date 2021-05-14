@@ -51,3 +51,10 @@ Základ celého řetězce, ve kterém zvuk vzniká, tvoří tři generátory per
 
 ## Koncová analogová část - filtrace
 
+Signál, který vznikne po aplikaci kruhové modulace a modulace amplitudové, může být buď přímo zesílen a poslán na výstup (taktéž k němu lze přičíst externí signál, například z dalšího SIDu, fajnšmekři dokonce mohou zkombinovat SID a POKEY nebo SID a AY-8910), nebo může být dále zpracován v bloku analogových filtrů. Podle aktuální konfigurace čipu lze použít filtr typu dolní propust, horní propust či pásmová propust.
+
+Konkrétní rozsahy frekvencí pro zmíněné filtry jsou určeny kapacitou kondenzátorů připojených k čipu SID (vstupy CAP1A, CAP1B, CAP2A a CAP2B, používají se kondenzátory s přibližnou kapacitou 6,8 nF) a nastavením 11bitové hodnoty do dvojice řídicích registrů.
+
+## Řídicí registry
+
+Zvukový čip SID je možné ovládat s využitím 29 osmibitových registrů, které jsou rozděleny do pěti skupin. První skupina sedmi registrů slouží pro ovládání zvukového kanálu číslo 1, druhá skupina sedmi registrů k ovládání kanálu číslo 2, třetí skupina taktéž sedmi registrů je (překvapivě) rezervována pro kanál číslo 3, čtvrtá skupina, jež obsahuje čtyři registry, ovládá filtry zapojené v koncovém stupni řetězce zpracování zvuku a konečně pátá skupina, jež taktéž obsahuje čtyři osmibitové registry, je určena pro čtení některých údajů z čipu SID (jedná se o jedinou skupinu registrů, které je možné číst, do ostatních 25 registrů lze data pouze zapisovat).
