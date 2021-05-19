@@ -58,3 +58,7 @@ Konkrétní rozsahy frekvencí pro zmíněné filtry jsou určeny kapacitou kond
 ## Řídicí registry
 
 Zvukový čip SID je možné ovládat s využitím 29 osmibitových registrů, které jsou rozděleny do pěti skupin. První skupina sedmi registrů slouží pro ovládání zvukového kanálu číslo 1, druhá skupina sedmi registrů k ovládání kanálu číslo 2, třetí skupina taktéž sedmi registrů je (překvapivě) rezervována pro kanál číslo 3, čtvrtá skupina, jež obsahuje čtyři registry, ovládá filtry zapojené v koncovém stupni řetězce zpracování zvuku a konečně pátá skupina, jež taktéž obsahuje čtyři osmibitové registry, je určena pro čtení některých údajů z čipu SID (jedná se o jedinou skupinu registrů, které je možné číst, do ostatních 25 registrů lze data pouze zapisovat).
+
+## Generátory signálů
+
+Generátory signálů tvoří první část celého řetězce vytvářejícího zvuk. Čip SID může pro každý zvukový kanál produkovat periodické signály tří typů (obdélníkový, trojúhelníkový, pilový), popř. lze použít zdroj šumu (noise), který se v praxi využívá, podobně jako v případě minule popsaného zvukového čipu POKEY, například na napodobení zvuku perkusních nástrojů (některé hudební skladby však místo toho využívají zdigitalizované vzorky skutečných perkusních nástrojů).
