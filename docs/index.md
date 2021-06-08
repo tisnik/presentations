@@ -54,6 +54,7 @@ layout: default
 * [BDD](coffee-talks/bdd.md)
 * [Floating Point Arithmetic](coffee-talks/fp.md)
 * [Rust programming language](coffee-talks/rust.md)
+* [SchemaSpy](coffee-talks/schemaspy.md)
 
 ### Ostatní
 * [Jazyk Python - tvorba testů s využitím knihovny Behave ](other/BDD_cz.md)
