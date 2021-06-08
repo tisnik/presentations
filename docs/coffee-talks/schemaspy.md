@@ -5,8 +5,8 @@ documentation for existing database as a collection of interlinked HTML pages
 
 ## Installation
 
-1. Download SchemaSpy Java archive from https://github.com/schemaspy/schemaspy/releases/tag/v6.1.0
-1. Download JDBC driver for PostgreSQL from https://jdbc.postgresql.org/download.html
+1. Download SchemaSpy Java archive from [https://github.com/schemaspy/schemaspy/releases/tag/v6.1.0](https://github.com/schemaspy/schemaspy/releases/tag/v6.1.0)
+1. Download JDBC driver for PostgreSQL from [https://jdbc.postgresql.org/download.html](https://jdbc.postgresql.org/download.html)
 
 Both Java archives (JARs) needs to be stored in the same directory!
 
@@ -89,7 +89,7 @@ Results can be seen [here](./schemaspy/db3/index.html)
 
 ## Useful links
 
-* SchemaSpy home page: http://schemaspy.org/ 
-* SchemaSpy on PostgreSQL wiki: https://wiki.postgresql.org/wiki/SchemaSpy
-* SchemaSpy download page: https://github.com/schemaspy/schemaspy/releases/tag/v6.1.0
-* JDBC driver for PostgreSQL: https://jdbc.postgresql.org/download.html
+* SchemaSpy home page: [http://schemaspy.org/](http://schemaspy.org/)
+* SchemaSpy on PostgreSQL wiki: [https://wiki.postgresql.org/wiki/SchemaSpy](https://wiki.postgresql.org/wiki/SchemaSpy)
+* SchemaSpy download page: [https://github.com/schemaspy/schemaspy/releases/tag/v6.1.0](https://github.com/schemaspy/schemaspy/releases/tag/v6.1.0)
+* JDBC driver for PostgreSQL: [https://jdbc.postgresql.org/download.html](https://jdbc.postgresql.org/download.html)
