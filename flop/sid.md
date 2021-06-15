@@ -62,3 +62,18 @@ Zvukový čip SID je možné ovládat s využitím 29 osmibitových registrů, k
 ## Generátory signálů
 
 Generátory signálů tvoří první část celého řetězce vytvářejícího zvuk. Čip SID může pro každý zvukový kanál produkovat periodické signály tří typů (obdélníkový, trojúhelníkový, pilový), popř. lze použít zdroj šumu (noise), který se v praxi využívá, podobně jako v případě minule popsaného zvukového čipu POKEY, například na napodobení zvuku perkusních nástrojů (některé hudební skladby však místo toho využívají zdigitalizované vzorky skutečných perkusních nástrojů).
+
+Frekvence těchto signálů je odvozena od frekvence hodin (hodinový signál je přiváděn na pin fi2) a šestnáctibitového čísla ukládaného do dvojice řídicích registrů – každý zvukový kanál samozřejmě může mít nastavenou odlišnou frekvenci. Při použití hodinového signálu s frekvencí 1 MHz (přibližně tato frekvence je použita i u osmibitových domácích počítačů Commodore) je rozsah generovaných tónů roven téměř osmi oktávám s velmi malým krokem, který umožňuje plynule přecházet od jedné noty k notě druhé (portamento). V rozsahu zmíněných osmi oktáv lze pro každý zvukový kanál zvolit jeden ze 65536 různých tónů (2^16=65536).
+
+## Střída obdélníkového signálu
+
+## Tvarování obálky
+
+## Řízení doby sustain i amplitudy obálky
+
+## Přehrávání samplů
+
+## Bit GATE ve chvíli fází ATTACK a RELEASE
+
+## Další části řetězce zpracování zvuku
+
