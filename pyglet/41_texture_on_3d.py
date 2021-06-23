@@ -137,7 +137,6 @@ def set_depth_buffer(depthBufferEnabled):
         glDisable(GL_DEPTH_TEST)
 
 
-
 def clear_buffers(depthBufferEnabled):
     if depthBufferEnabled:
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)  # vymazani i Z/W bufferu
