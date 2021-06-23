@@ -105,7 +105,7 @@ def draw_roof():
  
     glColor3f(1.0, 0.0, 1.0)
     glTexCoord2f(0.0, 0.0)
-    glVertex3f( 5.0,  5.0, -5.0)
+    glVertex3f(5.0,  5.0, -5.0)
     glTexCoord2f(0.7, 0.0)
     glVertex3f( 5.0,  5.0,  5.0)
     glTexCoord2f(0.7, 0.7)
