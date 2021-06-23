@@ -129,7 +129,6 @@ def draw_roof():
     glEnd()
 
 
-
 def set_depth_buffer(depthBufferEnabled):
     if depthBufferEnabled:
         glEnable(GL_DEPTH_TEST)
