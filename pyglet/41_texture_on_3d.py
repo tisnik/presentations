@@ -165,7 +165,6 @@ def on_draw():
     if keys[key.T]:
         texturesEnabled = not texturesEnabled
 
-
     clear_buffers(depthBufferEnabled)
     set_depth_buffer(depthBufferEnabled)
 
