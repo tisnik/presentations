@@ -196,3 +196,60 @@ public class Main {
 
 (example of **jconsole** usage)
 
+## JMX Exporter
+
+* Tool to provide metrics via Prometheus-like HTTP responses
+* Used as `agent` for JVM
+
+* Setup
+
+```bash
+wget https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.15.0/jmx_prometheus_javaagent-0.15.0.jar
+touch config.yaml
+```
+* Usage
+
+```bash
+java -javaagent:./jmx_prometheus_javaagent-0.15.0.jar=8080:config.yaml Main
+```
+
+* Getting metrics
+
+```bash
+curl localhost:8080/metrics
+```
+
+### JMX Exporter setup for Kafka broker
+
+```bash
+if [ $# -lt 1 ];
+then
+    echo "USAGE: $0 [-daemon] server.properties [--override property=value]*"
+    exit 1
+fi
+base_dir=$(dirname $0)
+ 
+if [ "x$KAFKA_LOG4J_OPTS" = "x" ]; then
+    export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:$base_dir/../config/log4j.properties"
+fi
+ 
+if [ "x$KAFKA_HEAP_OPTS" = "x" ]; then
+    export KAFKA_HEAP_OPTS="-Xmx1G -Xms1G"
+fi
+ 
+EXTRA_ARGS=${EXTRA_ARGS-'-name kafkaServer -loggc'}
+ 
+COMMAND=$1
+case $COMMAND in
+  -daemon)
+    EXTRA_ARGS="-daemon "$EXTRA_ARGS
+    shift
+    ;;
+  *)
+    ;;
+esac
+ 
+export KAFKA_OPTS=' -javaagent:jmx_prometheus_javaagent-0.15.0.jar=9999:./config/kafka-2_0_0.yml'
+ 
+exec $base_dir/kafka-run-class.sh $EXTRA_ARGS kafka.Kafka "$@"
+```
