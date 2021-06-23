@@ -12,7 +12,6 @@ image = pyglet.image.load('gnome-globe.png', file=image_stream)
 texture = image.get_texture()
 
 
-
 def init():
     glClearColor(0.0, 0.0, 0.3, 0.0)          # barva pozadi obrazku
     glPolygonMode(GL_FRONT, GL_FILL)          # nastaveni rezimu vykresleni modelu
