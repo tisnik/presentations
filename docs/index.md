@@ -55,6 +55,7 @@ layout: default
 * [Floating Point Arithmetic](coffee-talks/fp.md)
 * [Rust programming language](coffee-talks/rust.md)
 * [SchemaSpy](coffee-talks/schemaspy.md)
+* [Monitoring Kafka](coffee-talks/kafka_monitoring.md)
 
 ### Ostatní
 * [Jazyk Python - tvorba testů s využitím knihovny Behave ](other/BDD_cz.md)
