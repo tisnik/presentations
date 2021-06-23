@@ -197,4 +197,3 @@ pyglet.app.run()
 
 
 #    glTexCoord2f(0.4, 0.4)
-
