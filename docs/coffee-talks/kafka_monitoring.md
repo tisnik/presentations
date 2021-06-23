@@ -73,7 +73,7 @@ public class Status implements StatusMBean {
 
 * MBean export:
 
-```
+```java
 import java.util.Scanner;
 
 import javax.management.*;
@@ -252,4 +252,70 @@ esac
 export KAFKA_OPTS=' -javaagent:jmx_prometheus_javaagent-0.15.0.jar=9999:./config/kafka-2_0_0.yml'
  
 exec $base_dir/kafka-run-class.sh $EXTRA_ARGS kafka.Kafka "$@"
+```
+
+## Kafka metrics
+
+- Kafka server (broker) metrics
+- Producer metrics
+- Consumer metrics
+- ZooKeeper metrics
+- JVM-related metrics
+
+### Kafka server (broker) metrics
+
+```
+UnderReplicatedPartitions         kafka.server:type=ReplicaManager,name=UnderReplicatedPartitions
+IsrShrinksPerSec/IsrExpandsPerSec kafka.server:type=ReplicaManager,name=IsrShrinksPerSec
+ActiveControllerCount             kafka.controller:type=KafkaController,name=ActiveControllerCount
+OfflinePartitionsCount            kafka.controller:type=KafkaController,name=OfflinePartitionsCount
+LeaderElectionRateAndTimeMs       kafka.controller:type=ControllerStats,name=LeaderElectionRateAndTimeMs
+UncleanLeaderElectionsPerSec      kafka.controller:type=ControllerStats,name=UncleanLeaderElectionsPerSec
+TotalTimeMs                       kafka.network:type=RequestMetrics,name=TotalTimeMs
+PurgatorySize                     kafka.server:type=DelayedOperationPurgatory,name=PurgatorySize
+BytesInPerSec/BytesOutPerSec      kafka.server:type=BrokerTopicMetrics,name={BytesInPerSec|BytesOutPerSec}
+RequestsPerSecond                 kafka.network:type=RequestMetrics,name=RequestsPerSec
+```
+
+### Producer metrics
+
+```
+compression-rate-avg    kafka.producer:type=producer-metrics,client-id=([-.w]+)
+response-rate           kafka.producer:type=producer-metrics,client-id=([-.w]+)
+request-rate            kafka.producer:type=producer-metrics,client-id=([-.w]+)
+request-latency-avg     kafka.producer:type=producer-metrics,client-id=([-.w]+)
+outgoing-byte-rate      kafka.producer:type=producer-metrics,client-id=([-.w]+)
+io-wait-time-ns-avg     kafka.producer:type=producer-metrics,client-id=([-.w]+)
+batch-size-avg          kafka.producer:type=producer-metrics,client-id=([-.w]+)
+```
+
+### Consumer metrics
+
+```
+records-lag             kafka.consumer:type=consumer-fetch-manager-metrics,client-id=([-.w]+),topic=([-.w]+),partition=([-.w]+)
+records-lag-max         kafka.consumer:type=consumer-fetch-manager-metrics,client-id=([-.w]+),topic=([-.w]+),partition=([-.w]+)
+                        kafka.consumer:type=consumer-fetch-manager-metrics,client-id=([-.w]+)
+bytes-consumed-rate     kafka.consumer:type=consumer-fetch-manager-metrics,client-id=([-.w]+),topic=([-.w]+)
+                        kafka.consumer:type=consumer-fetch-manager-metrics,client-id=([-.w]+)
+records-consumed-rate   kafka.consumer:type=consumer-fetch-manager-metrics,client-id=([-.w]+),topic=([-.w]+)
+                        kafka.consumer:type=consumer-fetch-manager-metrics,client-id=([-.w]+)
+fetch-rate              kafka.consumer:type=consumer-fetch-manager-metrics,client_id=([-.w]+)
+```
+
+### ZooKeeper metrics
+
+```
+outstanding_requests        Number of requests queued
+avg_latency                 Amount of time it takes to respond to a client
+num_alive_connections       Number of clients connected to ZooKeeper
+followers                   Number of active followers
+pending_syncs               Number of pending syncs from followers
+open_file_descriptor_count  Number of file descriptors in use
+```
+
+### JVM-related metrics
+
+```
+CollectionCount	            java.lang:type=GarbageCollector,name=G1 (Young|Old) Generation
+CollectionTime	            java.lang:type=GarbageCollector,name=G1 (Young|Old) Generation
 ```
