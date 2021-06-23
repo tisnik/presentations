@@ -30,6 +30,8 @@
 
 ### Simple example of custom MBeans
 
+* MBean definition via interface named `xxxMBean`:
+
 ```java
 public interface StatusMBean {
     Integer getAnswer();
@@ -37,6 +39,8 @@ public interface StatusMBean {
     Boolean getSwitchStatus();
 }
 ```
+
+* Interface implementation:
 
 ```java
 public class Status implements StatusMBean {
@@ -67,6 +71,8 @@ public class Status implements StatusMBean {
 }
 ```
 
+* MBean export:
+
 ```
 import java.util.Scanner;
 
@@ -91,6 +97,25 @@ public class Main {
        new Scanner(System.in).nextLine();
    }
 }
+```
+
+(example of **jconsole** usage)
+
+### JMX can be used to *control* applications as well
+
+* MBean definition via interface named `xxxMBean`:
+
+```java
+```
+
+* Interface implementation:
+
+```java
+```
+
+* MBean export:
+
+```java
 ```
 
 (example of **jconsole** usage)
