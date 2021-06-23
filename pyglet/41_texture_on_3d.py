@@ -26,7 +26,6 @@ keys = key.KeyStateHandler()
 window.push_handlers(keys)
 
 
-
 def init():
     glClearColor(0.0, 0.0, 0.3, 0.0)          # barva pozadi obrazku
     glPolygonMode(GL_FRONT, GL_FILL)          # nastaveni rezimu vykresleni modelu
