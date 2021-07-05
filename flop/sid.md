@@ -67,6 +67,10 @@ Frekvence těchto signálů je odvozena od frekvence hodin (hodinový signál je
 
 ## Střída obdélníkového signálu
 
+Obdélníkový signál, který obsahuje největší podíl vyšších harmonických (nejméně jich má signál trojúhelníkový, jehož tvar je nejvíce "podobný" sinusovce), je zvláštní tím, že je u něj možné volit jeho střídu, tj. poměr mezi dobou trvání nízké a vysoké úrovně. Střída neovlivňuje základní frekvenci signálu ale spektrální charakteristiku vyšších harmonických. V případě SIDu se střída nastavuje v rozsahu 0 až 100% pomocí dvanáctibitového čísla uloženého do dvojice řídicích osmibitových registrů (vyšší čtyři bity druhého registru zůstávají nevyužity).
+
+Při nastavení hodnoty 2047 se generuje obdélníkový signál se střídou 1:1, naopak nejvyšší hodnota (4095) vede k tomu, že z generátoru signálu vychází pouze stejnosměrná složka (DC). Ta sama o sobě samozřejmě není slyšitelná, lze ji však přesto využít, například pro sampling nebo pro netradiční generování tónů pouze pomocí změny tvaru obálky (viz další kapitoly). Střídu je možné měnit velmi rychle, čehož se někdy využívá například ve hrách pro napodobení zvuků některých zbraní.
+
 ## Tvarování obálky
 
 ## Řízení doby sustain i amplitudy obálky
