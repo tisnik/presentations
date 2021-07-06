@@ -1,4 +1,4 @@
-## Digital Signal Processors
+# Digital Signal Processors
 
 * General-purpose CPU versus specialized processing units
 * Why?
