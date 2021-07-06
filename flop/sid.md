@@ -73,6 +73,14 @@ Při nastavení hodnoty 2047 se generuje obdélníkový signál se střídou 1:1
 
 ## Tvarování obálky
 
+Důležitou součást řetězce generujícího zvuk tvoří dva bloky, pomocí nichž je možné tvarovat takzvanou obálku. Obálkou se řídí amplituda signálu na výstupu z bloku označeného Amplitude Modulator. Do tohoto bloku vstupují dva signály – první signál je vytvářený ve výše popsaných generátorech signálů, tj. jedná se buď o periodický obdélníkový, trojúhelníkový či pilový signál, popř. šum. Druhý signál představuje vlastní obálka. Tento signál není obecně periodický (je "spouštěný" programově a jeho střední část označená symbolem S může být libovolně dlouhá) a při porovnání s periodou prvního signálu bývá i mnohem delší, řádově v desítkách milisekund až jednotkách sekund.
+
+S využitím  obálky je možné zvukový signál upravit tak, aby se do značné míry podobal tónu reálného hudebního nástroje, což je i jeden z důvodů, proč se obálky stejného typu (nazývané ADSR – důvod je uveden v dalším odstavci) používají i v mnoha hudebních syntetizérech a některých dalších zvukových čipech (z těch známějších se jedná o OPL-2/Yamaha YM 3812 a OPL-3/Yamaha YMF 262).
+
+Základní tvar obálky je určen čtveřicí parametrů – attack (doba či strmost náběhu první hrany), decay (doba či strmost druhé – klesající/sestupné – hrany), sustain (stabilní úroveň signálu obálky po prvotním vzrůstu a poklesu, většinou vyjadřovaná v procentech amplitudy) a release (doba či strmost poslední – klesající – hrany). Pro každý z těchto parametrů je v řídicích registrech zvukového čipu SID vyhrazena čtveřice bitů.
+
+Čtyřbitová hodnota parametru attack určuje dobu náběhu v rozsahu 2 ms až 8 sekund (předpokládá se, že na vstup hodin fi2 je připojen hodinový signál s frekvencí 1 MHz; v případě odlišné frekvence se pochopitelně budou lišit i uvedené časy). Hodnoty parametrů decay a release určují dobu trvání sestupných hran v rozsahu 6 ms až 24 sekund, tj. sice se u nich též používá pouze čtyřbitová hodnota, ale všechny časy jsou třikrát delší. Hodnota parametru sustain představuje zlomek amplitudy v rozsahu 0/15 (tj. ticho – na výstupu z bloku Amplitude Modulator je stále signál s nulovou amplitudou) až 15/15 (odpovídá 100%).
+
 ## Řízení doby sustain i amplitudy obálky
 
 ## Přehrávání samplů
