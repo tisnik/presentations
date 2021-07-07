@@ -1,4 +1,4 @@
-## Garbage collectors
+# Garbage collectors
 
 ### Reference counting garbage collectors
 
