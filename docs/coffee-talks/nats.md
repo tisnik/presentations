@@ -81,16 +81,78 @@ PONG 	client and server
 -ERR 	server
 ```
 
+## Communicating with NATS
+
+### The simplest producer
+
+```go
+package main
+ 
+import nats "github.com/nats-io/go-nats"
+ 
+const Subject = "test1"
+ 
+func main() {
+        conn, _ := nats.Connect(nats.DefaultURL)
+ 
+        conn.Publish(Subject, []byte("Hello World"))
+ 
+        conn.Flush()
+}
+```
+
+### The simplest consumer
+
+```go
+package main
+ 
+import (
+        "fmt"
+        "sync"
+
+        nats "github.com/nats-io/go-nats"
+)
+ 
+const Subject = "test1"
+ 
+func main() {
+        conn, _ := nats.Connect(nats.DefaultURL)
+ 
+        wg := sync.WaitGroup{}
+        wg.Add(1)
+ 
+        conn.Subscribe(Subject, func(m *nats.Msg) {
+                fmt.Printf("Received a message: %s\n", string(m.Data))
+                wg.Done()
+        })
+        wg.Wait()
+}
+```
+
 ## NATS Streaming Server
+
+* Extension to the standard message broker
+    - message persistence (optional)
+    - ensure message delivery for producer (optional)
+    - ensure message delivery for consumer (optional)
+    - configurable publisher rate limit
+    - configurable rate limiting per subscriber
+    - messages are replayable
+
+* NATS Streaming support
+    1. C
+    1. C#
+    1. Go
+    1. Java
+    1. Node.js
+    1. Python Asyncio
+    1. Ruby
 
 ## Links
 
 ### Czech articles about NATS
-Komunikace s message brokery z programovacího jazyka Go
-https://www.root.cz/clanky/komunikace-s-message-brokery-z-programovaciho-jazyka-go/#k15
 
-Použití message brokeru NATS
-https://www.root.cz/clanky/pouziti-message-brokeru-nats/
+* [Komunikace s message brokery z programovacího jazyka Go](https://www.root.cz/clanky/komunikace-s-message-brokery-z-programovaciho-jazyka-go/#k15)
+* [Použití message brokeru NATS](https://www.root.cz/clanky/pouziti-message-brokeru-nats/)
+* [NATS Streaming Server](https://www.root.cz/clanky/nats-streaming-server/)
 
-NATS Streaming Server
-https://www.root.cz/clanky/nats-streaming-server/
