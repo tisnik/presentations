@@ -1,4 +1,4 @@
-## Floating Point Arithmetic
+# Floating Point Arithmetic
 
 * Numbers represented in a form:
 
