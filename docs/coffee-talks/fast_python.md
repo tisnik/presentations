@@ -1,4 +1,4 @@
-## Fast Python?
+# Fast Python?
 
 [https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/python3-gcc.html](https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/python3-gcc.html)
 
