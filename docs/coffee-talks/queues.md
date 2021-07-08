@@ -1,4 +1,4 @@
-## Message brokers
+# Message brokers
 
 ### Message brokers and message queues
 
