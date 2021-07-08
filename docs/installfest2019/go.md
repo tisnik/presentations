@@ -3,6 +3,7 @@
 * Autor    Pavel Tišnovský, Red Hat
 * Email    <ptisnovs 0x40 redhat 0x2e com>
 * Datum    2019-03-01
+* Prezentace:
     - [https://tisnik.github.io/presentations/installfest2019/go.html](https://tisnik.github.io/presentations/installfest2019/go.html)
 * Zdrojový kód prezentace:
     - [https://github.com/tisnik/presentations/blob/master/installfest2019/Go/go.txt](https://github.com/tisnik/presentations/blob/master/installfest2019/Go/go.txt)
@@ -59,28 +60,28 @@
 * Cíle
     - Jednoduchost, jednoznačnost
     - Jazyk postaven na jednoduchých a známých konceptech
-        ⇒ Lze začít programovat po doslova několikaminutovém tutoriálu
-        ⇒ Ovšem pokročilejší vlastnosti je potřeba nastudovat
+        - Lze začít programovat po doslova několikaminutovém tutoriálu
+        - Ovšem pokročilejší vlastnosti je potřeba nastudovat
     - Bezpečné aplikace
     - Mikroslužby
     - Skripty a nástroje pro DevOps od DevOps
     - Jazyk původně pro potřeby Googlu:
-        ⇒ spíše pro mladší vývojáře
-          (C/C++, Java, Python ve škole)
+        - spíše pro mladší vývojáře
+        - (C/C++, Java, Python ve škole)
     - Použití pro rozsáhlejší aplikace psané velkým týmem
     - Paralelní běh částí aplikace
-        ⇒ komunikace mezi paralelně běžícími částmi
+        - komunikace mezi paralelně běžícími částmi
     - Rozumný výpočetní výkon
-        ⇒ cílem je dosáhnout výkonnosti C/C++/Fortranu
+        - cílem je dosáhnout výkonnosti C/C++/Fortranu
     - Rychlý překlad
-        ⇒ CI/CD
-        ⇒ lokální vývoj i rozsáhlých systémů
+        - CI/CD
+        - lokální vývoj i rozsáhlých systémů
 
 ## Charakteristické rysy jazyka Go (2)
 
-× Poučení z chyb, které najdeme například v C/C++
+* Poučení z chyb, které najdeme například v C/C++
     - Silný typový systém
-        ⇒ explicitní konverze
+        - explicitní konverze
     - Nepoužívají se makra založená na textové substituci
     - Nepoužívají se hlavičkové soubory
     - Systém balíčků, kontrola použití balíčků
@@ -89,7 +90,7 @@
     - Rychlé překlady
     - Syntaktické věci: ++/-- jen postfixové a nejsou to výrazy
     - Nepoužívá se ukazatelová aritmetika tak jako v C
-        ⇒ práce s ukazateli je do značné míry omezena
+        - práce s ukazateli je do značné míry omezena
     - Nepoužívají se šablony
     - Nejsou podporovány výjimky (prozatím)
 
@@ -101,9 +102,9 @@
 * Typový systém
     - Snadné vytváření nových typů
     - Generické datové typy
-        ■ chystají se
-        ■ po stabilizaci jazyka (což nastalo)
-        ■ Go 2?
+        - chystají se
+        - po stabilizaci jazyka (což nastalo)
+        - Go 2?
 * Více imperativních rysů
     - Explicitní zápis většiny operací
 * Neexistuje podpora pro generické datové typy
@@ -114,145 +115,161 @@
 ## Charakteristické rysy jazyka Go (4)
 
 * Výsledkem překladu může být binární soubor obsahující vše potřebné
-    ⇒ jednodušší distribuce
-    ⇒ "DLL hell"
-    ⇒ Docker atd.
-    ⇒ cross překlad
+    - jednodušší distribuce
+    - "DLL hell"
+    - Docker atd.
+    - cross překlad
 
 ## Klíčová slova jazyka Go
 
+```
 break     default      func    interface  select
 case      defer        go      map        struct
 chan      else         goto    package    switch
 const     fallthrough  if      range      type
 continue  for          import  return     var
+```
 
 ## Základní datové typy
 
 * Jednoduché datové typy
     - Pravdivostní
-         ■ Pravdivostní typ (boolean)
+        - Pravdivostní typ (*boolean*)
     - Ordinální
-         ■ Celočíselné typy (integer)
+        - Celočíselné typy (*integer*)
     - Neordinální
-         ■ Hodnoty s plovoucí řádovou čárkou (float)
-         ■ Komplexní čísla (complex)
+        - Hodnoty s plovoucí řádovou čárkou (*float*)
+        - Komplexní čísla (*complex*)
 * Složené datové typy
-    - Řetězce (string)
-    - Pole (array)
-    - Řezy (slice)
-    - Záznamy (struct)
-    - Mapy (map)
+    - Řetězce (*string*)
+    - Pole (*array*)
+    - Řezy (*slice*)
+    - Záznamy (*struct*)
+    - Mapy (*map*)
 * Zvláštní datové typy
-    - Ukazatel (pointer)
-    - Funkce (function)
-    - Rozhraní (interface)
-    - Kanál (channel)
+    - Ukazatel (*pointer*)
+    - Funkce (*function*)
+    - Rozhraní (*interface*)
+    - Kanál (*channel*)
 
 ## Pravdivostní typ
 
-* bool
-    - true
-    - false
-* neprovádí se automatická konverze z/na int!
+* `bool`
+    - `true`
+    - `false`
+* neprovádí se automatická konverze z/na `int`!
 
 ## Celočíselné datové typy
 
 * nezávislé na použité architektuře
 * implicitní (výchozí) hodnota = 0
-  
+
+```
 Označení          Od                   Do           Stručný popis
 int8                     -128                  127  osmibitové celé číslo se znaménkem
 int16                  -32768                32767  16bitové celé číslo se znaménkem
 int32             -2147483648           2147483647  32bitové celé číslo se znaménkem
 int64    -9223372036854775808  9223372036854775807  64bitové celé číslo se znaménkem
-  
+
 uint8                       0                  255  osmibitové celé číslo bez znaménka
 uint16                      0                65535  16bitové celé číslo bez znaménka
 uint32                      0           4294967295  32bitové celé číslo bez znaménka
 uint64                      0 18446744073709551615  64bitové celé číslo bez znaménka
-  
+
 int                     různý                různý  odpovídá buď typu int32 nebo int64
 uint                    různý                různý  odpovídá buď typu uint32 nebo uint64
-  
+
 byte                        0                  255  alias pro typ uint8
 rune              -2147483648           2147483647  alias pro typ int32
+```
 
 ## Celočíselné datové typy
 
+```go
         var a int8 = -10
         var b int16 = -1000
         var c int32 = -10000
         var d int32 = -1000000
-  
+
         var r1 rune = 'a'
         var r2 rune = '\x40'
         var r3 rune = '\n'
         var r4 rune = '\u03BB'
-  
+
         var x uint8 = 10
         var y uint8 = 010
         var z uint8 = 0x10
+```
 
 ## Explicitní konverze!
 
+```go
         var a int8 = -10
         var signed_int int32 = -100000
         var unsigned_int uint32 = 100000
         var e float32 = 1e4
         var f float64 = 1.5e30
-  
+
         var x int32 = int32(a)
         var y int32 = int32(e)
         var z float32 = float32(f)
-   
+
         var b2 uint8 = uint8(signed_int)
         var b3 uint8 = uint8(unsigned_int)
+```
 
 ## Neordinální celočíselné datové typy
 
 * opět nezávislé na použité architektuře
 * implicitní (výchozí) hodnota = 0.0
-  
+
+```
 Označení        Rozsah hodnot                          Stručný popis
 float32         -3,4×10³⁸ až 3,4×10³⁸                  číslo s jednoduchou přesností podle IEEE 754
 float64         -1,7×10³⁰⁸ až 1,7×10³⁰⁸                číslo s dvojitou přesností podle IEEE 754
 complex64       ± rozsah float32 + i ± rozsah float32  dvojice hodnot s jednoduchou přesností
 complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojitou přesností
+```
 
 ## Neordinální celočíselné datové typy
 
+```go
         var a float32 = -1.5
         var b float32 = 1.5
         var c float32 = 1e30
         var d float32 = 1e-30
- 
+
         var x complex64 = -1.5 + 0i
         var y complex64 = 1.5 + 1000i
         var z complex64 = 1e30 + 1e30i
         var w complex64 = 1i
+```
 
 ## Řetězce (string)
 
-* Řetězce (string)
+* Řetězce (`string`)
     - podpora Unicode
     - neměnitelné (immutable)
     - známá délka (žádné počítání indexu \0)
-        ⇒ ovšem udávaná v bajtech, nikoli ve znacích.
+        - ovšem udávaná v bajtech, nikoli ve znacích.
     - [] - přístup k bajtům, ne ke znakům
     - podpora konverze na byte[]
   
+```go
         fmt.Println("╭─────────────────────╮")
         fmt.Println("│ příλiš žλuťΩučký kůň│")
         fmt.Println("╰─────────────────────╯")
+```
 
 ## Pole bajtů tvořících řetězec
 
+```go
         var s string = "Hello\nworld!\nžluťoučký kůň"
-   
+
         for i := 0; i < len(s); i++ {
                 fmt.Printf("%02x ", s[i])
         }
+```
 
 ## Pole (array)
 
@@ -284,15 +301,15 @@ complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojit
     - neobsahuje přímo prvky, ale pouze referencuje existující pole
     - podpora pro operaci "slice" pole[od:do]
     - podpora pro přidání prvků na konec řezu
-        ■ interně může dojít ke realokaci pole/vytvoření nového pole
+        - interně může dojít ke realokaci pole/vytvoření nového pole
     - interní struktura
-        ■ ukazatel na prvek pole 
-        ■ délka (počet prvků)
-        ■ kapacita
+        - ukazatel na prvek pole 
+        - délka (počet prvků)
+        - kapacita
     - funkce
-        ■ make
-        ■ copy
-        ■ append
+        - make
+        - copy
+        - append
 
 ## Řezy (slice)
 
