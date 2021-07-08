@@ -1,4 +1,4 @@
-## Redis Streams
+# Redis Streams
 
 ![Redis logo](images/redis-logo.jpg)
 
