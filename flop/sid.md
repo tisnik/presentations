@@ -83,6 +83,10 @@ Základní tvar obálky je určen čtveřicí parametrů – attack (doba či st
 
 ## Řízení doby sustain i amplitudy obálky
 
+Povšimněte si, že čtyři výše uvedené parametry nejsou pro úplné popsání tvaru obálky dostatečné. Především chybí určení doby, po kterou si obálka drží úroveň sustain a taktéž amplituda, tj. maximální úroveň signálu obálky v bodě, kde se náběžná hrana attack láme a mění se v sestupnou hranu decay. Tyto dva parametry jsou totiž nastavovány samostatně.
+
+Maximální úroveň signálu obálky je vždy nastavena na 100%, ovšem s tím, že výstupní úroveň z celého řetězce pro generování zvuků je globálně ovlivnitelná čtyřmi bity jednoho řídicího registru. Doba trvání úrovně sustain je určena bitem GATE ukládaným do jednoho z řídicích registrů, zvlášť pro každý zvukový kanál. Ve chvíli, kdy je tento bit nastaven na logickou jedničku, spustí se cyklus attack (obálka se začne měnit dle náběžné hrany), za nímž automaticky následuje cyklus release (první sestupná hrana) až do chvíle, kdy se úroveň obálky ustálí na hodnotě sustain. Tato hodnota se udržuje tak dlouho, dokud má bit GATE hodnotu logické jedničky. Ve chvíli, kdy se programově tento bit vynuluje, začne probíhat cyklus release, tj. úroveň obálky se snižuje až k nule.
+
 ## Přehrávání samplů
 
 ## Bit GATE ve chvíli fází ATTACK a RELEASE
