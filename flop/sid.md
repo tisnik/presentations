@@ -87,7 +87,11 @@ Povšimněte si, že čtyři výše uvedené parametry nejsou pro úplné popsá
 
 Maximální úroveň signálu obálky je vždy nastavena na 100%, ovšem s tím, že výstupní úroveň z celého řetězce pro generování zvuků je globálně ovlivnitelná čtyřmi bity jednoho řídicího registru. Doba trvání úrovně sustain je určena bitem GATE ukládaným do jednoho z řídicích registrů, zvlášť pro každý zvukový kanál. Ve chvíli, kdy je tento bit nastaven na logickou jedničku, spustí se cyklus attack (obálka se začne měnit dle náběžné hrany), za nímž automaticky následuje cyklus release (první sestupná hrana) až do chvíle, kdy se úroveň obálky ustálí na hodnotě sustain. Tato hodnota se udržuje tak dlouho, dokud má bit GATE hodnotu logické jedničky. Ve chvíli, kdy se programově tento bit vynuluje, začne probíhat cyklus release, tj. úroveň obálky se snižuje až k nule.
 
+Poznámka: například u čipů OPL2 a OPL3 se namísto bitu GATE používá bit nazvaný KEY-ON, ovšem s velmi podobným významem.
+
 ## Přehrávání samplů
+
+V případě, že se čip SID používá pro přehrávání samplovaných zvuků, je možné hodnotu jednotlivých vzorků (samplů) převádět na čtyřbitové číslo, které ovlivňuje úroveň sustain. Samotná obálka se změní tak, že hodnoty attack, decay i release jsou nastaveny na nulovou hodnotu (to odpovídá nejstrmějším hranám), hodnota bitu GATE zůstává nastavená na logickou jedničku a pouze se programově mění úroveň sustain.
 
 ## Bit GATE ve chvíli fází ATTACK a RELEASE
 
