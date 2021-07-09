@@ -252,8 +252,8 @@ complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojit
     - neměnitelné (immutable)
     - známá délka (žádné počítání indexu \0)
         - ovšem udávaná v bajtech, nikoli ve znacích.
-    - [] - přístup k bajtům, ne ke znakům
-    - podpora konverze na byte[]
+    - `[]` - zajišťuje přístup k bajtům, ne ke znakům
+    - podpora konverze na `byte[]`
   
 ```go
         fmt.Println("╭─────────────────────╮")
@@ -278,6 +278,7 @@ complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojit
     - konstantní počet prvků
     - automatická inicializace prvků (na "nulu")
   
+```go
         var a1 [10]byte
         a2 := [10]int32{1,10,2,9,3,8,4,7,5,6}
         var matice [10][10]float32
@@ -285,10 +286,13 @@ complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojit
         for i:= 0; i < len(a1); i++ {
                 a[i] = i*2;
         }
+```
 
 ## Kopie polí
 
+```go
         a2 := a1
+```
  
 * V Go se provede skutečná kopie pole
     - výsledkem budou dvě na sobě nezávislá pole.
@@ -307,12 +311,13 @@ complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojit
         - délka (počet prvků)
         - kapacita
     - funkce
-        - make
-        - copy
-        - append
+        - `make`
+        - `copy`
+        - `append`
 
 ## Řezy (slice)
 
+```go
         a := [6]string{"C", "C++", "Java", "Python", "Go", "Rust"}
   
         slice1 := a[1:4]
@@ -325,18 +330,23 @@ complex128      ± rozsah float64 + i ± rozsah float64  dvojice hodnot s dvojit
         fmt.Println("slice2 =", slice2)
         fmt.Println("slice3 =", slice3)
         fmt.Println("slice4 =", slice4)
+```
 
 ## Řezy (slice)
 
 * Výstup bude vypadat následovně:
+
+```
 Array a = [C C++ Java Python Go Rust]
 slice1 = [C++ Java Python]
 slice2 = [C C++ Java]
 slice3 = [Java Python Go Rust]
 slice4 = [C C++ Java Python Go Rust]
+```
 
 ## Uživatelsky definované datové typy
 
+```go
 package main
   
 import "fmt"
@@ -356,6 +366,7 @@ func main() {
    
         register_user(i, n, s)
 }
+```
 
 ## Operátor :=
 
@@ -364,12 +375,14 @@ func main() {
     - určení jejího typu
     - inicializace proměnné
   
+```go
         a := 10
         fmt.Println(a)
         b := "hello"
         fmt.Println(b)
         c := true
         fmt.Println(c)
+```
 
 ## Operátor :=
 
