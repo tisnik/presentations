@@ -36,6 +36,8 @@ layout: default
 ### Red Hat OpenHouse 2020
 ### DevConf 2021
 
+### Summer camp 2021
+
 ### OpenAlt 2020
 * [Použití programovacího jazyka Rust na produkčním systému](openalt2020/rust_in_production.md)
 
