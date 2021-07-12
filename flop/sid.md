@@ -95,5 +95,9 @@ V případě, že se čip SID používá pro přehrávání samplovaných zvuků
 
 ## Bit GATE ve chvíli fází ATTACK a RELEASE
 
+SID taktéž umožňuje změnu hodnoty bitu GATE v kterémkoli okamžiku. Pokud se například tento bit vynuluje ještě v době, kdy probíhá cyklus attack, začne ihned probíhat cyklus release, tj. z obálky zmizí její prostřední část. Taktéž již před doběhnutím cyklu release je možné bit GATE znovu nastavit na úroveň logické jedničky, čímž se ihned nastartuje další cyklus attack (některé hudební syntetizéry, které taktéž obálku ADSR využívají, tento "zrychlený" přechod mezi cykly attack a release, neumožňují).
+
 ## Další části řetězce zpracování zvuku
+
+Generátory signálů a tvarovače obálek (tedy ADSR) jsou základními bloky, kterými je možné generovat zvuky napodobující různé hudební nástroje. Ovšem to není zdaleka vše, co SID dokáže. Především je možné ovlivnit výstup z jednoho generátoru signálů výstupem z generátoru dalšího s využitím takzvané kruhové modulace (ring modulation – název této modulace je odvozen od způsobu zapojení polovodičových diod v analogovém obvodu, který tuto modulaci prováděl například u superheterodynů – FM přijímačů), vzájemně synchronizovat jednotlivé generátory signálů, používat analogové výstupní filtry typu dolní propust, horní propust a pásmová propust, přimixovat externí zvukový signál, navzájem zkombinovat signály vytvářené v generátorech signálů aj.
 
