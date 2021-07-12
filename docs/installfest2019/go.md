@@ -398,6 +398,7 @@ func main() {
 
 ## Záznamy (struct)
 
+```go
 type User struct {
         id      uint32
         name    string
@@ -409,22 +410,28 @@ var user1 User
 user1.id = 1
 user1.name = "Pepek"
 user1.surname = "Vyskoč"
+```
 
 ## Tisk obsahu záznamů a inicializace záznamů
 
 * Záznamy je možné vytisknout s využitím funkce fmt.Println:
    
+```go
 fmt.Println(user1)
+```
    
 * Inicializace záznamů
   
+```go
 user1 := User{
         1,
         "Pepek",
         "Vyskoč"}
+```
 
 ## Pole záznamů
 
+```go
 type User struct {
         id      uint32
         name    string
@@ -445,40 +452,44 @@ var users = [3]User{
                 name:    "Josef",
                 surname: "Vyskočil"},
 }
+```
 
 ## Mapy (map)
 
 * Mapy (map)
     - též asociativní pole
     - (heše/hashe)
-* Tzv. nil map
-    - var m1 map[int]string
-    - var m2 map[string]User
+* Tzv. **nil map**
+    - `var m1 map[int]string`
+    - `var m2 map[string]User`
 * Prázdná mapa
-    - var m3 map[int]string = make(map[int]string)
-    - m1 := make(map[int]string)
+    - `var m3 map[int]string = make(map[int]string)`
+    - `m1 := make(map[int]string)`
 * Přidání položek do prázdné mapy
-    - m3[0] = "nula"
-    - m3[1] = "jedna"
-    - m3[2] = "dva"
-    - m3[3] = "tri"
+    - `m3[0] = "nula"`
+    - `m3[1] = "jedna"`
+    - `m3[2] = "dva"`
+    - `m3[3] = "tri"`
 
 ## Operace s mapami
 
 * Přečtení hodnoty z mapy
-    - value, exist := mapa[klíč]
-   
+    - `value, exist := mapa[klíč]`
+
+```go
 if exist {
         // prvek byl nalezen
 } else {
         // prvek nebyl nalezen
 }
+```
    
 * Vymazání hodnot z map
-    - delete(mapa, klíč)
+    - `delete(mapa, klíč)`
 
 ## Mapy a struktury (záznamy)
 
+```go
 type User struct {
         id      uint32
         name    string
@@ -501,9 +512,11 @@ func main() {
   
         fmt.Println(m1)
 }
+```
 
 ## Mapy a struktury, klíče jako uživatelský typ
 
+```go
 type Key struct {
         id   uint32
         role string
@@ -531,40 +544,51 @@ func main() {
    
         fmt.Println(m1)
 }
+```
 
 ## Zvláštní datové typy
 
-* Ukazatel (pointer)
-* Funkce (function)
-* Rozhraní (interface)
-* Kanál (channel)
+* Ukazatel (*pointer*)
+* Funkce (*function*)
+* Rozhraní (*interface*)
+* Kanál (*channel*)
 
 ## Ukazatele
 
-* Vždy ukazatele na hodnotu určitého typu (ne void)
+* Vždy ukazatele na hodnotu určitého typu (ne `void`)
 * Implicitní hodnota je `nil`
-* Získání adresy unárním operátorem &
-* Nepřímý přístup k hodnotě unárním operátorem *
-  
+* Získání adresy unárním operátorem `&`
+* Nepřímý přístup k hodnotě unárním operátorem `*`
+
+```go
 var p_i *int
 p_i = &i
 *p_i++
+```
 
 ## Ukazatel na strukturu
 
+```go
 var u User
    
 var p_u *User
 p_u = &u
+```
   
 * Není podporován operátor ->
+```go
 (*p_u).id = 10000
+```
   
 * Ovšem je podporována automatická dereference
+```go
 p_u.id = 20000
+```
   
 * Ukazatel na položku záznamu
+```go
 p_n = &u.name
+```
 
 ## Konstanty
 
