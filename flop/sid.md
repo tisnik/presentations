@@ -101,3 +101,9 @@ SID taktéž umožňuje změnu hodnoty bitu GATE v kterémkoli okamžiku. Pokud 
 
 Generátory signálů a tvarovače obálek (tedy ADSR) jsou základními bloky, kterými je možné generovat zvuky napodobující různé hudební nástroje. Ovšem to není zdaleka vše, co SID dokáže. Především je možné ovlivnit výstup z jednoho generátoru signálů výstupem z generátoru dalšího s využitím takzvané kruhové modulace (ring modulation – název této modulace je odvozen od způsobu zapojení polovodičových diod v analogovém obvodu, který tuto modulaci prováděl například u superheterodynů – FM přijímačů), vzájemně synchronizovat jednotlivé generátory signálů, používat analogové výstupní filtry typu dolní propust, horní propust a pásmová propust, přimixovat externí zvukový signál, navzájem zkombinovat signály vytvářené v generátorech signálů aj.
 
+Těmito technikami, které mj. značnou měrou přispěly k velké oblibě SIDu, se budeme podrobněji zabývat v následujících kapitolách.
+
+## Kruhová modulace (ring modulation)
+
+## Výstupní filtry
+
