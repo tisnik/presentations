@@ -3,13 +3,13 @@
 ## Intro
 
 * Scalable and resilient message broker
-* Written in Go
+* Written in Go programming language
     - Initial version written in Ruby (Derek Collison)
-* Multiple cooperating components
+* Based on multiple cooperating components
 
 ## NATS components
 
-* Server (gnatsd)
+* Server (`gnatsd`)
 * Interfaces for various ecosystems
 * NATS Streaming Server
 * NATS Connector Framework
@@ -68,22 +68,28 @@
 * possible to test it via *telnet*
 
 ```
-Command send by
-INFO 	server
-CONNECT client
-PUB 	client
-SUB 	client
-UNSUB 	client
-MSG 	server
-PING 	client and server
-PONG 	client and server
-+OK 	server
--ERR 	server
+Command   send by
+INFO      server
+CONNECT   client
+PUB       client
+SUB       client
+UNSUB     client
+MSG       server
+PING      client and server
+PONG      client and server
++OK       server
+-ERR      server
 ```
 
 ## Communicating with NATS
 
+* We'll use Go programming language in all examples
+* Possible to rewrite into other languages w/o problems
+
 ### The simplest producer
+
+* Without any error checks
+* Not production-ready, of course
 
 ```go
 package main
@@ -139,6 +145,8 @@ func main() {
 ```
 
 ### Usage of channels
+
+* This is the best solution in Go ecosystem
 
 ```go
 package main
@@ -263,6 +271,44 @@ func main() {
 ```
 
 ### Usage of channels in consumer code
+
+```go
+package main
+ 
+import (
+        nats "github.com/nats-io/go-nats"
+        "log"
+)
+ 
+const Subject = "test1"
+ 
+func main() {
+        conn, err := nats.Connect(nats.DefaultURL)
+ 
+        if err != nil {
+                log.Fatal(err)
+        }
+ 
+        defer conn.Close()
+ 
+        econn, err2 := nats.NewEncodedConn(conn, nats.DEFAULT_ENCODER)
+ 
+        if err2 != nil {
+                log.Fatal(err)
+        }
+ 
+        defer econn.Close()
+ 
+        channel := make(chan string)
+        econn.BindRecvChan(Subject, channel)
+ 
+        println("Channel created")
+ 
+        println(<-channel)
+        println(<-channel)
+        println(<-channel)
+}
+```
 
 ### Multi-channel consumer
 
