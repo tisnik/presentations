@@ -105,5 +105,9 @@ Těmito technikami, které mj. značnou měrou přispěly k velké oblibě SIDu,
 
 ## Kruhová modulace (ring modulation)
 
+Před vstupem signálu vytvářeného v generátoru signálů do amplitudového modulátoru lze dva vybrané zvukové signály podrobit kruhové modulaci (ring modulation), jejíž použití vede k syntéze unikátních a pro SID typických zvuků. SID je ostatně jedním z mála zvukových čipů, který kruhovou modulaci používá; například na čipech s OPL-2 či OPL-3 ji lze napodobit jen velmi složitě. Kruhovou modulaci je možné zapnout vždy pro dvojici vybraných zvukových kanálů: kanál 1 může být modulovaný výstupem z oscilátoru kanálu 3, kanál 2 může být modulovaný výstupem z oscilátoru kanálu 1 a konečně kanál 3 lze modulovat výstupem z oscilátoru zvukového kanálu číslo 2 (viz čtvrtý obrázek s modrými šipkami, jimiž je naznačeno, čím je který signál modulován).
+
+Aby byl vliv kruhové modulace slyšitelný, musí být na modulovaném zvukovém kanálu povolen oscilátor vytvářející trojúhelníkový signál (jeho vzestupná i sestupná hrana má stejný sklon). Z modulačního kanálu je vždy využit obdélníkový signál o zadané frekvenci, který "sampluje" (násobí) signál trojúhelníkový na modulovaném zvukovém kanálu, který má většinou poněkud nižší frekvenci, než signál obdélníkový.
+
 ## Výstupní filtry
 
