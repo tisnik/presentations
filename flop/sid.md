@@ -109,5 +109,7 @@ Před vstupem signálu vytvářeného v generátoru signálů do amplitudového 
 
 Aby byl vliv kruhové modulace slyšitelný, musí být na modulovaném zvukovém kanálu povolen oscilátor vytvářející trojúhelníkový signál (jeho vzestupná i sestupná hrana má stejný sklon). Z modulačního kanálu je vždy využit obdélníkový signál o zadané frekvenci, který "sampluje" (násobí) signál trojúhelníkový na modulovaném zvukovém kanálu, který má většinou poněkud nižší frekvenci, než signál obdélníkový.
 
+Frekvence obou kanálů, jejichž signály vstupují do kruhového modulátoru, mohou být soudělné či nesoudělné – pokaždé se syntetizuje tón s odlišným zabarvením (zajímavě zní například poměr frekvencí 3:2 či 5:4). Násobení v časové oblasti vede ke vzniku celého širokého spektra neharmonických frekvencí v oblasti frekvenční čehož je možné využít při tvorbě zabarvených tónů typických pro hudbu SIDu. Zabarvení je při použití kruhové modulace zcela odlišné od zabarvení získaného pomocí frekvenční či fázové modulace (FM – frequency modulation, PM – phase modulation), i když i při použití těchto modulací dochází ke vzniku dalších vyšších a nižších frekvencí ve výsledném zvuku.
+
 ## Výstupní filtry
 
