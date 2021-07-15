@@ -63,6 +63,7 @@ layout: default
 * [SchemaSpy](coffee-talks/schemaspy.md)
 * [Monitoring Kafka](coffee-talks/kafka_monitoring.md)
 * [NATS](coffee-talks/nats.md)
+* [NSQ](coffee-talks/nsq.md)
 * [Napkin](coffee-talks/napkin.md)
 * [Tracing](coffee-talks/tracing.md)
 * [Pre and post-conditions](coffee-talks/pre_post_conditions.md)
