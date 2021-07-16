@@ -113,3 +113,7 @@ Frekvence obou kanálů, jejichž signály vstupují do kruhového modulátoru, 
 
 ## Výstupní filtry
 
+SID je hybridním čipem obsahujícím jak digitální obvody (jedná se například o již dříve popisované generátory signálů nebo část, která zajišťuje připojení čipu na adresovou a datovou sběrnici i logiku pro výběr řídicích a stavových registrů), tak i obvody čistě analogové. Na základě analogových obvodů jsou vytvořeny i výstupní filtry, do kterých je možné selektivně přivádět jak výstupy z jednotlivých zvukových kanálů (po aplikaci kruhové modulace a amplitudové modulace pomocí obálky ADSR), tak i externí zvukový signál.
+
+Výstupní filtry jsou tří typů – dolní propust (LP – low pass), horní propust (HP – high pass) a pásmová propust (BP – band pass). Filtry ve své podstatě tvoří samostatnou část zvukové syntézy, která není aditivní (do signálu se nepřidávají další složky), ale naopak subtraktivní (dochází k odstranění či zmenšení vybraných frekvencí). Jednotlivé filtry je možné navzájem kombinovat a vytvořit tak například z dolní a horní propusti pásmovou zádrž, popř. z dolní propusti a pásmové propusti vytvořit dolní propust s odlišnou charakteristikou. Pomocí dvou osmibitových řídicích registrů se nastavuje mezní frekvence všech filtrů (jedná se o jedinou frekvenci platnou pro všechny tři typy filtrů, její význam je ovšem u každého filtru jiný).
+
