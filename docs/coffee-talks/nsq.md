@@ -38,6 +38,49 @@
 
 ### Client libraries
 
+```
+go-nsq                Go
+pynsq                 Python
+nsqjs                 JavaScript
+elixir_nsq            Elixir
+ensq                  Erlang
+nsq-j                 Java
+JavaNSQClient         Java
+TrendrrNSQClient      Java
+nsqjava               Java
+nsq.js                JavaScript
+node-nsqueue          JavaScript
+knsq                  Kotlin
+NsqSharp              .NET
+php-nsq               PHP
+phpnsq                PHP
+nsqphp                PHP
+nsq-py                Python
+gnsq                  Python
+krakow                Ruby
+ruby_nsq              Ruby
+evnsq                 C++
+libnsq                C
+hsnsq                 Haskell
+nsq-java              Java
+nsq-client            JavaScript
+NSQnet                .NET
+perl-anyevent-nsq     Perl
+NsqSpinner            Python
+nsq-ruby              Ruby
+uvnsq                 C++11
+nsq-clojure           Clojure
+nsqie                 Scala
+nodensq               JavaScript
+nsqueue               Rust
+asyncnsq              Python
+nsq-ocaml             OCaml
+node-red-contrib-nsq  NodeRED Nodes
+asyncnsq              Rust
+tokio-nsq             Rust
+ansq                  Python
+```
+
 ## Topology patterns
 
 ## Building and running
