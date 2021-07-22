@@ -117,3 +117,7 @@ SID je hybridním čipem obsahujícím jak digitální obvody (jedná se napří
 
 Výstupní filtry jsou tří typů – dolní propust (LP – low pass), horní propust (HP – high pass) a pásmová propust (BP – band pass). Filtry ve své podstatě tvoří samostatnou část zvukové syntézy, která není aditivní (do signálu se nepřidávají další složky), ale naopak subtraktivní (dochází k odstranění či zmenšení vybraných frekvencí). Jednotlivé filtry je možné navzájem kombinovat a vytvořit tak například z dolní a horní propusti pásmovou zádrž, popř. z dolní propusti a pásmové propusti vytvořit dolní propust s odlišnou charakteristikou. Pomocí dvou osmibitových řídicích registrů se nastavuje mezní frekvence všech filtrů (jedná se o jedinou frekvenci platnou pro všechny tři typy filtrů, její význam je ovšem u každého filtru jiný).
 
+V případě, že jsou mezi piny pojmenované CAP1A a CAP1B i CAP2A a CAP2B připojeny dva kondenzátory s kapacitou 6,8 mikrofaradů, lze mezní frekvenci filtrů měnit v rozsahu přibližně 30 Hz až 12 kHz (počítače Commodore C64 obsahovaly kondenzátory právě o této kapacitě, ovšem SID lze použít i v dalších systémech,
+kde mohou být kapacity odlišné podle toho, k jakému účelu je tento čip určen). Samotná frekvence je reprezentována jako jedenáctibitové bezrozměrné
+číslo, skutečná frekvence je na této hodnotě lineárně závislá.
+
