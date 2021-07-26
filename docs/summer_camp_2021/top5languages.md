@@ -1,71 +1,96 @@
-# Pět nejpoužívanějších jazyků v Red Hatu
+# Top 5 programming languages in Red Hat
 
-## Popularita programovacích jazyků ve světě
+## Programming languages popularity in the world
 
-* Několik různých metodik, jak popularitu měřit
+* More different methodologies how to measure popularity
 * Tiobe index
-* PYPL (PopularitY of Programming Languages)
-* OpenHub (pro zaregistrované repositáře)
-* StackOverflow (každoroční dotazníky)
+* PYPL
+    - PopularitY of Programming Languages
+* OpenHub
+    - for registered developers and projects
+* StackOverflow
+    - have surveys each year
 
-## Jazyky ve výuce
+## Programming languages for learning
 
-* Vizuální (Scratch, Blockly)
+* Visual languages
+    - Scratch
+    - Blockly
 * Python
-* Java (Minecraft, Robots, ...)
-* Pascal, Delphi atd.
+* Java
+    - Minecraft
+    - Robots
+    - ...
+* Pascal, Delphi etc.
 
-## Reálný svět
+## Real world
 
-* mnohdy se jedná o "lepení" komponent
+* sometimes just "gluing" components together
 
-## Jak je tomu v Red Hatu?
-* Mnoho hledisek
-    - podle produktů
-    - podle počtu vývojářů
-    - nesmíme zapomenout na QA!
-    - podle počtu napsaných řádků
-    - podle počtu změněných řádků
-    - kdy se statistika vytvářela
+![images/real_world.jpg](images/real_world.jpg)
 
-## Portfolio Red Hatu
+## Programming languages in Red Hat
+* More different standpoints
+    - by product(s)
+    - by number of developers
+    - we should not forget QA/QE too!
+    - by number of lines written
+    - by number of lines changed
+    - where the statistic was computed
 
-* Linux (platforma)
-* Middleware (JBoss, AMQ, 3scale, ...)
-* Virtualizace
-* Kontejnerizace
+## Red Hat portfolio
+
+* Linux
+   - a platform
+* Middleware
+   - JBoss
+   - AMQ
+   - 3scale
+   - ...
+* Virtualisation products
+* Containerisation products
 * Cloud
 * Storage
 
-## Platforma
+## Platform
 
-* Kernel + moduly a ovladače
-* Další tooling
+* Kernel + modules and drivers
+* Tooling for the platform
 
 ## Middleware
 
-* Původně typická oblast Javy
-* Dnes rozsáhlejší zaměření
+* Focus change
+    - At the beginning just Java-only world
+    - Today it is more diverse
 * JBoss EAP
 * JBoss Web Server
 * Data Grid
 * AMQ (Broker)
+* Artemis (Broker)
 * Application Migration Toolkit
 * Process Automation Manager
 * Decision Manager
 * Runtimes
 
-## Kontejnerizace
+## Containerisation
 
 * OpenShift Container Platform
 * Docker, Podman, Kubernetes
 
-## Nezapomínat na QA!
+## Storage
 
-* důležitá součást všech projektů
-* automatizace QA procesů na všech úrovních
+* CEPH
 
-## Jak je tomu v Red Hatu?
+## QA/QE
+
+* Very important part of project success
+* Automation of QA processes
+* Component testing
+* Integration testing
+* Fuzzy testing
+* Chaos testing
+
+## Top 5 languages in Red Hat
 
 * C
 * Python
@@ -73,7 +98,7 @@
 * Go
 * JavaScript
 
-## Další jazyky používané v Red Hatu
+## Other programming languages used in Red Hat
 
 * Ruby
 * Groovy
