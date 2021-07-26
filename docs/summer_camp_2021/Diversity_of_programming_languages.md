@@ -17,7 +17,7 @@
 
 ## Related presentations
 
-* Top 5 languages used in Red Hat
-* Go programming language
-* Rust programming language
-* Python programming language
+* [Top 5 languages used in Red Hat](top5languages.md)
+* [Go programming language](go.md)
+* [Rust programming language](rust.md)
+* [Python programming language](python.md)
