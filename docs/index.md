@@ -37,6 +37,10 @@ layout: default
 ### DevConf 2021
 
 ### Summer camp 2021
+* [Diversity of programming languages](summer_camp_2021/Diversity_of_programming_languages.md)
+* [Go programming language](summer_camp_2021/go.md)
+* [Rust programming language](summer_camp_2021/rust.md)
+* [Python programming language](summer_camp_2021/python.md)
 
 ### OpenAlt 2020
 * [Použití programovacího jazyka Rust na produkčním systému](openalt2020/rust_in_production.md)
