@@ -31,3 +31,84 @@
 - Vim;-)
 - Visual Studio Code + go lang support [[https://code.visualstudio.com/docs/setup/linux]]
 
+## Packages and Imports
+- Program building blocks ("libraries")
+- Imported by other programs
+- Package name is the last element of the import path
+- Standard packages: [[https://golang.org/pkg/]]
+
+```go
+package main
+
+import "fmt"
+```
+
+## Hello world
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("Hello world")
+}
+```
+
+* Unicode support
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("Привет, мир")
+}
+```
+
+## go-fmt
+
+```go
+package main; import "fmt"
+func main(
+) { fmt.Println("Hello world") }
+```
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello world")
+}
+```
+
+## Syntax
+- Evolved from C
+- Declarations in postfix
+- Exported symbols begin with Capital letter
+- https://blog.golang.org/gos-declaration-syntax
+
+```c
+int a;
+int *p;
+int *(*f)(int *);
+```
+
+```go
+a int
+p *int
+f func(*int) *int
+```
+
+## Functions
+
+## Multiple return values
+
+## Named return values
