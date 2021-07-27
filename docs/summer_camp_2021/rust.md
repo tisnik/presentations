@@ -96,3 +96,29 @@
 
 ![images/npe.jpg](images/npe.jpg)
 
+---
+
+## Rust characteristics
+
+* Multiple paradigms supported
+    - Imperative
+    - Functional
+    - some OOP-like properties (but not class-based language)
+* Available for all "interesting" platforms
+    - Linux
+    - (Free)BSD
+    - OS X
+    - Windows
+* Supported by many CPU architectures
+    - i686, x86-64, ARMv6/v7 (32), AArch64, MIPS, PowerPC, S390
+    - RISC-V
+    - Bare Cortex-M0, M0+, M1, M4(F), M7(F) bare = w/o OS, core library only
+    - (even for MSP430 - 16bit MCU!)
+    - [Platform Support (1)](https://forge.rust-lang.org/platform-support.html)
+    - [Platform Support (2)](https://doc.rust-lang.org/nightly/rustc/platform-support.html)
+* Now based on LLVM backend
+    - Space for more optimizations (WebAssembly via Emscripten or directly)
+    - [https://www.rust-lang.org/what/wasm](https://www.rust-lang.org/what/wasm)
+* More info
+    - [Object-Orientation in Rust](https://stevedonovan.github.io/rust-gentle-intro/object-orientation.html)
+
