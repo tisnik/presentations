@@ -121,3 +121,15 @@ V případě, že jsou mezi piny pojmenované CAP1A a CAP1B i CAP2A a CAP2B při
 kde mohou být kapacity odlišné podle toho, k jakému účelu je tento čip určen). Samotná frekvence je reprezentována jako jedenáctibitové bezrozměrné
 číslo, skutečná frekvence je na této hodnotě lineárně závislá.
 
+Útlum zvukového signálu procházejícího dolní či horní propustí je po překročení mezní frekvence roven přibližně 12 decibelům na oktávu. U pásmové propusti je útlum (v obou směrech od mezní frekvence) roven šesti decibelům na oktávu. Připomeňme si, ze zvýšení tónu o jednu oktávu znamená zdvojnásobení jeho frekvence a snížení o jednu oktávu naopak frekvenci poloviční. Utlum je udávaný v decibelech, tj. logaritmickém poměru mezi naměřenou (vypočtenou) amplitudou a amplitudou maximální (výsledek je navíc vynásoben deseti či dvaceti podle toho, zda jde o napěťový či výkonový útlum popř. zesílení).
+
+## Vstup externího signálu a regulace hlasitosti na výstupu
+
+Na blokovém schématu zvukového čipu SID můžeme vidět i vstup externího signálu spolu s možnou cestou, kterou tento signál může být zpracováván – buď se externí signál přímo smísí s výstupy zvukových kanálů nebo je přiveden na vstup filtrů popsaných v předchozí kapitole. Na tento analogový vstup se vstupní impedancí přibližně 100 kiloohmů lze zapojit prakticky libovolný zvukový čip, například další SID nebo i AY-8910 či POKEY :-), popřípadě analogový výstup ze zvukového syntetizéru (elektronické varhany).
+
+## Přehrávání digitalizovaného (samplovaného) zvuku
+
+## SID: minulost a současnost
+
+## Ukázky hudby pro SID
+
