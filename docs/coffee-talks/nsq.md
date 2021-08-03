@@ -22,19 +22,39 @@
 
 ## Components
 
-* `nsqd`
 * `nsqlookupd`
+* `nsqd`
 * `nsqadmin`
 * utilities
 * client libraries
 
 ### `nsqd`
 
+* directory service
+* knows about other services (address+port number)
+* knows which service(s) has the specified *topic*
+* possible to have multiple lookups
+* clients are able to connect to multiple lookups as well
+* (this is different from Zookeeper-like solution)
+
 ### `nsqlookupd`
+
+* receives messages
+* store messages into queues
+* delivers messages to clients
+* supports persistent messages
+* possible to have multiple `nsqd`s having the same `topic`+`channel`
+    - -> very high resilience
 
 ### `nsqadmin`
 
+* web interface to monitor the whole system
+* primary communicates with `nsqlookupd`s
+* secondary can communicate with `nsqd`s
+
 ### Utilities
+
+* there's a lot of third-party utilities
 
 ### Client libraries
 
@@ -82,6 +102,29 @@ ansq                  Python
 ```
 
 ## Topology patterns
+
+* Simple producer-consumer pattern with multiple consumers
+
+https://64.media.tumblr.com/tumblr_mf74ktpfpP1qj3yp2.png
+
+* Dtto but with support for persistent messages
+
+https://64.media.tumblr.com/tumblr_mf74l5RqlZ1qj3yp2.png
+
+* Distributed architecture
+
+- possible to use any load balancer on API level
+
+https://64.media.tumblr.com/tumblr_mf74lmYhZa1qj3yp2.png
+
+* Solution for higher I/O throughput
+
+https://64.media.tumblr.com/tumblr_mf74m0JHMi1qj3yp2.png
+
+* Multiple nsqlookupds
+
+https://64.media.tumblr.com/edb403d38fc2bcc727b8655ea70eb3a7/tumblr_inline_mf8sfr2sp41qj3yp2.png
+
 
 ## Building and running
 
