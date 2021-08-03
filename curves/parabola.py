@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # hodnoty na x-ové ose
 x = np.arange(-100, 101)
 
-# hodnoty na y-ové ose (sklon úsečky řízen konstantou)
+# hodnoty na y-ové ose
 y = np.power(x, 2)
 
 # rozměry grafu při uložení: 640x480 pixelů
