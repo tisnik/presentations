@@ -105,25 +105,25 @@ ansq                  Python
 
 * Simple producer-consumer pattern with multiple consumers
 
-https://64.media.tumblr.com/tumblr_mf74ktpfpP1qj3yp2.png
+[schema](https://64.media.tumblr.com/tumblr_mf74ktpfpP1qj3yp2.png)
 
 * Dtto but with support for persistent messages
 
-https://64.media.tumblr.com/tumblr_mf74l5RqlZ1qj3yp2.png
+[schema](https://64.media.tumblr.com/tumblr_mf74l5RqlZ1qj3yp2.png)
 
 * Distributed architecture
 
 - possible to use any load balancer on API level
 
-https://64.media.tumblr.com/tumblr_mf74lmYhZa1qj3yp2.png
+[schema](https://64.media.tumblr.com/tumblr_mf74lmYhZa1qj3yp2.png)
 
 * Solution for higher I/O throughput
 
-https://64.media.tumblr.com/tumblr_mf74m0JHMi1qj3yp2.png
+[schema](https://64.media.tumblr.com/tumblr_mf74m0JHMi1qj3yp2.png)
 
 * Multiple nsqlookupds
 
-https://64.media.tumblr.com/edb403d38fc2bcc727b8655ea70eb3a7/tumblr_inline_mf8sfr2sp41qj3yp2.png
+[schema](https://64.media.tumblr.com/edb403d38fc2bcc727b8655ea70eb3a7/tumblr_inline_mf8sfr2sp41qj3yp2.png)
 
 
 ## Building and running
