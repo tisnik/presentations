@@ -1,5 +1,10 @@
 # Diversity of programming languages
 
+* Each year at least one programming language is developed
+    - from 1947!
+    - hundrets of languages
+    - but just few of them are used extensively
+
 ## Paradigmas
 
 * Imperative
@@ -11,7 +16,7 @@
     - Dataflow
 * Metaprogramming
 * Array-oriented
-etc.
+* etc.
 
 ## Domain-specific languages
 * SQL
@@ -96,6 +101,15 @@ etc.
     - i.e. in typical team > 50% of developers are juniors
 * and they need to fight with tooling, CI/CD, databases too
 * -> the easier the language is to grok, the better
+
+## Survival of programming language
+* appeals to a wide audience
+* gets the job done
+* fills a niche
+* powerfull user base
+* a christmatic leader
+
+https://ccrma.stanford.edu/courses/250a-fall-2005/docs/ComputerLanguagesChart.png
 
 ## Conclusion
 * there's no silver bullet
