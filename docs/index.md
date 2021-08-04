@@ -71,6 +71,7 @@ layout: default
 * [Napkin](coffee-talks/napkin.md)
 * [Tracing](coffee-talks/tracing.md)
 * [Pre and post-conditions](coffee-talks/pre_post_conditions.md)
+* [8 bit glory](coffee-talks/8bit_glory.md)
 
 ### Ostatní
 * [Jazyk Python - tvorba testů s využitím knihovny Behave ](other/BDD_cz.md)
