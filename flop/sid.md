@@ -127,6 +127,8 @@ kde mohou být kapacity odlišné podle toho, k jakému účelu je tento čip ur
 
 Na blokovém schématu zvukového čipu SID můžeme vidět i vstup externího signálu spolu s možnou cestou, kterou tento signál může být zpracováván – buď se externí signál přímo smísí s výstupy zvukových kanálů nebo je přiveden na vstup filtrů popsaných v předchozí kapitole. Na tento analogový vstup se vstupní impedancí přibližně 100 kiloohmů lze zapojit prakticky libovolný zvukový čip, například další SID nebo i AY-8910 či POKEY :-), popřípadě analogový výstup ze zvukového syntetizéru (elektronické varhany).
 
+Počet "sériově" zapojených čipů je prakticky omezen pouze vzrůstající úrovní šumu. Tento vstup taktéž mnoho uživatelů využilo u série SID 8580 pro přivedení stejnosměrné složky do bloku VOLUME, čímž bylo umožněno přehrávání samplovaných zvuků, protože tato poslední série čipu SID byla upravena tak, aby docházelo k menšímu zašumění výstupu, což však mělo za následek absenci stejnosměrné složky (DC), která je při přehrávání samplů použita (viz následující kapitola). Posledním blokem na SIDu je blok nazvaný VOLUME, ve kterém se globálně mění hlasitost výsledného zvuku. Pro určení hlasitosti jsou rezervovány čtyři bity v jednom z řídicích registrů, čímž je vlastně i určen typický formát samplů při přehrávání digitalizovaných zvuků.
+
 ## Přehrávání digitalizovaného (samplovaného) zvuku
 
 ## SID: minulost a současnost
