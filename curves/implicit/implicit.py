@@ -11,7 +11,7 @@ y = np.linspace(-3, 3, 50)
 x, y = np.meshgrid(x, y)
 
 # implicitní funkce
-z = z=x**2-2*x*y+y**2-2*x
+z = x**2-2*x*y+y**2-2*x
 
 # hodnoty, které se mají zvýraznit na isoploše
 levels = np.arange(1, 5, 0.5)
