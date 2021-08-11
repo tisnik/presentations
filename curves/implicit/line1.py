@@ -10,10 +10,12 @@ y = np.linspace(-2, 2, 10)
 # konstrukce mřížky
 x, y = np.meshgrid(x, y)
 
-# implicitní funkce úsečky
+# koeficienty úsečky
 A = 1
 B = 1
 C = 0
+
+# implicitní funkce úsečky
 z = A*x + B*y + C
 
 # hodnota, která se má zvýraznit na isoploše

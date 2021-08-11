@@ -10,10 +10,12 @@ y = np.linspace(-2, 2, 10)
 # konstrukce mřížky
 x, y = np.meshgrid(x, y)
 
-# implicitní funkce úsečky
+# koeficienty úsečky
 A = -2
 B = 1
 C = 0
+
+# implicitní funkce úsečky
 z = A*x + B*y + C
 
 # hodnota, která se má zvýraznit na isoploše
@@ -39,7 +41,7 @@ plt.xlabel('Osa x')
 plt.ylabel('Osa y')
 
 # uložení grafu do rastrového obrázku
-plt.savefig("line1.png")
+plt.savefig("line2.png")
 
 # zobrazení grafu
 plt.show()
