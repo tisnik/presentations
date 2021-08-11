@@ -46,7 +46,7 @@ plt.xlabel('Osa x')
 plt.ylabel('Osa y')
 
 # uložení grafu do rastrového obrázku
-plt.savefig("spiric2.png")
+plt.savefig("spiric3.png")
 
 # zobrazení grafu
 plt.show()
