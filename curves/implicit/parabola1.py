@@ -10,10 +10,12 @@ y = np.linspace(0, 8, 50)
 # konstrukce mřížky
 x, y = np.meshgrid(x, y)
 
-# implicitní funkce paraboly
+# koeficienty paraboly
 f = 0.5
 p = 2*f
-z = x**2 - p*p*y
+
+# implicitní funkce paraboly
+z = x**2 - 2*p*y
 
 # hodnota, která se má zvýraznit na isoploše
 levels = [0]
