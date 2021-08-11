@@ -10,8 +10,10 @@ y = np.linspace(-2, 2, 50)
 # konstrukce mřížky
 x, y = np.meshgrid(x, y)
 
-# implicitní funkce kružnice
+# koeficienty kružnice
 r = 1
+
+# implicitní funkce kružnice
 z = x**2 + y ** 2 - r ** 2
 
 # hodnota, která se má zvýraznit na isoploše
