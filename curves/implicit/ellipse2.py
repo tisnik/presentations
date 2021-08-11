@@ -10,9 +10,11 @@ y = np.linspace(-4, 4, 50)
 # konstrukce mřížky
 x, y = np.meshgrid(x, y)
 
-# implicitní funkce elipsy
+# koeficienty elipsy
 a = 2
 b = 3
+
+# implicitní funkce elipsy
 z = x**2/a**2 + y ** 2/b**2 - 1
 
 # hodnota, která se má zvýraznit na isoploše
