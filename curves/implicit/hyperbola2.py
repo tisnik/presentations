@@ -10,8 +10,10 @@ y = np.linspace(-10, 10, 50)
 # konstrukce mřížky
 x, y = np.meshgrid(x, y)
 
-# implicitní funkce hyperboly
+# koeficient hyperboly
 a = 4
+
+# implicitní funkce hyperboly
 z = a/x - y
 
 # hodnota, která se má zvýraznit na isoploše
