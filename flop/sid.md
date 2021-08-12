@@ -131,6 +131,11 @@ Počet "sériově" zapojených čipů je prakticky omezen pouze vzrůstající �
 
 ## Přehrávání digitalizovaného (samplovaného) zvuku
 
+Na zvukovém čipu SID je možné poměrně snadno přehrávat i digitalizovaný (samplovaný) zvuk. Existuje několik možných způsobů přehrávání samplovaného zvuku; typicky se používá buď přímé řízení výstupní úrovně v bloku VOLUME, na jehož vstup je přivedena stejnosměrná složka (takto lze snadno pracovat se čtyřbitovými samply) nebo se používá PWM – pulse width modulation, tj. programová změna střídy obdélníkového signálu. V tomto případě není pro změnu střídy možné využít přímo možnosti SIDu, protože jeho zvukové generátory nemají tak vysokou frekvenci (pro PWM se musí používat časový krok odpovídající samplované frekvenci vynásobené dynamickým rozsahem samplu, tj. například 2^8).
+
+S využitím PWM lze i na běžném počítači Commodore C64 bez dalších hardwarových úprav přehrávat digitalizovaný zvuk samplovaný na frekvenci cca 16 kHz se samply uloženými na šesti bitech, což odpovídá dynamickému rozsahu zhruba 36 dB (se SuperCPU lze dosáhnout vzorkovací frekvence až 19 kHz s plně osmibitovými vzorky). Podrobný popis jednotlivých způsobů přehrávání digitalizovaných zvuků (včetně praktických ukázek přehrávacích rutin) je uveden v článku The C64 Digi, jehož autory jsou Robin Harbron, Levente Harsfalvi a Stephen Judd. Nejjednodušší přehrávací rutina, která modifikuje přímo výstupní hlasitost v závislosti na nejvyšších čtyřech bitech osmibitového samplu, vypadá následovně:
+
+
 ## SID: minulost a současnost
 
 ## Ukázky hudby pro SID
