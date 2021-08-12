@@ -73,6 +73,10 @@ layout: default
 * [Pre and post-conditions](coffee-talks/pre_post_conditions.md)
 * [8 bit glory](coffee-talks/8bit_glory.md)
 
+
+### Přílohy k článkům
+* [Křivky v přírodě, architektuře, stavitelství i v počítačové grafice: matematický popis křivek](appendix/curves.md)
+
 ### Ostatní
 * [Jazyk Python - tvorba testů s využitím knihovny Behave ](other/BDD_cz.md)
 * [Behavior-driven development (BDD) & Behavior-driven testing (BDT)](other/BDD_en.md)
