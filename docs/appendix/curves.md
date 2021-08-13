@@ -6,5 +6,5 @@
 
 ![Úsečka](images/basic/line.png)
 
-- [zdrojový kód](lit_sources/basic/line.html)
-- [zdrojový kód v literate stylu](https://github.com/tisnik/presentations/blob/master/curves/line.py)
+- [zdrojový kód pro vykreslení křivky](https://github.com/tisnik/presentations/blob/master/curves/line.py)
+- [zdrojový kód v literate stylu](lit_sources/basic/line.html)
