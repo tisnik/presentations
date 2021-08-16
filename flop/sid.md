@@ -135,6 +135,17 @@ Na zvukovém čipu SID je možné poměrně snadno přehrávat i digitalizovaný
 
 S využitím PWM lze i na běžném počítači Commodore C64 bez dalších hardwarových úprav přehrávat digitalizovaný zvuk samplovaný na frekvenci cca 16 kHz se samply uloženými na šesti bitech, což odpovídá dynamickému rozsahu zhruba 36 dB (se SuperCPU lze dosáhnout vzorkovací frekvence až 19 kHz s plně osmibitovými vzorky). Podrobný popis jednotlivých způsobů přehrávání digitalizovaných zvuků (včetně praktických ukázek přehrávacích rutin) je uveden v článku The C64 Digi, jehož autory jsou Robin Harbron, Levente Harsfalvi a Stephen Judd. Nejjednodušší přehrávací rutina, která modifikuje přímo výstupní hlasitost v závislosti na nejvyšších čtyřech bitech osmibitového samplu, vypadá následovně:
 
+       ldy #0      ; dolních osm bitů ukazatele na přehrávaný vzorek
+:loop  lda ($fd),y ; na adresách $fd a $fe v nulté stránce paměti
+                   ; je uložen začátek samplu
+       sta $d418   ; adresa řídicího registru VOLUME - přehrát vzorek
+       ldx #5      ; nastaveno podle vzorkovací frekvence
+:delay dex
+       bne delay   ; zpožďovací smyčka
+       iny         ;přechod na další vzorek
+       bne loop
+       inc $fe     ; samozřejmě počítáme i s přechodem
+       jmp loop    ; přes stránku paměti 6502ky (stránka = 256 bajtů)
 
 ## SID: minulost a současnost
 
