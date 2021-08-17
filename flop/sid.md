@@ -149,5 +149,7 @@ S využitím PWM lze i na běžném počítači Commodore C64 bez dalších hard
 
 ## SID: minulost a současnost
 
+SID byl zpočátku navržen především pro použití v osmibitových domácích počítačích firmy Commodore (CBM). V tomto ohledu skutečně dosáhl velkého úspěchu, protože zejména počítač Commodore C64 byl (co se týče objemů prodeje) jedním z nejúspěšnějších osmibitových počítačů, který překonal jak osmibitové Apple II (tento počítač byl oblíbený především ve firmách a školách, i díky geniálně navržené Wozniakově disketové jednotce a tabulkovému kalkulátoru VisiCalc), tak pravděpodobně i evropské ZX Spectrum (konkrétní čísla se dosti odlišují; zatímco počty prodaných C64 jsou poměrně přesná, u počítačů ZX Spectrum je situace poněkud složitější, protože existuje mnoho více či méně kompatibilních klonů, z nichž mnohé jsou velmi rozšířené).
+
 ## Ukázky hudby pro SID
 
