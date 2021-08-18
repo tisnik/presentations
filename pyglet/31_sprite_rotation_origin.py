@@ -21,6 +21,7 @@ def on_draw():
     window.clear()
     sprite.draw()
 
+
 def update(dt):
     sprite.rotation += 1
 
