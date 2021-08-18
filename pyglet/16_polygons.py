@@ -91,7 +91,7 @@ def on_draw():
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)   # vykreslovani vyplnenych ctyruhelniku
     glEnable(GL_POLYGON_STIPPLE)                # povolit vzorek
     glPolygonStipple(pattern1_gl)               # zadat prvni vzorek
-    draw_polygon(10, 320) 
+    draw_polygon(10, 320)
     glPolygonStipple(pattern2_gl)               # zadat druhy vzorek
     draw_polygon(220, 320)
 
