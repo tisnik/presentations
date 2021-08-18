@@ -87,7 +87,7 @@ def on_draw():
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)   # vykreslovani vyplnenych ctyruhelniku
     draw_polygon(10, 110) 
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)   # vykreslovani pouze hran ctyruhelniku
-    draw_polygon(220, 110) 
+    draw_polygon(220, 110)
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)   # vykreslovani vyplnenych ctyruhelniku
     glEnable(GL_POLYGON_STIPPLE)                # povolit vzorek
     glPolygonStipple(pattern1_gl)               # zadat prvni vzorek
