@@ -9,7 +9,7 @@ window = pyglet.window.Window(width=450,
 
 
 def draw_polygon(x, y):
-    glBegin(GL_POLYGON) 
+    glBegin(GL_POLYGON)
 
     glColor3f(1.0, 0.0, 0.0)                 # kazdy vertex bude vykresleny jinou barvou
     glVertex2i(x, y)
