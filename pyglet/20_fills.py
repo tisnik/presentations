@@ -35,7 +35,6 @@ def on_resize(width, height):
     glViewport(0, 0, width, height)           # viditelna oblast pres cele okno
 
 
-
 @window.event
 def on_draw():
     global r1, r2
