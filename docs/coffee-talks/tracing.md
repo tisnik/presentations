@@ -109,3 +109,39 @@
     - `ltrace -c`
 * Connect to already running process
     - `ltrace -p 12345`
+
+
+
+## Utility `strace`
+
+* Detect all syscalls
+* Independently from where it comes
+    - application code
+    - library
+    - (typically from glibc)
+* Similar CLI flags as `ltrace`
+* Semi-intelligent replace of magic number to symbolic constants
+* Also return value is printed
+    - (semi-intelligent too if possible)
+    - message is printed if return value is known
+    - "No such file or directory"
+
+### Usage
+
+* Filtering
+    - `strace -e trace=open,close whoami`
+* Timings
+    - `strace -t whoami`
+    - `strace -tt whoami`
+    - `strace -ttt whoami`
+    - `strace -r whoami`
+* Table of syscalls
+    - `strace -c whoami`
+* Sorting by column
+    - `strace -c -S calls whoami`
+
+### Next time
+
+* DTrace
+* SystemTap
+* GNU Debugger
