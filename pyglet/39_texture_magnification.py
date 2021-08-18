@@ -24,7 +24,6 @@ def init():
     glBindTexture(GL_TEXTURE_2D, texture.id)
 
 
-
 @window.event
 def on_resize(width, height):
     init()
