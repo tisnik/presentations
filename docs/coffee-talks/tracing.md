@@ -85,6 +85,12 @@
 * memory allocation and deallocation
 * and of course just simple tracing is possible
 
+### Examples
+
+* [Hello world](tracing_examples/example01.md)
+* [Random bitmap](tracing_examples/example02.md)
+* [Fractal renderer](tracing_examples/example03.md)
+
 ### Usage
 
 * Basic usage
