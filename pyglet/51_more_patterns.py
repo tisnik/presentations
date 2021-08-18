@@ -36,7 +36,7 @@ def recalc_any_pattern(image, palette, xmin, ymin, xmax, ymax, function):
 image = Image.new("RGB", (IMAGE_WIDTH, IMAGE_HEIGHT))
 
 mez = (2 << 5) + 30 * 2.5
-recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x, y : x*x + y*y)
+recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x, y: x*x + y*y)
 image.save("patternC_circle.png")
 
 mez = (2 << 5) + 30 * 2.5
