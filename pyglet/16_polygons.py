@@ -21,7 +21,7 @@ def draw_polygon(x, y):
     glVertex2i(x+150, y+85) 
 
     glColor3f(0.0, 0.0, 1.0) 
-    glVertex2i(x+200, y) 
+    glVertex2i(x+200, y)
 
     glColor3f(1.0, 0.0, 1.0)
     glVertex2i(x+150, y-85)
