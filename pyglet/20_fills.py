@@ -63,7 +63,7 @@ def on_draw():
               0.0, 1.0,  0.0)                 # poloha "stropu" ve scene
 
     glRotatef(r1, 1.0, 0.0, 0.0)              # rotace objektu
-    glRotatef(r2, 0.0, 1.0, 0.0) 
+    glRotatef(r2, 0.0, 1.0, 0.0)
 
     glBegin(GL_QUADS)                         # vykresleni otevrene krychle - sten domecku
     glColor3f(0.0, 0.0, 1.0)
