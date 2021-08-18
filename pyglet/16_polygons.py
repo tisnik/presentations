@@ -31,6 +31,7 @@ def draw_polygon(x, y):
 
     glEnd() 
 
+
 @window.event
 def on_draw():
     glClear(GL_COLOR_BUFFER_BIT)
