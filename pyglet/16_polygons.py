@@ -93,7 +93,7 @@ def on_draw():
     glPolygonStipple(pattern1_gl)               # zadat prvni vzorek
     draw_polygon(10, 320) 
     glPolygonStipple(pattern2_gl)               # zadat druhy vzorek
-    draw_polygon(220, 320) 
+    draw_polygon(220, 320)
 
 
 pyglet.app.run()
