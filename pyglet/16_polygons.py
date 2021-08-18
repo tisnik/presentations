@@ -85,7 +85,7 @@ def on_draw():
     glEnable(GL_LINE_SMOOTH)                    # povoleni antialiasingu usecek
     glDisable(GL_POLYGON_STIPPLE)               # zakazat vzorek
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)   # vykreslovani vyplnenych ctyruhelniku
-    draw_polygon(10, 110) 
+    draw_polygon(10, 110)
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)   # vykreslovani pouze hran ctyruhelniku
     draw_polygon(220, 110)
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)   # vykreslovani vyplnenych ctyruhelniku
