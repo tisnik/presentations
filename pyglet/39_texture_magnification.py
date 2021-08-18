@@ -56,7 +56,7 @@ def on_draw():
     glClear(GL_COLOR_BUFFER_BIT)                # vymazani bitovych rovin barvoveho bufferu
 
     glEnable(GL_TEXTURE_2D)
-    draw_quad(50, 50) 
+    draw_quad(50, 50)
 
 pyglet.app.run()
 
