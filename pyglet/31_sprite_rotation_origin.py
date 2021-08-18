@@ -24,5 +24,6 @@ def on_draw():
 def update(dt):
     sprite.rotation += 1
 
+
 pyglet.clock.schedule_interval(update, 1/60.)
 pyglet.app.run()
