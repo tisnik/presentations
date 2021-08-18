@@ -12,7 +12,7 @@ def draw_polygon(x, y):
     glBegin(GL_POLYGON) 
 
     glColor3f(1.0, 0.0, 0.0)                 # kazdy vertex bude vykresleny jinou barvou
-    glVertex2i(x, y) 
+    glVertex2i(x, y)
 
     glColor3f(0.0, 1.0, 0.0)
     glVertex2i(x+50, y+85)
