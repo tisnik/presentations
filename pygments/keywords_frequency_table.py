@@ -30,7 +30,9 @@ def keywords_for_file(filename):
     keywords = []
     for token in tokens:
         t_type = token[0]
-        if t_type is Token.Keyword or t_type in Token.Keyword.Namespace or t_type in Token.Keyword.Declaration:
+        if t_type is Token.Keyword or \
+                t_type in Token.Keyword.Namespace or \
+                t_type in Token.Keyword.Declaration:
             keywords.append(token[1])
     return keywords
 
