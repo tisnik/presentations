@@ -10,7 +10,7 @@ t = np.arange(0, 1.05, 0.05)
 xc = (1, 2, 3)
 yc = (1, 2.9, 1)
 
-# Bernsteinovy polynomy
+# Bernsteinovy polynomy pro Bézierovu kvadriku
 B = [(1-t)**2,
      2*t*(1-t),
      t**2]
