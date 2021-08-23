@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # hodnoty parametru t
 t = np.arange(0, 1.05, 0.02)
 
-# Bernsteinovy polynomy
+# Bernsteinovy polynomy pro Bézierovu kubiku
 B = [1 * (1-t)**3,
      3 * t * (1-t)**2,
      3 * t**2 * (1-t),
