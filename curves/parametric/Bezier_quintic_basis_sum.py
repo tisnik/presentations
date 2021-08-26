@@ -5,7 +5,7 @@ import pandas as pd
 from tabulate import tabulate
 
 # hodnoty parametru t
-t = np.arange(0, 1.01, 0.10)
+t = np.linspace(0, 1, 11)
 
 # Bernsteinovy polynomy pro Bézierovu křivku stupně 5
 B = [1 * (1-t)**5,
