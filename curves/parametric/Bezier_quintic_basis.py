@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # hodnoty parametru t
-t = np.arange(0, 1.05, 0.02)
+t = np.linspace(0, 1, 50)
 
 # Bernsteinovy polynomy pro Bézierovu křivku stupně 5
 B = [1 * (1-t)**5,
