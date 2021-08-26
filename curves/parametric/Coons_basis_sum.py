@@ -5,7 +5,7 @@ import pandas as pd
 from tabulate import tabulate
 
 # hodnoty parametru t
-t = np.arange(0, 1.01, 0.10)
+t = np.linspace(0, 1, 11)
 
 # Coonsovy polynomy
 C = [(1-t)**3,
