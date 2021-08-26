@@ -34,7 +34,7 @@ ax.plot(t, B[4], 'm-', label='b4,4')
 ax.legend()
 
 # uložení grafu do rastrového obrázku
-plt.savefig("bezier_quartic_basis_.png")
+plt.savefig("bezier_quartic_basis.png")
 
 # zobrazení grafu
 plt.show()
