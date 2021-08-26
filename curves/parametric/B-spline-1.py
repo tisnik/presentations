@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # hodnoty parametru t
-t = np.arange(0, 1.05, 0.05)
+t = np.linspace(0, 1, 20)
 
 # řídicí body B-spline
 xc = (1, 1, 2, 2.5, 3, 2)
