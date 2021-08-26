@@ -36,7 +36,7 @@ ax.plot(t, B[5], 'y-', label='b5,5')
 ax.legend()
 
 # uložení grafu do rastrového obrázku
-plt.savefig("bezier_quintic_basis_.png")
+plt.savefig("bezier_quintic_basis.png")
 
 # zobrazení grafu
 plt.show()
