@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # hodnoty parametru t
 t = np.arange(0, 1.05, 0.05)
 
-# řídicí body B-spline
+# řídicí body Catmul-Romovy spline
 xc = (1, 1, 2, 2.5, 3, 2)
 yc = (1, 2, 2, 0.1, 2.9, 2.9)
 
@@ -41,7 +41,7 @@ fig.suptitle('Catmul-Rom spline', fontsize=15)
 ax.set_xlim(0, 4)
 ax.set_ylim(0, 4)
 
-# řídicí body B-spline
+# řídicí body Catmul-Romovy spline
 ax.plot(xc, yc, 'k--', alpha=0.5)
 ax.plot(xc, yc, 'ro')
 
