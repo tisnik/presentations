@@ -1,4 +1,4 @@
-"""Parametrická křivka: Catmul-Romova spline, násobné body."""
+"""Parametrická křivka: Catmul-Romova spline, násobné body uprostřed křivky."""
 
 import numpy as np
 import matplotlib.pyplot as plt
