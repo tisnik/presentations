@@ -15,7 +15,10 @@ f = 0.5
 p = 2*f
 z = x**2 - p*p*y
 
+# inicializace grafu
 fig = plt.figure()
+
+# nastavení 3D projekce
 ax = fig.gca(projection='3d')
 
 # zobrazení 3D grafu formou kontur
