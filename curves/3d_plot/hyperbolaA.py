@@ -15,7 +15,10 @@ x, y = np.meshgrid(x, y)
 a = 1
 z = (x**2 - y**2)/a**2 - 1
 
+# inicializace grafu
 fig = plt.figure()
+
+# nastavení 3D projekce
 ax = fig.gca(projection='3d')
 
 # zobrazení 3D grafu formou plochy
