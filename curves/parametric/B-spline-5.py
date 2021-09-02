@@ -1,4 +1,4 @@
-"""Parametrická křivka: B-spline složená z Coonsových oblouků, násobné body."""
+"""Parametrická křivka: B-spline složená z Coonsových oblouků, násobné body uprostřed křivky."""
 
 import numpy as np
 import matplotlib.pyplot as plt
