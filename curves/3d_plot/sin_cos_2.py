@@ -14,7 +14,10 @@ x, y = np.meshgrid(x, y)
 # implicitní funkce
 z = np.sin(x**2) - np.cos(y**2)
 
+# inicializace grafu
 fig = plt.figure()
+
+# nastavení 3D projekce
 ax = fig.gca(projection='3d')
 
 # zobrazení 3D grafu formou plochy
