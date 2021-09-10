@@ -1,5 +1,17 @@
 """Elipsa zadaná implicitní funkcí."""
 
+#
+# Použito v článku:
+#
+# Křivky popsané implicitní funkcí, animace křivek
+# https://www.root.cz/clanky/krivky-popsane-implicitni-funkci-animace-krivek/
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
+
 import numpy as np
 import matplotlib.pyplot as plt
 
