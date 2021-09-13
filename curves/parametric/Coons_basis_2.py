@@ -1,5 +1,17 @@
 """Bázové polynomy Coonsovy kubiky."""
 
+#
+# Použito v článku:
+#
+# Parametrické křivky používané v designu i při tvorbě animací
+# https://www.root.cz/clanky/parametricke-krivky-pouzivane-v-designu-i-pri-tvorbe-animaci/
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
+
 import numpy as np
 import matplotlib.pyplot as plt
 
