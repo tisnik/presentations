@@ -1,5 +1,17 @@
 """Parametrická křivka: Catmul-Romova spline, násobné body uprostřed křivky."""
 
+#
+# Použito v článku:
+#
+# Parametrické křivky používané v designu i při tvorbě animací (dokončení)
+# https://www.root.cz/clanky/parametricke-krivky-pouzivane-v-designu-i-pri-tvorbe-animaci-dokonceni/
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
+
 import numpy as np
 import matplotlib.pyplot as plt
 
