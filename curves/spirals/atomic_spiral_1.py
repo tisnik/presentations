@@ -25,7 +25,7 @@ fig.suptitle('Atomická spirála', fontsize=15)
 ax.plot(theta, radius, 'g-')
 
 # uložení grafu do rastrového obrázku
-plt.savefig("atomic_spiral.png")
+plt.savefig("atomic_spiral_1.png")
 
 # zobrazení grafu
 plt.show()
