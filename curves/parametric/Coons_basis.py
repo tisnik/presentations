@@ -1,5 +1,17 @@
 """Bázové polynomy Coonsovy kubiky."""
 
+#
+# Použito v článku:
+#
+# Křivky určené polynomem – nejpoužívanější křivky v současnosti
+# https://www.root.cz/clanky/krivky-urcene-polynomem-nejpouzivanejsi-krivky-v-soucasnosti/
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
+
 import numpy as np
 import matplotlib.pyplot as plt
 
