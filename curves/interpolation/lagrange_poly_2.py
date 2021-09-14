@@ -1,7 +1,19 @@
 """Koeficienty Lagrangeova polynomu + vykreslení polynomu."""
 
+#
+# Použito v článku:
+#
+# Křivky určené polynomem – nejpoužívanější křivky v současnosti
+# https://www.root.cz/clanky/krivky-urcene-polynomem-nejpouzivanejsi-krivky-v-soucasnosti/
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
 # Založeno na příkladu z článku:
 # https://pythonnumericalmethods.berkeley.edu/notebooks/chapter17.04-Lagrange-Polynomial-Interpolation.html
+#
 
 import numpy as np
 import numpy.polynomial.polynomial as poly
