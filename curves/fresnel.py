@@ -1,5 +1,17 @@
 """Fresnel fractal generator."""
 
+#
+# Použito v článku:
+#
+# Křivky v přírodě, architektuře, stavitelství i v počítačové grafice
+# https://www.root.cz/clanky/krivky-v-prirode-architekture-stavitelstvi-i-v-pocitacove-grafice/
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
+
 import matplotlib.pyplot as plt
 import numpy as np
 from math import sin, cos
