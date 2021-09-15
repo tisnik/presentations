@@ -1,5 +1,17 @@
 #!/usr/bin/env python
 
+#
+# Použito v článku:
+#
+# Křivky v přírodě i v počítačové grafice – svět spirál
+# https://www.root.cz/clanky/krivky-v-prirode-i-v-pocitacove-grafice-svet-spiral/
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
+
 """IFS systémy."""
 
 from PIL import Image
