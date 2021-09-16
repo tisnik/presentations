@@ -12,6 +12,10 @@
 # https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
 #
 
+# Zdrojový kód ve stylu literate programming
+# https://tisnik.github.io/presentations/appendix/lit_sources/basic/ellipse_general.html
+#
+
 import numpy as np
 import matplotlib.pyplot as plt
 
