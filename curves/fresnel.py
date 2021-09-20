@@ -29,12 +29,12 @@ ya = np.zeros((n,))
 
 x = 0.0
 y = 0.0
-f = 0.0
+t = 0.0
 
 for i in range(n):
-    f += 0.05
-    x += cos(f * f)
-    y += sin(f * f)
+    t += 0.05
+    x += cos(t * t)
+    y += sin(t * t)
     xa[i] = x
     ya[i] = y
 
