@@ -20,9 +20,7 @@
       <p>Fresnel fractal generator.</p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span></pre></div>
+      <div class="highlight"><pre><span></span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -31,10 +29,19 @@
       <div class='octowrap'>
         <a class='octothorpe' href='#section-1'>#</a>
       </div>
-      <p>Celkový počet vypočtených bodů</p>
+      <p>Použito v článku:</p>
+<p>Křivky v přírodě, architektuře, stavitelství i v počítačové grafice
+https://www.root.cz/clanky/krivky-v-prirode-architekture-stavitelstvi-i-v-pocitacove-grafice/</p>
+<p>Součást seriálu:</p>
+<p>Křivky nejen v počítačové grafice
+https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/</p>
+<p>Zdrojový kód ve stylu literate programming
+https://tisnik.github.io/presentations/appendix/lit_sources/basic/fresnel.html</p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span></pre></div>
+      <div class="highlight"><pre><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -42,6 +49,18 @@
     <div class='docs'>
       <div class='octowrap'>
         <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>Celkový počet vypočtených bodů</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
       </div>
       <p>Prozatím prázdná pole připravená pro uložení výsledků výpočtu.</p>
     </div>
@@ -52,26 +71,14 @@
 
 <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="n">f</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">f</span> <span class="o">+=</span> <span class="mf">0.05</span>
-    <span class="n">x</span> <span class="o">+=</span> <span class="n">cos</span><span class="p">(</span><span class="n">f</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">+=</span> <span class="n">sin</span><span class="p">(</span><span class="n">f</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">+=</span> <span class="mf">0.05</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="n">cos</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="n">sin</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
     <span class="n">xa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
     <span class="n">ya</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span></pre></div>
-    </div>
-  </div>
-  <div class='clearall'></div>
-  <div class='section' id='section-3'>
-    <div class='docs'>
-      <div class='octowrap'>
-        <a class='octothorpe' href='#section-3'>#</a>
-      </div>
-      <p>vrcholy na křivce pospojované úsečkami</p>
-    </div>
-    <div class='code'>
-      <div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span> <span class="n">ya</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -80,10 +87,10 @@
       <div class='octowrap'>
         <a class='octothorpe' href='#section-4'>#</a>
       </div>
-      <p>uložení grafu do rastrového obrázku</p>
+      <p>vrcholy na křivce pospojované úsečkami</p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fresnel.png&quot;</span><span class="p">)</span></pre></div>
+      <div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span> <span class="n">ya</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -91,6 +98,18 @@
     <div class='docs'>
       <div class='octowrap'>
         <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>uložení grafu do rastrového obrázku</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fresnel.png&quot;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
       </div>
       <p>zobrazení grafu</p>
     </div>
