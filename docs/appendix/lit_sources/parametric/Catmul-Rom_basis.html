@@ -20,8 +20,7 @@
       <p>Bázové polynomy Catmul-Romovy spline.</p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span></pre></div>
+      <div class="highlight"><pre><span></span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -30,10 +29,16 @@
       <div class='octowrap'>
         <a class='octothorpe' href='#section-1'>#</a>
       </div>
-      <p>hodnoty parametru t</p>
+      <p>Použito v článku:</p>
+<p>Parametrické křivky používané v designu i při tvorbě animací
+https://www.root.cz/clanky/parametricke-krivky-pouzivane-v-designu-i-pri-tvorbe-animaci/</p>
+<p>Součást seriálu:</p>
+<p>Křivky nejen v počítačové grafice
+https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/</p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span></pre></div>
+      <div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -42,10 +47,10 @@
       <div class='octowrap'>
         <a class='octothorpe' href='#section-2'>#</a>
       </div>
-      <p>koeficient Catmul-Romovy spline</p>
+      <p>hodnoty parametru t</p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre><span class="n">tau</span> <span class="o">=</span> <span class="mf">0.5</span></pre></div>
+      <div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -53,6 +58,18 @@
     <div class='docs'>
       <div class='octowrap'>
         <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>koeficient Catmul-Romovy spline</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">tau</span> <span class="o">=</span> <span class="mf">0.5</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
       </div>
       <p>bázové polynomy</p>
     </div>
@@ -64,10 +81,10 @@
     </div>
   </div>
   <div class='clearall'></div>
-  <div class='section' id='section-4'>
+  <div class='section' id='section-5'>
     <div class='docs'>
       <div class='octowrap'>
-        <a class='octothorpe' href='#section-4'>#</a>
+        <a class='octothorpe' href='#section-5'>#</a>
       </div>
       <p>rozměry grafu při uložení: 640x480 pixelů</p>
     </div>
@@ -76,10 +93,10 @@
     </div>
   </div>
   <div class='clearall'></div>
-  <div class='section' id='section-5'>
+  <div class='section' id='section-6'>
     <div class='docs'>
       <div class='octowrap'>
-        <a class='octothorpe' href='#section-5'>#</a>
+        <a class='octothorpe' href='#section-6'>#</a>
       </div>
       <p>titulek grafu</p>
     </div>
@@ -88,10 +105,10 @@
     </div>
   </div>
   <div class='clearall'></div>
-  <div class='section' id='section-6'>
+  <div class='section' id='section-7'>
     <div class='docs'>
       <div class='octowrap'>
-        <a class='octothorpe' href='#section-6'>#</a>
+        <a class='octothorpe' href='#section-7'>#</a>
       </div>
       <p>určení rozsahů na obou souřadných osách</p>
     </div>
@@ -101,10 +118,10 @@
     </div>
   </div>
   <div class='clearall'></div>
-  <div class='section' id='section-7'>
+  <div class='section' id='section-8'>
     <div class='docs'>
       <div class='octowrap'>
-        <a class='octothorpe' href='#section-7'>#</a>
+        <a class='octothorpe' href='#section-8'>#</a>
       </div>
       <p>bázové polynomy</p>
     </div>
@@ -116,10 +133,10 @@
     </div>
   </div>
   <div class='clearall'></div>
-  <div class='section' id='section-8'>
+  <div class='section' id='section-9'>
     <div class='docs'>
       <div class='octowrap'>
-        <a class='octothorpe' href='#section-8'>#</a>
+        <a class='octothorpe' href='#section-9'>#</a>
       </div>
       <p>uložení grafu do rastrového obrázku</p>
     </div>
@@ -128,10 +145,10 @@
     </div>
   </div>
   <div class='clearall'></div>
-  <div class='section' id='section-9'>
+  <div class='section' id='section-10'>
     <div class='docs'>
       <div class='octowrap'>
-        <a class='octothorpe' href='#section-9'>#</a>
+        <a class='octothorpe' href='#section-10'>#</a>
       </div>
       <p>zobrazení grafu</p>
     </div>
