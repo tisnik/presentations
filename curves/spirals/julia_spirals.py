@@ -1,5 +1,17 @@
 #!/usr/bin/env python
 
+#
+# Použito v článku:
+#
+# Křivky v přírodě i v počítačové grafice – svět spirál (dokončení)
+# https://www.root.cz/clanky/krivky-v-prirode-i-v-pocitacove-grafice-svet-spiral-dokonceni/
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
+
 """Vykreslení spirál v Juliových množinách."""
 
 from PIL import Image
