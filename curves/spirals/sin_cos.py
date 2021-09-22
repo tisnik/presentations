@@ -2,6 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
+#
+# Použito v článku:
+#
+# Křivky v přírodě i v počítačové grafice – svět spirál (dokončení)
+# https://www.root.cz/clanky/krivky-v-prirode-i-v-pocitacove-grafice-svet-spiral-dokonceni/
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
+
 # počet hodnot na x-ové ose
 points = 300
 
