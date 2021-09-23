@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>B-spline-4.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>B-spline-4.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>Parametrická křivka: B-spline složená z Coonsových oblouků, násobné body.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Použito v článku:</p>
+<p>Parametrické křivky používané v designu i při tvorbě animací (dokončení)
+https://www.root.cz/clanky/parametricke-krivky-pouzivane-v-designu-i-pri-tvorbe-animaci-dokonceni/</p>
+<p>Součást seriálu:</p>
+<p>Křivky nejen v počítačové grafice
+https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>hodnoty parametru t</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>řídicí body B-spline</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">xc</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">yc</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Coonsovy polynomy</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">C</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span>
+     <span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="p">,</span>
+     <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+     <span class="n">t</span><span class="o">**</span><span class="mi">3</span><span class="p">]</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">draw_coons_arc</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>výpočet bodů ležících na Coonsově kubice</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">xc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="n">yc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>konečná úprava sumy</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">x</span> <span class="o">/=</span> <span class="mi">6</span>
+    <span class="n">y</span> <span class="o">/=</span> <span class="mi">6</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      <p>vrcholy na křivce pospojované úsečkami</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">draw_b_spline</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">draw_first_arcs</span><span class="p">,</span> <span class="n">draw_second_arcs</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-10'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-10'>#</a>
+      </div>
+      <p>rozměry grafu při uložení: 640x480 pixelů</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.4</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">))</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-11'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-11'>#</a>
+      </div>
+      <p>titulek grafu</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;B-spline&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-12'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-12'>#</a>
+      </div>
+      <p>určení rozsahů na obou souřadných osách</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-13'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-13'>#</a>
+      </div>
+      <p>řídicí body B-spline</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-14'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-14'>#</a>
+      </div>
+      <p>první dva oblouky s násobnými body</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">if</span> <span class="n">draw_first_arcs</span><span class="p">:</span>
+        <span class="n">draw_coons_arc</span><span class="p">((</span><span class="n">xc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                       <span class="p">(</span><span class="n">yc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;g-&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">draw_second_arcs</span><span class="p">:</span>
+        <span class="n">draw_coons_arc</span><span class="p">((</span><span class="n">xc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                       <span class="p">(</span><span class="n">yc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;y-&quot;</span><span class="p">)</span>
+
+    <span class="n">last</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xc</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-15'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-15'>#</a>
+      </div>
+      <p>další oblouky</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">last</span><span class="o">-</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;r-&quot;</span> <span class="k">if</span> <span class="n">start</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;b-&quot;</span>
+        <span class="n">draw_coons_arc</span><span class="p">(</span><span class="n">xc</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="mi">4</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="mi">4</span><span class="p">],</span> <span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-16'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-16'>#</a>
+      </div>
+      <p>poslední dva oblouky s násobnými body</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">if</span> <span class="n">draw_second_arcs</span><span class="p">:</span>
+        <span class="n">draw_coons_arc</span><span class="p">((</span><span class="n">xc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+                       <span class="p">(</span><span class="n">yc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;y-&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">draw_first_arcs</span><span class="p">:</span>
+        <span class="n">draw_coons_arc</span><span class="p">((</span><span class="n">xc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">xc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+                       <span class="p">(</span><span class="n">yc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="n">last</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;g-&quot;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-17'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-17'>#</a>
+      </div>
+      <p>uložení grafu do rastrového obrázku</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-18'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-18'>#</a>
+      </div>
+      <p>zobrazení grafu</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-19'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-19'>#</a>
+      </div>
+      <p>čtyři varianty B-spline křivky</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">draw_b_spline</span><span class="p">(</span><span class="s2">&quot;B-spline_4A.png&quot;</span><span class="p">,</span> <span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="n">draw_b_spline</span><span class="p">(</span><span class="s2">&quot;B-spline_4B.png&quot;</span><span class="p">,</span> <span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">draw_b_spline</span><span class="p">(</span><span class="s2">&quot;B-spline_4C.png&quot;</span><span class="p">,</span> <span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="n">draw_b_spline</span><span class="p">(</span><span class="s2">&quot;B-spline_4D.png&quot;</span><span class="p">,</span> <span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
