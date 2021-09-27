@@ -27,8 +27,8 @@ r = 1
 d = 2
 
 # výpočet bodů ležících na křivce
-x = (R-r)*np.cos(t)+d*np.cos(t * (R-r/r))
-y = (R-r)*np.sin(t)-d*np.sin(t * (R-r/r))
+x = (R-r)*np.cos(t)+d*np.cos(t * (R-r)/r)
+y = (R-r)*np.sin(t)-d*np.sin(t * (R-r)/r)
 
 # rozměry grafu při uložení: 640x480 pixelů
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
