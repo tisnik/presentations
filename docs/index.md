@@ -72,6 +72,7 @@ layout: default
 * [Tracing](coffee-talks/tracing.md)
 * [Pre and post-conditions](coffee-talks/pre_post_conditions.md)
 * [8 bit glory](coffee-talks/8bit_glory.md)
+* [Notations and the APL programming language](coffee-talks/notation_apl.md)
 
 
 ### Přílohy k článkům
