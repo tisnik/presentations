@@ -1,4 +1,4 @@
-# Notations and the APL programming language
+# Importance of notations and the APL programming language
 
 ## Notations
 
@@ -23,14 +23,43 @@
 
 * human brain is excellent in recognizing patterns
 * and can be train to recognize new set of patterns
+* **Notation as a tool of thought**
 
 ### Examples of notations
 
+* Music notation
+* Chemistry notations (a lot of in fact)
+* Chess moves notation
 *
 *
-*
-*
-*
+
+#### Music notation
+
+![Music](images/notation_music.png)
+
+#### Chemistry notation
+
+![Chemistry](images/notation_chemistry.png)
+
+#### Traffic
+
+![Traffic](images/notation_traffic.jpg)
+
+#### Math
+
+![Math1](images/notation_math_1.png)
+
+![Math2](images/notation_math_2.png)
+
+![Math3](images/notation_math_3.png)
+
+#### Chess moves notation
+
+```
+♘f3 ♞c6
+♗xc6 dxc6
+0-0 ♝xc3
+```
 
 ## Classic programming languages
 
@@ -107,11 +136,34 @@ plus x y <= rec x {
 * it was invented as new form of mathematical notation
 * during his work for IBM (yes, IBM!) it was translater into aprogramming language
 * in 1979, Iverson received the Turing Award for his work on APL
+* "A shocking brevity"
+* later IBM discouraged customers from using it
+    - (but was used a lot by many IBM departments at the same time)
+    - prefer to use languages based on "methodologies"
+    - basically to split design, analytics, development, and testing
+    - OTOH IBM was almost never good at PL design
+
+### Kenneth E. Iverson
+
+* IBM Fellow, IBM, 1970
+* Harry H. Goode Memorial Award, IEEE Computer Society, 1975
+* Member, National Academy of Engineering (USA), 1979
+* Turing Award, Association for Computing Machinery, 1979
+* Computer Pioneer Award (Charter recipient), IEEE Computer Society, 1982
+* Honorary doctorate, York University, 1998
+
+### "Array languages"
+
+* An array:
+    - rectangular collection of numbers, characters and arrays
+    - arranged along zero or more axes
 
 ## Links
 
-APL Wiki
-https://aplwiki.com/wiki/
-
-The Array Cast
-https://www.arraycast.com/episodes/episode-03-what-is-an-array
+* [APL Wiki](https://aplwiki.com/wiki/)
+* [The Array Cast](https://www.arraycast.com/episodes/episode-03-what-is-an-array)
+* [EnthusiastiCon 2019 – An Introduction to APL](https://www.youtube.com/watch?v=UltnvW83_CQ)
+* [Dyalog](https://www.dyalog.com/)
+* [Try APL!](https://tryapl.org/)
+* [APL na replit](https://replit.com/languages/apl)
+* [Advent of Code 2020 in APL!](https://www.youtube.com/watch?v=0RQFW6P1Tt0)
