@@ -68,6 +68,8 @@
    - from left to right
    - from top to bottom
 * usually just basic ASCII characters are used
+* linear text - from speech where it make sense
+* a lot of context everywhere!
 
 ### Exceptions
 
@@ -134,6 +136,8 @@ plus x y <= rec x {
 
 * Kenneth E. Iverson
 * it was invented as new form of mathematical notation
+    - when teaching mathematics at Harvard,
+    - "Mathematical notation to express computation"
 * during his work for IBM (yes, IBM!) it was translater into aprogramming language
 * in 1979, Iverson received the Turing Award for his work on APL
 * "A shocking brevity"
@@ -156,6 +160,7 @@ plus x y <= rec x {
 * Turing Award, Association for Computing Machinery, 1979
 * Computer Pioneer Award (Charter recipient), IEEE Computer Society, 1982
 * Honorary doctorate, York University, 1998
+* ”Meeting Ken Iversion could cause mental transformations.”
 
 ### "Array languages"
 
@@ -164,6 +169,7 @@ plus x y <= rec x {
     - arranged along zero or more axes
 
 ### APL today
+
 * APL developers
     - any kind of engineer other than a software engineer
     - do not feel comfortable discussing "programming"
@@ -288,6 +294,7 @@ list ← ι10
 ```
 
 * Absolute and relative change computation
+
 ```apl
 revenues ← 56 59 67 64 60 61 68 73 78 75 81 84
 (1↓revenues)-(¯1↓revenues)
@@ -313,6 +320,37 @@ Mat[2;2]
 (⍳5)∘.≥(⍳5)
 ```
 
+```apl
+'abcd' ∘.= 'cabbage'
++/ 'abcd' ∘.= 'cabbage'
+```
+
+### Prime number generator (step-by-step)
+
+* Well let's start with the final not-idiomatic form
+
+```apl
+(∼R ∈ R∘.×R)/R←1↓⍳x
+```
+
+* Step-by-step
+
+```apl
+⍳x
+R←1↓⍳x
+R∘.×R
+R∊R∘.×R
+~R∊R∘.×R
+(~R∊R∘.×R)/R
+```
+
+## Implementations of APL
+
+* dyalog
+* GNU APL
+* ngl/apl
+* NARS2000
+
 ## Links
 
 * [APL Wiki](https://aplwiki.com/wiki/)
@@ -331,3 +369,4 @@ Mat[2;2]
 * ["The J Programming Language" by Tracy Harms (2013)](https://www.youtube.com/watch?v=RWYkx6-L04Q)
 * [Dyalog Modern Programming Language, Morten Kromberg, Talks at Google](https://www.youtube.com/watch?v=PlM9BXfu7UY)
 * [The J Language: Consistency, Adjacency, and Solution-Oriented Programming - Tracy Harms](https://www.youtube.com/watch?v=gLULrFY2-fI)
+* [Un-directed programming](https://www.sacrideo.us/un-structured-programming/)
