@@ -194,14 +194,54 @@ plus x y <= rec x {
 ◦.                          outer product
 ```
 
+* Expression
+
+```apl
+1+2×3
+```
+
+* From right to left, no priorities
+
+```apl
+2×3+1
+```
+
+* Vectors
+
+```apl
+⍴ 1 2 3 4
+
+VECTOR ← 1 2 3 4 5 6
+⍴VECTOR
+
+EMPTY_LIST ← ι0
+
+VECTOR[3]
+VECTOR[1 3 5]
+
+'xenobiotic'[10 10 1]
+```
+
 * Vector containing 1, 2, 3, 4 .. 10
 
 ```
 ι10
 ```
 
+* Item-by-item operations
+
+```apl
+÷1 2 3 4 5
+10÷1 2 3 4 5
+```
+
+* Reduce operator
+
+```apl
++/ 1 2 3 4
+```
+
 * Calculate the sum of all integers ranging from 1 to 100
-     - reduction operator
 
 ```apl
 +/ι100
@@ -217,6 +257,60 @@ plus x y <= rec x {
 
 ```apl
 fact←{×/⍳⍵}
+```
+
+* Average
+
+```apl
+X ← 1 2 3 4 5
+(+/X)÷⍴X
+```
+
+* Scan operator
+    - like reduce, but returns all intermediate results
+
+```apl
++\ 1 2 3 4 5
+```
+
+* Factorial 1! to 10!
+
+```apl
+×\⍳10
+```
+
+* Take and drop functions
+
+```apl
+list ← ι10
+1 ↑ list
+1 ↓ list
+```
+
+* Absolute and relative change computation
+```apl
+revenues ← 56 59 67 64 60 61 68 73 78 75 81 84
+(1↓revenues)-(¯1↓revenues)
+100×((1↓revenues)÷(¯1↓revenues))-1
+```
+
+* Matrices
+
+```apl
+4 3 ⍴ ⍳12
+
+Mat ← 3 3 ρ ι 9
+Mat[2;2]
+```
+
+* Outer product
+     - very powerful operation
+
+```apl
+(⍳5)∘.×(⍳5)
+(⍳5)∘.=(⍳5)
+(⍳5)∘.<(⍳5)
+(⍳5)∘.≥(⍳5)
 ```
 
 ## Links
