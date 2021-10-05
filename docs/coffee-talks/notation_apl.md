@@ -30,7 +30,7 @@
 * Music notation
 * Chemistry notations (a lot of in fact)
 * Chess moves notation
-*
+* Feynman diagrams
 *
 
 #### Music notation
@@ -194,3 +194,12 @@ fact←{×/⍳⍵}
 * [Try APL!](https://tryapl.org/)
 * [APL na replit](https://replit.com/languages/apl)
 * [Advent of Code 2020 in APL!](https://www.youtube.com/watch?v=0RQFW6P1Tt0)
+* [Python vs APL (1 Problem)](https://www.youtube.com/watch?v=APdKFJkmBbM)
+* [APL Wins (vs C++, Java & Python)](https://www.youtube.com/watch?v=59vAjBS3yZM)
+* [A Tour de Force of APL in 16 Expressions by Roger Hui](https://www.youtube.com/watch?v=e0rywC7-i0U)
+* [Conway's Game Of Life in APL](https://www.youtube.com/watch?v=a9xAKttWgP4)
+* [A List of companies that use Array Languages (J, K, APL, q)](https://github.com/interregna/arraylanguage-companies)
+* [APL - one of the greatest programming languages ever](http://www.vaxman.de/publications/apl_slides.pdf)
+* ["The J Programming Language" by Tracy Harms (2013)](https://www.youtube.com/watch?v=RWYkx6-L04Q)
+* [Dyalog Modern Programming Language | Morten Kromberg | Talks at Google](https://www.youtube.com/watch?v=PlM9BXfu7UY)
+* [The J Language: Consistency, Adjacency, and Solution-Oriented Programming - Tracy Harms](https://www.youtube.com/watch?v=gLULrFY2-fI)
