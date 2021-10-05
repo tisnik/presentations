@@ -330,7 +330,7 @@ Mat[2;2]
 * Well let's start with the final not-idiomatic form
 
 ```apl
-(∼R ∈ R∘.×R)/R←1↓⍳x
+(∼R∈R∘.×R)/R←1↓⍳x
 ```
 
 * Step-by-step
