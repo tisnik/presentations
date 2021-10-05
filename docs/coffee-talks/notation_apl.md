@@ -31,7 +31,7 @@
 * Chemistry notations (a lot of in fact)
 * Chess moves notation
 * Feynman diagrams
-*
+* etc.
 
 #### Music notation
 
@@ -137,11 +137,16 @@ plus x y <= rec x {
 * during his work for IBM (yes, IBM!) it was translater into aprogramming language
 * in 1979, Iverson received the Turing Award for his work on APL
 * "A shocking brevity"
+* Common idioms are to be recognized in no time
+    - like quadratic formula
 * later IBM discouraged customers from using it
     - (but was used a lot by many IBM departments at the same time)
     - prefer to use languages based on "methodologies"
     - basically to split design, analytics, development, and testing
     - OTOH IBM was almost never good at PL design
+* btw how to made money
+    - $1 for one CPU second
+    - $1 for 1kB of output
 
 ### Kenneth E. Iverson
 
@@ -158,7 +163,36 @@ plus x y <= rec x {
     - rectangular collection of numbers, characters and arrays
     - arranged along zero or more axes
 
+### APL today
+* APL developers
+    - any kind of engineer other than a software engineer
+    - do not feel comfortable discussing "programming"
+    - i.e. not visible much on SO etc.
+    - they generally hate software fashion waves
+    - (Dyalog CTO Morten Kromberg)
+* Fintec
+    - Realtime trading
+* Insurance companies
+* Big data processing
+
 ## Feel of APL
+
+* Operators (function-like)
+
+```
+      monadic               dyadic
++     identity              addition
+-     negation              subtraction
+×     sign                  multiplication
+÷     1/x                   division
+ι     counter
+⌹     matrix inversion      matrix division
+⍉     matrix transposition
+⌽     reverse               rotation
+/                           reduce
+.                           inner product
+◦.                          outer product
+```
 
 * Vector containing 1, 2, 3, 4 .. 10
 
@@ -201,5 +235,5 @@ fact←{×/⍳⍵}
 * [A List of companies that use Array Languages (J, K, APL, q)](https://github.com/interregna/arraylanguage-companies)
 * [APL - one of the greatest programming languages ever](http://www.vaxman.de/publications/apl_slides.pdf)
 * ["The J Programming Language" by Tracy Harms (2013)](https://www.youtube.com/watch?v=RWYkx6-L04Q)
-* [Dyalog Modern Programming Language | Morten Kromberg | Talks at Google](https://www.youtube.com/watch?v=PlM9BXfu7UY)
+* [Dyalog Modern Programming Language, Morten Kromberg, Talks at Google](https://www.youtube.com/watch?v=PlM9BXfu7UY)
 * [The J Language: Consistency, Adjacency, and Solution-Oriented Programming - Tracy Harms](https://www.youtube.com/watch?v=gLULrFY2-fI)
