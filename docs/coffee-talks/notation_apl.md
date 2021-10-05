@@ -158,6 +158,33 @@ plus x y <= rec x {
     - rectangular collection of numbers, characters and arrays
     - arranged along zero or more axes
 
+## Feel of APL
+
+* Vector containing 1, 2, 3, 4 .. 10
+
+```
+ι10
+```
+
+* Calculate the sum of all integers ranging from 1 to 100
+     - reduction operator
+
+```apl
++/ι100
+```
+
+* Factorial computation
+
+```apl
+*/ι100
+```
+
+* Factorial function
+
+```apl
+fact←{×/⍳⍵}
+```
+
 ## Links
 
 * [APL Wiki](https://aplwiki.com/wiki/)
