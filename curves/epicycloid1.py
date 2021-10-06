@@ -11,7 +11,7 @@
 # Křivky nejen v počítačové grafice
 # https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
 #
-# Zdrojový kód ve stylu literate programming
+# Zdrojový kód tohoto skriptu ve stylu literate programming
 # https://tisnik.github.io/presentations/appendix/lit_sources/basic/epicycloid1.html
 #
 
