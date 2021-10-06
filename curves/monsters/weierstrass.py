@@ -1,5 +1,17 @@
 """Průběh Weierstrassovy funkce."""
 
+#
+# Použito v článku:
+#
+# Patologické křivky a jiná matematická monstra
+# https://www.root.cz/clanky/patologicke-krivky-a-jina-matematicka-monstra/
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
+
 import numpy as np
 import matplotlib.pyplot as plt
 
