@@ -1,5 +1,15 @@
 """Křivka získaná řezem toru."""
 
+#
+# Součást seriálu:
+#
+# Křivky nejen v počítačové grafice
+# https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
+#
+# Zdrojový kód tohoto skriptu ve stylu literate programming
+# https://tisnik.github.io/presentations/appendix/lit_sources/anim/spiric_anim.html
+#
+
 import numpy as np
 import matplotlib.pyplot as plt
 
