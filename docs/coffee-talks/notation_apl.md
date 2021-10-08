@@ -61,6 +61,7 @@
 0-0 ♝xc3
 ```
 
+
 ## Classic programming languages
 
 * i.e. almost all languages with some exceptions
@@ -151,6 +152,8 @@ plus x y <= rec x {
 * btw how to made money
     - $1 for one CPU second
     - $1 for 1kB of output
+
+![APL](images/notation_this_is_apl.png)
 
 ### Kenneth E. Iverson
 
