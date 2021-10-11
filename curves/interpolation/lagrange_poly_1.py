@@ -14,6 +14,9 @@
 # Založeno na příkladu z článku:
 # https://pythonnumericalmethods.berkeley.edu/notebooks/chapter17.04-Lagrange-Polynomial-Interpolation.html
 #
+# Zdrojový kód tohoto skriptu ve stylu literate programming
+# https://tisnik.github.io/presentations/appendix/lit_sources/interpolation/lagrange_poly_1.html
+#
 
 import numpy as np
 import numpy.polynomial.polynomial as poly
