@@ -73,6 +73,7 @@ layout: default
 * [Pre and post-conditions](coffee-talks/pre_post_conditions.md)
 * [8 bit glory](coffee-talks/8bit_glory.md)
 * [Importance of notations and the APL programming language](coffee-talks/notation_apl.md)
+* [Binary files in NumPy and Pandas](coffe-talks/binary_files_numpy_pandas.md)
 
 
 ### Přílohy k článkům
