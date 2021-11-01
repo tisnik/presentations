@@ -11,6 +11,9 @@
 # Křivky nejen v počítačové grafice
 # https://www.root.cz/serialy/krivky-nejen-v-pocitacove-grafice/
 #
+# Zdrojový kód tohoto skriptu ve stylu literate programming
+# https://tisnik.github.io/presentations/appendix/lit_sources/monsters/lsystem_snowflake_1.html
+#
 
 from turtle import *
 
