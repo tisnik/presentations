@@ -102,6 +102,43 @@ od -v -t x1 a.out
 0000470
 ```
 
+### Offset specification (in decimal)
+
+```
+od -j 64 -N 128 -v -t x1 a.out
+
+0000100 00 80 00 00 60 00 00 00 60 00 00 00 05 00 00 00
+0000120 00 80 00 00 01 70 a0 e3 00 00 a0 e3 00 00 00 ef
+0000140 41 13 00 00 00 61 65 61 62 69 00 01 09 00 00 00
+0000160 06 01 08 01 00 2e 73 68 73 74 72 74 61 62 00 2e
+0000200 74 65 78 74 00 2e 41 52 4d 2e 61 74 74 72 69 62
+0000220 75 74 65 73 00 00 00 00 00 00 00 00 00 00 00 00
+0000240 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0000260 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0000300
+```
+
+### Offset + count specification
+
+```
+od -j 64 -N 128 -v -t x1 a.out
+
+```
+
+### File as sequence of `single/float` numbers
+
+```
+od -j 0x40 -N 0x80 -v -t x1 a.out
+
+```
+
+### Combination with text output
+
+```
+od -t f4 a.out
+
+```
+
 ## Binary files in NumPy
 
 ## Binary files in Pandas
