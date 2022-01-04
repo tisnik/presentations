@@ -74,6 +74,7 @@ layout: default
 * [8 bit glory](coffee-talks/8bit_glory.md)
 * [Importance of notations and the APL programming language](coffee-talks/notation_apl.md)
 * [Binary files in NumPy and Pandas](coffe-talks/binary_files_numpy_pandas.md)
+* [Lexers and parsers in Go](coffee-talks/lexers_and_parsers_in_go.md)
 
 
 ### Přílohy k článkům
