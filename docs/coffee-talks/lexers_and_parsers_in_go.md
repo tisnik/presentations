@@ -2,14 +2,24 @@
 
 ## Lexers in Go
 
-* Perform lexical analysis
+* Performs lexical analysis
 * Lexer transforms an input text to sequence of tokens
+* Can be written by hand, of course
 * Lexer as standard Go package
    - `go/scanner`
    - `go/token`
 
 
 ### Usage of standard lexer
+
+* To tokenize the following code block
+
+```go
+var x int = 1    + 2 * 3
+```
+
+* Based on `go/scanner` package
+* Source transformed into sequence of tokens (`go/token` package)
 
 ```go
 package main
@@ -44,7 +54,34 @@ func main() {
 }
 ```
 
+* Input
+
+```go
+var x int = 1    + 2 * 3
+```
+
+* Output
+
+```
+2:1     var     "var"
+2:5     IDENT   "x"
+2:7     IDENT   "int"
+2:11    =       ""
+2:13    INT     "1"
+2:18    +       ""
+2:20    INT     "2"
+2:22    *       ""
+2:24    INT     "3"
+2:26    ;       "\n"
+<EOF>
+```
+
+
+
 ### Lexer for source with unsupported operator
+
+* Ternary operator is not part of Go syntax
+* Still the tokenizer/lexer emits sequence of tokens
 
 ```go
 package main
@@ -79,6 +116,32 @@ func main() {
 }
 ```
 
+* Input
+
+```go
+var x int = 2 < 3 ? 10 : 20
+```
+
+* Output
+
+```
+2:1     var     "var"
+2:5     IDENT   "x"
+2:7     IDENT   "int"
+2:11    =       ""
+2:13    INT     "2"
+2:15    <       ""
+2:17    INT     "3"
+2:19    ILLEGAL "?"
+2:21    INT     "10"
+2:24    :       ""
+2:26    INT     "20"
+2:28    ;       "\n"
+<EOF>
+```
+
+
+
 ## Parser
 
 * Perform syntactic analysis
@@ -86,6 +149,7 @@ func main() {
 * It is possible to traverse AST
     - depth-first algorithm
     - (visitor pattern)
+    - or any other algoritm that is needed/required
 
 
 ### Visiting all nodes in AST
@@ -135,6 +199,35 @@ func main() {
 	ast.Walk(v, f)
 }
 ```
+
+* Input
+
+```go
+package main
+
+var answer int = 42
+```
+
+* Output
+
+```
+  0     *ast.File
+  1             *ast.Ident
+  2                     <nil>
+  1             *ast.GenDecl
+  2                     *ast.ValueSpec
+  3                             *ast.Ident
+  4                                     <nil>
+  3                             *ast.Ident
+  4                                     <nil>
+  3                             *ast.BasicLit
+  4                                     <nil>
+  3                             <nil>
+  2                     <nil>
+  1             <nil>
+```
+
+
 
 ### Tree of an expression
 
@@ -195,7 +288,35 @@ func main() {
 }
 ```
 
+* Input
+
+```go
+1 + 2 * 3 + x + y * z - 1
+```
+
+* Output
+
+```
+  0     -
+  1       +
+  2         +
+  3           +
+  4             1
+  4             *
+  5               2
+  5               3
+  3           x
+  2         *
+  3           y
+  3           z
+  1       1
+```
+
+
+
 ### Yoda condition detection
+
+* An example how to traverse the tree and check only selected nodes
 
 ```go
 package main
@@ -284,6 +405,18 @@ func main() {
 	ast.Inspect(file, inspectCallback)
 }
 ```
+
+* Output
+
+```
+if statement with binary condition x > 0
+if statement with binary condition x != y
+if statement with binary condition 0 < x (Yoda style condition detected)
+if statement with binary condition 0 > 1
+```
+
+
+
 
 ### Function calls detector
 
