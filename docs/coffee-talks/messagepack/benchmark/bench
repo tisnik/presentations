@@ -1,0 +1,21 @@
+goos: linux
+goarch: amd64
+pkg: msgpack-test
+cpu: Intel(R) Core(TM) i7-8665U CPU @ 1.90GHz
+BenchmarkBSON1-8              	  989643	      1195 ns/op
+BenchmarkBSON100-8            	   57045	     19178 ns/op
+BenchmarkBSON1000-8           	    6343	    187190 ns/op
+BenchmarkJSON1-8              	  806047	      1432 ns/op
+BenchmarkJSON100-8            	   45000	     30016 ns/op
+BenchmarkJSON1000-8           	    3542	    321260 ns/op
+BenchmarkIndentedJSON1-8      	  475260	      2678 ns/op
+BenchmarkIndentedJSON100-8    	   24258	     47223 ns/op
+BenchmarkIndentedJSON1000-8   	    2234	    571176 ns/op
+BenchmarkGob1-8               	  547368	      2123 ns/op
+BenchmarkGob100-8             	   63823	     17738 ns/op
+BenchmarkGob1000-8            	    7435	    159569 ns/op
+BenchmarkMsgPack1-8           	 1000000	      1254 ns/op
+BenchmarkMsgPack100-8         	  236104	      5254 ns/op
+BenchmarkMsgPack1000-8        	   26554	     50795 ns/op
+PASS
+ok  	msgpack-test	21.038s
