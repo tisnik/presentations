@@ -75,6 +75,7 @@ layout: default
 * [Importance of notations and the APL programming language](coffee-talks/notation_apl.md)
 * [Binary files in NumPy and Pandas](coffe-talks/binary_files_numpy_pandas.md)
 * [Lexers and parsers in Go](coffee-talks/lexers_and_parsers_in_go.md)
+* [Calling Go from Python](coffee-talks/go_python.md)
 
 
 ### Přílohy k článkům
