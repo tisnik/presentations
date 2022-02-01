@@ -30,6 +30,12 @@ func hello() {
 func main() {}
 ```
 
+* Compile and build a library
+
+```
+go build -buildmode=c-shared so1.go
+```
+
 * Loading Go library from C
 
 ```c
@@ -76,6 +82,12 @@ int main()
 
     return EXIT_SUCCESS;
 }
+```
+
+* Compile and build
+
+```
+gcc -ansi use_so1.c -ldl
 ```
 
 ## Now use Python instead of C
