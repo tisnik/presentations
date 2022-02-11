@@ -11,7 +11,7 @@ class MainFrame(Frame):
 
         # vytvoření tlačítka s jeho přímým vložením do rámce
         x = y = 20
-        button = Button(self, ID_ANY, 'Press me', (x, y))
+        button = Button(self, ID_ANY, "Press me", (x, y))
 
         # zobrazení hlavního okna aplikace
         self.Show(True)
