@@ -10,8 +10,9 @@ def create_starry_sky_1(width, height, stars):
     image = gimp.Image(int(width), int(height), RGB)
 
     # vytvoreni nove hladiny
-    layer = gimp.Layer(image, "Stars", int(width), int(height), RGB_IMAGE,
-                       100, NORMAL_MODE)
+    layer = gimp.Layer(
+        image, "Stars", int(width), int(height), RGB_IMAGE, 100, NORMAL_MODE
+    )
 
     # nastaveni barvy vykreslovani pozadi (druha barva ve vyberu)
     gimp.set_background(0, 0, 40)
@@ -24,8 +25,8 @@ def create_starry_sky_1(width, height, stars):
 
     for i in range(int(stars)):
         # pozice hvezdy v obrazku
-        x = randint(0, int(width)-1)
-        y = randint(0, int(height)-1)
+        x = randint(0, int(width) - 1)
+        y = randint(0, int(height) - 1)
         # vykresleni jedne hvezdy do obrazku
         pdb.gimp_drawable_set_pixel(layer, x, y, 3, (255, 255, 50))
 
@@ -49,12 +50,13 @@ register(
     "Vytvor novy obrazek s hvezdnou oblohou",
     "",  # plugin se spusti jen pokud neexistuje obrazek
     [
-        (PF_SPINNER, "width",  "Image width",  256, (16, 8192, 16)),
+        (PF_SPINNER, "width", "Image width", 256, (16, 8192, 16)),
         (PF_SPINNER, "height", "Image height", 256, (16, 8192, 16)),
-        (PF_SPINNER, "stars",  "Stars",        250, (10, 2000, 10))
+        (PF_SPINNER, "stars", "Stars", 250, (10, 2000, 10)),
     ],
     [],
     create_starry_sky_1,
-    menu="<Image>/Filters/Test/")
+    menu="<Image>/Filters/Test/",
+)
 
 main()
