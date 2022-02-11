@@ -37,11 +37,10 @@ register(
     "2017-02-11",
     "Vytvor novy obrazek s barevnym pozadim",
     "",  # plugin se spusti jen pokud neexistuje obrazek
-    [
-        (PF_COLOR, "color", "Barva pozadi obrazku", (0.5, 0.5, 0.5))
-    ],
+    [(PF_COLOR, "color", "Barva pozadi obrazku", (0.5, 0.5, 0.5))],
     [],
     create_new_image_background,
-    menu="<Image>/Filters/Test/")
+    menu="<Image>/Filters/Test/",
+)
 
 main()
