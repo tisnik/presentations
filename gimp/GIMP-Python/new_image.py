@@ -37,6 +37,7 @@ register(
     [],  # zadne parametry
     [],
     create_new_image,
-    menu="<Image>/Filters/Test/")
+    menu="<Image>/Filters/Test/",
+)
 
 main()
