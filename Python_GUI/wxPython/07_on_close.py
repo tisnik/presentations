@@ -19,7 +19,7 @@ class MainFrame(Frame):
 
         # vytvoření tlačítka s jeho vložením do panelu
         x = y = 20
-        button = Button(panel, ID_ANY, 'Press me', (x, y))
+        button = Button(panel, ID_ANY, "Press me", (x, y))
         button.Bind(EVT_BUTTON, onButtonPress)
 
         # navázání metody na událost EVT_CLOSE
@@ -29,9 +29,9 @@ class MainFrame(Frame):
         self.Show(True)
 
     def onClose(self, event):
-        dialog = MessageDialog(self,
-                               "Close app?",
-                               "Confirm Exit", OK | CANCEL | ICON_QUESTION)
+        dialog = MessageDialog(
+            self, "Close app?", "Confirm Exit", OK | CANCEL | ICON_QUESTION
+        )
         result = dialog.ShowModal()
         dialog.Destroy()
         if result == ID_OK:
