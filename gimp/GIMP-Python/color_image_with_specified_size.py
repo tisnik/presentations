@@ -9,8 +9,9 @@ def create_new_image_background_and_size(color, xsize, ysize):
     image = gimp.Image(int(xsize), int(ysize), RGB)
 
     # vytvoreni nove hladiny
-    layer = gimp.Layer(image, "Hladina", int(xsize), int(ysize),
-                       RGB_IMAGE, 100, NORMAL_MODE)
+    layer = gimp.Layer(
+        image, "Hladina", int(xsize), int(ysize), RGB_IMAGE, 100, NORMAL_MODE
+    )
 
     # nastaveni barvy vykreslovani pozadi (druha barva ve vyberu)
     gimp.set_background(color)
@@ -45,6 +46,7 @@ register(
     ],
     [],
     create_new_image_background_and_size,
-    menu="<Image>/Filters/Test/")
+    menu="<Image>/Filters/Test/",
+)
 
 main()

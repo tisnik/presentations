@@ -21,22 +21,21 @@ register(
     "Zobrazeni dalsich ovladacich prvku",
     "*",  # plugin se spusti jen pokud existuje obrazek
     [
-        (PF_PALETTE,  "palette",  "Paleta", ""),
-        (PF_BRUSH,    "brush",    "Stetec", None),
-        (PF_PATTERN,  "pattern",  "Vzorek", None),
+        (PF_PALETTE, "palette", "Paleta", ""),
+        (PF_BRUSH, "brush", "Stetec", None),
+        (PF_PATTERN, "pattern", "Vzorek", None),
         (PF_GRADIENT, "gradient", "Gradient", None),
-        (PF_FONT,     "font",     "Font", "Sans"),
-
-        (PF_IMAGE,    "image",    "Obrazek",  None),
-        (PF_LAYER,    "layer",    "Hladina",  None),
-        (PF_CHANNEL,  "channel",  "Kanal",    None),
+        (PF_FONT, "font", "Font", "Sans"),
+        (PF_IMAGE, "image", "Obrazek", None),
+        (PF_LAYER, "layer", "Hladina", None),
+        (PF_CHANNEL, "channel", "Kanal", None),
         (PF_DRAWABLE, "drawable", "Drawable", None),
-
-        (PF_FILE,     "imagefile", "Image file", ""),
-        (PF_DIRNAME,  "dir",       "Directory", "/tmp"),
+        (PF_FILE, "imagefile", "Image file", ""),
+        (PF_DIRNAME, "dir", "Directory", "/tmp"),
     ],
     [],
     more_controls,
-    menu="<Image>/Filters/Test/")
+    menu="<Image>/Filters/Test/",
+)
 
 main()
