@@ -18,8 +18,8 @@ def anagrams(word):
 anagrams("pokus")'''
 
 
-lines = src.count('\n')
-script = jedi.Script(src, lines+1, len('anagrams('), 'test.py')
+lines = src.count("\n")
+script = jedi.Script(src, lines + 1, len("anagrams("), "test.py")
 
 call_signatures = script.call_signatures()
 
