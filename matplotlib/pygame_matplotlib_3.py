@@ -2,6 +2,7 @@
 # vim: set fileencodings=utf-8
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -28,8 +29,8 @@ FRAMEBUFFER_DEVICE = "/dev/fb0"
 
 # Vytvoreni grafu
 def create_graph(width, height, dpi):
-    fig = plt.figure(figsize=(1.0*width/dpi, 1.0*height/dpi), dpi=dpi)
-    x = np.linspace(0, 2*np.pi, 100)
+    fig = plt.figure(figsize=(1.0 * width / dpi, 1.0 * height / dpi), dpi=dpi)
+    x = np.linspace(0, 2 * np.pi, 100)
     y = np.sin(x)
     plt.plot(x, y)
     plt.xlabel("x")
