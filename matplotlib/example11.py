@@ -8,13 +8,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # úhel v polárním grafu
-theta = np.linspace(0.01, 4*np.pi, 150)
+theta = np.linspace(0.01, 4 * np.pi, 150)
 
 # první funkce: vzdálenost od středu
 radius1 = theta
 
 # druhá funkce: vzdálenost od středu
-radius2 = 3*np.abs(theta-2*np.pi)
+radius2 = 3 * np.abs(theta - 2 * np.pi)
 
 ax = plt.subplot(111, projection="polar")
 
