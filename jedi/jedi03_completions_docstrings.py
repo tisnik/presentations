@@ -19,13 +19,13 @@ anybody=True
 answer="42"
 an'''
 
-lines = src.count('\n')
-script = jedi.Script(src, lines+1, len('an'), '')
+lines = src.count("\n")
+script = jedi.Script(src, lines + 1, len("an"), "")
 
 completions = script.completions()
 
 for completion in completions:
     print(completion.name)
-    print("-"*40)
+    print("-" * 40)
     print(completion.docstring())
-    print("\n"*3)
+    print("\n" * 3)
