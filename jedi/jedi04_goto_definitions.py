@@ -3,22 +3,22 @@
 
 import jedi
 
-src = '''
+src = """
 def x():
     return 42
 
 print(x())
 print(y())
-'''
+"""
 
-script = jedi.Script(src, 5, 7, 'example.py')
+script = jedi.Script(src, 5, 7, "example.py")
 
 goto_definitions = script.goto_definitions()
 print(goto_definitions)
 
-print("-"*40)
+print("-" * 40)
 
-script = jedi.Script(src, 6, 7, 'example.py')
+script = jedi.Script(src, 6, 7, "example.py")
 
 goto_definitions = script.goto_definitions()
 print(goto_definitions)
