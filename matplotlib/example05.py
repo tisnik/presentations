@@ -9,13 +9,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # hodnoty na x-ové ose
-x = np.linspace(0, 2*np.pi, 100)
+x = np.linspace(0, 2 * np.pi, 100)
 
 # hodnoty na y-ové ose: první funkce
 y1 = np.sin(x)
 
 # hodnoty na y-ové ose: druhá funkce
-y2 = np.sin(3*x)/(x+1)
+y2 = np.sin(3 * x) / (x + 1)
 
 # vykreslit průběh obou funkcí
 # se změnou stylu vykreslování
