@@ -15,7 +15,7 @@ plt.title("Scripting languages")
 ax.title.set_fontsize(30)
 
 # popisky jednotlivých výřezů
-labels = ['Perl', 'Python', 'Ruby']
+labels = ["Perl", "Python", "Ruby"]
 
 # šířky jednotlivých výřezů
 fracs = [90, 150, 70]
@@ -24,16 +24,16 @@ fracs = [90, 150, 70]
 explode = (0.0, 0.0, 0.15)
 
 # barvy
-colors = ('yellow', '#60ff60', 'red')
+colors = ("yellow", "#60ff60", "red")
 
 # vytvoření koláčového grafu
-patches, texts, autotexts = ax.pie(fracs, explode=explode, colors=colors,
-                                   labels=labels, autopct='%1.1f%%',
-                                   shadow=True)
+patches, texts, autotexts = ax.pie(
+    fracs, explode=explode, colors=colors, labels=labels, autopct="%1.1f%%", shadow=True
+)
 
 # změna stylu písma
 proptease = fm.FontProperties()
-proptease.set_size('xx-large')
+proptease.set_size("xx-large")
 plt.setp(autotexts, fontproperties=proptease)
 plt.setp(texts, fontproperties=proptease)
 
