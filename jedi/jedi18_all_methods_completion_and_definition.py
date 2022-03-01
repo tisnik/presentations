@@ -29,21 +29,25 @@ def print_definitions(definitions):
         return
 
     for definition in definitions:
-        print("{type} {name} in {module}.py:{line}".format(type=definition.type,
-                                                           name=definition.full_name,
-                                                           module=definition.module_name,
-                                                           line=definition.line))
+        print(
+            "{type} {name} in {module}.py:{line}".format(
+                type=definition.type,
+                name=definition.full_name,
+                module=definition.module_name,
+                line=definition.line,
+            )
+        )
 
 
-lines = src.count('\n')
-script = jedi.Script(src, lines+1, len('obj.'), 'test.py')
+lines = src.count("\n")
+script = jedi.Script(src, lines + 1, len("obj."), "test.py")
 
 completions = script.completions()
 
 for completion in completions:
     print(completion.name)
-    print("-"*40)
+    print("-" * 40)
     definitions = completion.follow_definition()
     print_definitions(definitions)
     print(completion.docstring())
-    print("\n"*3)
+    print("\n" * 3)
