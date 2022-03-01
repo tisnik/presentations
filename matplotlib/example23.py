@@ -22,17 +22,17 @@ x = np.arange(-10.0, 10.0, delta)
 # průběh nezávislé proměnné y
 y = np.arange(-10.0, 10.0, delta)
 
-# vytvoření dvou polí se souřadnicemi [x,y] 
+# vytvoření dvou polí se souřadnicemi [x,y]
 X, Y = np.meshgrid(x, y)
 
 # vzdálenost od bodu [0,0]
-R1 = np.sqrt(X*X+Y*Y)
+R1 = np.sqrt(X * X + Y * Y)
 
 # vzdálenost od bodu [3,3]
-R2 = np.sqrt((X-3)*(X-3)+(Y-3)*(Y-3))
+R2 = np.sqrt((X - 3) * (X - 3) + (Y - 3) * (Y - 3))
 
 # výpočet funkce, kterou použijeme při vykreslování grafu
-Z = np.sin(R1)-np.cos(R2)
+Z = np.sin(R1) - np.cos(R2)
 
 # povolení zobrazení mřížky
 plt.grid(True)
@@ -41,11 +41,10 @@ plt.grid(True)
 CS = plt.contour(X, Y, Z)
 
 # přidání legendy (colorbar)
-CB = plt.colorbar(CS, shrink=0.7, extend='both')
+CB = plt.colorbar(CS, shrink=0.7, extend="both")
 
 # popisky "vrstevnic"
 plt.clabel(CS, inline=1, fontsize=10)
 
 # zobrazení grafu
 plt.show()
-
