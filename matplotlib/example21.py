@@ -24,13 +24,13 @@ y = np.arange(-10.0, 10.0, delta)
 X, Y = np.meshgrid(x, y)
 
 # vzdálenost od bodu [0,0]
-R1 = np.sqrt(X*X+Y*Y)
+R1 = np.sqrt(X * X + Y * Y)
 
 # vzdálenost od bodu [3,3]
-R2 = np.sqrt((X-3)*(X-3)+(Y-3)*(Y-3))
+R2 = np.sqrt((X - 3) * (X - 3) + (Y - 3) * (Y - 3))
 
 # výpočet funkce, kterou použijeme při vykreslování grafu
-Z = np.sin(R1)-np.cos(R2)
+Z = np.sin(R1) - np.cos(R2)
 
 # povolení zobrazení mřížky
 plt.grid(True)
