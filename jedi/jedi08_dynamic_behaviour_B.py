@@ -3,7 +3,7 @@
 
 import jedi
 
-src = '''
+src = """
 def x():
     return 1
 
@@ -21,11 +21,11 @@ else:
         f = z
 
 print(f())
-'''
+"""
 
 
 def print_definitions(source, line, column, module):
-    print("-"*40)
+    print("-" * 40)
 
     script = jedi.Script(source, line, column, module)
 
@@ -36,11 +36,15 @@ def print_definitions(source, line, column, module):
         return
 
     for definition in goto_definitions:
-        print("{type} {name} in {module}.py:{line}".format(type=definition.type,
-                                                           name=definition.full_name,
-                                                           module=definition.module_name,
-                                                           line=definition.line))
+        print(
+            "{type} {name} in {module}.py:{line}".format(
+                type=definition.type,
+                name=definition.full_name,
+                module=definition.module_name,
+                line=definition.line,
+            )
+        )
 
 
-lines = src.count('\n')
-script = print_definitions(src, lines, 7, 'example.py')
+lines = src.count("\n")
+script = print_definitions(src, lines, 7, "example.py")
