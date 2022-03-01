@@ -45,14 +45,18 @@ def print_definitions(definitions):
         return
 
     for definition in definitions:
-        print("{type} {name} in {module}.py:{line}".format(type=definition.type,
-                                                           name=definition.full_name,
-                                                           module=definition.module_name,
-                                                           line=definition.line))
+        print(
+            "{type} {name} in {module}.py:{line}".format(
+                type=definition.type,
+                name=definition.full_name,
+                module=definition.module_name,
+                line=definition.line,
+            )
+        )
 
 
-lines = src.count('\n')
-script = jedi.Script(src, lines+1, len('print('), 'test.py')
+lines = src.count("\n")
+script = jedi.Script(src, lines + 1, len("print("), "test.py")
 
 definitions = script.goto_definitions()
 
