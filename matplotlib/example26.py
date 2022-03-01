@@ -13,7 +13,7 @@ from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import numpy as np
 
 fig = plt.figure()
-ax = fig.gca(projection='3d')
+ax = fig.gca(projection="3d")
 
 delta = 0.1
 
@@ -27,20 +27,21 @@ y = np.arange(-10.0, 10.0, delta)
 X, Y = np.meshgrid(x, y)
 
 # vzdálenost od bodu [0,0]
-R = np.sqrt(X*X+Y*Y)
+R = np.sqrt(X * X + Y * Y)
 
 # výpočet funkce, kterou použijeme při vykreslování grafu
-Z = np.sin(R)/R
+Z = np.sin(R) / R
 
 # zobrazení 3D grafu formou plochy
-surface = ax.plot_surface(X, Y, Z, rstride=2, cstride=2, cmap=cm.coolwarm,
-                          linewidth=0, antialiased=False)
+surface = ax.plot_surface(
+    X, Y, Z, rstride=2, cstride=2, cmap=cm.coolwarm, linewidth=0, antialiased=False
+)
 
 ax.set_zlim(-1.01, 1.01)
 
 # styl formátování popisků
 ax.zaxis.set_major_locator(LinearLocator(10))
-ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
+ax.zaxis.set_major_formatter(FormatStrFormatter("%.02f"))
 
 # přidání pomocné legendy
 fig.colorbar(surface, shrink=0.7, aspect=5)
