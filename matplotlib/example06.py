@@ -10,16 +10,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # hodnoty na x-ové ose
-x = np.linspace(0.001, 2*np.pi, 100)
+x = np.linspace(0.001, 2 * np.pi, 100)
 
 # hodnoty na y-ové ose: první funkce
-y1 = np.sin(5*x)
+y1 = np.sin(5 * x)
 
 # hodnoty na y-ové ose: druhá funkce
-y2 = np.sin(5*x)/(x+1/2)
+y2 = np.sin(5 * x) / (x + 1 / 2)
 
 # hodnoty na y-ové ose: třetí čtvrtá funkce
-y3 = 1/(x+1/2)
+y3 = 1 / (x + 1 / 2)
 y4 = -y3
 
 # vykreslit průběh obou funkcí
