@@ -3,10 +3,10 @@
 
 import jedi
 
-src = '''
+src = """
 anybody=True
 answer="42"
-an'''
+an"""
 
-script = jedi.Script(src, 4, len('an'), '')
+script = jedi.Script(src, 4, len("an"), "")
 print(script.completions())
