@@ -45,7 +45,7 @@ loop\@:
         ldrb  w3, [x1], 1       // cteni bajtu
         strb  w3, [x2], 1       // zapis bajtu
         sub   x4, x4, #1        // zmenseni pocitadla a soucasne nastaveni priznaku
-        cbnz  x4, loop\q          // pokud jsme se nedostali k nule, skok na zacatek smycky
+        cbnz  x4, loop\@        // pokud jsme se nedostali k nule, skok na zacatek smycky
 .endm
 
 
