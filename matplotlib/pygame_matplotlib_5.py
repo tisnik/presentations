@@ -2,6 +2,7 @@
 # vim: set fileencodings=utf-8
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.cm as cm
 import matplotlib.mlab as mlab
@@ -28,7 +29,7 @@ FRAMEBUFFER_DEVICE = "/dev/fb0"
 
 # Vytvoreni grafu
 def create_graph(width, height, dpi):
-    fig = plt.figure(figsize=(1.0*width/dpi, 1.0*height/dpi), dpi=dpi)
+    fig = plt.figure(figsize=(1.0 * width / dpi, 1.0 * height / dpi), dpi=dpi)
     delta = 0.1
 
     # prubeh nezavisle promenne x
@@ -41,13 +42,13 @@ def create_graph(width, height, dpi):
     X, Y = np.meshgrid(x, y)
 
     # vzdalenost od bodu [0,0]
-    R1 = np.sqrt(X*X+Y*Y)
+    R1 = np.sqrt(X * X + Y * Y)
 
     # vzdalenost od bodu [3,3]
-    R2 = np.sqrt((X-3)*(X-3)+(Y-3)*(Y-3))
+    R2 = np.sqrt((X - 3) * (X - 3) + (Y - 3) * (Y - 3))
 
     # vypocet funkce, kterou pouzijeme pri vykreslovani grafu
-    Z = np.sin(R1)-np.cos(R2)
+    Z = np.sin(R1) - np.cos(R2)
 
     # povoleni zobrazeni mrizky
     plt.grid(True)
@@ -101,8 +102,7 @@ def wait_for_key():
 
 # precteni aktualne nastaveneho rozliseni framebufferu
 def get_framebuffer_resolution(framebuffer_device):
-    fbset_output = subprocess.check_output(["fbset", "-s",
-                                            "-fb", framebuffer_device])
+    fbset_output = subprocess.check_output(["fbset", "-s", "-fb", framebuffer_device])
 
     for line in fbset_output.split("\n"):
         line = line.strip()
