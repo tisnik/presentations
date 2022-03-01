@@ -14,13 +14,13 @@ plt.title("Scripting languages")
 ax.title.set_fontsize(30)
 
 # popisky jednotlivých výřezů
-labels = ['Perl', 'Python', 'Ruby']
+labels = ["Perl", "Python", "Ruby"]
 
 # šířky jednotlivých výřezů
 fracs = [90, 150, 70]
 
 # vytvoření koláčového grafu
-ax.pie(fracs, labels=labels, autopct='%1.1f%%', shadow=True)
+ax.pie(fracs, labels=labels, autopct="%1.1f%%", shadow=True)
 
 # zobrazení grafu
 plt.show()
