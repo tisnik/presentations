@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # hodnoty na x-ové ose
-x = np.linspace(0.01, 2*np.pi, 100)
+x = np.linspace(0.01, 2 * np.pi, 100)
 
 # hodnoty na y-ové ose: první funkce
 y1 = np.sin(x)
@@ -18,7 +18,7 @@ y1 = np.sin(x)
 y2 = np.cos(x)
 
 # hodnoty na y-ové ose: třetí funkce
-y3 = np.sin(x)/x
+y3 = np.sin(x) / x
 
 # vykreslit průběh všech tří funkcí
 # se změnou stylu vykreslování
