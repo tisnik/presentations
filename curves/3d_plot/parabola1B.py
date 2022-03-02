@@ -28,35 +28,36 @@ x, y = np.meshgrid(x, y)
 
 # implicitní funkce paraboly
 f = 0.5
-p = 2*f
-z = x**2 - p*p*y
+p = 2 * f
+z = x ** 2 - p * p * y
 
 # inicializace grafu
 fig = plt.figure()
 
 # nastavení 3D projekce
-ax = fig.gca(projection='3d')
+ax = fig.gca(projection="3d")
 
 # zobrazení 3D grafu formou plochy
-surface = ax.plot_surface(x, y, z, rstride=2, cstride=2, cmap=cm.coolwarm,
-                          linewidth=0, antialiased=False)
+surface = ax.plot_surface(
+    x, y, z, rstride=2, cstride=2, cmap=cm.coolwarm, linewidth=0, antialiased=False
+)
 
 # titulek grafu
-fig.suptitle('Parabola', fontsize=15)
+fig.suptitle("Parabola", fontsize=15)
 
 # kontura: průmět na rovinu x-y
-cset = ax.contour(x, y, z, zdir='z', offset=10)
+cset = ax.contour(x, y, z, zdir="z", offset=10)
 
 # rozměry grafu ve směru osy x
-ax.set_xlabel('X')
+ax.set_xlabel("X")
 ax.set_xlim(-4, 4)
 
 # rozměry grafu ve směru osy y
-ax.set_ylabel('Y')
+ax.set_ylabel("Y")
 ax.set_ylim(0, 8)
 
 # rozměry grafu ve směru osy z
-ax.set_zlabel('Z')
+ax.set_zlabel("Z")
 ax.set_zlim(0, 10)
 
 # uložení grafu do rastrového obrázku
