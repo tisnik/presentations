@@ -14,7 +14,6 @@ from PySide2 import QtQuick
 
 # nový widget bude odvozen od QDeclarativeView
 class MainWindow(QtQuick.QQuickView):
-
     def __init__(self, qml_file, parent=None):
         super(MainWindow, self).__init__(parent)
         # nastavení titulku hlavního okna aplikace
