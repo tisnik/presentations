@@ -15,7 +15,6 @@ QML_FILE = "01.qml"
 
 # nový widget bude odvozen od QDeclarativeView
 class MainWindow(QtQuick.QQuickView):
-
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setTitle("QML Example @ PySide2")
@@ -39,5 +38,5 @@ def main():
     sys.exit(app.exec_())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
