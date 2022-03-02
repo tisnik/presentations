@@ -45,7 +45,7 @@ _start:
         mov   w3, #'*'               // zapisovany znak
 loop:
         strb  w3, [x1], 1            // zapis znaku do bufferu s post-inkrementaci adresy
-        sub   x2, x2, #1             // zmenseni pocitadla a soucasne nastaveni priznaku
+        sub   x2, x2, #1             // zmenseni pocitadla
         cbnz  x2, loop               // pokud jsme se nedostali k nule, skok na zacatek smycky
 
         mov   x8, #sys_write         // cislo syscallu pro funkci "write"

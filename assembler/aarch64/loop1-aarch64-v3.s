@@ -46,7 +46,7 @@ _start:
 loop:
         strb  w3, [x1]               // zapis znaku do bufferu
         add   x1, x1, #1             // uprava ukazatele do bufferu
-        sub   x2, x2, #1             // zmenseni pocitadla a soucasne nastaveni priznaku
+        sub   x2, x2, #1             // zmenseni pocitadla
         cbnz  x2, loop               // pokud jsme se nedostali k nule, skok na zacatek smycky
 
         mov   x8, #sys_write         // cislo syscallu pro funkci "write"

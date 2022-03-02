@@ -48,7 +48,7 @@ _start:
 loop:
         ldrb  w3, [x1], 1       // cteni bajtu
         strb  w3, [x2], 1       // zapis bajtu
-        sub   x4, x4, #1        // zmenseni pocitadla a soucasne nastaveni priznaku
+        sub   x4, x4, #1        // zmenseni pocitadla
         cbnz  x4, loop          // pokud jsme se nedostali k nule, skok na zacatek smycky
 
         mov  x8, #sys_write     // cislo sycallu pro funkci "write"
