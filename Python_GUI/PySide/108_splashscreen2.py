@@ -13,19 +13,18 @@ import time
 
 # uspání hlavního vlákna aplikace na zadaný počet sekund
 def sleep(app, seconds):
-    print('sleeping')
+    print("sleeping")
 
-    for i in range(0, 10*seconds):
+    for i in range(0, 10 * seconds):
         print(i)
         app.processEvents()
-        time.sleep(1/10.0)
+        time.sleep(1 / 10.0)
 
-    print('waking up')
+    print("waking up")
 
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindowContent(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindowContent, self).__init__()
@@ -48,7 +47,7 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareQuitButton(self):
         # tlačítko
-        quitButton = QtGui.QPushButton('Quit', self)
+        quitButton = QtGui.QPushButton("Quit", self)
         quitButton.resize(quitButton.sizeHint())
 
         # navázání akce na signál
@@ -58,7 +57,6 @@ class MainWindowContent(QtGui.QWidget):
 
 # nový widget bude odvozen od obecného hlavního okna
 class MainWindow(QtGui.QMainWindow):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -95,5 +93,5 @@ def main():
     app.exec_()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
