@@ -30,7 +30,6 @@ def closeApplication():
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindow(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -48,7 +47,7 @@ class MainWindow(QtGui.QWidget):
         button.setToolTip("Immediately quit this application")
 
         # starý způsob navázání signálu, který není příliš Python-friendly
-        QtCore.QObject.connect(button, QtCore.SIGNAL ('clicked()'), closeApplication)
+        QtCore.QObject.connect(button, QtCore.SIGNAL("clicked()"), closeApplication)
 
     def run(self, app):
         # zobrazení okna na obrazovce
@@ -62,5 +61,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
