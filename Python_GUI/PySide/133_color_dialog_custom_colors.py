@@ -40,9 +40,11 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareImage(self):
         # vytvoření instance třídy QImage
-        self.image = QtGui.QImage(MainWindowContent.IMAGE_WIDTH,
-                                  MainWindowContent.IMAGE_HEIGHT,
-                                  QtGui.QImage.Format_RGB32)
+        self.image = QtGui.QImage(
+            MainWindowContent.IMAGE_WIDTH,
+            MainWindowContent.IMAGE_HEIGHT,
+            QtGui.QImage.Format_RGB32,
+        )
         # vymazání obrázku
         self.image.fill(0)
 
@@ -58,9 +60,14 @@ class MainWindowContent(QtGui.QWidget):
                 color = QtGui.QColorDialog.customColor(index)
                 x = 10 + column * (MainWindowContent.SQUARE_SIZE + 10)
                 y = 10 + row * (MainWindowContent.SQUARE_SIZE + 10)
-                drawRectangleUsingBrush(qp, color, x, y,
-                                        MainWindowContent.SQUARE_SIZE,
-                                        MainWindowContent.SQUARE_SIZE)
+                drawRectangleUsingBrush(
+                    qp,
+                    color,
+                    x,
+                    y,
+                    MainWindowContent.SQUARE_SIZE,
+                    MainWindowContent.SQUARE_SIZE,
+                )
                 index += 1
 
         # vytvoření instance třídy QPixmap z objektu QImage
@@ -88,7 +95,7 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareColorDialogButton(self):
         # tlačítko
-        colorDialogButton = QtGui.QPushButton('Select color', self)
+        colorDialogButton = QtGui.QPushButton("Select color", self)
         colorDialogButton.resize(colorDialogButton.sizeHint())
 
         # navázání akce na signál
@@ -97,7 +104,7 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareQuitButton(self):
         # tlačítko
-        quitButton = QtGui.QPushButton('Quit', self)
+        quitButton = QtGui.QPushButton("Quit", self)
         quitButton.resize(quitButton.sizeHint())
 
         # navázání akce na signál
@@ -114,7 +121,6 @@ class MainWindowContent(QtGui.QWidget):
 
 # nový widget bude odvozen od obecného hlavního okna
 class MainWindow(QtGui.QMainWindow):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -142,5 +148,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
