@@ -31,7 +31,6 @@ def closeApplication():
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindow(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -63,5 +62,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
