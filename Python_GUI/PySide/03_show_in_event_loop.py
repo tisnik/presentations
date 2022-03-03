@@ -26,13 +26,13 @@ from PySide.QtGui import *
 
 # Uspani hlavniho vlakna aplikace na zadany pocet sekund
 def sleep(seconds):
-    print('sleeping')
+    print("sleeping")
 
     for i in range(seconds, 0, -1):
         print(i)
         time.sleep(1)
 
-    print('waking up')
+    print("waking up")
 
 
 # konstrukce výchozího tzv. aplikačního objektu
@@ -41,12 +41,12 @@ app = QApplication(sys.argv)
 # konstrukce obecného widgetu bez předka
 window = QWidget()
 
-print('before window.show()')
+print("before window.show()")
 
 # zobrazení widgetu na obrazovce
 window.show()
 
-print('after window.show()')
+print("after window.show()")
 
 # pockame 5 sekund pred zobrazenim okna v hlavni smycce
 sleep(5)
