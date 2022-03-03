@@ -61,7 +61,7 @@ def create_svg(name, width, height):
     # začátek kreslení
     painter.begin(generator)
 
-    drawRectangle(painter, WHITE, 1, 1, VBOX_WIDTH-1, VBOX_HEIGHT-1)
+    drawRectangle(painter, WHITE, 1, 1, VBOX_WIDTH - 1, VBOX_HEIGHT - 1)
 
     # konec kreslení
     painter.end()
@@ -73,5 +73,5 @@ def main():
     create_svg("test6.svg", 1000, 1000)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
