@@ -22,8 +22,9 @@ def drawRectangle(qPainter, color, x, y, width, height):
 
 
 # funkce pro vykreslení obdélníku zadanou barvou a se specifikovaným štětcem
-def drawRectangleUsingBrush(qPainter, color, x, y, width, height, brush_style,
-                            pen_width=0):
+def drawRectangleUsingBrush(
+    qPainter, color, x, y, width, height, brush_style, pen_width=0
+):
     # vytvoření pera a nastavení barvy kreslení
     pen = QtGui.QPen(QtGui.QColor(*color))
 
@@ -45,15 +46,15 @@ def twoOverlappingSquares(qPainter, color1, color2, x, y, compositionMode):
     qPainter.setCompositionMode(QtGui.QPainter.CompositionMode_SourceOver)
 
     # první čtverec
-    drawRectangleUsingBrush(qPainter, color1, x, y, 100, 100,
-                            QtCore.Qt.SolidPattern)
+    drawRectangleUsingBrush(qPainter, color1, x, y, 100, 100, QtCore.Qt.SolidPattern)
 
     # nastavení režimu míchání barev
     qPainter.setCompositionMode(compositionMode)
 
     # druhý čtverec
-    drawRectangleUsingBrush(qPainter, color2, x+50, y+50, 100, 100,
-                            QtCore.Qt.SolidPattern)
+    drawRectangleUsingBrush(
+        qPainter, color2, x + 50, y + 50, 100, 100, QtCore.Qt.SolidPattern
+    )
 
 
 def drawScene(painter, width, height):
@@ -87,35 +88,95 @@ def drawScene(painter, width, height):
     ROW_4 = ROW_3 + HORIZONTAL_DISTANCE
 
     # vykreslení sady překrývajících se čtverců
-    twoOverlappingSquares(painter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_1, ROW_1,
-                          QtGui.QPainter.CompositionMode_SourceOver)
+    twoOverlappingSquares(
+        painter,
+        GREEN_50_ALPHA,
+        BLUE_50_ALPHA,
+        COLUMN_1,
+        ROW_1,
+        QtGui.QPainter.CompositionMode_SourceOver,
+    )
 
-    twoOverlappingSquares(painter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_1, ROW_2,
-                          QtGui.QPainter.CompositionMode_Source)
+    twoOverlappingSquares(
+        painter,
+        GREEN_50_ALPHA,
+        BLUE_50_ALPHA,
+        COLUMN_1,
+        ROW_2,
+        QtGui.QPainter.CompositionMode_Source,
+    )
 
-    twoOverlappingSquares(painter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_2, ROW_2,
-                          QtGui.QPainter.CompositionMode_DestinationIn)
+    twoOverlappingSquares(
+        painter,
+        GREEN_50_ALPHA,
+        BLUE_50_ALPHA,
+        COLUMN_2,
+        ROW_2,
+        QtGui.QPainter.CompositionMode_DestinationIn,
+    )
 
-    twoOverlappingSquares(painter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_3, ROW_2,
-                          QtGui.QPainter.CompositionMode_SourceOut)
+    twoOverlappingSquares(
+        painter,
+        GREEN_50_ALPHA,
+        BLUE_50_ALPHA,
+        COLUMN_3,
+        ROW_2,
+        QtGui.QPainter.CompositionMode_SourceOut,
+    )
 
-    twoOverlappingSquares(painter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_1, ROW_3,
-                          QtGui.QPainter.CompositionMode_Xor)
+    twoOverlappingSquares(
+        painter,
+        GREEN_50_ALPHA,
+        BLUE_50_ALPHA,
+        COLUMN_1,
+        ROW_3,
+        QtGui.QPainter.CompositionMode_Xor,
+    )
 
-    twoOverlappingSquares(painter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_2, ROW_3,
-                          QtGui.QPainter.CompositionMode_Plus)
+    twoOverlappingSquares(
+        painter,
+        GREEN_50_ALPHA,
+        BLUE_50_ALPHA,
+        COLUMN_2,
+        ROW_3,
+        QtGui.QPainter.CompositionMode_Plus,
+    )
 
-    twoOverlappingSquares(painter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_3, ROW_3,
-                          QtGui.QPainter.CompositionMode_Screen)
+    twoOverlappingSquares(
+        painter,
+        GREEN_50_ALPHA,
+        BLUE_50_ALPHA,
+        COLUMN_3,
+        ROW_3,
+        QtGui.QPainter.CompositionMode_Screen,
+    )
 
-    twoOverlappingSquares(painter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_1, ROW_4,
-                          QtGui.QPainter.CompositionMode_HardLight)
+    twoOverlappingSquares(
+        painter,
+        GREEN_50_ALPHA,
+        BLUE_50_ALPHA,
+        COLUMN_1,
+        ROW_4,
+        QtGui.QPainter.CompositionMode_HardLight,
+    )
 
-    twoOverlappingSquares(painter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_2, ROW_4,
-                          QtGui.QPainter.CompositionMode_SoftLight)
+    twoOverlappingSquares(
+        painter,
+        GREEN_50_ALPHA,
+        BLUE_50_ALPHA,
+        COLUMN_2,
+        ROW_4,
+        QtGui.QPainter.CompositionMode_SoftLight,
+    )
 
-    twoOverlappingSquares(painter, WHITE, BLUE_50_ALPHA, COLUMN_3, ROW_4,
-                          QtGui.QPainter.CompositionMode_ColorBurn)
+    twoOverlappingSquares(
+        painter,
+        WHITE,
+        BLUE_50_ALPHA,
+        COLUMN_3,
+        ROW_4,
+        QtGui.QPainter.CompositionMode_ColorBurn,
+    )
 
 
 def create_svg(name, width, height):
@@ -156,5 +217,5 @@ def main():
     create_svg("test8.svg", 320, 320)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
