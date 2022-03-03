@@ -23,7 +23,6 @@ from PySide import QtGui
 
 # nový widget bude odvozen od standardního návěští
 class HelloWorldLabel(QtGui.QLabel):
-
     def __init__(self):
         # text pro návěští
         labelText = "normal text<br><b>bold</b><br><i>italic</i>"
@@ -48,5 +47,5 @@ def main():
     HelloWorldLabel().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
