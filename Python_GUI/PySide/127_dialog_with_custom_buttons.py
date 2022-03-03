@@ -10,7 +10,6 @@ from PySide import QtGui
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindowContent(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindowContent, self).__init__()
@@ -34,7 +33,7 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareMessageBoxButton(self):
         # tlačítko
-        messageBoxButton = QtGui.QPushButton('Message Box', self)
+        messageBoxButton = QtGui.QPushButton("Message Box", self)
         messageBoxButton.resize(messageBoxButton.sizeHint())
 
         # navázání akce na signál
@@ -43,7 +42,7 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareQuitButton(self):
         # tlačítko
-        quitButton = QtGui.QPushButton('Quit', self)
+        quitButton = QtGui.QPushButton("Quit", self)
         quitButton.resize(quitButton.sizeHint())
 
         # navázání akce na signál
@@ -52,17 +51,19 @@ class MainWindowContent(QtGui.QWidget):
 
     def showMessageBox(self):
         # tlačítka, která mají být součástí dialogu
-        buttons = QtGui.QMessageBox.Yes | \
-                  QtGui.QMessageBox.YesToAll | \
-                  QtGui.QMessageBox.No | \
-                  QtGui.QMessageBox.NoToAll | \
-                  QtGui.QMessageBox.Help
+        buttons = (
+            QtGui.QMessageBox.Yes
+            | QtGui.QMessageBox.YesToAll
+            | QtGui.QMessageBox.No
+            | QtGui.QMessageBox.NoToAll
+            | QtGui.QMessageBox.Help
+        )
         # vytvoření dialogu
         msgBox = QtGui.QMessageBox()
 
         # nastavení zprávy a ikony, která se má zobrazit vedle zprávy
         msgBox.setStandardButtons(buttons)
-        msgBox.setText(u'Zpráva')
+        msgBox.setText(u"Zpráva")
         msgBox.setIcon(QtGui.QMessageBox.Question)
         # msgBox.setIcon(QtGui.QMessageBox.Question)
         # msgBox.setIcon(QtGui.QMessageBox.Warning)
@@ -74,7 +75,6 @@ class MainWindowContent(QtGui.QWidget):
 
 # nový widget bude odvozen od obecného hlavního okna
 class MainWindow(QtGui.QMainWindow):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -102,5 +102,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
