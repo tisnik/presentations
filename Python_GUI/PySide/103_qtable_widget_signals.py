@@ -10,7 +10,6 @@ from PySide import QtGui
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindowContent(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindowContent, self).__init__()
@@ -37,7 +36,7 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareQuitButton(self):
         # tlačítko
-        quitButton = QtGui.QPushButton('Quit', self)
+        quitButton = QtGui.QPushButton("Quit", self)
         quitButton.resize(quitButton.sizeHint())
 
         # navázání akce na signál
@@ -59,10 +58,10 @@ class MainWindowContent(QtGui.QWidget):
         # naplnění tabulky
         for j in range(1, 11):
             for i in range(1, 11):
-                item = QtGui.QTableWidgetItem(str(i*j))
+                item = QtGui.QTableWidgetItem(str(i * j))
                 tooltip = u"výsledek součinu {x}×{y}".format(x=i, y=j)
                 item.setToolTip(tooltip)
-                table.setItem(j-1, i-1, item)
+                table.setItem(j - 1, i - 1, item)
 
         # registrace callback funkcí
         table.cellClicked.connect(self.onCellClicked)
@@ -77,19 +76,20 @@ class MainWindowContent(QtGui.QWidget):
 
     def onCurrentCellChanged(self, row1, column1, row2, column2):
         message = u"změna fokusu z buňky [{x2}, {y2}] na buňku [{x1}, {y1}]".format(
-            x1=column1, y1=row1, x2=column2, y2=row2)
+            x1=column1, y1=row1, x2=column2, y2=row2
+        )
         self.textEdit.appendPlainText(message)
 
     def onCellChanged(self, row, column):
         value = self.table.item(row, column).text()
         message = u"změna obsahu buňky [{x}, {y}] na hodnotu {v}".format(
-            x=column, y=row, v=value)
+            x=column, y=row, v=value
+        )
         self.textEdit.appendPlainText(message)
 
 
 # nový widget bude odvozen od obecného hlavního okna
 class MainWindow(QtGui.QMainWindow):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -116,5 +116,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
