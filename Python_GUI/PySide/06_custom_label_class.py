@@ -26,7 +26,6 @@ app = QApplication(sys.argv)
 
 # nový widget bude odvozen od standardního návěští
 class HelloWorldLabel(QLabel):
-
     def __init__(self):
         # zavoláme konstruktor předka (nedoporučovaná varianta)
         QLabel.__init__(self, "Hello world!")
