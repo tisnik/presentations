@@ -10,7 +10,6 @@ from PySide import QtGui
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindowContent(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindowContent, self).__init__()
@@ -106,7 +105,7 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareOpenFileButton(self):
         # tlačítko
-        openFileButton = QtGui.QPushButton('Open file...', self)
+        openFileButton = QtGui.QPushButton("Open file...", self)
         openFileButton.resize(openFileButton.sizeHint())
 
         # navázání akce na signál
@@ -115,7 +114,7 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareMessageBoxButton(self):
         # tlačítko
-        messageBoxButton = QtGui.QPushButton('Message Box', self)
+        messageBoxButton = QtGui.QPushButton("Message Box", self)
         messageBoxButton.resize(messageBoxButton.sizeHint())
 
         # navázání akce na signál
@@ -139,14 +138,14 @@ class MainWindowContent(QtGui.QWidget):
 
         # vložení obsahu souboru do víceřádkového textového pole
         with open("01_empty_window.py", "r") as fin:
-            content = fin.read().decode('utf8')
+            content = fin.read().decode("utf8")
             textEdit.insertPlainText(content)
 
         return textEdit
 
     def prepareColorDialogButton(self):
         # tlačítko s popisem
-        colorDialogButton = QtGui.QPushButton('Select color', self)
+        colorDialogButton = QtGui.QPushButton("Select color", self)
         colorDialogButton.resize(colorDialogButton.sizeHint())
 
         # navázání akce na signál
@@ -155,7 +154,7 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareQuitButton(self):
         # tlačítko s popisem
-        quitButton = QtGui.QPushButton('Quit', self)
+        quitButton = QtGui.QPushButton("Quit", self)
         quitButton.resize(quitButton.sizeHint())
 
         # navázání akce na signál
@@ -166,7 +165,7 @@ class MainWindowContent(QtGui.QWidget):
         # handler po stlačení tlačítka "Open file..."
         fileName = QtGui.QFileDialog.getOpenFileName(self, "Open file", u".")
 
-        self.showMessageBox(u'Vybraný soubor\n{f}'.format(f=fileName))
+        self.showMessageBox(u"Vybraný soubor\n{f}".format(f=fileName))
 
     def showColorDialog(self):
         # handler po stlačení tlačítka "Select color"
@@ -179,7 +178,8 @@ class MainWindowContent(QtGui.QWidget):
             r=selected.red(),
             g=selected.green(),
             b=selected.blue(),
-            c="Ok" if result == 1 else "Cancel")
+            c="Ok" if result == 1 else "Cancel",
+        )
 
         self.showMessageBox(message)
 
@@ -195,7 +195,7 @@ class MainWindowContent(QtGui.QWidget):
         msgBox = QtGui.QMessageBox()
 
         # nastavení zprávy a ikony, která se má zobrazit vedle zprávy
-        msgBox.setText(u'Zpráva')
+        msgBox.setText(u"Zpráva")
         msgBox.setIcon(QtGui.QMessageBox.Critical)
 
         # nastavení tlačítek, které mají být součástí dialogu
@@ -246,7 +246,6 @@ class MainWindowContent(QtGui.QWidget):
 
 # nový widget bude odvozen od obecného hlavního okna
 class MainWindow(QtGui.QMainWindow):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -263,30 +262,33 @@ class MainWindow(QtGui.QMainWindow):
         menubar = self.menuBar()
 
         # příkaz File/Quit
-        fileQuitItem = QtGui.QAction(QtGui.QIcon('icons/application-exit.png'),
-                                     '&Quit', self)
+        fileQuitItem = QtGui.QAction(
+            QtGui.QIcon("icons/application-exit.png"), "&Quit", self
+        )
         fileQuitItem.triggered.connect(self.close)
-        fileQuitItem.setStatusTip('Quit the application')
-        fileQuitItem.setShortcut('Ctrl+Q')
+        fileQuitItem.setStatusTip("Quit the application")
+        fileQuitItem.setShortcut("Ctrl+Q")
 
         # položka File v hlavním menu
-        fileMenu = menubar.addMenu('&File')
+        fileMenu = menubar.addMenu("&File")
         fileMenu.addAction(fileQuitItem)
 
         # tlačítko Quit
-        quitAction = QtGui.QAction(QtGui.QIcon('icons/application-exit.png'),
-                                   '&Quit', self)
+        quitAction = QtGui.QAction(
+            QtGui.QIcon("icons/application-exit.png"), "&Quit", self
+        )
         quitAction.triggered.connect(self.close)
-        quitAction.setStatusTip('Quit the application')
+        quitAction.setStatusTip("Quit the application")
 
         # tlačítko About
-        aboutAction = QtGui.QAction(QtGui.QIcon('icons/dialog-information.png'),
-                                    '&About', self)
+        aboutAction = QtGui.QAction(
+            QtGui.QIcon("icons/dialog-information.png"), "&About", self
+        )
         aboutAction.triggered.connect(self.aboutDialog)
-        aboutAction.setStatusTip('About this application')
+        aboutAction.setStatusTip("About this application")
 
         # nástrojový pruh
-        self.toolbar = self.addToolBar('title')
+        self.toolbar = self.addToolBar("title")
 
         # přidání tlačítek na nástrojový pruh
         self.toolbar.addAction(quitAction)
@@ -297,7 +299,7 @@ class MainWindow(QtGui.QMainWindow):
 
     def aboutDialog(self):
         msgBox = QtGui.QMessageBox()
-        msgBox.setText('About:\n...\n...\n...')
+        msgBox.setText("About:\n...\n...\n...")
         msgBox.setIcon(QtGui.QMessageBox.Information)
         msgBox.exec_()
 
@@ -313,5 +315,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
