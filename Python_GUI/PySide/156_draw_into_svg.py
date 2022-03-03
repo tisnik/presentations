@@ -52,7 +52,7 @@ def drawCircle(qPainter, color, cx, cy, radius):
     setColor(qPainter, color)
 
     # vykreslení kružnice
-    qPainter.drawEllipse(cx-radius, cy-radius, 2*radius, 2*radius)
+    qPainter.drawEllipse(cx - radius, cy - radius, 2 * radius, 2 * radius)
 
 
 # funkce pro vykreslení oblouku zadanou barvou
@@ -60,7 +60,9 @@ def drawArc(qPainter, color, cx, cy, radius, angle, span):
     setColor(qPainter, color)
 
     # vykreslení kružnice
-    qPainter.drawArc(cx-radius, cy-radius, 2*radius, 2*radius, 16*angle, 16*span)
+    qPainter.drawArc(
+        cx - radius, cy - radius, 2 * radius, 2 * radius, 16 * angle, 16 * span
+    )
 
 
 # funkce pro vykreslení kruhové výseče zadanou barvou
@@ -68,7 +70,9 @@ def drawPie(qPainter, color, cx, cy, radius, angle, span):
     setColor(qPainter, color)
 
     # vykreslení kruhové výseče
-    qPainter.drawPie(cx-radius, cy-radius, 2*radius, 2*radius, 16*angle, 16*span)
+    qPainter.drawPie(
+        cx - radius, cy - radius, 2 * radius, 2 * radius, 16 * angle, 16 * span
+    )
 
 
 # funkce pro vykreslení kruhové úseče zadanou barvou
@@ -76,7 +80,9 @@ def drawChord(qPainter, color, cx, cy, radius, angle, span):
     setColor(qPainter, color)
 
     # vykreslení kruhové úseče
-    qPainter.drawChord(cx-radius, cy-radius, 2*radius, 2*radius, 16*angle, 16*span)
+    qPainter.drawChord(
+        cx - radius, cy - radius, 2 * radius, 2 * radius, 16 * angle, 16 * span
+    )
 
 
 def drawScene(painter, width, height):
@@ -98,28 +104,28 @@ def drawScene(painter, width, height):
 
     drawRectangle(painter, YELLOW, 10, 90, 70, 70)
     drawCircle(painter, RED, 125, 125, 35)
-    drawEllipse(painter, CYAN, 170, 30+80, 70, 35)
-    drawEllipse(painter, BLUE, 268, 10+80, 35, 70)
+    drawEllipse(painter, CYAN, 170, 30 + 80, 70, 35)
+    drawEllipse(painter, BLUE, 268, 10 + 80, 35, 70)
 
     drawRoundedRectangle(painter, MAGENTA, 10, 170, 70, 70, 1)
     drawRoundedRectangle(painter, MAGENTA, 90, 170, 70, 70, 10)
     drawRoundedRectangle(painter, MAGENTA, 170, 170, 70, 70, 20)
     drawRoundedRectangle(painter, MAGENTA, 250, 170, 70, 70, 1000)
 
-    drawArc(painter, CYAN, 10+35, 260+35, 35, 0, 90)
-    drawArc(painter, CYAN, 90+35, 260+35, 35, 45, 90)
-    drawArc(painter, CYAN, 170+35, 260+35, 35, 45, 180)
-    drawArc(painter, CYAN, 250+35, 260+35, 35, 45, 270)
+    drawArc(painter, CYAN, 10 + 35, 260 + 35, 35, 0, 90)
+    drawArc(painter, CYAN, 90 + 35, 260 + 35, 35, 45, 90)
+    drawArc(painter, CYAN, 170 + 35, 260 + 35, 35, 45, 180)
+    drawArc(painter, CYAN, 250 + 35, 260 + 35, 35, 45, 270)
 
-    drawPie(painter, YELLOW, 10+35, 350+35, 35, 0, 90)
-    drawPie(painter, YELLOW, 90+35, 350+35, 35, 45, 90)
-    drawPie(painter, YELLOW, 170+35, 350+35, 35, 45, 180)
-    drawPie(painter, YELLOW, 250+35, 350+35, 35, 45, 270)
+    drawPie(painter, YELLOW, 10 + 35, 350 + 35, 35, 0, 90)
+    drawPie(painter, YELLOW, 90 + 35, 350 + 35, 35, 45, 90)
+    drawPie(painter, YELLOW, 170 + 35, 350 + 35, 35, 45, 180)
+    drawPie(painter, YELLOW, 250 + 35, 350 + 35, 35, 45, 270)
 
-    drawChord(painter, GREEN, 10+35, 440+35, 35, 0, 90)
-    drawChord(painter, GREEN, 90+35, 440+35, 35, 45, 90)
-    drawChord(painter, GREEN, 170+35, 440+35, 35, 45, 180)
-    drawChord(painter, GREEN, 250+35, 440+35, 35, 45, 270)
+    drawChord(painter, GREEN, 10 + 35, 440 + 35, 35, 0, 90)
+    drawChord(painter, GREEN, 90 + 35, 440 + 35, 35, 45, 90)
+    drawChord(painter, GREEN, 170 + 35, 440 + 35, 35, 45, 180)
+    drawChord(painter, GREEN, 250 + 35, 440 + 35, 35, 45, 270)
 
 
 def create_svg(name, width, height):
@@ -161,5 +167,5 @@ def main():
     create_svg("test7.svg", 320, 320)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
