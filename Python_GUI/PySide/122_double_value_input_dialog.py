@@ -10,7 +10,6 @@ from PySide import QtGui
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindowContent(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindowContent, self).__init__()
@@ -22,7 +21,8 @@ class MainWindowContent(QtGui.QWidget):
         quitButton = self.prepareQuitButton()
 
         doubleInputDialogButton = self.prepareButton(
-            "Double value input", self.doubleInputDialogHandler)
+            "Double value input", self.doubleInputDialogHandler
+        )
 
         # vytvoření správce geometrie
         topLayout = QtGui.QVBoxLayout()
@@ -48,7 +48,8 @@ class MainWindowContent(QtGui.QWidget):
         # zpracování a zobrazení výsledků
         value = dialog.doubleValue()
         message = "Entered value: '{v}'\nClicked on: {c}".format(
-            v=value, c="Ok" if result == 1 else "Cancel")
+            v=value, c="Ok" if result == 1 else "Cancel"
+        )
 
         self.showMessageBox(message)
 
@@ -63,7 +64,7 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareQuitButton(self):
         # tlačítko
-        quitButton = QtGui.QPushButton('Quit', self)
+        quitButton = QtGui.QPushButton("Quit", self)
         quitButton.resize(quitButton.sizeHint())
 
         # navázání akce na signál
@@ -79,7 +80,6 @@ class MainWindowContent(QtGui.QWidget):
 
 # nový widget bude odvozen od obecného hlavního okna
 class MainWindow(QtGui.QMainWindow):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -107,5 +107,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
