@@ -24,7 +24,7 @@ from PySide.QtGui import *
 app = QApplication(sys.argv)
 
 # konstrukce návěští bez předka
-label = QLabel('Hello world!')
+label = QLabel("Hello world!")
 
 # zobrazení widgetu na obrazovce
 label.show()
