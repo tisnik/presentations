@@ -23,7 +23,6 @@ from PySide import QtGui
 
 # nový widget bude odvozen od standardního návěští
 class HelloWorldLabel(QtGui.QLabel):
-
     def __init__(self):
         # zavoláme konstruktor předka
 
@@ -45,5 +44,5 @@ def main():
     HelloWorldLabel().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
