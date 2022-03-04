@@ -15,7 +15,6 @@ QML_FILE = "168_load_qml_4.qml"
 
 # nový widget bude odvozen od QDeclarativeView
 class MainWindow(QtDeclarative.QDeclarativeView):
-
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setWindowTitle("QML Example")
@@ -39,5 +38,5 @@ def main():
     sys.exit(app.exec_())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
