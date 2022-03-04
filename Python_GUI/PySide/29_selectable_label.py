@@ -24,7 +24,6 @@ from PySide import QtGui
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindow(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -46,7 +45,9 @@ class MainWindow(QtGui.QWidget):
         testLabel1.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
 
         # text v návěští bude možné vybírat a editovat
-        testLabel2.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse | QtCore.Qt.TextEditable)
+        testLabel2.setTextInteractionFlags(
+            QtCore.Qt.TextSelectableByMouse | QtCore.Qt.TextEditable
+        )
 
         # tlačítko pro ukončení aplikace
         quitButton = QtGui.QPushButton("Quit")
@@ -81,5 +82,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
