@@ -24,7 +24,6 @@ from PySide import QtGui
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindow(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -39,14 +38,16 @@ class MainWindow(QtGui.QWidget):
 
         # textové návěští
         # pozor na nutnost použití prefixu "u" v Pythonu 2.x
-        text = u"<font color='black'>černá</font><br />" \
-               u"<font color='blue'>modrá</font><br />" \
-               u"<font color='red'>čevená</font><br />" \
-               u"<font color='magenta'>fialová</font><br />" \
-               u"<font color='green'>zelená</font><br />" \
-               u"<font color='cyan'>azurová</font><br />" \
-               u"<font color='yellow'>žlutá</font><br />" \
-               u"<font color='white'>bílá</font><br />"
+        text = (
+            u"<font color='black'>černá</font><br />"
+            u"<font color='blue'>modrá</font><br />"
+            u"<font color='red'>čevená</font><br />"
+            u"<font color='magenta'>fialová</font><br />"
+            u"<font color='green'>zelená</font><br />"
+            u"<font color='cyan'>azurová</font><br />"
+            u"<font color='yellow'>žlutá</font><br />"
+            u"<font color='white'>bílá</font><br />"
+        )
         testLabel = QtGui.QLabel(text)
 
         # tlačítko pro ukončení aplikace
@@ -81,5 +82,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
