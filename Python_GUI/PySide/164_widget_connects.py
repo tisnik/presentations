@@ -26,7 +26,7 @@ def on_button_press():
     msgBox = QtGui.QMessageBox()
 
     # nastavení zprávy a ikony, která se má zobrazit vedle zprávy
-    msgBox.setText(u'Hello world!')
+    msgBox.setText(u"Hello world!")
     msgBox.setIcon(QtGui.QMessageBox.Information)
 
     # zobrazení dialogu
