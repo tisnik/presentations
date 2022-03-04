@@ -10,7 +10,6 @@ from PySide import QtGui
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindowContent(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindowContent, self).__init__()
@@ -20,11 +19,11 @@ class MainWindowContent(QtGui.QWidget):
 
     def prepareGUI(self):
         # tlačítko 1
-        self.counterButton = QtGui.QPushButton('Counter', self)
+        self.counterButton = QtGui.QPushButton("Counter", self)
         self.counterButton.resize(self.counterButton.sizeHint())
 
         # tlačítko 2
-        quitButton = QtGui.QPushButton('Quit', self)
+        quitButton = QtGui.QPushButton("Quit", self)
         quitButton.resize(quitButton.sizeHint())
 
         # vytvoření správce geometrie
@@ -43,7 +42,6 @@ class MainWindowContent(QtGui.QWidget):
 
 # nový widget bude odvozen od obecného hlavního okna
 class MainWindow(QtGui.QMainWindow):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -56,9 +54,9 @@ class MainWindow(QtGui.QMainWindow):
     def prepareGUI(self):
         # velikost není potřeba specifikovat
         # self.resize(320, 240)
-        self.setWindowTitle('QMainWindow')
+        self.setWindowTitle("QMainWindow")
 
-        self.statusBar().showMessage('QMainWindow')
+        self.statusBar().showMessage("QMainWindow")
 
         content = MainWindowContent()
         self.setCentralWidget(content)
@@ -82,5 +80,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
