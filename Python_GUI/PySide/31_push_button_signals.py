@@ -28,7 +28,6 @@ def buttonEvent(eventName):
 
 # nový widget bude odvozen od obecného widgetu
 class MainWindow(QtGui.QWidget):
-
     def __init__(self):
         # zavoláme konstruktor předka
         super(MainWindow, self).__init__()
@@ -58,9 +57,9 @@ class MainWindow(QtGui.QWidget):
         self.setLayout(layout)
 
         # navázání akce na signál
-        testButton.clicked.connect(lambda: buttonEvent('clicked'))
-        testButton.pressed.connect(lambda: buttonEvent('pressed'))
-        testButton.released.connect(lambda: buttonEvent('released'))
+        testButton.clicked.connect(lambda: buttonEvent("clicked"))
+        testButton.pressed.connect(lambda: buttonEvent("pressed"))
+        testButton.released.connect(lambda: buttonEvent("released"))
 
         # navázání akce na stisk tlačítka pro ukončení aplikace
         quitButton.clicked.connect(self.quit)
@@ -81,5 +80,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
