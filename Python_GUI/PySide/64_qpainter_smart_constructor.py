@@ -25,9 +25,9 @@ class MainWindow(QtGui.QMainWindow):
 
     def prepareImage(self):
         # vytvoření instance třídy QImage
-        self.image = QtGui.QImage(MainWindow.IMAGE_WIDTH,
-                                  MainWindow.IMAGE_HEIGHT,
-                                  QtGui.QImage.Format_RGB32)
+        self.image = QtGui.QImage(
+            MainWindow.IMAGE_WIDTH, MainWindow.IMAGE_HEIGHT, QtGui.QImage.Format_RGB32
+        )
 
         # vytvoření objektu typu QPainter s předáním
         # reference na "pokreslovaný" objekt
@@ -35,8 +35,7 @@ class MainWindow(QtGui.QMainWindow):
         # nastavení barvy kreslení
         qp.setPen(QtGui.QColor(64, 255, 64))
         # vykreslení úsečky
-        qp.drawLine(10, 10,
-                    MainWindow.IMAGE_WIDTH-10, MainWindow.IMAGE_HEIGHT-10)
+        qp.drawLine(10, 10, MainWindow.IMAGE_WIDTH - 10, MainWindow.IMAGE_HEIGHT - 10)
 
         # vytvoření instance třídy QPixmap z objektu QImage
         self.pixmap = QtGui.QPixmap.fromImage(self.image)
@@ -44,17 +43,18 @@ class MainWindow(QtGui.QMainWindow):
     def prepareGUI(self):
         # velikost okna nezadávejte ručně - špatně se počítá kvůli toolbaru
         # self.resize(256, 300)
-        self.setWindowTitle('QPainter')
+        self.setWindowTitle("QPainter")
 
         # tlačítko Quit
-        quitAction = QtGui.QAction(QtGui.QIcon('icons/application-exit.png'),
-                                   '&Quit', self)
+        quitAction = QtGui.QAction(
+            QtGui.QIcon("icons/application-exit.png"), "&Quit", self
+        )
         quitAction.triggered.connect(self.close)
-        quitAction.setStatusTip('Quit the application')
-        quitAction.setShortcut('Ctrl+Q')
+        quitAction.setStatusTip("Quit the application")
+        quitAction.setShortcut("Ctrl+Q")
 
         # nástrojový pruh
-        self.toolbar = self.addToolBar('title')
+        self.toolbar = self.addToolBar("title")
         self.toolbar.setMovable(False)
 
         # přidání tlačítka na nástrojový pruh
@@ -86,5 +86,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
