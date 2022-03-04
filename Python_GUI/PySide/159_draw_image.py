@@ -34,7 +34,7 @@ def drawScene(painter, width, height):
     rect1 = QtCore.QRectF(10, 10, 199, 102)
     painter.drawImage(rect1, image)
 
-    rect2 = QtCore.QRectF(10, 120, 199*3, 102*3)
+    rect2 = QtCore.QRectF(10, 120, 199 * 3, 102 * 3)
     painter.drawImage(rect2, image)
 
 
@@ -77,6 +77,6 @@ def main():
     create_svg("test10.svg", 320, 320)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     main()
