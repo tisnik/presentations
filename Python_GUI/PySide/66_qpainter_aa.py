@@ -41,9 +41,9 @@ class MainWindow(QtGui.QMainWindow):
 
     def prepareImage(self):
         # vytvoření instance třídy QImage
-        self.image = QtGui.QImage(MainWindow.IMAGE_WIDTH,
-                                  MainWindow.IMAGE_HEIGHT,
-                                  QtGui.QImage.Format_RGB32)
+        self.image = QtGui.QImage(
+            MainWindow.IMAGE_WIDTH, MainWindow.IMAGE_HEIGHT, QtGui.QImage.Format_RGB32
+        )
 
         # vytvoření objektu typu QPainter s předáním
         # reference na "pokreslovaný" objekt
@@ -62,11 +62,11 @@ class MainWindow(QtGui.QMainWindow):
         WHITE = (255, 255, 255)
 
         # Vykreslení čar různou barvou
-        drawLine(qp, BLUE,    10, 10, 160, 20)
-        drawLine(qp, CYAN,    10, 20, 160, 30)
-        drawLine(qp, GREEN,   10, 30, 160, 40)
-        drawLine(qp, YELLOW,  10, 40, 160, 50)
-        drawLine(qp, RED,     10, 50, 160, 60)
+        drawLine(qp, BLUE, 10, 10, 160, 20)
+        drawLine(qp, CYAN, 10, 20, 160, 30)
+        drawLine(qp, GREEN, 10, 30, 160, 40)
+        drawLine(qp, YELLOW, 10, 40, 160, 50)
+        drawLine(qp, RED, 10, 50, 160, 60)
         drawLine(qp, MAGENTA, 10, 60, 160, 70)
 
         # Vykreslení čar s různým sklonem
@@ -78,12 +78,13 @@ class MainWindow(QtGui.QMainWindow):
             x = radius * math.sin(math.radians(i))
             y = radius * math.cos(math.radians(i))
             # vykreslení jedné úsečky
-            drawLine(qp, WHITE, MainWindow.IMAGE_WIDTH-1, 0,
-                     MainWindow.IMAGE_WIDTH-x, y)
+            drawLine(
+                qp, WHITE, MainWindow.IMAGE_WIDTH - 1, 0, MainWindow.IMAGE_WIDTH - x, y
+            )
 
         # vykreslení čar různou šířkou
         for i in range(1, 10):
-            drawLine(qp, WHITE, 10 + i*15, 90, 20 + i*15, 230, i)
+            drawLine(qp, WHITE, 10 + i * 15, 90, 20 + i * 15, 230, i)
 
         # vytvoření instance třídy QPixmap z objektu QImage
         self.pixmap = QtGui.QPixmap.fromImage(self.image)
@@ -91,17 +92,18 @@ class MainWindow(QtGui.QMainWindow):
     def prepareGUI(self):
         # velikost okna nezadávejte ručně - špatně se počítá kvůli toolbaru
         # self.resize(256, 300)
-        self.setWindowTitle('QPainter')
+        self.setWindowTitle("QPainter")
 
         # tlačítko Quit
-        quitAction = QtGui.QAction(QtGui.QIcon('icons/application-exit.png'),
-                                   '&Quit', self)
+        quitAction = QtGui.QAction(
+            QtGui.QIcon("icons/application-exit.png"), "&Quit", self
+        )
         quitAction.triggered.connect(self.close)
-        quitAction.setStatusTip('Quit the application')
-        quitAction.setShortcut('Ctrl+Q')
+        quitAction.setStatusTip("Quit the application")
+        quitAction.setShortcut("Ctrl+Q")
 
         # nástrojový pruh
-        self.toolbar = self.addToolBar('title')
+        self.toolbar = self.addToolBar("title")
         self.toolbar.setMovable(False)
 
         # přidání tlačítka na nástrojový pruh
@@ -133,5 +135,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
