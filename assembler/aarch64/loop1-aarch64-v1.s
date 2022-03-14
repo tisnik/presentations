@@ -4,7 +4,7 @@
 # - pocitana programova smycka
 # - uprava pro mikroprocesory s architekturou AArch64
 #
-# Autor: Pavel Tisnovsky
+# Autor: Pavel Tišnovský
 
 
 
@@ -19,7 +19,7 @@ sys_write  = 64
 std_input  = 0
 std_output = 1
 
-# pocet opakovani znaku
+# počet opakovani znaku
 rep_count  = 40
 
 
@@ -37,11 +37,11 @@ rep_count  = 40
 
 #-----------------------------------------------------------------------------
 .section .text
-        .global _start               // tento symbol ma byt dostupny i linkeru
+        .global _start               // tento symbol má být dostupný i linkeru
 
 _start:
         ldr   x1, =buffer            // zapis se bude provadet do tohoto bufferu
-        mov   x2, #rep_count         // pocet opakovani znaku
+        mov   x2, #rep_count         // počet opakovani znaku
         mov   w3, #'*'               // zapisovany znak
 loop:
         strb  w3, [x1]               // zapis znaku do bufferu
@@ -50,13 +50,13 @@ loop:
         cmp   x2, #0                 // otestovani, zda jsme jiz nedosahli nuly
         bne   loop                   // pokud jsme se nedostali k nule, skok na zacatek smycky
 
-        mov   x8, #sys_write         // cislo syscallu pro funkci "write"
+        mov   x8, #sys_write         // číslo syscallu pro funkci "write"
         mov   x0, #std_output        // standardni vystup
-        ldr   x1, =buffer            // adresa retezce, ktery se ma vytisknout
-        mov   x2, #rep_count         // pocet znaku, ktere se maji vytisknout
-        svc   0                      // volani Linuxoveho kernelu
+        ldr   x1, =buffer            // adresa řetězce, ktery se ma vytisknout
+        mov   x2, #rep_count         // počet znaku, ktere se maji vytisknout
+        svc   0                      // volání Linuxového kernelu
 
-        mov   x8, #sys_exit          // cislo sycallu pro funkci "exit"
+        mov   x8, #sys_exit          // číslo sycallu pro funkci "exit"
         mov   x0, #0                 // exit code = 0
-        svc   0                      // volani Linuxoveho kernelu
+        svc   0                      // volání Linuxového kernelu
 
