@@ -9,6 +9,7 @@
 
 from PySide import QtCore, QtGui
 
+
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -30,7 +31,18 @@ class Ui_Form(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QtGui.QApplication.translate("Form", "Form", None, QtGui.QApplication.UnicodeUTF8))
-        self.helloButton.setText(QtGui.QApplication.translate("Form", "Hello!", None, QtGui.QApplication.UnicodeUTF8))
-        self.quitButton.setText(QtGui.QApplication.translate("Form", "Quit", None, QtGui.QApplication.UnicodeUTF8))
-
+        Form.setWindowTitle(
+            QtGui.QApplication.translate(
+                "Form", "Form", None, QtGui.QApplication.UnicodeUTF8
+            )
+        )
+        self.helloButton.setText(
+            QtGui.QApplication.translate(
+                "Form", "Hello!", None, QtGui.QApplication.UnicodeUTF8
+            )
+        )
+        self.quitButton.setText(
+            QtGui.QApplication.translate(
+                "Form", "Quit", None, QtGui.QApplication.UnicodeUTF8
+            )
+        )
