@@ -3,7 +3,7 @@
 # Jednoducha aplikace typu "Hello world!" naprogramovana
 # v assembleru GNU as.
 #
-# Autor: Pavel Tisnovsky
+# Autor: Pavel Tišnovský
 
 
 
@@ -17,19 +17,19 @@ sys_write=64
 
 # Deklarace makra pro ukonceni aplikace
 .macro exit
-        mov  x8, #sys_exit      // cislo sycallu pro funkci "exit"
+        mov  x8, #sys_exit      // číslo sycallu pro funkci "exit"
         mov  x0, #0             // exit code = 0
-        svc  0                  // volani Linuxoveho kernelu
+        svc  0                  // volání Linuxového kernelu
 .endm
 
 
 # Deklarace makra pro vytisteni zpravy na standardni vystup
 .macro writeMessage message,messageLength
-        mov  x8, #sys_write       // cislo sycallu pro funkci "write"
+        mov  x8, #sys_write       // číslo sycallu pro funkci "write"
         mov  x0, #1               // standardni vystup
-        ldr  x1, =\message        // adresa retezce, ktery se ma vytisknout
-        mov  x2, #\messageLength  // pocet znaku, ktere se maji vytisknout
-        svc  0                    // volani Linuxoveho kernelu
+        ldr  x1, =\message        // adresa řetězce, ktery se ma vytisknout
+        mov  x2, #\messageLength  // počet znaku, ktere se maji vytisknout
+        svc  0                    // volání Linuxového kernelu
 .endm
 
 
@@ -46,7 +46,7 @@ hello_lbl:
 
 #-----------------------------------------------------------------------------
 .section .text
-        .global _start          // tento symbol ma byt dostupny i linkeru
+        .global _start          // tento symbol má být dostupný i linkeru
 
 _start:
         writeMessage hello_lbl, 13

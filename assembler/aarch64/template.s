@@ -3,7 +3,7 @@
 # Sablona pro zdrojovy kod Linuxoveho programu naprogramovaneho
 # v assembleru GNU AS pro architekturu AArch64.
 #
-# Autor: Pavel Tisnovsky
+# Autor: Pavel Tišnovský
 
 
 
@@ -27,10 +27,10 @@ sys_exit=93
 
 #-----------------------------------------------------------------------------
 .section .text
-        .global _start          // tento symbol ma byt dostupny i z linkeru
+        .global _start          // tento symbol má být dostupný i z linkeru
 
 _start:
-        mov  x8, #sys_exit      // cislo sycallu pro funkci "exit"
+        mov  x8, #sys_exit      // číslo sycallu pro funkci "exit"
         mov  x0, #0             // exit code = 0
-        svc  0                  // volani Linuxoveho kernelu
+        svc  0                  // volání Linuxového kernelu
 
