@@ -12,7 +12,7 @@ class HelloWorldLabel(QLabel):
 
         self.setMinimumSize(QSize(600, 400))
         self.setAlignment(Qt.AlignCenter)
-        self.setWindowTitle('Hello world!')
+        self.setWindowTitle("Hello world!")
 
     def run(self):
         self.show()
