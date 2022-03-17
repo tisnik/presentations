@@ -27,7 +27,7 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #27')
+pygame.display.set_caption("Pygame test #27")
 
 # Konstanty s n-ticemi představujícími základní barvy
 BLACK = (0, 0, 0)
@@ -37,7 +37,7 @@ display.fill(BLACK)
 
 
 # Načtení obrázku, který se bude vykreslovat a transformovat
-image_surface = pygame.image.load(os.path.join('images', 'pygame.png'))
+image_surface = pygame.image.load(os.path.join("images", "pygame.png"))
 
 # Rozměry původního obrázku
 image_width = image_surface.get_width()
@@ -46,26 +46,25 @@ image_height = image_surface.get_height()
 scale_ratio = 3
 
 # Vytvoření zvětšených obrázků
-horizontally_scaled_image = \
-    pygame.transform.scale(image_surface,
-                           (int(image_width*scale_ratio), image_height))
+horizontally_scaled_image = pygame.transform.scale(
+    image_surface, (int(image_width * scale_ratio), image_height)
+)
 
-horizontally_smooth_scaled_image = \
-    pygame.transform.smoothscale(image_surface,
-                                 (int(image_width*scale_ratio), image_height))
+horizontally_smooth_scaled_image = pygame.transform.smoothscale(
+    image_surface, (int(image_width * scale_ratio), image_height)
+)
 
-vertically_scaled_image = \
-    pygame.transform.scale(image_surface,
-                           (image_width, int(image_height*scale_ratio)))
+vertically_scaled_image = pygame.transform.scale(
+    image_surface, (image_width, int(image_height * scale_ratio))
+)
 
-vertically_smooth_scaled_image = \
-    pygame.transform.smoothscale(image_surface,
-                                 (image_width, int(image_height*scale_ratio)))
+vertically_smooth_scaled_image = pygame.transform.smoothscale(
+    image_surface, (image_width, int(image_height * scale_ratio))
+)
 
-smooth_scaled_image = \
-    pygame.transform.smoothscale(image_surface,
-                                 (int(image_width*scale_ratio),
-                                  int(image_height*scale_ratio)))
+smooth_scaled_image = pygame.transform.smoothscale(
+    image_surface, (int(image_width * scale_ratio), int(image_height * scale_ratio))
+)
 
 # Přímé vykreslení původního obrázku
 display.blit(image_surface, (10, 10))
@@ -86,8 +85,9 @@ RED = (255, 0, 0)
 # - první parametr obsahuje řetězec, který se má vykreslit
 # - druhý parametr řídí použití antialiasingu
 # - třetí parametr volí barvu fontu
-font_surface1 = font.render(pygame.transform.get_smoothscale_backend(),
-                            True, WHITE, RED)
+font_surface1 = font.render(
+    pygame.transform.get_smoothscale_backend(), True, WHITE, RED
+)
 
 # Vykreslení obrázku s nápisem do bufferu
 display.blit(font_surface1, (15, 100))
