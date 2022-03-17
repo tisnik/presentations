@@ -6,27 +6,27 @@ from pygments.filters import NameHighlightFilter
 
 
 class FooLangLexer(RegexLexer):
-    name = 'foolang'
-    aliases = ['foolang']
-    filenames = ['*.foolang']
+    name = "foolang"
+    aliases = ["foolang"]
+    filenames = ["*.foolang"]
 
     tokens = {
-        'root': [
-            (r'\ *print', Name.Function),
-            (r'for', Keyword),
-            (r'while', Keyword),
-            (r'goto', Generic.Error),
-            (r'begin', Keyword),
-            (r'end', Keyword),
-            (r'def function', Name.Function, 'function'),
-            (r'.+', Generic.Normal),
-            (r'\n', Generic.Normal)
+        "root": [
+            (r"\ *print", Name.Function),
+            (r"for", Keyword),
+            (r"while", Keyword),
+            (r"goto", Generic.Error),
+            (r"begin", Keyword),
+            (r"end", Keyword),
+            (r"def function", Name.Function, "function"),
+            (r".+", Generic.Normal),
+            (r"\n", Generic.Normal),
         ],
-        'function': [
-            (r'end function', Name.Function, '#pop'),
-            (r'.+', Comment),
-            (r'\n', Comment)
-        ]
+        "function": [
+            (r"end function", Name.Function, "#pop"),
+            (r".+", Comment),
+            (r"\n", Comment),
+        ],
     }
 
 
