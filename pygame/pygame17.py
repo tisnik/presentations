@@ -24,7 +24,7 @@ class BlockySprite(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         # Vytvoření obrázku představujícího vizuální obraz spritu:
-        self.image = pygame.Surface([size,size])
+        self.image = pygame.Surface([size, size])
         self.image.fill(color)
 
         # Vytvoření obalového obdélníku
@@ -32,6 +32,7 @@ class BlockySprite(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+
 
 # Inicializace knihovny Pygame
 pygame.init()
@@ -42,12 +43,12 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #17')
+pygame.display.set_caption("Pygame test #17")
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
-RED     = (255,   0,   0)
-BLUE    = (  0,   0,   255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
 
 # Vyplnění plochy okna černou barvou
 display.fill(BLACK)
@@ -56,7 +57,7 @@ display.fill(BLACK)
 all_sprites = pygame.sprite.Group()
 
 # Vytvoření dvojice spritů
-sprite1 = BlockySprite(RED,  50, 10, 10)
+sprite1 = BlockySprite(RED, 50, 10, 10)
 sprite2 = BlockySprite(BLUE, 25, 50, 10)
 
 # Přidání dvojice spritů do seznamu
@@ -65,7 +66,6 @@ all_sprites.add(sprite2)
 
 # Vykreslení celé skupiny spritů do bufferu
 all_sprites.draw(display)
-
 
 
 # Hlavní herní smyčka
@@ -83,4 +83,3 @@ while True:
     clock.tick(20)
 
 # finito
-
