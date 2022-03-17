@@ -26,7 +26,7 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #4')
+pygame.display.set_caption("Pygame test #4")
 
 # Konstanty s n-ticemi představujícími základní barvy
 BLACK = (0, 0, 0)
@@ -45,19 +45,19 @@ display.fill(BLACK)
 pygame.draw.line(display, BLUE, (10, 10), (160, 10))
 pygame.draw.line(display, CYAN, (10, 20), (160, 20))
 pygame.draw.line(display, GREEN, (10, 30), (160, 30))
-pygame.draw.line(display, YELLOW,  (10, 40), (160, 40))
+pygame.draw.line(display, YELLOW, (10, 40), (160, 40))
 pygame.draw.line(display, RED, (10, 50), (160, 50))
 pygame.draw.line(display, MAGENTA, (10, 60), (160, 60))
 
 # Vykreslení čar různou šířkou
 for i in range(1, 10):
-    pygame.draw.line(display, WHITE, (10 + i*15, 80), (10 + i*15, 210), i)
+    pygame.draw.line(display, WHITE, (10 + i * 15, 80), (10 + i * 15, 210), i)
 
 # Základní geometrické tvary: kruh, vyplněný čtverec, elipsa a čtverec
 pygame.draw.circle(display, CYAN, (280, 40), 20, 0)
-pygame.draw.rect(display, RED, (280-20, 80, 40, 40))
-pygame.draw.ellipse(display, YELLOW, (280-30, 140, 60, 40))
-pygame.draw.rect(display, MAGENTA, (280-20, 190, 40, 40), 1)
+pygame.draw.rect(display, RED, (280 - 20, 80, 40, 40))
+pygame.draw.ellipse(display, YELLOW, (280 - 30, 140, 60, 40))
+pygame.draw.rect(display, MAGENTA, (280 - 20, 190, 40, 40), 1)
 
 
 # Hlavní herní smyčka
