@@ -9,13 +9,12 @@ from pygments.util import get_bool_opt
 
 
 class CamelCaseFilter(Filter):
-
     def __init__(self, **options):
         Filter.__init__(self, **options)
 
     def convert(self, name):
-        results = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
-        results = re.sub('([a-z0-9])([A-Z])', r'\1_\2', results)
+        results = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
+        results = re.sub("([a-z0-9])([A-Z])", r"\1_\2", results)
         return results.lower()
 
     def filter(self, lexer, stream):
