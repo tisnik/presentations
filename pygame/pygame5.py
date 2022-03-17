@@ -26,7 +26,7 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #5')
+pygame.display.set_caption("Pygame test #5")
 
 # Konstanty s n-ticemi představujícími základní barvy
 BLACK = (0, 0, 0)
@@ -47,7 +47,7 @@ pixelArray = pygame.PixelArray(display)
 # Změna barev některých pixelů
 for y in xrange(HEIGHT):
     for x in xrange(WIDTH):
-        pixelArray[x][y] = (x, y, (x+y) % 256)
+        pixelArray[x][y] = (x, y, (x + y) % 256)
 
 # Pixely byly změněny, pole je možné odstranit z paměti
 # a současně tak uvolnit surface pro další operace
