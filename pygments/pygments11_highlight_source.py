@@ -11,6 +11,6 @@ if len(argv) <= 1:
     print("Usage: pygments11_highlight_source.py FILENAME")
     exit(1)
 
-with open(argv[1], 'r') as fin:
+with open(argv[1], "r") as fin:
     code = fin.read()
     print(highlight(code, PythonLexer(), TerminalFormatter()))
