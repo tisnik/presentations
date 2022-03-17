@@ -27,7 +27,7 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #9')
+pygame.display.set_caption("Pygame test #9")
 
 # Konstanty s n-ticemi představujícími základní barvy
 BLACK = (0, 0, 0)
@@ -59,12 +59,11 @@ for i in range(1, 90, 5):
     x = radius * math.sin(math.radians(i))
     y = radius * math.cos(math.radians(i))
     # vykreslení jedné úsečky, blend je nastaveno na True
-    pygame.draw.aaline(display, WHITE, (WIDTH-1, 0), (WIDTH-x, y), True)
+    pygame.draw.aaline(display, WHITE, (WIDTH - 1, 0), (WIDTH - x, y), True)
 
 # Vykreslení čar s jednotnou šířkou
 for i in range(1, 10):
-    pygame.draw.aaline(display, WHITE, (10 + i*15, 90), (20 + i*15, 230),
-                       False)
+    pygame.draw.aaline(display, WHITE, (10 + i * 15, 90), (20 + i * 15, 230), False)
 
 
 # Hlavní herní smyčka
