@@ -23,8 +23,6 @@ print("-----------------------")
 lexer = PythonLexer()
 
 # pridani filtru
-lexer.add_filter(NameHighlightFilter(
-    names=['xor', 'goto']
-))
+lexer.add_filter(NameHighlightFilter(names=["xor", "goto"]))
 
 print(highlight(code, lexer, TerminalFormatter()))
