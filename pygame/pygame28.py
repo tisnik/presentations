@@ -28,7 +28,7 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #28')
+pygame.display.set_caption("Pygame test #28")
 
 # Konstanty s n-ticemi představujícími základní barvy
 BLACK = (0, 0, 0)
@@ -38,7 +38,7 @@ display.fill(BLACK)
 
 
 # Načtení obrázku, který se bude vykreslovat a transformovat
-image_surface = pygame.image.load(os.path.join('images', 'pygame.png'))
+image_surface = pygame.image.load(os.path.join("images", "pygame.png"))
 
 # Vytvoření otočených obrázků
 rot90_image = pygame.transform.rotate(image_surface, 90)
@@ -53,10 +53,10 @@ rot_and_scaled_image_2 = pygame.transform.rotozoom(image_surface, 30, 2.0)
 display.blit(image_surface, (20, 25))
 
 # Přímé vykreslení otočených obrázků
-display.blit(rot90_image,  (115, 25))
+display.blit(rot90_image, (115, 25))
 display.blit(rot180_image, (210, 25))
 display.blit(rot270_image, (305, 25))
-display.blit(rot45_image,  (20, 125))
+display.blit(rot45_image, (20, 125))
 display.blit(rotm45_image, (20, 245))
 display.blit(rot_and_scaled_image_1, (220, 120))
 display.blit(rot_and_scaled_image_2, (200, 200))
