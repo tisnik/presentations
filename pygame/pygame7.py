@@ -23,6 +23,7 @@ def yesno(val):
     else:
         return "no"
 
+
 # Odkomentování si můžete vyzkoušet nastavit různé režimy
 # pygame.display.set_mode([1024,768], pygame.FULLSCREEN | pygame.HWSURFACE, 32)
 
@@ -33,8 +34,10 @@ displayInfo = pygame.display.Info()
 pygame.display.quit()
 
 # Vypsat přečtené informace o grafickém subsystému
-print("Desktop resolution:   %d x %d pixels" % (displayInfo.current_w,
-                                                displayInfo.current_h))
+print(
+    "Desktop resolution:   %d x %d pixels"
+    % (displayInfo.current_w, displayInfo.current_h)
+)
 
 if displayInfo.video_mem != 0:
     print("Video memory size:  %d MB" % displayInfo.video_mem)
