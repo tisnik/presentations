@@ -9,8 +9,8 @@ from pygments.util import get_bool_opt
 
 
 def name_to_snake_case(name):
-    results = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
-    results = re.sub('([a-z0-9])([A-Z])', r'\1_\2', results)
+    results = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
+    results = re.sub("([a-z0-9])([A-Z])", r"\1_\2", results)
     return results.lower()
 
 
