@@ -11,6 +11,6 @@ if len(argv) <= 1:
     print("Usage: pygments12_source2svg.py FILENAME > DRAWING.svg")
     exit(1)
 
-with open(argv[1], 'r') as fin:
+with open(argv[1], "r") as fin:
     code = fin.read()
     print(highlight(code, PythonLexer(), SvgFormatter()))
