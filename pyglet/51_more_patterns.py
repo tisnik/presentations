@@ -17,9 +17,9 @@ IMAGE_HEIGHT = 256
 
 # Funkce provadejici vypocet moare s kruznicovym ci jinym vzorkem
 def recalc_any_pattern(image, palette, xmin, ymin, xmax, ymax, function):
-    width, height = image.size       # rozmery obrazku
-    stepx = (xmax - xmin)/width
-    stepy = (ymax - ymin)/height
+    width, height = image.size  # rozmery obrazku
+    stepx = (xmax - xmin) / width
+    stepy = (ymax - ymin) / height
 
     y1 = ymin
     for y in range(0, height):
@@ -36,29 +36,73 @@ def recalc_any_pattern(image, palette, xmin, ymin, xmax, ymax, function):
 image = Image.new("RGB", (IMAGE_WIDTH, IMAGE_HEIGHT))
 
 mez = (2 << 5) + 30 * 2.5
-recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x, y: x*x + y*y)
+recalc_any_pattern(
+    image,
+    palette_mandmap.palette,
+    mez / 5,
+    mez / 5,
+    mez,
+    mez,
+    lambda x, y: x * x + y * y,
+)
 image.save("patternC_circle.png")
 
 mez = (2 << 5) + 30 * 2.5
-recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez, lambda x, y: x*x - y*y)
+recalc_any_pattern(
+    image,
+    palette_mandmap.palette,
+    mez / 5,
+    mez / 5,
+    mez,
+    mez,
+    lambda x, y: x * x - y * y,
+)
 image.save("patternC_anticircle.png")
 
 mez = 15.0
-recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez,
-                   lambda x, y: x**3 + y**3)
+recalc_any_pattern(
+    image,
+    palette_mandmap.palette,
+    mez / 5,
+    mez / 5,
+    mez,
+    mez,
+    lambda x, y: x ** 3 + y ** 3,
+)
 image.save("patternC_x3y3.png")
 
 mez = 15.0
-recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez,
-                   lambda x, y: x**4 + y**4)
+recalc_any_pattern(
+    image,
+    palette_mandmap.palette,
+    mez / 5,
+    mez / 5,
+    mez,
+    mez,
+    lambda x, y: x ** 4 + y ** 4,
+)
 image.save("patternC_x4y4.png")
 
 mez = 60.0
-recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez,
-                   lambda x, y: x*x + y*y + x*y*1.5)
+recalc_any_pattern(
+    image,
+    palette_mandmap.palette,
+    mez / 5,
+    mez / 5,
+    mez,
+    mez,
+    lambda x, y: x * x + y * y + x * y * 1.5,
+)
 image.save("patternC_var1.png")
 
 mez = 15.0
-recalc_any_pattern(image, palette_mandmap.palette, mez/5, mez/5, mez, mez,
-                   lambda x, y: x*x*y + y*y*x)
+recalc_any_pattern(
+    image,
+    palette_mandmap.palette,
+    mez / 5,
+    mez / 5,
+    mez,
+    mez,
+    lambda x, y: x * x * y + y * y * x,
+)
 image.save("patternC_var2.png")
