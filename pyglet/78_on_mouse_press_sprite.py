@@ -8,14 +8,12 @@ RED = (255, 128, 128, 255)
 
 
 def create_window(width, height):
-    return pyglet.window.Window(width=width,
-                                height=height,
-                                caption="Pyglet library")
+    return pyglet.window.Window(width=width, height=height, caption="Pyglet library")
 
 
 def make_sprite(filename, window):
     image_stream = open("gnome-globe.png", "rb")
-    image = pyglet.image.load('gnome-globe.png', file=image_stream)
+    image = pyglet.image.load("gnome-globe.png", file=image_stream)
 
     # stred spritu bude odpovidat stredu obrazku - sprite se nam bude
     # mnohem lepe pozicovat
@@ -31,17 +29,13 @@ def make_sprite(filename, window):
 
 
 def create_gray_label(text, x, y, anchor_x, anchor_y):
-    return pyglet.text.Label(text,
-                             font_size=18,
-                             x=x,
-                             y=y,
-                             anchor_x=anchor_x,
-                             anchor_y=anchor_y,
-                             color=GRAY)
+    return pyglet.text.Label(
+        text, font_size=18, x=x, y=y, anchor_x=anchor_x, anchor_y=anchor_y, color=GRAY
+    )
 
 
 window = create_window(640, 480)
-label = create_gray_label('Mouse:', 10, 10, 'left', 'bottom')
+label = create_gray_label("Mouse:", 10, 10, "left", "bottom")
 sprite = make_sprite("gnome-globe.png", window)
 
 
@@ -52,15 +46,16 @@ def on_draw():
     sprite.draw()
 
 
-button_names = {pyglet.window.mouse.LEFT: "left",
-                pyglet.window.mouse.RIGHT: "right",
-                pyglet.window.mouse.MIDDLE: "middle"}
+button_names = {
+    pyglet.window.mouse.LEFT: "left",
+    pyglet.window.mouse.RIGHT: "right",
+    pyglet.window.mouse.MIDDLE: "middle",
+}
 
 
 def on_mouse_action(x, y, button, action):
     button_name = button_names.get(button, "unknown")
-    text = format("Mouse %s %s button at [%d, %d]" %
-                  (action, button_name, x, y))
+    text = format("Mouse %s %s button at [%d, %d]" % (action, button_name, x, y))
     label.text = text
     print(text)
     on_draw()
