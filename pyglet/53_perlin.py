@@ -52,12 +52,11 @@ def convert_to_image(bitmap, image, width, height, palette):
 
 
 def random_array(width, height, amplitude):
-    return [[random() * amplitude for i in range(width)]
-            for j in range(height)]
+    return [[random() * amplitude for i in range(width)] for j in range(height)]
 
 
 def perlin_noise(image, palette, noise, octaves):
-    width, height = image.size       # rozmery obrazku
+    width, height = image.size  # rozmery obrazku
 
     bitmap = np.zeros([height, width])
 
@@ -69,12 +68,12 @@ def perlin_noise(image, palette, noise, octaves):
         # vytvoreni pole nahodnych cisel o dane amplidude
         array = random_array(size, size, amplitude)
 
-        n = width / float(size-1.0)
+        n = width / float(size - 1.0)
 
         # interpolace hodnot v poli nahodnych cisel
         for y in range(height):
             for x in range(width):
-                i = int(x / n)   # prepocet mezi pozici pixelu a indexem v poli
+                i = int(x / n)  # prepocet mezi pozici pixelu a indexem v poli
                 j = int(y / n)
                 x0 = x - i * n
                 x1 = n - x0
