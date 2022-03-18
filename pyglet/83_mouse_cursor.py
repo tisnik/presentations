@@ -4,9 +4,7 @@ import pyglet
 
 
 def create_window(width, height):
-    return pyglet.window.Window(width=width,
-                                height=height,
-                                caption="Pyglet library")
+    return pyglet.window.Window(width=width, height=height, caption="Pyglet library")
 
 
 window = create_window(640, 480)
@@ -27,7 +25,7 @@ cursors = {
     pyglet.window.key.F7: pyglet.window.Window.CURSOR_SIZE_LEFT,
     pyglet.window.key.F8: pyglet.window.Window.CURSOR_SIZE_RIGHT,
     pyglet.window.key.F9: pyglet.window.Window.CURSOR_WAIT,
-    pyglet.window.key.F10: pyglet.window.Window.CURSOR_NO
+    pyglet.window.key.F10: pyglet.window.Window.CURSOR_NO,
 }
 
 
