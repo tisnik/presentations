@@ -4,14 +4,12 @@ import pyglet
 
 
 def create_window(width, height):
-    return pyglet.window.Window(width=width,
-                                height=height,
-                                caption="Pyglet library")
+    return pyglet.window.Window(width=width, height=height, caption="Pyglet library")
 
 
 def load_cursor(filename):
     image = pyglet.image.load(filename)
-    return pyglet.window.ImageMouseCursor(image, image.width/2, image.height/2)
+    return pyglet.window.ImageMouseCursor(image, image.width / 2, image.height / 2)
 
 
 window = create_window(640, 480)
