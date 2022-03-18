@@ -4,27 +4,29 @@ import pyglet
 
 
 def create_window(width, height):
-    return pyglet.window.Window(width=width,
-                                height=height,
-                                caption="Pyglet library")
+    return pyglet.window.Window(width=width, height=height, caption="Pyglet library")
 
 
 def create_label1():
-    return pyglet.text.Label("Event:",
-                             font_size=18,
-                             x=window.width//4,
-                             y=window.height//2,
-                             anchor_x='left',
-                             anchor_y='center')
+    return pyglet.text.Label(
+        "Event:",
+        font_size=18,
+        x=window.width // 4,
+        y=window.height // 2,
+        anchor_x="left",
+        anchor_y="center",
+    )
 
 
 def create_label2():
-    return pyglet.text.Label("Modifiers:",
-                             font_size=16,
-                             x=window.width//4,
-                             y=window.height//2 - 32,
-                             anchor_x='left',
-                             anchor_y='center')
+    return pyglet.text.Label(
+        "Modifiers:",
+        font_size=16,
+        x=window.width // 4,
+        y=window.height // 2 - 32,
+        anchor_x="left",
+        anchor_y="center",
+    )
 
 
 window = create_window(640, 480)
