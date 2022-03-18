@@ -4,37 +4,35 @@ import pyglet
 from pyglet.gl import *
 from pyglet.window import key
 
-fov = 70.0                                 # zorny uhel (field of view)
-nearPlane = 0.1                            # blizsi orezavaci rovina
-farPlane = 90.0                            # vzdalenejsi orezavaci rovina
+fov = 70.0  # zorny uhel (field of view)
+nearPlane = 0.1  # blizsi orezavaci rovina
+farPlane = 90.0  # vzdalenejsi orezavaci rovina
 
 r1 = 0.0
 r2 = 0.0
 
 
-window = pyglet.window.Window(width=500,
-                              height=500,
-                              caption="Pyglet library")
+window = pyglet.window.Window(width=500, height=500, caption="Pyglet library")
 
 keys = key.KeyStateHandler()
 window.push_handlers(keys)
 
 
 def init():
-    glClearColor(0.0, 0.0, 0.3, 0.0)       # barva pozadi obrazku
-    glPolygonMode(GL_FRONT, GL_FILL)       # nastaveni rezimu vykresleni modelu
+    glClearColor(0.0, 0.0, 0.3, 0.0)  # barva pozadi obrazku
+    glPolygonMode(GL_FRONT, GL_FILL)  # nastaveni rezimu vykresleni modelu
     glPolygonMode(GL_BACK, GL_FILL)
 
     # zakaz odstranovani hran nebo sten podle jejich normal
     glDisable(GL_CULL_FACE)
 
-    glShadeModel(GL_SMOOTH)                # nastaveni stinovaciho rezimu
+    glShadeModel(GL_SMOOTH)  # nastaveni stinovaciho rezimu
 
 
 @window.event
 def on_resize(width, height):
     init()
-    glViewport(0, 0, width, height)        # viditelna oblast pres cele okno
+    glViewport(0, 0, width, height)  # viditelna oblast pres cele okno
 
 
 def draw_partial_disk():
@@ -44,11 +42,12 @@ def draw_partial_disk():
     loops = 8
     startAngle = -45
     sweepAngle = 270
-    quadric = gluNewQuadric()                   # vytvoreni kvadriky
-    gluQuadricDrawStyle(quadric, GLU_LINE)      # nastaveni vlastnosti kvadriky
-    gluPartialDisk(quadric, innerRadius, outerRadius, slices, loops,
-                   startAngle, sweepAngle)
-    gluDeleteQuadric(quadric)                   # zruseni kvadriky
+    quadric = gluNewQuadric()  # vytvoreni kvadriky
+    gluQuadricDrawStyle(quadric, GLU_LINE)  # nastaveni vlastnosti kvadriky
+    gluPartialDisk(
+        quadric, innerRadius, outerRadius, slices, loops, startAngle, sweepAngle
+    )
+    gluDeleteQuadric(quadric)  # zruseni kvadriky
 
 
 def clear_buffers():
@@ -66,13 +65,21 @@ def set_projection_matrix(fov, nearPlane, farPlane):
 
 def set_modelview_matrix(rotation1, rotation2):
     glMatrixMode(GL_MODELVIEW)
-    glLoadIdentity()                       # nahrat jednotkovou matici
+    glLoadIdentity()  # nahrat jednotkovou matici
 
-    gluLookAt(4.0, 6.0, 18.0,              # bod, odkud se kamera diva
-              0.0, 2.0,  0.0,              # bod, kam se kamera diva
-              0.0, 1.0,  0.0)              # poloha "stropu" ve scene
+    gluLookAt(
+        4.0,
+        6.0,
+        18.0,  # bod, odkud se kamera diva
+        0.0,
+        2.0,
+        0.0,  # bod, kam se kamera diva
+        0.0,
+        1.0,
+        0.0,
+    )  # poloha "stropu" ve scene
 
-    glRotatef(rotation1, 1.0, 0.0, 0.0)    # rotace objektu
+    glRotatef(rotation1, 1.0, 0.0, 0.0)  # rotace objektu
     glRotatef(rotation2, 0.0, 1.0, 0.0)
 
 
@@ -92,7 +99,7 @@ def on_draw():
     clear_buffers()
     set_projection_matrix(fov, nearPlane, farPlane)
     set_modelview_matrix(r1, r2)
-    draw_partial_disk()                    # vykresleni dratoveho modelu disku
+    draw_partial_disk()  # vykresleni dratoveho modelu disku
 
 
 pyglet.app.run()
