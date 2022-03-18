@@ -4,9 +4,7 @@ import pyglet
 
 
 def create_window(width, height):
-    return pyglet.window.Window(width=width,
-                                height=height,
-                                caption="Pyglet library")
+    return pyglet.window.Window(width=width, height=height, caption="Pyglet library")
 
 
 def load_cursor(filename):
