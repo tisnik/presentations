@@ -19,15 +19,15 @@ IMAGE_HEIGHT = 256
 
 
 def random_gauss():
-    '''
+    """
     Vygenerovani nahodneho cisla v rozsahu 0..1 s pribliznym
     Gaussovym rozlozenim
-    '''
+    """
     N = 50
     sum = 0.0
     for i in range(N):
         sum += random()
-    return sum/N
+    return sum / N
 
 
 def compute_min_max(bitmap, width, height):
@@ -66,25 +66,25 @@ def convert_to_image(bitmap, image, width, height, palette):
 # h ... Hurstuv exponent
 # n ... pocet koeficientu spektralni syntezy
 def spectral_synthesis(image, palette, n, h):
-    width, height = image.size      # rozmery obrazku
+    width, height = image.size  # rozmery obrazku
 
     bitmap = np.zeros([height, width])
 
-    A = np.empty([n/2, n/2])        # koeficienty Ak
-    B = np.empty([n/2, n/2])        # koeficienty Bk
-    beta = 2.0 * h + 1              # promenna svazana s Hurstovym koeficientem
+    A = np.empty([n / 2, n / 2])  # koeficienty Ak
+    B = np.empty([n / 2, n / 2])  # koeficienty Bk
+    beta = 2.0 * h + 1  # promenna svazana s Hurstovym koeficientem
 
     print("calculate coefficients")
 
     # vypocet koeficientu Ak a Bk
-    for j in range(n/2):
-        for i in range(n/2):
-            rad_i = pow((i+1), -beta/2.0)*random_gauss()
-            rad_j = pow((j+1), -beta/2.0)*random_gauss()
-            phase_i = 2.0*math.pi*random()
-            phase_j = 2.0*math.pi*random()
-            A[j][i] = rad_i*math.cos(phase_i)*rad_j*math.cos(phase_j)
-            B[j][i] = rad_i*math.sin(phase_i)*rad_j*math.sin(phase_j)
+    for j in range(n / 2):
+        for i in range(n / 2):
+            rad_i = pow((i + 1), -beta / 2.0) * random_gauss()
+            rad_j = pow((j + 1), -beta / 2.0) * random_gauss()
+            phase_i = 2.0 * math.pi * random()
+            phase_j = 2.0 * math.pi * random()
+            A[j][i] = rad_i * math.cos(phase_i) * rad_j * math.cos(phase_j)
+            B[j][i] = rad_i * math.sin(phase_i) * rad_j * math.sin(phase_j)
 
     print("plasma synthesis")
 
@@ -93,11 +93,13 @@ def spectral_synthesis(image, palette, n, h):
         for i in range(width):
             z = 0
             # inverzni Fourierova transformace
-            for k in range(n/2):
-                for l in range(n/2):
-                    u = (i-n/2)*2.0*math.pi/width
-                    v = (j-n/2)*2.0*math.pi/height
-                    z += A[k][l]*math.cos(k*u+l*v)+B[k][l]*math.sin(k*u+l*v)
+            for k in range(n / 2):
+                for l in range(n / 2):
+                    u = (i - n / 2) * 2.0 * math.pi / width
+                    v = (j - n / 2) * 2.0 * math.pi / height
+                    z += A[k][l] * math.cos(k * u + l * v) + B[k][l] * math.sin(
+                        k * u + l * v
+                    )
             bitmap[j][i] = z
 
     convert_to_image(bitmap, image, width, height, palette)
