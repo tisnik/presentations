@@ -17,9 +17,7 @@ import pyglet
 import pyglet.gl
 
 # vytvoření okna
-window = pyglet.window.Window(width=640,
-                              height=480,
-                              caption="Pyglet+OpenGL")
+window = pyglet.window.Window(width=640, height=480, caption="Pyglet+OpenGL")
 
 
 @window.event
