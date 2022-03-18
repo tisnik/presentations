@@ -2,12 +2,10 @@
 
 import pyglet
 
-window = pyglet.window.Window(width=640,
-                              height=480,
-                              caption="Pyglet library")
+window = pyglet.window.Window(width=640, height=480, caption="Pyglet library")
 
 image_stream = open("gnome-globe.png", "rb")
-image = pyglet.image.load('gnome-globe.png', file=image_stream)
+image = pyglet.image.load("gnome-globe.png", file=image_stream)
 
 sprite = pyglet.sprite.Sprite(image)
 sprite.x = window.width / 2
@@ -24,5 +22,5 @@ def update(dt):
     sprite.rotation += 1
 
 
-pyglet.clock.schedule_interval(update, 1/60.)
+pyglet.clock.schedule_interval(update, 1 / 60.0)
 pyglet.app.run()
