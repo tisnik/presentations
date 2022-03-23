@@ -14,36 +14,40 @@
 import pyglet
 
 # vytvoření okna
-window = pyglet.window.Window(width=640,
-                              height=480,
-                              caption="Pyglet library")
+window = pyglet.window.Window(width=640, height=480, caption="Pyglet library")
 
 # první textové návěští, které se má zobrazit v oknu
-label1 = pyglet.text.Label("Pyglet library",
-                           font_name="Terminus",
-                           font_size=36,
-                           x=window.width//2,
-                           y=window.height//2,
-                           anchor_x='center',
-                           anchor_y='center')
+label1 = pyglet.text.Label(
+    "Pyglet library",
+    font_name="Terminus",
+    font_size=36,
+    x=window.width // 2,
+    y=window.height // 2,
+    anchor_x="center",
+    anchor_y="center",
+)
 
 # druhé textové návěští, které se má zobrazit v oknu
-label2 = pyglet.text.Label("Pyglet library",
-                           font_name="Terminus",
-                           font_size=36,
-                           x=0,
-                           y=window.height,
-                           anchor_x='left',
-                           anchor_y='top')
+label2 = pyglet.text.Label(
+    "Pyglet library",
+    font_name="Terminus",
+    font_size=36,
+    x=0,
+    y=window.height,
+    anchor_x="left",
+    anchor_y="top",
+)
 
 # třetí textové návěští, které se má zobrazit v oknu
-label3 = pyglet.text.Label("Pyglet library",
-                           font_name="Terminus",
-                           font_size=36,
-                           x=window.width,
-                           y=0,
-                           anchor_x='right',
-                           anchor_y='bottom')
+label3 = pyglet.text.Label(
+    "Pyglet library",
+    font_name="Terminus",
+    font_size=36,
+    x=window.width,
+    y=0,
+    anchor_x="right",
+    anchor_y="bottom",
+)
 
 
 @window.event

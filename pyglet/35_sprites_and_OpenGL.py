@@ -3,12 +3,10 @@
 import pyglet
 from pyglet.gl import *
 
-window = pyglet.window.Window(width=450,
-                              height=350,
-                              caption="Pyglet+OpenGL")
+window = pyglet.window.Window(width=450, height=350, caption="Pyglet+OpenGL")
 
 image_stream = open("gnome-globe.png", "rb")
-image = pyglet.image.load('gnome-globe.png', file=image_stream)
+image = pyglet.image.load("gnome-globe.png", file=image_stream)
 
 sprite = pyglet.sprite.Sprite(image)
 sprite.dx = 1
@@ -16,10 +14,10 @@ sprite.dy = 1
 
 
 def draw_points():
-    glColor3f(1.0, 1.0, 1.0)                # nastaveni barvy pro kresleni
-    glBegin(GL_POINTS)                      # nyni zacneme vykreslovat body
-    glVertex2i(50,  50)
-    glVertex2i(100,  50)
+    glColor3f(1.0, 1.0, 1.0)  # nastaveni barvy pro kresleni
+    glBegin(GL_POINTS)  # nyni zacneme vykreslovat body
+    glVertex2i(50, 50)
+    glVertex2i(100, 50)
     glVertex2i(100, 100)
     glVertex2i(50, 100)
     glEnd()
@@ -27,9 +25,9 @@ def draw_points():
 
 def draw_lines():
     glColor3f(1.0, 0.0, 1.0)
-    glBegin(GL_LINES)                       # nyni zacneme vykreslovat usecky
-    glVertex2i(150,  50)
-    glVertex2i(200,  50)
+    glBegin(GL_LINES)  # nyni zacneme vykreslovat usecky
+    glVertex2i(150, 50)
+    glVertex2i(200, 50)
     glVertex2i(200, 100)
     glVertex2i(150, 100)
     glEnd()
@@ -37,9 +35,9 @@ def draw_lines():
 
 def draw_line_strip():
     glColor3f(0.0, 1.0, 1.0)
-    glBegin(GL_LINE_STRIP)                  # nyni vykreslime polycaru
-    glVertex2i(250,  50)
-    glVertex2i(300,  50)
+    glBegin(GL_LINE_STRIP)  # nyni vykreslime polycaru
+    glVertex2i(250, 50)
+    glVertex2i(300, 50)
     glVertex2i(300, 100)
     glVertex2i(250, 100)
     glEnd()
@@ -47,9 +45,9 @@ def draw_line_strip():
 
 def draw_line_loop():
     glColor3f(1.0, 1.0, 0.0)
-    glBegin(GL_LINE_LOOP)                   # nyni vykreslime uzavrenou polycaru
-    glVertex2i(350,  50)
-    glVertex2i(400,  50)
+    glBegin(GL_LINE_LOOP)  # nyni vykreslime uzavrenou polycaru
+    glVertex2i(350, 50)
+    glVertex2i(400, 50)
     glVertex2i(400, 100)
     glVertex2i(350, 100)
     glEnd()
@@ -57,7 +55,7 @@ def draw_line_loop():
 
 def draw_triangles():
     glColor3f(0.0, 0.0, 1.0)
-    glBegin(GL_TRIANGLES)                   # vykresleni trojuhelniku
+    glBegin(GL_TRIANGLES)  # vykresleni trojuhelniku
     glVertex2i(50, 150)
     glVertex2i(100, 150)
     glVertex2i(100, 200)
@@ -67,7 +65,7 @@ def draw_triangles():
 
 def draw_triangle_strip():
     glColor3f(0.0, 1.0, 0.0)
-    glBegin(GL_TRIANGLE_STRIP)              # vykresleni pruhu trojuhelniku
+    glBegin(GL_TRIANGLE_STRIP)  # vykresleni pruhu trojuhelniku
     glVertex2i(150, 150)
     glVertex2i(150, 200)
     glVertex2i(200, 200)
@@ -77,7 +75,7 @@ def draw_triangle_strip():
 
 def draw_triangle_fan():
     glColor3f(1.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLE_FAN)                # vykresleni trsu trojuhelniku
+    glBegin(GL_TRIANGLE_FAN)  # vykresleni trsu trojuhelniku
     glVertex2i(300, 150)
     glVertex2i(250, 160)
     glVertex2i(270, 190)
@@ -90,7 +88,7 @@ def draw_triangle_fan():
 
 def draw_quads():
     glColor3f(1.0, 0.5, 0.5)
-    glBegin(GL_QUADS)                       # vykresleni ctyruhelniku
+    glBegin(GL_QUADS)  # vykresleni ctyruhelniku
     glVertex2i(50, 250)
     glVertex2i(100, 250)
     glVertex2i(100, 300)
@@ -100,7 +98,7 @@ def draw_quads():
 
 def draw_quad_strip():
     glColor3f(0.5, 0.5, 1.0)
-    glBegin(GL_QUAD_STRIP)                  # vykresleni pruhu ctyruhleniku
+    glBegin(GL_QUAD_STRIP)  # vykresleni pruhu ctyruhleniku
     glVertex2i(150, 250)
     glVertex2i(150, 300)
     glVertex2i(200, 240)
@@ -114,7 +112,7 @@ def draw_quad_strip():
 
 def draw_polygon():
     glColor3f(0.5, 1.0, 0.5)
-    glBegin(GL_POLYGON)                     # vykresleni konvexniho polygonu
+    glBegin(GL_POLYGON)  # vykresleni konvexniho polygonu
     glVertex2i(350, 260)
     glVertex2i(370, 240)
     glVertex2i(390, 240)
@@ -166,5 +164,5 @@ def update(dt):
         sprite.dy = -sprite.dy
 
 
-pyglet.clock.schedule_interval(update, 1/60.)
+pyglet.clock.schedule_interval(update, 1 / 60.0)
 pyglet.app.run()

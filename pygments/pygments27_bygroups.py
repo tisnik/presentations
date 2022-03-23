@@ -12,17 +12,19 @@ from pygments.token import *
 
 # viz http://pygments.org/docs/lexerdevelopment/
 class IniFileLexer(RegexLexer):
-    name = 'INI'
-    aliases = ['ini', 'cfg']
-    filenames = ['*.ini', '*.cfg']
+    name = "INI"
+    aliases = ["ini", "cfg"]
+    filenames = ["*.ini", "*.cfg"]
 
     tokens = {
-        'root': [
-            (r'\s+', Text),
-            (r';.*?$', Comment),
-            (r'\[.*?\]$', Keyword),
-            (r'(.*?)(\s*)(=)(\s*)(.*?)$',
-             bygroups(Name.Attribute, Text, Operator, Text, String))
+        "root": [
+            (r"\s+", Text),
+            (r";.*?$", Comment),
+            (r"\[.*?\]$", Keyword),
+            (
+                r"(.*?)(\s*)(=)(\s*)(.*?)$",
+                bygroups(Name.Attribute, Text, Operator, Text, String),
+            ),
         ]
     }
 
@@ -42,10 +44,10 @@ foo=bar
 class NewStyle(Style):
     default_style = ""
     styles = {
-        Comment:        '#888',
-        Text:           '#ansired',
-        Keyword:        '#88f',
-        Name.Attribute: 'nobold #ansiyellow',
+        Comment: "#888",
+        Text: "#ansired",
+        Keyword: "#88f",
+        Name.Attribute: "nobold #ansiyellow",
     }
 
 

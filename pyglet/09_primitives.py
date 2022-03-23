@@ -17,15 +17,13 @@ import pyglet
 from pyglet.gl import *
 
 # vytvoření okna
-window = pyglet.window.Window(width=450,
-                              height=350,
-                              caption="Pyglet+OpenGL")
+window = pyglet.window.Window(width=450, height=350, caption="Pyglet+OpenGL")
 
 
 def draw_points():
     """Vykreslení bodů."""
-    glColor3f(1.0, 1.0, 1.0)                # nastaveni barvy pro kresleni
-    glBegin(GL_POINTS)                      # nyni zacneme vykreslovat body
+    glColor3f(1.0, 1.0, 1.0)  # nastaveni barvy pro kresleni
+    glBegin(GL_POINTS)  # nyni zacneme vykreslovat body
     glVertex2i(50, 50)
     glVertex2i(100, 50)
     glVertex2i(100, 100)
@@ -36,7 +34,7 @@ def draw_points():
 def draw_lines():
     """Vykreslení úseček."""
     glColor3f(1.0, 0.0, 1.0)
-    glBegin(GL_LINES)                       # nyni zacneme vykreslovat usecky
+    glBegin(GL_LINES)  # nyni zacneme vykreslovat usecky
     glVertex2i(150, 50)
     glVertex2i(200, 50)
     glVertex2i(200, 100)
@@ -47,9 +45,9 @@ def draw_lines():
 def draw_line_strip():
     """Vykreslení polyčar."""
     glColor3f(0.0, 1.0, 1.0)
-    glBegin(GL_LINE_STRIP)                  # nyni vykreslime polycaru
-    glVertex2i(250,  50)
-    glVertex2i(300,  50)
+    glBegin(GL_LINE_STRIP)  # nyni vykreslime polycaru
+    glVertex2i(250, 50)
+    glVertex2i(300, 50)
     glVertex2i(300, 100)
     glVertex2i(250, 100)
     glEnd()
@@ -58,8 +56,8 @@ def draw_line_strip():
 def draw_line_loop():
     """Vykreslení uzavřených polyčar."""
     glColor3f(1.0, 1.0, 0.0)
-    glBegin(GL_LINE_LOOP)                   # nyni vykreslime uzavrenou
-    glVertex2i(350, 50)                     # polycaru (nevyplneny polygon)
+    glBegin(GL_LINE_LOOP)  # nyni vykreslime uzavrenou
+    glVertex2i(350, 50)  # polycaru (nevyplneny polygon)
     glVertex2i(400, 50)
     glVertex2i(400, 100)
     glVertex2i(350, 100)
@@ -69,7 +67,7 @@ def draw_line_loop():
 def draw_triangles():
     """Vykreslení trojúhelníků."""
     glColor3f(0.0, 0.0, 1.0)
-    glBegin(GL_TRIANGLES)                   # vykresleni trojuhelniku
+    glBegin(GL_TRIANGLES)  # vykresleni trojuhelniku
     glVertex2i(50, 150)
     glVertex2i(100, 150)
     glVertex2i(100, 200)
@@ -80,7 +78,7 @@ def draw_triangles():
 def draw_triangle_strip():
     """Vykreslení pruhů trojúhelníků."""
     glColor3f(0.0, 1.0, 0.0)
-    glBegin(GL_TRIANGLE_STRIP)              # vykresleni pruhu trojuhelniku
+    glBegin(GL_TRIANGLE_STRIP)  # vykresleni pruhu trojuhelniku
     glVertex2i(150, 150)
     glVertex2i(150, 200)
     glVertex2i(200, 200)
@@ -91,7 +89,7 @@ def draw_triangle_strip():
 def draw_triangle_fan():
     """Vykreslení vrcholu složeného z trojúhelníků."""
     glColor3f(1.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLE_FAN)                # vykresleni trsu trojuhelniku
+    glBegin(GL_TRIANGLE_FAN)  # vykresleni trsu trojuhelniku
     glVertex2i(300, 150)
     glVertex2i(250, 160)
     glVertex2i(270, 190)
@@ -105,7 +103,7 @@ def draw_triangle_fan():
 def draw_quads():
     """Vykreslení čtyřúhelníků."""
     glColor3f(1.0, 0.5, 0.5)
-    glBegin(GL_QUADS)                       # vykresleni ctyruhelniku
+    glBegin(GL_QUADS)  # vykresleni ctyruhelniku
     glVertex2i(50, 250)
     glVertex2i(100, 250)
     glVertex2i(100, 300)
@@ -116,7 +114,7 @@ def draw_quads():
 def draw_quad_strip():
     """Vykreslení pruhu čtyřúhelníků."""
     glColor3f(0.5, 0.5, 1.0)
-    glBegin(GL_QUAD_STRIP)                  # vykresleni pruhu ctyruhleniku
+    glBegin(GL_QUAD_STRIP)  # vykresleni pruhu ctyruhleniku
     glVertex2i(150, 250)
     glVertex2i(150, 300)
     glVertex2i(200, 240)
@@ -131,7 +129,7 @@ def draw_quad_strip():
 def draw_polygon():
     """Vykreslení obecného polygonu."""
     glColor3f(0.5, 1.0, 0.5)
-    glBegin(GL_POLYGON)                     # vykresleni konvexniho polygonu
+    glBegin(GL_POLYGON)  # vykresleni konvexniho polygonu
     glVertex2i(350, 260)
     glVertex2i(370, 240)
     glVertex2i(390, 240)

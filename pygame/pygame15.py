@@ -15,7 +15,7 @@ from pygame.locals import *
 WIDTH = 320
 HEIGHT = 240
 
-# Inicializace knihovny Pygame 
+# Inicializace knihovny Pygame
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -24,32 +24,32 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #15')
+pygame.display.set_caption("Pygame test #15")
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
-BLUE    = (  0,   0, 255)
-CYAN    = (  0, 255, 255)
-GREEN   = (  0, 255,   0)
-YELLOW  = (255, 255,   0)
-RED     = (255,   0,   0)
-MAGENTA = (255,   0, 255)
-GRAY    = (128, 128, 128)
-WHITE   = (255, 255, 255)
+BLACK = (0, 0, 0)
+BLUE = (0, 0, 255)
+CYAN = (0, 255, 255)
+GREEN = (0, 255, 0)
+YELLOW = (255, 255, 0)
+RED = (255, 0, 0)
+MAGENTA = (255, 0, 255)
+GRAY = (128, 128, 128)
+WHITE = (255, 255, 255)
 
 # Vyplnění plochy okna černou barvou
 display.fill(BLACK)
 
 # Vykreslení čar různou barvou
-pygame.draw.line(display, BLUE,    (10, 10), (160, 10))
-pygame.draw.line(display, CYAN,    (10, 20), (160, 20))
-pygame.draw.line(display, GREEN,   (10, 30), (160, 30))
-pygame.draw.line(display, YELLOW,  (10, 40), (160, 40))
-pygame.draw.line(display, RED,     (10, 50), (160, 50))
+pygame.draw.line(display, BLUE, (10, 10), (160, 10))
+pygame.draw.line(display, CYAN, (10, 20), (160, 20))
+pygame.draw.line(display, GREEN, (10, 30), (160, 30))
+pygame.draw.line(display, YELLOW, (10, 40), (160, 40))
+pygame.draw.line(display, RED, (10, 50), (160, 50))
 pygame.draw.line(display, MAGENTA, (10, 60), (160, 60))
 
 # Vykreslení čar s různým sklonem
-for i in range(1,90,5):
+for i in range(1, 90, 5):
     # převod ze stupňů na radiány
     angle = math.radians(i)
     radius = 150
@@ -59,14 +59,14 @@ for i in range(1,90,5):
 
     if display.get_bitsize() >= 24:
         # vykreslení jedné antialiasované úsečky, blend je nastaveno na True
-        pygame.draw.aaline(display, WHITE, (WIDTH-1, 0), (WIDTH-x, y), True)
+        pygame.draw.aaline(display, WHITE, (WIDTH - 1, 0), (WIDTH - x, y), True)
     else:
         # vykreslení jedné úsečky
-        pygame.draw.line(display, WHITE, (WIDTH-1, 0), (WIDTH-x, y))
+        pygame.draw.line(display, WHITE, (WIDTH - 1, 0), (WIDTH - x, y))
 
 # Vykreslení čar různou šířkou
-for i in range(1,12):
-    pygame.draw.line(display, GRAY, (10 + i*15, 90), (10 + i*15, 230), i)
+for i in range(1, 12):
+    pygame.draw.line(display, GRAY, (10 + i * 15, 90), (10 + i * 15, 230), i)
 
 
 # Načtení fontu (zadává se soubor se jménem fontu a velikost
@@ -79,8 +79,7 @@ font = pygame.font.Font("fonts/FreeSans.ttf", 40)
 font_surface = font.render("mojefedora.cz", False, WHITE)
 
 # Vykreslení obrázku s nápisem do bufferu
-display.blit(font_surface, ( 25,  125))
-
+display.blit(font_surface, (25, 125))
 
 
 # Hlavní herní smyčka
@@ -98,4 +97,3 @@ while True:
     clock.tick(20)
 
 # finito
-

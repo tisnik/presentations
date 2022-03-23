@@ -19,7 +19,9 @@ def createBrushFromGradient(color1, color2):
 
 
 # funkce pro vykreslení obdélníku zadanou barvou a se specifikovaným štětcem
-def drawRectangleUsingCustomBrush(qPainter, color, x, y, width, height, brush, pen_width=0):
+def drawRectangleUsingCustomBrush(
+    qPainter, color, x, y, width, height, brush, pen_width=0
+):
     # vytvoření pera a nastavení barvy kreslení
     pen = QtGui.QPen(QtGui.QColor(*color))
 
@@ -51,9 +53,9 @@ class MainWindow(QtGui.QMainWindow):
 
     def prepareImage(self):
         # vytvoření instance třídy QImage
-        self.image = QtGui.QImage(MainWindow.IMAGE_WIDTH,
-                                  MainWindow.IMAGE_HEIGHT,
-                                  QtGui.QImage.Format_RGB32)
+        self.image = QtGui.QImage(
+            MainWindow.IMAGE_WIDTH, MainWindow.IMAGE_HEIGHT, QtGui.QImage.Format_RGB32
+        )
 
         # vymazání obrázku
         self.image.fill(0)
@@ -96,17 +98,18 @@ class MainWindow(QtGui.QMainWindow):
     def prepareGUI(self):
         # velikost okna nezadávejte ručně - špatně se počítá kvůli toolbaru
         # self.resize(256, 300)
-        self.setWindowTitle('QPainter')
+        self.setWindowTitle("QPainter")
 
         # tlačítko Quit
-        quitAction = QtGui.QAction(QtGui.QIcon('icons/application-exit.png'),
-                                   '&Quit', self)
+        quitAction = QtGui.QAction(
+            QtGui.QIcon("icons/application-exit.png"), "&Quit", self
+        )
         quitAction.triggered.connect(self.close)
-        quitAction.setStatusTip('Quit the application')
-        quitAction.setShortcut('Ctrl+Q')
+        quitAction.setStatusTip("Quit the application")
+        quitAction.setShortcut("Ctrl+Q")
 
         # nástrojový pruh
-        self.toolbar = self.addToolBar('title')
+        self.toolbar = self.addToolBar("title")
         self.toolbar.setMovable(False)
 
         # přidání tlačítka na nástrojový pruh
@@ -138,5 +141,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

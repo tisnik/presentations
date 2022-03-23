@@ -10,8 +10,9 @@ from PySide import QtGui
 
 
 # funkce pro vykreslení obdélníku zadanou barvou a se specifikovaným štětcem
-def drawRectangleUsingBrush(qPainter, color, x, y, width, height, brush_style,
-                            pen_width=0):
+def drawRectangleUsingBrush(
+    qPainter, color, x, y, width, height, brush_style, pen_width=0
+):
     # vytvoření pera a nastavení barvy kreslení
     pen = QtGui.QPen(QtGui.QColor(*color))
 
@@ -33,15 +34,15 @@ def twoOverlappingSquares(qPainter, color1, color2, x, y, compositionMode):
     qPainter.setCompositionMode(QtGui.QPainter.CompositionMode_SourceOver)
 
     # první čtverec
-    drawRectangleUsingBrush(qPainter, color1, x, y, 100, 100,
-                            QtCore.Qt.SolidPattern)
+    drawRectangleUsingBrush(qPainter, color1, x, y, 100, 100, QtCore.Qt.SolidPattern)
 
     # nastavení režimu míchání barev
     qPainter.setCompositionMode(compositionMode)
 
     # druhý čtverec
-    drawRectangleUsingBrush(qPainter, color2, x+50, y+50, 100, 100,
-                            QtCore.Qt.SolidPattern)
+    drawRectangleUsingBrush(
+        qPainter, color2, x + 50, y + 50, 100, 100, QtCore.Qt.SolidPattern
+    )
 
 
 # nový widget bude odvozen od obecného hlavního okna
@@ -61,9 +62,9 @@ class MainWindow(QtGui.QMainWindow):
 
     def prepareImage(self):
         # vytvoření instance třídy QImage
-        self.image = QtGui.QImage(MainWindow.IMAGE_WIDTH,
-                                  MainWindow.IMAGE_HEIGHT,
-                                  QtGui.QImage.Format_RGB32)
+        self.image = QtGui.QImage(
+            MainWindow.IMAGE_WIDTH, MainWindow.IMAGE_HEIGHT, QtGui.QImage.Format_RGB32
+        )
 
         # vymazání obrázku
         self.image.fill(0)
@@ -106,50 +107,111 @@ class MainWindow(QtGui.QMainWindow):
         ROW_4 = ROW_3 + HORIZONTAL_DISTANCE
 
         # vykreslení sady překrývajících se čtverců
-        twoOverlappingSquares(qPainter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_1, ROW_1,
-                              QtGui.QPainter.CompositionMode_SourceOver)
+        twoOverlappingSquares(
+            qPainter,
+            GREEN_50_ALPHA,
+            BLUE_50_ALPHA,
+            COLUMN_1,
+            ROW_1,
+            QtGui.QPainter.CompositionMode_SourceOver,
+        )
 
-        twoOverlappingSquares(qPainter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_1, ROW_2,
-                              QtGui.QPainter.CompositionMode_Source)
+        twoOverlappingSquares(
+            qPainter,
+            GREEN_50_ALPHA,
+            BLUE_50_ALPHA,
+            COLUMN_1,
+            ROW_2,
+            QtGui.QPainter.CompositionMode_Source,
+        )
 
-        twoOverlappingSquares(qPainter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_2, ROW_2,
-                              QtGui.QPainter.CompositionMode_DestinationIn)
+        twoOverlappingSquares(
+            qPainter,
+            GREEN_50_ALPHA,
+            BLUE_50_ALPHA,
+            COLUMN_2,
+            ROW_2,
+            QtGui.QPainter.CompositionMode_DestinationIn,
+        )
 
-        twoOverlappingSquares(qPainter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_3, ROW_2,
-                              QtGui.QPainter.CompositionMode_SourceOut)
+        twoOverlappingSquares(
+            qPainter,
+            GREEN_50_ALPHA,
+            BLUE_50_ALPHA,
+            COLUMN_3,
+            ROW_2,
+            QtGui.QPainter.CompositionMode_SourceOut,
+        )
 
-        twoOverlappingSquares(qPainter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_1, ROW_3,
-                              QtGui.QPainter.CompositionMode_Xor)
+        twoOverlappingSquares(
+            qPainter,
+            GREEN_50_ALPHA,
+            BLUE_50_ALPHA,
+            COLUMN_1,
+            ROW_3,
+            QtGui.QPainter.CompositionMode_Xor,
+        )
 
-        twoOverlappingSquares(qPainter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_2, ROW_3,
-                              QtGui.QPainter.CompositionMode_Plus)
+        twoOverlappingSquares(
+            qPainter,
+            GREEN_50_ALPHA,
+            BLUE_50_ALPHA,
+            COLUMN_2,
+            ROW_3,
+            QtGui.QPainter.CompositionMode_Plus,
+        )
 
-        twoOverlappingSquares(qPainter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_3, ROW_3,
-                              QtGui.QPainter.CompositionMode_Screen)
+        twoOverlappingSquares(
+            qPainter,
+            GREEN_50_ALPHA,
+            BLUE_50_ALPHA,
+            COLUMN_3,
+            ROW_3,
+            QtGui.QPainter.CompositionMode_Screen,
+        )
 
-        twoOverlappingSquares(qPainter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_1, ROW_4,
-                              QtGui.QPainter.CompositionMode_HardLight)
+        twoOverlappingSquares(
+            qPainter,
+            GREEN_50_ALPHA,
+            BLUE_50_ALPHA,
+            COLUMN_1,
+            ROW_4,
+            QtGui.QPainter.CompositionMode_HardLight,
+        )
 
-        twoOverlappingSquares(qPainter, GREEN_50_ALPHA, BLUE_50_ALPHA, COLUMN_2, ROW_4,
-                              QtGui.QPainter.CompositionMode_SoftLight)
+        twoOverlappingSquares(
+            qPainter,
+            GREEN_50_ALPHA,
+            BLUE_50_ALPHA,
+            COLUMN_2,
+            ROW_4,
+            QtGui.QPainter.CompositionMode_SoftLight,
+        )
 
-        twoOverlappingSquares(qPainter, WHITE, BLUE_50_ALPHA, COLUMN_3, ROW_4,
-                              QtGui.QPainter.CompositionMode_ColorBurn)
+        twoOverlappingSquares(
+            qPainter,
+            WHITE,
+            BLUE_50_ALPHA,
+            COLUMN_3,
+            ROW_4,
+            QtGui.QPainter.CompositionMode_ColorBurn,
+        )
 
     def prepareGUI(self):
         # velikost okna nezadávejte ručně - špatně se počítá kvůli toolbaru
         # self.resize(256, 300)
-        self.setWindowTitle('QPainter')
+        self.setWindowTitle("QPainter")
 
         # tlačítko Quit
-        quitAction = QtGui.QAction(QtGui.QIcon('icons/application-exit.png'),
-                                   '&Quit', self)
+        quitAction = QtGui.QAction(
+            QtGui.QIcon("icons/application-exit.png"), "&Quit", self
+        )
         quitAction.triggered.connect(self.close)
-        quitAction.setStatusTip('Quit the application')
-        quitAction.setShortcut('Ctrl+Q')
+        quitAction.setStatusTip("Quit the application")
+        quitAction.setShortcut("Ctrl+Q")
 
         # nástrojový pruh
-        self.toolbar = self.addToolBar('title')
+        self.toolbar = self.addToolBar("title")
         self.toolbar.setMovable(False)
 
         # přidání tlačítka na nástrojový pruh
@@ -181,5 +243,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

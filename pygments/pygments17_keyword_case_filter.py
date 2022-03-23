@@ -36,7 +36,7 @@ input()
 print("-----------------------")
 
 lexer = DelphiLexer()
-lexer.add_filter(KeywordCaseFilter(case='lower'))
+lexer.add_filter(KeywordCaseFilter(case="lower"))
 
 print(highlight(code, lexer, TerminalFormatter()))
 
@@ -45,7 +45,7 @@ input()
 print("-----------------------")
 
 lexer = DelphiLexer()
-lexer.add_filter(KeywordCaseFilter(case='upper'))
+lexer.add_filter(KeywordCaseFilter(case="upper"))
 
 print(highlight(code, lexer, TerminalFormatter()))
 
@@ -54,6 +54,6 @@ input()
 print("-----------------------")
 
 lexer = DelphiLexer()
-lexer.add_filter(KeywordCaseFilter(case='capitalize'))
+lexer.add_filter(KeywordCaseFilter(case="capitalize"))
 
 print(highlight(code, lexer, TerminalFormatter()))

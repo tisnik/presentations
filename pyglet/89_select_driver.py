@@ -2,9 +2,9 @@
 
 import pyglet
 
-pyglet.options['audio'] = ('pulse', 'openal', 'silent')
+pyglet.options["audio"] = ("pulse", "openal", "silent")
 
-source = pyglet.media.load('login.wav', streaming=False)
+source = pyglet.media.load("login.wav", streaming=False)
 
 source.play()
 pyglet.app.run()

@@ -4,53 +4,51 @@ import pyglet
 from pyglet.gl import *
 from pyglet.window import key
 
-fov = 70.0                                 # zorny uhel (field of view)
-nearPlane = 0.1                            # blizsi orezavaci rovina
-farPlane = 90.0                            # vzdalenejsi orezavaci rovina
+fov = 70.0  # zorny uhel (field of view)
+nearPlane = 0.1  # blizsi orezavaci rovina
+farPlane = 90.0  # vzdalenejsi orezavaci rovina
 
 r1 = 0.0
 r2 = 0.0
 
-depthBufferEnabled = False                 # povoleni ci zakaz Z-bufferu
+depthBufferEnabled = False  # povoleni ci zakaz Z-bufferu
 
-quadricDrawStyle = GLU_LINE                # styl vykreslovani kvadriky
-sphereSlices = 10                          # rozdeleni koule na 'poledniky'
-sphereStacks = 10                          # rozdeleni koule na 'rovnobezky'
+quadricDrawStyle = GLU_LINE  # styl vykreslovani kvadriky
+sphereSlices = 10  # rozdeleni koule na 'poledniky'
+sphereStacks = 10  # rozdeleni koule na 'rovnobezky'
 
 
-window = pyglet.window.Window(width=500,
-                              height=500,
-                              caption="Pyglet library")
+window = pyglet.window.Window(width=500, height=500, caption="Pyglet library")
 
 keys = key.KeyStateHandler()
 
 
 def init():
-    glClearColor(0.0, 0.0, 0.3, 0.0)       # barva pozadi obrazku
-    glPolygonMode(GL_FRONT, GL_FILL)       # nastaveni rezimu vykresleni modelu
+    glClearColor(0.0, 0.0, 0.3, 0.0)  # barva pozadi obrazku
+    glPolygonMode(GL_FRONT, GL_FILL)  # nastaveni rezimu vykresleni modelu
     glPolygonMode(GL_BACK, GL_FILL)
 
     # zakaz odstranovani hran nebo sten podle jejich normal
     glDisable(GL_CULL_FACE)
-    glDepthFunc(GL_LESS)                   # funkce pro testovani fragmentu
+    glDepthFunc(GL_LESS)  # funkce pro testovani fragmentu
 
-    glShadeModel(GL_SMOOTH)                # nastaveni stinovaciho rezimu
+    glShadeModel(GL_SMOOTH)  # nastaveni stinovaciho rezimu
     glPointSize(3.0)
 
 
 @window.event
 def on_resize(width, height):
     init()
-    glViewport(0, 0, width, height)        # viditelna oblast pres cele okno
+    glViewport(0, 0, width, height)  # viditelna oblast pres cele okno
 
 
 def draw_quadric(drawStyle, slices, stacks):
     radius = 8.0
-    quadric = gluNewQuadric()                   # vytvoreni kvadriky
-    gluQuadricDrawStyle(quadric, drawStyle)     # nastaveni vlastnosti kvadriky
-    gluQuadricNormals(quadric, GLU_SMOOTH)      # smer generovanych normal
+    quadric = gluNewQuadric()  # vytvoreni kvadriky
+    gluQuadricDrawStyle(quadric, drawStyle)  # nastaveni vlastnosti kvadriky
+    gluQuadricNormals(quadric, GLU_SMOOTH)  # smer generovanych normal
     gluSphere(quadric, radius, slices, stacks)  # vykresleni kvadriky
-    gluDeleteQuadric(quadric)                   # zruseni kvadriky
+    gluDeleteQuadric(quadric)  # zruseni kvadriky
 
 
 def set_depth_buffer(depthBufferEnabled):
@@ -79,13 +77,21 @@ def set_projection_matrix(fov, nearPlane, farPlane):
 
 def set_modelview_matrix(rotation1, rotation2):
     glMatrixMode(GL_MODELVIEW)
-    glLoadIdentity()                       # nahrat jednotkovou matici
+    glLoadIdentity()  # nahrat jednotkovou matici
 
-    gluLookAt(4.0, 6.0, 18.0,              # bod, odkud se kamera diva
-              0.0, 2.0,  0.0,              # bod, kam se kamera diva
-              0.0, 1.0,  0.0)              # poloha "stropu" ve scene
+    gluLookAt(
+        4.0,
+        6.0,
+        18.0,  # bod, odkud se kamera diva
+        0.0,
+        2.0,
+        0.0,  # bod, kam se kamera diva
+        0.0,
+        1.0,
+        0.0,
+    )  # poloha "stropu" ve scene
 
-    glRotatef(rotation1, 1.0, 0.0, 0.0)    # rotace objektu
+    glRotatef(rotation1, 1.0, 0.0, 0.0)  # rotace objektu
     glRotatef(rotation2, 0.0, 1.0, 0.0)
 
 

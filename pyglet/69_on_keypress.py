@@ -4,18 +4,18 @@ import pyglet
 
 
 def create_window(width, height):
-    return pyglet.window.Window(width=width,
-                                height=height,
-                                caption="Pyglet library")
+    return pyglet.window.Window(width=width, height=height, caption="Pyglet library")
 
 
 def create_label():
-    return pyglet.text.Label("Event:",
-                             font_size=18,
-                             x=window.width//4,
-                             y=window.height//2,
-                             anchor_x='left',
-                             anchor_y='center')
+    return pyglet.text.Label(
+        "Event:",
+        font_size=18,
+        x=window.width // 4,
+        y=window.height // 2,
+        anchor_x="left",
+        anchor_y="center",
+    )
 
 
 window = create_window(640, 480)

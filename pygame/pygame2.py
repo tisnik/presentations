@@ -24,7 +24,7 @@ pygame.init()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #2')
+pygame.display.set_caption("Pygame test #2")
 
 
 # Hlavní herní smyčka

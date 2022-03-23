@@ -4,14 +4,12 @@ import pyglet
 
 
 def create_window(width, height):
-    return pyglet.window.Window(width=width,
-                                height=height,
-                                caption="Pyglet library")
+    return pyglet.window.Window(width=width, height=height, caption="Pyglet library")
 
 
 def make_sprite(filename, window):
     image_stream = open("gnome-globe.png", "rb")
-    image = pyglet.image.load('gnome-globe.png', file=image_stream)
+    image = pyglet.image.load("gnome-globe.png", file=image_stream)
 
     sprite = pyglet.sprite.Sprite(image)
     # vycentrovani spritu

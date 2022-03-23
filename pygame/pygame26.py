@@ -27,7 +27,7 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #26')
+pygame.display.set_caption("Pygame test #26")
 
 # Konstanty s n-ticemi představujícími základní barvy
 BLACK = (0, 0, 0)
@@ -37,7 +37,7 @@ display.fill(BLACK)
 
 
 # Načtení obrázku, který se bude vykreslovat a transformovat
-image_surface = pygame.image.load(os.path.join('images', 'pygame.png'))
+image_surface = pygame.image.load(os.path.join("images", "pygame.png"))
 
 # Rozměry původního obrázku
 image_width = image_surface.get_width()
@@ -46,18 +46,17 @@ image_height = image_surface.get_height()
 scale_ratio = 1.5
 
 # Vytvoření zvětšených obrázků
-horizontally_scaled_image = \
-    pygame.transform.scale(image_surface,
-                           (int(image_width*scale_ratio), image_height))
+horizontally_scaled_image = pygame.transform.scale(
+    image_surface, (int(image_width * scale_ratio), image_height)
+)
 
-vertically_scaled_image = \
-    pygame.transform.scale(image_surface,
-                           (image_width, int(image_height*scale_ratio)))
+vertically_scaled_image = pygame.transform.scale(
+    image_surface, (image_width, int(image_height * scale_ratio))
+)
 
-scaled_image = \
-    pygame.transform.scale(image_surface,
-                           (int(image_width*scale_ratio),
-                            int(image_height*scale_ratio)))
+scaled_image = pygame.transform.scale(
+    image_surface, (int(image_width * scale_ratio), int(image_height * scale_ratio))
+)
 
 # Přímé vykreslení původního obrázku
 display.blit(image_surface, (50, 25))

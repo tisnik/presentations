@@ -59,7 +59,7 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #22')
+pygame.display.set_caption("Pygame test #22")
 
 # Konstanty s n-ticemi představujícími základní barvy
 BLACK = (0, 0, 0)
@@ -81,7 +81,7 @@ wall4 = BlockySprite(GRAY, 15, 200, 100)
 wall5 = BlockySprite(GRAY, 15, 200, 150)
 wall6 = BlockySprite(GRAY, 15, 150, 100)
 wall7 = BlockySprite(GRAY, 15, 150, 150)
-player = BlockySprite(RED,  40, WIDTH/2-20, HEIGHT/2-20)
+player = BlockySprite(RED, 40, WIDTH / 2 - 20, HEIGHT / 2 - 20)
 
 # Přidání několika dalších spritů do seznamu
 # (jen jeden sprite - ten poslední - bude ve skutečnosti pohyblivý)
@@ -153,7 +153,7 @@ def check_collisions(player, sprite_group):
     change_colors(sprite_group, hit_list)
     collisions = len(hit_list)
     # Přenastavení titulku okna
-    caption = 'Pygame test #22: collisions ' + str(collisions)
+    caption = "Pygame test #22: collisions " + str(collisions)
     pygame.display.set_caption(caption)
 
 

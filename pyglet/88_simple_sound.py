@@ -2,7 +2,7 @@
 
 import pyglet
 
-source = pyglet.media.load('login.wav', streaming=False)
+source = pyglet.media.load("login.wav", streaming=False)
 
 source.play()
 pyglet.app.run()

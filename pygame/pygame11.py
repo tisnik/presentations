@@ -27,7 +27,7 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #11')
+pygame.display.set_caption("Pygame test #11")
 
 # Konstanty s n-ticemi představujícími základní barvy
 BLACK = (0, 0, 0)
@@ -43,11 +43,11 @@ WHITE = (255, 255, 255)
 display.fill(BLACK)
 
 # Vykreslení čar různou barvou
-pygame.draw.line(display, BLUE,    (10, 10), (160, 10))
-pygame.draw.line(display, CYAN,    (10, 20), (160, 20))
-pygame.draw.line(display, GREEN,   (10, 30), (160, 30))
-pygame.draw.line(display, YELLOW,  (10, 40), (160, 40))
-pygame.draw.line(display, RED,     (10, 50), (160, 50))
+pygame.draw.line(display, BLUE, (10, 10), (160, 10))
+pygame.draw.line(display, CYAN, (10, 20), (160, 20))
+pygame.draw.line(display, GREEN, (10, 30), (160, 30))
+pygame.draw.line(display, YELLOW, (10, 40), (160, 40))
+pygame.draw.line(display, RED, (10, 50), (160, 50))
 pygame.draw.line(display, MAGENTA, (10, 60), (160, 60))
 
 # Vykreslení čar s různým sklonem
@@ -61,17 +61,17 @@ for i in range(1, 90, 5):
 
     if display.get_bitsize() >= 24:
         # vykreslení jedné antialiasované úsečky, blend je nastaveno na True
-        pygame.draw.aaline(display, WHITE, (WIDTH-1, 0), (WIDTH-x, y), True)
+        pygame.draw.aaline(display, WHITE, (WIDTH - 1, 0), (WIDTH - x, y), True)
     else:
         # vykreslení jedné úsečky
-        pygame.draw.line(display, WHITE, (WIDTH-1, 0), (WIDTH-x, y))
+        pygame.draw.line(display, WHITE, (WIDTH - 1, 0), (WIDTH - x, y))
 
 # Vykreslení čar různou šířkou
 for i in range(1, 10):
-    pygame.draw.line(display, WHITE, (10 + i*15, 90), (10 + i*15, 230), i)
+    pygame.draw.line(display, WHITE, (10 + i * 15, 90), (10 + i * 15, 230), i)
 
 
-image_surface = pygame.image.load(os.path.join('images', 'gnome-globe.png'))
+image_surface = pygame.image.load(os.path.join("images", "gnome-globe.png"))
 
 # Výpočet souřadnic pro umístění obrázku přesně doprostřed okna
 center_x = (display.get_width() - image_surface.get_width()) / 2

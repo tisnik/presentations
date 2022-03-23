@@ -10,76 +10,128 @@ from pygments.filters import NameHighlightFilter
 # odvozeno od tridy QBasicLexer
 # http://pygments.org/docs/lexers/#lexers-for-basic-like-languages-other-than-vb-net
 
-class BasicLexer(RegexLexer):
-    name = 'Basic'
-    aliases = ['basic']
-    filenames = ['*.BAS', '*.bas']
-    mimetypes = ['text/basic']
 
-    declarations = ('DATA', 'LET')
+class BasicLexer(RegexLexer):
+    name = "Basic"
+    aliases = ["basic"]
+    filenames = ["*.BAS", "*.bas"]
+    mimetypes = ["text/basic"]
+
+    declarations = ("DATA", "LET")
 
     functions = (
-        'ABS', 'ASC', 'ATN', 'COS', 'DATE$', 'EXP', 'FRE',
-        'INKEY$', 'INPUT$', 'LEN', 'LOG', 'PEEK', 'SGN', 'SIN',
-        'SQR', 'STICK', 'STR$', 'STRIG', 'TAN', 'TIME$', 'VAL'
+        "ABS",
+        "ASC",
+        "ATN",
+        "COS",
+        "DATE$",
+        "EXP",
+        "FRE",
+        "INKEY$",
+        "INPUT$",
+        "LEN",
+        "LOG",
+        "PEEK",
+        "SGN",
+        "SIN",
+        "SQR",
+        "STICK",
+        "STR$",
+        "STRIG",
+        "TAN",
+        "TIME$",
+        "VAL",
     )
 
-    operators = ('AND', 'OR', 'XOR', 'NOT')
+    operators = ("AND", "OR", "XOR", "NOT")
 
     statements = (
-        'BEEP', 'CLEAR', 'CLS', 'DATA', 'DATE$', 'DIM', 'PLOT',
-        'DRAWTO', 'FOR', 'NEXT', 'GOSUB', 'GOTO', 'IF', 'THEN', 'INPUT',
-        'LET', 'LINE', 'POKE', 'PRINT', 'PRINT #', 'PRINT USING', 'REM',
-        'RETURN', 'RUN', 'STOP', 'STRIG', 'TIME$'
+        "BEEP",
+        "CLEAR",
+        "CLS",
+        "DATA",
+        "DATE$",
+        "DIM",
+        "PLOT",
+        "DRAWTO",
+        "FOR",
+        "NEXT",
+        "GOSUB",
+        "GOTO",
+        "IF",
+        "THEN",
+        "INPUT",
+        "LET",
+        "LINE",
+        "POKE",
+        "PRINT",
+        "PRINT #",
+        "PRINT USING",
+        "REM",
+        "RETURN",
+        "RUN",
+        "STOP",
+        "STRIG",
+        "TIME$",
     )
 
     tokens = {
-        'root': [
-            (r'\n+', Text),
-            (r'\s+', Text.Whitespace),
-            (r'^(\s*)(\d*)(\s*)(REM .*)$',
-             bygroups(Text.Whitespace, Name.Label, Text.Whitespace,
-                      Comment.Single)),
-            (r'^(\s*)(\d+)(\s*)',
-             bygroups(Text.Whitespace, Name.Label, Text.Whitespace)),
-            (r'(?=[\s]*)(\w+)(?=[\s]*=)', Name.Variable.Global),
+        "root": [
+            (r"\n+", Text),
+            (r"\s+", Text.Whitespace),
+            (
+                r"^(\s*)(\d*)(\s*)(REM .*)$",
+                bygroups(Text.Whitespace, Name.Label, Text.Whitespace, Comment.Single),
+            ),
+            (
+                r"^(\s*)(\d+)(\s*)",
+                bygroups(Text.Whitespace, Name.Label, Text.Whitespace),
+            ),
+            (r"(?=[\s]*)(\w+)(?=[\s]*=)", Name.Variable.Global),
             (r'(?=[^"]*)\'.*$', Comment.Single),
             (r'"[^\n"]*"', String.Double),
-            (r'(DIM)(\s+)([^\s(]+)',
-             bygroups(Keyword.Declaration, Text.Whitespace, Name.Variable.Global)),
-            (r'^(\s*)([a-zA-Z_]+)(\s*)(\=)',
-             bygroups(Text.Whitespace, Name.Variable.Global, Text.Whitespace,
-                      Operator)),
-            (r'(GOTO|GOSUB)(\s+)(\w+\:?)',
-             bygroups(Keyword.Reserved, Text.Whitespace, Name.Label)),
-            include('declarations'),
-            include('functions'),
-            include('operators'),
-            include('statements'),
-            (r'[a-zA-Z_]\w*[$@#&!]', Name.Variable.Global),
-            (r'[a-zA-Z_]\w*\:', Name.Label),
-            (r'\-?\d*\.\d+[@|#]?', Number.Float),
-            (r'\-?\d+[@|#]', Number.Float),
-            (r'\-?\d+#?', Number.Integer.Long),
-            (r'\-?\d+#?', Number.Integer),
-            (r'!=|==|:=|\.=|<<|>>|[-~+/\\*%=<>&^|?:!.]', Operator),
-            (r'[\[\]{}(),;]', Punctuation),
-            (r'[\w]+', Name.Variable.Global),
+            (
+                r"(DIM)(\s+)([^\s(]+)",
+                bygroups(Keyword.Declaration, Text.Whitespace, Name.Variable.Global),
+            ),
+            (
+                r"^(\s*)([a-zA-Z_]+)(\s*)(\=)",
+                bygroups(
+                    Text.Whitespace, Name.Variable.Global, Text.Whitespace, Operator
+                ),
+            ),
+            (
+                r"(GOTO|GOSUB)(\s+)(\w+\:?)",
+                bygroups(Keyword.Reserved, Text.Whitespace, Name.Label),
+            ),
+            include("declarations"),
+            include("functions"),
+            include("operators"),
+            include("statements"),
+            (r"[a-zA-Z_]\w*[$@#&!]", Name.Variable.Global),
+            (r"[a-zA-Z_]\w*\:", Name.Label),
+            (r"\-?\d*\.\d+[@|#]?", Number.Float),
+            (r"\-?\d+[@|#]", Number.Float),
+            (r"\-?\d+#?", Number.Integer.Long),
+            (r"\-?\d+#?", Number.Integer),
+            (r"!=|==|:=|\.=|<<|>>|[-~+/\\*%=<>&^|?:!.]", Operator),
+            (r"[\[\]{}(),;]", Punctuation),
+            (r"[\w]+", Name.Variable.Global),
         ],
-        'declarations': [
-            (r'\b(%s)(?=\(|\b)' % '|'.join(map(re.escape, declarations)),
-             Keyword.Declaration),
+        "declarations": [
+            (
+                r"\b(%s)(?=\(|\b)" % "|".join(map(re.escape, declarations)),
+                Keyword.Declaration,
+            ),
         ],
-        'functions': [
-            (r'\b(%s)(?=\(|\b)' % '|'.join(map(re.escape, functions)),
-             Name.Builtin),
+        "functions": [
+            (r"\b(%s)(?=\(|\b)" % "|".join(map(re.escape, functions)), Name.Builtin),
         ],
-        'operators': [
-            (r'\b(%s)(?=\(|\b)' % '|'.join(map(re.escape, operators)), Operator.Word),
+        "operators": [
+            (r"\b(%s)(?=\(|\b)" % "|".join(map(re.escape, operators)), Operator.Word),
         ],
-        'statements': [
-            (r'\b(%s)\b' % '|'.join(map(re.escape, statements)),
-             Keyword.Reserved),
+        "statements": [
+            (r"\b(%s)\b" % "|".join(map(re.escape, statements)), Keyword.Reserved),
         ],
     }
 
@@ -105,13 +157,13 @@ code = """
 class NewStyle(Style):
     default_style = ""
     styles = {
-        Comment:                '#888',
-        Keyword.Declaration:    '#ansired',
-        Keyword.Reserved:       '#88f',
-        Name.Builtin:           'nobold #ansiyellow',
-        String:                 '#ansilightgray',
-        Operator.Word:          '#f0f',
-        Name.Label:             '#fff'
+        Comment: "#888",
+        Keyword.Declaration: "#ansired",
+        Keyword.Reserved: "#88f",
+        Name.Builtin: "nobold #ansiyellow",
+        String: "#ansilightgray",
+        Operator.Word: "#f0f",
+        Name.Label: "#fff",
     }
 
 

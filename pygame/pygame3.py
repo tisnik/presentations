@@ -26,7 +26,7 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #3')
+pygame.display.set_caption("Pygame test #3")
 
 
 # Hlavní herní smyčka

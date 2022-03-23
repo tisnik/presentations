@@ -4,25 +4,23 @@ import pyglet
 from pyglet.gl import *
 from pyglet.window import key
 
-nearPlane = 0.1                            # blizsi orezavaci rovina
-farPlane = 90.0                            # vzdalenejsi orezavaci rovina
+nearPlane = 0.1  # blizsi orezavaci rovina
+farPlane = 90.0  # vzdalenejsi orezavaci rovina
 
-window = pyglet.window.Window(width=500,
-                              height=500,
-                              caption="Pyglet library")
+window = pyglet.window.Window(width=500, height=500, caption="Pyglet library")
 
 keys = key.KeyStateHandler()
 window.push_handlers(keys)
 
 
 def init():
-    glClearColor(0.0, 0.0, 0.3, 0.0)       # barva pozadi obrazku
+    glClearColor(0.0, 0.0, 0.3, 0.0)  # barva pozadi obrazku
 
 
 @window.event
 def on_resize(width, height):
     init()
-    glViewport(0, 0, width, height)        # viditelna oblast pres cele okno
+    glViewport(0, 0, width, height)  # viditelna oblast pres cele okno
 
 
 def prepare_scene():
@@ -33,22 +31,59 @@ def prepare_scene():
     #     ()  - n-tice s osmi vertexy (8x2 = 16 hodnot typu 'float')
     #     c3b - format: barva se tremi slozkami typu 'byte'
     #     ()  - n-tice s osmi barvami (8x3 = 24 hodnot typu 'byte')
-    return pyglet.graphics.vertex_list(8, ('v2f', (-0.5, -0.5,
-                                                   -0.5, +0.5,
-                                                   +0.5, +0.5,
-                                                   +0.5, -0.5,
-                                                   +0.2, +0.2,
-                                                   -0.2, -0.2,
-                                                   -0.2, +0.2,
-                                                   +0.2, -0.2)),
-                                          ('c3B', (0xff, 0x00, 0xff,
-                                                   0xff, 0xff, 0x00,
-                                                   0x00, 0x00, 0xff,
-                                                   0x00, 0xff, 0x00,
-                                                   0x00, 0xff, 0xff,
-                                                   0xff, 0x00, 0xff,
-                                                   0x00, 0xff, 0xff,
-                                                   0xff, 0xff, 0x00)))
+    return pyglet.graphics.vertex_list(
+        8,
+        (
+            "v2f",
+            (
+                -0.5,
+                -0.5,
+                -0.5,
+                +0.5,
+                +0.5,
+                +0.5,
+                +0.5,
+                -0.5,
+                +0.2,
+                +0.2,
+                -0.2,
+                -0.2,
+                -0.2,
+                +0.2,
+                +0.2,
+                -0.2,
+            ),
+        ),
+        (
+            "c3B",
+            (
+                0xFF,
+                0x00,
+                0xFF,
+                0xFF,
+                0xFF,
+                0x00,
+                0x00,
+                0x00,
+                0xFF,
+                0x00,
+                0xFF,
+                0x00,
+                0x00,
+                0xFF,
+                0xFF,
+                0xFF,
+                0x00,
+                0xFF,
+                0x00,
+                0xFF,
+                0xFF,
+                0xFF,
+                0xFF,
+                0x00,
+            ),
+        ),
+    )
 
 
 def draw_scene():
@@ -71,7 +106,7 @@ def set_projection_matrix(nearPlane, farPlane):
 
 def set_modelview_matrix():
     glMatrixMode(GL_MODELVIEW)
-    glLoadIdentity()                       # nahrat jednotkovou matici
+    glLoadIdentity()  # nahrat jednotkovou matici
 
 
 @window.event
@@ -79,7 +114,7 @@ def on_draw():
     clear_buffers()
     set_projection_matrix(nearPlane, farPlane)
     set_modelview_matrix()
-    draw_scene()                    # vykresleni sceny
+    draw_scene()  # vykresleni sceny
 
 
 vertex_list = prepare_scene()

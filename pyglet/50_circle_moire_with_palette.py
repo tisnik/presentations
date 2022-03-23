@@ -17,9 +17,9 @@ IMAGE_HEIGHT = 256
 
 # Funkce provadejici vypocet moare s kruznicovym vzorkem
 def recalc_circle_pattern(image, palette, xmin, ymin, xmax, ymax):
-    width, height = image.size       # rozmery obrazku
-    stepx = (xmax - xmin)/width
-    stepy = (ymax - ymin)/height
+    width, height = image.size  # rozmery obrazku
+    stepx = (xmax - xmin) / width
+    stepy = (ymax - ymin) / height
 
     y1 = ymin
     for y in range(0, height):
@@ -37,11 +37,13 @@ def recalc_circle_pattern(image, palette, xmin, ymin, xmax, ymax):
 mez = (2 << 5) + 50 * 2.5
 image = Image.new("RGB", (IMAGE_WIDTH, IMAGE_HEIGHT))
 
-image_pals = ((palette_blues.palette,   "blues"),
-              (palette_greens.palette,  "greens"),
-              (palette_gold.palette,    "gold"),
-              (palette_ice.palette,     "ice"),
-              (palette_mandmap.palette, "mandmap"))
+image_pals = (
+    (palette_blues.palette, "blues"),
+    (palette_greens.palette, "greens"),
+    (palette_gold.palette, "gold"),
+    (palette_ice.palette, "ice"),
+    (palette_mandmap.palette, "mandmap"),
+)
 
 for image_pal in image_pals:
     print(image_pal[1])

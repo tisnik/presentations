@@ -51,19 +51,19 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #18')
+pygame.display.set_caption("Pygame test #18")
 
 # Konstanty s n-ticemi představujícími základní barvy
-BLACK   = (  0,   0,   0)
-RED     = (255,   0,   0)
-GRAY    = (128, 128, 128)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GRAY = (128, 128, 128)
 
 # Objekt sdružující všechny sprity
 all_sprites = pygame.sprite.Group()
 
 # Vytvoření dvojice spritů - zdi a hráče
-wall   = BlockySprite(GRAY, 50, 10, 10)
-player = BlockySprite(RED,  25, WIDTH/2, HEIGHT/2)
+wall = BlockySprite(GRAY, 50, 10, 10)
+player = BlockySprite(RED, 25, WIDTH / 2, HEIGHT / 2)
 
 # Přidání dvojice spritů do seznamu
 all_sprites.add(wall)

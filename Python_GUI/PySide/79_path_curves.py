@@ -33,9 +33,7 @@ def createPath1():
 def createPath2():
     path = QtGui.QPainterPath()
     path.moveTo(10, 250)
-    path.cubicTo(120, 100,
-                 -20, 100,
-                  90, 250)
+    path.cubicTo(120, 100, -20, 100, 90, 250)
     return path
 
 
@@ -43,9 +41,7 @@ def createPath2():
 def createPath3():
     path = QtGui.QPainterPath()
     path.moveTo(150, 200)
-    path.cubicTo(225,  50,
-                 225, 350,
-                 300, 200)
+    path.cubicTo(225, 50, 225, 350, 300, 200)
     return path
 
 
@@ -75,9 +71,9 @@ class MainWindow(QtGui.QMainWindow):
 
     def prepareImage(self):
         # vytvoření instance třídy QImage
-        self.image = QtGui.QImage(MainWindow.IMAGE_WIDTH,
-                                  MainWindow.IMAGE_HEIGHT,
-                                  QtGui.QImage.Format_RGB32)
+        self.image = QtGui.QImage(
+            MainWindow.IMAGE_WIDTH, MainWindow.IMAGE_HEIGHT, QtGui.QImage.Format_RGB32
+        )
 
         # vymazání obrázku
         self.image.fill(0)
@@ -120,17 +116,18 @@ class MainWindow(QtGui.QMainWindow):
     def prepareGUI(self):
         # velikost okna nezadávejte ručně - špatně se počítá kvůli toolbaru
         # self.resize(256, 300)
-        self.setWindowTitle('QPainter')
+        self.setWindowTitle("QPainter")
 
         # tlačítko Quit
-        quitAction = QtGui.QAction(QtGui.QIcon('icons/application-exit.png'),
-                                   '&Quit', self)
+        quitAction = QtGui.QAction(
+            QtGui.QIcon("icons/application-exit.png"), "&Quit", self
+        )
         quitAction.triggered.connect(self.close)
-        quitAction.setStatusTip('Quit the application')
-        quitAction.setShortcut('Ctrl+Q')
+        quitAction.setStatusTip("Quit the application")
+        quitAction.setShortcut("Ctrl+Q")
 
         # nástrojový pruh
-        self.toolbar = self.addToolBar('title')
+        self.toolbar = self.addToolBar("title")
         self.toolbar.setMovable(False)
 
         # přidání tlačítka na nástrojový pruh
@@ -162,5 +159,5 @@ def main():
     MainWindow().run(app)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

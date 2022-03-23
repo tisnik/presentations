@@ -27,7 +27,7 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode([WIDTH, HEIGHT])
 
 # Nastavení titulku okna
-pygame.display.set_caption('Pygame test #25')
+pygame.display.set_caption("Pygame test #25")
 
 # Konstanty s n-ticemi představujícími základní barvy
 BLACK = (0, 0, 0)
@@ -37,7 +37,7 @@ display.fill(BLACK)
 
 
 # Načtení obrázku, který se bude vykreslovat a transformovat
-image_surface = pygame.image.load(os.path.join('images', 'pygame.png'))
+image_surface = pygame.image.load(os.path.join("images", "pygame.png"))
 
 # Vytvoření zrcadlených obrázků
 horizontally_flipped = pygame.transform.flip(image_surface, True, False)
