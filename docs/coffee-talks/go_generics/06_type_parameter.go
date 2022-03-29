@@ -1,3 +1,8 @@
+// It is possible to specify which variant of generic function to use
+// during function call
+
+// (not needed IMHO, but interesting)
+
 package main
 
 import "fmt"
