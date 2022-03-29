@@ -1,3 +1,6 @@
+// The good old "normal" function as used in several
+// programming languages for decades.
+
 package main
 
 import "fmt"
