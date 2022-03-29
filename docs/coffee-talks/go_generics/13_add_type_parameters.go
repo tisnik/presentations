@@ -1,3 +1,5 @@
+// Again - no automatic type conversion is performed!
+
 package main
 
 import "fmt"
