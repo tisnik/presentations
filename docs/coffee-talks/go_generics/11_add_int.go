@@ -1,3 +1,5 @@
+// Non generic "add" function.
+
 package main
 
 import "fmt"
