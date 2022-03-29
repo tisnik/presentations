@@ -1,0 +1,9 @@
+
+Why?
+----
+- to be able to create something similar to Numpy in Go
+- true abstract data types
+    - lists
+    - trees
+    - priority queues
+    - ...

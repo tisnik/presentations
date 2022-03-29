@@ -1,0 +1,17 @@
+slide00.txt
+slide01.txt
+01_print.go
+02_print_overload.go
+03_print_no_conversion.go
+04_print_interface.go
+05_generic_print.go
+06_type_parameter.go
+07_type_parameter_check.go
+08_comparable.go
+09_comparable_variable_types.go
+10_compare_type_parameters.go
+11_add_int.go
+12_add_type_parameters.go
+13_add_type_parameters.go
+14_add_type_parameters.go
+slide02.txt

@@ -1,0 +1,20 @@
+Generics in Go
+==============
+
+Why?
+----
+- to be able to create something similar to Numpy in Go
+- true abstract data types
+    - lists
+    - trees
+    - priority queues
+    - ...
+
+Compile time or runtime?
+------------------------
+- interface{}
+    - compile time
+- type parameters
+    - runtime
+$ go tool compile -S 06_comparable.go > 06_comparable.s
+$ go tool compile -S 08_compare_type_parameters.go > 08_compare_type_parameters.s
