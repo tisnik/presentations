@@ -1,3 +1,10 @@
+// Type parameters introduced to Go in version 1.18
+// -> generic function!
+
+// Now the function printValue accepts value of any type
+
+// (in Scala - any is "top type", none is "bottom type")
+
 package main
 
 import "fmt"
