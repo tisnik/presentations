@@ -1,3 +1,5 @@
+// Strong type check applies there!
+
 package main
 
 import "fmt"
