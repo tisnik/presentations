@@ -1,3 +1,5 @@
+// The good old "compare" function defined for one data type.
+
 package main
 
 import "fmt"
