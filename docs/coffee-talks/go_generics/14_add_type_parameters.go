@@ -1,3 +1,5 @@
+// Type approximations introduced then...
+
 package main
 
 import "fmt"
