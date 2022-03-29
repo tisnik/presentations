@@ -1,3 +1,6 @@
+// In Go version < 1.18 it was not easy to make variant
+// of such function for multiple data types.
+
 package main
 
 import "fmt"
