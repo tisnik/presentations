@@ -1,3 +1,6 @@
+// Go also does not permit automatic type conversion
+// (which is IMHO one of the best thing of Go)
+
 package main
 
 import "fmt"
