@@ -1,3 +1,5 @@
+// Type sets introduced into Go 1.18
+
 package main
 
 import "fmt"
