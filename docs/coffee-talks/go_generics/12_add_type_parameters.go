@@ -1,3 +1,5 @@
+// Generic "add" function for three distinct data types.
+
 package main
 
 import "fmt"
