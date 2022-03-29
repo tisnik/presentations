@@ -12,7 +12,7 @@ func printValue(value string) {
 	fmt.Println(value)
 }
 
-func printValue(int string) {
+func printValue(value string) {
 	fmt.Println(value)
 }
 
