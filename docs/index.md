@@ -76,6 +76,7 @@ layout: default
 * [Binary files in NumPy and Pandas](coffe-talks/binary_files_numpy_pandas.md)
 * [Lexers and parsers in Go](coffee-talks/lexers_and_parsers_in_go.md)
 * [Calling Go from Python](coffee-talks/go_python.md)
+* [How to scale relational database?](coffee-talks/db_scale.md)
 
 
 ### Přílohy k článkům
