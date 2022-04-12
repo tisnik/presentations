@@ -1,5 +1,14 @@
 # How to scale relational database?
 
+## Relation databases
+* highest algorithm and code quality
+* but in needs some knowledge
+* sometimes poor man's solution: nosql
+    - but ACID
+    - big O complexity...
+    - SQL is amazing DSL
+    - IMHO IMHO usually not a bright idea
+
 ## Two distinct terms
 * partitioning
 * replication
@@ -58,7 +67,16 @@ CREATE TABLE reports
 ALTER TABLE report DETACH PARTITION foobar
 ```
 
-Good part of relational databases
+## Howto
+- rename huge table
+- create empty partitioned table
+- create all indices
+- create 1st new partition
+- attach the old table as a partition of new table
+- move data from old table into new table
+
+
+## Good part of relational databases
 - ACID
     - atomicity
     - consistency
@@ -95,3 +113,8 @@ Good part of relational databases
     - but...
 
 ## Shards can be replicated too
+
+## Links
+* https://www.youtube.com/watch?v=Y19kKj2J6vc
+* https://www.youtube.com/watch?v=edQZauVU-ws
+
