@@ -77,6 +77,7 @@ layout: default
 * [Lexers and parsers in Go](coffee-talks/lexers_and_parsers_in_go.md)
 * [Calling Go from Python](coffee-talks/go_python.md)
 * [How to scale relational database?](coffee-talks/db_scale.md)
+* [Database indexing in PostgreSQL](coffee-talks/db_indexes.md)
 
 
 ### Přílohy k článkům
