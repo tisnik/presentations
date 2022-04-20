@@ -38,6 +38,10 @@
     - table size ~24MB
     - index size ~2MB
 
+SELECT ctid, * FROM foo;
+
+## Index
+
 - every primary key has an index (usually B-tree)
 
 ## Index as data structure
@@ -46,11 +50,27 @@
 - Log-structured merge-tree (LSM tree)
 
 ### Bitmap index
-- work well for low-cardinality columns
+* works well for low-cardinality columns
+* basically it stores following information:
+    - this record exists
+    - this record does not exist
+* return pages to read
 
 ### B-tree data structure
 
+* self-balancing search tree
+* very wide fance-out
+    - "flat tree"
+* list(s) at lowest level
+
 ### Log-structured merge-tree data structure
+
+### GIN: Generalised Inverse iNdex
+
+* for full-text
+* based on "tsvector"
+
+## Index and heap
 
 ## Index stored in physical file
 
@@ -59,13 +79,34 @@ select relfilenode from pg_class wheren relname like `idx_foo`;
 
 $PGDATA/xyz/xyz
 
+## Expression index
+
 ## How to check if/how index is used
 
 EXPLAIN SELECT name FROM bar WHERE id = 1234;
 
 ## B-tree
-create index idx_foo on bar using BTREE(id);
 
+- it's possible to choose the B-tree for index
+
+```sql
+CREATE INDEX idx_foo ON bar USING BTREE(id);
+```
+
+## Use EXPLAIN to figure out what's happening
+
+- Index Only Scan: ok, very effective
+    - data are read just from index
+    - the best
+- Bitmap (Heap) Index Scan: ok, index is used
+    - bits with flags for pages
+    - i.e. needs another read (from pages)
+- Seq Scan: the worst thing
+- Parallel Seq Scan: still almost the worst thing
+    - can't scale properly with DB size!
+- Heap Fetches
+    - if 0, information available in index, the best
+    - if not in index (like `name`), it will be less effective
 
 
 ## Useful links
