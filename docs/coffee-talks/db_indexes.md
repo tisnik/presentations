@@ -34,12 +34,44 @@
 
 
 ## Indexes and tables size comparison
-* an example
+* an example taken from documentation
     - table size ~24MB
     - index size ~2MB
 
-SELECT ctid, * FROM foo;
+## Indexes and tables size comparios - real example
 
+* Start PostgreSQL client
+
+```
+$ psql -U postgres
+
+psql (9.6.10)
+Type "help" for help.
+
+postgres=# 
+```
+
+* Switch DB to `aggregator`
+
+```
+postgres=# \c aggregator
+```
+
+* List all tables + their sizes
+
+```
+aggregator=# \d+
+ public | advisor_ratings                    | table | postgres | 8192 bytes | 
+ public | cluster_rule_toggle                | table | postgres | 40 kB      | 
+ public | cluster_rule_user_feedback         | table | postgres | 8192 bytes | 
+ public | cluster_user_rule_disable_feedback | table | postgres | 64 kB      | 
+ public | consumer_error                     | table | postgres | 11 MB      | 
+ public | migration_info                     | table | postgres | 8192 bytes | 
+ public | recommendation                     | table | postgres | 7680 kB    | 
+ public | report                             | table | postgres | 8032 kB    | 
+ public | rule_disable                       | table | postgres | 16 kB      | 
+ public | rule_hit                           | table | postgres | 22 MB      | 
+```
 ## Index
 
 - every primary key has an index (usually B-tree)
