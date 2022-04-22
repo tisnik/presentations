@@ -72,6 +72,35 @@ aggregator=# \d+
  public | rule_disable                       | table | postgres | 16 kB      | 
  public | rule_hit                           | table | postgres | 22 MB      | 
 ```
+
+* Retrieve path to DB files:
+
+```
+aggregator=# show data_directory;
+ /var/lib/pgsql/data
+```
+
+* Retrieve name of directory where Aggregator database files are stored
+
+```
+aggregator=# SELECT oid from pg_database WHERE datname = 'aggregator';
+ 25273
+```
+
+* Retrieve name of file for given database table file:
+
+```
+aggregator=# SELECT relname, relfilenode FROM pg_class WHERE relname = 'report'; 
+ report  |      160819
+```
+
+* Do the same, now for specified index:
+
+```
+aggregator=# SELECT relname, relfilenode FROM pg_class WHERE relname = 'report_cluster_key'; 
+ report_cluster_key |      160826
+```
+
 ## Index
 
 - every primary key has an index (usually B-tree)
