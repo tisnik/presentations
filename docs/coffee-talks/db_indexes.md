@@ -101,6 +101,49 @@ aggregator=# SELECT relname, relfilenode FROM pg_class WHERE relname = 'report_c
  report_cluster_key |      160826
 ```
 
+* Check real table and index sizes
+
+```
+$ cd /var/lib/pgsql/data/base
+
+$ cd 25273
+
+$ ls -l 160819 160826
+-rw-------. 1 postgres postgres 8192000 Apr 20 08:48 160819
+-rw-------. 1 postgres postgres  335872 Apr 20 08:48 160826
+```
+
+
+
+## Page and rowID
+
+* can be read from pseudo-column `ctid`
+* page + local index/offset pair
+
+```
+aggregator=# \d report
+ org_id          | integer                     | not null
+ cluster         | character varying           | not null
+ report          | character varying           | not null
+ reported_at     | timestamp without time zone | 
+ last_checked_at | timestamp without time zone | 
+ kafka_offset    | bigint                      | not null default 0
+ gathered_at     | timestamp without time zone | 
+
+aggregator=# select ctid, org_id, cluster from report limit 10;
+ (0,1) | 61209472 | 49d95631-6933-466c-80a8-1e97556c2289
+ (0,2) | 55509440 | 2ba44dd8-57e0-4b5a-ac60-84c0ba2739e8
+ (0,3) | 43095178 | afe74bd6-971f-4aaa-8b76-0be3c380147d
+ (0,4) |  3521457 | db4fbd44-9784-4881-bf28-7dcfca1a2f44
+ (1,1) | 89176743 | 3d55fabd-4d7d-4cce-a58a-b03c58f076c3
+ (1,2) | 15300416 | 0a208530-d192-4250-888d-457467a91c86
+ (1,3) | 93025343 | 7bb5075a-3b15-4a29-a0b7-d0e64cc0f220
+ (1,4) | 89748839 | 1ef6b89d-a3b0-4d30-a92d-ba352f2a197c
+ (2,1) | 80046742 | 2014fcb4-ad5d-4474-8420-053606439ac2
+ (2,2) | 73131361 | 42abe1e0-7a08-4606-9b5f-5a1f1e3a1d58
+```
+
+
 ## Index
 
 - every primary key has an index (usually B-tree)
