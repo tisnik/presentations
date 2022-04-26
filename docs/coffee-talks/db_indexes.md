@@ -212,6 +212,56 @@ CREATE INDEX idx_foo ON bar USING BTREE(id);
     - if 0, information available in index, the best
     - if not in index (like `name`), it will be less effective
 
+enabled/visible
+
+## When not to use index?
+
+* Column with almost the same values
+
+## Index containing other data
+## Partial indexes
+
+* Index just for records we want
+CREATE INDEX ON x ()
+WHERE active = TRUE;
+* cost (page hits) lower
+
+* "Active orders"
+
+## Problematic queries
+
+* `select *`
+    - expensive
+    - especially for fields not indexed
+    - conversions, block moves, network moves etc.
+* Large text fields
+    - TOAST - pointer to another table with text
+    - ineffective
+    - especially when page size is exceed (8k)
+* `like '%xyz$'`
+* `upper`, `lower` etc/ functions in queries
+    - it will basically skip index
+    - index on results of expression
+
+## Composite index
+
+* index for multiple columns
+    - (name, surname)
+* left to right!
+    - left-hand side column in query!!!
+* `"left" and "right"` is perfect
+* `"left" or "right"` problematic
+* possibly large index!
+
+## Unused indexes
+
+* it's possible to figure out how much time index was used
+
+SELECT relname, indexrelname, idx_scan
+  FROM pg_catalog.pg_stat_user_indexes;
+
+## Indexes and partitioning
+
 
 ## Useful links
 
@@ -257,3 +307,8 @@ CREATE INDEX idx_foo ON bar USING BTREE(id);
 * A Deep Dive Into PostgreSQL Indexing - PostgreSQL Index Tutorial<br>
   [https://www.youtube.com/watch?v=yWrJC2k1C8A](https://www.youtube.com/watch?v=yWrJC2k1C8A)
 
+* Scaling Postgres Episode 56 | Indexing | Vertical Scale | Partition Migration | FDW Performance<br>
+  [https://www.youtube.com/watch?v=equ1RwizkHE](https://www.youtube.com/watch?v=equ1RwizkHE)
+
+* 5 Ways to Accelerate and Scale Out PostgreSQL
+  [https://www.youtube.com/watch?v=AeAWrCsWrYI](https://www.youtube.com/watch?v=AeAWrCsWrYI)
