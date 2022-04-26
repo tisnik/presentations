@@ -22,7 +22,7 @@
 * index
     - basically key:value-type storage
     - mapping (value1, value2, ...) -> (page, rowID)
-    - i.e. index contain real/live data!
+    - i.e. index contains real/live data!
         - some queries performed just against index(es)
     - it's sorted! (stored in B-tree usually)
         - `ORDER BY` "for free"
@@ -34,9 +34,11 @@
 
 
 ## Indexes and tables size comparison
-* an example taken from documentation
+
+* an example taken from documentation/talk
     - table size ~24MB
     - index size ~2MB
+* but better to check real scenario
 
 ## Indexes and tables size comparios - real example
 
@@ -113,6 +115,8 @@ $ ls -l 160819 160826
 -rw-------. 1 postgres postgres  335872 Apr 20 08:48 160826
 ```
 
+* first is table, second is index
+
 
 
 ## Page and rowID
@@ -169,6 +173,11 @@ aggregator=# select ctid, org_id, cluster from report limit 10;
 
 ### Log-structured merge-tree data structure
 
+* good for transaction log data
+* key-value pairs as usual
+* usually two or more structures
+    - synchronization
+
 ### GIN: Generalised Inverse iNdex
 
 * for full-text
@@ -176,18 +185,31 @@ aggregator=# select ctid, org_id, cluster from report limit 10;
 
 ## Index and heap
 
+* ideally index should be stored in heap
+    - super fast operation
+    - small records in index needed
+    - (not cluster_id for example)
+
 ## Index stored in physical file
 
+```
 create index idx_foo on bar(id);
 select relfilenode from pg_class wheren relname like `idx_foo`;
+```
 
+* Directory structure
+
+```
 $PGDATA/xyz/xyz
+```
 
 ## Expression index
 
 ## How to check if/how index is used
 
+```sql
 EXPLAIN SELECT name FROM bar WHERE id = 1234;
+```
 
 ## B-tree
 
@@ -219,11 +241,21 @@ enabled/visible
 * Column with almost the same values
 
 ## Index containing other data
+
+* Possible to use
+* But not the best solution
+    - cache misses
+    - not in heap
+
 ## Partial indexes
 
 * Index just for records we want
+
+```sql
 CREATE INDEX ON x ()
 WHERE active = TRUE;
+```
+
 * cost (page hits) lower
 
 * "Active orders"
@@ -257,8 +289,10 @@ WHERE active = TRUE;
 
 * it's possible to figure out how much time index was used
 
+```sql
 SELECT relname, indexrelname, idx_scan
   FROM pg_catalog.pg_stat_user_indexes;
+```
 
 ## Indexes and partitioning
 
