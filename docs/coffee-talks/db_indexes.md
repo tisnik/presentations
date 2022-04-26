@@ -344,5 +344,5 @@ SELECT relname, indexrelname, idx_scan
 * Scaling Postgres Episode 56 | Indexing | Vertical Scale | Partition Migration | FDW Performance<br>
   [https://www.youtube.com/watch?v=equ1RwizkHE](https://www.youtube.com/watch?v=equ1RwizkHE)
 
-* 5 Ways to Accelerate and Scale Out PostgreSQL
+* 5 Ways to Accelerate and Scale Out PostgreSQL<br>
   [https://www.youtube.com/watch?v=AeAWrCsWrYI](https://www.youtube.com/watch?v=AeAWrCsWrYI)
