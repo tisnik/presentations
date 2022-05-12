@@ -16,18 +16,18 @@ class Example6App(pygubu.TkApplication):
         self.builder = builder = pygubu.Builder()
 
         # step #2: Load an ui file
-        builder.add_from_file('example6.ui')
+        builder.add_from_file("example6.ui")
 
         # step #2B: Specify path to images and other resources
         builder.add_resource_path(".")
 
         # step #3: Create the mainwindow
-        self.mainwindow = builder.get_object('MainWindow', self.master)
+        self.mainwindow = builder.get_object("MainWindow", self.master)
 
         # step #4: Configure callbacks
         builder.connect_callbacks(self)
 
-        root.bind('<Control-q>', lambda event: self.on_button_exit_click())
+        root.bind("<Control-q>", lambda event: self.on_button_exit_click())
 
     def on_button_clam_click(self):
         style.theme_use("clam")
@@ -45,7 +45,7 @@ class Example6App(pygubu.TkApplication):
         root.destroy()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # needed to have a menu
     root = tk.Tk()
 
