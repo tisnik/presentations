@@ -15,23 +15,23 @@ class Example2App(pygubu.TkApplication):
         self.builder = builder = pygubu.Builder()
 
         # step #2: Load an ui file
-        builder.add_from_file('example2.ui')
+        builder.add_from_file("example2.ui")
 
         # step #2B: Specify path to images and other resources
         builder.add_resource_path(".")
 
         # step #3: Create the mainwindow
-        self.mainwindow = builder.get_object('MainWindow', self.master)
+        self.mainwindow = builder.get_object("MainWindow", self.master)
 
         # step #4: Set main menu
-        self.mainmenu = menu = builder.get_object('MainMenu', self.master)
+        self.mainmenu = menu = builder.get_object("MainMenu", self.master)
         self.set_menu(menu)
 
         # step $5: Configure callbacks
         builder.connect_callbacks(self)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # needed to have a menu
     root = tk.Tk()
 
