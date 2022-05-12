@@ -17,13 +17,13 @@ class Example10App(pygubu.TkApplication):
         self.builder = builder = pygubu.Builder()
 
         # step #2: Load an ui file
-        builder.add_from_file('exampleA.ui')
+        builder.add_from_file("exampleA.ui")
 
         # step #2B: Specify path to images and other resources
         builder.add_resource_path(".")
 
         # step #3: Create the mainwindow
-        self.mainwindow = builder.get_object('MainWindow', self.master)
+        self.mainwindow = builder.get_object("MainWindow", self.master)
 
         # step #4: Configure callbacks
         builder.connect_callbacks(self)
@@ -32,7 +32,7 @@ class Example10App(pygubu.TkApplication):
         vars = self.builder.tkvariables
         vars["input_text"].set("")
 
-        root.bind('<Control-q>', lambda event: self.on_quit_button_click())
+        root.bind("<Control-q>", lambda event: self.on_quit_button_click())
 
     def on_quit_button_click(self):
         root.destroy()
@@ -44,7 +44,7 @@ class Example10App(pygubu.TkApplication):
         messagebox.askokcancel("Text entered by user:", text)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # needed to have a menu
     root = tk.Tk()
 
