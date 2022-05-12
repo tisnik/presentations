@@ -17,19 +17,19 @@ class Example12App(pygubu.TkApplication):
         self.builder = builder = pygubu.Builder()
 
         # step #2: Load an ui file
-        builder.add_from_file('exampleD.ui')
+        builder.add_from_file("exampleD.ui")
 
         # step #2B: Specify path to images and other resources
         builder.add_resource_path(".")
 
         # step #3: Create the mainwindow
-        self.mainwindow = builder.get_object('MainWindow', self.master)
+        self.mainwindow = builder.get_object("MainWindow", self.master)
 
         # step #4: Configure callbacks
         builder.connect_callbacks(self)
 
-        root.bind('<Control-q>', lambda event: self.on_quit_button_click())
-        root.bind('<Control-d>', lambda event: self.on_draw_button_click())
+        root.bind("<Control-q>", lambda event: self.on_quit_button_click())
+        root.bind("<Control-d>", lambda event: self.on_draw_button_click())
 
     def on_quit_button_click(self):
         root.destroy()
@@ -47,10 +47,19 @@ class Example12App(pygubu.TkApplication):
         for y in range(0, height, grid_size):
             canvas.create_line(0, y, width, y, dash=7, fill="gray")
 
-        canvas.create_line(0, 0, 100, 100, fill='red', width=2, dash=8)
+        canvas.create_line(0, 0, 100, 100, fill="red", width=2, dash=8)
 
-        canvas.create_arc(100, 1, 200, 100, outline='blue', start=45,
-                          extent=180, style=tk.ARC, width=2)
+        canvas.create_arc(
+            100,
+            1,
+            200,
+            100,
+            outline="blue",
+            start=45,
+            extent=180,
+            style=tk.ARC,
+            width=2,
+        )
 
         canvas.create_oval(200, 1, 300, 100)
 
@@ -62,11 +71,12 @@ class Example12App(pygubu.TkApplication):
 
         canvas.create_polygon(50, 205, 200, 280, 50, 355, fill="#80ff80")
 
-        canvas.create_polygon(230, 205, 370, 280, 230, 355, fill="black",
-                              outline="red", width="5")
+        canvas.create_polygon(
+            230, 205, 370, 280, 230, 355, fill="black", outline="red", width="5"
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # needed to have a menu
     root = tk.Tk()
 
