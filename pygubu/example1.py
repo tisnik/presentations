@@ -15,17 +15,17 @@ class Example1App:
         self.builder = builder = pygubu.Builder()
 
         # step #2: Load an ui file
-        builder.add_from_file('example1.ui')
+        builder.add_from_file("example1.ui")
 
         # step #3: Create the mainwindow
-        self.mainwindow = builder.get_object('Frame_1')
+        self.mainwindow = builder.get_object("Frame_1")
 
     def run(self):
         """Start the UI."""
         self.mainwindow.mainloop()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # run the application
     app = Example1App()
     app.run()
