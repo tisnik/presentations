@@ -11,6 +11,7 @@ def simple_callback(set_percentage_function, log_text_function):
 
 
 response = progress_dialog(
-    title='Výpočet',
-    text='Probíhá výpočet, prosím čekejte',
-    run_callback=simple_callback)
+    title="Výpočet",
+    text="Probíhá výpočet, prosím čekejte",
+    run_callback=simple_callback,
+)
