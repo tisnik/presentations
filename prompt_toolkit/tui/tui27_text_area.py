@@ -13,11 +13,11 @@ from prompt_toolkit.widgets import *
 
 # napojení na klávesové zkratky
 key_bindings = KeyBindings()
-key_bindings.add('s-tab')(focus_previous)
-key_bindings.add('tab')(focus_next)
+key_bindings.add("s-tab")(focus_previous)
+key_bindings.add("tab")(focus_next)
 
 
-@key_bindings.add('escape')
+@key_bindings.add("escape")
 def on_exit_selected(event=None):
     """Callback funkce volaná při stisku klávesy Esc."""
     get_app().exit()
@@ -33,13 +33,13 @@ layout = Layout(menu, focused_element=text_area)
 
 def main():
     # vytvoření aplikace s textovým uživatelským rozhraním
-    application = Application(layout=layout,
-                              key_bindings=key_bindings,
-                              full_screen=True)
+    application = Application(
+        layout=layout, key_bindings=key_bindings, full_screen=True
+    )
 
     # spuštění aplikace
     application.run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
