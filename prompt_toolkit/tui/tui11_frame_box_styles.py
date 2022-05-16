@@ -10,15 +10,16 @@ from prompt_toolkit.widgets import *
 
 
 # naformátovaná zpráva
-message = HTML("<ansibrightred>Hello</ansibrightred> " +
-               "<ansibrightyellow>world!</ansibrightyellow>")
+message = HTML(
+    "<ansibrightred>Hello</ansibrightred> "
+    + "<ansibrightyellow>world!</ansibrightyellow>"
+)
 
 # widget
 widget = Label(message)
 
 # struktura obrazovky
-root = Box(Frame(widget, title="About:", style="bg:#ansiblue #ansiwhite"),
-           padding=2)
+root = Box(Frame(widget, title="About:", style="bg:#ansiblue #ansiwhite"), padding=2)
 
 # správce rozvržení
 layout = Layout(container=root)
@@ -27,7 +28,7 @@ layout = Layout(container=root)
 key_bindings = KeyBindings()
 
 
-@key_bindings.add('escape')
+@key_bindings.add("escape")
 def on_escape_press(event):
     """Callback funkce volaná při stisku klávesy Esc."""
     print("\n\n[escape]\n\n")
@@ -36,13 +37,13 @@ def on_escape_press(event):
 
 def main():
     # vytvoření aplikace s textovým uživatelským rozhraním
-    application = Application(layout=layout,
-                              key_bindings=key_bindings,
-                              full_screen=True)
+    application = Application(
+        layout=layout, key_bindings=key_bindings, full_screen=True
+    )
 
     # spuštění aplikace
     application.run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
