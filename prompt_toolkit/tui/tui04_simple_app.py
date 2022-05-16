@@ -24,7 +24,7 @@ layout = Layout(window)
 key_bindings = KeyBindings()
 
 
-@key_bindings.add('escape')
+@key_bindings.add("escape")
 def on_escape_press(event):
     """Callback funkce volaná při stisku klávesy Esc."""
     print("\n\n[escape]\n\n")
@@ -33,13 +33,13 @@ def on_escape_press(event):
 
 def main():
     # vytvoření aplikace s textovým uživatelským rozhraním
-    application = Application(layout=layout,
-                              key_bindings=key_bindings,
-                              full_screen=True)
+    application = Application(
+        layout=layout, key_bindings=key_bindings, full_screen=True
+    )
 
     # spuštění aplikace
     application.run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
