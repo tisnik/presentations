@@ -12,7 +12,7 @@ def exit_clicked():
     get_app().exit()
 
 
-checkbox = Checkbox('Checkbox')
+checkbox = Checkbox("Checkbox")
 
 layout = Layout(checkbox)
 
@@ -20,7 +20,7 @@ layout = Layout(checkbox)
 key_bindings = KeyBindings()
 
 
-@key_bindings.add('escape')
+@key_bindings.add("escape")
 def on_escape_press(event):
     """Callback funkce volaná při stisku klávesy Esc."""
     event.app.exit()
@@ -28,13 +28,13 @@ def on_escape_press(event):
 
 def main():
     # vytvoření aplikace s textovým uživatelským rozhraním
-    application = Application(layout=layout,
-                              key_bindings=key_bindings,
-                              full_screen=True)
+    application = Application(
+        layout=layout, key_bindings=key_bindings, full_screen=True
+    )
 
     # spuštění aplikace
     application.run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
