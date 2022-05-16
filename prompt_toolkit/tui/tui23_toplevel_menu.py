@@ -17,11 +17,7 @@ format_menu = MenuItem("Format")
 view_menu = MenuItem("View")
 help_menu = MenuItem("Help")
 
-main_menu = [file_menu,
-             edit_menu,
-             format_menu,
-             view_menu,
-             help_menu]
+main_menu = [file_menu, edit_menu, format_menu, view_menu, help_menu]
 
 menu = MenuContainer(text_area, menu_items=main_menu)
 
@@ -30,11 +26,11 @@ layout = Layout(menu)
 
 # napojení na klávesové zkratky
 key_bindings = KeyBindings()
-key_bindings.add('s-tab')(focus_previous)
-key_bindings.add('tab')(focus_next)
+key_bindings.add("s-tab")(focus_previous)
+key_bindings.add("tab")(focus_next)
 
 
-@key_bindings.add('escape')
+@key_bindings.add("escape")
 def on_escape_press(event):
     """Callback funkce volaná při stisku klávesy Esc."""
     print("\n\n[escape]\n\n")
@@ -43,13 +39,13 @@ def on_escape_press(event):
 
 def main():
     # vytvoření aplikace s textovým uživatelským rozhraním
-    application = Application(layout=layout,
-                              key_bindings=key_bindings,
-                              full_screen=True)
+    application = Application(
+        layout=layout, key_bindings=key_bindings, full_screen=True
+    )
 
     # spuštění aplikace
     application.run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
