@@ -23,18 +23,19 @@ widget3 = Label(message3)
 style = "bg:#ansiblue #ansiwhite"
 
 # správce rozvržení
-vsplit = HSplit([
-    VSplit([
-        Frame(widget1, style=style),
-        Frame(widget2, style=style)]),
-    Frame(widget3, style=style)])
+vsplit = HSplit(
+    [
+        VSplit([Frame(widget1, style=style), Frame(widget2, style=style)]),
+        Frame(widget3, style=style),
+    ]
+)
 layout = Layout(vsplit)
 
 # napojení na klávesové zkratky
 key_bindings = KeyBindings()
 
 
-@key_bindings.add('escape')
+@key_bindings.add("escape")
 def on_escape_press(event):
     """Callback funkce volaná při stisku klávesy Esc."""
     print("\n\n[escape]\n\n")
@@ -43,13 +44,13 @@ def on_escape_press(event):
 
 def main():
     # vytvoření aplikace s textovým uživatelským rozhraním
-    application = Application(layout=layout,
-                              key_bindings=key_bindings,
-                              full_screen=True)
+    application = Application(
+        layout=layout, key_bindings=key_bindings, full_screen=True
+    )
 
     # spuštění aplikace
     application.run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
