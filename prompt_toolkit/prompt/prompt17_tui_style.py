@@ -4,16 +4,17 @@ from prompt_toolkit import PromptSession
 
 
 def show_help():
-    print("""Help
+    print(
+        """Help
 --------
 quit - quit this application
 exit - exit from this application
 eval - evaluate
-""")
+"""
+    )
 
 
 class CommandValidator(Validator):
-
     def validate(self, document):
         user_input = document.text
 
@@ -24,7 +25,7 @@ class CommandValidator(Validator):
                 if not char.isalpha():
                     break
 
-            msg = "Wrong character '{c}' on index {i}".format(c=char, i=index+1)
+            msg = "Wrong character '{c}' on index {i}".format(c=char, i=index + 1)
             raise ValidationError(message=msg, cursor_position=index)
 
 
@@ -50,23 +51,28 @@ def bottom_toolbar_callback():
         return "???"
 
 
-new_tui_style = Style.from_dict({
-    'rprompt': 'bg:#ff0066 #ffffff',
-    'bottom-toolbar': 'bg:#ffffff #333333 reverse',
-    'prompt': 'bg:#ansiyellow #000000',
-    })
+new_tui_style = Style.from_dict(
+    {
+        "rprompt": "bg:#ff0066 #ffffff",
+        "bottom-toolbar": "bg:#ffffff #333333 reverse",
+        "prompt": "bg:#ansiyellow #000000",
+    }
+)
 
 
 s = PromptSession()
 
 while True:
     try:
-        cmd = s.prompt("Command: ", validator=CommandValidator(),
-                       validate_while_typing=True,
-                       enable_open_in_editor=True,
-                       bottom_toolbar=bottom_toolbar_callback,
-                       rprompt=right_prompt_callback,
-                       style=new_tui_style)
+        cmd = s.prompt(
+            "Command: ",
+            validator=CommandValidator(),
+            validate_while_typing=True,
+            enable_open_in_editor=True,
+            bottom_toolbar=bottom_toolbar_callback,
+            rprompt=right_prompt_callback,
+            style=new_tui_style,
+        )
         if cmd in {"q", "quit", "Quit", "exit", "Exit"}:
             break
         elif cmd in {"help", "Help", "?"}:
