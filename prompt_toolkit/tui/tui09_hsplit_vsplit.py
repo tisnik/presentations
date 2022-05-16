@@ -24,20 +24,20 @@ window2 = Window(content=text2)
 window3 = Window(content=text3)
 
 # správce rozvržení
-vsplit = HSplit([
-    VSplit([
-        window1,
-        Window(width=1, char='|'),
-        window2]),
-    Window(height=1, char='-'),
-    window3])
+vsplit = HSplit(
+    [
+        VSplit([window1, Window(width=1, char="|"), window2]),
+        Window(height=1, char="-"),
+        window3,
+    ]
+)
 layout = Layout(vsplit)
 
 # napojení na klávesové zkratky
 key_bindings = KeyBindings()
 
 
-@key_bindings.add('escape')
+@key_bindings.add("escape")
 def on_escape_press(event):
     """Callback funkce volaná při stisku klávesy Esc."""
     print("\n\n[escape]\n\n")
@@ -46,13 +46,13 @@ def on_escape_press(event):
 
 def main():
     # vytvoření aplikace s textovým uživatelským rozhraním
-    application = Application(layout=layout,
-                              key_bindings=key_bindings,
-                              full_screen=True)
+    application = Application(
+        layout=layout, key_bindings=key_bindings, full_screen=True
+    )
 
     # spuštění aplikace
     application.run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
