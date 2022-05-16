@@ -3,16 +3,17 @@ from prompt_toolkit import PromptSession
 
 
 def show_help():
-    print("""Help
+    print(
+        """Help
 --------
 quit - quit this application
 exit - exit from this application
 eval - evaluate
-""")
+"""
+    )
 
 
 class CommandValidator(Validator):
-
     def validate(self, document):
         user_input = document.text
 
@@ -23,7 +24,7 @@ class CommandValidator(Validator):
                 if not char.isalpha():
                     break
 
-            msg = "Wrong character '{c}' on index {i}".format(c=char, i=index+1)
+            msg = "Wrong character '{c}' on index {i}".format(c=char, i=index + 1)
             raise ValidationError(message=msg, cursor_position=index)
 
 
@@ -31,7 +32,9 @@ s = PromptSession()
 
 while True:
     try:
-        cmd = s.prompt("Command: ", validator=CommandValidator(), validate_while_typing=False)
+        cmd = s.prompt(
+            "Command: ", validator=CommandValidator(), validate_while_typing=False
+        )
         if cmd in {"q", "quit", "Quit", "exit", "Exit"}:
             break
         elif cmd in {"help", "Help", "?"}:
