@@ -31,33 +31,33 @@ def show_status():
     print_hr()
 
 
-checkbox1 = Checkbox('Checkbox 1')
-checkbox2 = Checkbox('Checkbox 2')
-checkbox3 = Checkbox('Checkbox 3')
-button1 = Button('Show status', handler=show_status)
-button2 = Button('Exit', handler=exit_clicked)
+checkbox1 = Checkbox("Checkbox 1")
+checkbox2 = Checkbox("Checkbox 2")
+checkbox3 = Checkbox("Checkbox 3")
+button1 = Button("Show status", handler=show_status)
+button2 = Button("Exit", handler=exit_clicked)
 
-buttons = HSplit([checkbox1,
-                  checkbox2,
-                  checkbox3,
-                  button1,
-                  button2])
+buttons = HSplit([checkbox1, checkbox2, checkbox3, button1, button2])
 
 text_area = TextArea(focusable=False)
 
 # správce rozvržení
-root = VSplit([Box(Frame(buttons, style="bg:#ansiblue #ansiwhite"), padding=2),
-               Box(Frame(text_area, title="Events"), padding=2)])
+root = VSplit(
+    [
+        Box(Frame(buttons, style="bg:#ansiblue #ansiwhite"), padding=2),
+        Box(Frame(text_area, title="Events"), padding=2),
+    ]
+)
 
 layout = Layout(root)
 
 # napojení na klávesové zkratky
 key_bindings = KeyBindings()
-key_bindings.add('up')(focus_previous)
-key_bindings.add('down')(focus_next)
+key_bindings.add("up")(focus_previous)
+key_bindings.add("down")(focus_next)
 
 
-@key_bindings.add('escape')
+@key_bindings.add("escape")
 def on_escape_press(event):
     """Callback funkce volaná při stisku klávesy Esc."""
     print("\n\n[escape]\n\n")
@@ -66,13 +66,13 @@ def on_escape_press(event):
 
 def main():
     # vytvoření aplikace s textovým uživatelským rozhraním
-    application = Application(layout=layout,
-                              key_bindings=key_bindings,
-                              full_screen=True)
+    application = Application(
+        layout=layout, key_bindings=key_bindings, full_screen=True
+    )
 
     # spuštění aplikace
     application.run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
