@@ -2,12 +2,14 @@ from prompt_toolkit import PromptSession
 
 
 def show_help():
-    print("""Help
+    print(
+        """Help
 --------
 quit - quit this application
 exit - exit from this application
 eval - evaluate
-""")
+"""
+    )
 
 
 s = PromptSession()
