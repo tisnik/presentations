@@ -26,8 +26,9 @@ root = tkinter.Tk()
 
 radio_var = tkinter.StringVar()
 
-radio1 = tkinter.Radiobutton(root, variable=radio_var, value="Radio button",
-                             text="Radio button")
+radio1 = tkinter.Radiobutton(
+    root, variable=radio_var, value="Radio button", text="Radio button"
+)
 
 testButton = tkinter.Button(root, text="Print state", command=print_state)
 
