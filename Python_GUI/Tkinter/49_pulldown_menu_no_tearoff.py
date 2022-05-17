@@ -25,7 +25,7 @@ root = tkinter.Tk()
 
 menubar = tkinter.Menu(root)
 
-root.option_add('*tearOff', False)
+root.option_add("*tearOff", False)
 
 filemenu = tkinter.Menu(menubar)
 filemenu.add_command(label="Open")
