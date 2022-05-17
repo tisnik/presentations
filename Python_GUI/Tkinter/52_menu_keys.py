@@ -43,8 +43,7 @@ editmenu.add_separator()
 editmenu.add_command(label="Select All", underline=7)
 menubar.add_cascade(label="Edit", menu=editmenu, underline=0)
 
-colors = ("white", "yellow", "orange", "red", "magenta",
-          "blue", "cyan", "green")
+colors = ("white", "yellow", "orange", "red", "magenta", "blue", "cyan", "green")
 colormenu = tkinter.Menu(menubar, tearoff=0)
 
 for color in colors:
