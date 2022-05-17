@@ -21,26 +21,25 @@ root = tkinter.Tk()
 
 radio_var = tkinter.StringVar()
 
-radio1 = tkinter.Radiobutton(root, variable=radio_var, value="Assembler",
-                             text="Assembler")
+radio1 = tkinter.Radiobutton(
+    root, variable=radio_var, value="Assembler", text="Assembler"
+)
 
-radio2 = tkinter.Radiobutton(root, variable=radio_var, value="Basic",
-                             text="Basic")
+radio2 = tkinter.Radiobutton(root, variable=radio_var, value="Basic", text="Basic")
 
-radio3 = tkinter.Radiobutton(root, variable=radio_var, value="Brainfuck",
-                             text="Brainfuck")
+radio3 = tkinter.Radiobutton(
+    root, variable=radio_var, value="Brainfuck", text="Brainfuck"
+)
 
-radio4 = tkinter.Radiobutton(root, variable=radio_var, value="C",
-                             text="C")
+radio4 = tkinter.Radiobutton(root, variable=radio_var, value="C", text="C")
 
-radio5 = tkinter.Radiobutton(root, variable=radio_var, value="Python",
-                             text="Python")
+radio5 = tkinter.Radiobutton(root, variable=radio_var, value="Python", text="Python")
 
-showButton = tkinter.Button(root, text="Show var",
-                            command=lambda: print(radio_var.get()))
+showButton = tkinter.Button(
+    root, text="Show var", command=lambda: print(radio_var.get())
+)
 
-quitButton = tkinter.Button(root, text="Exit", background='#ff8080',
-                            command=exit)
+quitButton = tkinter.Button(root, text="Exit", background="#ff8080", command=exit)
 
 radio1.grid(column=1, row=1)
 radio2.grid(column=1, row=2)
