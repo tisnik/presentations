@@ -22,31 +22,24 @@ root = tkinter.Tk()
 
 style = ttk.Style()
 style.theme_use("alt")
-style.configure('Red.TButton', background='#ff8080')
+style.configure("Red.TButton", background="#ff8080")
 
 radio_var = tkinter.StringVar()
 radio_var.set("Python")
 
-radio1 = ttk.Radiobutton(root, variable=radio_var, value="Assembler",
-                         text="Assembler")
+radio1 = ttk.Radiobutton(root, variable=radio_var, value="Assembler", text="Assembler")
 
-radio2 = ttk.Radiobutton(root, variable=radio_var, value="Basic",
-                         text="Basic")
+radio2 = ttk.Radiobutton(root, variable=radio_var, value="Basic", text="Basic")
 
-radio3 = ttk.Radiobutton(root, variable=radio_var, value="Brainfuck",
-                         text="Brainfuck")
+radio3 = ttk.Radiobutton(root, variable=radio_var, value="Brainfuck", text="Brainfuck")
 
-radio4 = ttk.Radiobutton(root, variable=radio_var, value="C",
-                         text="C")
+radio4 = ttk.Radiobutton(root, variable=radio_var, value="C", text="C")
 
-radio5 = ttk.Radiobutton(root, variable=radio_var, value="Python",
-                         text="Python")
+radio5 = ttk.Radiobutton(root, variable=radio_var, value="Python", text="Python")
 
-showButton = ttk.Button(root, text="Show var",
-                        command=lambda: print(radio_var.get()))
+showButton = ttk.Button(root, text="Show var", command=lambda: print(radio_var.get()))
 
-quitButton = ttk.Button(root, text="Exit", style='Red.TButton',
-                        command=exit)
+quitButton = ttk.Button(root, text="Exit", style="Red.TButton", command=exit)
 
 radio1.grid(column=1, row=1, sticky="w")
 radio2.grid(column=1, row=2, sticky="w")
