@@ -23,8 +23,9 @@ root = Tk()
 button1 = ttk.Button(root, text="1st btn", command=lambda: sys.exit(0))
 button2 = ttk.Button(root, text="Second button", command=lambda: sys.exit(0))
 button3 = ttk.Button(root, text="Third button", command=lambda: sys.exit(0))
-button4 = ttk.Button(root, text="This is fourth button, the last one",
-                     command=lambda: sys.exit(0))
+button4 = ttk.Button(
+    root, text="This is fourth button, the last one", command=lambda: sys.exit(0)
+)
 
 button1.grid(column=1, row=1, sticky="e")
 button2.grid(column=2, row=1, sticky="e")
