@@ -24,18 +24,21 @@ def exit():
 
 
 def showQuestionMessageBox():
-    print(messagebox.askquestion("Otázečka na závěr",
-                                 ("Provést zálohu?\n"
-                                  "Naformátovat disk?\n"
-                                  "Kontaktovat NSA?"),
-                                 icon=messagebox.ERROR,
-                                 type=messagebox.ABORTRETRYIGNORE))
+    print(
+        messagebox.askquestion(
+            "Otázečka na závěr",
+            ("Provést zálohu?\n" "Naformátovat disk?\n" "Kontaktovat NSA?"),
+            icon=messagebox.ERROR,
+            type=messagebox.ABORTRETRYIGNORE,
+        )
+    )
 
 
 root = tkinter.Tk()
 
-showQuestionButton = tkinter.Button(root, text="Show question box",
-                                    command=showQuestionMessageBox)
+showQuestionButton = tkinter.Button(
+    root, text="Show question box", command=showQuestionMessageBox
+)
 
 quitButton = tkinter.Button(root, text="Exit", command=exit)
 
