@@ -78,6 +78,7 @@ layout: default
 * [Calling Go from Python](coffee-talks/go_python.md)
 * [How to scale relational database?](coffee-talks/db_scale.md)
 * [Database indexing in PostgreSQL](coffee-talks/db_indexes.md)
+# [Concurrency and parallelism in Python](coffee-talks/concurrency_parallelism_in_python.md)
 
 
 ### Přílohy k článkům
