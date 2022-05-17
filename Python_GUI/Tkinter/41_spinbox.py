@@ -22,11 +22,9 @@ root = tkinter.Tk()
 
 number = tkinter.IntVar()
 
-spinbox = tkinter.Spinbox(root, from_=100, to=120, width=10,
-                          textvariable=number)
+spinbox = tkinter.Spinbox(root, from_=100, to=120, width=10, textvariable=number)
 
-showButton = ttk.Button(root, text="Show var",
-                        command=lambda: print(number.get()))
+showButton = ttk.Button(root, text="Show var", command=lambda: print(number.get()))
 
 quitButton = ttk.Button(root, text="Exit", command=exit)
 
