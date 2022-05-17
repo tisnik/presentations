@@ -26,7 +26,7 @@ def exit():
 root = tkinter.Tk()
 
 style = ttk.Style()
-style.configure('Red.TButton', background='#ff8080')
+style.configure("Red.TButton", background="#ff8080")
 
 button1 = tkinter.Button(root, text="sunken", relief="sunken")
 button2 = tkinter.Button(root, text="solid", relief="solid")
@@ -35,8 +35,7 @@ button4 = tkinter.Button(root, text="groove", relief="groove")
 button5 = tkinter.Button(root, text="raised", relief="raised")
 button6 = tkinter.Button(root, text="ridge", relief="ridge")
 
-quitButton = ttk.Button(root, text="Exit", style='Red.TButton',
-                        command=exit)
+quitButton = ttk.Button(root, text="Exit", style="Red.TButton", command=exit)
 
 button1.grid(column=1, row=1, sticky="we")
 button2.grid(column=1, row=2, sticky="we")
