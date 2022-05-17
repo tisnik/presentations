@@ -26,23 +26,19 @@ def exit():
 root = tkinter.Tk()
 
 style = ttk.Style()
-style.configure('Yellow.TButton', background='yellow')
-style.configure('Red.TButton', background='#ff8080')
-style.configure('Blue.TButton', background='#8080ff')
-style.configure('Green.TButton', background='#80ff80')
+style.configure("Yellow.TButton", background="yellow")
+style.configure("Red.TButton", background="#ff8080")
+style.configure("Blue.TButton", background="#8080ff")
+style.configure("Green.TButton", background="#80ff80")
 
-button1 = ttk.Button(root, text="1st btn", style='Yellow.TButton',
-                     command=exit)
-button2 = ttk.Button(root, text="Second button", style='Red.TButton',
-                     command=exit)
-button3 = ttk.Button(root, text="Third button",
-                     command=exit)
-button4 = ttk.Button(root, text="This is fourth button, the last one",
-                     command=exit)
+button1 = ttk.Button(root, text="1st btn", style="Yellow.TButton", command=exit)
+button2 = ttk.Button(root, text="Second button", style="Red.TButton", command=exit)
+button3 = ttk.Button(root, text="Third button", command=exit)
+button4 = ttk.Button(root, text="This is fourth button, the last one", command=exit)
 
-button3.configure(style='Green.TButton')
+button3.configure(style="Green.TButton")
 
-button4["style"] = 'Blue.TButton'
+button4["style"] = "Blue.TButton"
 
 button1.grid(column=1, row=1, sticky="we")
 button2.grid(column=2, row=1, sticky="we")
