@@ -1,7 +1,7 @@
 import ctypes
 import ctypes.util
 
-libc = ctypes.CDLL(ctypes.util.find_library('c'))
+libc = ctypes.CDLL(ctypes.util.find_library("c"))
 libc.free.argtypes = (ctypes.c_void_p,)
 
 so8 = ctypes.CDLL("./so8.so")

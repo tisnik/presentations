@@ -3,8 +3,8 @@ import time
 
 so8 = ctypes.CDLL("./so8.so")
 
-t1 = ("ěščř ЩжΛλ"*10000).encode("utf-8")
-t2 = ("<foobar>"*10000).encode("utf-8")
+t1 = ("ěščř ЩжΛλ" * 10000).encode("utf-8")
+t2 = ("<foobar>" * 10000).encode("utf-8")
 
 so8.concat.restype = ctypes.POINTER(ctypes.c_char)
 
