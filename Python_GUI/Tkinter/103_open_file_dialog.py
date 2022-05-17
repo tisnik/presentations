@@ -23,18 +23,18 @@ def exit():
 
 
 def openFileDialog():
-    filetypes = [('Python sources', '*.py'),
-                 ('Lua sources', '*.lua'),
-                 ('All files', '*')]
+    filetypes = [
+        ("Python sources", "*.py"),
+        ("Lua sources", "*.lua"),
+        ("All files", "*"),
+    ]
     dialog = filedialog.Open(root, filetypes=filetypes)
     print(dialog.show())
 
 
 root = tkinter.Tk()
 
-openFileButton = tkinter.Button(root,
-                                text="Open file dialog",
-                                command=openFileDialog)
+openFileButton = tkinter.Button(root, text="Open file dialog", command=openFileDialog)
 
 quitButton = tkinter.Button(root, text="Exit", command=exit)
 
