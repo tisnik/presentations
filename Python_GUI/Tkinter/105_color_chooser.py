@@ -23,17 +23,16 @@ def exit():
 
 
 def chooseColorDialog():
-    rgb_values, hexa_triplet = colorchooser.askcolor(color="lightgreen",
-                                                     title="Please select any color")
+    rgb_values, hexa_triplet = colorchooser.askcolor(
+        color="lightgreen", title="Please select any color"
+    )
     print(rgb_values)
     print(hexa_triplet)
 
 
 root = tkinter.Tk()
 
-chooseColorButton = tkinter.Button(root,
-                                   text="Choose color",
-                                   command=chooseColorDialog)
+chooseColorButton = tkinter.Button(root, text="Choose color", command=chooseColorDialog)
 
 quitButton = tkinter.Button(root, text="Exit", command=exit)
 
