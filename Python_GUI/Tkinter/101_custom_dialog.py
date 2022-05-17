@@ -24,7 +24,6 @@ def exit():
 
 
 class Dialog(tkinter.Toplevel):
-
     def __init__(self, parent):
         tkinter.Toplevel.__init__(self, parent)
 
@@ -51,8 +50,9 @@ class Dialog(tkinter.Toplevel):
 
 root = tkinter.Tk()
 
-showDialogButton = tkinter.Button(root, text="Show dialog",
-                                  command=lambda: Dialog(root))
+showDialogButton = tkinter.Button(
+    root, text="Show dialog", command=lambda: Dialog(root)
+)
 
 quitButton = tkinter.Button(root, text="Exit", command=exit)
 
