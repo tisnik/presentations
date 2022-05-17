@@ -22,8 +22,17 @@ root = tkinter.Tk()
 
 scrollbar = tkinter.Scrollbar(root)
 
-langs = ("Assembler", "Basic", "Brainfuck", "C", "C++", "Java", "Julia",
-         "Perl", "Python")
+langs = (
+    "Assembler",
+    "Basic",
+    "Brainfuck",
+    "C",
+    "C++",
+    "Java",
+    "Julia",
+    "Perl",
+    "Python",
+)
 
 listbox = tkinter.Listbox(root, height=4)
 
