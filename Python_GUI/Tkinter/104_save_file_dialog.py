@@ -23,18 +23,20 @@ def exit():
 
 
 def saveFileDialog():
-    filetypes = [('Python sources', '*.py'),
-                 ('Lua sources', '*.lua'),
-                 ('All files', '*')]
+    filetypes = [
+        ("Python sources", "*.py"),
+        ("Lua sources", "*.lua"),
+        ("All files", "*"),
+    ]
     dialog = filedialog.SaveAs(root, filetypes=filetypes)
     print(dialog.show())
 
 
 root = tkinter.Tk()
 
-saveFileButton = tkinter.Button(root,
-                                text="Save as file dialog",
-                                command=saveFileDialog)
+saveFileButton = tkinter.Button(
+    root, text="Save as file dialog", command=saveFileDialog
+)
 
 quitButton = tkinter.Button(root, text="Exit", command=exit)
 
