@@ -22,14 +22,25 @@ root = tkinter.Tk()
 
 selected_lang = tkinter.StringVar()
 
-langs = ("Assembler", "Basic", "Brainfuck", "C", "C++", "Java", "Julia",
-         "Perl", "Python")
+langs = (
+    "Assembler",
+    "Basic",
+    "Brainfuck",
+    "C",
+    "C++",
+    "Java",
+    "Julia",
+    "Perl",
+    "Python",
+)
 
-spinbox = tkinter.Spinbox(root, values=langs, width=10,
-                          textvariable=selected_lang, wrap=True)
+spinbox = tkinter.Spinbox(
+    root, values=langs, width=10, textvariable=selected_lang, wrap=True
+)
 
-showButton = ttk.Button(root, text="Show var",
-                        command=lambda: print(selected_lang.get()))
+showButton = ttk.Button(
+    root, text="Show var", command=lambda: print(selected_lang.get())
+)
 
 quitButton = ttk.Button(root, text="Exit", command=exit)
 
