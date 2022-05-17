@@ -32,7 +32,7 @@ popup.add_command(label="Exit", command=root.quit)
 
 
 def on_popup(event):
-    popup.post(event.x_root-5, event.y_root-5)
+    popup.post(event.x_root - 5, event.y_root - 5)
 
 
 root.bind("<Button-3>", on_popup)
