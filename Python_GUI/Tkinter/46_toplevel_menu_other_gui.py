@@ -31,7 +31,7 @@ root.config(menu=menubar)
 
 style = ttk.Style()
 style.theme_use("alt")
-style.configure('Red.TButton', background='#ff8080')
+style.configure("Red.TButton", background="#ff8080")
 
 radio_var = tkinter.StringVar()
 radio_var.set("Python")
@@ -41,15 +41,13 @@ langs = ("Assembler", "Basic", "Brainfuck", "C", "Python")
 f1 = ttk.LabelFrame(root, text="Languages")
 f2 = ttk.LabelFrame(root, text="Commands")
 
-radio_buttons = (ttk.Radiobutton(f1, text=lang, value=lang,
-                                 variable=radio_var)
-                 for lang in langs)
+radio_buttons = (
+    ttk.Radiobutton(f1, text=lang, value=lang, variable=radio_var) for lang in langs
+)
 
-showButton = ttk.Button(f2, text="Show var",
-                        command=lambda: print(radio_var.get()))
+showButton = ttk.Button(f2, text="Show var", command=lambda: print(radio_var.get()))
 
-quitButton = ttk.Button(f2, text="Exit", style='Red.TButton',
-                        command=root.quit)
+quitButton = ttk.Button(f2, text="Exit", style="Red.TButton", command=root.quit)
 
 for i, radio_button in enumerate(radio_buttons):
     radio_button.grid(column=1, row=i, sticky="w")
