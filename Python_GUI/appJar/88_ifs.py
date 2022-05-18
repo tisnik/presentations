@@ -14,7 +14,8 @@ ifs = (
     (+0.85000, +0.04000, -0.04000, +0.85000, +0.00000, +1.60000, +0.85000),
     (+0.20000, -0.26000, +0.23000, +0.22000, +0.00000, +1.60000, +0.07000),
     (-0.15000, +0.28000, +0.26000, +0.24000, +0.00000, +0.44000, +0.07000),
-    (+0.00000, +0.00000, +0.00000, +0.16000, +0.00000, +0.00000, +0.01000))
+    (+0.00000, +0.00000, +0.00000, +0.16000, +0.00000, +0.00000, +0.01000),
+)
 
 
 def setupTurtle(canvas):
@@ -51,7 +52,7 @@ def drawIFS(ifs):
     dy = 220
     scale = 45
 
-    for i in range(maxiter+1):
+    for i in range(maxiter + 1):
         progressBarValue = 100.0 * i / maxiter
 
         # nahodne vybrat transformaci
@@ -64,8 +65,8 @@ def drawIFS(ifs):
         k -= 1
 
         # aplikovat transformaci
-        x2 = x1*ifs[k][0] + y1*ifs[k][1] + ifs[k][4]
-        y2 = x1*ifs[k][2] + y1*ifs[k][3] + ifs[k][5]
+        x2 = x1 * ifs[k][0] + y1 * ifs[k][1] + ifs[k][4]
+        y2 = x1 * ifs[k][2] + y1 * ifs[k][3] + ifs[k][5]
         x1 = x2
         y1 = y2
 
