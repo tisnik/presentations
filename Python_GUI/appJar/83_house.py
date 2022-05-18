@@ -32,24 +32,24 @@ def house(side):
     # základna
     t.forward(side)
     # úhlopříčka
-    t.left(90+45)
-    t.forward(side*math.sqrt(2))
+    t.left(90 + 45)
+    t.forward(side * math.sqrt(2))
     # stěna
-    t.left(90+45)
+    t.left(90 + 45)
     t.forward(side)
     # úhlopříčka
-    t.left(90+45)
-    t.forward(side*math.sqrt(2))
+    t.left(90 + 45)
+    t.forward(side * math.sqrt(2))
     # úsečka pod střechou
-    t.left(90+45)
+    t.left(90 + 45)
     t.forward(side)
     # první část střechy
     t.right(90)
-    t.right(90-45)
-    t.forward(side*math.cos(math.radians(45)))
+    t.right(90 - 45)
+    t.forward(side * math.cos(math.radians(45)))
     # druhá část střechy
     t.right(90)
-    t.forward(side*math.sin(math.radians(45)))
+    t.forward(side * math.sin(math.radians(45)))
     # zbývající stěna
     t.right(45)
     t.forward(side)
