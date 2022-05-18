@@ -42,8 +42,9 @@ app.addMenuList("File", fileMenu, [none, none, closeItemSelected])
 app.createMenu("Zoom")
 
 for i in range(1, 10):
-    app.addMenuRadioButton("Zoom", "zoom", "{i}\u00d7".format(i=i),
-                           lambda item, i=i: zoomFunction(i))
+    app.addMenuRadioButton(
+        "Zoom", "zoom", "{i}\u00d7".format(i=i), lambda item, i=i: zoomFunction(i)
+    )
 
 app.createMenu("Config")
 
