@@ -35,10 +35,7 @@ app.setSticky("news")
 fileMenu = ["Quit"]
 app.addMenuList("File", fileMenu, onMenuItemSelect)
 
-table = [["Name", "Work hours"],
-         ["Petr", 160],
-         ["Pavel", 90],
-         ["Honza", 120]]
+table = [["Name", "Work hours"], ["Petr", 160], ["Pavel", 90], ["Honza", 120]]
 
 app.addGrid("grid", table, action=onAddRow, addRow=True)
 
