@@ -8,8 +8,8 @@ def onButtonPress(buttonName):
         app.stop()
     else:
         msg = "You type: {login} + {password}".format(
-            login=app.getEntry("login"),
-            password=app.getEntry("password"))
+            login=app.getEntry("login"), password=app.getEntry("password")
+        )
         app.infoBox("You type:", msg)
 
 
