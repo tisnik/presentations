@@ -31,11 +31,33 @@ def onToolbarButtonPress(buttonName):
         showInfoDialog(buttonName)
 
 
-tools = ["About", "Alarm", "Computer", "Construction", "Refresh",
-         "Open", "Close", "Save", "Display", "Files",
-         "New", "Settings", "Print", "Printer", "Search", "Undo",
-         "Redo", "Preferences", "Home", "Help", "Calendar",
-         "Web", "Spaceship", "Wizard", "Off"]
+tools = [
+    "About",
+    "Alarm",
+    "Computer",
+    "Construction",
+    "Refresh",
+    "Open",
+    "Close",
+    "Save",
+    "Display",
+    "Files",
+    "New",
+    "Settings",
+    "Print",
+    "Printer",
+    "Search",
+    "Undo",
+    "Redo",
+    "Preferences",
+    "Home",
+    "Help",
+    "Calendar",
+    "Web",
+    "Spaceship",
+    "Wizard",
+    "Off",
+]
 
 app = gui()
 
