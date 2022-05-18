@@ -34,12 +34,12 @@ def drawFresnel():
     y = 0.0
     f = 0.0
 
-    for i in range(maxiter+1):
+    for i in range(maxiter + 1):
         progressBarValue = 100.0 * i / maxiter
         f += fstep
         x += cos(f * f)
         y += sin(f * f)
-        t.goto(scale*x, scale*y)
+        t.goto(scale * x, scale * y)
 
     screen.update()
 
@@ -69,7 +69,7 @@ def onScaleChange(widgetName):
 def onFValueChange(widgetName):
     global fstep
     value = app.getScale(widgetName)
-    fstep = float(value)/100.0
+    fstep = float(value) / 100.0
 
 
 def createGui(app):
