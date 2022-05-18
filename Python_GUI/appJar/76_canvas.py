@@ -25,7 +25,6 @@ canvas.create_line(0, 0, 255, 255, width=5)
 canvas.create_line(0, 255, 255, 0, dash=123)
 
 canvas.create_rectangle(70, 140, 230, 180, fill="white")
-canvas.create_text(150, 160, text="Hello world!", fill="brown",
-                   font="Helvetica 20")
+canvas.create_text(150, 160, text="Hello world!", fill="brown", font="Helvetica 20")
 
 app.go()
