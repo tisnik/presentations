@@ -41,13 +41,13 @@ def spiral(t, color, angle, maxiter):
 
 def kochCurve(t, length, limit):
     if length > limit:
-        kochCurve(t, length/3, limit)
+        kochCurve(t, length / 3, limit)
         t.right(60)
-        kochCurve(t, length/3, limit)
+        kochCurve(t, length / 3, limit)
         t.left(120)
-        kochCurve(t, length/3, limit)
+        kochCurve(t, length / 3, limit)
         t.right(60)
-        kochCurve(t, length/3, limit)
+        kochCurve(t, length / 3, limit)
     else:
         t.forward(length)
 
@@ -99,9 +99,15 @@ def onTurtleCommandSelect(command):
 app.setSticky("news")
 
 fileMenu = ["Quit"]
-turtleMenu = ["Spiral 1", "Spiral 2", "Spiral 3",
-              "Koch snowflake 1", "Koch snowflake 2", "Koch snowflake 3",
-              "Wheel"]
+turtleMenu = [
+    "Spiral 1",
+    "Spiral 2",
+    "Spiral 3",
+    "Koch snowflake 1",
+    "Koch snowflake 2",
+    "Koch snowflake 3",
+    "Wheel",
+]
 app.addMenuList("File", fileMenu, onMenuItemSelect)
 app.addMenuList("Turtle", turtleMenu, onTurtleCommandSelect)
 
