@@ -16,11 +16,10 @@ app = gui()
 app.setSticky("news")
 app.setPadding(10, 2)
 
-app.addProperties("properties", {"Assembler": True,
-                                 "C": True,
-                                 "C++": False,
-                                 "Perl": False,
-                                 "Python": True})
+app.addProperties(
+    "properties",
+    {"Assembler": True, "C": True, "C++": False, "Perl": False, "Python": True},
+)
 
 app.addButton("Show choice", onButtonPress)
 app.addButton("Quit", onButtonPress)
