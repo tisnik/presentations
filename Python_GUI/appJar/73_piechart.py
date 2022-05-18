@@ -13,15 +13,16 @@ def onMenuItemSelect(menuItem):
 
 
 data = {
-   "ODS": 25,
-   "CSSD": 15,
-   "STAN": 6,
-   "KSČM": 15,
-   "Piráti": 22,
-   "TOP 09": 7,
-   "ANO":  78,
-   "KDU-ČSL": 10,
-   "SPD": 22}
+    "ODS": 25,
+    "CSSD": 15,
+    "STAN": 6,
+    "KSČM": 15,
+    "Piráti": 22,
+    "TOP 09": 7,
+    "ANO": 78,
+    "KDU-ČSL": 10,
+    "SPD": 22,
+}
 
 app.setSticky("news")
 
