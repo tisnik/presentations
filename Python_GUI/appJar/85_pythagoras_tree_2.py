@@ -34,7 +34,7 @@ def onDrawMenuSelect(menuItem):
         "Bush": (40, -100, 80, 35),
         "Spiral": (-200, -150, 50, 70),
         "Spiral2": (-220, -50, 40, 80),
-        "Spiral3": (-300, -50, 30, 85)
+        "Spiral3": (-300, -50, 30, 85),
     }
 
     params = allParams[menuItem]
@@ -56,26 +56,26 @@ def house(side, angle):
         # základna
         t.forward(side)
         # úhlopříčka
-        t.left(90+45)
-        t.forward(side*math.sqrt(2))
+        t.left(90 + 45)
+        t.forward(side * math.sqrt(2))
         # stěna
-        t.left(90+45)
+        t.left(90 + 45)
         t.forward(side)
         # úhlopříčka
-        t.left(90+45)
-        t.forward(side*math.sqrt(2))
+        t.left(90 + 45)
+        t.forward(side * math.sqrt(2))
         # úsečka pod střechou
-        t.left(90+45)
+        t.left(90 + 45)
         t.forward(side)
         # první část střechy
         t.right(90)
-        t.right(90-angle)
+        t.right(90 - angle)
         # původní příkaz: domek side/sqrt 2 :uhel
-        house(side*math.cos(math.radians(angle)), angle)
+        house(side * math.cos(math.radians(angle)), angle)
         # druhá část střechy
         t.right(90)
         # původní příkaz: domek side/sqrt 2 :uhel
-        house(side*math.sin(math.radians(angle)), angle)
+        house(side * math.sin(math.radians(angle)), angle)
         # zbývající stěna
         t.right(angle)
         t.forward(side)
