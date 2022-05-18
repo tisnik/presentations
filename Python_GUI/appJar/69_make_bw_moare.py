@@ -12,9 +12,9 @@ IMAGE_HEIGHT = 256
 
 # Funkce provadejici vypocet moare s kruznicovym vzorkem
 def recalc_circle_pattern(image, xmin, ymin, xmax, ymax):
-    width, height = image.size       # rozmery obrazku
-    stepx = (xmax - xmin)/width
-    stepy = (ymax - ymin)/height
+    width, height = image.size  # rozmery obrazku
+    stepx = (xmax - xmin) / width
+    stepy = (ymax - ymin) / height
 
     y1 = ymin
     for y in range(0, height):
