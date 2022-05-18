@@ -8,8 +8,8 @@ def onButtonPress(buttonName):
         app.stop()
     else:
         msg = "Your choice of scales:\n{s1}\n{s2}".format(
-            s1=app.getScale("scale1"),
-            s2=app.getScale("scale2"))
+            s1=app.getScale("scale1"), s2=app.getScale("scale2")
+        )
         app.infoBox("Show scale:", msg)
 
 
