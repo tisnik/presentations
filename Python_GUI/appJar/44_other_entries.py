@@ -10,7 +10,8 @@ def onButtonPress(buttonName):
         msg = "You type:\n{name}\n{surname}\n{age}".format(
             name=app.getEntry("name"),
             surname=app.getEntry("surname"),
-            age=app.getEntry("age"))
+            age=app.getEntry("age"),
+        )
         app.infoBox("You type:", msg)
 
 
