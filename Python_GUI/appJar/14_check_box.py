@@ -17,7 +17,8 @@ def onButtonPress(buttonName):
     else:
         msg = "1st choice: {c1}\n2nd choice: {c2}".format(
             c1=state(app.getCheckBox("1st choice")),
-            c2=state(app.getCheckBox("2nd choice")))
+            c2=state(app.getCheckBox("2nd choice")),
+        )
         app.infoBox("Show choices:", msg)
 
 
