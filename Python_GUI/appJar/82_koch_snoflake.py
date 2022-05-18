@@ -30,13 +30,13 @@ def onMenuItemSelect(menuItem):
 
 def kochCurve(t, length, iter):
     if iter > 1:
-        kochCurve(t, length/3, iter-1)
+        kochCurve(t, length / 3, iter - 1)
         t.right(60)
-        kochCurve(t, length/3, iter-1)
+        kochCurve(t, length / 3, iter - 1)
         t.left(120)
-        kochCurve(t, length/3, iter-1)
+        kochCurve(t, length / 3, iter - 1)
         t.right(60)
-        kochCurve(t, length/3, iter-1)
+        kochCurve(t, length / 3, iter - 1)
     else:
         t.forward(length)
 
@@ -68,7 +68,7 @@ def onKochCombinationSelect(command):
     colors = ["red", "orange", "blue", "brown"]
     for i in range(4):
         t.pencolor(colors[i])
-        kochSnowflake(t, i+1)
+        kochSnowflake(t, i + 1)
 
     screen.update()
 
@@ -76,8 +76,13 @@ def onKochCombinationSelect(command):
 app.setSticky("news")
 
 fileMenu = ["Quit"]
-kochMenu = ["1 iterarion", "2 iterations", "3 iterations",
-            "4 iterations", "5 iterations"]
+kochMenu = [
+    "1 iterarion",
+    "2 iterations",
+    "3 iterations",
+    "4 iterations",
+    "5 iterations",
+]
 specialMenu = ["Combine snowflakes"]
 
 app.addMenuList("File", fileMenu, onMenuItemSelect)
