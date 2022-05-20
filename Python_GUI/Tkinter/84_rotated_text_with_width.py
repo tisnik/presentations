@@ -28,8 +28,7 @@ def exit():
 
 
 def basic_canvas(root, width, height, grid_size):
-    canvas = tkinter.Canvas(root, width=width, height=height,
-                            background='#ccffcc')
+    canvas = tkinter.Canvas(root, width=width, height=height, background="#ccffcc")
     canvas.pack()
 
     draw_grid(canvas, width, height, grid_size)
@@ -44,10 +43,18 @@ def draw_grid(canvas, width, height, grid_size):
 
 
 def draw_text(canvas, x, y, angle):
-    canvas.create_text(x, y, text="*Python*", fill="gray", anchor="center",
-                       font="Helvetica 16", angle=angle, width=50)
-    canvas.create_line(x-5, y, x+5, y, fill="red")
-    canvas.create_line(x, y-5, x, y+5, fill="red")
+    canvas.create_text(
+        x,
+        y,
+        text="*Python*",
+        fill="gray",
+        anchor="center",
+        font="Helvetica 16",
+        angle=angle,
+        width=50,
+    )
+    canvas.create_line(x - 5, y, x + 5, y, fill="red")
+    canvas.create_line(x, y - 5, x, y + 5, fill="red")
 
 
 root = tkinter.Tk()
