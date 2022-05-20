@@ -28,8 +28,7 @@ def exit():
 
 
 def basic_canvas(root, width, height, grid_size):
-    canvas = tkinter.Canvas(root, width=width, height=height,
-                            background='#ccffcc')
+    canvas = tkinter.Canvas(root, width=width, height=height, background="#ccffcc")
     canvas.pack()
 
     draw_grid(canvas, width, height, grid_size)
@@ -52,7 +51,8 @@ image_names = [
     "edit-copy",
     "edit-paste",
     "edit-delete",
-    "edit-select-all"]
+    "edit-select-all",
+]
 
 root = tkinter.Tk()
 
@@ -62,14 +62,14 @@ for image_name in image_names:
 
 canvas = basic_canvas(root, WIDTH, HEIGHT, GRID_SIZE)
 
-canvas.create_image((50, 50), image=images['document-open'])
-canvas.create_image((150, 50), image=images['document-save'])
-canvas.create_image((250, 50), image=images['application-exit'])
-canvas.create_image((50, 150), image=images['edit-undo'])
-canvas.create_image((150, 150), image=images['edit-cut'])
-canvas.create_image((250, 150), image=images['edit-copy'])
-canvas.create_image((50, 250), image=images['edit-paste'])
-canvas.create_image((150, 250), image=images['edit-delete'])
-canvas.create_image((250, 250), image=images['edit-select-all'])
+canvas.create_image((50, 50), image=images["document-open"])
+canvas.create_image((150, 50), image=images["document-save"])
+canvas.create_image((250, 50), image=images["application-exit"])
+canvas.create_image((50, 150), image=images["edit-undo"])
+canvas.create_image((150, 150), image=images["edit-cut"])
+canvas.create_image((250, 150), image=images["edit-copy"])
+canvas.create_image((50, 250), image=images["edit-paste"])
+canvas.create_image((150, 250), image=images["edit-delete"])
+canvas.create_image((250, 250), image=images["edit-select-all"])
 
 root.mainloop()
