@@ -29,11 +29,10 @@ canvas.create_oval(150, 150, 250, 250, tags="ovals")
 
 canvas.itemconfig("ovals", fill="blue")
 
-canvas.tag_bind("ovals", "<Enter>",
-                lambda e: canvas.itemconfig("current", fill="red"))
-canvas.tag_bind("ovals", "<Leave>",
-                lambda e: canvas.itemconfig("current", fill="blue"))
-canvas.tag_bind("ovals", "<Button-1>",
-                lambda e: canvas.itemconfig("current", fill="yellow"))
+canvas.tag_bind("ovals", "<Enter>", lambda e: canvas.itemconfig("current", fill="red"))
+canvas.tag_bind("ovals", "<Leave>", lambda e: canvas.itemconfig("current", fill="blue"))
+canvas.tag_bind(
+    "ovals", "<Button-1>", lambda e: canvas.itemconfig("current", fill="yellow")
+)
 
 root.mainloop()
