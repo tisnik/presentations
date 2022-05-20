@@ -28,8 +28,7 @@ def exit():
 
 
 def basic_canvas(root, width, height, grid_size):
-    canvas = tkinter.Canvas(root, width=width, height=height,
-                            background='#ccffcc')
+    canvas = tkinter.Canvas(root, width=width, height=height, background="#ccffcc")
     canvas.pack()
 
     draw_grid(canvas, width, height, grid_size)
@@ -45,9 +44,9 @@ def draw_grid(canvas, width, height, grid_size):
 
 root = tkinter.Tk()
 
-bitmap_image = tkinter.BitmapImage(file="test.xbm",
-                                   background="black",
-                                   foreground="yellow")
+bitmap_image = tkinter.BitmapImage(
+    file="test.xbm", background="black", foreground="yellow"
+)
 
 canvas = basic_canvas(root, WIDTH, HEIGHT, GRID_SIZE)
 
