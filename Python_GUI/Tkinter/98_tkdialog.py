@@ -26,20 +26,17 @@ def exit():
 root = tkinter.Tk()
 
 
-infoButton = tkinter.Button(root, text="Info box",
-                            command=lambda: messagebox.showinfo(
-                                "Title",
-                                "Text"))
+infoButton = tkinter.Button(
+    root, text="Info box", command=lambda: messagebox.showinfo("Title", "Text")
+)
 
-warningButton = tkinter.Button(root, text="Warning box",
-                               command=lambda: messagebox.showwarning(
-                                   "Title",
-                                   "Text"))
+warningButton = tkinter.Button(
+    root, text="Warning box", command=lambda: messagebox.showwarning("Title", "Text")
+)
 
-errorButton = tkinter.Button(root, text="Error box",
-                             command=lambda: messagebox.showerror(
-                                 "Title",
-                                 "Text"))
+errorButton = tkinter.Button(
+    root, text="Error box", command=lambda: messagebox.showerror("Title", "Text")
+)
 
 quitButton = tkinter.Button(root, text="Exit", command=exit)
 
