@@ -28,8 +28,7 @@ def exit():
 
 
 def basic_canvas(root, width, height, grid_size):
-    canvas = tkinter.Canvas(root, width=width, height=height,
-                            background='#ccffcc')
+    canvas = tkinter.Canvas(root, width=width, height=height, background="#ccffcc")
     canvas.pack()
 
     draw_grid(canvas, width, height, grid_size)
