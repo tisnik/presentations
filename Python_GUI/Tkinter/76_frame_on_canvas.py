@@ -24,18 +24,12 @@ def exit():
 
 root = tkinter.Tk()
 
-canvas = tkinter.Canvas(root, width=300, height=300, background='white')
+canvas = tkinter.Canvas(root, width=300, height=300, background="white")
 canvas.pack()
 
-canvas.create_line(0, 150,
-                   80, 20,
-                   220, 280,
-                   300, 150, dash=10)
+canvas.create_line(0, 150, 80, 20, 220, 280, 300, 150, dash=10)
 
-canvas.create_line(0, 150,
-                   80, 20,
-                   220, 280,
-                   300, 150, smooth=True, width=2, fill="red")
+canvas.create_line(0, 150, 80, 20, 220, 280, 300, 150, smooth=True, width=2, fill="red")
 
 nested_window = tkinter.Frame(relief=tkinter.RAISED)
 canvas.create_window(150, 150, width=150, height=150, window=nested_window)
