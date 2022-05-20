@@ -24,10 +24,7 @@ def exit():
 
 root = tkinter.Tk()
 
-text = tkinter.Text(root,
-                    font="Helvetica 14",
-                    wrap=tkinter.WORD,
-                    width=40, height=20)
+text = tkinter.Text(root, font="Helvetica 14", wrap=tkinter.WORD, width=40, height=20)
 
 text.tag_configure("underlined_red", foreground="red", underline=True)
 text.tag_configure("big_green", foreground="green", font="Helvetica 40")
