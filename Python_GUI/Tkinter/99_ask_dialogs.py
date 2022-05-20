@@ -24,38 +24,46 @@ def exit():
 
 
 def showOkCancelMessageBox():
-    print(messagebox.askokcancel("Otázečka na závěr",
-                                 "Skutečně, ale skutečně ukončit program?"))
+    print(
+        messagebox.askokcancel(
+            "Otázečka na závěr", "Skutečně, ale skutečně ukončit program?"
+        )
+    )
 
 
 def showRetryCancelMessageBox():
-    print(messagebox.askretrycancel("Chyba při tisku",
-                                    "Opakovat tisk?"))
+    print(messagebox.askretrycancel("Chyba při tisku", "Opakovat tisk?"))
 
 
 def showYesNoMessageBox():
-    print(messagebox.askyesno("Otázečka na závěr",
-                              "Skutečně, ale skutečně ukončit program?"))
+    print(
+        messagebox.askyesno(
+            "Otázečka na závěr", "Skutečně, ale skutečně ukončit program?"
+        )
+    )
 
 
 def showQuestionMessageBox():
-    print(messagebox.askquestion("Otázečka na závěr",
-                                 "Provést zálohu?"))
+    print(messagebox.askquestion("Otázečka na závěr", "Provést zálohu?"))
 
 
 root = tkinter.Tk()
 
-showOkCancelButton = tkinter.Button(root, text="Show Ok/Cancel message box",
-                                    command=showOkCancelMessageBox)
+showOkCancelButton = tkinter.Button(
+    root, text="Show Ok/Cancel message box", command=showOkCancelMessageBox
+)
 
-showRetryCancelButton = tkinter.Button(root, text="Show Retry/Cancel box",
-                                       command=showRetryCancelMessageBox)
+showRetryCancelButton = tkinter.Button(
+    root, text="Show Retry/Cancel box", command=showRetryCancelMessageBox
+)
 
-showYesNoButton = tkinter.Button(root, text="Show Yes.No box",
-                                 command=showYesNoMessageBox)
+showYesNoButton = tkinter.Button(
+    root, text="Show Yes.No box", command=showYesNoMessageBox
+)
 
-showQuestionButton = tkinter.Button(root, text="Show question box",
-                                    command=showQuestionMessageBox)
+showQuestionButton = tkinter.Button(
+    root, text="Show question box", command=showQuestionMessageBox
+)
 
 quitButton = tkinter.Button(root, text="Exit", command=exit)
 
