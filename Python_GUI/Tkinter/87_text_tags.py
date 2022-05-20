@@ -24,11 +24,14 @@ def exit():
 
 root = tkinter.Tk()
 
-text = tkinter.Text(root,
-                    font="Helvetica 20",
-                    wrap=tkinter.WORD,
-                    background="#202020",
-                    width=40, height=16)
+text = tkinter.Text(
+    root,
+    font="Helvetica 20",
+    wrap=tkinter.WORD,
+    background="#202020",
+    width=40,
+    height=16,
+)
 
 text.tag_configure("red", foreground="red")
 text.tag_configure("green", foreground="green")
