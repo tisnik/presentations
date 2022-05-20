@@ -28,8 +28,7 @@ def exit():
 
 
 def basic_canvas(root, width, height, grid_size):
-    canvas = tkinter.Canvas(root, width=width, height=height,
-                            background='#ccffcc')
+    canvas = tkinter.Canvas(root, width=width, height=height, background="#ccffcc")
     canvas.pack()
 
     draw_grid(canvas, width, height, grid_size)
@@ -52,27 +51,41 @@ canvas.create_line(110, 50, 190, 50, arrow=tkinter.FIRST)
 canvas.create_line(210, 50, 290, 50, arrow=tkinter.LAST)
 canvas.create_line(310, 50, 390, 50, arrow=tkinter.BOTH)
 
-canvas.create_line(10, 150, 90, 150, width=5, )
+canvas.create_line(
+    10,
+    150,
+    90,
+    150,
+    width=5,
+)
 canvas.create_line(110, 150, 190, 150, width=5, arrow=tkinter.FIRST)
 canvas.create_line(210, 150, 290, 150, width=5, arrow=tkinter.LAST)
 canvas.create_line(310, 150, 390, 150, width=5, arrow=tkinter.BOTH)
 
-canvas.create_line(10, 250, 90, 250, width=2,   arrow=tkinter.LAST,
-                   arrowshape=(10, 10, 10))
-canvas.create_line(110, 250, 190, 250, width=2, arrow=tkinter.LAST,
-                   arrowshape=(10, 20, 10))
-canvas.create_line(210, 250, 290, 250, width=2, arrow=tkinter.LAST,
-                   arrowshape=(10, 5, 10))
-canvas.create_line(310, 250, 390, 250, width=2, arrow=tkinter.LAST,
-                   arrowshape=(10, 0, 10))
+canvas.create_line(
+    10, 250, 90, 250, width=2, arrow=tkinter.LAST, arrowshape=(10, 10, 10)
+)
+canvas.create_line(
+    110, 250, 190, 250, width=2, arrow=tkinter.LAST, arrowshape=(10, 20, 10)
+)
+canvas.create_line(
+    210, 250, 290, 250, width=2, arrow=tkinter.LAST, arrowshape=(10, 5, 10)
+)
+canvas.create_line(
+    310, 250, 390, 250, width=2, arrow=tkinter.LAST, arrowshape=(10, 0, 10)
+)
 
-canvas.create_line(10, 350, 90, 350, width=2, arrow=tkinter.BOTH,
-                   arrowshape=(10, 10, 10))
-canvas.create_line(110, 350, 190, 350, width=2, arrow=tkinter.BOTH,
-                   arrowshape=(10, 20, 10))
-canvas.create_line(210, 350, 290, 350, width=2, arrow=tkinter.BOTH,
-                   arrowshape=(10, 5, 10))
-canvas.create_line(310, 350, 390, 350, width=2, arrow=tkinter.BOTH,
-                   arrowshape=(10, 0, 10))
+canvas.create_line(
+    10, 350, 90, 350, width=2, arrow=tkinter.BOTH, arrowshape=(10, 10, 10)
+)
+canvas.create_line(
+    110, 350, 190, 350, width=2, arrow=tkinter.BOTH, arrowshape=(10, 20, 10)
+)
+canvas.create_line(
+    210, 350, 290, 350, width=2, arrow=tkinter.BOTH, arrowshape=(10, 5, 10)
+)
+canvas.create_line(
+    310, 350, 390, 350, width=2, arrow=tkinter.BOTH, arrowshape=(10, 0, 10)
+)
 
 root.mainloop()
