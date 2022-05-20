@@ -32,11 +32,14 @@ root = tkinter.Tk()
 image = tkinter.BitmapImage(file="test.xbm", foreground="white")
 photo_image = tkinter.PhotoImage(file="icons/application-exit.gif")
 
-text = tkinter.Text(root,
-                    font="Helvetica 20",
-                    wrap=tkinter.WORD,
-                    background="#202020",
-                    width=40, height=16)
+text = tkinter.Text(
+    root,
+    font="Helvetica 20",
+    wrap=tkinter.WORD,
+    background="#202020",
+    width=40,
+    height=16,
+)
 
 text.tag_configure("underlined_red", foreground="red", underline=True)
 text.tag_configure("big_green", foreground="green", font="Helvetica 40")
