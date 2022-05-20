@@ -25,16 +25,16 @@ x = np.arange(-20, 20)
 rng = np.random.default_rng(seed=42)
 
 # hodnoty na y-ové ose
-y = x + 10*rng.random((40))
+y = x + 10 * rng.random((40))
 
 # rozměry grafu při uložení: 640x480 pixelů
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Pseudonáhodná data', fontsize=15)
+fig.suptitle("Pseudonáhodná data", fontsize=15)
 
 # vrcholy na křivce
-ax.plot(x, y, 'go')
+ax.plot(x, y, "go")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("random_data_linear.png")
