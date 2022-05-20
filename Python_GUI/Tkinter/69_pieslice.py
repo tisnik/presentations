@@ -28,8 +28,7 @@ def exit():
 
 
 def basic_canvas(root, width, height, grid_size):
-    canvas = tkinter.Canvas(root, width=width, height=height,
-                            background='#ccffcc')
+    canvas = tkinter.Canvas(root, width=width, height=height, background="#ccffcc")
     canvas.pack()
 
     draw_grid(canvas, width, height, grid_size)
@@ -47,14 +46,14 @@ root = tkinter.Tk()
 
 canvas = basic_canvas(root, WIDTH, HEIGHT, GRID_SIZE)
 
-canvas.create_arc(0, 0, 100, 100, fill='#ff8080')
-canvas.create_arc(100, 100, 200, 200, fill='#8080ff', start=45)
-canvas.create_arc(200, 0, 300, 100, fill='#80ffff', extent=180)
-canvas.create_arc(300, 100, 400, 200, fill='#ffff80', start=45, extent=270)
+canvas.create_arc(0, 0, 100, 100, fill="#ff8080")
+canvas.create_arc(100, 100, 200, 200, fill="#8080ff", start=45)
+canvas.create_arc(200, 0, 300, 100, fill="#80ffff", extent=180)
+canvas.create_arc(300, 100, 400, 200, fill="#ffff80", start=45, extent=270)
 
-canvas.create_arc(0, 200, 100, 300, fill='#ff8080', start=90, extent=270)
-canvas.create_arc(100, 300, 200, 400, fill='#8080ff', start=90+45, extent=270)
-canvas.create_arc(200, 200, 300, 300, fill='#80ffff', start=180, extent=180)
-canvas.create_arc(300, 300, 400, 400, fill='#ffff80', start=-45, extent=90)
+canvas.create_arc(0, 200, 100, 300, fill="#ff8080", start=90, extent=270)
+canvas.create_arc(100, 300, 200, 400, fill="#8080ff", start=90 + 45, extent=270)
+canvas.create_arc(200, 200, 300, 300, fill="#80ffff", start=180, extent=180)
+canvas.create_arc(300, 300, 400, 400, fill="#ffff80", start=-45, extent=90)
 
 root.mainloop()
