@@ -28,8 +28,7 @@ def exit():
 
 
 def basic_canvas(root, width, height, grid_size):
-    canvas = tkinter.Canvas(root, width=width, height=height,
-                            background='#ccffcc')
+    canvas = tkinter.Canvas(root, width=width, height=height, background="#ccffcc")
     canvas.pack()
 
     draw_grid(canvas, width, height, grid_size)
@@ -47,40 +46,39 @@ root = tkinter.Tk()
 
 canvas = basic_canvas(root, WIDTH, HEIGHT, GRID_SIZE)
 
-canvas.create_rectangle(10, 30, 90, 70, fill='#ff8080')
+canvas.create_rectangle(10, 30, 90, 70, fill="#ff8080")
 
-canvas.create_rectangle(30, 110, 70, 190, fill='#ff8080')
+canvas.create_rectangle(30, 110, 70, 190, fill="#ff8080")
 
-canvas.create_rectangle(20, 220, 80, 280, fill='#ff8080')
+canvas.create_rectangle(20, 220, 80, 280, fill="#ff8080")
 
-canvas.create_oval(110, 30, 190, 70, fill='#8080ff')
+canvas.create_oval(110, 30, 190, 70, fill="#8080ff")
 
-canvas.create_oval(130, 110, 170, 190, fill='#8080ff')
+canvas.create_oval(130, 110, 170, 190, fill="#8080ff")
 
-canvas.create_oval(120, 220, 180, 280, fill='#8080ff')
+canvas.create_oval(120, 220, 180, 280, fill="#8080ff")
 
-canvas.create_polygon(210, 20, 290, 20, 250, 80, fill='#ffff80')
+canvas.create_polygon(210, 20, 290, 20, 250, 80, fill="#ffff80")
 
-canvas.create_polygon(310, 20, 390, 20, 350, 80, fill='#ffff80',
-                      outline='black')
+canvas.create_polygon(310, 20, 390, 20, 350, 80, fill="#ffff80", outline="black")
 
-canvas.create_polygon(210, 120, 250, 140, 290, 120, 250, 180,
-                      fill='#80ff80')
+canvas.create_polygon(210, 120, 250, 140, 290, 120, 250, 180, fill="#80ff80")
 
-canvas.create_polygon(310, 120, 350, 140, 390, 120, 350, 180, fill='#80ff80',
-                      outline='black')
+canvas.create_polygon(
+    310, 120, 350, 140, 390, 120, 350, 180, fill="#80ff80", outline="black"
+)
 
-canvas.create_polygon(210, 220, 290, 220, 250, 280, fill='#ffff80',
-                      smooth=1)
+canvas.create_polygon(210, 220, 290, 220, 250, 280, fill="#ffff80", smooth=1)
 
-canvas.create_polygon(310, 220, 390, 220, 350, 280, fill='#ffff80',
-                      outline='black', smooth=1)
+canvas.create_polygon(
+    310, 220, 390, 220, 350, 280, fill="#ffff80", outline="black", smooth=1
+)
 
-canvas.create_polygon(210, 320, 250, 340, 290, 320, 250, 380, fill='#80ff80',
-                      smooth=1)
+canvas.create_polygon(210, 320, 250, 340, 290, 320, 250, 380, fill="#80ff80", smooth=1)
 
-canvas.create_polygon(310, 320, 350, 340, 390, 320, 350, 380, fill='#80ff80',
-                      outline='black', smooth=1)
+canvas.create_polygon(
+    310, 320, 350, 340, 390, 320, 350, 380, fill="#80ff80", outline="black", smooth=1
+)
 
 
 root.mainloop()
