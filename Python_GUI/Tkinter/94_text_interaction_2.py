@@ -24,10 +24,7 @@ def exit():
 
 root = tkinter.Tk()
 
-text = tkinter.Text(root,
-                    font="Helvetica 14",
-                    wrap=tkinter.WORD,
-                    width=40, height=24)
+text = tkinter.Text(root, font="Helvetica 14", wrap=tkinter.WORD, width=40, height=24)
 
 text.tag_configure("underlined_red", foreground="red", underline=True)
 text.tag_configure("big_green", foreground="green", font="Helvetica 40")
@@ -48,17 +45,29 @@ text.tag_configure("sub", offset="-3p")
 
 # chovani pri prejeti kurzorem mysi
 
-text.tag_bind("colorOnEnter", "<Any-Enter>",
-              lambda e: text.tag_configure("colorOnEnter", background="red"))
-text.tag_bind("colorOnEnter", "<Any-Leave>",
-              lambda e: text.tag_configure("colorOnEnter", background=""))
+text.tag_bind(
+    "colorOnEnter",
+    "<Any-Enter>",
+    lambda e: text.tag_configure("colorOnEnter", background="red"),
+)
+text.tag_bind(
+    "colorOnEnter",
+    "<Any-Leave>",
+    lambda e: text.tag_configure("colorOnEnter", background=""),
+)
 
 # chovani pri stisku leveho a praveho tlacitka
 
-text.tag_bind("colorOnEnter", "<Button-1>",
-              lambda e: text.tag_configure("colorOnEnter", foreground="blue"))
-text.tag_bind("colorOnEnter", "<Button-3>",
-              lambda e: text.tag_configure("colorOnEnter", foreground="black"))
+text.tag_bind(
+    "colorOnEnter",
+    "<Button-1>",
+    lambda e: text.tag_configure("colorOnEnter", foreground="blue"),
+)
+text.tag_bind(
+    "colorOnEnter",
+    "<Button-3>",
+    lambda e: text.tag_configure("colorOnEnter", foreground="black"),
+)
 
 # práce s widgetem
 text.insert(tkinter.END, "Underlined Red\n", "underlined_red")
