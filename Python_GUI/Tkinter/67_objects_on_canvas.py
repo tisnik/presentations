@@ -28,8 +28,7 @@ def exit():
 
 
 def basic_canvas(root, width, height, grid_size):
-    canvas = tkinter.Canvas(root, width=width, height=height,
-                            background='#ccffcc')
+    canvas = tkinter.Canvas(root, width=width, height=height, background="#ccffcc")
     canvas.pack()
 
     draw_grid(canvas, width, height, grid_size)
@@ -47,10 +46,11 @@ root = tkinter.Tk()
 
 canvas = basic_canvas(root, WIDTH, HEIGHT, GRID_SIZE)
 
-canvas.create_line(0, 0, 100, 100, fill='red', width=2, dash=8)
+canvas.create_line(0, 0, 100, 100, fill="red", width=2, dash=8)
 
-canvas.create_arc(100, 1, 200, 100, outline='blue', start=45,
-                  extent=180, style=tkinter.ARC, width=2)
+canvas.create_arc(
+    100, 1, 200, 100, outline="blue", start=45, extent=180, style=tkinter.ARC, width=2
+)
 
 canvas.create_oval(200, 1, 300, 100)
 
@@ -62,7 +62,8 @@ canvas.create_text(300, 150, text="Hello world!", font="Helvetica 20")
 
 canvas.create_polygon(50, 225, 200, 300, 50, 375, fill="#80ff80")
 
-canvas.create_polygon(250, 225, 400, 300, 250, 375, fill="black",
-                      outline="red", width="5")
+canvas.create_polygon(
+    250, 225, 400, 300, 250, 375, fill="black", outline="red", width="5"
+)
 
 root.mainloop()
