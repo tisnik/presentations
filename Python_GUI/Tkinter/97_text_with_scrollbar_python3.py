@@ -26,10 +26,7 @@ def exit():
 
 root = tkinter.Tk()
 
-text = ScrolledText(root,
-                    font="Helvetica 14",
-                    wrap=tkinter.WORD,
-                    width=40, height=24)
+text = ScrolledText(root, font="Helvetica 14", wrap=tkinter.WORD, width=40, height=24)
 
 text.tag_configure("underlined_red", foreground="red", underline=True)
 text.tag_configure("big_green", foreground="green", font="Helvetica 40")
@@ -50,20 +47,33 @@ text.tag_configure("sub", offset="-3p")
 
 # chovani pri prejeti kurzorem mysi
 
-text.tag_bind("colorOnEnter", "<Any-Enter>",
-              lambda e: text.tag_configure("colorOnEnter", background="red"))
-text.tag_bind("colorOnEnter", "<Any-Leave>",
-              lambda e: text.tag_configure("colorOnEnter", background=""))
+text.tag_bind(
+    "colorOnEnter",
+    "<Any-Enter>",
+    lambda e: text.tag_configure("colorOnEnter", background="red"),
+)
+text.tag_bind(
+    "colorOnEnter",
+    "<Any-Leave>",
+    lambda e: text.tag_configure("colorOnEnter", background=""),
+)
 
 # chovani pri stisku leveho a praveho tlacitka
 
-text.tag_bind("colorOnEnter", "<Button-1>",
-              lambda e: text.tag_configure("colorOnEnter", foreground="blue"))
-text.tag_bind("colorOnEnter", "<Button-3>",
-              lambda e: text.tag_configure("colorOnEnter", foreground="black"))
+text.tag_bind(
+    "colorOnEnter",
+    "<Button-1>",
+    lambda e: text.tag_configure("colorOnEnter", foreground="blue"),
+)
+text.tag_bind(
+    "colorOnEnter",
+    "<Button-3>",
+    lambda e: text.tag_configure("colorOnEnter", foreground="black"),
+)
 
-checkbutton = tkinter.Checkbutton(root, text="Delete Internet?",
-                                  command=lambda: print("changed"))
+checkbutton = tkinter.Checkbutton(
+    root, text="Delete Internet?", command=lambda: print("changed")
+)
 
 quitButton = tkinter.Button(root, text="Exit", command=exit)
 
@@ -100,20 +110,19 @@ text.insert(tkinter.END, "active-text", "colorOnEnter")
 
 radio_var = tkinter.StringVar()
 
-radio1 = tkinter.Radiobutton(root, variable=radio_var, value="Assembler",
-                             text="Assembler")
+radio1 = tkinter.Radiobutton(
+    root, variable=radio_var, value="Assembler", text="Assembler"
+)
 
-radio2 = tkinter.Radiobutton(root, variable=radio_var, value="Basic",
-                             text="Basic")
+radio2 = tkinter.Radiobutton(root, variable=radio_var, value="Basic", text="Basic")
 
-radio3 = tkinter.Radiobutton(root, variable=radio_var, value="Brainfuck",
-                             text="Brainfuck")
+radio3 = tkinter.Radiobutton(
+    root, variable=radio_var, value="Brainfuck", text="Brainfuck"
+)
 
-radio4 = tkinter.Radiobutton(root, variable=radio_var, value="C",
-                             text="C")
+radio4 = tkinter.Radiobutton(root, variable=radio_var, value="C", text="C")
 
-radio5 = tkinter.Radiobutton(root, variable=radio_var, value="Python",
-                             text="Python")
+radio5 = tkinter.Radiobutton(root, variable=radio_var, value="Python", text="Python")
 
 text.insert(tkinter.END, "\nMaly vyber:\n")
 text.window_create(tkinter.END, window=radio1)
