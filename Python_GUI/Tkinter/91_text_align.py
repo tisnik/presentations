@@ -24,11 +24,14 @@ def exit():
 
 root = tkinter.Tk()
 
-text = tkinter.Text(root,
-                    font="Helvetica 20",
-                    wrap=tkinter.WORD,
-                    tabs="7c right 11c left",
-                    width=40, height=16)
+text = tkinter.Text(
+    root,
+    font="Helvetica 20",
+    wrap=tkinter.WORD,
+    tabs="7c right 11c left",
+    width=40,
+    height=16,
+)
 
 text.tag_configure("nadpis", foreground="red", underline=True)
 text.tag_configure("suma", foreground="blue")
