@@ -25,7 +25,7 @@ x = np.arange(0, 50)
 rng = np.random.default_rng(seed=42)
 
 # hodnoty na y-ové ose
-y = x + 10*rng.random((len(x))) - 5
+y = x + 10 * rng.random((len(x))) - 5
 
 # výpočet lineární regrese
 coefficients = np.polyfit(x, y, 1)
@@ -40,13 +40,13 @@ poly1d_fn = np.poly1d(coefficients)
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Lineární regrese', fontsize=15)
+fig.suptitle("Lineární regrese", fontsize=15)
 
 # vrcholy na křivce
-ax.plot(x, y, 'go')
+ax.plot(x, y, "go")
 
 # vykreslení interpolační křivky
-plt.plot(poly1d_fn(np.arange(0, len(x))), 'r-')
+plt.plot(poly1d_fn(np.arange(0, len(x))), "r-")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("linear_regression_1.png")
