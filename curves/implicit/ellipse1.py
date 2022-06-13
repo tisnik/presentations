@@ -30,7 +30,7 @@ a = 3
 b = 2
 
 # implicitní funkce elipsy
-z = x**2/a**2 + y ** 2/b**2 - 1
+z = x ** 2 / a ** 2 + y ** 2 / b ** 2 - 1
 
 # hodnota, která se má zvýraznit na isoploše
 levels = [0]
@@ -39,7 +39,7 @@ levels = [0]
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Elipsa', fontsize=15)
+fig.suptitle("Elipsa", fontsize=15)
 
 # vykreslení implicitní funkce
 ax.contour(x, y, z, levels)
@@ -48,11 +48,11 @@ ax.contour(x, y, z, levels)
 ax.grid(True)
 
 # zachovat poměr stran
-ax.axis('scaled')
+ax.axis("scaled")
 
 # popisek os
-plt.xlabel('Osa x')
-plt.ylabel('Osa y')
+plt.xlabel("Osa x")
+plt.ylabel("Osa y")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("ellipse1.png")
