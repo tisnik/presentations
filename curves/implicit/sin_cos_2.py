@@ -26,7 +26,7 @@ y = np.linspace(-5, 5, 150)
 x, y = np.meshgrid(x, y)
 
 # implicitní funkce
-z = np.sin(x**2) - np.cos(y**2)
+z = np.sin(x ** 2) - np.cos(y ** 2)
 
 # hodnoty, které se mají zvýraznit na isoploše
 levels = [-0.5, 0, 0.5]
@@ -35,7 +35,7 @@ levels = [-0.5, 0, 0.5]
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Implicit curve', fontsize=15)
+fig.suptitle("Implicit curve", fontsize=15)
 
 # vykreslení implicitní funkce
 ax.contour(x, y, z, levels)
@@ -44,11 +44,11 @@ ax.contour(x, y, z, levels)
 ax.grid(True)
 
 # zachovat poměr stran
-ax.axis('scaled')
+ax.axis("scaled")
 
 # popisek os
-plt.xlabel('Osa x')
-plt.ylabel('Osa y')
+plt.xlabel("Osa x")
+plt.ylabel("Osa y")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("implicit3.png")
