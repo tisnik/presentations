@@ -31,7 +31,7 @@ B = 1
 C = 0
 
 # implicitní funkce úsečky
-z = A*x + B*y + C
+z = A * x + B * y + C
 
 # hodnota, která se má zvýraznit na isoploše
 levels = [0]
@@ -40,7 +40,7 @@ levels = [0]
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Úsečka', fontsize=15)
+fig.suptitle("Úsečka", fontsize=15)
 
 # vykreslení implicitní funkce
 ax.contour(x, y, z, levels)
@@ -49,11 +49,11 @@ ax.contour(x, y, z, levels)
 ax.grid(True)
 
 # zachovat poměr stran
-ax.axis('scaled')
+ax.axis("scaled")
 
 # popisek os
-plt.xlabel('Osa x')
-plt.ylabel('Osa y')
+plt.xlabel("Osa x")
+plt.ylabel("Osa y")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("line1.png")
