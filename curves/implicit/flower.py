@@ -30,7 +30,7 @@ for step in (10, 20, 50, 100, 150, 200, 300, 500, 1000, 2000, 5000):
     x, y = np.meshgrid(x, y)
 
     # implicitní funkce
-    z = (3*x**2 - y ** 2) ** 2 * y**2 - (x**2 + y**2) ** 4
+    z = (3 * x ** 2 - y ** 2) ** 2 * y ** 2 - (x ** 2 + y ** 2) ** 4
 
     # hodnota, která se má zvýraznit na isoploše
     levels = [0]
@@ -39,7 +39,7 @@ for step in (10, 20, 50, 100, 150, 200, 300, 500, 1000, 2000, 5000):
     fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
     # titulek grafu
-    fig.suptitle('Flower, step={}'.format(step), fontsize=15)
+    fig.suptitle("Flower, step={}".format(step), fontsize=15)
 
     # vykreslení implicitní funkce
     ax.contour(x, y, z, levels)
@@ -48,11 +48,11 @@ for step in (10, 20, 50, 100, 150, 200, 300, 500, 1000, 2000, 5000):
     ax.grid(True)
 
     # zachovat poměr stran
-    ax.axis('scaled')
+    ax.axis("scaled")
 
     # popisek os
-    plt.xlabel('Osa x')
-    plt.ylabel('Osa y')
+    plt.xlabel("Osa x")
+    plt.ylabel("Osa y")
 
     # uložení grafu do rastrového obrázku
     plt.savefig("flower_{:02}.png".format(frame))
