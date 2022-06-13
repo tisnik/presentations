@@ -29,7 +29,7 @@ x, y = np.meshgrid(x, y)
 a = 4
 
 # implicitní funkce hyperboly
-z = a/x - y
+z = a / x - y
 
 # hodnota, která se má zvýraznit na isoploše
 levels = [0]
@@ -38,7 +38,7 @@ levels = [0]
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Hyperbola', fontsize=15)
+fig.suptitle("Hyperbola", fontsize=15)
 
 # vykreslení implicitní funkce
 ax.contour(x, y, z, levels)
@@ -47,11 +47,11 @@ ax.contour(x, y, z, levels)
 ax.grid(True)
 
 # zachovat poměr stran
-ax.axis('scaled')
+ax.axis("scaled")
 
 # popisek os
-plt.xlabel('Osa x')
-plt.ylabel('Osa y')
+plt.xlabel("Osa x")
+plt.ylabel("Osa y")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("hyperbola2.png")
