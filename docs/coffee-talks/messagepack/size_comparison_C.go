@@ -69,7 +69,7 @@ func encodeMapIntoMsgPack(m Map) ([]byte, error) {
 }
 
 func saveMap(encodedMap []byte, filename string) {
-	err := ioutil.WriteFile(filename, encodedMap, 0644)
+	err := ioutil.WriteFile(filename, encodedMap, 0o644)
 	if err != nil {
 		fmt.Println(err)
 	} else {
