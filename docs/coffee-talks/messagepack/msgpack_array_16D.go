@@ -11,7 +11,7 @@ const filename = "/tmp/array16D.bin"
 
 func main() {
 	// vytvořit soubor s binárními daty
-	fout, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
+	fout, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0o600)
 	if err != nil {
 		log.Fatal(err)
 	}
