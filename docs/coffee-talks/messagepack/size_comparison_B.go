@@ -137,7 +137,7 @@ func encodeBinaryTreeIntoMsgPack(bt BinaryTree) ([]byte, error) {
 }
 
 func saveBinaryTree(encodedTree []byte, filename string) {
-	err := ioutil.WriteFile(filename, encodedTree, 0644)
+	err := ioutil.WriteFile(filename, encodedTree, 0o644)
 	if err != nil {
 		fmt.Println(err)
 	} else {
