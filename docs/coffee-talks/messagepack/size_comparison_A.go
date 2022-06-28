@@ -89,7 +89,7 @@ func encodeVectorIntoMsgPack(vector Vector) ([]byte, error) {
 }
 
 func saveVector(encodedVector []byte, filename string) {
-	err := ioutil.WriteFile(filename, encodedVector, 0644)
+	err := ioutil.WriteFile(filename, encodedVector, 0o644)
 	if err != nil {
 		fmt.Println(err)
 	} else {
