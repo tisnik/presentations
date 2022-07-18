@@ -23,9 +23,15 @@ How to use modern CPUs effectively
     - to be used later
 * MISD
     - too complicated
+* WLIW architecture
+    - very efficient
+    - needs optimizing compiler
+    - not backward compatible
 * split instruction execution into multiple stages
     - cost efficient
     - => classic RISC pipeline - 5 stages
+
+![images/cpu1.png](images/cpu1.png)
 
 
 
@@ -37,6 +43,8 @@ How to use modern CPUs effectively
     - execute (add, for example)
     - memory access
     - write back (result)
+
+![images/pipeline.png](images/pipeline.png)
 
 
 
@@ -68,6 +76,9 @@ SUB r3,r4 -> r10     ; writes r3 - r4 to r10
 AND r10,r3 -> r11    ; writes r10 & r3 to r11
 ```
 
+![images/hazard.png](images/hazard.png)
+
+
 
 
 ## Data hazards
@@ -78,6 +89,7 @@ AND r10,r3 -> r11    ; writes r10 & r3 to r11
     - so compiler can choose registers to avoid hazard
     - not full solution
     - can't deal with multiple CPU revisions (change #stages)
+* data forwarding
 * pipeline stall circuit
     - adding "bubbles"
     - delays instructions by 1-4 clock cycles
@@ -91,6 +103,12 @@ AND r10,r3 -> r11    ; writes r10 & r3 to r11
 * instruction reordering
     - done "on silicon"
     - compatible across CPU revisions
+
+
+
+## Data forwarding
+
+![images/forwarding.png](images/forwarding.png)
 
 
 
@@ -113,8 +131,8 @@ AND r10,r3 -> r11    ; writes r10 & r3 to r11
 
 
 ```asm
-cmp R0, R1     ; compare content of two registers
-bne non_equal  ; branch if not equal
+CMP r0, r1     ; compare content of two registers
+BNE non_equal  ; branch if not equal
 ```
 
 
@@ -137,17 +155,34 @@ bne non_equal  ; branch if not equal
 * two slots example
 
 ```asm
-LD   R0, 0        ; instruction before jump
+LD   r0, 0        ; instruction before jump
 JMP  foobar       ; jump
-ADD  R0, R1 -> R2 ; first delay slot
-SUB  R4, R5 -> R6 ; second delay slot
+ADD  r0, r1 -> r2 ; first delay slot
+SUB  r4, r5 -> r6 ; second delay slot
 ```
+
+```asm
+LD   r0, 0        ; instruction before jump
+CALL printf       ; function (subroutine) call
+ADD  r0, r1 -> r2 ; first delay slot
+SUB  r4, r5 -> r6 ; second delay slot
+```
+
+```asm
+LD   r0, 0        ; instruction before jump
+RET               ; return from subroutine
+ADD  r0, r1 -> r2 ; first delay slot
+SUB  r4, r5 -> r6 ; second delay slot
+```
+
+
 
 ## Branch prediction
 
 * CPU might try to predict whether the branch will be taken or not
 * it won't be and can't be 100% accurate
 * but having ~90% accuracy would be ok
+
 
 
 ## Modern architectures
@@ -159,4 +194,3 @@ SUB  R4, R5 -> R6 ; second delay slot
 - but pipeline stall costs a lot
     - in theory 19x slower program execution in the worst cache
 
-Branches
