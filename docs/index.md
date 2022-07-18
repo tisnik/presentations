@@ -79,6 +79,7 @@ layout: default
 * [How to scale relational database?](coffee-talks/db_scale.md)
 * [Database indexing in PostgreSQL](coffee-talks/db_indexes.md)
 * [Concurrency and parallelism in Python](coffee-talks/concurrency_parallelism_in_python.md)
+* [Branchless programming](coffee-talks/branchless_programming.md)
 
 
 ### Přílohy k článkům
