@@ -120,7 +120,8 @@ AND r10,r3 -> r11    ; writes r10 & r3 to r11
     - yet it means that the instruction buffer must be cleared-up
 * conditional branches
     - non-predictable in 100%
-    - causes pipeline stalls (1-4 clock cycles)
+    - causes pipeline stalls (1-4 clock cycles in classic RISC pipeline)
+    - more stalls on modern architectures!
 
 
 
@@ -134,6 +135,8 @@ AND r10,r3 -> r11    ; writes r10 & r3 to r11
 CMP r0, r1     ; compare content of two registers
 BNE non_equal  ; branch if not equal
 ```
+
+* Btw even conditional codes propagation makes stall!
 
 
 
@@ -152,6 +155,7 @@ BNE non_equal  ; branch if not equal
 * done in compile time by compiler
     - AOT
 * but it depends a lot on CPU revision!
+    - not possible at all on x86-like madness
 * two slots example
 
 ```asm
@@ -182,15 +186,50 @@ SUB  r4, r5 -> r6 ; second delay slot
 * CPU might try to predict whether the branch will be taken or not
 * it won't be and can't be 100% accurate
 * but having ~90% accuracy would be ok
+* where to store predictions?
+    - cache
+    - how to maintain cache locality?
+* several strategies
+    - forward branch - usually not taken, backward - it's a loop
+    - 1bit predictor - branch was(not) taken previously
+    - 2bit predictor
+    - help from compiler (AOT+live analysis)
+
+![images/branch_predictor.png](images/branch_predictor.png)
 
 
 
 ## Modern architectures
 
-- 14 to 19 stages
-- that's a lot!
-- for 16 cores: up to 300 instructions in flight at a time!!!)
-- allows faster instruction cycles (3GHz...)
-- but pipeline stall costs a lot
+* 14 to 19 stages
+* that's a lot!
+* for 16 cores: up to 300 instructions in flight at a time!!!)
+* allows faster instruction cycles (3GHz...)
+* but pipeline stall costs a lot
     - in theory 19x slower program execution in the worst cache
+* conditional branches are even more problematic there
 
+
+
+## Even developers can help
+
+* branchless programming
+* not a new concept at all
+    - array languages
+    - flow languages
+    - even NumPy-like approach
+    - common on GPU
+* avoiding conditionals in a code
+    - less comprehensible code
+    - make sence in some low-level situations (codecs etc.)
+
+
+
+## Images
+
+* usually taken from Wikipedia
+* CPU architecture taken from TI specification
+
+
+
+## Links
