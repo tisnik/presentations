@@ -68,6 +68,8 @@ SUB r3,r4 -> r10     ; writes r3 - r4 to r10
 AND r10,r3 -> r11    ; writes r10 & r3 to r11
 ```
 
+
+
 ## Data hazards
 
 * partial solutions
@@ -78,7 +80,7 @@ AND r10,r3 -> r11    ; writes r10 & r3 to r11
     - can't deal with multiple CPU revisions (change #stages)
 * pipeline stall circuit
     - adding "bubbles"
-    - delays instructions by 1-4 clock
+    - delays instructions by 1-4 clock cycles
     - can destroy RISC idea almost totally
 * register renaming
     - done "on silicon"
@@ -89,6 +91,64 @@ AND r10,r3 -> r11    ; writes r10 & r3 to r11
 * instruction reordering
     - done "on silicon"
     - compatible across CPU revisions
+
+
+
+## Branches
+
+* branches changes PC
+* standard branches (+ calls +returns)
+    - predictable
+    - yet it means that the instruction buffer must be cleared-up
+* conditional branches
+    - non-predictable in 100%
+    - causes pipeline stalls (1-4 clock cycles)
+
+
+
+## Conditional branches
+
+* A typical heuristic for C code is that there is a branch, on average, every 7
+  instructions
+
+
+```asm
+cmp R0, R1     ; compare content of two registers
+bne non_equal  ; branch if not equal
+```
+
+
+
+## Conditional branches - solutions
+
+* branch delay slots
+* branch prediction
+* avoiding branches where possible!
+
+
+
+### Branch delay slot
+
+* used in some RISC CPUs
+* elegant solution
+* done in compile time by compiler
+    - AOT
+* but it depends a lot on CPU revision!
+* two slots example
+
+```asm
+LD   R0, 0        ; instruction before jump
+JMP  foobar       ; jump
+ADD  R0, R1 -> R2 ; first delay slot
+SUB  R4, R5 -> R6 ; second delay slot
+```
+
+## Branch prediction
+
+* CPU might try to predict whether the branch will be taken or not
+* it won't be and can't be 100% accurate
+* but having ~90% accuracy would be ok
+
 
 ## Modern architectures
 
