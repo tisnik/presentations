@@ -278,6 +278,8 @@ for (int i = 0; i < N; i++)
 
 * Better or worse?
     - depends on branch predictor
+    - up to 14 cycles/iteration for branch variant
+    - 7 cycles/iteration for branchless
 
 [Graph](https://en.algorithmica.org/hpc/pipelining/img/branchy-vs-branchless.svg)
 
