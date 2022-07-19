@@ -11,6 +11,8 @@ How to use modern CPUs effectively
 * common instructions 4, 5, 7, 10, or 11 cycles
 * CPU clock frequency 2MHz to 3.125MHz
 
+![images/intel8080.png](images/intel8080.png)
+
 
 
 # How to make such beast faster?
@@ -103,6 +105,12 @@ AND r10,r3 -> r11    ; writes r10 & r3 to r11
 * instruction reordering
     - done "on silicon"
     - compatible across CPU revisions
+
+
+
+## "Bubbles" in pipeline
+
+![images/bubble.png](images/bubble.png)
 
 
 
@@ -202,6 +210,8 @@ SUB  r4, r5 -> r6 ; second delay slot
 ## Modern architectures
 
 * 14 to 19 stages
+* varies among CPU variants
+    - hard/impossible to use branch delay slots
 * that's a lot!
 * for 16 cores: up to 300 instructions in flight at a time!!!)
 * allows faster instruction cycles (3GHz...)
@@ -222,6 +232,54 @@ SUB  r4, r5 -> r6 ; second delay slot
 * avoiding conditionals in a code
     - less comprehensible code
     - make sence in some low-level situations (codecs etc.)
+* benchmarks needed to make evidence the branchless code is better 
+
+
+
+## Branchless programming
+
+```python
+def min(a, b):
+    if a < b:
+        return a
+    else
+        return b
+```
+
+```python
+def min_branchless(a, b):
+    return a * (a < b) + b * (b <= a)
+```
+
+* But Python would be sloooow anyway
+
+
+
+## Branchless programming
+
+```C
+for (int i = 0; i < N; i++)
+    a[i] = rand() % 100;
+
+volatile int s;
+
+for (int i = 0; i < N; i++)
+    if (a[i] < 50)
+        s += a[i];
+```
+
+* Depends heavily of constant (50)
+    - affects branch predictor
+
+```
+for (int i = 0; i < N; i++)
+    s += (a[i] < 50) * a[i];
+```
+
+* Better or worse?
+    - depends on branch predictor
+
+[Graph](https://en.algorithmica.org/hpc/pipelining/img/branchy-vs-branchless.svg)
 
 
 
@@ -229,7 +287,11 @@ SUB  r4, r5 -> r6 ; second delay slot
 
 * usually taken from Wikipedia
 * CPU architecture taken from TI specification
+* Intel 8080 architecture based on Intel specification
 
 
 
 ## Links
+
+Branchless Programming
+https://en.algorithmica.org/hpc/pipelining/branchless/
