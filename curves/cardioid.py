@@ -19,30 +19,30 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # hodnoty parametru t
-t = np.arange(0, 3*np.pi, 0.1)
+t = np.arange(0, 3 * np.pi, 0.1)
 
 # poloměr kružnice
 a = 1.0
 
 # výpočet bodů ležících na srdcovce
-x = a*(2*np.cos(t)-np.cos(2*t))
-y = a*(2*np.sin(t)-np.sin(2*t))
+x = a * (2 * np.cos(t) - np.cos(2 * t))
+y = a * (2 * np.sin(t) - np.sin(2 * t))
 
 # rozměry grafu při uložení: 640x480 pixelů
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Srdcovka', fontsize=15)
+fig.suptitle("Srdcovka", fontsize=15)
 
 # určení rozsahů na obou souřadných osách
 ax.set_xlim(-4, 4)
 ax.set_ylim(-3, 3)
 
 # vrcholy na křivce pospojované úsečkami
-ax.plot(x, y, 'g-')
+ax.plot(x, y, "g-")
 
 # vrcholy na křivce (každý pátý)
-ax.plot(x[::5], y[::5], 'ro')
+ax.plot(x[::5], y[::5], "ro")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("cardioid.png")
