@@ -9,9 +9,12 @@
 
 # Compiled Coconut: -----------------------------------------------------------
 
+
 @_coconut_tco
 def factorial_tco(n, acc=1):
-    def _coconut_mock_func(n, acc=1): return n, acc
+    def _coconut_mock_func(n, acc=1):
+        return n, acc
+
     while True:
         _coconut_match_to = n
         _coconut_match_check = False
@@ -39,6 +42,8 @@ def factorial_tco(n, acc=1):
             raise TypeError("expecting integer >= 0")
 
         return None
+
+
 _coconut_recursive_func_0 = factorial_tco
 for n in range(11):
     print("{n}!={f}".format(n=n, f=factorial_tco(n)))
