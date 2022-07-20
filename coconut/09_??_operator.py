@@ -25,5 +25,17 @@ v6 = None
 
 print(v6 if v5 is None else v5)
 
-print((lambda _coconut_none_coalesce_item: "notepad" if _coconut_none_coalesce_item is None else _coconut_none_coalesce_item)(os.getenv('EDITOR')))
-print((lambda _coconut_none_coalesce_item: "notepad" if _coconut_none_coalesce_item is None else _coconut_none_coalesce_item)(os.getenv('XXEDITOR')))
+print(
+    (
+        lambda _coconut_none_coalesce_item: "notepad"
+        if _coconut_none_coalesce_item is None
+        else _coconut_none_coalesce_item
+    )(os.getenv("EDITOR"))
+)
+print(
+    (
+        lambda _coconut_none_coalesce_item: "notepad"
+        if _coconut_none_coalesce_item is None
+        else _coconut_none_coalesce_item
+    )(os.getenv("XXEDITOR"))
+)
