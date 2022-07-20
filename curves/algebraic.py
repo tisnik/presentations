@@ -22,19 +22,19 @@ import matplotlib.pyplot as plt
 x = np.linspace(-3, 3, 70)
 
 # hodnoty na y-ové ose
-y = x**3 - 2*x
+y = x ** 3 - 2 * x
 
 # rozměry grafu při uložení: 640x480 pixelů
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Algebraická křivka', fontsize=15)
+fig.suptitle("Algebraická křivka", fontsize=15)
 
 # vrcholy na křivce pospojované úsečkami
-ax.plot(x, y, 'g-')
+ax.plot(x, y, "g-")
 
 # vrcholy na křivce (každý pátý)
-ax.plot(x[::5], y[::5], 'ro')
+ax.plot(x[::5], y[::5], "ro")
 
 # určení rozsahů na obou souřadných osách
 ax.set_xlim(-3, 3)
