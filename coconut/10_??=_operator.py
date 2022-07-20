@@ -21,6 +21,8 @@ slovnik["posledni"] = 1000 if slovnik["posledni"] is None else slovnik["posledni
 
 print(slovnik)
 
-slovnik["neexistujici"] = 10 if slovnik["neexistujici"] is None else slovnik["neexistujici"]
+slovnik["neexistujici"] = (
+    10 if slovnik["neexistujici"] is None else slovnik["neexistujici"]
+)
 
 print(slovnik)
