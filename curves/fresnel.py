@@ -39,7 +39,7 @@ for i in range(n):
     ya[i] = y
 
 # vrcholy na křivce pospojované úsečkami
-plt.plot(xa, ya, 'b')
+plt.plot(xa, ya, "b")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("fresnel.png")
