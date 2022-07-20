@@ -8,8 +8,14 @@
 
 (print)((sum)((reversed)(range(11))))  # line 7: range(11) |> reversed |> sum |> print
 
+
 @_coconut_tco  # line 9: def evens(sequence):
 def evens(sequence):  # line 9: def evens(sequence):
-    return _coconut_tail_call(filter, lambda x: x % 2 == 0, sequence)  # line 10:     return filter(lambda x: x % 2 == 0, sequence)
+    return _coconut_tail_call(
+        filter, lambda x: x % 2 == 0, sequence
+    )  # line 10:     return filter(lambda x: x % 2 == 0, sequence)
 
-(print)((sum)((evens)([1, 2, 3, 4, 5, 6, 30])))  # line 12: [1, 2, 3, 4, 5, 6, 30] |> evens |> sum |> print
+
+(print)(
+    (sum)((evens)([1, 2, 3, 4, 5, 6, 30]))
+)  # line 12: [1, 2, 3, 4, 5, 6, 30] |> evens |> sum |> print
