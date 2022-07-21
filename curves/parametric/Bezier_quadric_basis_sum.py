@@ -23,9 +23,7 @@ from tabulate import tabulate
 t = np.linspace(0, 1, 11)
 
 # Bernsteinovy polynomy pro Bézierovu kvadriku
-B = [1 * (1-t)**2,
-     2 * t * (1-t),
-     1 * t**2]
+B = [1 * (1 - t) ** 2, 2 * t * (1 - t), 1 * t ** 2]
 
 # vytvoření datového rámce pro uložení hodnot Bernsteinových polynomů
 df = pd.DataFrame(index=t, columns=["b0,2", "b1,2", "b2,2", "sum"])
@@ -36,7 +34,7 @@ df["b1,2"] = B[1]
 df["b2,2"] = B[2]
 
 # součet hodnot Bernsteinových polynomů
-df["sum"] = B[0]+B[1]+B[2]
+df["sum"] = B[0] + B[1] + B[2]
 
 # vytištění obsahu datového rámce
-print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
+print(tabulate(df, headers="keys", tablefmt="psql"))
