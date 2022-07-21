@@ -26,10 +26,12 @@ xc = (1, 1, 2, 2.5, 3, 2)
 yc = (1, 2, 2, 0.1, 2.9, 2.9)
 
 # Coonsovy polynomy
-C = [(1-t)**3,
-     3*t**3 - 6*t**2 + 4,
-     -3*t**3 + 3*t**2 + 3*t + 1,
-     t**3]
+C = [
+    (1 - t) ** 3,
+    3 * t ** 3 - 6 * t ** 2 + 4,
+    -3 * t ** 3 + 3 * t ** 2 + 3 * t + 1,
+    t ** 3,
+]
 
 
 def draw_coons_arc(xc, yc, ax, style):
@@ -37,8 +39,8 @@ def draw_coons_arc(xc, yc, ax, style):
     x = 0
     y = 0
     for i in range(0, 4):
-        x += xc[i]*C[i]
-        y += yc[i]*C[i]
+        x += xc[i] * C[i]
+        y += yc[i] * C[i]
 
     # konečná úprava sumy
     x /= 6
@@ -52,15 +54,15 @@ def draw_coons_arc(xc, yc, ax, style):
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('B-spline', fontsize=15)
+fig.suptitle("B-spline", fontsize=15)
 
 # určení rozsahů na obou souřadných osách
 ax.set_xlim(0, 4)
 ax.set_ylim(0, 3)
 
 # řídicí body B-spline
-ax.plot(xc, yc, 'k--', alpha=0.5)
-ax.plot(xc, yc, 'ro')
+ax.plot(xc, yc, "k--", alpha=0.5)
+ax.plot(xc, yc, "ro")
 
 # první oblouk
 draw_coons_arc(xc[0:4], yc[0:4], ax, "r-")
