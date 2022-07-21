@@ -28,13 +28,13 @@ y = x * 0.3
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Úsečka', fontsize=15)
+fig.suptitle("Úsečka", fontsize=15)
 
 # vrcholy na křivce pospojované úsečkami
-ax.plot(x, y, 'g-')
+ax.plot(x, y, "g-")
 
 # vrcholy na křivce (každý pátý)
-ax.plot(x[::5], y[::5], 'ro')
+ax.plot(x[::5], y[::5], "ro")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("line.png")
