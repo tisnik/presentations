@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 points = 150
 
 # úhel v polárním grafu
-theta = np.linspace(-6*np.pi, 6*np.pi, points)
+theta = np.linspace(-6 * np.pi, 6 * np.pi, points)
 
 # koeficient spirály
 a = 1
@@ -28,13 +28,13 @@ a = 1
 radius = theta / (theta - a)
 
 # rozměry grafu při uložení: 640x480 pixelů
-fig, ax = plt.subplots(1, figsize=(6.4, 4.8), subplot_kw={'projection': 'polar'})
+fig, ax = plt.subplots(1, figsize=(6.4, 4.8), subplot_kw={"projection": "polar"})
 
 # titulek grafu
-fig.suptitle('Atomická spirála', fontsize=15)
+fig.suptitle("Atomická spirála", fontsize=15)
 
 # vrcholy na křivce pospojované úsečkami
-ax.plot(theta + (radius<0)*np.pi, np.abs(radius), 'g-')
+ax.plot(theta + (radius < 0) * np.pi, np.abs(radius), "g-")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("atomic_spiral_2.png")
