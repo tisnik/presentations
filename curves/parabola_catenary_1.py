@@ -28,19 +28,19 @@ y1 = np.power(x, 2)
 a = 1.0
 
 # řetězovka: výpočet bodů ležících na řetězovce
-y2 = a*np.cosh(x/a)-1
+y2 = a * np.cosh(x / a) - 1
 
 # rozměry grafu při uložení: 640x480 pixelů
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Parabola versus řetězovka #1', fontsize=15)
+fig.suptitle("Parabola versus řetězovka #1", fontsize=15)
 
 # vrcholy na křivce pospojované úsečkami
-ax.plot(x, y1, 'g-', label="Parabola")
+ax.plot(x, y1, "g-", label="Parabola")
 
 # vrcholy na křivce pospojované úsečkami
-ax.plot(x, y2, 'r-', label="Řetězovka")
+ax.plot(x, y2, "r-", label="Řetězovka")
 
 # zobrazení popisku křivek
 plt.legend()
