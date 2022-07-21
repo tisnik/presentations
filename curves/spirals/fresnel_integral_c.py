@@ -28,8 +28,8 @@ x = np.linspace(0, 5, points)
 def fresnel_c(x):
     result = 0
     for t in np.arange(0, x, step):
-        result += math.cos(t**2)
-    return result*step
+        result += math.cos(t ** 2)
+    return result * step
 
 
 # vektorizace předchozí funkce
@@ -42,10 +42,10 @@ y = fresnel_c_v(x)
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Fresnelův integrál C(x)', fontsize=15)
+fig.suptitle("Fresnelův integrál C(x)", fontsize=15)
 
 # vrcholy na křivce pospojované úsečkami
-ax.plot(x, y, 'g-')
+ax.plot(x, y, "g-")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("fresnel_c.png")
