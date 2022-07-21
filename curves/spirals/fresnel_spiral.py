@@ -28,16 +28,16 @@ x = np.linspace(0, 5, points)
 def fresnel_s(x):
     result = 0
     for t in np.arange(0, x, step):
-        result += math.sin(t**2)
-    return result*step
+        result += math.sin(t ** 2)
+    return result * step
 
 
 # výpočet Fresnelova integrálu C(x)
 def fresnel_c(x):
     result = 0
     for t in np.arange(0, x, step):
-        result += math.cos(t**2)
-    return result*step
+        result += math.cos(t ** 2)
+    return result * step
 
 
 # vektorizace předchozích funkcí
@@ -52,14 +52,14 @@ y_c = fresnel_c_v(x)
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Fresnelova spirála', fontsize=15)
+fig.suptitle("Fresnelova spirála", fontsize=15)
 
 # určení rozsahů na obou souřadných osách
 ax.set_xlim(0, 1.2)
 ax.set_ylim(0, 0.9)
 
 # vrcholy na spirále
-ax.plot(y_c, y_s, 'g-')
+ax.plot(y_c, y_s, "g-")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("fresnel_spiral.png")
