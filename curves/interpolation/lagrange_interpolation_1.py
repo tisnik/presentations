@@ -36,22 +36,22 @@ for i in range(n):
     p = 1
     for j in range(n):
         if i != j:
-            p = p * (xp-x[j])/(x[i] - x[j])
+            p = p * (xp - x[j]) / (x[i] - x[j])
     yp += p * y[i]
 
 # rozměry grafu při uložení: 640x480 pixelů
 fig = plt.figure(figsize=(6.4, 4.8))
 
 # vstupní hodnoty
-plt.plot(x, y, 'ko')
+plt.plot(x, y, "ko")
 
 # vlastní interpolace polynomem
-plt.plot(xp, yp, 'r-')
+plt.plot(xp, yp, "r-")
 
 # popisky grafu
-plt.title('Lagrange Interpolation')
-plt.xlabel('x')
-plt.ylabel('y')
+plt.title("Lagrange Interpolation")
+plt.xlabel("x")
+plt.ylabel("y")
 
 # zobrazení mřížky
 plt.grid()
