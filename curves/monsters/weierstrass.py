@@ -33,7 +33,7 @@ def weierstrass(x, a, b, details):
     """Definice Weierstrassovy funkce."""
     w = 0
     for n in range(0, details):
-        w += a**n*np.cos(b**n*np.pi*x)
+        w += a ** n * np.cos(b ** n * np.pi * x)
     return w
 
 
@@ -47,10 +47,10 @@ approx = y(x, a, b, details)
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('Wiererstrassova funkce', fontsize=15)
+fig.suptitle("Wiererstrassova funkce", fontsize=15)
 
 # vrcholy na křivce pospojované úsečkami
-ax.plot(x, approx, 'g-')
+ax.plot(x, approx, "g-")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("weierstrass.png")
