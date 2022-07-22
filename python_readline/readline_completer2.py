@@ -17,12 +17,14 @@ def completer(text, state):
 
 
 def show_help():
-    print("""Help
+    print(
+        """Help
 --------
 quit - quit this application
 exit - exit from this application
 eval - evaluate
-""")
+"""
+    )
 
 
 readline.set_completer(completer)
