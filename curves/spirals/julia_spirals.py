@@ -38,16 +38,16 @@ def recalc_fractal(image, palette, cx, cy, maxiter=1000):
     ymin = -1.5
     xmax = 2.0
     ymax = 1.5
-    width, height = image.size       # rozměry obrázku
-    stepx = (xmax - xmin)/width
-    stepy = (ymax - ymin)/height
+    width, height = image.size  # rozměry obrázku
+    stepx = (xmax - xmin) / width
+    stepy = (ymax - ymin) / height
 
     y1 = ymin
     for y in range(0, height):
         x1 = xmin
         for x in range(0, width):
             i = julia(cx, cy, x1, y1, maxiter)
-            i = 3*i % 256
+            i = 3 * i % 256
             color = (palette[i][0], palette[i][1], palette[i][2])
             image.putpixel((x, y), color)
             x1 += stepx
@@ -56,18 +56,38 @@ def recalc_fractal(image, palette, cx, cy, maxiter=1000):
 
 image = Image.new("RGB", (IMAGE_WIDTH, IMAGE_HEIGHT))
 
-recalc_fractal(image, palette_greens.palette,
-               -0.769824999999999998320, -0.109270000000000000000, 255)
+recalc_fractal(
+    image,
+    palette_greens.palette,
+    -0.769824999999999998320,
+    -0.109270000000000000000,
+    255,
+)
 image.save("spiral_1.png")
 
-recalc_fractal(image, palette_greens.palette,
-               -0.171119200000000013445, 0.657309400000000000000, 255)
+recalc_fractal(
+    image,
+    palette_greens.palette,
+    -0.171119200000000013445,
+    0.657309400000000000000,
+    255,
+)
 image.save("spiral_2.png")
 
-recalc_fractal(image, palette_greens.palette,
-               -0.207190825000000012496, 0.676656624999999999983, 255)
+recalc_fractal(
+    image,
+    palette_greens.palette,
+    -0.207190825000000012496,
+    0.676656624999999999983,
+    255,
+)
 image.save("spiral_3.png")
 
-recalc_fractal(image, palette_greens.palette,
-               -0.540623850000000003876, 0.523798050000000000019, 255)
+recalc_fractal(
+    image,
+    palette_greens.palette,
+    -0.540623850000000003876,
+    0.523798050000000000019,
+    255,
+)
 image.save("spiral_4.png")
