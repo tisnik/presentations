@@ -13,7 +13,7 @@ from src.authorization_tokens import *
 # zmeny se neprekyvaji se zmenami provedenymi v souboru new.py
 
 
-@given('Component search service is running')
+@given("Component search service is running")
 def running_component_search_api(context):
     """Wait for the component search REST API to be available."""
     if not context.is_component_search_service_running(context):
@@ -22,10 +22,12 @@ def running_component_search_api(context):
 
 def component_analysis_url(context, ecosystem, component, version):
     """Construct URL for the component analyses REST API call."""
-    return urljoin(context.coreapi_url,
-                   'api/v1/component-analyses/{e}/{c}/{v}'.format(e=ecosystem,
-                                                                  c=component,
-                                                                  v=version))
+    return urljoin(
+        context.coreapi_url,
+        "api/v1/component-analyses/{e}/{c}/{v}".format(
+            e=ecosystem, c=component, v=version
+        ),
+    )
 
 
 def perform_component_search(context, component, use_token):
@@ -50,9 +52,13 @@ def search_for_component_with_token(context, component):
 
 
 @when("I read {ecosystem}/{component}/{version} component analysis")
-@when("I read {ecosystem}/{component}/{version} component analysis "
-      "{token} authorization token")
-def read_analysis_for_component(context, ecosystem, component, version, token='without'):
+@when(
+    "I read {ecosystem}/{component}/{version} component analysis "
+    "{token} authorization token"
+)
+def read_analysis_for_component(
+    context, ecosystem, component, version, token="without"
+):
     url = component_analysis_url(context, ecosystem, component, version)
 
     use_token = parse_token_clause(token)
@@ -83,17 +89,24 @@ def start_analysis_for_component(context, ecosystem, component, version):
     context.response = response
 
     if response.status_code == 200:
-        raise Exception('Bad state: the analysis for component has been '
-                        'finished already')
+        raise Exception(
+            "Bad state: the analysis for component has been " "finished already"
+        )
     elif response.status_code not in (401, 404):
-        raise Exception('Improper response: expected HTTP status code 401 or 404, '
-                        'received {c}'.format(c=response.status_code))
+        raise Exception(
+            "Improper response: expected HTTP status code 401 or 404, "
+            "received {c}".format(c=response.status_code)
+        )
 
 
 @when("I wait for {ecosystem}/{component}/{version} component analysis to finish")
-@when("I wait for {ecosystem}/{component}/{version} component analysis to finish "
-      "{token} authorization token")
-def finish_analysis_for_component(context, ecosystem, component, version, token='without'):
+@when(
+    "I wait for {ecosystem}/{component}/{version} component analysis to finish "
+    "{token} authorization token"
+)
+def finish_analysis_for_component(
+    context, ecosystem, component, version, token="without"
+):
     """Try to wait for the component analysis to be finished.
 
     Current API implementation returns just two HTTP codes:
@@ -119,25 +132,25 @@ def finish_analysis_for_component(context, ecosystem, component, version, token=
         if status_code == 200:
             break
         elif status_code != 404:
-            raise Exception('Bad HTTP status code {c}'.format(c=status_code))
+            raise Exception("Bad HTTP status code {c}".format(c=status_code))
         time.sleep(sleep_amount)
     else:
-        raise Exception('Timeout waiting for the component analysis results')
+        raise Exception("Timeout waiting for the component analysis results")
 
 
-@then('I should see {num:d} components ({components}), all from {ecosystem} ecosystem')
-def check_components(context, num, components='', ecosystem=''):
+@then("I should see {num:d} components ({components}), all from {ecosystem} ecosystem")
+def check_components(context, num, components="", ecosystem=""):
     """Check that the specified number of components can be found."""
     components = split_comma_separated_list(components)
 
     json_data = context.response.json()
     assert json_data is not None
 
-    search_results=json_data['analysis']
+    search_results = json_data["analysis"]
     assert len(search_results) == num
     for search_result in search_results:
-        assert search_result['ecosystem'] == ecosystem
-        assert search_result['name'] in components
+        assert search_result["ecosystem"] == ecosystem
+        assert search_result["name"] in components
 
 
 def print_search_results(search_results):
@@ -149,44 +162,59 @@ def print_search_results(search_results):
     print("\n\n\n")
 
 
-@then('I should find the analysis for the component {component} from ecosystem {ecosystem}')
+@then(
+    "I should find the analysis for the component {component} from ecosystem {ecosystem}"
+)
 def check_component_analysis_existence(context, component, ecosystem):
     """Check that the given component can be found in selected ecosystem."""
     json_data = context.response.json()
-    search_results = json_data['result']
+    search_results = json_data["result"]
 
     for search_result in search_results:
-        if search_result['ecosystem'] == ecosystem and \
-           search_result['name'] == component:
+        if (
+            search_result["ecosystem"] == ecosystem
+            and search_result["name"] == component
+        ):
             return
 
     # print_search_results(search_results)
 
-    raise Exception('Component {component} for ecosystem {ecosystem} could not be found'.
-                    format(component=component, ecosystem=ecosystem))
+    raise Exception(
+        "Component {component} for ecosystem {ecosystem} could not be found".format(
+            component=component, ecosystem=ecosystem
+        )
+    )
 
 
-@then('I should not find the analysis for the {component} from ecosystem {ecosystem}')
+@then("I should not find the analysis for the {component} from ecosystem {ecosystem}")
 def check_component_analysis_nonexistence(context, component, ecosystem):
     """Check that the given component can not be found in the selected ecosystem."""
     json_data = context.response.json()
-    search_results = json_data['result']
+    search_results = json_data["result"]
 
     for search_result in search_results:
-        if search_result['ecosystem'] == ecosystem and \
-           search_result['name'] == component:
-            raise Exception('Component {component} for ecosystem {ecosystem} was found'.
-                            format(component=component, ecosystem=ecosystem))
+        if (
+            search_result["ecosystem"] == ecosystem
+            and search_result["name"] == component
+        ):
+            raise Exception(
+                "Component {component} for ecosystem {ecosystem} was found".format(
+                    component=component, ecosystem=ecosystem
+                )
+            )
 
 
-@then('I should not find the analysis for the {component} in any ecosystem')
+@then("I should not find the analysis for the {component} in any ecosystem")
 def check_component_analysis_nonexistence(context, component):
     """Check that the given component can not be found in any ecosystem."""
     json_data = context.response.json()
-    search_results = json_data['result']
+    search_results = json_data["result"]
 
     for search_result in search_results:
-        if search_result['name'] == component:
-            ecosystem = search_result['ecosystem']
-            raise Exception('Component {component} for ecosystem {ecosystem} was found'.
-                            format(component=component, ecosystem=ecosystem))
+        if search_result["name"] == component:
+            ecosystem = search_result["ecosystem"]
+            raise Exception(
+                "Component {component} for ecosystem {ecosystem} was found".format(
+                    component=component, ecosystem=ecosystem
+                )
+            )
