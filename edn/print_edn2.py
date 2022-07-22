@@ -12,7 +12,7 @@ from edn_format import tag, TaggedElement
 class User(TaggedElement):
     def __init__(self, value):
         print("This is user:", value)
-        self.value=value
+        self.value = value
 
 
 @tag("complex")
