@@ -22,7 +22,7 @@ import pycodestyle
 def main():
     files = list(Path(".").rglob("*.py"))
 
-    style = pycodestyle.StyleGuide(quiet=False, config_file='setup.cfg')
+    style = pycodestyle.StyleGuide(quiet=False, config_file="setup.cfg")
     result = style.check_files(files)
     print("Total errors:", result.total_errors)
     if result.total_errors > 0:
