@@ -36,15 +36,15 @@ def mandelbrot(cx, cy, maxiter):
 
 def recalc_fractal(image, palette, xmin, ymin, xmax, ymax, maxiter=1000):
     """Přepočet celého fraktálu."""
-    stepx = (xmax - xmin)/WIDTH
-    stepy = (ymax - ymin)/HEIGHT
+    stepx = (xmax - xmin) / WIDTH
+    stepy = (ymax - ymin) / HEIGHT
 
     y1 = ymin
     for y in range(0, HEIGHT):
         x1 = xmin
         for x in range(0, WIDTH):
             i = mandelbrot(x1, y1, maxiter)
-            i = 3*i % 256
+            i = 3 * i % 256
             for index in range(0, 3):
                 image[y][x][index] = palette[i][index]
                 image[y][x][index] = palette[i][index]
