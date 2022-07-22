@@ -29,13 +29,13 @@ y_c = np.cos(x)
 fig, ax = plt.subplots(1, figsize=(6.4, 4.8))
 
 # titulek grafu
-fig.suptitle('sin(x) a cos(x)', fontsize=15)
+fig.suptitle("sin(x) a cos(x)", fontsize=15)
 
 # vrcholy na křivce pospojované úsečkami
-ax.plot(x, y_s, 'r-')
+ax.plot(x, y_s, "r-")
 
 # vrcholy na křivce pospojované úsečkami
-ax.plot(x, y_c, 'b-')
+ax.plot(x, y_c, "b-")
 
 # uložení grafu do rastrového obrázku
 plt.savefig("sin_cos.png")
