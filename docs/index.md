@@ -80,6 +80,7 @@ layout: default
 * [Database indexing in PostgreSQL](coffee-talks/db_indexes.md)
 * [Concurrency and parallelism in Python](coffee-talks/concurrency_parallelism_in_python.md)
 * [Branchless programming](coffee-talks/branchless_programming.md)
+* [Apache Camel](coffee-talks/apache_camel.md)
 
 
 ### Přílohy k článkům
