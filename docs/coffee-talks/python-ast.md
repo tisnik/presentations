@@ -644,6 +644,6 @@ Done
 ## Links
 
 * Python grammar
-  []()
+  [https://docs.python.org/3/reference/grammar.html](https://docs.python.org/3/reference/grammar.html)
 * Lua grammar
-  []()
+  [https://www.lua.org/manual/5.4/manual.html#9](https://www.lua.org/manual/5.4/manual.html#9)
