@@ -81,6 +81,7 @@ layout: default
 * [Concurrency and parallelism in Python](coffee-talks/concurrency_parallelism_in_python.md)
 * [Branchless programming](coffee-talks/branchless_programming.md)
 * [Apache Camel](coffee-talks/apache_camel.md)
+* [Python AST: journey from source code to bytecode](coffee-talks/python-ast.md)
 
 
 ### Přílohy k článkům
