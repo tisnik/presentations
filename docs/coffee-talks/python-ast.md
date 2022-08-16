@@ -181,7 +181,7 @@ TokenInfo(type=0  (ENDMARKER), string='',             start=(11, 0), end=(11, 0)
 * Parsed expression
 
 ```python
-(1 + 2) * 3
+1 + 2 * 3
 ```
 
 * Code to parse expression
@@ -213,9 +213,23 @@ print(ast.dump(tree, indent=4))
 * Readable output
 
 ```
+Module(
+    body=[
+        Expr(
+            value=BinOp(
+                left=Constant(value=1),
+                op=Add(),
+                right=BinOp(
+                    left=Constant(value=2),
+                    op=Mult(),
+                    right=Constant(value=3))))],
+    type_ignores=[])
 ```
 
 * Visualization
+
+![ast-1](images/python-ast-1.png)
+
 
 ## AST for more complicated example
 
@@ -263,6 +277,8 @@ print(ast.dump(tree, indent=4))
 
 * Visualization
 
+![ast-2](images/python-ast-2.png)
+![ast-3](images/python-ast-3.png)
 
 ## Visitor pattern
 
