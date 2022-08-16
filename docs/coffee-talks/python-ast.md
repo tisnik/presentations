@@ -1,5 +1,7 @@
 # Python AST
 
+
+
 ## Journey from source code to bytecode
 
 * Source code
@@ -8,12 +10,16 @@
 * Compiler
 * Bytecode
 
+
+
 ## Lexer
 
 * Input
     - source code
 * Output
     - sequence of tokens
+ 
+ 
  
 ## Parser
 
@@ -22,6 +28,7 @@
 * Output
     - abstract syntax tree (AST)
 
+ 
 
 ## Compiler
 
@@ -30,6 +37,8 @@
 * Output
     - bytecode
 
+ 
+ 
 ## Decompiler
 
 * Input
@@ -37,26 +46,42 @@
 * Output
     - readable sequence of instructions
 
-## Set of transformations
+
+
+## Set of transformations (yet another stateless pipeline)
 
 * From one linear structure into another one
 * But it is not that straightforward
+    - it's like 2D -> 1D -> tree -> 1D transformations
 * Lexer
+    - transforms source file (2D) into linear sequence of tokens
 * Parser
+    - transforms linear sequence of tokens into AST
 * Compiler
+    - transforms AST into linear sequence of bytecode instructions
+
+
 
 # So...
 
 * All the steps can be called from Python itself!
 * An unique opportunity to check and learn what's going on
-* Transpilers
-* Optimizers
-* Linters
-* ...
+* Used a lot
+    - Transpilers
+    - Optimizers
+    - Code formatters
+    - Linters
+    - Hypothesis-like tools
+    - ...
+
+
 
 ## Lexer
 
 * Transforms source file into linear sequence of tokens
+    - Python's one is a bit special
+    - have state for INDENT/DEDENT
+    - (not very popular in academia ;)
 
 * Tokenized expression
 
@@ -78,22 +103,25 @@ with tokenize.open("expression.py") as fin:
 * Output
 
 ```
-54   7  TokenInfo(type=54 (OP), string='(', start=(1, 0), end=(1, 1), line='(1 + 2) * 3\n')
- 2   2  TokenInfo(type=2 (NUMBER), string='1', start=(1, 1), end=(1, 2), line='(1 + 2) * 3\n')
-54  14  TokenInfo(type=54 (OP), string='+', start=(1, 3), end=(1, 4), line='(1 + 2) * 3\n')
- 2   2  TokenInfo(type=2 (NUMBER), string='2', start=(1, 5), end=(1, 6), line='(1 + 2) * 3\n')
-54   8  TokenInfo(type=54 (OP), string=')', start=(1, 6), end=(1, 7), line='(1 + 2) * 3\n')
-54  16  TokenInfo(type=54 (OP), string='*', start=(1, 8), end=(1, 9), line='(1 + 2) * 3\n')
- 2   2  TokenInfo(type=2 (NUMBER), string='3', start=(1, 10), end=(1, 11), line='(1 + 2) * 3\n')
- 4   4  TokenInfo(type=4 (NEWLINE), string='\n', start=(1, 11), end=(1, 12), line='(1 + 2) * 3\n')
- 0   0  TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+54   7  TokenInfo(type=54 (OP),        string='(',  start=(1, 0),  end=(1, 1),  line='(1 + 2) * 3\n')
+ 2   2  TokenInfo(type=2  (NUMBER),    string='1',  start=(1, 1),  end=(1, 2),  line='(1 + 2) * 3\n')
+54  14  TokenInfo(type=54 (OP),        string='+',  start=(1, 3),  end=(1, 4),  line='(1 + 2) * 3\n')
+ 2   2  TokenInfo(type=2  (NUMBER),    string='2',  start=(1, 5),  end=(1, 6),  line='(1 + 2) * 3\n')
+54   8  TokenInfo(type=54 (OP),        string=')',  start=(1, 6),  end=(1, 7),  line='(1 + 2) * 3\n')
+54  16  TokenInfo(type=54 (OP),        string='*',  start=(1, 8),  end=(1, 9),  line='(1 + 2) * 3\n')
+ 2   2  TokenInfo(type=2  (NUMBER),    string='3',  start=(1, 10), end=(1, 11), line='(1 + 2) * 3\n')
+ 4   4  TokenInfo(type=4  (NEWLINE),   string='\n', start=(1, 11), end=(1, 12), line='(1 + 2) * 3\n')
+ 0   0  TokenInfo(type=0  (ENDMARKER), string='',   start=(2, 0),  end=(2, 0),  line='')
 ```
+
+
 
 ## Tokenization of code with blocks
 
 * This is *dirty* trick!
+    - INDENT/DEDENT handling
 
-* Tokenized expression
+* Tokenized code block
 
 ```python
 if True:
@@ -174,6 +202,8 @@ TokenInfo(type=6  (DEDENT),    string='',             start=(11, 0), end=(11, 0)
 TokenInfo(type=0  (ENDMARKER), string='',             start=(11, 0), end=(11, 0), line='')
 ```
 
+
+
 ## Parser
 
 * Transforms linear sequence of tokens into AST
@@ -184,7 +214,7 @@ TokenInfo(type=0  (ENDMARKER), string='',             start=(11, 0), end=(11, 0)
 1 + 2 * 3
 ```
 
-* Code to parse expression
+* Code to parse expression and build AST
 
 ```python
 import ast
@@ -201,6 +231,7 @@ Module(body=[Expr(value=BinOp(left=Constant(value=1, kind=None), op=Add(), right
 ```
 
 * Python 3.10 is better
+    - possible to indent code
 
 ```python
 import ast
@@ -227,8 +258,10 @@ Module(
 ```
 
 * Visualization
+    - there are tools to do that
 
 ![ast-1](images/python-ast-1.png)
+
 
 
 ## AST for more complicated example
@@ -275,10 +308,177 @@ with open("primes.py") as fin:
 print(ast.dump(tree, indent=4))
 ```
 
+* Output
+
+```
+Module(
+    body=[
+        Import(
+            names=[
+                alias(name='trio')]),
+        AsyncFunctionDef(
+            name='producer',
+            args=arguments(
+                posonlyargs=[],
+                args=[
+                    arg(arg='send_channel')],
+                kwonlyargs=[],
+                kw_defaults=[],
+                defaults=[]),
+            body=[
+                For(
+                    target=Name(id='i', ctx=Store()),
+                    iter=Call(
+                        func=Name(id='range', ctx=Load()),
+                        args=[
+                            Constant(value=1),
+                            Constant(value=10)],
+                        keywords=[]),
+                    body=[
+                        Assign(
+                            targets=[
+                                Name(id='message', ctx=Store())],
+                            value=JoinedStr(
+                                values=[
+                                    Constant(value='message '),
+                                    FormattedValue(
+                                        value=Name(id='i', ctx=Load()),
+                                        conversion=-1)])),
+                        Expr(
+                            value=Call(
+                                func=Name(id='print', ctx=Load()),
+                                args=[
+                                    JoinedStr(
+                                        values=[
+                                            Constant(value='Producer: '),
+                                            FormattedValue(
+                                                value=Name(id='message', ctx=Load()),
+                                                conversion=-1)])],
+                                keywords=[])),
+                        Expr(
+                            value=Await(
+                                value=Call(
+                                    func=Attribute(
+                                        value=Name(id='send_channel', ctx=Load()),
+                                        attr='send',
+                                        ctx=Load()),
+                                    args=[
+                                        Name(id='message', ctx=Load())],
+                                    keywords=[])))],
+                    orelse=[])],
+            decorator_list=[]),
+        AsyncFunctionDef(
+            name='consumer',
+            args=arguments(
+                posonlyargs=[],
+                args=[
+                    arg(arg='receive_channel')],
+                kwonlyargs=[],
+                kw_defaults=[],
+                defaults=[]),
+            body=[
+                AsyncFor(
+                    target=Name(id='value', ctx=Store()),
+                    iter=Name(id='receive_channel', ctx=Load()),
+                    body=[
+                        Expr(
+                            value=Call(
+                                func=Name(id='print', ctx=Load()),
+                                args=[
+                                    JoinedStr(
+                                        values=[
+                                            Constant(value='Consumer: received'),
+                                            FormattedValue(
+                                                value=Name(id='value', ctx=Load()),
+                                                conversion=114)])],
+                                keywords=[])),
+                        Expr(
+                            value=Await(
+                                value=Call(
+                                    func=Attribute(
+                                        value=Name(id='trio', ctx=Load()),
+                                        attr='sleep',
+                                        ctx=Load()),
+                                    args=[
+                                        Constant(value=1)],
+                                    keywords=[])))],
+                    orelse=[])],
+            decorator_list=[]),
+        AsyncFunctionDef(
+            name='main',
+            args=arguments(
+                posonlyargs=[],
+                args=[],
+                kwonlyargs=[],
+                kw_defaults=[],
+                defaults=[]),
+            body=[
+                AsyncWith(
+                    items=[
+                        withitem(
+                            context_expr=Call(
+                                func=Attribute(
+                                    value=Name(id='trio', ctx=Load()),
+                                    attr='open_nursery',
+                                    ctx=Load()),
+                                args=[],
+                                keywords=[]),
+                            optional_vars=Name(id='nursery', ctx=Store()))],
+                    body=[
+                        Assign(
+                            targets=[
+                                Tuple(
+                                    elts=[
+                                        Name(id='send_channel', ctx=Store()),
+                                        Name(id='receive_channel', ctx=Store())],
+                                    ctx=Store())],
+                            value=Call(
+                                func=Attribute(
+                                    value=Name(id='trio', ctx=Load()),
+                                    attr='open_memory_channel',
+                                    ctx=Load()),
+                                args=[
+                                    Constant(value=0)],
+                                keywords=[])),
+                        Expr(
+                            value=Call(
+                                func=Attribute(
+                                    value=Name(id='nursery', ctx=Load()),
+                                    attr='start_soon',
+                                    ctx=Load()),
+                                args=[
+                                    Name(id='producer', ctx=Load()),
+                                    Name(id='send_channel', ctx=Load())],
+                                keywords=[])),
+                        Expr(
+                            value=Call(
+                                func=Attribute(
+                                    value=Name(id='nursery', ctx=Load()),
+                                    attr='start_soon',
+                                    ctx=Load()),
+                                args=[
+                                    Name(id='consumer', ctx=Load()),
+                                    Name(id='receive_channel', ctx=Load())],
+                                keywords=[]))])],
+            decorator_list=[]),
+        Expr(
+            value=Call(
+                func=Attribute(
+                    value=Name(id='trio', ctx=Load()),
+                    attr='run',
+                    ctx=Load()),
+                args=[
+                    Name(id='main', ctx=Load())],
+                keywords=[]))],
+    type_ignores=[])
+```
+
 * Visualization
 
 ![ast-2](images/python-ast-2.png)
 ![ast-3](images/python-ast-3.png)
+
+
 
 ## Visitor pattern
 
@@ -344,6 +544,8 @@ visitor.visit(tree)
          Operator: +
          Constant: 5
 ```
+
+
 
 ## Compiler
 
@@ -440,3 +642,8 @@ Done
 ```
 
 ## Links
+
+* Python grammar
+  []()
+* Lua grammar
+  []()
