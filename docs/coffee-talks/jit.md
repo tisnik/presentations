@@ -45,6 +45,13 @@
 
 ## Hot-spot based JITs
 
+* 80:20 rule
+    - or rather 90:10 rule
+* Just code executed multiple times is JITed
+    - (don't put the computation loop in main in Java :)
+
+
+
 ## Tracing JITs
 
 * Bytecode analysis during *runtime*
