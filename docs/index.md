@@ -83,6 +83,7 @@ layout: default
 * [Apache Camel](coffee-talks/apache_camel.md)
 * [Python AST: journey from source code to bytecode](coffee-talks/python-ast.md)
 * [JIT](coffee-talks/jit.md)
+* [Pattern matching in Python](coffee-talks/pattern-matching.md)
 
 
 
