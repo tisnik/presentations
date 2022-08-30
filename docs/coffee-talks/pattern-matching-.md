@@ -12,7 +12,7 @@
 ## Semi-flexible
 
 * Not all patterns are possible
-    - like `"literal" + x + "literal"
+    - like `"literal" + x + "literal"`
     - probably in next Python version?
 
 ## Examples
