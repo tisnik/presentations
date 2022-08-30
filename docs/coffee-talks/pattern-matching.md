@@ -11,6 +11,10 @@
 
 ## Semi-flexible
 
+* Not all patterns are possible
+    - like `"literal" + x + "literal"
+    - probably in next Python version?
+
 ## Examples
 
 ### Classic approach
@@ -615,3 +619,7 @@ test_number(Fraction(1,3))
 
 [Source code](https://github.com/tisnik/presentations/blob/master/docs/coffee-talks/pattern-matching/pattern-matching/object2.py)
 
+## WDYT?
+
+* It's good that Python evolve?
+* It is not good as Python is no longer simple language?

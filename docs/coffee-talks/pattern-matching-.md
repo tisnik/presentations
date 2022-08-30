@@ -11,6 +11,10 @@
 
 ## Semi-flexible
 
+* Not all patterns are possible
+    - like `"literal" + x + "literal"
+    - probably in next Python version?
+
 ## Examples
 
 ### Classic approach
@@ -97,3 +101,7 @@
 
 @ pattern-matching/object2.py
 
+## WDYT?
+
+* It's good that Python evolve?
+* It is not good as Python is no longer simple language?
