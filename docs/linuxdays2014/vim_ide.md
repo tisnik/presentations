@@ -433,7 +433,7 @@ Vim a HTML
 ----------
 * Taktéž lze použít xml.vim
 ```
-" Settings for HTML files {{{
+" Settings for HTML files
 "*********************************************************************
 augroup __html__
 au!
@@ -471,7 +471,6 @@ au BufRead,BufNewFile *.html vmap <C-U> omaomb<esc>`bi</u><esc>`ai<u><esc>
 au BufRead,BufNewFile *.html vmap <C-A> omaomb<esc>`bi</a><esc>`ai<a href=""><esc>
 au BufRead,BufNewFile *.html vmap <C-P> omaomb<esc>`ba</p><esc>`ai<p><esc>
 augroup END
-```
 
 Režim diff
 ----------
