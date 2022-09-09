@@ -1,25 +1,25 @@
 ---
 layout: default
 ---
-# Prezentace
+# Presentations
 
-## Odkazy na texty prezentací
+## Links to presentations
 
 ### InstallFest 2015
-* [Pluginy pro Vim](installfest2015/vim.md)
-* [Mikroprocesory ARM](installfest2015/arm.md)
+* [Pluginy pro Vim (CZ)](installfest2015/vim.md)
+* [Mikroprocesory ARM (CZ)](installfest2015/arm.md)
 
 ### InstallFest 2017
-* [Assembler](installfest2017/assembly.md)
-* [Programovací jazyk Rust](installfest2017/rust.md)
-* [Novinky ve Vimu 8](installfest2017/vim8.md)
+* [Assembler (CZ)](installfest2017/assembly.md)
+* [Programovací jazyk Rust (CZ)](installfest2017/rust.md)
+* [Novinky ve Vimu 8 (CZ)](installfest2017/vim8.md)
 
 ### InstallFest 2019
-* [Jazyk Go pro úplné začátečníky](installfest2019/go.md)
-* [Nástroje implementující fronty zpráv](installfest2019/queues.md)
+* [Jazyk Go pro úplné začátečníky (CZ)](installfest2019/go.md)
+* [Nástroje implementující fronty zpráv (CZ)](installfest2019/queues.md)
 
 ### InstallFest 2020
-* [Materials for assembly language workshop](installfest2020/assembler.md)
+* [Materials for assembly language workshop (CZ)](installfest2020/assembler.md)
 
 ### Linux Days 2014
 * [Minimalistický desktop](linuxdays2014/minimalistic_desktop.md)
@@ -37,9 +37,9 @@ layout: default
 ### DevConf 2021
 
 ### Summer camp 2021
-* [Diversity of programming languages](summer_camp_2021/Diversity_of_programming_languages.md)
-* [Go programming language](summer_camp_2021/go.md)
-* [Rust programming language](summer_camp_2021/rust.md)
+* [Diversity of programming languages (EN)](summer_camp_2021/Diversity_of_programming_languages.md)
+* [Go programming language (EN)](summer_camp_2021/go.md)
+* [Rust programming language (EN)](summer_camp_2021/rust.md)
 * [Python programming language](summer_camp_2021/python.md)
 
 ### OpenAlt 2020
@@ -51,7 +51,7 @@ layout: default
 ### JBug
 ### Red Hat Developer Meetup
 
-### Coffee talks
+### Coffee talks (all in EN)
 
 * [What are variables good for?](coffee-talks/clojure_vars.md)
 * [Fast Python possible?](coffee-talks/fast_python.md)
@@ -87,10 +87,10 @@ layout: default
 
 
 
-### Přílohy k článkům
+### Appendices to various articles
 * [Křivky v přírodě, architektuře, stavitelství i v počítačové grafice: matematický popis křivek](appendix/curves.md)
 
-### Ostatní
+### Other presentations
 * [Jazyk Python - tvorba testů s využitím knihovny Behave ](other/BDD_cz.md)
 * [Behavior-driven development (BDD) & Behavior-driven testing (BDT)](other/BDD_en.md)
 * [Behavior-driven development (BDD) & Behavior-driven testing (BDT) in 15 minutes](other/BDD_en_15_minutes.md)
