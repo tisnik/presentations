@@ -1,41 +1,42 @@
-Vim ve funkci integrovaného vývojového prostředí
-================================================
-■ Autor    Pavel Tišnovský
-■ Email    <tisnik 0x40 centrum 0x2e cz>
-■ Datum    2014-10-05
+# Vim ve funkci integrovaného vývojového prostředí
 
-Vim
----
-▶ 1988 Vi iMitation   Bram Moolenaar (Amiga)
-▶ Později přenos na Unixové systémy
-    ◆ Vi iMitation -> Vi iMproved
-▶ Z Vi převzaty:
-    ◆ modální režim práce
-    ◆ klávesové zkratky
-    ◆ většina voleb
-    ◆ příkazy (příkazový režim)
-▶ Podpora pluginů, tabů, oken
-▶ Zvýraznění syntaxe, kontrola pravopisu
-▶ Makra, skriptování
+* Pavel Tišnovský
+    - `tisnik 0x40 centrum 0x2e cz>`
+* Datum: 2014-10-05
+
+## Vim
+
+* 1988 Vi iMitation   Bram Moolenaar (Amiga)
+* Později přenos na Unixové systémy
+    - Vi iMitation -> Vi iMproved
+* Z Vi převzaty:
+    - modální režim práce
+    - klávesové zkratky
+    - většina voleb
+    - příkazy (příkazový režim)
+* Podpora pluginů, tabů, oken
+* Zvýraznění syntaxe, kontrola pravopisu
+* Makra, skriptování
 
 Vim při vývoji
 --------------
-▶ Obecné vlastnosti
-    ◆ Konfigurační volby
-    ◆ Zobrazení textů
-    ◆ Zalamování textů
-    ◆ Folding
-    ◆ Okna, buffery, taby
-▶ Vim a jazyky C/C++
-▶ Vim a Java
-▶ Vim a Clojure
-▶ Vim a XML
-▶ Vim a HTML
-▶ Režim diff
-▶ Editace binárních souborů
+* Obecné vlastnosti
+    - Konfigurační volby
+    - Zobrazení textů
+    - Zalamování textů
+    - Folding
+    - Okna, buffery, taby
+* Vim a jazyky C/C++
+* Vim a Java
+* Vim a Clojure
+* Vim a XML
+* Vim a HTML
+* Režim diff
+* Editace binárních souborů
 
 Základní konfigurační volby
 ---------------------------
+```
     :set nocompatible
     :set ruler
     :set statusline=...
@@ -49,36 +50,46 @@ Základní konfigurační volby
         bude se nabízet seznam souborů po TAB
     :set wildignore=*~,*.bak,*.log,*.aut,*.dvi,*.o
         soubory (masky nazvů), které se nebudou zobrazovat
+```
 
 Volby způsobu zobrazení textů
 -----------------------------
+```
     :set number
     :set list
     :set tabstop=xxx
     :set showmatch
     :set matchpairs=(:),[:],{:},<:>
+```
 
 Chování editoru při chybě
 -------------------------
+```
     :set novisualbell
     :set vb t_vb="
+```
 
 Zvýraznění aktuálního řádku/sloupce
 -----------------------------------
+```
     :set cursorcolumn
     :set cursorline
     :hi CursorLine   guibg=#2d2d2d
     :hi CursorColumn guibg=#2d2d2d
+```
 
 Taby nebo mezery?
 -----------------
+```
     :syn match Tab "\t"
     :syn match Tab2 "\t\t"
     :hi def Tab  ctermbg=lightgreen guibg=#e0ffe0
     :hi def Tab2 ctermbg=lightred guibg=#ffe0e0
+```
 
 Zalamování textu
 ----------------
+```
     :set wrap
         pouze vizuální zalamování (do souborů se nevkládá CR)
     :set nowrap
@@ -89,12 +100,14 @@ Zalamování textu
         vypnutí vizuálního zalamování na hranicích slov
     :set tw=xxx
         automatické zalamování na xxx sloupci (vkládá se CR)
+```
 
 Konfigurace Vimu s GUI
 ----------------------
-▶ vim -g, gvim ...
-▶ .gvimrc
-▶ Konfigurační volby
+* vim -g, gvim ...
+* .gvimrc
+* Konfigurační volby
+```
     :set guifont?
     :set guifont=DejaVu\ Sans\ Mono\ 12
     :set guifont=*
@@ -103,58 +116,70 @@ Konfigurace Vimu s GUI
     :set guioptions+=a       " kdyz neco oznacime pres <v>, tak se to ulozi do clipboardu
     :set guioptions-=T       " vypnuti toolbaru
     :set guioptions-=mM      " vypnuti menu
+```
 
 Příliš mnoho konfiguračních voleb?
 ----------------------------------
-▶ :options
+* :options
 
 Taby, okna, buffery
 -------------------
-▶ Lze vzájemně kombinovat
-    ◆ Taby
+* Lze vzájemně kombinovat
+    - Taby
         • Rozdělení plochy na okna
-▶ Rozdělení plochy na okna
-    ◆ Základ většiny pluginů, které z Vimu dělají IDE
+* Rozdělení plochy na okna
+    - Základ většiny pluginů, které z Vimu dělají IDE
 
 Taby
 ----
+```
     :tabnew
     :tabnew soubor
     :tabnext
     :tabfirst
     Ctrl+W gf
+```
 
 Okna
 ----
-▶ Vytvoření a zrušení oken
+* Vytvoření a zrušení oken
+```
     Ctrl+W n (new)
     Ctrl+W s (split)
     Ctrl+W v (vertical split)
     Ctrl+W f (file)
     :q
-▶ Přepínání mezi okny, přesuny oken
+```
+* Přepínání mezi okny, přesuny oken
+```
     Ctrl+W w (přepínání oken)
     Ctrl+W Ctrl+W (dtto, ale rychlejší)
     Ctrl+W h/j/k/l (přepínání oken v daném směru)
     Ctrl+W<Shift>h/j/k/l (přesun oken)
+```
 
 Okna
 ----
+```
     Ctrl++   (zvětšení pro horizontálně rozdělené okno)
     Ctrl+-   (zmenšení pro horizontálně rozdělené okno)
     Ctrl+=   (stejná velikost)
     Ctrl+>   (zvětšení pro vertikálně rozdělené okno)
     Ctrl+<   (zmenšení pro vertikálně rozdělené okno)
+```
 
 Buffery
 -------
+```
     :bn(ext)
     :bp(rev)
     :bf(irst)
     :bl(ast)
+```
 
 Folding
 -------
+```
     :set foldmethod
         manual
         indent
@@ -168,26 +193,28 @@ Folding
     zc  (close) zC - rekurze
     zv  (view cursor line)
     zd  (delete)   - ne pro text
+```
 
 Práce s tagy
 ------------
-▶ Vytvoření souborů taglist.txt
-    ◆ ctags
-    ◆ ctags -R
-    ◆ ctags -R /usr/lib/include
-        • Obrovské soubory, lepší skok na manuálovou stránku
-        • Shift+K
-▶ Skok na definici
+* Vytvoření souborů taglist.txt
+    - ctags
+    - ctags -R
+    - ctags -R /usr/lib/include
+        - Obrovské soubory, lepší skok na manuálovou stránku
+        - Shift+K
+* Skok na definici
     :tag jméno funkce        lze zadat i regulárním výrazem
      g+Levé tlačítko myši    nefunkční v terminálu
      Ctrl+Levé tlačítko myši nefunkční v terminálu
      Ctrl+]                  ve vizuálním režimu podobné :tag
-▶ Návrat zpět
-    ◆ Ctrl+T
-▶ Pohyb po nápovědě Vimu je řešen právě tímto způsobem
+* Návrat zpět
+    - Ctrl+T
+* Pohyb po nápovědě Vimu je řešen právě tímto způsobem
 
 Operátory
 ---------
+```
     c   change      změna textu (delete a následný přechod do vkládacího režimu)
     d   delete      vymazání textu
     y   yank        kopie textu do registru
@@ -202,14 +229,18 @@ Operátory
     =   indent      změna zarovnání textu, buď interním algoritmem,
                     nebo pomocí externího programu definovaného v equalprg
     zf  fold        viz další slajdy
+```
 
 Pohyb po zdrojovém kódu
 -----------------------
+```
     %   přeskok mezi znaky definovanými volbou matchpairs
     :set matchpairs=(:),[:],{:},<:>
+```
 
 Editace zdrojového kódu (1)
 ---------------------------
+```
     dab delete a block     (omezeno kulatými závorkam)
     dib delete inner block (omezeno kulatými závorkami)
     daB delete a Block     (omezeno složenými závorkami)
@@ -220,9 +251,11 @@ Editace zdrojového kódu (1)
     cib change inner block (kulaté závorky)
     caB change a Block     (složené závorky)
     ciB change inner Block (složené závorky)
+```
 
 Editace zdrojového kódu (2)
 ---------------------------
+```
     =   zarovnání textu vybraného libovolnou výběrovou operací
     =aB indent a Block  kombinace operátoru = a výběru bloku mezi {}
     >   posun vybraného textu doprava o shiftwidth
@@ -230,6 +263,7 @@ Editace zdrojového kódu (2)
         - lze kombinovat s Shift+V
     >>  posun jediného řádku doprava
     <<  posun jediného řádku doleva
+```
 
 Obecné moduly
 -------------
@@ -248,6 +282,7 @@ Obecné moduly
 
 Překlad programů z Vimu
 ------------------
+```
     :make   spuštění překladu
     :clist  výpis všech chybových hlášení
     :cfirst přechod na první chybu
@@ -255,20 +290,21 @@ Překlad programů z Vimu
     :cp     přechod na předchozí chybu
     :cn     přechod na následující chybu
     :set makeprg=javac\ %
+```
 
 Vim a jazyky C/C++
 ------------------
-▶ c.vim
-    ◆ Komentáře
-    ◆ Šablony
-    ◆ Překlady
-    ◆ Spouštění
-    ◆ Ideální si zobrazit menu
+* c.vim
+    - Komentáře
+    - Šablony
+    - Překlady
+    - Spouštění
+    - Ideální si zobrazit menu
 
 Vim a jazyky C/C++
 ------------------
-    ◆ ctags
-    ◆ cscope
+    - ctags
+    - cscope
         :cscope add cscope.out
     :cs show
         výpis propojení mezi Vimem a utilitou cscope
@@ -285,7 +321,7 @@ Vim a jazyky C/C++
 
 Vim a jazyky C/C++
 ------------------
-    ◆ Formátování zdrojového kódu (C, C++, Java)
+    - Formátování zdrojového kódu (C, C++, Java)
         :set shiftwidth=???
         :set cindent
         :set cinoptions
@@ -297,7 +333,7 @@ Vim a jazyky C/C++
 
 Vim a jazyky C/C++
 ------------------
-    ◆ Speciální nastavení pro Makefile
+    - Speciální nastavení pro Makefile
         augroup __makefile__
         au!
         au BufRead,BufNewFile Makefile set noexpandtab
@@ -372,30 +408,30 @@ augroup END
 
 Vim a Lua
 ---------
-▶ lua-support.vim a.k.a. Lua-IDE
-    ◆ Šablony (soubory s nimi lze upravovat)
-▶ Luaref
-    ◆ Kompletní referenční příručka ve formátu Vim helpu!
+* lua-support.vim a.k.a. Lua-IDE
+    - Šablony (soubory s nimi lze upravovat)
+* Luaref
+    - Kompletní referenční příručka ve formátu Vim helpu!
 
 Vim a Clojure
 -------------
-▶ Slime for Vim
-    ◆ Využívá screen a posílání příkazů do běžícího REPLu
-    ◆ Jednoduché a přitom velmi snadno použitelné (kompletní IDE :-)
-▶ Vimclojure
+* Slime for Vim
+    - Využívá screen a posílání příkazů do běžícího REPLu
+    - Jednoduché a přitom velmi snadno použitelné (kompletní IDE :-)
+* Vimclojure
 
 Vim a XML
 ---------
-▶ Modul xml.vim
-    ◆ http://www.vim.org/scripts/script.php?script_id=301
-    ◆ Uzavírání tagů, kompletace tagů, ...
+* Modul xml.vim
+    - http://www.vim.org/scripts/script.php?script_id=301
+    - Uzavírání tagů, kompletace tagů, ...
 :%!xmllint --format -
 :'<,'>!xmllint --format -
 :map =. :%!xmllint --format - <cr>
 
 Vim a HTML
 ----------
-▶ Taktéž lze použít xml.vim
+* Taktéž lze použít xml.vim
 " Settings for HTML files {{{
 "*********************************************************************
 augroup __html__
@@ -437,9 +473,9 @@ augroup END
 
 Režim diff
 ----------
-▶ vim -d test_old.c test_new.c
-▶ vim -d test.c ../test-sources/
-▶ Příkazy
+* vim -d test_old.c test_new.c
+* vim -d test.c ../test-sources/
+* Příkazy
     [c skok na začátek předchozího bloku se změnami
     ]c skok na začátek následujícího bloku se změnami
     dp přenos změny do druhého souboru
@@ -449,10 +485,10 @@ Režim diff
 
 Editace binárních souborů
 -------------------------
-▶ Editace binárních souborů velmi obtížná
-▶ Mnoho programátorů preferuje hexa editory
-▶ xxd
-▶ Příklad použití pro soubory *.class
+* Editace binárních souborů velmi obtížná
+* Mnoho programátorů preferuje hexa editory
+* xxd
+* Příklad použití pro soubory *.class
 augroup Binary_Java_Class
     au!
     au BufReadPre   *.class let &bin=1
@@ -485,9 +521,9 @@ Editace binárních souborů
 
 Změna obarvení zdrojových kódů
 ------------------------------
-▶ Jaké barvy dokáže zobrazit váš terminál?
+* Jaké barvy dokáže zobrazit váš terminál?
     :source $VIMRUNTIME/syntax/colortest.vim
-▶ Převod zdrojového kódu na HTML
+* Převod zdrojového kódu na HTML
     :source $VIMRUNTIME/syntax/2html.vim
 
 Příklad obarvení - tyto slajdy :-)
@@ -528,7 +564,7 @@ Caps Lock namísto ESC
 
 Vimscript
 ---------
-▶ Opět viz způsob zobrazení těchto slajdů
+* Opět viz způsob zobrazení těchto slajdů
 .
 let g:slides=readfile("list.txt")
 let g:index = 0
@@ -601,14 +637,16 @@ Odkazy
     www.vim.org
     vim.wikia.com/wiki/Vim_Tips_Wiki
 
-.      _____________________
-.     < Děkuji za pozornost >
-.      ---------------------
-.       \
-.        \   \_\_    _/_/
-.         \      \__/
-.                (oo)\_______
-.                (__)\       )\/\
-.                    ||----w |
-.                    ||     ||
-.     
+```
+      _____________________
+     < Děkuji za pozornost >
+      ---------------------
+       \
+        \   \_\_    _/_/
+         \      \__/
+                (oo)\_______
+                (__)\       )\/\
+                    ||----w |
+                    ||     ||
+     
+```
