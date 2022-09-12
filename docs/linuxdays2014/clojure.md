@@ -1,8 +1,13 @@
 # Clojure prakticky
 
 * Pavel Tišnovský
-    - `tisnik 0x40 centrum 0x2e cz>`
+    - `tisnik 0x40 centrum 0x2e cz`
 * Datum: 2014-10-05
+* Prezentace:
+    - [https://tisnik.github.io/presentations/linuxdays2014/clojure.html](https://tisnik.github.io/presentations/linuxdays2014/clojure.html)
+* Zdrojový kód prezentace v plain textu:
+    - [https://github.com/tisnik/presentations/blob/master/linuxdays2014/clojure/clojure.txt](https://github.com/tisnik/presentations/blob/master/linuxdays2014/clojure/clojure.txt)
+
 
 
 ## Základní informace o Clojure (1)
@@ -80,7 +85,7 @@
 
 * Neměnné/immutable
     - Seznam
-        * first, rest, count
+        * `first`, `rest`, `count`
     - Vektor
         * velmi důležitá a užitečná datová struktura
         * založen na RRB-Stromech
@@ -89,6 +94,7 @@
         * rychlý přístup k prvkům O(log₃₂N)
     - Mapa
         * základ formátu .edn
+        * Extensible Data Notation
     - Množina
 
 ## Funkce pro práci s kolekcemi
@@ -128,21 +134,22 @@
 * Read Eval Print Loop
 * Naprostý základ při tvorbě a především ladění aplikací
 * Přímé spuštění REPL
-    - java -cp .:clojure-1.5.1.jar clojure.main
+    - `java -cp .:clojure-1.5.1.jar clojure.main`
 * Existují i lepší možnosti!
+    - `lein repl`
 
 ## REPL ve Screenu
 
 * Spuštění
-    - screen -S clojure bash -c 'java -cp .:clojure-1.5.1.jar clojure.main'
+    - `screen -S clojure bash -c 'java -cp .:clojure-1.5.1.jar clojure.main'`
 * Výhody
     - lze ovládat i z jiného programu
     - základ - poslání textu do screenu tak, jakoby byl zapsán na klávesnici
 * Příklady
-    - screen -S clojure -p 0 -X stuff "(+ 1 2)\\n"
-    - screen -S clojure -p 0 -X stuff "(range 1 10)\\n"
-    - screen -S clojure -p 0 -X stuff "(defn add [x y] (+ x y))\n"
-    - screen -S clojure -p 0 -X stuff "(add 1 2)\n"
+    - `screen -S clojure -p 0 -X stuff "(+ 1 2)\\n"`
+    - `screen -S clojure -p 0 -X stuff "(range 1 10)\\n"`
+    - `screen -S clojure -p 0 -X stuff "(defn add [x y] (+ x y))\n"`
+    - `screen -S clojure -p 0 -X stuff "(add 1 2)\n"`
 * Použito v pluginu Slime for Vim
 
 ## IDE
@@ -200,10 +207,10 @@
 ## Leiningen a REPL
 
 * Základní tvar
-    - lein repl
+    - `lein repl`
 * Leiningen REPL + Screen
-    - screen -S clojure
-    - lein repl
+    - `screen -S clojure`
+    - `lein repl`
 
 ## JSON
 
@@ -431,7 +438,7 @@ nil, :content [{:tag :clone, :attrs nil, :content ["no"]} {:tag :output, :attrs
     (start-server 8080))
 ```
 
-## Zpracování requestu
+## Zpracování požadavku (requestu)
 
 ```clojure
 (ns servertest2.core)
@@ -491,7 +498,7 @@ nil, :content [{:tag :clone, :attrs nil, :content ["no"]} {:tag :output, :attrs
     (start-server 8080))
 ```
 
-## Sessions
+## Sezení (sessions)
 
 ```clojure
 (ns servertest3.core)
