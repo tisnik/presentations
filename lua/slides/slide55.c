@@ -14,8 +14,7 @@ Interpret jazyka Lua vestavěný do C-čkových programů
 int main(int argc, char **argv)
 {
     int result;
-    if (argc != 2)
-    {
+    if (argc != 2) {
         puts("Pouziti: lua62 script.lua");
         return 1;
     }
@@ -27,7 +26,7 @@ int main(int argc, char **argv)
     putchar('\n');
 
     /* vytvoreni objektu, do nejz se uklada stav interpretu */
-    lua_State* L = lua_open();
+    lua_State *L = lua_open();
 
     /* nacteme zakladni knihovnu obsahujici mj. i funkci print() */
     luaopen_base(L);
@@ -37,12 +36,10 @@ int main(int argc, char **argv)
 
     /* odstraneni vsech objektu asociovanych se stavem "Lua" */
     lua_close(L);
-    if (result != 0)
-    {
+    if (result != 0) {
         printf("Error # %d\n", result);
     }
 
     /* vypocet navratoveho kodu */
     return (result != 0);
 }
-
