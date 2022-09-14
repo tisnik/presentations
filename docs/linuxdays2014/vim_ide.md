@@ -3,6 +3,10 @@
 * Pavel Tišnovský
     - `tisnik 0x40 centrum 0x2e cz>`
 * Datum: 2014-10-05
+* Prezentace:
+    - [https://tisnik.github.io/presentations/linuxdays2014/vim_ide.html](https://tisnik.github.io/presentations/linuxdays2014/vim_ide.html)
+* Zdrojový kód prezentace v plain textu:
+    - [https://github.com/tisnik/presentations/blob/master/linuxdays2014/vim/vim.txt](https://github.com/tisnik/presentations/blob/master/linuxdays2014/vim/vim.txt)
 
 ## Vim
 
@@ -373,6 +377,7 @@ Omnicompletion
 
 Vim a Java
 ----------
+```
 augroup __java__
 au!
 au BufReadPre,BufNewFile *.java set fileencodings=utf-8 fileencoding=utf-8 encoding=utf-8
@@ -386,6 +391,7 @@ au BufRead,BufNewFile *.java so ~/javabrowser.vim
 au BufRead,BufNewFile *.java noremap ,c O/**<CR>*<CR>*/<Esc>
 au BufRead,BufNewFile *.java inoremap ,p * @param<Space>
 augroup END
+```
 
 Vim a Java
 ----------
@@ -399,16 +405,18 @@ Vim a Java
 
 Vim a assembler
 ---------------
+```
 augroup __asm__
 au!
 au BufRead,BufNewFile *.asm set tw=0 nowrap
 au BufRead,BufNewFile *.asm noremap <C-F9> :!nasm -f bin % -o output.com -l output.lst<CR>
 au BufRead,BufNewFile *.asm noremap <F9> :!start output.com<CR>
 augroup END
+```
 
 Vim a Lua
 ---------
-* lua-support.vim a.k.a. Lua-IDE
+* `lua-support.vim` a.k.a. Lua-IDE
     - Šablony (soubory s nimi lze upravovat)
 * Luaref
     - Kompletní referenční příručka ve formátu Vim helpu!
@@ -425,13 +433,17 @@ Vim a XML
 * Modul xml.vim
     - http://www.vim.org/scripts/script.php?script_id=301
     - Uzavírání tagů, kompletace tagů, ...
+
+```
 :%!xmllint --format -
 :'<,'>!xmllint --format -
 :map =. :%!xmllint --format - <cr>
+```
 
 Vim a HTML
 ----------
-* Taktéž lze použít xml.vim
+* Taktéž lze použít `xml.vim`
+
 ```
 " Settings for HTML files
 "*********************************************************************
@@ -471,25 +483,28 @@ au BufRead,BufNewFile *.html vmap <C-U> omaomb<esc>`bi</u><esc>`ai<u><esc>
 au BufRead,BufNewFile *.html vmap <C-A> omaomb<esc>`bi</a><esc>`ai<a href=""><esc>
 au BufRead,BufNewFile *.html vmap <C-P> omaomb<esc>`ba</p><esc>`ai<p><esc>
 augroup END
+```
 
 Režim diff
 ----------
-* vim -d test_old.c test_new.c
-* vim -d test.c ../test-sources/
+* `vim -d test_old.c test_new.c`
+* `vim -d test.c ../test-sources/`
 * Příkazy
-    [c skok na začátek předchozího bloku se změnami
-    ]c skok na začátek následujícího bloku se změnami
-    dp přenos změny do druhého souboru
-    do opak předchozího příkazu – získání změny
-    :diffupdate tento příkaz provede nové vyhodnocení
+    `[c` skok na začátek předchozího bloku se změnami
+    `]c` skok na začátek následujícího bloku se změnami
+    `dp` přenos změny do druhého souboru
+    `do` opak předchozího příkazu – získání změny
+    `:diffupdate` tento příkaz provede nové vyhodnocení
        rozdílů mezi oběma
 
 Editace binárních souborů
 -------------------------
 * Editace binárních souborů velmi obtížná
 * Mnoho programátorů preferuje hexa editory
-* xxd
-* Příklad použití pro soubory *.class
+* `xxd`
+* Příklad použití pro soubory `*.class`
+
+```
 augroup Binary_Java_Class
     au!
     au BufReadPre   *.class let &bin=1
@@ -500,9 +515,11 @@ augroup Binary_Java_Class
     au BufWritePost *.class if &bin | %!xxd -g1
     au BufWritePost *.class set nomod | endif
 augroup END
+```
 
 Editace binárních souborů
 -------------------------
+```
 0000000: ca fe ba be 00 00 00 32 00 0f 0a 00 03 00 0c 07  .......2........
 0000010: 00 0d 07 00 0e 01 00 06 3c 69 6e 69 74 3e 01 00  ........<init>..
 0000020: 03 28 29 56 01 00 04 43 6f 64 65 01 00 0f 4c 69  .()V...Code...Li
@@ -519,16 +536,18 @@ Editace binárních souborů
 00000d0: 00 09 00 01 00 06 00 00 00 19 00 00 00 01 00 00  ................
 00000e0: 00 01 b1 00 00 00 01 00 07 00 00 00 06 00 01 00  ................
 00000f0: 00 00 03 00 01 00 0a 00 00 00 02 00 0b           .............
+```
 
 Změna obarvení zdrojových kódů
 ------------------------------
 * Jaké barvy dokáže zobrazit váš terminál?
-    :source $VIMRUNTIME/syntax/colortest.vim
+    `:source $VIMRUNTIME/syntax/colortest.vim`
 * Převod zdrojového kódu na HTML
-    :source $VIMRUNTIME/syntax/2html.vim
+    `:source $VIMRUNTIME/syntax/2html.vim`
 
 Příklad obarvení - tyto slajdy :-)
 ----------------------------------
+```
 augroup __ascii__
   au!
   au BufRead,BufNewFile *.txt syn match odrazka1 "^\%d9654.*"
@@ -540,9 +559,11 @@ augroup __ascii__
   au BufRead,BufNewFile *.txt hi odrazka3 ctermfg=lightcyan  guifg=#e0e0ff
   au BufRead,BufNewFile *.txt hi nadpis   ctermfg=white  guifg=white
 augroup END
+```
 
 Další příklad obarvení - logo Vimu
 ----------------------------------
+```
 augroup __logo__
   au BufRead,BufNewFile vim.logo syn match zeleny_ctverec "+"
   au BufRead,BufNewFile vim.logo syn match ide "[#m\"]"
@@ -552,40 +573,46 @@ augroup __logo__
   au BufRead,BufNewFile vim.logo hi  ide            ctermfg=yellow     guifg=yellow
   au BufRead,BufNewFile vim.logo hi  normal guifg=gray
 augroup END
+```
 
 Mapování kláves
 ---------------
+```
     au BufRead,BufNewFile *.java noremap <F10> :JavaBrowser<CR>
     au BufRead,BufNewFile *.java inoremap <F10> <Esc>:JavaBrowser<CR>
     iabb Amaroute Amaurote
+```
 
 Caps Lock namísto ESC
 ---------------------
+```
     xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+```
 
 Vimscript
 ---------
 * Opět viz způsob zobrazení těchto slajdů
-.
+
+```
 let g:slides=readfile("list.txt")
 let g:index = 0
-.
+
 function! GotoFirstSlide()
     let g:index = 0
 endfunction
-.
+
 function! GotoLastSlide()
     let g:index = len(g:slides) - 1
 endfunction
-.
+
 function! BeforeFirstSlide()
     return g:index < 0
 endfunction
-.
+
 function! AfterLastSlide()
     return g:index >= len(g:slides)
 endfunction
-.
+
 function! ShowNextSlide()
     let g:index += 1
     if AfterLastSlide()
@@ -593,7 +620,7 @@ function! ShowNextSlide()
     endif
     call ShowActualSlide()
 endfunction
-.
+
 function! ShowPrevSlide()
     let g:index -= 1
     if BeforeFirstSlide()
@@ -601,37 +628,38 @@ function! ShowPrevSlide()
     endif
     call ShowActualSlide()
 endfunction
-.
+
 function! ShowFirstSlide()
     call GotoFirstSlide()
     call ShowActualSlide()
 endfunction
-.
+
 function! ShowLastSlide()
     call GotoLastSlide()
     call ShowActualSlide()
 endfunction
-.
+
 function! ShowActualSlide()
     execute "edit" g:slides[g:index]
 endfunction
-.
+
 function! StatusLine()
     return "Slide " . (1+g:index) . "/" . len(g:slides) . " : " . g:slides[g:index]
 endfunction
-.
+
 " Hot keys
 map <PageUp>   :call ShowPrevSlide()<cr>
 map <PageDown> :call ShowNextSlide()<cr>
 map <Home>     :call ShowFirstSlide()<cr>
 map <End>      :call ShowLastSlide()<cr>
-.
+
 " Setup
 set statusline=%!StatusLine()
-.
+
 " Would be better to show status line even if only one window is displayed
 set laststatus=2
 :call ShowFirstSlide()
+```
 
 Odkazy
 ------
