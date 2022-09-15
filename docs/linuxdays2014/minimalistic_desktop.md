@@ -22,9 +22,9 @@ Raspberry Pi ve funkci desktopu
 -------------------------------
 * Model B+
     - SoC BCM2835
-        • CPU + GPU
+        - CPU + GPU
     - 512 MB RAM
-        • "nasazena" na SoC
+        - "nasazena" na SoC
     - 4xUSB konektor
     - Ethernet
     - HDMI + TV výstup
@@ -57,6 +57,7 @@ Raspberry Pi: konfigurace pro desktop
 
 Obsazení MicroSD (a samozřejmě i disku)
 ---------------------------------------
+```
 ~ $ df -H
 Filesystem      Size  Used Avail Use% Mounted on
 rootfs          6.1G  2.4G  3.5G  41% /
@@ -67,9 +68,11 @@ tmpfs           5.3M     0  5.3M   0% /run/lock
 tmpfs           401M     0  401M   0% /run/shm
 /dev/mmcblk0p5   62M   11M   52M  17% /boot
 /dev/sda1        78G  5.5G   68G   8% /mnt
+```
 
 Linky na nejčastěji modifikované adresáře
 -----------------------------------------
+```
 drwxr-xr-x   2 root root  4096 Sep 11 21:17 bin
 drwxr-xr-x   2 root root  1536 Jan  1  1970 boot
 drwxr-xr-x  14 root root  3360 Sep 18 19:27 dev
@@ -92,10 +95,12 @@ lrwxrwxrwx   1 root root     8 Sep 11 20:00 tmp -> /mnt/tmp
 drwxr-xr-x  10 root root  4096 Jan  1  1970 usr
 lrwxrwxrwx   1 root root    11 Sep 12 19:53 var -> /mnt/var
 drwxr-xr-x  11 root root  4096 Sep 11 19:56 var_
+```
 
 Reálné "vytížení" paměťových médií
 -----------------------------------------
 * Tři hodiny reálné činnosti počítače: web+psaní těchto slajdů :-)
+```
 .
 pi@raspberrypi ~ $ uptime
  22:23:09 up  3:00,  5 users,  load average: 0.63, 0.57, 0.64
@@ -105,6 +110,7 @@ pi@raspberrypi ~ $ cat /proc/fs/jbd2/mmcblk0p6-8/info
 .
 pi@raspberrypi ~ $ cat /proc/fs/jbd2/sda1-8/info 
 1063 transactions (704 requested), each up to 8192 blocks
+```
 
 Minimalistický desktop
 ----------------------
@@ -146,21 +152,23 @@ Programové vybavení [3]
     - (G)Vim
     - Emacs
     - a asi 50 dalších možností
-.        ________ ++     ________
-.       /VVVVVVVV\++++  /VVVVVVVV\
-.       \VVVVVVVV/++++++\VVVVVVVV/
-.        |VVVVVV|++++++++/VVVVV/'
-.        |VVVVVV|++++++/VVVVV/'
-.       +|VVVVVV|++++/VVVVV/'+
-.     +++|VVVVVV|++/VVVVV/'+++++
-.   +++++|VVVVVV|/VVVVV/'+++++++++
-.     +++|VVVVVVVVVVV/'+++++++++
-.       +|VVVVVVVVV/'+++++++++
-.        |VVVVVVV/'+++++++++
-.        |VVVVV/'+++++++++
-.        |VVV/'+++++++++
-.        'V/'   ++++++
-.                 ++
+```
+         ________ ++     ________
+        /VVVVVVVV\++++  /VVVVVVVV\
+        \VVVVVVVV/++++++\VVVVVVVV/
+         |VVVVVV|++++++++/VVVVV/'
+         |VVVVVV|++++++/VVVVV/'
+        +|VVVVVV|++++/VVVVV/'+
+      +++|VVVVVV|++/VVVVV/'+++++
+    +++++|VVVVVV|/VVVVV/'+++++++++
+      +++|VVVVVVVVVVV/'+++++++++
+        +|VVVVVVVVV/'+++++++++
+         |VVVVVVV/'+++++++++
+         |VVVVV/'+++++++++
+         |VVV/'+++++++++
+         'V/'   ++++++
+                  ++
+```
 
 Programové vybavení [4]
 -----------------------
@@ -179,12 +187,13 @@ Programové vybavení [5]
 -----------------------
 * Komunikace
     - BitlBee+WeeChat
-.
+```
  ___       __         ______________        _____
  __ |     / /___________  ____/__  /_______ __  /_
  __ | /| / /_  _ \  _ \  /    __  __ \  __ `/  __/
  __ |/ |/ / /  __/  __/ /___  _  / / / /_/ // /_
  ____/|__/  \___/\___/\____/  /_/ /_/\__,_/ \__/
+```
 
 Programové vybavení [6]
 -----------------------
@@ -196,23 +205,26 @@ Programové vybavení [6]
     - Links2
     - Textové prohlížeče: lynx, links, elinks, w3m
 
+```
  _____________________
 < Děkuji za pozornost >
  ---------------------
-. \
-.  \   \_\_    _/_/
-.   \      \__/
-.          (oo)\_______
-.          (__)\       )\/\
-.              ||----w |
-.              ||     ||
+  \
+   \   \_\_    _/_/
+    \      \__/
+           (oo)\_______
+           (__)\       )\/\
+               ||----w |
+               ||     ||
+```
 
+```
  _________
 < Otázky? >
  ---------
    \
-.   \
-.   ____
+    \
+    ____
    /# /_\_
   |  |/o\o\
   |  \\_/_/
@@ -226,5 +238,6 @@ Programové vybavení [6]
   \_|  o|
   /\___/
  /  ||||__
-.   (___)_)
+    (___)_)
 ..............................................
+```
