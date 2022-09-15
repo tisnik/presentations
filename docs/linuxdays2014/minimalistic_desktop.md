@@ -100,14 +100,14 @@ drwxr-xr-x  11 root root  4096 Sep 11 19:56 var_
 Reálné "vytížení" paměťových médií
 -----------------------------------------
 * Tři hodiny reálné činnosti počítače: web+psaní těchto slajdů :-)
+
 ```
-.
 pi@raspberrypi ~ $ uptime
  22:23:09 up  3:00,  5 users,  load average: 0.63, 0.57, 0.64
-.
+
 pi@raspberrypi ~ $ cat /proc/fs/jbd2/mmcblk0p6-8/info 
 6 transactions (2 requested), each up to 8192 blocks
-.
+
 pi@raspberrypi ~ $ cat /proc/fs/jbd2/sda1-8/info 
 1063 transactions (704 requested), each up to 8192 blocks
 ```
@@ -125,14 +125,14 @@ Minimalistický desktop
 
 Programové vybavení [1]
 -----------------------
-    - Správce souborů
-    - Webové prohlížeče
-    - Textové editory
-    - Textové procesory
-    - Tabulkové procesory
-    - Prohlížeče obrázků
-    - Editory obrázků
-    - Komunikace
+* Správce souborů
+* Webové prohlížeče
+* Textové editory
+* Textové procesory
+* Tabulkové procesory
+* Prohlížeče obrázků
+* Editory obrázků
+* Komunikace
 
 Programové vybavení [2]
 -----------------------
@@ -152,6 +152,7 @@ Programové vybavení [3]
     - (G)Vim
     - Emacs
     - a asi 50 dalších možností
+
 ```
          ________ ++     ________
         /VVVVVVVV\++++  /VVVVVVVV\
