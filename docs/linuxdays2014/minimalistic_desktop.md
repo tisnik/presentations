@@ -1,55 +1,59 @@
-Minimalistický desktop
-======================
-■ Autor    Pavel Tišnovský
-■ Email    <tisnik 0x40 centrum 0x2e cz>
-■ Datum    2014-10-04
+# Minimalistický desktop
+
+* Pavel Tišnovský
+    - `tisnik 0x40 centrum 0x2e cz`
+* Datum: 2014-10-06
+* Prezentace:
+    - [https://tisnik.github.io/presentations/linuxdays2014/minimalistic_desktop.html](https://tisnik.github.io/presentations/linuxdays2014/minimalistic_desktop.html)
+* Zdrojový kód prezentace v plain textu:
+    - [https://github.com/tisnik/presentations/blob/master/linuxdays2014/minimalistic_desktop/desktop.txt](https://github.com/tisnik/presentations/blob/master/linuxdays2014/minimalistic_desktop/desktop.txt)
 
 Konfigurace desktopu pro méně výkonné počítače
 ----------------------------------------------
-▶ Starší PC
-    ◆ Školy, neziskové organizace...
-▶ Notebooky/netbooky na bázi Intel Atomu
-▶ Počítače osazené SoC (Koomey's law)
-    ◆ Raspberry Pi
-    ◆ BeagleBoard
-    ◆ PandaBoard
+* Starší PC
+    - Školy, neziskové organizace...
+* Notebooky/netbooky na bázi Intel Atomu
+* Počítače osazené SoC (Koomey's law)
+    - Raspberry Pi
+    - BeagleBoard
+    - PandaBoard
 
 Raspberry Pi ve funkci desktopu
 -------------------------------
-▶ Model B+
-    ◆ SoC BCM2835
+* Model B+
+    - SoC BCM2835
         • CPU + GPU
-    ◆ 512 MB RAM
+    - 512 MB RAM
         • "nasazena" na SoC
-    ◆ 4xUSB konektor
-    ◆ Ethernet
-    ◆ HDMI + TV výstup
-    ◆ Audio výstup
-    ◆ MicroSD + Externí HDD (over USB)
+    - 4xUSB konektor
+    - Ethernet
+    - HDMI + TV výstup
+    - Audio výstup
+    - MicroSD + Externí HDD (over USB)
 
 Raspberry Pi: SoC
 -------------------------------
-▶ CPU
-    ◆ Rodina ARM11
-    ◆ Instrukční sada ARMv6
-    ◆ 700 MHz
-    ◆ Lze snadno přetaktovat až na 1 GHz
-    ◆ Poměrně slabý výkon pro desktopové aplikace
-▶ GPU
-    ◆ HVS - Hardware Video Scaler
-    ◆ 24 GFLOPS
-    ◆ silný zejména v GPU výpočtech (x desktop)
+* CPU
+    - Rodina ARM11
+    - Instrukční sada ARMv6
+    - 700 MHz
+    - Lze snadno přetaktovat až na 1 GHz
+    - Poměrně slabý výkon pro desktopové aplikace
+* GPU
+    - HVS - Hardware Video Scaler
+    - 24 GFLOPS
+    - silný zejména v GPU výpočtech (x desktop)
 
 Raspberry Pi: konfigurace pro desktop
 -------------------------------------
-▶ MicroSD (8GB)
-    ◆ Raspbian
-    ◆ požadavek: minimum zápisů
-▶ Externí HDD
-    ◆ připojený přes konvertor USB
-    ◆ ext3 + swap
-    ◆ automount přes fstab
-    ◆ linky na /tmp /var a /home
+* MicroSD (8GB)
+    - Raspbian
+    - požadavek: minimum zápisů
+* Externí HDD
+    - připojený přes konvertor USB
+    - ext3 + swap
+    - automount přes fstab
+    - linky na /tmp /var a /home
 
 Obsazení MicroSD (a samozřejmě i disku)
 ---------------------------------------
@@ -91,7 +95,7 @@ drwxr-xr-x  11 root root  4096 Sep 11 19:56 var_
 
 Reálné "vytížení" paměťových médií
 -----------------------------------------
-▶ Tři hodiny reálné činnosti počítače: web+psaní těchto slajdů :-)
+* Tři hodiny reálné činnosti počítače: web+psaní těchto slajdů :-)
 .
 pi@raspberrypi ~ $ uptime
  22:23:09 up  3:00,  5 users,  load average: 0.63, 0.57, 0.64
@@ -104,44 +108,44 @@ pi@raspberrypi ~ $ cat /proc/fs/jbd2/sda1-8/info
 
 Minimalistický desktop
 ----------------------
-▶ Desktop
-    ◆ LXDE
-    ◆ XFCE
-    ◆ Fluxbox
-    ◆ Tile window manažery
+* Desktop
+    - LXDE
+    - XFCE
+    - Fluxbox
+    - Tile window manažery
         • wmii
         • awesome
         • atd. atd.
 
 Programové vybavení [1]
 -----------------------
-    ◆ Správce souborů
-    ◆ Webové prohlížeče
-    ◆ Textové editory
-    ◆ Textové procesory
-    ◆ Tabulkové procesory
-    ◆ Prohlížeče obrázků
-    ◆ Editory obrázků
-    ◆ Komunikace
+    - Správce souborů
+    - Webové prohlížeče
+    - Textové editory
+    - Textové procesory
+    - Tabulkové procesory
+    - Prohlížeče obrázků
+    - Editory obrázků
+    - Komunikace
 
 Programové vybavení [2]
 -----------------------
-▶ Správce souborů
-    ◆ PCmanFM
-    ◆ Thunar
-    ◆ Midnight Commander
+* Správce souborů
+    - PCmanFM
+    - Thunar
+    - Midnight Commander
 
-▶ Textové procesory
+* Textové procesory
     (jsou skutečně zapotřebí? :-)
-    ◆ Abiword
+    - Abiword
 
 Programové vybavení [3]
 -----------------------
-▶ Textové editory
-    ◆ Leafpad/Mousepad/NE
-    ◆ (G)Vim
-    ◆ Emacs
-    ◆ a asi 50 dalších možností
+* Textové editory
+    - Leafpad/Mousepad/NE
+    - (G)Vim
+    - Emacs
+    - a asi 50 dalších možností
 .        ________ ++     ________
 .       /VVVVVVVV\++++  /VVVVVVVV\
 .       \VVVVVVVV/++++++\VVVVVVVV/
@@ -160,21 +164,21 @@ Programové vybavení [3]
 
 Programové vybavení [4]
 -----------------------
-▶ Tabulkové procesory
-    ◆ Gnumeric
-    ◆ (sc)
-▶ Prohlížeče obrázků
-    ◆ fbi
-    ◆ feh
-    ◆ gpicview
-    ◆ (xsetroot pro hardcore uživatele)
-▶ Editory obrázků
-    ◆ MTpaint
+* Tabulkové procesory
+    - Gnumeric
+    - (sc)
+* Prohlížeče obrázků
+    - fbi
+    - feh
+    - gpicview
+    - (xsetroot pro hardcore uživatele)
+* Editory obrázků
+    - MTpaint
 
 Programové vybavení [5]
 -----------------------
-▶ Komunikace
-    ◆ BitlBee+WeeChat
+* Komunikace
+    - BitlBee+WeeChat
 .
  ___       __         ______________        _____
  __ |     / /___________  ____/__  /_______ __  /_
@@ -184,13 +188,13 @@ Programové vybavení [5]
 
 Programové vybavení [6]
 -----------------------
-▶ Webové prohlížeče
+* Webové prohlížeče
     (zde se nejvíce projeví slabý výkon CPU)
-    ◆ NetSurf (bez JS, dobrý layout engine)
-    ◆ Firefox (kupodivu v praxi rychlejší než Midori)
-    ◆ Midory (problém - načítání v jiném tabu zdržuje)
-    ◆ Links2
-    ◆ Textové prohlížeče: lynx, links, elinks, w3m
+    - NetSurf (bez JS, dobrý layout engine)
+    - Firefox (kupodivu v praxi rychlejší než Midori)
+    - Midory (problém - načítání v jiném tabu zdržuje)
+    - Links2
+    - Textové prohlížeče: lynx, links, elinks, w3m
 
  _____________________
 < Děkuji za pozornost >
