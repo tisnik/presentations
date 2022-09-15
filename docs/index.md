@@ -27,6 +27,9 @@ layout: default
 * [Clojure prakticky](linuxdays2014/clojure.md)
 
 ### Linux Days 2015
+* [Architektury moderních procesorů a mikrořadičů ARM](linuxdays2015/arm_cpu.md)
+* [Optimalizace při překladu na procesorech ARM](linuxdays2015/arm_opt.md)
+
 ### Linux Days 2017
 ### Linux Days 2018
 * [Go vs. Rust: porovnání dvou progresivních kompilovaných jazyků](linuxdays2018/rust_vs_go.md)
