@@ -1,8 +1,13 @@
 Architektury moderních procesorů a mikrořadičů ARM
 ==================================================
-* Autor    Pavel Tišnovský, Red Hat
-* Email    <ptisnovs 0x40 redhat 0x2e com>
+
+* Pavel Tišnovský
+    - `tisnik 0x40 centrum 0x2e cz`
 * Datum    2015-10-10
+* Prezentace:
+    - [https://tisnik.github.io/presentations/linuxdays2015/arm_cpu.html](https://tisnik.github.io/presentations/linuxdays2015/arm_cpu.html)
+* Zdrojový kód prezentace v plain textu:
+    - [https://github.com/tisnik/presentations/blob/master/linuxdays2015/arm_cpu/arm_cpu.txt](https://github.com/tisnik/presentations/blob/master/linuxdays2015/arm_cpu/arm_cpu.txt)
 
 Obsah přednášky (1)
 -------------------------------
@@ -31,15 +36,15 @@ Obsah přednášky (2)
 * AArch64 (ARMv8-A)
 * Příklady použití čipů s jádrem ARM
     - nRF51822 (Cortex-M0)
-      (BBC Micro Bit)
+          - BBC Micro Bit
     - Atmel SAM3X8E ARM Cortex-M3
-      (Arduino Due)
+          - Arduino Due
     - BCM2835 (single core)
-      (Raspberry Pi)
+          - Raspberry Pi
     - BCM2836 (quad core)
-      (Raspberry Pi 2)
+          - Raspberry Pi 2
     - Dual-Core ARM11 MPCore + single-core ARM9
-      (Nintendo 3DS)
+          - Nintendo 3DS
 
 Základní informace o ARM CPU
 -------------------------------
@@ -92,9 +97,9 @@ Obchodní model ARM vs.Intel/AMD
     - Andrew Grove
     - "single source"
     - pouze několik "fabs" vlastněných Intelem
-        • Santa Clara
-        • Hillsboro
-        • Chandler
+        - Santa Clara
+        - Hillsboro
+        - Chandler
 
 Obchodní model ARM vs.Intel/AMD
 -------------------------------
@@ -102,26 +107,27 @@ Obchodní model ARM vs.Intel/AMD
     - Vlastní know-how a IP
     - Nevyrábí vlastní procesory
     - Namísto toho prodává IP dalším společnostem
-        • Samsung
-        • Qualcomm
-        • NVidia
-        • Nintendo
-        • Texas Instruments
-        • dalších cca 15 důležitých zákazníků
+        - Samsung
+        - Qualcomm
+        - NVidia
+        - Nintendo
+        - Texas Instruments
+        - dalších cca 15 důležitých zákazníků
           (oficiální seznam není zveřejněn)
     - ⇒ Veškerý zisk je možné investovat do návrhu čipů
 
 Zajímavé akvizice ARM
 -------------------------------
-2005 Keil software
-     překladače pro různé MCU
-2006 Falanx (ARM Norway)
-     3D akcelerátory
-2013 Sensinode
-     startup, IoT
+* 2005 Keil software
+    - překladače pro různé MCU
+* 2006 Falanx (ARM Norway)
+    - 3D akcelerátory
+* 2013 Sensinode
+    - startup, IoT
 
 Rozšíření čipů s jádrem ARM
 -------------------------------
+```
 Rok           Čipů
 1997        9 000 000
 1998       51 000 000
@@ -142,9 +148,11 @@ Rok           Čipů
 2013   10 000 000 000
 2014   12 000 000 000
 2015                ?
+```
 
 Rozšíření čipů s jádrem ARM
 -------------------------------
+```
 Rok 2010
     6 100 000 000 čipů
     95% smartphony
@@ -155,6 +163,7 @@ Rok 2010
 Rok 2014
     12 000 000 000 čipů
     predikce pro 23% ARM na PC
+```
 
 Přednosti architektury ARM
 -------------------------------
@@ -179,10 +188,10 @@ ARM family, architecture, core
 * Rodina
     - Nejhrubší dělení
     - Dnes označuje určení čipů
-        • Cortex-M
-        • Cortex-R
-        • Cortex-A (32/64)
-        • SecurCore
+        - Cortex-M
+        - Cortex-R
+        - Cortex-A (32/64)
+        - SecurCore
 * Architektura
     - Určuje vlastnosti jádra CPU
 * Core (jádro)
@@ -197,21 +206,21 @@ ARM family, architecture, core
         - ARMv1
             - ARM1
     - ARM11
-        • ARMv6
-            • ARM1136
-        • ARMv6T2
-            • ARM1156
-        • ARMv6Z
-            • ARM1176
-        • ARMv6K
-            • ARM11MPcore
+        - ARMv6
+            - ARM1136
+        - ARMv6T2
+            - ARM1156
+        - ARMv6Z
+            - ARM1176
+        - ARMv6K
+            - ARM11MPcore
     - Cortex-M
-        • ARMv6-M
-            • Cortex-M0
-            • Cortex-M0+
-            • Cortex-M1
-        • ARMv7-M
-            • Cortex-M3
+        - ARMv6-M
+            - Cortex-M0
+            - Cortex-M0+
+            - Cortex-M1
+        - ARMv7-M
+            - Cortex-M3
         ...
 
 Architektury a čipy ARM
@@ -255,7 +264,7 @@ Rodina ARM1
     - Bez HW násobičky
     - Bez MMU a bez cache
     - Proof of concept
-        • Nebyl použit v žádném komerčním produktu
+        - Nebyl použit v žádném komerčním produktu
 
 Rodina ARM2
 -------------------------------
@@ -275,8 +284,8 @@ ARM1+ARM2 (společné vlastnosti)
     - 32bit datová sběrnice
     - 26bit adresová sběrnice
     - PC jen 24 bitů
-        • proto kód v 64MB prostoru
-        • (později 26b, nakonec 32b)
+        - proto kód v 64MB prostoru
+        - (později 26b, nakonec 32b)
 * 27 (později 37) 32bitových registrů
     - Některé mají speciální funkci
 * Fixní délka operačních kódů 32bitů
@@ -330,9 +339,9 @@ Rodina ARM7
 * Velmi úspěšná rodina čipů ARM
 * Novinky rodiny ARM7
     - JTAG (ARM7DI)
-        • Snazší ladění, hw breakpointy...
+        - Snazší ladění, hw breakpointy...
     - Thumb 16bit (u čipů s „T“ v názvu)
-        • ARM7-TDMI (viz další slide)
+        - ARM7-TDMI (viz další slide)
     - MMU (v závislosti na čipu)
     - Cache 8 kB (v závislosti na čipu)
 
@@ -359,7 +368,7 @@ Rodina StrongARM
 * Architektura ARMv4
 * Společnost DEC + Adv. ARM Machines
     - Později prodáno firmě Intel
-        • Náhrada za i860 a i960
+        - Náhrada za i860 a i960
     - StrongARM → XScale
 * Zaměření čipu
     - PDA
@@ -444,12 +453,12 @@ Cortex-M0
     - Náhrada za některé 8bitové a 16bitové MCU
     - von Neumannova architektura
     - Násobička
-        • jednocyklová (high perf. čipy)
-        • 32cyklová (čipy s nižší cenou a příkonem)
+        - jednocyklová (high perf. čipy)
+        - 32cyklová (čipy s nižší cenou a příkonem)
     - Power management
-        • Režim sleep (CLK=0 Hz)
-        • Režim deep sleep (vypnutí flash paměti apod.)
-        • Instrukce WFI, WFE
+        - Režim sleep (CLK=0 Hz)
+        - Režim deep sleep (vypnutí flash paměti apod.)
+        - Instrukce WFI, WFE
     - 12.5µW na každý MHz @ 1,2V
     - 64µW na každý MHz @ 1,8V
 
@@ -484,9 +493,9 @@ Cortex-M3
         - Každé slovo mapováno do jediného bitu
           (LSB)
 * Energetické nároky
-    1,2V, 25°C 31 µW/MHz
-    1,1V, 25°C 11 µW/MHz
-    0,9V, 85°C  8 µW/MHz
+    - 1,2V, 25°C 31 µW/MHz
+    - 1,1V, 25°C 11 µW/MHz
+    - 0,9V, 85°C  8 µW/MHz
 
 Cortex-M7
 -------------------------------
@@ -510,17 +519,17 @@ ARM pro spotřební elektroniku
 -------------------------------
 * Cortex-A
     - 32bitové CPU
-        • 2005    Cortex-A8
-        • 2007    Cortex-A9
-        • 2009    Cortex-A5
-        • 2010    Cortex-A15
-        • 2011    Cortex-A7
-        • 2013    Cortex-A12
-        • 2014    Cortex-A17
+        - 2005    Cortex-A8
+        - 2007    Cortex-A9
+        - 2009    Cortex-A5
+        - 2010    Cortex-A15
+        - 2011    Cortex-A7
+        - 2013    Cortex-A12
+        - 2014    Cortex-A17
     - 64bitové CPU
-        • 2012    Cortex-A53
-        • 2012    Cortex-A57
-        • 2015    Cortex-A72
+        - 2012    Cortex-A53
+        - 2012    Cortex-A57
+        - 2015    Cortex-A72
 
 ARM pro spotřební elektroniku
 -------------------------------
@@ -654,6 +663,7 @@ Osm samostatných pipeline (pokr.)
 A57
 -------------------------------
 * Latence a max. průchodnost (integer)
+```
     ADD    1     2         I0/I1
     Shift  1     1         M
     BLR    2-3   1         I0/I1+B (branch and link)
@@ -662,10 +672,12 @@ A57
     SDIV   4-20  1/20-1/4  M
     LDR    4     1         L
     STR    1     1         S  (nečeká na zápis)
+```
 
 A57
 -------------------------------
 * Latence a max. průchodnost (FP)
+```
     VADD   5     2         F0/F1
     VMUL   5     2         F0/F1
     VDIV   7-17  2/15-2/5  F0    (single/float)
@@ -675,6 +687,7 @@ A57
     °
     DIV+SQRT - iterativní algoritmus
              - lze přerušit
+```
 
 Příklady použití čipů s jádrem ARM
 ==================================================
@@ -719,9 +732,9 @@ Raspberry Pi
 -------------------------------
 * Model B+
     - SoC BCM2835
-        • CPU + GPU
+        - CPU + GPU
     - 512 MB RAM
-        • "nasazena" na SoC
+        - "nasazena" na SoC
     - 4xUSB konektor
     - Ethernet
     - HDMI + TV výstup
@@ -745,8 +758,8 @@ Raspberry Pi 2
 -------------------------------
 * CPU
     - SoC BCM2836 (Quad core)
-        • ARM Cortex-A7
-        • CPU + GPU
+        - ARM Cortex-A7
+        - CPU + GPU
     - 900 MHz
     - 1 GB RAM
 
@@ -754,22 +767,22 @@ Nintendo DS
 -------------------------------
 * CPU
     - ARM946E-S
-        • 67 MHz
-        • Hry, rendering
+        - 67 MHz
+        - Hry, rendering
     - ARM7TDMI
-        • 33 MHz
-        • Zvukový výstup
-        • GBA režim
+        - 33 MHz
+        - Zvukový výstup
+        - GBA režim
 * 4 MB RAM
 
 Nintendo 3DS
 -------------------------------
 * CPU
     - Dual-Core ARM11 MPCore
-        • První jádro pro hry
-        • Druhé pro potřeby OS
+        - První jádro pro hry
+        - Druhé pro potřeby OS
     - Single-core ARM9
-        • Pro zpětnou kompatibilitu s DS
+        - Pro zpětnou kompatibilitu s DS
 * 128 MB RAM
 * 6 MB VRAM
 * 1 GB flash
