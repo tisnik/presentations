@@ -225,6 +225,7 @@ ARM family, architecture, core
 
 Architektury a čipy ARM
 -------------------------------
+```
 Architektura          Jádra
 ARMv1     26/32 bitů  ARM1
 ARMv2     26/32 bitů  ARM2, ARM3
@@ -240,9 +241,11 @@ ARMv7-A   32 bitů     Cortex-A5, Cortex-A7, Cortex-A8,
                       Cortex-A9, Cortex-A12,
                       Cortex-A15, Cortex-A17
 ARMv8-A   32/64 bitů  Cortex-A53, A57 a A72
+```
 
 Architektury a čipy ARM - využití
 -------------------------------
+```
 ARMv1      proof of concept, funkční hned první "várka"
 ARMv2      Acorn Archimedes, 1982
 ARMv3     
@@ -255,6 +258,7 @@ ARMv7E-M   Mikrořadič, vysoký výkon, složitější čip
 ARMv7-R    Real-time aplikace
 ARMv7-A    netbooky, smartphony, tablety, čtečky, desktop
 ARMv8-A    servery
+```
 
 Rodina ARM1
 -------------------------------
@@ -354,14 +358,13 @@ ARM7 vs ARM7T
     - A32+Thumb
     - ARMv4T
 * ARM7TDMI
-    ARM7 +    _T_humb + 
-     JTAG     _D_ebug +
-     fast     _M_ultiplier + 
-     enhanced _I_CE  (debug support)
-        (nastaveni podmínek, kdy se aktivuje
-         breakpoint či watchpoint)
-    Licencováno TI
-    Nokia 6110
+    - ARM7 +    _T_humb + 
+    - JTAG     _D_ebug +
+    - fast     _M_ultiplier + 
+    - enhanced _I_CE  (debug support)
+        - (nastaveni podmínek, kdy se aktivuje breakpoint či watchpoint)
+    - Licencováno TI
+    - Nokia 6110
 
 Rodina StrongARM
 -------------------------------
@@ -417,6 +420,7 @@ ARM ve funkci mikrořadiče
 
 Jádra v řadě Cortex-Mx
 -------------------------------
+```
 Jádro       Architektura            MPU
 Cortex-M0   ARMv6-M    Von Neumann  ne
 Cortex-M0+  ARMv6-M    Von Neumann  volitelná
@@ -424,9 +428,11 @@ Cortex-M1   ARMv6-M    Von Neumann  ne
 Cortex-M3   ARMv7-M    Harvardská   volitelná
 Cortex-M4   ARMv7E-M   Harvardská   volitelná
 Cortex-M7   ARMv7E-M   Harvardská   volitelná
+```
 
 Jádra v řadě Cortex-Mx (pokr.)
 -------------------------------
+```
 Jádro       Dělička DSP Thumb             Thumb-2
 Cortex-M0     ne    ne  kromě 3 instrukcí částecně
 Cortex-M0+    ne    ne  kromě 3 instrukcí částecně
@@ -434,6 +440,7 @@ Cortex-M1     ne    ne  kromě 3 instrukcí částecně
 Cortex-M3     ano   ne  kompletně         kompletně
 Cortex-M4     ano   ano kompletně         kompletně
 Cortex-M7     ano   ano kompletně         kompletně
+```
 
 Cortex-M0
 -------------------------------
@@ -533,12 +540,12 @@ ARM pro spotřební elektroniku
 
 ARM pro spotřební elektroniku
 -------------------------------
-Čipy v A-profilu mají MMU
-Nutnost pro moderní OS
+* Čipy v A-profilu mají MMU
+* Nutnost pro moderní OS
     - 32bitové CPU
-        Architektura ARMv7-A
+         - Architektura ARMv7-A
     - 64bitové CPU
-        Architektura ARMv8-A
+         - Architektura ARMv8-A
 
 Cortex-A5
 -------------------------------
@@ -632,7 +639,7 @@ Rodina ARMv8-A
 
 A57
 -------------------------------
-Instrukce jsou dekódovány do µops
+* Instrukce jsou dekódovány do µops
     - Fetch + Decode:  in order
     - Execute (issue): out of order
 * Pro issue: osm samostatných pipeline
