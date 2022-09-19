@@ -1,8 +1,13 @@
 Optimalizace při překladu na procesorech ARM
 ==================================================
-■ Autor    Pavel Tišnovský, Red Hat
-■ Email    <ptisnovs 0x40 redhat 0x2e com>
-■ Datum    2015-10-10
+
+* Pavel Tišnovský
+    - `tisnik 0x40 centrum 0x2e cz`
+* Datum    2015-10-10
+* Prezentace:
+    - [https://tisnik.github.io/presentations/linuxdays2015/arm_opt.html](https://tisnik.github.io/presentations/linuxdays2015/arm_opt.html)
+* Zdrojový kód prezentace v plain textu:
+    - [https://github.com/tisnik/presentations/blob/master/linuxdays2015/arm_opt/arm_opt.txt](https://github.com/tisnik/presentations/blob/master/linuxdays2015/arm_opt/arm_opt.txt)
 
 Obsah přednášky
 -------------------------------
@@ -24,13 +29,14 @@ ARM32 z pohledu programátora
 * Architektura typu Load-Store
     - Pro efektivní práci nutný velký počet registrů
     - Omezení přístupů do pomalé paměti
-    - Alokace registrů → optimalizující překladač
+    - Alokace registrů
+        - → optimalizující překladač
 * Řešení
     - 27/37 registrů
-        30 pracovních, PC, CPSR, 5xSPSR
-        15 registrů viditelných r0..r14
-        r13 Stack Pointer
-        r14 Link Register
+        - 30 pracovních, `PC`, `CPSR`, 5x`SPSR`
+        - 15 registrů viditelných `r0`..`r14`
+        - `r13` Stack Pointer
+        - `r14` Link Register
     - Šířka registrů 32 bitů
     - Rozdělení do banků, které se překrývají
     - Pro každý stav procesoru zvláštní bank
@@ -68,11 +74,11 @@ Typy instrukcí
 Vlastnosti ISA typické pro ARM
 -------------------------------
 * Vykonání instrukce na základě příznaků
-    N - negative
-    V - overflow
-    Z - zero
-    C - carry
-    Q - sticky (ARMv5 a výše)
+    - `N` - negative
+    - `V` - overflow
+    - `Z` - zero
+    - `C` - carry
+    - `Q` - sticky (ARMv5 a výše)
 * Lze odstranit některé skoky
 * Lze zvolit, které příznaky se mají nastavit
 * U mnoha instrukcí lze druhý operand
@@ -81,6 +87,7 @@ Vlastnosti ISA typické pro ARM
 
 Velmi často používaný příklad
 -------------------------------
+```gcc
 int gcd(int a, int b) {
    while (a != b) {
       if (a > b) a = a - b;
@@ -88,9 +95,11 @@ int gcd(int a, int b) {
    }
    return a;
 }
+```
 
-Klasický přístup
+Klasický přístup při překladu
 -------------------------------
+```asm
  gcd    CMP      r0, r1
         BEQ      end
         BLT      less
@@ -100,28 +109,31 @@ Klasický přístup
         SUB      r1, r1, r0
         B        gcd
  end
+```
 
 Využití příznaků
 -------------------------------
+```asm
  gcd
         CMP      r0, r1
         SUBGT    r0, r0, r1
         SUBLT    r1, r1, r0
         BNE      gcd
+```
 
 Výsledky
 -------------------------------
 * Klasický přístup
-     7 instrukcí
-    28 bajtů
-    13 taktů (branch=vyprázdnění cache=3 takty)
+    -  7 instrukcí
+    - 28 bajtů
+    - 13 taktů (branch=vyprázdnění cache=3 takty)
 * Využití podmíněných instrukcí
-     4 instrukce
-    16 bajtů
-    10 taktů (pouze jeden branch)
+    -  4 instrukce
+    - 16 bajtů
+    - 10 taktů (pouze jeden branch)
 * Thumb (viz další slajdy)
-     7 instrukcí
-    14 bajtů (16bit/instrukci)
+    -  7 instrukcí
+    - 14 bajtů (16bit/instrukci)
 
 Instrukční sada Thumb (T32)
 -------------------------------
@@ -132,49 +144,50 @@ Instrukční sada Thumb (T32)
 * Přepínání mezi stavem ARM a stavem Thumb
     - Nutno přepínat, protože instrukce nejsou kompatibilní
 * Rozdělení registrů
-    - Lo registers r0-r7
-    - Hi registers r8-r15
+    - Lo registers `r0`-`r7`
+    - Hi registers `r8`-`r15`
     - Některé instrukce pracují pouze s jednou skupinou
-        • Ušetří se bity v instrukci
+        - Ušetří se bity v instrukci
 
 Instrukční sada Thumb (T32)
 -------------------------------
 * Thumb neumožňuje podmníněné provádění instrukcí
 * Jen podmíněné skoky
 * Skoky
-    Branch, Branch and link
+    - `B`: Branch
+    - `BL`: Branch and link
 * Aritmetické a logické operace
-    - OP Rd, Rn, Rm
-        • omezení na r0..r7
-        • tři bity pro výběr registru v instr.slovu
+    - `OP Rd, Rn, Rm`
+        - omezení na `r0`..`r7`
+        - tři bity pro výběr registru v instr.slovu
     - Výjimky
-        • ADD Rd, Rn, konstanta
-        • ADD Rd, Rm - jeden z registrů r8..r15
-        • CMP Rm, Rn - dtto
-        • MOV Rd, Rm - dtto
+        - `ADD Rd, Rn, konstanta`
+        - `ADD Rd, Rm` - jeden z registrů `r8`..`r15`
+        - `CMP Rm, Rn` - dtto
+        - `MOV Rd, Rm` - dtto
 
 Instrukční sada Thumb (T32)
 -------------------------------
 * Aritmetické instrukce
-    ADD, ADC, SUB, SBC
-    MUL, NEG
+    - `ADD`, `ADC`, `SUB`, `SBC`
+    - `MUL`, `NEG`
 * Logické operace
-    AND, EOR, ORR
+    - `AND`, `EOR`, `ORR`
 * Rotace a posuny
-    ASR, LSL, LSR, ROR
+    - `ASR`, `LSL`, `LSR`, `ROR`
 * Porovnání a nastavení příznaků
-    CMP, CMN, TST
+    - `CMP`, `CMN`, `TST`
 * Skoky
-    B,   BL,   BX,  BLX (link, exchange)
+    - `B`, `BL`, `BX`, `BLX` (link, exchange)
 * Přesuny dat
-    MOV, MVN            - move (not)
-    POP, PUSH
+    - `MOV`, `MVN`            - move (not)
+    - `POP`, `PUSH`
 * Operace typu LOAD a STORE
-    LDR, LDRH, LRRB     - load (word, halfword, byte)
-         LDRSH, LDRSB   - sign extend (na word)
-    STR, STRH, STRB     - store (word, halfword, byte)
-    LDMIA, STMIA        - vektor registrů 
-    STXH, STXB, UXTH, UXTB - sign/zero extend
+    - `LDR`, `LDRH`, `LRRB`     - load (word, halfword, byte)
+    - `LDRSH`, `LDRSB`   - sign extend (na word)
+    - `STR`, `STRH`, `STRB`     - store (word, halfword, byte)
+    - `LDMIA`, `STMIA`        - vektor registrů 
+    - `STXH`, `STXB`, `UXTH`, `UXTB` - sign/zero extend
 
 Instrukční sada Thumb-2
 -------------------------------
@@ -193,11 +206,11 @@ Instrukční sada Thumb-2
 * Bitové operace
     - Bit Field Clear
     - Bit Field Insert
-* CBZ
+* `CBZ`
     - Compare and Branch on Zero
-* CBNZ
+* `CBNZ`
     - Compare and Branch on Non-Zero
-* IT
+* `IT`
     - Instrukce odpovídající konstrukci if-then-else
     - (viz následující slajd)
 
@@ -206,64 +219,66 @@ RISCové procesory a problém se skoky
 * RISCová pipeline
     - Nemá smysl nečinně čekat na výsledek skoku
     - → spekulativní provádění instrukcí
-    × Čím delší pipeline, tím větší cena za špatný
-      odhad sekvence instrukcí
+    - × Čím delší pipeline, tím větší cena za špatný odhad sekvence instrukcí
 * Statická a/nebo dynamická predikce skoků
     - Dynamická
-        Branch Target Address Cache (BTAC)
-        pamatuje si výsledek skoku
+        - Branch Target Address Cache (BTAC) pamatuje si výsledek skoku
     - Statická
-        Použije se, když BTAC neobsahuje informaci
-        "taken" pro podmíněné skoky dozadu
+        - Použije se, když BTAC neobsahuje informaci "taken" pro podmíněné skoky dozadu
     - Úspěšnost se udává okolo 85%
-    × U dvoubitového prediktoru je to až 93%
+    - × U dvoubitového prediktoru je to až 93%
 
 IT
 -------------------------------
-* IT{pattern} {condition}
+* `IT{pattern} {condition}`
     - až čtyři instrukce provedené na základě testu
     - (pozitivní/negativní výsledek)
-* {pattern}
-    - T-then
-    - E-else
+* `{pattern}`
+    - `T`-then
+    - `E`-else
 * první instrukce
-    - provedena při splnění podmínky {condition}
+    - provedena při splnění podmínky `{condition}`
 * druhá instrukce
-    - T-podmínka
-    - E-inverze podmínky
+    - `T`-podmínka
+    - `E`-inverze podmínky
 * třetí a čtvrtá instrukce
     - dtto
-* {condition}
-    EQ NE GT GE LT LE
-    CS CC  carry
-    PL MI HI LS
-    ...
+* `{condition}`
+    `EQ NE GT GE LT LE`
+    `CS CC` (carry)
+    `PL MI HI LS`
+
+```asm
 CMP r0, r1
 ITE EQ
 MOVEQ r0, r2 ; větev "then"
 MOVNE r0, r3 ; větev "else"
+```
 
 Výsledky měření: délka kódu
 ----------------------------------
+```
 Instrukční sada Délka kódu
 ==================================
 ARM             100%
 Thumb            70%
 Thumb-2          74%
+```
 
 Výsledky měření: rychlost aplikace
 ----------------------------------
+```
 Instrukční sada Relativní rychlost
 ==================================
 ARM             100%
 Thumb            75%
 Thumb-2          98%
+```
 
 Instrukční sada A64
 -------------------------------
 * 32bitů -> 64bitů
-* Pravděpodobně největší změna v architektuře
-  procesorů ARM v celé jejich historii
+* Pravděpodobně největší změna v architektuře procesorů ARM v celé jejich historii
 * Velké odlišnosti, nutnost překladu pro novou architekturu
 
 AArch64 z pohledu programátora
@@ -275,10 +290,10 @@ AArch64 z pohledu programátora
     - 64bitové
     - 31 univerzálních registrů
     - 32.registr
-        • liší se v závislosti na kontextu
-        • buď nula (ZR)
-        • nebo Stack pointer (SR)
-    - PC není přímo dostupný
+        - liší se v závislosti na kontextu
+        - buď nula (`ZR`)
+        - nebo Stack pointer (`SR`)
+    - `PC` není přímo dostupný
 
 Operace
 -------------------------------
@@ -330,16 +345,17 @@ Instrukce jsou dekódovány do µops
 
 Osm samostatných pipeline (pokr.)
 -------------------------------
+* Výpočetní moduly v pipelines
     - Integer Multi-cycle
-        Shift
-        MUL
-        DIV
-        CRC
+        - Shift
+        - `MUL`
+        - `DIV`
+        - `CRC`
     - FP/ASIMD 0
-        všechny FP operace
-        crypto
+        - všechny FP operace
+        - crypto
     - FP/ASIMD 1
-        ADD, MUL
+        - `ADD`, `MUL`
 
 Podpora pro operace s FP
 -------------------------------
@@ -350,13 +366,13 @@ Podpora pro operace s FP
     - Každý registr až 4x32 bitů
 * Použití registrů
     - Skalární hodnoty
-        • float
-        • double
-        • quad
+        - float
+        - double
+        - quad
     - Vektory
-        • 8x short float
-        • 4x float
-        • 2x double
+        - 8x short float
+        - 4x float
+        - 2x double
 SIMD
 -------------------------------
 * Režim kompatibility s IEEE 754
@@ -375,9 +391,9 @@ Rozšíření instrukčních sad
 * NEON (Advanced SIMD)
 * Jazelle
     - Podpora pro spouštění většiny instrukcí JVM (bajtkód)
-        • Proměnná délka instrukcí s osmibitovým opkódem a proměnným počtem operandů
+        - Proměnná délka instrukcí s osmibitovým opkódem a proměnným počtem operandů
     - Musí existovat podpora v JVM
-        • Jazelle Java Technology Enabling Kit (JTEK)
+        - Jazelle Java Technology Enabling Kit (JTEK)
 
 FPA (ARM Floating Point Accelerator)
 -------------------------------
@@ -386,12 +402,12 @@ FPA (ARM Floating Point Accelerator)
     - Double
     - Extended
 * Registry
-    - f0..f7
-        • šířka 80bitů
-    - FPSR
-        • Floating Point Status Register
-    - FPCR
-        • Floating Point Control Register
+    - `f0`..`f7`
+        - šířka 80bitů
+    - `FPSR`
+        - Floating Point Status Register
+    - `FPCR`
+        - Floating Point Control Register
 * Podpora pro "rychlé" násobení a dělení
     - Jen pro "single"
     - Nemusí se provést korektní zaokrouhlení
@@ -412,59 +428,62 @@ VFP
 VFP
 -------------------------------
 * Registry
-    - d0..d15 (double)
-    - s0..s31 (stínové registry pro single)
-    - + ve VFPv3 nově i d16..d31 (double)
+    - `d0`..`d1`5 (double)
+    - `s0`..`s31` (stínové registry pro single)
+    - + ve VFPv3 nově i `d16`..`d31` (double)
 * SIMD operace (s vektory)
-    - 8*single
-    - 4*double
+    - 8 x single
+    - 4 x double
     - mohou se provádět na jediné FP jednotce
     - stále však rychlejší než skalární operace
 
 VFP
 -------------------------------
 * Vektory
-    - 8*single (viz předchozí slide)
-        Rozdělení na banky:
+    - 8 x single (viz předchozí slide)
+        - Rozdělení na banky:
+         ```
             s0..s7
             s8..s15
             s16..s23
             s24..s31
-    - 4*double
-        Rozdělení na banky:
+         ```
+    - 4 x double
+        - Rozdělení na banky:
+         ```
             d0..d3
             d4..d7
             d8..d11
             d12..d15
+         ```
 
 VFP
 -------------------------------
-    Wrapping:
-        vektor s délkou 6 začínající na s5:
-        [s5, s6, s7, s0, s1, s2]
-    Stride
-        vektor s délkou 3, stride 2 začínající na s1:
-        [s1, s3, s5]
-        vektor s délkou 4, stride 2 začínající na s6:
-        [s6, s0, s2, s4]
-    Wrapping a stride nesmí způsobit, že se registr
-    ve vektoru ocitne 2x!
+* Wrapping:
+    - vektor s délkou 6 začínající na s5:
+        - `[s5, s6, s7, s0, s1, s2]`
+* Stride
+    - vektor s délkou 3, stride 2 začínající na s1:
+        - `[s1, s3, s5]`
+    - vektor s délkou 4, stride 2 začínající na s6:
+        - `[s6, s0, s2, s4]`
+* Wrapping a stride nesmí způsobit, že se registr ve vektoru ocitne 2x!
     
 VFP
 -------------------------------
 * Instrukce
-    Aritmetické 
-    Konverze (single » double, integer » FP atd.)
-    FP MAC (Multiply and Accumulate)
-    √
-    Fixed point (» single, » double a naopak)
+    - Aritmetické 
+    - Konverze (single » double, integer » FP atd.)
+    - FP MAC (Multiply and Accumulate)
+    - √
+    - Fixed point (» single, » double a naopak)
 
 VFP
 -------------------------------
 * VFPv3-FP16
 * VFPv3-D16-FP16
 * VFPv4
-    Volitelná podpora 16bitových FP (Half precision)
+    - Volitelná podpora 16bitových FP (Half precision)
 
 Advanced SIMD Architecture
 -------------------------------
@@ -488,9 +507,9 @@ NEON
     - Nezávislé na hlavní ALU
     - U některých jader více NEON jednotek
 * 32 nových registrů
-    - d0..d31 (64bitů/registr)
+    - `d0`..`d31` (64bitů/registr)
 * Sdružení registrů do párů
-    - q0..q15 (128 bitů/pár)
+    - `q0`..`q15` (128 bitů/pár)
 * Vektory
     - 8x8 bitů (obrazová data)
     - 4x16 bitů (zvukové vzorky)
@@ -500,26 +519,31 @@ NEON
 NEON
 -------------------------------
 Datové typy
-    Unsigned integer
-        8, 16, 32, 64b
-    Signed integer
-        8, 16, 32, 64b
-    Floating point
-        jen 32b
+* Unsigned integer
+    - 8, 16, 32, 64b
+* Signed integer
+    - 8, 16, 32, 64b
+* Floating point
+    - jen 32b
 
 NEON Intrinsic
 -------------------------------
+```
 gcc   -mcpu=cortex-a9 -mfpu=neon ...
 clang -mcpu=cortex-a9 -mfpu=neon ...
 -mtune=cortex-a5 (a8, a9)
-...
+```
+
+```c
+
 #include <arm_neon.h>
 (typ)x(lanes)_t - uint8x4_t
 (typ)x(lanes)x(počet_registrů)_t - uint8x2x4_t
-...
+
 uint16x4_t vadd_u16(uint16x4_t x, uint16x4_t y);
 uint16x2_t vmlal_u32(uint64x2_t x, uint32x2_t, uint32x2_t);
-...
+```
+
 * Naměřený výpočetní výkon
     - Funkce rgb2gray
     - Čisté céčko - 48 sekund
@@ -535,20 +559,22 @@ FP
 * Cortex-M4
     - jen float (single), nikoli double
     - pozor na to, že překladač může mezivýpočty provádět v double!
-    -Wdouble-promotion
-    -fsingle-precision-constant
+        - `-Wdouble-promotion`
+        - `-fsingle-precision-constant`
 * FP v obsluze přerušení
     - pokud se nepoužije -> Lazy Stacking
-__FPU_USED - pokud je definováno:
-    - FPU se povolí automaticky ve funkci SystemInit()
+* `__FPU_USED` - pokud je definováno:
+    - FPU se povolí automaticky ve funkci `SystemInit()`
     - nepatrně větší spotřeba
 
 "Skryté" výpočty s double
 -------------------------
+```
 test.c: In function ‘calcVAT’:
 test.c:3:16: warning: implicit conversion from ‘float’ to ‘double’ to match other operand of binary expression [-Wdouble-promotion]
      return 20.0*price;
                      ^
+```
 
 Lazy stacking
 -------------
@@ -556,7 +582,7 @@ Lazy stacking
 * Rutiny pro obsluhu přerušení
 * Neprovádí se úschova FP registrů na zásobník, když
     - FPU se nepoužívá v přerušovací rutině
-      nebo
+    - nebo
     - FPU se nepoužívá v přerušeném programu
 
 C knihovny
