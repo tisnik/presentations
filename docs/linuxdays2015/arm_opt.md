@@ -87,7 +87,7 @@ Vlastnosti ISA typické pro ARM
 
 Velmi často používaný příklad
 -------------------------------
-```gcc
+```c
 int gcd(int a, int b) {
    while (a != b) {
       if (a > b) a = a - b;
@@ -244,9 +244,9 @@ IT
 * třetí a čtvrtá instrukce
     - dtto
 * `{condition}`
-    `EQ NE GT GE LT LE`
-    `CS CC` (carry)
-    `PL MI HI LS`
+    - `EQ NE GT GE LT LE`
+    - `CS CC` (carry)
+    - `PL MI HI LS`
 
 ```asm
 CMP r0, r1
@@ -324,13 +324,12 @@ Instrukce s podmínkou
     - Současné prediktory skoků jsou již velmi kvalitní
     - Podmínky mohou být použity jen u některých instrukcí
 
-==================
 Specifika AArch 64
 ==================
 
 A57
 -------------------------------
-Instrukce jsou dekódovány do µops
+* Instrukce jsou dekódovány do µops
     - Fetch + Decode:  in order
     - Execute (issue): out of order
 * Pro issue: osm samostatných pipeline
@@ -373,6 +372,7 @@ Podpora pro operace s FP
         - 8x short float
         - 4x float
         - 2x double
+
 SIMD
 -------------------------------
 * Režim kompatibility s IEEE 754
@@ -549,7 +549,6 @@ uint16x2_t vmlal_u32(uint64x2_t x, uint32x2_t, uint32x2_t);
     - Čisté céčko - 48 sekund
     - Intrinsics  - 8.8 sekund (cca 5x rychlejší)
 
-===========================
 Omezení některých jader ARM
 ===========================
 
