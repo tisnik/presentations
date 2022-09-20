@@ -87,6 +87,7 @@ layout: default
 * [Python AST: journey from source code to bytecode](coffee-talks/python-ast.md)
 * [JIT](coffee-talks/jit.md)
 * [Pattern matching in Python](coffee-talks/pattern-matching.md)
+* [NATS JetStream](coffee-talks/nats-jetstream.md)
 
 
 
