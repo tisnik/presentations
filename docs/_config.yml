@@ -1,5 +1,5 @@
-title: Prezentace
-description: Prezentace
+title: Presentations
+description: Presentations
 baseurl: "/presentations"
 url: "https://tisnik.github.io"
 
@@ -10,7 +10,7 @@ aux_links:
   "Github repository":
     - "https://github.com/tisnik/presentations"
 
-footer_content: "Copyright &copy; 2019, 2020 Pavel Tisnovsky"
+footer_content: "Copyright &copy; 2019, 2020, 2021, 2022 Pavel Tisnovsky"
 
 # Build settings
 markdown: kramdown
