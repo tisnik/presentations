@@ -13,7 +13,7 @@
 
 ## NATS components
 
-* Server(`gnatsd`)
+* Server
     - `gnatsd` previously
     - `nats-server` today
 * Interfaces for various ecosystems
@@ -72,6 +72,42 @@
     - various retention and delivery policies
     - subscribers' offsets stored on server
         - (no Kafka madness with ZooKeeper etc.)
+* key/value store
+* object store
+
+## Overview of communication strategies
+
+### pub-sub communication pattern
+
+![NATS 01](images/nats-01.png)
+
+### Multiple producers to given subject
+
+![NATS 02](images/nats-02.png)
+
+### push-pull communication pattern via queue
+
+![NATS 03](images/nats-03.png)
+
+### All consumers work concurrently with same messages
+
+![NATS 04](images/nats-04.png)
+
+### Round-robin approach / load balancing
+
+![NATS 05](images/nats-05.png)
+
+### request-reply communication pattern
+
+![NATS 06](images/nats-06.png)
+
+### Streaming: push-push communication pattern
+
+![NATS 07](images/nats-07.png)
+
+### Streaming: push-pull communication pattern
+
+![NATS 08](images/nats-08.png)
 
 ## Quality of service
 
@@ -102,9 +138,55 @@ PONG      client and server
 
 ## Communicating with NATS
 
-* We'll use CLI client and Python programming language in all examples
-* Possible to rewrite into other languages w/o problems
-    - especially Go solution based on channel is very elegant
+### Live demo
+
+```
+cd /tmp/ramdisk/nats-0.0.34-linux-amd64/
+
+./nats server run --jetstream
+
+export PS1=$\ 
+
+cd /tmp/ramdisk/nats-0.0.34-linux-amd64/
+
+./nats stream create foo
+
+./nats stream create bar
+
+./nats stream rm foo
+
+./nats stream rm bar
+
+./nats stream ls
+
+./nats stream create user-add-operation
+
+./nats stream create user-delete-operation
+
+./nats stream ls
+
+./nats pub user.alice.add "Alice added"
+
+./nats pub user.bob.add "Bob added too"
+
+./nats pub user.clayton.delete "Clayton deleted"
+
+./nats pub user.random.add "User #{{.Count}}" --count=10
+
+./nats sub --stream user-add-operation
+
+./nats sub --stream user-add-operation --last
+
+./nats sub --stream user-add-operation --new
+```
+
+## Appendix
+
+### Links
+
+* [About NATS](https://nats.io/about/)
+* [Slides about NATS](https://www.slideshare.net/nats_io/presentations)
+* [NATS comparison](https://docs.nats.io/nats-concepts/overview/compare-nats)
 
 ### Czech articles about NATS
 
