@@ -22,8 +22,10 @@ void printFramebufferInfo(int framebufferDevice)
         return;
     }
     /* Nyni je datova struktura FramebufferInfo naplnena. */
-    printf("Realne rozliseni:    %dx%d\n", framebufferInfo.xres, framebufferInfo.yres);
-    printf("Virtualni rozliseni: %dx%d\n", framebufferInfo.xres_virtual, framebufferInfo.yres_virtual);
+    printf("Realne rozliseni:    %dx%d\n", framebufferInfo.xres,
+           framebufferInfo.yres);
+    printf("Virtualni rozliseni: %dx%d\n", framebufferInfo.xres_virtual,
+           framebufferInfo.yres_virtual);
     printf("Bitu na pixel:       %d\n", framebufferInfo.bits_per_pixel);
 }
 
@@ -31,7 +33,7 @@ int main(int argc, char **argv)
 {
     int framebufferDevice = 0;
 
-    /* Ze zarizeni potrebujeme pouze cist.*/
+    /* Ze zarizeni potrebujeme pouze cist. */
     framebufferDevice = open("/dev/fb0", O_RDONLY);
 
     /* Pokud otevreni probehlo uspesne, nacteme
@@ -41,10 +43,9 @@ int main(int argc, char **argv)
         close(framebufferDevice);
         return 0;
     }
-    /* Otevreni se nezadarilo, vypiseme chybove hlaseni.*/
+    /* Otevreni se nezadarilo, vypiseme chybove hlaseni. */
     else {
         perror("Nelze otevrit ovladac /dev/fb0");
         return 1;
     }
 }
-
