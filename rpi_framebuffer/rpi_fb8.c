@@ -37,8 +37,8 @@ typedef struct fb_fix_screeninfo ModeInfo;
  * (postacuje byt ve skupine 'video' ci pouziti su/sudo)
  */
 int readFramebufferInfo(int framebufferDevice,
-                        FramebufferInfo *framebufferInfoPtr,
-                        ModeInfo        *modeInfoPtr)
+                        FramebufferInfo * framebufferInfoPtr,
+                        ModeInfo * modeInfoPtr)
 {
     /* Pokud operace ioctl probehne v poradku, vrati se 0 */
     if (ioctl(framebufferDevice, FBIOGET_VSCREENINFO, framebufferInfoPtr)) {
@@ -60,8 +60,8 @@ int readFramebufferInfo(int framebufferDevice,
  * Funkce putpixel platna pro nezname graficke rezimy.
  */
 void putpixelNull(const int x, const int y,
-                 const char r, const char g, const char b,
-                 char *pixels, const int line_length)
+                  const char r, const char g, const char b,
+                  char *pixels, const int line_length)
 {
 }
 
@@ -73,19 +73,19 @@ void putpixelNull(const int x, const int y,
  * Funkcni napriklad pro graficke karty Intel.
  */
 void putpixelBGRA(const int x, const int y,
-                 const char r, const char g, const char b,
-                 char *pixels, const int line_length)
+                  const char r, const char g, const char b,
+                  char *pixels, const int line_length)
 {
     /* vypocet adresy zapisu dat */
-    unsigned int index = (x<<2) + y*line_length;
+    unsigned int index = (x << 2) + y * line_length;
     /* << 2 nahrazuje nasobeni ctyrmi */
 
     /* vlastni provedeni zapisu */
-    *(pixels+index) = b;
+    *(pixels + index) = b;
     index++;
-    *(pixels+index) = g;
+    *(pixels + index) = g;
     index++;
-    *(pixels+index) = r;
+    *(pixels + index) = r;
 }
 
 
@@ -96,8 +96,8 @@ void putpixelBGRA(const int x, const int y,
  * Funkcni pro Raspberry Pi s poradim bajtu R,G,B,A.
  */
 void putpixelRGBA(const int x, const int y,
-                 const char r, const char g, const char b,
-                 char *pixels, const int line_length)
+                  const char r, const char g, const char b,
+                  char *pixels, const int line_length)
 {
     putpixelBGRA(x, y, b, g, r, pixels, line_length);
 }
@@ -121,22 +121,22 @@ void putpixel565(const int x, const int y,
     /* vypocet barvy pixelu, v zavorce nejdrive snizime bitovou sirku
      * rezervovanou pro jednotlive barvove slozky a posleze bity, ktere
      * reprezentuji barvovou slozku posuneme do spravne pozice ve slove */
-    unsigned int pixel_value = (r >> RED_LOST_BITS)   << RED_OFFSET |
-                               (g >> GREEN_LOST_BITS) << GREEN_OFFSET |
-                               (b >> BLUE_LOST_BITS)  << BLUE_OFFSET;
+    unsigned int pixel_value = (r >> RED_LOST_BITS) << RED_OFFSET |
+        (g >> GREEN_LOST_BITS) << GREEN_OFFSET |
+        (b >> BLUE_LOST_BITS) << BLUE_OFFSET;
 
     /* prevod na dvojici bajtu */
     unsigned char byte1 = pixel_value & 0xff;
     unsigned char byte2 = pixel_value >> 8;
 
     /* vypocet adresy zapisu dat */
-    unsigned int index = (x<<1) + y*line_length;
+    unsigned int index = (x << 1) + y * line_length;
     /* << 1 nahrazuje nasobeni dvema */
 
     /* vlastni provedeni zapisu */
-    *(pixels+index) = byte1;
+    *(pixels + index) = byte1;
     index++;
-    *(pixels+index) = byte2;
+    *(pixels + index) = byte2;
 }
 
 
@@ -146,14 +146,15 @@ void putpixel565(const int x, const int y,
  */
 typedef void (*PutpixelFunction)(const int, const int,
                                  const char, const char, const char,
-                                 char*, const int);
+                                 char *, const int);
 
 
 
 /*
  * Funkce, ktera vraci korektni funkci pro operaci putpixel().
  */
-PutpixelFunction getProperPutpixelFunction(int bits_per_pixel, int type, int visual, int redOffset)
+PutpixelFunction getProperPutpixelFunction(int bits_per_pixel, int type,
+                                           int visual, int redOffset)
 {
     /* umime rozeznat pouze format bez bitovych rovin a bez palety */
     if (type == FB_TYPE_PACKED_PIXELS && visual == FB_VISUAL_TRUECOLOR) {
@@ -163,8 +164,7 @@ PutpixelFunction getProperPutpixelFunction(int bits_per_pixel, int type, int vis
         if (bits_per_pixel == 32) {
             if (redOffset == 16) {
                 return putpixelBGRA;
-            }
-            else {
+            } else {
                 return putpixelRGBA;
             }
         }
@@ -185,17 +185,17 @@ void line(const int x1, const int y1, const int x2, const int y2,
     int x = x1;
     int y = y1;
     /* zrcadleni algoritmu pro dalsi oktanty */
-    int dx = ABS(x2-x1), sx = x1<x2 ? 1 : -1;
-    int dy = ABS(y2-y1), sy = y1<y2 ? 1 : -1; 
-    int err = (dx>dy ? dx : -dy)/2, e2;
+    int dx = ABS(x2 - x1), sx = x1 < x2 ? 1 : -1;
+    int dy = ABS(y2 - y1), sy = y1 < y2 ? 1 : -1;
+    int err = (dx > dy ? dx : -dy) / 2, e2;
 
     while (1) {
         putpixel(x, y, r, g, b, pixels, line_length);
-        if (x==x2 && y==y2) {
+        if (x == x2 && y == y2) {
             break;
         }
         e2 = err;
-        if (e2 >-dx) {
+        if (e2 > -dx) {
             /* prepocet kumulovane chyby */
             err -= dy;
             /* posun na predchozi ci dalsi pixel na radku */
@@ -203,9 +203,9 @@ void line(const int x1, const int y1, const int x2, const int y2,
         }
         if (e2 < dy) {
             /* prepocet kumulovane chyby */
-             err += dx;
-             /* posun na predchozi ci nasledujici radek */
-             y += sy;
+            err += dx;
+            /* posun na predchozi ci nasledujici radek */
+            y += sy;
         }
     }
 }
@@ -216,8 +216,8 @@ void line(const int x1, const int y1, const int x2, const int y2,
  * Vykresleni testovaciho obrazku s vyuzitim funkci line a putpixel.
  */
 void drawTestImage(int framebufferDevice,
-                   FramebufferInfo *framebufferInfoPtr,
-                   ModeInfo        *modeInfoPtr)
+                   FramebufferInfo * framebufferInfoPtr,
+                   ModeInfo * modeInfoPtr)
 {
 #define OFFSET 300
     /* casto pouzivane konstanty */
@@ -225,16 +225,17 @@ void drawTestImage(int framebufferDevice,
     const int pitch = modeInfoPtr->line_length;
 
     /* ziskame spravnou verzi funkce putpixel */
-    PutpixelFunction putpixel = getProperPutpixelFunction(framebufferInfoPtr->bits_per_pixel,
-                                                          modeInfoPtr->type,
-                                                          modeInfoPtr->visual,
-                                                          framebufferInfoPtr->red.offset);
+    PutpixelFunction putpixel =
+        getProperPutpixelFunction(framebufferInfoPtr->bits_per_pixel,
+                                  modeInfoPtr->type,
+                                  modeInfoPtr->visual,
+                                  framebufferInfoPtr->red.offset);
 
     /* ziskat primy pristup do framebufferu */
-    char *pixels = (char*)mmap(0, buffer_length,
-                               PROT_READ | PROT_WRITE,
-                               MAP_SHARED, framebufferDevice,
-                               0);
+    char *pixels = (char *) mmap(0, buffer_length,
+                                 PROT_READ | PROT_WRITE,
+                                 MAP_SHARED, framebufferDevice,
+                                 0);
 
     if (pixels != MAP_FAILED) {
         int i;
@@ -242,26 +243,27 @@ void drawTestImage(int framebufferDevice,
         /* nejprve vymazeme cely framebuffer */
         memset(pixels, 0, buffer_length);
 
-        /* vykreslime nekolik usecek s ruznym sklonem a barvou*/
-        for (i=0; i<256; i++) {
+        /* vykreslime nekolik usecek s ruznym sklonem a barvou */
+        for (i = 0; i < 256; i++) {
             r = i;
             g = i;
-            b = 256-i;
-            line(i*3, 0, i*3, 100, r, g, b, pixels, pitch, putpixel);
+            b = 256 - i;
+            line(i * 3, 0, i * 3, 100, r, g, b, pixels, pitch, putpixel);
             r = 255;
             g = i;
-            b = 255-i;
-            line(i*4, 150, i*5, 250, r, g, b, pixels, pitch, putpixel);
+            b = 255 - i;
+            line(i * 4, 150, i * 5, 250, r, g, b, pixels, pitch, putpixel);
         }
-        for (i=0; i<=300; i+=10) {
-            line(0, 300 + i, i, 300 + 300, 255, 255, 255, pixels, pitch, putpixel);
+        for (i = 0; i <= 300; i += 10) {
+            line(0, 300 + i, i, 300 + 300, 255, 255, 255, pixels, pitch,
+                 putpixel);
 
-            line(300, 300, 600, 300 + i, 128, 128, 255, pixels, pitch, putpixel);
+            line(300, 300, 600, 300 + i, 128, 128, 255, pixels, pitch,
+                 putpixel);
         }
         getchar();
         munmap(pixels, buffer_length);
-    }
-    else {
+    } else {
         perror("Nelze pristupovat k framebufferu");
     }
 }
@@ -272,23 +274,24 @@ void drawTestImage(int framebufferDevice,
 int main(int argc, char **argv)
 {
     FramebufferInfo framebufferInfo;
-    ModeInfo        modeInfo;
+    ModeInfo modeInfo;
     int framebufferDevice = 0;
 
-    /* Ze zarizeni potrebujeme cist i zapisovat.*/
+    /* Ze zarizeni potrebujeme cist i zapisovat. */
     framebufferDevice = open("/dev/fb0", O_RDWR);
 
     /* Pokud otevreni probehlo uspesne, nacteme
      * a nasledne vypiseme informaci o framebufferu.*/
     if (framebufferDevice != -1) {
         /* Precteni informaci o framebufferu a test, zda se vse podarilo */
-        if (readFramebufferInfo(framebufferDevice, &framebufferInfo, &modeInfo)) {
+        if (readFramebufferInfo
+            (framebufferDevice, &framebufferInfo, &modeInfo)) {
             drawTestImage(framebufferDevice, &framebufferInfo, &modeInfo);
         }
         close(framebufferDevice);
         return 0;
     }
-    /* Otevreni se nezadarilo, vypiseme tudiz pouze chybove hlaseni.*/
+    /* Otevreni se nezadarilo, vypiseme tudiz pouze chybove hlaseni. */
     else {
         perror("Nelze otevrit ovladac /dev/fb0");
         return 1;
@@ -298,4 +301,3 @@ int main(int argc, char **argv)
 
 
 /* finito */
-
