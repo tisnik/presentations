@@ -18,7 +18,7 @@ typedef struct fb_fix_screeninfo ModeInfo;
 long int printFramebufferInfo(int framebufferDevice)
 {
     FramebufferInfo framebufferInfo;
-    ModeInfo        modeInfo;
+    ModeInfo modeInfo;
 
     /* Pokud operace ioctl probehne v poradku, vrati se 0 */
     if (ioctl(framebufferDevice, FBIOGET_VSCREENINFO, &framebufferInfo)) {
@@ -26,9 +26,12 @@ long int printFramebufferInfo(int framebufferDevice)
         return 0;
     }
     /* Nyni je datova struktura FramebufferInfo naplnena. */
-    printf("Realne rozliseni:       %dx%d pixelu\n", framebufferInfo.xres, framebufferInfo.yres);
-    printf("Virtualni rozliseni:    %dx%d pixelu\n", framebufferInfo.xres_virtual, framebufferInfo.yres_virtual);
-    printf("Bitu na pixel:          %d bitu\n", framebufferInfo.bits_per_pixel);
+    printf("Realne rozliseni:       %dx%d pixelu\n", framebufferInfo.xres,
+           framebufferInfo.yres);
+    printf("Virtualni rozliseni:    %dx%d pixelu\n",
+           framebufferInfo.xres_virtual, framebufferInfo.yres_virtual);
+    printf("Bitu na pixel:          %d bitu\n",
+           framebufferInfo.bits_per_pixel);
 
     if (ioctl(framebufferDevice, FBIOGET_FSCREENINFO, &modeInfo)) {
         perror("Nelze precist informace o rezimu");
@@ -44,18 +47,18 @@ long int printFramebufferInfo(int framebufferDevice)
 
 void draw(int framebufferDevice, long int bufferSize)
 {
-    char *pixels = (char*)mmap(0, bufferSize,
-                               PROT_READ | PROT_WRITE,
-                               MAP_SHARED, framebufferDevice,
-                               0);
+    char *pixels = (char *) mmap(0, bufferSize,
+                                 PROT_READ | PROT_WRITE,
+                                 MAP_SHARED, framebufferDevice,
+                                 0);
     if (pixels != MAP_FAILED) {
         int x;
         char *p = pixels;
-        for (x=0; x<bufferSize; x++) *p++ = x;
+        for (x = 0; x < bufferSize; x++)
+            *p++ = x;
         getchar();
         munmap(pixels, bufferSize);
-    }
-    else {
+    } else {
         perror("Nelze pristupovat k framebufferu");
     }
 }
@@ -64,7 +67,7 @@ int main(int argc, char **argv)
 {
     int framebufferDevice = 0;
 
-    /* Ze zarizeni potrebujeme pouze cist.*/
+    /* Ze zarizeni potrebujeme pouze cist. */
     framebufferDevice = open("/dev/fb0", O_RDWR);
 
     /* Pokud otevreni probehlo uspesne, nacteme
@@ -77,10 +80,9 @@ int main(int argc, char **argv)
         close(framebufferDevice);
         return 0;
     }
-    /* Otevreni se nezadarilo, vypiseme chybove hlaseni.*/
+    /* Otevreni se nezadarilo, vypiseme chybove hlaseni. */
     else {
         perror("Nelze otevrit ovladac /dev/fb0");
         return 1;
     }
 }
-
