@@ -31,6 +31,8 @@ layout: default
 * [Optimalizace při překladu na procesorech ARM](linuxdays2015/arm_opt.md)
 
 ### Linux Days 2017
+* [Přídavné moduly pro Vim](linuxdays2017/vim_plugins.md)
+
 ### Linux Days 2018
 * [Go vs. Rust: porovnání dvou progresivních kompilovaných jazyků](linuxdays2018/rust_vs_go.md)
 
