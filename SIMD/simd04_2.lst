@@ -1,0 +1,32 @@
+
+simd04_2.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef unsigned short int v16us __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+    v16us x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+   8:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 10 <main+0x10>
+   f:	00 
+  10:	0f 29 45 d0          	movaps XMMWORD PTR [rbp-0x30],xmm0
+    v16us y = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+  14:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 1c <main+0x1c>
+  1b:	00 
+  1c:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+    v16us z = x + y;
+  20:	66 0f 6f 45 d0       	movdqa xmm0,XMMWORD PTR [rbp-0x30]
+  25:	66 0f fd 45 e0       	paddw  xmm0,XMMWORD PTR [rbp-0x20]
+  2a:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+
+    return 0;
+  2e:	b8 00 00 00 00       	mov    eax,0x0
+}
+  33:	5d                   	pop    rbp
+  34:	c3                   	ret    
