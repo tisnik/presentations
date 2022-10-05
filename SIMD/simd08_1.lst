@@ -1,0 +1,35 @@
+
+simd08_1.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef double v16d __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+    v16d x = { 1, 2 };
+   8:	d9 e8                	fld1   
+   a:	dd 5d d0             	fstp   QWORD PTR [rbp-0x30]
+   d:	dd 05 00 00 00 00    	fld    QWORD PTR [rip+0x0]        # 13 <main+0x13>
+  13:	dd 5d d8             	fstp   QWORD PTR [rbp-0x28]
+    v16d y = { 0.1, 0.1 };
+  16:	dd 05 00 00 00 00    	fld    QWORD PTR [rip+0x0]        # 1c <main+0x1c>
+  1c:	dd 5d e0             	fstp   QWORD PTR [rbp-0x20]
+  1f:	dd 05 00 00 00 00    	fld    QWORD PTR [rip+0x0]        # 25 <main+0x25>
+  25:	dd 5d e8             	fstp   QWORD PTR [rbp-0x18]
+    v16d z = x + y;
+  28:	dd 05 00 00 00 00    	fld    QWORD PTR [rip+0x0]        # 2e <main+0x2e>
+  2e:	dd 5d f0             	fstp   QWORD PTR [rbp-0x10]
+  31:	dd 05 00 00 00 00    	fld    QWORD PTR [rip+0x0]        # 37 <main+0x37>
+  37:	dd 5d f8             	fstp   QWORD PTR [rbp-0x8]
+
+    return 0;
+  3a:	b8 00 00 00 00       	mov    eax,0x0
+}
+  3f:	5d                   	pop    rbp
+  40:	c3                   	ret    
