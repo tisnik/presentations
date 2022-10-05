@@ -1,0 +1,30 @@
+
+simd07_2.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef float v16f __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+    v16f x = { 1, 2, 3, 4 };
+   8:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # f <main+0xf>
+   f:	0f 29 45 d0          	movaps XMMWORD PTR [rbp-0x30],xmm0
+    v16f y = { 0.1, 0.1, 0.1, 0.1 };
+  13:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # 1a <main+0x1a>
+  1a:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+    v16f z = x + y;
+  1e:	0f 28 45 d0          	movaps xmm0,XMMWORD PTR [rbp-0x30]
+  22:	0f 58 45 e0          	addps  xmm0,XMMWORD PTR [rbp-0x20]
+  26:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+
+    return 0;
+  2a:	b8 00 00 00 00       	mov    eax,0x0
+}
+  2f:	5d                   	pop    rbp
+  30:	c3                   	ret    
