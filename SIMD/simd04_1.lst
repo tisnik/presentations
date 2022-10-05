@@ -1,0 +1,41 @@
+
+simd04_1.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef unsigned short int v16us __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+    v16us x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+   8:	48 b8 01 00 02 00 03 	movabs rax,0x4000300020001
+   f:	00 04 00 
+  12:	48 ba 05 00 06 00 07 	movabs rdx,0x8000700060005
+  19:	00 08 00 
+  1c:	48 89 45 d0          	mov    QWORD PTR [rbp-0x30],rax
+  20:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
+    v16us y = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+  24:	48 b8 ff 00 ff 00 ff 	movabs rax,0xff00ff00ff00ff
+  2b:	00 ff 00 
+  2e:	48 ba ff 00 ff 00 ff 	movabs rdx,0xff00ff00ff00ff
+  35:	00 ff 00 
+  38:	48 89 45 e0          	mov    QWORD PTR [rbp-0x20],rax
+  3c:	48 89 55 e8          	mov    QWORD PTR [rbp-0x18],rdx
+  40:	48 b8 00 01 01 01 02 	movabs rax,0x103010201010100
+  47:	01 03 01 
+  4a:	48 ba 04 01 05 01 06 	movabs rdx,0x107010601050104
+  51:	01 07 01 
+    v16us z = x + y;
+  54:	48 89 45 f0          	mov    QWORD PTR [rbp-0x10],rax
+  58:	48 89 55 f8          	mov    QWORD PTR [rbp-0x8],rdx
+
+    return 0;
+  5c:	b8 00 00 00 00       	mov    eax,0x0
+}
+  61:	5d                   	pop    rbp
+  62:	c3                   	ret    
