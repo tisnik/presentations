@@ -1,0 +1,48 @@
+
+simd12_1.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef float v256f __attribute__((vector_size(256)));
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 81 e4 00 ff ff ff 	and    rsp,0xffffffffffffff00
+   f:	48 81 ec 88 02 00 00 	sub    rsp,0x288
+    v256f x = { 1.0 };
+  16:	48 8d 54 24 88       	lea    rdx,[rsp-0x78]
+  1b:	b8 00 00 00 00       	mov    eax,0x0
+  20:	b9 20 00 00 00       	mov    ecx,0x20
+  25:	48 89 d7             	mov    rdi,rdx
+  28:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+  2b:	d9 e8                	fld1   
+  2d:	d9 5c 24 88          	fstp   DWORD PTR [rsp-0x78]
+    v256f y = { 1.0 };
+  31:	48 8d 94 24 88 00 00 	lea    rdx,[rsp+0x88]
+  38:	00 
+  39:	b8 00 00 00 00       	mov    eax,0x0
+  3e:	b9 20 00 00 00       	mov    ecx,0x20
+  43:	48 89 d7             	mov    rdi,rdx
+  46:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+  49:	d9 e8                	fld1   
+  4b:	d9 9c 24 88 00 00 00 	fstp   DWORD PTR [rsp+0x88]
+    v256f z = x + y;
+  52:	48 8d 94 24 88 01 00 	lea    rdx,[rsp+0x188]
+  59:	00 
+  5a:	b8 00 00 00 00       	mov    eax,0x0
+  5f:	b9 20 00 00 00       	mov    ecx,0x20
+  64:	48 89 d7             	mov    rdi,rdx
+  67:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+  6a:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 70 <main+0x70>
+  70:	d9 9c 24 88 01 00 00 	fstp   DWORD PTR [rsp+0x188]
+
+    return 0;
+  77:	b8 00 00 00 00       	mov    eax,0x0
+}
+  7c:	c9                   	leave  
+  7d:	c3                   	ret    
