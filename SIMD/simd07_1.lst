@@ -1,0 +1,47 @@
+
+simd07_1.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef float v16f __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+    v16f x = { 1, 2, 3, 4 };
+   8:	d9 e8                	fld1   
+   a:	d9 5d d0             	fstp   DWORD PTR [rbp-0x30]
+   d:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 13 <main+0x13>
+  13:	d9 5d d4             	fstp   DWORD PTR [rbp-0x2c]
+  16:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 1c <main+0x1c>
+  1c:	d9 5d d8             	fstp   DWORD PTR [rbp-0x28]
+  1f:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 25 <main+0x25>
+  25:	d9 5d dc             	fstp   DWORD PTR [rbp-0x24]
+    v16f y = { 0.1, 0.1, 0.1, 0.1 };
+  28:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 2e <main+0x2e>
+  2e:	d9 5d e0             	fstp   DWORD PTR [rbp-0x20]
+  31:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 37 <main+0x37>
+  37:	d9 5d e4             	fstp   DWORD PTR [rbp-0x1c]
+  3a:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 40 <main+0x40>
+  40:	d9 5d e8             	fstp   DWORD PTR [rbp-0x18]
+  43:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 49 <main+0x49>
+  49:	d9 5d ec             	fstp   DWORD PTR [rbp-0x14]
+    v16f z = x + y;
+  4c:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 52 <main+0x52>
+  52:	d9 5d f0             	fstp   DWORD PTR [rbp-0x10]
+  55:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 5b <main+0x5b>
+  5b:	d9 5d f4             	fstp   DWORD PTR [rbp-0xc]
+  5e:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 64 <main+0x64>
+  64:	d9 5d f8             	fstp   DWORD PTR [rbp-0x8]
+  67:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 6d <main+0x6d>
+  6d:	d9 5d fc             	fstp   DWORD PTR [rbp-0x4]
+
+    return 0;
+  70:	b8 00 00 00 00       	mov    eax,0x0
+}
+  75:	5d                   	pop    rbp
+  76:	c3                   	ret    
