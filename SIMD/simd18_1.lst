@@ -1,0 +1,404 @@
+
+simd18_1.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16float>:
+#include <stdio.h>
+
+typedef float v16float __attribute__((vector_size(16)));
+
+void add16float(v16float x, v16float y, v16float * z)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+    *z = x + y;
+   c:	d9 45 10             	fld    DWORD PTR [rbp+0x10]
+   f:	d9 45 20             	fld    DWORD PTR [rbp+0x20]
+  12:	de c1                	faddp  st(1),st
+  14:	d9 45 14             	fld    DWORD PTR [rbp+0x14]
+  17:	d9 45 24             	fld    DWORD PTR [rbp+0x24]
+  1a:	de c1                	faddp  st(1),st
+  1c:	d9 45 18             	fld    DWORD PTR [rbp+0x18]
+  1f:	d9 45 28             	fld    DWORD PTR [rbp+0x28]
+  22:	de c1                	faddp  st(1),st
+  24:	d9 45 1c             	fld    DWORD PTR [rbp+0x1c]
+  27:	d9 45 2c             	fld    DWORD PTR [rbp+0x2c]
+  2a:	de c1                	faddp  st(1),st
+  2c:	d9 cb                	fxch   st(3)
+  2e:	d9 5d d0             	fstp   DWORD PTR [rbp-0x30]
+  31:	d9 c9                	fxch   st(1)
+  33:	d9 5d d4             	fstp   DWORD PTR [rbp-0x2c]
+  36:	d9 5d d8             	fstp   DWORD PTR [rbp-0x28]
+  39:	d9 5d dc             	fstp   DWORD PTR [rbp-0x24]
+  3c:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+  40:	48 89 45 f0          	mov    QWORD PTR [rbp-0x10],rax
+  44:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  48:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  4c:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+  50:	48 8b 55 f0          	mov    rdx,QWORD PTR [rbp-0x10]
+  54:	48 89 10             	mov    QWORD PTR [rax],rdx
+  57:	48 8b 55 f8          	mov    rdx,QWORD PTR [rbp-0x8]
+  5b:	48 89 50 08          	mov    QWORD PTR [rax+0x8],rdx
+}
+  5f:	90                   	nop
+  60:	5d                   	pop    rbp
+  61:	c3                   	ret    
+
+0000000000000062 <sub16float>:
+
+void sub16float(v16float x, v16float y, v16float * z)
+{
+  62:	f3 0f 1e fa          	endbr64 
+  66:	55                   	push   rbp
+  67:	48 89 e5             	mov    rbp,rsp
+  6a:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+    *z = x - y;
+  6e:	d9 45 10             	fld    DWORD PTR [rbp+0x10]
+  71:	d9 45 20             	fld    DWORD PTR [rbp+0x20]
+  74:	de e9                	fsubp  st(1),st
+  76:	d9 45 14             	fld    DWORD PTR [rbp+0x14]
+  79:	d9 45 24             	fld    DWORD PTR [rbp+0x24]
+  7c:	de e9                	fsubp  st(1),st
+  7e:	d9 45 18             	fld    DWORD PTR [rbp+0x18]
+  81:	d9 45 28             	fld    DWORD PTR [rbp+0x28]
+  84:	de e9                	fsubp  st(1),st
+  86:	d9 45 1c             	fld    DWORD PTR [rbp+0x1c]
+  89:	d9 45 2c             	fld    DWORD PTR [rbp+0x2c]
+  8c:	de e9                	fsubp  st(1),st
+  8e:	d9 cb                	fxch   st(3)
+  90:	d9 5d d0             	fstp   DWORD PTR [rbp-0x30]
+  93:	d9 c9                	fxch   st(1)
+  95:	d9 5d d4             	fstp   DWORD PTR [rbp-0x2c]
+  98:	d9 5d d8             	fstp   DWORD PTR [rbp-0x28]
+  9b:	d9 5d dc             	fstp   DWORD PTR [rbp-0x24]
+  9e:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+  a2:	48 89 45 f0          	mov    QWORD PTR [rbp-0x10],rax
+  a6:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  aa:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  ae:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+  b2:	48 8b 55 f0          	mov    rdx,QWORD PTR [rbp-0x10]
+  b6:	48 89 10             	mov    QWORD PTR [rax],rdx
+  b9:	48 8b 55 f8          	mov    rdx,QWORD PTR [rbp-0x8]
+  bd:	48 89 50 08          	mov    QWORD PTR [rax+0x8],rdx
+}
+  c1:	90                   	nop
+  c2:	5d                   	pop    rbp
+  c3:	c3                   	ret    
+
+00000000000000c4 <mul16float>:
+
+void mul16float(v16float x, v16float y, v16float * z)
+{
+  c4:	f3 0f 1e fa          	endbr64 
+  c8:	55                   	push   rbp
+  c9:	48 89 e5             	mov    rbp,rsp
+  cc:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+    *z = x * y;
+  d0:	d9 45 10             	fld    DWORD PTR [rbp+0x10]
+  d3:	d9 45 20             	fld    DWORD PTR [rbp+0x20]
+  d6:	de c9                	fmulp  st(1),st
+  d8:	d9 45 14             	fld    DWORD PTR [rbp+0x14]
+  db:	d9 45 24             	fld    DWORD PTR [rbp+0x24]
+  de:	de c9                	fmulp  st(1),st
+  e0:	d9 45 18             	fld    DWORD PTR [rbp+0x18]
+  e3:	d9 45 28             	fld    DWORD PTR [rbp+0x28]
+  e6:	de c9                	fmulp  st(1),st
+  e8:	d9 45 1c             	fld    DWORD PTR [rbp+0x1c]
+  eb:	d9 45 2c             	fld    DWORD PTR [rbp+0x2c]
+  ee:	de c9                	fmulp  st(1),st
+  f0:	d9 cb                	fxch   st(3)
+  f2:	d9 5d d0             	fstp   DWORD PTR [rbp-0x30]
+  f5:	d9 c9                	fxch   st(1)
+  f7:	d9 5d d4             	fstp   DWORD PTR [rbp-0x2c]
+  fa:	d9 5d d8             	fstp   DWORD PTR [rbp-0x28]
+  fd:	d9 5d dc             	fstp   DWORD PTR [rbp-0x24]
+ 100:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+ 104:	48 89 45 f0          	mov    QWORD PTR [rbp-0x10],rax
+ 108:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+ 10c:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+ 110:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+ 114:	48 8b 55 f0          	mov    rdx,QWORD PTR [rbp-0x10]
+ 118:	48 89 10             	mov    QWORD PTR [rax],rdx
+ 11b:	48 8b 55 f8          	mov    rdx,QWORD PTR [rbp-0x8]
+ 11f:	48 89 50 08          	mov    QWORD PTR [rax+0x8],rdx
+}
+ 123:	90                   	nop
+ 124:	5d                   	pop    rbp
+ 125:	c3                   	ret    
+
+0000000000000126 <div16float>:
+
+void div16float(v16float x, v16float y, v16float * z)
+{
+ 126:	f3 0f 1e fa          	endbr64 
+ 12a:	55                   	push   rbp
+ 12b:	48 89 e5             	mov    rbp,rsp
+ 12e:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+    *z = x / y;
+ 132:	d9 45 10             	fld    DWORD PTR [rbp+0x10]
+ 135:	d9 45 20             	fld    DWORD PTR [rbp+0x20]
+ 138:	de f9                	fdivp  st(1),st
+ 13a:	d9 45 14             	fld    DWORD PTR [rbp+0x14]
+ 13d:	d9 45 24             	fld    DWORD PTR [rbp+0x24]
+ 140:	de f9                	fdivp  st(1),st
+ 142:	d9 45 18             	fld    DWORD PTR [rbp+0x18]
+ 145:	d9 45 28             	fld    DWORD PTR [rbp+0x28]
+ 148:	de f9                	fdivp  st(1),st
+ 14a:	d9 45 1c             	fld    DWORD PTR [rbp+0x1c]
+ 14d:	d9 45 2c             	fld    DWORD PTR [rbp+0x2c]
+ 150:	de f9                	fdivp  st(1),st
+ 152:	d9 cb                	fxch   st(3)
+ 154:	d9 5d d0             	fstp   DWORD PTR [rbp-0x30]
+ 157:	d9 c9                	fxch   st(1)
+ 159:	d9 5d d4             	fstp   DWORD PTR [rbp-0x2c]
+ 15c:	d9 5d d8             	fstp   DWORD PTR [rbp-0x28]
+ 15f:	d9 5d dc             	fstp   DWORD PTR [rbp-0x24]
+ 162:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+ 166:	48 89 45 f0          	mov    QWORD PTR [rbp-0x10],rax
+ 16a:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+ 16e:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+ 172:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+ 176:	48 8b 55 f0          	mov    rdx,QWORD PTR [rbp-0x10]
+ 17a:	48 89 10             	mov    QWORD PTR [rax],rdx
+ 17d:	48 8b 55 f8          	mov    rdx,QWORD PTR [rbp-0x8]
+ 181:	48 89 50 08          	mov    QWORD PTR [rax+0x8],rdx
+}
+ 185:	90                   	nop
+ 186:	5d                   	pop    rbp
+ 187:	c3                   	ret    
+
+0000000000000188 <print_vectors>:
+
+void print_vectors(const char *message, const char op, v16float * x,
+                   v16float * y, v16float * z)
+{
+ 188:	f3 0f 1e fa          	endbr64 
+ 18c:	55                   	push   rbp
+ 18d:	48 89 e5             	mov    rbp,rsp
+ 190:	48 83 ec 40          	sub    rsp,0x40
+ 194:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+ 198:	89 f0                	mov    eax,esi
+ 19a:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
+ 19e:	48 89 4d d0          	mov    QWORD PTR [rbp-0x30],rcx
+ 1a2:	4c 89 45 c8          	mov    QWORD PTR [rbp-0x38],r8
+ 1a6:	88 45 e4             	mov    BYTE PTR [rbp-0x1c],al
+    int i;
+
+    puts(message);
+ 1a9:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+ 1ad:	48 89 c7             	mov    rdi,rax
+ 1b0:	e8 00 00 00 00       	call   1b5 <print_vectors+0x2d>
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 1b5:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
+ 1bc:	eb 67                	jmp    225 <print_vectors+0x9d>
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i], (*z)[i]);
+ 1be:	48 8b 45 c8          	mov    rax,QWORD PTR [rbp-0x38]
+ 1c2:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+ 1c5:	48 63 d2             	movsxd rdx,edx
+ 1c8:	d9 04 90             	fld    DWORD PTR [rax+rdx*4]
+ 1cb:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+ 1cf:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+ 1d2:	48 63 d2             	movsxd rdx,edx
+ 1d5:	d9 04 90             	fld    DWORD PTR [rax+rdx*4]
+ 1d8:	0f be 55 e4          	movsx  edx,BYTE PTR [rbp-0x1c]
+ 1dc:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+ 1e0:	8b 4d fc             	mov    ecx,DWORD PTR [rbp-0x4]
+ 1e3:	48 63 c9             	movsxd rcx,ecx
+ 1e6:	d9 04 88             	fld    DWORD PTR [rax+rcx*4]
+ 1e9:	d9 ca                	fxch   st(2)
+ 1eb:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+ 1ee:	48 83 ec 08          	sub    rsp,0x8
+ 1f2:	48 8d 64 24 f8       	lea    rsp,[rsp-0x8]
+ 1f7:	dd 1c 24             	fstp   QWORD PTR [rsp]
+ 1fa:	48 8d 64 24 f8       	lea    rsp,[rsp-0x8]
+ 1ff:	dd 1c 24             	fstp   QWORD PTR [rsp]
+ 202:	48 8d 64 24 f8       	lea    rsp,[rsp-0x8]
+ 207:	dd 1c 24             	fstp   QWORD PTR [rsp]
+ 20a:	89 c6                	mov    esi,eax
+ 20c:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 213 <print_vectors+0x8b>
+ 213:	b8 00 00 00 00       	mov    eax,0x0
+ 218:	e8 00 00 00 00       	call   21d <print_vectors+0x95>
+ 21d:	48 83 c4 20          	add    rsp,0x20
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 221:	83 45 fc 01          	add    DWORD PTR [rbp-0x4],0x1
+ 225:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+ 228:	83 f8 03             	cmp    eax,0x3
+ 22b:	76 91                	jbe    1be <print_vectors+0x36>
+    }
+
+    putchar('\n');
+ 22d:	bf 0a 00 00 00       	mov    edi,0xa
+ 232:	e8 00 00 00 00       	call   237 <print_vectors+0xaf>
+}
+ 237:	90                   	nop
+ 238:	c9                   	leave  
+ 239:	c3                   	ret    
+
+000000000000023a <main>:
+
+int main(void)
+{
+ 23a:	f3 0f 1e fa          	endbr64 
+ 23e:	55                   	push   rbp
+ 23f:	48 89 e5             	mov    rbp,rsp
+ 242:	48 81 ec e0 00 00 00 	sub    rsp,0xe0
+ 249:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+ 250:	00 00 
+ 252:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+ 256:	31 c0                	xor    eax,eax
+    v16float x;
+    v16float y;
+    v16float z;
+    int i;
+
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 258:	c7 85 3c ff ff ff 00 	mov    DWORD PTR [rbp-0xc4],0x0
+ 25f:	00 00 00 
+ 262:	eb 45                	jmp    2a9 <main+0x6f>
+        x[i] = i;
+ 264:	db 85 3c ff ff ff    	fild   DWORD PTR [rbp-0xc4]
+ 26a:	8b 85 3c ff ff ff    	mov    eax,DWORD PTR [rbp-0xc4]
+ 270:	48 98                	cdqe   
+ 272:	d9 9c 85 40 ff ff ff 	fstp   DWORD PTR [rbp+rax*4-0xc0]
+        y[i] = i + 0.1;
+ 279:	db 85 3c ff ff ff    	fild   DWORD PTR [rbp-0xc4]
+ 27f:	dd 05 00 00 00 00    	fld    QWORD PTR [rip+0x0]        # 285 <main+0x4b>
+ 285:	de c1                	faddp  st(1),st
+ 287:	d9 9d 2c ff ff ff    	fstp   DWORD PTR [rbp-0xd4]
+ 28d:	d9 85 2c ff ff ff    	fld    DWORD PTR [rbp-0xd4]
+ 293:	8b 85 3c ff ff ff    	mov    eax,DWORD PTR [rbp-0xc4]
+ 299:	48 98                	cdqe   
+ 29b:	d9 9c 85 50 ff ff ff 	fstp   DWORD PTR [rbp+rax*4-0xb0]
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 2a2:	83 85 3c ff ff ff 01 	add    DWORD PTR [rbp-0xc4],0x1
+ 2a9:	8b 85 3c ff ff ff    	mov    eax,DWORD PTR [rbp-0xc4]
+ 2af:	83 f8 03             	cmp    eax,0x3
+ 2b2:	76 b0                	jbe    264 <main+0x2a>
+    }
+
+    add16float(x, y, &z);
+ 2b4:	48 8b 85 50 ff ff ff 	mov    rax,QWORD PTR [rbp-0xb0]
+ 2bb:	48 89 85 70 ff ff ff 	mov    QWORD PTR [rbp-0x90],rax
+ 2c2:	48 8b 85 58 ff ff ff 	mov    rax,QWORD PTR [rbp-0xa8]
+ 2c9:	48 89 85 78 ff ff ff 	mov    QWORD PTR [rbp-0x88],rax
+ 2d0:	48 8b 85 40 ff ff ff 	mov    rax,QWORD PTR [rbp-0xc0]
+ 2d7:	48 89 45 80          	mov    QWORD PTR [rbp-0x80],rax
+ 2db:	48 8b 85 48 ff ff ff 	mov    rax,QWORD PTR [rbp-0xb8]
+ 2e2:	48 89 45 88          	mov    QWORD PTR [rbp-0x78],rax
+ 2e6:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
+ 2ed:	ff b5 78 ff ff ff    	push   QWORD PTR [rbp-0x88]
+ 2f3:	ff b5 70 ff ff ff    	push   QWORD PTR [rbp-0x90]
+ 2f9:	ff 75 88             	push   QWORD PTR [rbp-0x78]
+ 2fc:	ff 75 80             	push   QWORD PTR [rbp-0x80]
+ 2ff:	48 89 c7             	mov    rdi,rax
+ 302:	e8 00 00 00 00       	call   307 <main+0xcd>
+ 307:	48 83 c4 20          	add    rsp,0x20
+    print_vectors("vector addition", '+', &x, &y, &z);
+ 30b:	48 8d 8d 60 ff ff ff 	lea    rcx,[rbp-0xa0]
+ 312:	48 8d 95 50 ff ff ff 	lea    rdx,[rbp-0xb0]
+ 319:	48 8d 85 40 ff ff ff 	lea    rax,[rbp-0xc0]
+ 320:	49 89 c8             	mov    r8,rcx
+ 323:	48 89 d1             	mov    rcx,rdx
+ 326:	48 89 c2             	mov    rdx,rax
+ 329:	be 2b 00 00 00       	mov    esi,0x2b
+ 32e:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 335 <main+0xfb>
+ 335:	e8 00 00 00 00       	call   33a <main+0x100>
+
+    sub16float(x, y, &z);
+ 33a:	48 8b 85 50 ff ff ff 	mov    rax,QWORD PTR [rbp-0xb0]
+ 341:	48 89 45 90          	mov    QWORD PTR [rbp-0x70],rax
+ 345:	48 8b 85 58 ff ff ff 	mov    rax,QWORD PTR [rbp-0xa8]
+ 34c:	48 89 45 98          	mov    QWORD PTR [rbp-0x68],rax
+ 350:	48 8b 85 40 ff ff ff 	mov    rax,QWORD PTR [rbp-0xc0]
+ 357:	48 89 45 a0          	mov    QWORD PTR [rbp-0x60],rax
+ 35b:	48 8b 85 48 ff ff ff 	mov    rax,QWORD PTR [rbp-0xb8]
+ 362:	48 89 45 a8          	mov    QWORD PTR [rbp-0x58],rax
+ 366:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
+ 36d:	ff 75 98             	push   QWORD PTR [rbp-0x68]
+ 370:	ff 75 90             	push   QWORD PTR [rbp-0x70]
+ 373:	ff 75 a8             	push   QWORD PTR [rbp-0x58]
+ 376:	ff 75 a0             	push   QWORD PTR [rbp-0x60]
+ 379:	48 89 c7             	mov    rdi,rax
+ 37c:	e8 00 00 00 00       	call   381 <main+0x147>
+ 381:	48 83 c4 20          	add    rsp,0x20
+    print_vectors("vector subtraction", '-', &x, &y, &z);
+ 385:	48 8d 8d 60 ff ff ff 	lea    rcx,[rbp-0xa0]
+ 38c:	48 8d 95 50 ff ff ff 	lea    rdx,[rbp-0xb0]
+ 393:	48 8d 85 40 ff ff ff 	lea    rax,[rbp-0xc0]
+ 39a:	49 89 c8             	mov    r8,rcx
+ 39d:	48 89 d1             	mov    rcx,rdx
+ 3a0:	48 89 c2             	mov    rdx,rax
+ 3a3:	be 2d 00 00 00       	mov    esi,0x2d
+ 3a8:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 3af <main+0x175>
+ 3af:	e8 00 00 00 00       	call   3b4 <main+0x17a>
+
+    mul16float(x, y, &z);
+ 3b4:	48 8b 85 50 ff ff ff 	mov    rax,QWORD PTR [rbp-0xb0]
+ 3bb:	48 89 45 b0          	mov    QWORD PTR [rbp-0x50],rax
+ 3bf:	48 8b 85 58 ff ff ff 	mov    rax,QWORD PTR [rbp-0xa8]
+ 3c6:	48 89 45 b8          	mov    QWORD PTR [rbp-0x48],rax
+ 3ca:	48 8b 85 40 ff ff ff 	mov    rax,QWORD PTR [rbp-0xc0]
+ 3d1:	48 89 45 c0          	mov    QWORD PTR [rbp-0x40],rax
+ 3d5:	48 8b 85 48 ff ff ff 	mov    rax,QWORD PTR [rbp-0xb8]
+ 3dc:	48 89 45 c8          	mov    QWORD PTR [rbp-0x38],rax
+ 3e0:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
+ 3e7:	ff 75 b8             	push   QWORD PTR [rbp-0x48]
+ 3ea:	ff 75 b0             	push   QWORD PTR [rbp-0x50]
+ 3ed:	ff 75 c8             	push   QWORD PTR [rbp-0x38]
+ 3f0:	ff 75 c0             	push   QWORD PTR [rbp-0x40]
+ 3f3:	48 89 c7             	mov    rdi,rax
+ 3f6:	e8 00 00 00 00       	call   3fb <main+0x1c1>
+ 3fb:	48 83 c4 20          	add    rsp,0x20
+    print_vectors("vector multiply", '*', &x, &y, &z);
+ 3ff:	48 8d 8d 60 ff ff ff 	lea    rcx,[rbp-0xa0]
+ 406:	48 8d 95 50 ff ff ff 	lea    rdx,[rbp-0xb0]
+ 40d:	48 8d 85 40 ff ff ff 	lea    rax,[rbp-0xc0]
+ 414:	49 89 c8             	mov    r8,rcx
+ 417:	48 89 d1             	mov    rcx,rdx
+ 41a:	48 89 c2             	mov    rdx,rax
+ 41d:	be 2a 00 00 00       	mov    esi,0x2a
+ 422:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 429 <main+0x1ef>
+ 429:	e8 00 00 00 00       	call   42e <main+0x1f4>
+
+    div16float(x, y, &z);
+ 42e:	48 8b 85 50 ff ff ff 	mov    rax,QWORD PTR [rbp-0xb0]
+ 435:	48 89 45 d0          	mov    QWORD PTR [rbp-0x30],rax
+ 439:	48 8b 85 58 ff ff ff 	mov    rax,QWORD PTR [rbp-0xa8]
+ 440:	48 89 45 d8          	mov    QWORD PTR [rbp-0x28],rax
+ 444:	48 8b 85 40 ff ff ff 	mov    rax,QWORD PTR [rbp-0xc0]
+ 44b:	48 89 45 e0          	mov    QWORD PTR [rbp-0x20],rax
+ 44f:	48 8b 85 48 ff ff ff 	mov    rax,QWORD PTR [rbp-0xb8]
+ 456:	48 89 45 e8          	mov    QWORD PTR [rbp-0x18],rax
+ 45a:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
+ 461:	ff 75 d8             	push   QWORD PTR [rbp-0x28]
+ 464:	ff 75 d0             	push   QWORD PTR [rbp-0x30]
+ 467:	ff 75 e8             	push   QWORD PTR [rbp-0x18]
+ 46a:	ff 75 e0             	push   QWORD PTR [rbp-0x20]
+ 46d:	48 89 c7             	mov    rdi,rax
+ 470:	e8 00 00 00 00       	call   475 <main+0x23b>
+ 475:	48 83 c4 20          	add    rsp,0x20
+    print_vectors("vector divide", '/', &x, &y, &z);
+ 479:	48 8d 8d 60 ff ff ff 	lea    rcx,[rbp-0xa0]
+ 480:	48 8d 95 50 ff ff ff 	lea    rdx,[rbp-0xb0]
+ 487:	48 8d 85 40 ff ff ff 	lea    rax,[rbp-0xc0]
+ 48e:	49 89 c8             	mov    r8,rcx
+ 491:	48 89 d1             	mov    rcx,rdx
+ 494:	48 89 c2             	mov    rdx,rax
+ 497:	be 2f 00 00 00       	mov    esi,0x2f
+ 49c:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 4a3 <main+0x269>
+ 4a3:	e8 00 00 00 00       	call   4a8 <main+0x26e>
+
+    return 0;
+ 4a8:	b8 00 00 00 00       	mov    eax,0x0
+}
+ 4ad:	48 8b 75 f8          	mov    rsi,QWORD PTR [rbp-0x8]
+ 4b1:	64 48 33 34 25 28 00 	xor    rsi,QWORD PTR fs:0x28
+ 4b8:	00 00 
+ 4ba:	74 05                	je     4c1 <main+0x287>
+ 4bc:	e8 00 00 00 00       	call   4c1 <main+0x287>
+ 4c1:	c9                   	leave  
+ 4c2:	c3                   	ret    
