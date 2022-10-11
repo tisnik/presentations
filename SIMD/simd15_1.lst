@@ -1,0 +1,223 @@
+
+simd15_1.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16float>:
+#include <stdio.h>
+
+typedef float v16float __attribute__((vector_size(16)));
+
+void add16float(v16float x, v16float y, v16float * z)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+    *z = x + y;
+   c:	d9 45 10             	fld    DWORD PTR [rbp+0x10]
+   f:	d9 45 20             	fld    DWORD PTR [rbp+0x20]
+  12:	de c1                	faddp  st(1),st
+  14:	d9 45 14             	fld    DWORD PTR [rbp+0x14]
+  17:	d9 45 24             	fld    DWORD PTR [rbp+0x24]
+  1a:	de c1                	faddp  st(1),st
+  1c:	d9 45 18             	fld    DWORD PTR [rbp+0x18]
+  1f:	d9 45 28             	fld    DWORD PTR [rbp+0x28]
+  22:	de c1                	faddp  st(1),st
+  24:	d9 45 1c             	fld    DWORD PTR [rbp+0x1c]
+  27:	d9 45 2c             	fld    DWORD PTR [rbp+0x2c]
+  2a:	de c1                	faddp  st(1),st
+  2c:	d9 cb                	fxch   st(3)
+  2e:	d9 5d d0             	fstp   DWORD PTR [rbp-0x30]
+  31:	d9 c9                	fxch   st(1)
+  33:	d9 5d d4             	fstp   DWORD PTR [rbp-0x2c]
+  36:	d9 5d d8             	fstp   DWORD PTR [rbp-0x28]
+  39:	d9 5d dc             	fstp   DWORD PTR [rbp-0x24]
+  3c:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+  40:	48 89 45 f0          	mov    QWORD PTR [rbp-0x10],rax
+  44:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  48:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  4c:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+  50:	48 8b 55 f0          	mov    rdx,QWORD PTR [rbp-0x10]
+  54:	48 89 10             	mov    QWORD PTR [rax],rdx
+  57:	48 8b 55 f8          	mov    rdx,QWORD PTR [rbp-0x8]
+  5b:	48 89 50 08          	mov    QWORD PTR [rax+0x8],rdx
+}
+  5f:	90                   	nop
+  60:	5d                   	pop    rbp
+  61:	c3                   	ret    
+
+0000000000000062 <add16double>:
+
+typedef double v16double __attribute__((vector_size(16)));
+
+void add16double(v16double x, v16double y, v16double * z)
+{
+  62:	f3 0f 1e fa          	endbr64 
+  66:	55                   	push   rbp
+  67:	48 89 e5             	mov    rbp,rsp
+  6a:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+    *z = x + y;
+  6e:	dd 45 10             	fld    QWORD PTR [rbp+0x10]
+  71:	dd 45 20             	fld    QWORD PTR [rbp+0x20]
+  74:	de c1                	faddp  st(1),st
+  76:	dd 45 18             	fld    QWORD PTR [rbp+0x18]
+  79:	dd 45 28             	fld    QWORD PTR [rbp+0x28]
+  7c:	de c1                	faddp  st(1),st
+  7e:	d9 c9                	fxch   st(1)
+  80:	dd 5d d0             	fstp   QWORD PTR [rbp-0x30]
+  83:	dd 5d d8             	fstp   QWORD PTR [rbp-0x28]
+  86:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+  8a:	48 89 45 f0          	mov    QWORD PTR [rbp-0x10],rax
+  8e:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  92:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  96:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+  9a:	48 8b 55 f0          	mov    rdx,QWORD PTR [rbp-0x10]
+  9e:	48 89 10             	mov    QWORD PTR [rax],rdx
+  a1:	48 8b 55 f8          	mov    rdx,QWORD PTR [rbp-0x8]
+  a5:	48 89 50 08          	mov    QWORD PTR [rax+0x8],rdx
+}
+  a9:	90                   	nop
+  aa:	5d                   	pop    rbp
+  ab:	c3                   	ret    
+
+00000000000000ac <main>:
+
+int main(void)
+{
+  ac:	f3 0f 1e fa          	endbr64 
+  b0:	55                   	push   rbp
+  b1:	48 89 e5             	mov    rbp,rsp
+  b4:	48 83 ec 70          	sub    rsp,0x70
+  b8:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  bf:	00 00 
+  c1:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  c5:	31 c0                	xor    eax,eax
+    {
+        v16float x = { 0, 1, 2, 3 };
+  c7:	d9 ee                	fldz   
+  c9:	d9 5d b0             	fstp   DWORD PTR [rbp-0x50]
+  cc:	d9 e8                	fld1   
+  ce:	d9 5d b4             	fstp   DWORD PTR [rbp-0x4c]
+  d1:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # d7 <main+0x2b>
+  d7:	d9 5d b8             	fstp   DWORD PTR [rbp-0x48]
+  da:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # e0 <main+0x34>
+  e0:	d9 5d bc             	fstp   DWORD PTR [rbp-0x44]
+        v16float y = { 0.1, 0.1, 0.1, 0.1 };
+  e3:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # e9 <main+0x3d>
+  e9:	d9 5d c0             	fstp   DWORD PTR [rbp-0x40]
+  ec:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # f2 <main+0x46>
+  f2:	d9 5d c4             	fstp   DWORD PTR [rbp-0x3c]
+  f5:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # fb <main+0x4f>
+  fb:	d9 5d c8             	fstp   DWORD PTR [rbp-0x38]
+  fe:	d9 05 00 00 00 00    	fld    DWORD PTR [rip+0x0]        # 104 <main+0x58>
+ 104:	d9 5d cc             	fstp   DWORD PTR [rbp-0x34]
+        v16float z;
+
+        add16float(x, y, &z);
+ 107:	48 8d 45 a0          	lea    rax,[rbp-0x60]
+ 10b:	ff 75 c8             	push   QWORD PTR [rbp-0x38]
+ 10e:	ff 75 c0             	push   QWORD PTR [rbp-0x40]
+ 111:	ff 75 b8             	push   QWORD PTR [rbp-0x48]
+ 114:	ff 75 b0             	push   QWORD PTR [rbp-0x50]
+ 117:	48 89 c7             	mov    rdi,rax
+ 11a:	e8 00 00 00 00       	call   11f <main+0x73>
+ 11f:	48 83 c4 20          	add    rsp,0x20
+
+        int i;
+
+        puts("vector of floats");
+ 123:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 12a <main+0x7e>
+ 12a:	e8 00 00 00 00       	call   12f <main+0x83>
+
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 12f:	c7 45 98 00 00 00 00 	mov    DWORD PTR [rbp-0x68],0x0
+ 136:	eb 33                	jmp    16b <main+0xbf>
+            printf("%d %f\n", i, z[i]);
+ 138:	8b 45 98             	mov    eax,DWORD PTR [rbp-0x68]
+ 13b:	48 98                	cdqe   
+ 13d:	d9 44 85 a0          	fld    DWORD PTR [rbp+rax*4-0x60]
+ 141:	8b 45 98             	mov    eax,DWORD PTR [rbp-0x68]
+ 144:	48 83 ec 08          	sub    rsp,0x8
+ 148:	48 8d 64 24 f8       	lea    rsp,[rsp-0x8]
+ 14d:	dd 1c 24             	fstp   QWORD PTR [rsp]
+ 150:	89 c6                	mov    esi,eax
+ 152:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 159 <main+0xad>
+ 159:	b8 00 00 00 00       	mov    eax,0x0
+ 15e:	e8 00 00 00 00       	call   163 <main+0xb7>
+ 163:	48 83 c4 10          	add    rsp,0x10
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 167:	83 45 98 01          	add    DWORD PTR [rbp-0x68],0x1
+ 16b:	8b 45 98             	mov    eax,DWORD PTR [rbp-0x68]
+ 16e:	83 f8 03             	cmp    eax,0x3
+ 171:	76 c5                	jbe    138 <main+0x8c>
+        }
+    }
+
+    putchar('\n');
+ 173:	bf 0a 00 00 00       	mov    edi,0xa
+ 178:	e8 00 00 00 00       	call   17d <main+0xd1>
+
+    {
+        v16double x = { 0, 1 };
+ 17d:	d9 ee                	fldz   
+ 17f:	dd 5d d0             	fstp   QWORD PTR [rbp-0x30]
+ 182:	d9 e8                	fld1   
+ 184:	dd 5d d8             	fstp   QWORD PTR [rbp-0x28]
+        v16double y = { 0.1, 0.1 };
+ 187:	dd 05 00 00 00 00    	fld    QWORD PTR [rip+0x0]        # 18d <main+0xe1>
+ 18d:	dd 5d e0             	fstp   QWORD PTR [rbp-0x20]
+ 190:	dd 05 00 00 00 00    	fld    QWORD PTR [rip+0x0]        # 196 <main+0xea>
+ 196:	dd 5d e8             	fstp   QWORD PTR [rbp-0x18]
+        v16double z;
+
+        add16double(x, y, &z);
+ 199:	48 8d 45 a0          	lea    rax,[rbp-0x60]
+ 19d:	ff 75 e8             	push   QWORD PTR [rbp-0x18]
+ 1a0:	ff 75 e0             	push   QWORD PTR [rbp-0x20]
+ 1a3:	ff 75 d8             	push   QWORD PTR [rbp-0x28]
+ 1a6:	ff 75 d0             	push   QWORD PTR [rbp-0x30]
+ 1a9:	48 89 c7             	mov    rdi,rax
+ 1ac:	e8 00 00 00 00       	call   1b1 <main+0x105>
+ 1b1:	48 83 c4 20          	add    rsp,0x20
+
+        int i;
+
+        puts("vector of doubles");
+ 1b5:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 1bc <main+0x110>
+ 1bc:	e8 00 00 00 00       	call   1c1 <main+0x115>
+
+        for (i = 0; i < sizeof(v16double) / sizeof(double); i++) {
+ 1c1:	c7 45 9c 00 00 00 00 	mov    DWORD PTR [rbp-0x64],0x0
+ 1c8:	eb 33                	jmp    1fd <main+0x151>
+            printf("%d %f\n", i, z[i]);
+ 1ca:	8b 45 9c             	mov    eax,DWORD PTR [rbp-0x64]
+ 1cd:	48 98                	cdqe   
+ 1cf:	dd 44 c5 a0          	fld    QWORD PTR [rbp+rax*8-0x60]
+ 1d3:	8b 45 9c             	mov    eax,DWORD PTR [rbp-0x64]
+ 1d6:	48 83 ec 08          	sub    rsp,0x8
+ 1da:	48 8d 64 24 f8       	lea    rsp,[rsp-0x8]
+ 1df:	dd 1c 24             	fstp   QWORD PTR [rsp]
+ 1e2:	89 c6                	mov    esi,eax
+ 1e4:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 1eb <main+0x13f>
+ 1eb:	b8 00 00 00 00       	mov    eax,0x0
+ 1f0:	e8 00 00 00 00       	call   1f5 <main+0x149>
+ 1f5:	48 83 c4 10          	add    rsp,0x10
+        for (i = 0; i < sizeof(v16double) / sizeof(double); i++) {
+ 1f9:	83 45 9c 01          	add    DWORD PTR [rbp-0x64],0x1
+ 1fd:	8b 45 9c             	mov    eax,DWORD PTR [rbp-0x64]
+ 200:	83 f8 01             	cmp    eax,0x1
+ 203:	76 c5                	jbe    1ca <main+0x11e>
+        }
+    }
+    return 0;
+ 205:	b8 00 00 00 00       	mov    eax,0x0
+}
+ 20a:	48 8b 55 f8          	mov    rdx,QWORD PTR [rbp-0x8]
+ 20e:	64 48 33 14 25 28 00 	xor    rdx,QWORD PTR fs:0x28
+ 215:	00 00 
+ 217:	74 05                	je     21e <main+0x172>
+ 219:	e8 00 00 00 00       	call   21e <main+0x172>
+ 21e:	c9                   	leave  
+ 21f:	c3                   	ret    
