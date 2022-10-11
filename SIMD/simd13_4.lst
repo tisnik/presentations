@@ -1,0 +1,228 @@
+
+simd13_4.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16ub>:
+#include <stdio.h>
+
+typedef unsigned char v16ub __attribute__((vector_size(16)));
+
+void add16ub(v16ub x, v16ub y, v16ub * z)
+{
+   0:	f3 0f 1e fa          	endbr64 
+    *z = x + y;
+   4:	66 0f fc c1          	paddb  xmm0,xmm1
+   8:	0f 29 07             	movaps XMMWORD PTR [rdi],xmm0
+}
+   b:	c3                   	ret    
+   c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+0000000000000010 <add16us>:
+
+typedef unsigned short v16us __attribute__((vector_size(16)));
+
+void add16us(v16us x, v16us y, v16us * z)
+{
+  10:	f3 0f 1e fa          	endbr64 
+    *z = x + y;
+  14:	66 0f fd c1          	paddw  xmm0,xmm1
+  18:	0f 29 07             	movaps XMMWORD PTR [rdi],xmm0
+}
+  1b:	c3                   	ret    
+  1c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+0000000000000020 <add16ui>:
+
+typedef unsigned int v16ui __attribute__((vector_size(16)));
+
+void add16ui(v16ui x, v16ui y, v16ui * z)
+{
+  20:	f3 0f 1e fa          	endbr64 
+    *z = x + y;
+  24:	66 0f fe c1          	paddd  xmm0,xmm1
+  28:	0f 29 07             	movaps XMMWORD PTR [rdi],xmm0
+}
+  2b:	c3                   	ret    
+  2c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+0000000000000030 <add16ul>:
+
+typedef unsigned long int v16ul __attribute__((vector_size(16)));
+
+void add16ul(v16ul x, v16ul y, v16ul * z)
+{
+  30:	f3 0f 1e fa          	endbr64 
+    *z = x + y;
+  34:	66 0f d4 c1          	paddq  xmm0,xmm1
+  38:	0f 29 07             	movaps XMMWORD PTR [rdi],xmm0
+}
+  3b:	c3                   	ret    
+
+Disassembly of section .text.startup:
+
+0000000000000000 <main>:
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 54                	push   r12
+
+        add16ub(x, y, &z);
+
+        int i;
+
+        puts("vector of unsigned chars");
+   6:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # d <main+0xd>
+}
+
+__fortify_function int
+printf (const char *__restrict __fmt, ...)
+{
+  return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+   d:	4c 8d 25 00 00 00 00 	lea    r12,[rip+0x0]        # 14 <main+0x14>
+{
+  14:	55                   	push   rbp
+  15:	53                   	push   rbx
+        puts("vector of unsigned chars");
+  16:	31 db                	xor    ebx,ebx
+{
+  18:	48 83 ec 20          	sub    rsp,0x20
+    *z = x + y;
+  1c:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 24 <main+0x24>
+  23:	00 
+{
+  24:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  2b:	00 00 
+  2d:	48 89 44 24 18       	mov    QWORD PTR [rsp+0x18],rax
+  32:	31 c0                	xor    eax,eax
+    *z = x + y;
+  34:	48 89 e5             	mov    rbp,rsp
+  37:	0f 29 04 24          	movaps XMMWORD PTR [rsp],xmm0
+        puts("vector of unsigned chars");
+  3b:	e8 00 00 00 00       	call   40 <main+0x40>
+
+        for (i = 0; i < sizeof(v16ub) / sizeof(unsigned char); i++) {
+            printf("%d %u\n", i, z[i]);
+  40:	0f b6 4c 1d 00       	movzx  ecx,BYTE PTR [rbp+rbx*1+0x0]
+  45:	89 da                	mov    edx,ebx
+  47:	4c 89 e6             	mov    rsi,r12
+  4a:	bf 01 00 00 00       	mov    edi,0x1
+  4f:	31 c0                	xor    eax,eax
+  51:	48 83 c3 01          	add    rbx,0x1
+  55:	e8 00 00 00 00       	call   5a <main+0x5a>
+        for (i = 0; i < sizeof(v16ub) / sizeof(unsigned char); i++) {
+  5a:	48 83 fb 10          	cmp    rbx,0x10
+  5e:	75 e0                	jne    40 <main+0x40>
+
+/* Write a character to stdout.  */
+__STDIO_INLINE int
+putchar (int __c)
+{
+  return putc (__c, stdout);
+  60:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # 67 <main+0x67>
+  67:	bf 0a 00 00 00       	mov    edi,0xa
+
+        add16us(x, y, &z);
+
+        int i;
+
+        puts("vector of unsigned short ints");
+  6c:	31 db                	xor    ebx,ebx
+  6e:	4c 8d 25 00 00 00 00 	lea    r12,[rip+0x0]        # 75 <main+0x75>
+  75:	e8 00 00 00 00       	call   7a <main+0x7a>
+    *z = x + y;
+  7a:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 82 <main+0x82>
+  81:	00 
+        puts("vector of unsigned short ints");
+  82:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 89 <main+0x89>
+    *z = x + y;
+  89:	0f 29 04 24          	movaps XMMWORD PTR [rsp],xmm0
+        puts("vector of unsigned short ints");
+  8d:	e8 00 00 00 00       	call   92 <main+0x92>
+
+        for (i = 0; i < sizeof(v16us) / sizeof(unsigned short); i++) {
+  92:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+            printf("%d %u\n", i, z[i]);
+  98:	0f b7 4c 5d 00       	movzx  ecx,WORD PTR [rbp+rbx*2+0x0]
+  9d:	89 da                	mov    edx,ebx
+  9f:	4c 89 e6             	mov    rsi,r12
+  a2:	bf 01 00 00 00       	mov    edi,0x1
+  a7:	31 c0                	xor    eax,eax
+  a9:	48 83 c3 01          	add    rbx,0x1
+  ad:	e8 00 00 00 00       	call   b2 <main+0xb2>
+        for (i = 0; i < sizeof(v16us) / sizeof(unsigned short); i++) {
+  b2:	48 83 fb 08          	cmp    rbx,0x8
+  b6:	75 e0                	jne    98 <main+0x98>
+  b8:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # bf <main+0xbf>
+  bf:	bf 0a 00 00 00       	mov    edi,0xa
+
+        add16ui(x, y, &z);
+
+        int i;
+
+        puts("vector of unsigned ints");
+  c4:	31 db                	xor    ebx,ebx
+  c6:	4c 8d 25 00 00 00 00 	lea    r12,[rip+0x0]        # cd <main+0xcd>
+  cd:	e8 00 00 00 00       	call   d2 <main+0xd2>
+    *z = x + y;
+  d2:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # da <main+0xda>
+  d9:	00 
+        puts("vector of unsigned ints");
+  da:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # e1 <main+0xe1>
+    *z = x + y;
+  e1:	0f 29 04 24          	movaps XMMWORD PTR [rsp],xmm0
+        puts("vector of unsigned ints");
+  e5:	e8 00 00 00 00       	call   ea <main+0xea>
+  ea:	8b 4c 9d 00          	mov    ecx,DWORD PTR [rbp+rbx*4+0x0]
+  ee:	89 da                	mov    edx,ebx
+  f0:	4c 89 e6             	mov    rsi,r12
+  f3:	bf 01 00 00 00       	mov    edi,0x1
+  f8:	31 c0                	xor    eax,eax
+  fa:	48 83 c3 01          	add    rbx,0x1
+  fe:	e8 00 00 00 00       	call   103 <main+0x103>
+
+        for (i = 0; i < sizeof(v16ui) / sizeof(unsigned int); i++) {
+ 103:	48 83 fb 04          	cmp    rbx,0x4
+ 107:	75 e1                	jne    ea <main+0xea>
+ 109:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # 110 <main+0x110>
+ 110:	bf 0a 00 00 00       	mov    edi,0xa
+ 115:	e8 00 00 00 00       	call   11a <main+0x11a>
+
+        add16ul(x, y, &z);
+
+        int i;
+
+        puts("vector of unsigned longs");
+ 11a:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 121 <main+0x121>
+ 121:	e8 00 00 00 00       	call   126 <main+0x126>
+ 126:	31 d2                	xor    edx,edx
+ 128:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
+ 12f:	31 c0                	xor    eax,eax
+ 131:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 138 <main+0x138>
+ 138:	bf 01 00 00 00       	mov    edi,0x1
+ 13d:	e8 00 00 00 00       	call   142 <main+0x142>
+ 142:	31 c9                	xor    ecx,ecx
+ 144:	31 c0                	xor    eax,eax
+ 146:	ba 01 00 00 00       	mov    edx,0x1
+ 14b:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 152 <main+0x152>
+ 152:	bf 01 00 00 00       	mov    edi,0x1
+ 157:	e8 00 00 00 00       	call   15c <main+0x15c>
+            printf("%d %lu\n", i, z[i]);
+        }
+    }
+
+    return 0;
+}
+ 15c:	48 8b 44 24 18       	mov    rax,QWORD PTR [rsp+0x18]
+ 161:	64 48 33 04 25 28 00 	xor    rax,QWORD PTR fs:0x28
+ 168:	00 00 
+ 16a:	75 0b                	jne    177 <main+0x177>
+ 16c:	48 83 c4 20          	add    rsp,0x20
+ 170:	31 c0                	xor    eax,eax
+ 172:	5b                   	pop    rbx
+ 173:	5d                   	pop    rbp
+ 174:	41 5c                	pop    r12
+ 176:	c3                   	ret    
+ 177:	e8 00 00 00 00       	call   17c <.LC8+0x10d>
