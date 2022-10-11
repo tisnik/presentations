@@ -1,0 +1,1108 @@
+
+simd17_2.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16ib>:
+#include <stdio.h>
+
+typedef signed char v16ib __attribute__((vector_size(16)));
+
+void add16ib(v16ib x, v16ib y, v16ib * z)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+   c:	0f 29 4d e0          	movaps XMMWORD PTR [rbp-0x20],xmm1
+  10:	48 89 7d d8          	mov    QWORD PTR [rbp-0x28],rdi
+    *z = x + y;
+  14:	66 0f 6f 45 f0       	movdqa xmm0,XMMWORD PTR [rbp-0x10]
+  19:	66 0f fc 45 e0       	paddb  xmm0,XMMWORD PTR [rbp-0x20]
+  1e:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  22:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+  25:	90                   	nop
+  26:	5d                   	pop    rbp
+  27:	c3                   	ret    
+
+0000000000000028 <sub16ib>:
+
+void sub16ib(v16ib x, v16ib y, v16ib * z)
+{
+  28:	f3 0f 1e fa          	endbr64 
+  2c:	55                   	push   rbp
+  2d:	48 89 e5             	mov    rbp,rsp
+  30:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+  34:	0f 29 4d e0          	movaps XMMWORD PTR [rbp-0x20],xmm1
+  38:	48 89 7d d8          	mov    QWORD PTR [rbp-0x28],rdi
+    *z = x - y;
+  3c:	66 0f 6f 45 f0       	movdqa xmm0,XMMWORD PTR [rbp-0x10]
+  41:	66 0f f8 45 e0       	psubb  xmm0,XMMWORD PTR [rbp-0x20]
+  46:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  4a:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+  4d:	90                   	nop
+  4e:	5d                   	pop    rbp
+  4f:	c3                   	ret    
+
+0000000000000050 <mul16ib>:
+
+void mul16ib(v16ib x, v16ib y, v16ib * z)
+{
+  50:	f3 0f 1e fa          	endbr64 
+  54:	55                   	push   rbp
+  55:	48 89 e5             	mov    rbp,rsp
+  58:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+  5c:	0f 29 4d e0          	movaps XMMWORD PTR [rbp-0x20],xmm1
+  60:	48 89 7d d8          	mov    QWORD PTR [rbp-0x28],rdi
+    *z = x * y;
+  64:	66 0f 6f 45 f0       	movdqa xmm0,XMMWORD PTR [rbp-0x10]
+  69:	66 0f 6f 4d e0       	movdqa xmm1,XMMWORD PTR [rbp-0x20]
+  6e:	66 0f 6f d9          	movdqa xmm3,xmm1
+  72:	66 0f 60 d9          	punpcklbw xmm3,xmm1
+  76:	66 0f 6f d1          	movdqa xmm2,xmm1
+  7a:	66 0f 68 d1          	punpckhbw xmm2,xmm1
+  7e:	66 0f 6f c8          	movdqa xmm1,xmm0
+  82:	66 0f 60 c8          	punpcklbw xmm1,xmm0
+  86:	66 0f 68 c0          	punpckhbw xmm0,xmm0
+  8a:	66 0f 6f e1          	movdqa xmm4,xmm1
+  8e:	66 0f 6f cb          	movdqa xmm1,xmm3
+  92:	66 0f d5 cc          	pmullw xmm1,xmm4
+  96:	66 0f 6f d8          	movdqa xmm3,xmm0
+  9a:	66 0f 6f c2          	movdqa xmm0,xmm2
+  9e:	66 0f 6f d3          	movdqa xmm2,xmm3
+  a2:	66 0f d5 d0          	pmullw xmm2,xmm0
+  a6:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # ae <mul16ib+0x5e>
+  ad:	00 
+  ae:	66 0f db c8          	pand   xmm1,xmm0
+  b2:	66 0f db c2          	pand   xmm0,xmm2
+  b6:	66 0f 6f e9          	movdqa xmm5,xmm1
+  ba:	66 0f 67 e8          	packuswb xmm5,xmm0
+  be:	66 0f 6f c5          	movdqa xmm0,xmm5
+  c2:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  c6:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+  c9:	90                   	nop
+  ca:	5d                   	pop    rbp
+  cb:	c3                   	ret    
+
+00000000000000cc <div16ib>:
+
+void div16ib(v16ib x, v16ib y, v16ib * z)
+{
+  cc:	f3 0f 1e fa          	endbr64 
+  d0:	55                   	push   rbp
+  d1:	48 89 e5             	mov    rbp,rsp
+  d4:	41 57                	push   r15
+  d6:	41 56                	push   r14
+  d8:	41 55                	push   r13
+  da:	41 54                	push   r12
+  dc:	53                   	push   rbx
+  dd:	0f 29 45 c0          	movaps XMMWORD PTR [rbp-0x40],xmm0
+  e1:	0f 29 4d b0          	movaps XMMWORD PTR [rbp-0x50],xmm1
+  e5:	48 89 7d a8          	mov    QWORD PTR [rbp-0x58],rdi
+    *z = x / y;
+  e9:	0f b6 45 c0          	movzx  eax,BYTE PTR [rbp-0x40]
+  ed:	0f b6 55 b0          	movzx  edx,BYTE PTR [rbp-0x50]
+  f1:	66 98                	cbw    
+  f3:	f6 fa                	idiv   dl
+  f5:	41 89 c7             	mov    r15d,eax
+  f8:	0f b6 45 c1          	movzx  eax,BYTE PTR [rbp-0x3f]
+  fc:	0f b6 55 b1          	movzx  edx,BYTE PTR [rbp-0x4f]
+ 100:	66 98                	cbw    
+ 102:	f6 fa                	idiv   dl
+ 104:	88 45 90             	mov    BYTE PTR [rbp-0x70],al
+ 107:	0f b6 45 c2          	movzx  eax,BYTE PTR [rbp-0x3e]
+ 10b:	0f b6 55 b2          	movzx  edx,BYTE PTR [rbp-0x4e]
+ 10f:	66 98                	cbw    
+ 111:	f6 fa                	idiv   dl
+ 113:	88 45 a7             	mov    BYTE PTR [rbp-0x59],al
+ 116:	0f b6 45 c3          	movzx  eax,BYTE PTR [rbp-0x3d]
+ 11a:	0f b6 55 b3          	movzx  edx,BYTE PTR [rbp-0x4d]
+ 11e:	66 98                	cbw    
+ 120:	f6 fa                	idiv   dl
+ 122:	88 45 a6             	mov    BYTE PTR [rbp-0x5a],al
+ 125:	0f b6 45 c4          	movzx  eax,BYTE PTR [rbp-0x3c]
+ 129:	0f b6 55 b4          	movzx  edx,BYTE PTR [rbp-0x4c]
+ 12d:	66 98                	cbw    
+ 12f:	f6 fa                	idiv   dl
+ 131:	88 45 a5             	mov    BYTE PTR [rbp-0x5b],al
+ 134:	0f b6 45 c5          	movzx  eax,BYTE PTR [rbp-0x3b]
+ 138:	0f b6 55 b5          	movzx  edx,BYTE PTR [rbp-0x4b]
+ 13c:	66 98                	cbw    
+ 13e:	f6 fa                	idiv   dl
+ 140:	41 89 c2             	mov    r10d,eax
+ 143:	0f b6 45 c6          	movzx  eax,BYTE PTR [rbp-0x3a]
+ 147:	0f b6 55 b6          	movzx  edx,BYTE PTR [rbp-0x4a]
+ 14b:	66 98                	cbw    
+ 14d:	f6 fa                	idiv   dl
+ 14f:	41 89 c0             	mov    r8d,eax
+ 152:	0f b6 45 c7          	movzx  eax,BYTE PTR [rbp-0x39]
+ 156:	0f b6 55 b7          	movzx  edx,BYTE PTR [rbp-0x49]
+ 15a:	66 98                	cbw    
+ 15c:	f6 fa                	idiv   dl
+ 15e:	89 c7                	mov    edi,eax
+ 160:	0f b6 45 c8          	movzx  eax,BYTE PTR [rbp-0x38]
+ 164:	0f b6 55 b8          	movzx  edx,BYTE PTR [rbp-0x48]
+ 168:	66 98                	cbw    
+ 16a:	f6 fa                	idiv   dl
+ 16c:	41 89 c3             	mov    r11d,eax
+ 16f:	0f b6 45 c9          	movzx  eax,BYTE PTR [rbp-0x37]
+ 173:	0f b6 55 b9          	movzx  edx,BYTE PTR [rbp-0x47]
+ 177:	66 98                	cbw    
+ 179:	f6 fa                	idiv   dl
+ 17b:	89 c3                	mov    ebx,eax
+ 17d:	0f b6 45 ca          	movzx  eax,BYTE PTR [rbp-0x36]
+ 181:	0f b6 55 ba          	movzx  edx,BYTE PTR [rbp-0x46]
+ 185:	66 98                	cbw    
+ 187:	f6 fa                	idiv   dl
+ 189:	41 89 c4             	mov    r12d,eax
+ 18c:	0f b6 45 cb          	movzx  eax,BYTE PTR [rbp-0x35]
+ 190:	0f b6 55 bb          	movzx  edx,BYTE PTR [rbp-0x45]
+ 194:	66 98                	cbw    
+ 196:	f6 fa                	idiv   dl
+ 198:	41 89 c5             	mov    r13d,eax
+ 19b:	0f b6 45 cc          	movzx  eax,BYTE PTR [rbp-0x34]
+ 19f:	0f b6 55 bc          	movzx  edx,BYTE PTR [rbp-0x44]
+ 1a3:	66 98                	cbw    
+ 1a5:	f6 fa                	idiv   dl
+ 1a7:	41 89 c6             	mov    r14d,eax
+ 1aa:	0f b6 45 cd          	movzx  eax,BYTE PTR [rbp-0x33]
+ 1ae:	0f b6 55 bd          	movzx  edx,BYTE PTR [rbp-0x43]
+ 1b2:	66 98                	cbw    
+ 1b4:	f6 fa                	idiv   dl
+ 1b6:	41 89 c1             	mov    r9d,eax
+ 1b9:	0f b6 45 ce          	movzx  eax,BYTE PTR [rbp-0x32]
+ 1bd:	0f b6 55 be          	movzx  edx,BYTE PTR [rbp-0x42]
+ 1c1:	66 98                	cbw    
+ 1c3:	f6 fa                	idiv   dl
+ 1c5:	89 c6                	mov    esi,eax
+ 1c7:	0f b6 45 cf          	movzx  eax,BYTE PTR [rbp-0x31]
+ 1cb:	0f b6 55 bf          	movzx  edx,BYTE PTR [rbp-0x41]
+ 1cf:	66 98                	cbw    
+ 1d1:	f6 fa                	idiv   dl
+ 1d3:	89 c1                	mov    ecx,eax
+ 1d5:	40 0f b6 d7          	movzx  edx,dil
+ 1d9:	41 0f b6 c0          	movzx  eax,r8b
+ 1dd:	48 c1 e2 08          	shl    rdx,0x8
+ 1e1:	48 09 c2             	or     rdx,rax
+ 1e4:	41 0f b6 c2          	movzx  eax,r10b
+ 1e8:	48 c1 e2 08          	shl    rdx,0x8
+ 1ec:	48 09 c2             	or     rdx,rax
+ 1ef:	0f b6 45 a5          	movzx  eax,BYTE PTR [rbp-0x5b]
+ 1f3:	48 c1 e2 08          	shl    rdx,0x8
+ 1f7:	48 09 c2             	or     rdx,rax
+ 1fa:	0f b6 45 a6          	movzx  eax,BYTE PTR [rbp-0x5a]
+ 1fe:	48 c1 e2 08          	shl    rdx,0x8
+ 202:	48 09 c2             	or     rdx,rax
+ 205:	0f b6 45 a7          	movzx  eax,BYTE PTR [rbp-0x59]
+ 209:	48 c1 e2 08          	shl    rdx,0x8
+ 20d:	48 09 c2             	or     rdx,rax
+ 210:	0f b6 45 90          	movzx  eax,BYTE PTR [rbp-0x70]
+ 214:	48 c1 e2 08          	shl    rdx,0x8
+ 218:	48 09 c2             	or     rdx,rax
+ 21b:	41 0f b6 c7          	movzx  eax,r15b
+ 21f:	48 c1 e2 08          	shl    rdx,0x8
+ 223:	48 09 c2             	or     rdx,rax
+ 226:	0f b6 c1             	movzx  eax,cl
+ 229:	40 0f b6 ce          	movzx  ecx,sil
+ 22d:	48 c1 e0 08          	shl    rax,0x8
+ 231:	48 09 c8             	or     rax,rcx
+ 234:	41 0f b6 c9          	movzx  ecx,r9b
+ 238:	48 c1 e0 08          	shl    rax,0x8
+ 23c:	48 09 c8             	or     rax,rcx
+ 23f:	41 0f b6 ce          	movzx  ecx,r14b
+ 243:	48 c1 e0 08          	shl    rax,0x8
+ 247:	48 09 c8             	or     rax,rcx
+ 24a:	41 0f b6 cd          	movzx  ecx,r13b
+ 24e:	48 c1 e0 08          	shl    rax,0x8
+ 252:	48 09 c8             	or     rax,rcx
+ 255:	41 0f b6 cc          	movzx  ecx,r12b
+ 259:	48 c1 e0 08          	shl    rax,0x8
+ 25d:	48 09 c8             	or     rax,rcx
+ 260:	0f b6 cb             	movzx  ecx,bl
+ 263:	48 c1 e0 08          	shl    rax,0x8
+ 267:	48 09 c8             	or     rax,rcx
+ 26a:	41 0f b6 cb          	movzx  ecx,r11b
+ 26e:	48 c1 e0 08          	shl    rax,0x8
+ 272:	48 09 c8             	or     rax,rcx
+ 275:	48 89 55 90          	mov    QWORD PTR [rbp-0x70],rdx
+ 279:	48 89 45 98          	mov    QWORD PTR [rbp-0x68],rax
+ 27d:	66 0f 6f 45 90       	movdqa xmm0,XMMWORD PTR [rbp-0x70]
+ 282:	48 8b 45 a8          	mov    rax,QWORD PTR [rbp-0x58]
+ 286:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+ 289:	90                   	nop
+ 28a:	5b                   	pop    rbx
+ 28b:	41 5c                	pop    r12
+ 28d:	41 5d                	pop    r13
+ 28f:	41 5e                	pop    r14
+ 291:	41 5f                	pop    r15
+ 293:	5d                   	pop    rbp
+ 294:	c3                   	ret    
+
+0000000000000295 <mod16ib>:
+
+void mod16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 295:	f3 0f 1e fa          	endbr64 
+ 299:	55                   	push   rbp
+ 29a:	48 89 e5             	mov    rbp,rsp
+ 29d:	41 57                	push   r15
+ 29f:	41 56                	push   r14
+ 2a1:	41 55                	push   r13
+ 2a3:	41 54                	push   r12
+ 2a5:	53                   	push   rbx
+ 2a6:	0f 29 45 c0          	movaps XMMWORD PTR [rbp-0x40],xmm0
+ 2aa:	0f 29 4d b0          	movaps XMMWORD PTR [rbp-0x50],xmm1
+ 2ae:	48 89 7d a8          	mov    QWORD PTR [rbp-0x58],rdi
+    *z = x % y;
+ 2b2:	0f b6 45 c0          	movzx  eax,BYTE PTR [rbp-0x40]
+ 2b6:	0f b6 55 b0          	movzx  edx,BYTE PTR [rbp-0x50]
+ 2ba:	66 98                	cbw    
+ 2bc:	f6 fa                	idiv   dl
+ 2be:	0f b6 c4             	movzx  eax,ah
+ 2c1:	41 89 c7             	mov    r15d,eax
+ 2c4:	0f b6 45 c1          	movzx  eax,BYTE PTR [rbp-0x3f]
+ 2c8:	0f b6 55 b1          	movzx  edx,BYTE PTR [rbp-0x4f]
+ 2cc:	66 98                	cbw    
+ 2ce:	f6 fa                	idiv   dl
+ 2d0:	0f b6 c4             	movzx  eax,ah
+ 2d3:	88 45 90             	mov    BYTE PTR [rbp-0x70],al
+ 2d6:	0f b6 45 c2          	movzx  eax,BYTE PTR [rbp-0x3e]
+ 2da:	0f b6 55 b2          	movzx  edx,BYTE PTR [rbp-0x4e]
+ 2de:	66 98                	cbw    
+ 2e0:	f6 fa                	idiv   dl
+ 2e2:	0f b6 c4             	movzx  eax,ah
+ 2e5:	88 45 a7             	mov    BYTE PTR [rbp-0x59],al
+ 2e8:	0f b6 45 c3          	movzx  eax,BYTE PTR [rbp-0x3d]
+ 2ec:	0f b6 55 b3          	movzx  edx,BYTE PTR [rbp-0x4d]
+ 2f0:	66 98                	cbw    
+ 2f2:	f6 fa                	idiv   dl
+ 2f4:	0f b6 c4             	movzx  eax,ah
+ 2f7:	88 45 a6             	mov    BYTE PTR [rbp-0x5a],al
+ 2fa:	0f b6 45 c4          	movzx  eax,BYTE PTR [rbp-0x3c]
+ 2fe:	0f b6 55 b4          	movzx  edx,BYTE PTR [rbp-0x4c]
+ 302:	66 98                	cbw    
+ 304:	f6 fa                	idiv   dl
+ 306:	0f b6 c4             	movzx  eax,ah
+ 309:	88 45 a5             	mov    BYTE PTR [rbp-0x5b],al
+ 30c:	0f b6 45 c5          	movzx  eax,BYTE PTR [rbp-0x3b]
+ 310:	0f b6 55 b5          	movzx  edx,BYTE PTR [rbp-0x4b]
+ 314:	66 98                	cbw    
+ 316:	f6 fa                	idiv   dl
+ 318:	0f b6 c4             	movzx  eax,ah
+ 31b:	41 89 c2             	mov    r10d,eax
+ 31e:	0f b6 45 c6          	movzx  eax,BYTE PTR [rbp-0x3a]
+ 322:	0f b6 55 b6          	movzx  edx,BYTE PTR [rbp-0x4a]
+ 326:	66 98                	cbw    
+ 328:	f6 fa                	idiv   dl
+ 32a:	0f b6 c4             	movzx  eax,ah
+ 32d:	41 89 c0             	mov    r8d,eax
+ 330:	0f b6 45 c7          	movzx  eax,BYTE PTR [rbp-0x39]
+ 334:	0f b6 55 b7          	movzx  edx,BYTE PTR [rbp-0x49]
+ 338:	66 98                	cbw    
+ 33a:	f6 fa                	idiv   dl
+ 33c:	0f b6 c4             	movzx  eax,ah
+ 33f:	89 c7                	mov    edi,eax
+ 341:	0f b6 45 c8          	movzx  eax,BYTE PTR [rbp-0x38]
+ 345:	0f b6 55 b8          	movzx  edx,BYTE PTR [rbp-0x48]
+ 349:	66 98                	cbw    
+ 34b:	f6 fa                	idiv   dl
+ 34d:	0f b6 c4             	movzx  eax,ah
+ 350:	41 89 c3             	mov    r11d,eax
+ 353:	0f b6 45 c9          	movzx  eax,BYTE PTR [rbp-0x37]
+ 357:	0f b6 55 b9          	movzx  edx,BYTE PTR [rbp-0x47]
+ 35b:	66 98                	cbw    
+ 35d:	f6 fa                	idiv   dl
+ 35f:	0f b6 c4             	movzx  eax,ah
+ 362:	89 c3                	mov    ebx,eax
+ 364:	0f b6 45 ca          	movzx  eax,BYTE PTR [rbp-0x36]
+ 368:	0f b6 55 ba          	movzx  edx,BYTE PTR [rbp-0x46]
+ 36c:	66 98                	cbw    
+ 36e:	f6 fa                	idiv   dl
+ 370:	0f b6 c4             	movzx  eax,ah
+ 373:	41 89 c4             	mov    r12d,eax
+ 376:	0f b6 45 cb          	movzx  eax,BYTE PTR [rbp-0x35]
+ 37a:	0f b6 55 bb          	movzx  edx,BYTE PTR [rbp-0x45]
+ 37e:	66 98                	cbw    
+ 380:	f6 fa                	idiv   dl
+ 382:	0f b6 c4             	movzx  eax,ah
+ 385:	41 89 c5             	mov    r13d,eax
+ 388:	0f b6 45 cc          	movzx  eax,BYTE PTR [rbp-0x34]
+ 38c:	0f b6 55 bc          	movzx  edx,BYTE PTR [rbp-0x44]
+ 390:	66 98                	cbw    
+ 392:	f6 fa                	idiv   dl
+ 394:	0f b6 c4             	movzx  eax,ah
+ 397:	41 89 c6             	mov    r14d,eax
+ 39a:	0f b6 45 cd          	movzx  eax,BYTE PTR [rbp-0x33]
+ 39e:	0f b6 55 bd          	movzx  edx,BYTE PTR [rbp-0x43]
+ 3a2:	66 98                	cbw    
+ 3a4:	f6 fa                	idiv   dl
+ 3a6:	0f b6 c4             	movzx  eax,ah
+ 3a9:	41 89 c1             	mov    r9d,eax
+ 3ac:	0f b6 45 ce          	movzx  eax,BYTE PTR [rbp-0x32]
+ 3b0:	0f b6 55 be          	movzx  edx,BYTE PTR [rbp-0x42]
+ 3b4:	66 98                	cbw    
+ 3b6:	f6 fa                	idiv   dl
+ 3b8:	0f b6 c4             	movzx  eax,ah
+ 3bb:	89 c6                	mov    esi,eax
+ 3bd:	0f b6 45 cf          	movzx  eax,BYTE PTR [rbp-0x31]
+ 3c1:	0f b6 55 bf          	movzx  edx,BYTE PTR [rbp-0x41]
+ 3c5:	66 98                	cbw    
+ 3c7:	f6 fa                	idiv   dl
+ 3c9:	0f b6 c4             	movzx  eax,ah
+ 3cc:	89 c1                	mov    ecx,eax
+ 3ce:	40 0f b6 d7          	movzx  edx,dil
+ 3d2:	41 0f b6 c0          	movzx  eax,r8b
+ 3d6:	48 c1 e2 08          	shl    rdx,0x8
+ 3da:	48 09 c2             	or     rdx,rax
+ 3dd:	41 0f b6 c2          	movzx  eax,r10b
+ 3e1:	48 c1 e2 08          	shl    rdx,0x8
+ 3e5:	48 09 c2             	or     rdx,rax
+ 3e8:	0f b6 45 a5          	movzx  eax,BYTE PTR [rbp-0x5b]
+ 3ec:	48 c1 e2 08          	shl    rdx,0x8
+ 3f0:	48 09 c2             	or     rdx,rax
+ 3f3:	0f b6 45 a6          	movzx  eax,BYTE PTR [rbp-0x5a]
+ 3f7:	48 c1 e2 08          	shl    rdx,0x8
+ 3fb:	48 09 c2             	or     rdx,rax
+ 3fe:	0f b6 45 a7          	movzx  eax,BYTE PTR [rbp-0x59]
+ 402:	48 c1 e2 08          	shl    rdx,0x8
+ 406:	48 09 c2             	or     rdx,rax
+ 409:	0f b6 45 90          	movzx  eax,BYTE PTR [rbp-0x70]
+ 40d:	48 c1 e2 08          	shl    rdx,0x8
+ 411:	48 09 c2             	or     rdx,rax
+ 414:	41 0f b6 c7          	movzx  eax,r15b
+ 418:	48 c1 e2 08          	shl    rdx,0x8
+ 41c:	48 09 c2             	or     rdx,rax
+ 41f:	0f b6 c1             	movzx  eax,cl
+ 422:	40 0f b6 ce          	movzx  ecx,sil
+ 426:	48 c1 e0 08          	shl    rax,0x8
+ 42a:	48 09 c8             	or     rax,rcx
+ 42d:	41 0f b6 c9          	movzx  ecx,r9b
+ 431:	48 c1 e0 08          	shl    rax,0x8
+ 435:	48 09 c8             	or     rax,rcx
+ 438:	41 0f b6 ce          	movzx  ecx,r14b
+ 43c:	48 c1 e0 08          	shl    rax,0x8
+ 440:	48 09 c8             	or     rax,rcx
+ 443:	41 0f b6 cd          	movzx  ecx,r13b
+ 447:	48 c1 e0 08          	shl    rax,0x8
+ 44b:	48 09 c8             	or     rax,rcx
+ 44e:	41 0f b6 cc          	movzx  ecx,r12b
+ 452:	48 c1 e0 08          	shl    rax,0x8
+ 456:	48 09 c8             	or     rax,rcx
+ 459:	0f b6 cb             	movzx  ecx,bl
+ 45c:	48 c1 e0 08          	shl    rax,0x8
+ 460:	48 09 c8             	or     rax,rcx
+ 463:	41 0f b6 cb          	movzx  ecx,r11b
+ 467:	48 c1 e0 08          	shl    rax,0x8
+ 46b:	48 09 c8             	or     rax,rcx
+ 46e:	48 89 55 90          	mov    QWORD PTR [rbp-0x70],rdx
+ 472:	48 89 45 98          	mov    QWORD PTR [rbp-0x68],rax
+ 476:	66 0f 6f 45 90       	movdqa xmm0,XMMWORD PTR [rbp-0x70]
+ 47b:	48 8b 45 a8          	mov    rax,QWORD PTR [rbp-0x58]
+ 47f:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+ 482:	90                   	nop
+ 483:	5b                   	pop    rbx
+ 484:	41 5c                	pop    r12
+ 486:	41 5d                	pop    r13
+ 488:	41 5e                	pop    r14
+ 48a:	41 5f                	pop    r15
+ 48c:	5d                   	pop    rbp
+ 48d:	c3                   	ret    
+
+000000000000048e <and16ib>:
+
+void and16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 48e:	f3 0f 1e fa          	endbr64 
+ 492:	55                   	push   rbp
+ 493:	48 89 e5             	mov    rbp,rsp
+ 496:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+ 49a:	0f 29 4d e0          	movaps XMMWORD PTR [rbp-0x20],xmm1
+ 49e:	48 89 7d d8          	mov    QWORD PTR [rbp-0x28],rdi
+    *z = x & y;
+ 4a2:	66 0f 6f 45 f0       	movdqa xmm0,XMMWORD PTR [rbp-0x10]
+ 4a7:	66 0f db 45 e0       	pand   xmm0,XMMWORD PTR [rbp-0x20]
+ 4ac:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+ 4b0:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+ 4b3:	90                   	nop
+ 4b4:	5d                   	pop    rbp
+ 4b5:	c3                   	ret    
+
+00000000000004b6 <or16ib>:
+
+void or16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 4b6:	f3 0f 1e fa          	endbr64 
+ 4ba:	55                   	push   rbp
+ 4bb:	48 89 e5             	mov    rbp,rsp
+ 4be:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+ 4c2:	0f 29 4d e0          	movaps XMMWORD PTR [rbp-0x20],xmm1
+ 4c6:	48 89 7d d8          	mov    QWORD PTR [rbp-0x28],rdi
+    *z = x | y;
+ 4ca:	66 0f 6f 45 f0       	movdqa xmm0,XMMWORD PTR [rbp-0x10]
+ 4cf:	66 0f eb 45 e0       	por    xmm0,XMMWORD PTR [rbp-0x20]
+ 4d4:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+ 4d8:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+ 4db:	90                   	nop
+ 4dc:	5d                   	pop    rbp
+ 4dd:	c3                   	ret    
+
+00000000000004de <xor16ib>:
+
+void xor16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 4de:	f3 0f 1e fa          	endbr64 
+ 4e2:	55                   	push   rbp
+ 4e3:	48 89 e5             	mov    rbp,rsp
+ 4e6:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+ 4ea:	0f 29 4d e0          	movaps XMMWORD PTR [rbp-0x20],xmm1
+ 4ee:	48 89 7d d8          	mov    QWORD PTR [rbp-0x28],rdi
+    *z = x ^ y;
+ 4f2:	66 0f 6f 45 f0       	movdqa xmm0,XMMWORD PTR [rbp-0x10]
+ 4f7:	66 0f ef 45 e0       	pxor   xmm0,XMMWORD PTR [rbp-0x20]
+ 4fc:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+ 500:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+ 503:	90                   	nop
+ 504:	5d                   	pop    rbp
+ 505:	c3                   	ret    
+
+0000000000000506 <rshift16ib>:
+
+void rshift16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 506:	f3 0f 1e fa          	endbr64 
+ 50a:	55                   	push   rbp
+ 50b:	48 89 e5             	mov    rbp,rsp
+ 50e:	41 57                	push   r15
+ 510:	41 56                	push   r14
+ 512:	41 55                	push   r13
+ 514:	41 54                	push   r12
+ 516:	53                   	push   rbx
+ 517:	0f 29 45 c0          	movaps XMMWORD PTR [rbp-0x40],xmm0
+ 51b:	0f 29 4d b0          	movaps XMMWORD PTR [rbp-0x50],xmm1
+ 51f:	48 89 7d a8          	mov    QWORD PTR [rbp-0x58],rdi
+    *z = x >> y;
+ 523:	0f b6 55 c0          	movzx  edx,BYTE PTR [rbp-0x40]
+ 527:	0f b6 45 b0          	movzx  eax,BYTE PTR [rbp-0x50]
+ 52b:	0f be c0             	movsx  eax,al
+ 52e:	89 c1                	mov    ecx,eax
+ 530:	d2 fa                	sar    dl,cl
+ 532:	41 89 d7             	mov    r15d,edx
+ 535:	0f b6 55 c1          	movzx  edx,BYTE PTR [rbp-0x3f]
+ 539:	0f b6 45 b1          	movzx  eax,BYTE PTR [rbp-0x4f]
+ 53d:	0f be c0             	movsx  eax,al
+ 540:	89 c1                	mov    ecx,eax
+ 542:	d2 fa                	sar    dl,cl
+ 544:	88 55 90             	mov    BYTE PTR [rbp-0x70],dl
+ 547:	0f b6 55 c2          	movzx  edx,BYTE PTR [rbp-0x3e]
+ 54b:	0f b6 45 b2          	movzx  eax,BYTE PTR [rbp-0x4e]
+ 54f:	0f be c0             	movsx  eax,al
+ 552:	89 d6                	mov    esi,edx
+ 554:	89 c1                	mov    ecx,eax
+ 556:	40 d2 fe             	sar    sil,cl
+ 559:	40 88 75 a7          	mov    BYTE PTR [rbp-0x59],sil
+ 55d:	0f b6 55 c3          	movzx  edx,BYTE PTR [rbp-0x3d]
+ 561:	0f b6 45 b3          	movzx  eax,BYTE PTR [rbp-0x4d]
+ 565:	0f be c0             	movsx  eax,al
+ 568:	89 d3                	mov    ebx,edx
+ 56a:	89 c1                	mov    ecx,eax
+ 56c:	d2 fb                	sar    bl,cl
+ 56e:	88 5d a6             	mov    BYTE PTR [rbp-0x5a],bl
+ 571:	0f b6 55 c4          	movzx  edx,BYTE PTR [rbp-0x3c]
+ 575:	0f b6 45 b4          	movzx  eax,BYTE PTR [rbp-0x4c]
+ 579:	0f be c0             	movsx  eax,al
+ 57c:	89 d7                	mov    edi,edx
+ 57e:	89 c1                	mov    ecx,eax
+ 580:	40 d2 ff             	sar    dil,cl
+ 583:	40 88 7d a5          	mov    BYTE PTR [rbp-0x5b],dil
+ 587:	0f b6 55 c5          	movzx  edx,BYTE PTR [rbp-0x3b]
+ 58b:	0f b6 45 b5          	movzx  eax,BYTE PTR [rbp-0x4b]
+ 58f:	0f be c0             	movsx  eax,al
+ 592:	89 c1                	mov    ecx,eax
+ 594:	d2 fa                	sar    dl,cl
+ 596:	41 89 d2             	mov    r10d,edx
+ 599:	0f b6 55 c6          	movzx  edx,BYTE PTR [rbp-0x3a]
+ 59d:	0f b6 45 b6          	movzx  eax,BYTE PTR [rbp-0x4a]
+ 5a1:	0f be c0             	movsx  eax,al
+ 5a4:	89 c1                	mov    ecx,eax
+ 5a6:	d2 fa                	sar    dl,cl
+ 5a8:	41 89 d0             	mov    r8d,edx
+ 5ab:	0f b6 55 c7          	movzx  edx,BYTE PTR [rbp-0x39]
+ 5af:	0f b6 45 b7          	movzx  eax,BYTE PTR [rbp-0x49]
+ 5b3:	0f be c0             	movsx  eax,al
+ 5b6:	89 c1                	mov    ecx,eax
+ 5b8:	d2 fa                	sar    dl,cl
+ 5ba:	89 d6                	mov    esi,edx
+ 5bc:	0f b6 55 c8          	movzx  edx,BYTE PTR [rbp-0x38]
+ 5c0:	0f b6 45 b8          	movzx  eax,BYTE PTR [rbp-0x48]
+ 5c4:	0f be c0             	movsx  eax,al
+ 5c7:	41 89 d3             	mov    r11d,edx
+ 5ca:	89 c1                	mov    ecx,eax
+ 5cc:	41 d2 fb             	sar    r11b,cl
+ 5cf:	0f b6 55 c9          	movzx  edx,BYTE PTR [rbp-0x37]
+ 5d3:	0f b6 45 b9          	movzx  eax,BYTE PTR [rbp-0x47]
+ 5d7:	0f be c0             	movsx  eax,al
+ 5da:	89 d3                	mov    ebx,edx
+ 5dc:	89 c1                	mov    ecx,eax
+ 5de:	d2 fb                	sar    bl,cl
+ 5e0:	0f b6 55 ca          	movzx  edx,BYTE PTR [rbp-0x36]
+ 5e4:	0f b6 45 ba          	movzx  eax,BYTE PTR [rbp-0x46]
+ 5e8:	0f be c0             	movsx  eax,al
+ 5eb:	41 89 d4             	mov    r12d,edx
+ 5ee:	89 c1                	mov    ecx,eax
+ 5f0:	41 d2 fc             	sar    r12b,cl
+ 5f3:	0f b6 55 cb          	movzx  edx,BYTE PTR [rbp-0x35]
+ 5f7:	0f b6 45 bb          	movzx  eax,BYTE PTR [rbp-0x45]
+ 5fb:	0f be c0             	movsx  eax,al
+ 5fe:	41 89 d5             	mov    r13d,edx
+ 601:	89 c1                	mov    ecx,eax
+ 603:	41 d2 fd             	sar    r13b,cl
+ 606:	0f b6 55 cc          	movzx  edx,BYTE PTR [rbp-0x34]
+ 60a:	0f b6 45 bc          	movzx  eax,BYTE PTR [rbp-0x44]
+ 60e:	0f be c0             	movsx  eax,al
+ 611:	41 89 d6             	mov    r14d,edx
+ 614:	89 c1                	mov    ecx,eax
+ 616:	41 d2 fe             	sar    r14b,cl
+ 619:	0f b6 55 cd          	movzx  edx,BYTE PTR [rbp-0x33]
+ 61d:	0f b6 45 bd          	movzx  eax,BYTE PTR [rbp-0x43]
+ 621:	0f be c0             	movsx  eax,al
+ 624:	41 89 d1             	mov    r9d,edx
+ 627:	89 c1                	mov    ecx,eax
+ 629:	41 d2 f9             	sar    r9b,cl
+ 62c:	0f b6 55 ce          	movzx  edx,BYTE PTR [rbp-0x32]
+ 630:	0f b6 45 be          	movzx  eax,BYTE PTR [rbp-0x42]
+ 634:	0f be c0             	movsx  eax,al
+ 637:	89 d7                	mov    edi,edx
+ 639:	89 c1                	mov    ecx,eax
+ 63b:	40 d2 ff             	sar    dil,cl
+ 63e:	0f b6 55 cf          	movzx  edx,BYTE PTR [rbp-0x31]
+ 642:	0f b6 45 bf          	movzx  eax,BYTE PTR [rbp-0x41]
+ 646:	0f be c0             	movsx  eax,al
+ 649:	89 c1                	mov    ecx,eax
+ 64b:	d2 fa                	sar    dl,cl
+ 64d:	89 d1                	mov    ecx,edx
+ 64f:	40 0f b6 d6          	movzx  edx,sil
+ 653:	41 0f b6 c0          	movzx  eax,r8b
+ 657:	48 c1 e2 08          	shl    rdx,0x8
+ 65b:	48 09 c2             	or     rdx,rax
+ 65e:	41 0f b6 c2          	movzx  eax,r10b
+ 662:	48 c1 e2 08          	shl    rdx,0x8
+ 666:	48 09 c2             	or     rdx,rax
+ 669:	0f b6 45 a5          	movzx  eax,BYTE PTR [rbp-0x5b]
+ 66d:	48 c1 e2 08          	shl    rdx,0x8
+ 671:	48 09 c2             	or     rdx,rax
+ 674:	0f b6 45 a6          	movzx  eax,BYTE PTR [rbp-0x5a]
+ 678:	48 c1 e2 08          	shl    rdx,0x8
+ 67c:	48 09 c2             	or     rdx,rax
+ 67f:	0f b6 45 a7          	movzx  eax,BYTE PTR [rbp-0x59]
+ 683:	48 c1 e2 08          	shl    rdx,0x8
+ 687:	48 09 c2             	or     rdx,rax
+ 68a:	0f b6 45 90          	movzx  eax,BYTE PTR [rbp-0x70]
+ 68e:	48 c1 e2 08          	shl    rdx,0x8
+ 692:	48 09 c2             	or     rdx,rax
+ 695:	41 0f b6 c7          	movzx  eax,r15b
+ 699:	48 c1 e2 08          	shl    rdx,0x8
+ 69d:	48 09 c2             	or     rdx,rax
+ 6a0:	0f b6 c1             	movzx  eax,cl
+ 6a3:	40 0f b6 cf          	movzx  ecx,dil
+ 6a7:	48 c1 e0 08          	shl    rax,0x8
+ 6ab:	48 09 c8             	or     rax,rcx
+ 6ae:	41 0f b6 c9          	movzx  ecx,r9b
+ 6b2:	48 c1 e0 08          	shl    rax,0x8
+ 6b6:	48 09 c8             	or     rax,rcx
+ 6b9:	41 0f b6 ce          	movzx  ecx,r14b
+ 6bd:	48 c1 e0 08          	shl    rax,0x8
+ 6c1:	48 09 c8             	or     rax,rcx
+ 6c4:	41 0f b6 cd          	movzx  ecx,r13b
+ 6c8:	48 c1 e0 08          	shl    rax,0x8
+ 6cc:	48 09 c8             	or     rax,rcx
+ 6cf:	41 0f b6 cc          	movzx  ecx,r12b
+ 6d3:	48 c1 e0 08          	shl    rax,0x8
+ 6d7:	48 09 c8             	or     rax,rcx
+ 6da:	0f b6 cb             	movzx  ecx,bl
+ 6dd:	48 c1 e0 08          	shl    rax,0x8
+ 6e1:	48 09 c8             	or     rax,rcx
+ 6e4:	41 0f b6 cb          	movzx  ecx,r11b
+ 6e8:	48 c1 e0 08          	shl    rax,0x8
+ 6ec:	48 09 c8             	or     rax,rcx
+ 6ef:	48 89 55 90          	mov    QWORD PTR [rbp-0x70],rdx
+ 6f3:	48 89 45 98          	mov    QWORD PTR [rbp-0x68],rax
+ 6f7:	66 0f 6f 45 90       	movdqa xmm0,XMMWORD PTR [rbp-0x70]
+ 6fc:	48 8b 45 a8          	mov    rax,QWORD PTR [rbp-0x58]
+ 700:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+ 703:	90                   	nop
+ 704:	5b                   	pop    rbx
+ 705:	41 5c                	pop    r12
+ 707:	41 5d                	pop    r13
+ 709:	41 5e                	pop    r14
+ 70b:	41 5f                	pop    r15
+ 70d:	5d                   	pop    rbp
+ 70e:	c3                   	ret    
+
+000000000000070f <lshift16ib>:
+
+void lshift16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 70f:	f3 0f 1e fa          	endbr64 
+ 713:	55                   	push   rbp
+ 714:	48 89 e5             	mov    rbp,rsp
+ 717:	41 57                	push   r15
+ 719:	41 56                	push   r14
+ 71b:	41 55                	push   r13
+ 71d:	41 54                	push   r12
+ 71f:	53                   	push   rbx
+ 720:	0f 29 45 c0          	movaps XMMWORD PTR [rbp-0x40],xmm0
+ 724:	0f 29 4d b0          	movaps XMMWORD PTR [rbp-0x50],xmm1
+ 728:	48 89 7d a8          	mov    QWORD PTR [rbp-0x58],rdi
+    *z = x << y;
+ 72c:	0f b6 55 c0          	movzx  edx,BYTE PTR [rbp-0x40]
+ 730:	0f b6 45 b0          	movzx  eax,BYTE PTR [rbp-0x50]
+ 734:	0f be c0             	movsx  eax,al
+ 737:	89 c1                	mov    ecx,eax
+ 739:	d3 e2                	shl    edx,cl
+ 73b:	41 89 d7             	mov    r15d,edx
+ 73e:	0f b6 55 c1          	movzx  edx,BYTE PTR [rbp-0x3f]
+ 742:	0f b6 45 b1          	movzx  eax,BYTE PTR [rbp-0x4f]
+ 746:	0f be c0             	movsx  eax,al
+ 749:	89 c1                	mov    ecx,eax
+ 74b:	d3 e2                	shl    edx,cl
+ 74d:	88 55 90             	mov    BYTE PTR [rbp-0x70],dl
+ 750:	0f b6 55 c2          	movzx  edx,BYTE PTR [rbp-0x3e]
+ 754:	0f b6 45 b2          	movzx  eax,BYTE PTR [rbp-0x4e]
+ 758:	0f be c0             	movsx  eax,al
+ 75b:	89 d6                	mov    esi,edx
+ 75d:	89 c1                	mov    ecx,eax
+ 75f:	d3 e6                	shl    esi,cl
+ 761:	40 88 75 a7          	mov    BYTE PTR [rbp-0x59],sil
+ 765:	0f b6 55 c3          	movzx  edx,BYTE PTR [rbp-0x3d]
+ 769:	0f b6 45 b3          	movzx  eax,BYTE PTR [rbp-0x4d]
+ 76d:	0f be c0             	movsx  eax,al
+ 770:	89 d3                	mov    ebx,edx
+ 772:	89 c1                	mov    ecx,eax
+ 774:	d3 e3                	shl    ebx,cl
+ 776:	88 5d a6             	mov    BYTE PTR [rbp-0x5a],bl
+ 779:	0f b6 55 c4          	movzx  edx,BYTE PTR [rbp-0x3c]
+ 77d:	0f b6 45 b4          	movzx  eax,BYTE PTR [rbp-0x4c]
+ 781:	0f be c0             	movsx  eax,al
+ 784:	89 d7                	mov    edi,edx
+ 786:	89 c1                	mov    ecx,eax
+ 788:	d3 e7                	shl    edi,cl
+ 78a:	40 88 7d a5          	mov    BYTE PTR [rbp-0x5b],dil
+ 78e:	0f b6 55 c5          	movzx  edx,BYTE PTR [rbp-0x3b]
+ 792:	0f b6 45 b5          	movzx  eax,BYTE PTR [rbp-0x4b]
+ 796:	0f be c0             	movsx  eax,al
+ 799:	89 c1                	mov    ecx,eax
+ 79b:	d3 e2                	shl    edx,cl
+ 79d:	41 89 d2             	mov    r10d,edx
+ 7a0:	0f b6 55 c6          	movzx  edx,BYTE PTR [rbp-0x3a]
+ 7a4:	0f b6 45 b6          	movzx  eax,BYTE PTR [rbp-0x4a]
+ 7a8:	0f be c0             	movsx  eax,al
+ 7ab:	89 c1                	mov    ecx,eax
+ 7ad:	d3 e2                	shl    edx,cl
+ 7af:	41 89 d0             	mov    r8d,edx
+ 7b2:	0f b6 55 c7          	movzx  edx,BYTE PTR [rbp-0x39]
+ 7b6:	0f b6 45 b7          	movzx  eax,BYTE PTR [rbp-0x49]
+ 7ba:	0f be c0             	movsx  eax,al
+ 7bd:	89 c1                	mov    ecx,eax
+ 7bf:	d3 e2                	shl    edx,cl
+ 7c1:	89 d6                	mov    esi,edx
+ 7c3:	0f b6 55 c8          	movzx  edx,BYTE PTR [rbp-0x38]
+ 7c7:	0f b6 45 b8          	movzx  eax,BYTE PTR [rbp-0x48]
+ 7cb:	0f be c0             	movsx  eax,al
+ 7ce:	41 89 d3             	mov    r11d,edx
+ 7d1:	89 c1                	mov    ecx,eax
+ 7d3:	41 d3 e3             	shl    r11d,cl
+ 7d6:	0f b6 55 c9          	movzx  edx,BYTE PTR [rbp-0x37]
+ 7da:	0f b6 45 b9          	movzx  eax,BYTE PTR [rbp-0x47]
+ 7de:	0f be c0             	movsx  eax,al
+ 7e1:	89 d3                	mov    ebx,edx
+ 7e3:	89 c1                	mov    ecx,eax
+ 7e5:	d3 e3                	shl    ebx,cl
+ 7e7:	0f b6 55 ca          	movzx  edx,BYTE PTR [rbp-0x36]
+ 7eb:	0f b6 45 ba          	movzx  eax,BYTE PTR [rbp-0x46]
+ 7ef:	0f be c0             	movsx  eax,al
+ 7f2:	41 89 d4             	mov    r12d,edx
+ 7f5:	89 c1                	mov    ecx,eax
+ 7f7:	41 d3 e4             	shl    r12d,cl
+ 7fa:	0f b6 55 cb          	movzx  edx,BYTE PTR [rbp-0x35]
+ 7fe:	0f b6 45 bb          	movzx  eax,BYTE PTR [rbp-0x45]
+ 802:	0f be c0             	movsx  eax,al
+ 805:	41 89 d5             	mov    r13d,edx
+ 808:	89 c1                	mov    ecx,eax
+ 80a:	41 d3 e5             	shl    r13d,cl
+ 80d:	0f b6 55 cc          	movzx  edx,BYTE PTR [rbp-0x34]
+ 811:	0f b6 45 bc          	movzx  eax,BYTE PTR [rbp-0x44]
+ 815:	0f be c0             	movsx  eax,al
+ 818:	41 89 d6             	mov    r14d,edx
+ 81b:	89 c1                	mov    ecx,eax
+ 81d:	41 d3 e6             	shl    r14d,cl
+ 820:	0f b6 55 cd          	movzx  edx,BYTE PTR [rbp-0x33]
+ 824:	0f b6 45 bd          	movzx  eax,BYTE PTR [rbp-0x43]
+ 828:	0f be c0             	movsx  eax,al
+ 82b:	41 89 d1             	mov    r9d,edx
+ 82e:	89 c1                	mov    ecx,eax
+ 830:	41 d3 e1             	shl    r9d,cl
+ 833:	0f b6 55 ce          	movzx  edx,BYTE PTR [rbp-0x32]
+ 837:	0f b6 45 be          	movzx  eax,BYTE PTR [rbp-0x42]
+ 83b:	0f be c0             	movsx  eax,al
+ 83e:	89 d7                	mov    edi,edx
+ 840:	89 c1                	mov    ecx,eax
+ 842:	d3 e7                	shl    edi,cl
+ 844:	0f b6 55 cf          	movzx  edx,BYTE PTR [rbp-0x31]
+ 848:	0f b6 45 bf          	movzx  eax,BYTE PTR [rbp-0x41]
+ 84c:	0f be c0             	movsx  eax,al
+ 84f:	89 c1                	mov    ecx,eax
+ 851:	d3 e2                	shl    edx,cl
+ 853:	89 d1                	mov    ecx,edx
+ 855:	40 0f b6 d6          	movzx  edx,sil
+ 859:	41 0f b6 c0          	movzx  eax,r8b
+ 85d:	48 c1 e2 08          	shl    rdx,0x8
+ 861:	48 09 c2             	or     rdx,rax
+ 864:	41 0f b6 c2          	movzx  eax,r10b
+ 868:	48 c1 e2 08          	shl    rdx,0x8
+ 86c:	48 09 c2             	or     rdx,rax
+ 86f:	0f b6 45 a5          	movzx  eax,BYTE PTR [rbp-0x5b]
+ 873:	48 c1 e2 08          	shl    rdx,0x8
+ 877:	48 09 c2             	or     rdx,rax
+ 87a:	0f b6 45 a6          	movzx  eax,BYTE PTR [rbp-0x5a]
+ 87e:	48 c1 e2 08          	shl    rdx,0x8
+ 882:	48 09 c2             	or     rdx,rax
+ 885:	0f b6 45 a7          	movzx  eax,BYTE PTR [rbp-0x59]
+ 889:	48 c1 e2 08          	shl    rdx,0x8
+ 88d:	48 09 c2             	or     rdx,rax
+ 890:	0f b6 45 90          	movzx  eax,BYTE PTR [rbp-0x70]
+ 894:	48 c1 e2 08          	shl    rdx,0x8
+ 898:	48 09 c2             	or     rdx,rax
+ 89b:	41 0f b6 c7          	movzx  eax,r15b
+ 89f:	48 c1 e2 08          	shl    rdx,0x8
+ 8a3:	48 09 c2             	or     rdx,rax
+ 8a6:	0f b6 c1             	movzx  eax,cl
+ 8a9:	40 0f b6 cf          	movzx  ecx,dil
+ 8ad:	48 c1 e0 08          	shl    rax,0x8
+ 8b1:	48 09 c8             	or     rax,rcx
+ 8b4:	41 0f b6 c9          	movzx  ecx,r9b
+ 8b8:	48 c1 e0 08          	shl    rax,0x8
+ 8bc:	48 09 c8             	or     rax,rcx
+ 8bf:	41 0f b6 ce          	movzx  ecx,r14b
+ 8c3:	48 c1 e0 08          	shl    rax,0x8
+ 8c7:	48 09 c8             	or     rax,rcx
+ 8ca:	41 0f b6 cd          	movzx  ecx,r13b
+ 8ce:	48 c1 e0 08          	shl    rax,0x8
+ 8d2:	48 09 c8             	or     rax,rcx
+ 8d5:	41 0f b6 cc          	movzx  ecx,r12b
+ 8d9:	48 c1 e0 08          	shl    rax,0x8
+ 8dd:	48 09 c8             	or     rax,rcx
+ 8e0:	0f b6 cb             	movzx  ecx,bl
+ 8e3:	48 c1 e0 08          	shl    rax,0x8
+ 8e7:	48 09 c8             	or     rax,rcx
+ 8ea:	41 0f b6 cb          	movzx  ecx,r11b
+ 8ee:	48 c1 e0 08          	shl    rax,0x8
+ 8f2:	48 09 c8             	or     rax,rcx
+ 8f5:	48 89 55 90          	mov    QWORD PTR [rbp-0x70],rdx
+ 8f9:	48 89 45 98          	mov    QWORD PTR [rbp-0x68],rax
+ 8fd:	66 0f 6f 45 90       	movdqa xmm0,XMMWORD PTR [rbp-0x70]
+ 902:	48 8b 45 a8          	mov    rax,QWORD PTR [rbp-0x58]
+ 906:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+ 909:	90                   	nop
+ 90a:	5b                   	pop    rbx
+ 90b:	41 5c                	pop    r12
+ 90d:	41 5d                	pop    r13
+ 90f:	41 5e                	pop    r14
+ 911:	41 5f                	pop    r15
+ 913:	5d                   	pop    rbp
+ 914:	c3                   	ret    
+
+0000000000000915 <print_vectors>:
+
+void print_vectors(const char *message, const char *op, v16ib *x,v16ib  *y,v16ib  *z)
+{
+ 915:	f3 0f 1e fa          	endbr64 
+ 919:	55                   	push   rbp
+ 91a:	48 89 e5             	mov    rbp,rsp
+ 91d:	48 83 ec 40          	sub    rsp,0x40
+ 921:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+ 925:	48 89 75 e0          	mov    QWORD PTR [rbp-0x20],rsi
+ 929:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
+ 92d:	48 89 4d d0          	mov    QWORD PTR [rbp-0x30],rcx
+ 931:	4c 89 45 c8          	mov    QWORD PTR [rbp-0x38],r8
+    int i;
+
+    puts(message);
+ 935:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+ 939:	48 89 c7             	mov    rdi,rax
+ 93c:	e8 00 00 00 00       	call   941 <print_vectors+0x2c>
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ 941:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
+ 948:	eb 54                	jmp    99e <print_vectors+0x89>
+        printf("%2d    %d %s %d = %d\n", i, (*x)[i], op, (*y)[i], (*z)[i]);
+ 94a:	48 8b 55 c8          	mov    rdx,QWORD PTR [rbp-0x38]
+ 94e:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+ 951:	48 98                	cdqe   
+ 953:	0f b6 04 02          	movzx  eax,BYTE PTR [rdx+rax*1]
+ 957:	0f be f8             	movsx  edi,al
+ 95a:	48 8b 55 d0          	mov    rdx,QWORD PTR [rbp-0x30]
+ 95e:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+ 961:	48 98                	cdqe   
+ 963:	0f b6 04 02          	movzx  eax,BYTE PTR [rdx+rax*1]
+ 967:	0f be f0             	movsx  esi,al
+ 96a:	48 8b 55 d8          	mov    rdx,QWORD PTR [rbp-0x28]
+ 96e:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+ 971:	48 98                	cdqe   
+ 973:	0f b6 04 02          	movzx  eax,BYTE PTR [rdx+rax*1]
+ 977:	0f be d0             	movsx  edx,al
+ 97a:	48 8b 4d e0          	mov    rcx,QWORD PTR [rbp-0x20]
+ 97e:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+ 981:	41 89 f9             	mov    r9d,edi
+ 984:	41 89 f0             	mov    r8d,esi
+ 987:	89 c6                	mov    esi,eax
+ 989:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 990 <print_vectors+0x7b>
+ 990:	b8 00 00 00 00       	mov    eax,0x0
+ 995:	e8 00 00 00 00       	call   99a <print_vectors+0x85>
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ 99a:	83 45 fc 01          	add    DWORD PTR [rbp-0x4],0x1
+ 99e:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+ 9a1:	83 f8 0f             	cmp    eax,0xf
+ 9a4:	76 a4                	jbe    94a <print_vectors+0x35>
+    }
+
+    putchar('\n');
+ 9a6:	bf 0a 00 00 00       	mov    edi,0xa
+ 9ab:	e8 00 00 00 00       	call   9b0 <print_vectors+0x9b>
+}
+ 9b0:	90                   	nop
+ 9b1:	c9                   	leave  
+ 9b2:	c3                   	ret    
+
+00000000000009b3 <main>:
+
+int main(void)
+{
+ 9b3:	f3 0f 1e fa          	endbr64 
+ 9b7:	55                   	push   rbp
+ 9b8:	48 89 e5             	mov    rbp,rsp
+ 9bb:	48 83 ec 50          	sub    rsp,0x50
+ 9bf:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+ 9c6:	00 00 
+ 9c8:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+ 9cc:	31 c0                	xor    eax,eax
+    v16ib x;
+    v16ib y;
+    v16ib z;
+    int i;
+
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ 9ce:	c7 45 bc 00 00 00 00 	mov    DWORD PTR [rbp-0x44],0x0
+ 9d5:	eb 2b                	jmp    a02 <main+0x4f>
+        x[i] = i*2;
+ 9d7:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
+ 9da:	01 c0                	add    eax,eax
+ 9dc:	89 c2                	mov    edx,eax
+ 9de:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
+ 9e1:	48 98                	cdqe   
+ 9e3:	88 54 05 c0          	mov    BYTE PTR [rbp+rax*1-0x40],dl
+        y[i] = 16-i;
+ 9e7:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
+ 9ea:	ba 10 00 00 00       	mov    edx,0x10
+ 9ef:	29 c2                	sub    edx,eax
+ 9f1:	89 d0                	mov    eax,edx
+ 9f3:	89 c2                	mov    edx,eax
+ 9f5:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
+ 9f8:	48 98                	cdqe   
+ 9fa:	88 54 05 d0          	mov    BYTE PTR [rbp+rax*1-0x30],dl
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ 9fe:	83 45 bc 01          	add    DWORD PTR [rbp-0x44],0x1
+ a02:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
+ a05:	83 f8 0f             	cmp    eax,0xf
+ a08:	76 cd                	jbe    9d7 <main+0x24>
+    }
+
+    add16ib(x, y, &z);
+ a0a:	66 0f 6f 4d d0       	movdqa xmm1,XMMWORD PTR [rbp-0x30]
+ a0f:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
+ a14:	48 8d 45 e0          	lea    rax,[rbp-0x20]
+ a18:	48 89 c7             	mov    rdi,rax
+ a1b:	e8 00 00 00 00       	call   a20 <main+0x6d>
+    print_vectors("vector addition", "+", &x, &y, &z);
+ a20:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ a24:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ a28:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ a2c:	49 89 c8             	mov    r8,rcx
+ a2f:	48 89 d1             	mov    rcx,rdx
+ a32:	48 89 c2             	mov    rdx,rax
+ a35:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # a3c <main+0x89>
+ a3c:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # a43 <main+0x90>
+ a43:	e8 00 00 00 00       	call   a48 <main+0x95>
+
+    sub16ib(x, y, &z);
+ a48:	66 0f 6f 4d d0       	movdqa xmm1,XMMWORD PTR [rbp-0x30]
+ a4d:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
+ a52:	48 8d 45 e0          	lea    rax,[rbp-0x20]
+ a56:	48 89 c7             	mov    rdi,rax
+ a59:	e8 00 00 00 00       	call   a5e <main+0xab>
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+ a5e:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ a62:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ a66:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ a6a:	49 89 c8             	mov    r8,rcx
+ a6d:	48 89 d1             	mov    rcx,rdx
+ a70:	48 89 c2             	mov    rdx,rax
+ a73:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # a7a <main+0xc7>
+ a7a:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # a81 <main+0xce>
+ a81:	e8 00 00 00 00       	call   a86 <main+0xd3>
+
+    mul16ib(x, y, &z);
+ a86:	66 0f 6f 4d d0       	movdqa xmm1,XMMWORD PTR [rbp-0x30]
+ a8b:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
+ a90:	48 8d 45 e0          	lea    rax,[rbp-0x20]
+ a94:	48 89 c7             	mov    rdi,rax
+ a97:	e8 00 00 00 00       	call   a9c <main+0xe9>
+    print_vectors("vector multiply", "*", &x, &y, &z);
+ a9c:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ aa0:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ aa4:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ aa8:	49 89 c8             	mov    r8,rcx
+ aab:	48 89 d1             	mov    rcx,rdx
+ aae:	48 89 c2             	mov    rdx,rax
+ ab1:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # ab8 <main+0x105>
+ ab8:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # abf <main+0x10c>
+ abf:	e8 00 00 00 00       	call   ac4 <main+0x111>
+
+    div16ib(x, y, &z);
+ ac4:	66 0f 6f 4d d0       	movdqa xmm1,XMMWORD PTR [rbp-0x30]
+ ac9:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
+ ace:	48 8d 45 e0          	lea    rax,[rbp-0x20]
+ ad2:	48 89 c7             	mov    rdi,rax
+ ad5:	e8 00 00 00 00       	call   ada <main+0x127>
+    print_vectors("vector divide", "/", &x, &y, &z);
+ ada:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ ade:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ ae2:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ ae6:	49 89 c8             	mov    r8,rcx
+ ae9:	48 89 d1             	mov    rcx,rdx
+ aec:	48 89 c2             	mov    rdx,rax
+ aef:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # af6 <main+0x143>
+ af6:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # afd <main+0x14a>
+ afd:	e8 00 00 00 00       	call   b02 <main+0x14f>
+
+    mod16ib(x, y, &z);
+ b02:	66 0f 6f 4d d0       	movdqa xmm1,XMMWORD PTR [rbp-0x30]
+ b07:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
+ b0c:	48 8d 45 e0          	lea    rax,[rbp-0x20]
+ b10:	48 89 c7             	mov    rdi,rax
+ b13:	e8 00 00 00 00       	call   b18 <main+0x165>
+    print_vectors("vector modulo", "%", &x, &y, &z);
+ b18:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ b1c:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ b20:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ b24:	49 89 c8             	mov    r8,rcx
+ b27:	48 89 d1             	mov    rcx,rdx
+ b2a:	48 89 c2             	mov    rdx,rax
+ b2d:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # b34 <main+0x181>
+ b34:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # b3b <main+0x188>
+ b3b:	e8 00 00 00 00       	call   b40 <main+0x18d>
+
+    and16ib(x, y, &z);
+ b40:	66 0f 6f 4d d0       	movdqa xmm1,XMMWORD PTR [rbp-0x30]
+ b45:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
+ b4a:	48 8d 45 e0          	lea    rax,[rbp-0x20]
+ b4e:	48 89 c7             	mov    rdi,rax
+ b51:	e8 00 00 00 00       	call   b56 <main+0x1a3>
+    print_vectors("vector bitwise and", "&", &x, &y, &z);
+ b56:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ b5a:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ b5e:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ b62:	49 89 c8             	mov    r8,rcx
+ b65:	48 89 d1             	mov    rcx,rdx
+ b68:	48 89 c2             	mov    rdx,rax
+ b6b:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # b72 <main+0x1bf>
+ b72:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # b79 <main+0x1c6>
+ b79:	e8 00 00 00 00       	call   b7e <main+0x1cb>
+
+    or16ib(x, y, &z);
+ b7e:	66 0f 6f 4d d0       	movdqa xmm1,XMMWORD PTR [rbp-0x30]
+ b83:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
+ b88:	48 8d 45 e0          	lea    rax,[rbp-0x20]
+ b8c:	48 89 c7             	mov    rdi,rax
+ b8f:	e8 00 00 00 00       	call   b94 <main+0x1e1>
+    print_vectors("vector bitwise or", "|", &x, &y, &z);
+ b94:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ b98:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ b9c:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ ba0:	49 89 c8             	mov    r8,rcx
+ ba3:	48 89 d1             	mov    rcx,rdx
+ ba6:	48 89 c2             	mov    rdx,rax
+ ba9:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # bb0 <main+0x1fd>
+ bb0:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # bb7 <main+0x204>
+ bb7:	e8 00 00 00 00       	call   bbc <main+0x209>
+
+    xor16ib(x, y, &z);
+ bbc:	66 0f 6f 4d d0       	movdqa xmm1,XMMWORD PTR [rbp-0x30]
+ bc1:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
+ bc6:	48 8d 45 e0          	lea    rax,[rbp-0x20]
+ bca:	48 89 c7             	mov    rdi,rax
+ bcd:	e8 00 00 00 00       	call   bd2 <main+0x21f>
+    print_vectors("vector bitwise xor", "^", &x, &y, &z);
+ bd2:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ bd6:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ bda:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ bde:	49 89 c8             	mov    r8,rcx
+ be1:	48 89 d1             	mov    rcx,rdx
+ be4:	48 89 c2             	mov    rdx,rax
+ be7:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # bee <main+0x23b>
+ bee:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # bf5 <main+0x242>
+ bf5:	e8 00 00 00 00       	call   bfa <main+0x247>
+
+    rshift16ib(x, y, &z);
+ bfa:	66 0f 6f 4d d0       	movdqa xmm1,XMMWORD PTR [rbp-0x30]
+ bff:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
+ c04:	48 8d 45 e0          	lea    rax,[rbp-0x20]
+ c08:	48 89 c7             	mov    rdi,rax
+ c0b:	e8 00 00 00 00       	call   c10 <main+0x25d>
+    print_vectors("vector right shift", ">>", &x, &y, &z);
+ c10:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ c14:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ c18:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ c1c:	49 89 c8             	mov    r8,rcx
+ c1f:	48 89 d1             	mov    rcx,rdx
+ c22:	48 89 c2             	mov    rdx,rax
+ c25:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # c2c <main+0x279>
+ c2c:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # c33 <main+0x280>
+ c33:	e8 00 00 00 00       	call   c38 <main+0x285>
+
+    lshift16ib(x, y, &z);
+ c38:	66 0f 6f 4d d0       	movdqa xmm1,XMMWORD PTR [rbp-0x30]
+ c3d:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
+ c42:	48 8d 45 e0          	lea    rax,[rbp-0x20]
+ c46:	48 89 c7             	mov    rdi,rax
+ c49:	e8 00 00 00 00       	call   c4e <main+0x29b>
+    print_vectors("vector left shift", "<<", &x, &y, &z);
+ c4e:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ c52:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ c56:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ c5a:	49 89 c8             	mov    r8,rcx
+ c5d:	48 89 d1             	mov    rcx,rdx
+ c60:	48 89 c2             	mov    rdx,rax
+ c63:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # c6a <main+0x2b7>
+ c6a:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # c71 <main+0x2be>
+ c71:	e8 00 00 00 00       	call   c76 <main+0x2c3>
+
+    return 0;
+ c76:	b8 00 00 00 00       	mov    eax,0x0
+}
+ c7b:	48 8b 75 f8          	mov    rsi,QWORD PTR [rbp-0x8]
+ c7f:	64 48 33 34 25 28 00 	xor    rsi,QWORD PTR fs:0x28
+ c86:	00 00 
+ c88:	74 05                	je     c8f <main+0x2dc>
+ c8a:	e8 00 00 00 00       	call   c8f <main+0x2dc>
+ c8f:	c9                   	leave  
+ c90:	c3                   	ret    
