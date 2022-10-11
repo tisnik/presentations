@@ -1,0 +1,2338 @@
+
+simd17_3.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16ib>:
+#include <stdio.h>
+
+typedef signed char v16ib __attribute__((vector_size(16)));
+
+void add16ib(v16ib x, v16ib y, v16ib * z)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	4c 8b 44 24 18       	mov    r8,QWORD PTR [rsp+0x18]
+   9:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
+    *z = x + y;
+   e:	48 ba 7f 7f 7f 7f 7f 	movabs rdx,0x7f7f7f7f7f7f7f7f
+  15:	7f 7f 7f 
+{
+  18:	4c 8b 4c 24 20       	mov    r9,QWORD PTR [rsp+0x20]
+  1d:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+    *z = x + y;
+  22:	4c 89 c6             	mov    rsi,r8
+  25:	49 89 ca             	mov    r10,rcx
+  28:	4c 31 c1             	xor    rcx,r8
+  2b:	49 b8 80 80 80 80 80 	movabs r8,0x8080808080808080
+  32:	80 80 80 
+  35:	48 21 d6             	and    rsi,rdx
+  38:	49 21 d2             	and    r10,rdx
+  3b:	4c 21 c1             	and    rcx,r8
+  3e:	4c 01 d6             	add    rsi,r10
+  41:	48 31 f1             	xor    rcx,rsi
+  44:	4c 89 ce             	mov    rsi,r9
+  47:	48 21 d6             	and    rsi,rdx
+  4a:	48 21 c2             	and    rdx,rax
+  4d:	4c 31 c8             	xor    rax,r9
+  50:	48 89 0f             	mov    QWORD PTR [rdi],rcx
+  53:	48 01 f2             	add    rdx,rsi
+  56:	4c 21 c0             	and    rax,r8
+  59:	48 31 d0             	xor    rax,rdx
+  5c:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+  60:	c3                   	ret    
+  61:	66 66 2e 0f 1f 84 00 	data16 nop WORD PTR cs:[rax+rax*1+0x0]
+  68:	00 00 00 00 
+  6c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+0000000000000070 <sub16ib>:
+
+void sub16ib(v16ib x, v16ib y, v16ib * z)
+{
+  70:	f3 0f 1e fa          	endbr64 
+  74:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
+  79:	48 8b 44 24 18       	mov    rax,QWORD PTR [rsp+0x18]
+    *z = x - y;
+  7e:	49 b9 80 80 80 80 80 	movabs r9,0x8080808080808080
+  85:	80 80 80 
+  88:	49 ba 7f 7f 7f 7f 7f 	movabs r10,0x7f7f7f7f7f7f7f7f
+  8f:	7f 7f 7f 
+{
+  92:	48 8b 4c 24 10       	mov    rcx,QWORD PTR [rsp+0x10]
+  97:	4c 8b 44 24 20       	mov    r8,QWORD PTR [rsp+0x20]
+    *z = x - y;
+  9c:	48 89 f2             	mov    rdx,rsi
+  9f:	4c 09 ce             	or     rsi,r9
+  a2:	48 31 c2             	xor    rdx,rax
+  a5:	4c 21 d0             	and    rax,r10
+  a8:	48 29 c6             	sub    rsi,rax
+  ab:	48 89 c8             	mov    rax,rcx
+  ae:	48 f7 d2             	not    rdx
+  b1:	4c 09 c9             	or     rcx,r9
+  b4:	4c 31 c0             	xor    rax,r8
+  b7:	4d 21 d0             	and    r8,r10
+  ba:	4c 21 ca             	and    rdx,r9
+  bd:	48 f7 d0             	not    rax
+  c0:	4c 29 c1             	sub    rcx,r8
+  c3:	48 31 f2             	xor    rdx,rsi
+  c6:	4c 21 c8             	and    rax,r9
+  c9:	48 89 17             	mov    QWORD PTR [rdi],rdx
+  cc:	48 31 c8             	xor    rax,rcx
+  cf:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+  d3:	c3                   	ret    
+  d4:	66 66 2e 0f 1f 84 00 	data16 nop WORD PTR cs:[rax+rax*1+0x0]
+  db:	00 00 00 00 
+  df:	90                   	nop
+
+00000000000000e0 <mul16ib>:
+
+void mul16ib(v16ib x, v16ib y, v16ib * z)
+{
+  e0:	f3 0f 1e fa          	endbr64 
+  e4:	41 56                	push   r14
+    *z = x * y;
+  e6:	31 c9                	xor    ecx,ecx
+  e8:	31 d2                	xor    edx,edx
+{
+  ea:	41 55                	push   r13
+    *z = x * y;
+  ec:	49 bd ff ff ff 00 ff 	movabs r13,0xffffffff00ffffff
+  f3:	ff ff ff 
+{
+  f6:	41 54                	push   r12
+    *z = x * y;
+  f8:	49 bc ff ff ff ff 00 	movabs r12,0xffffff00ffffffff
+  ff:	ff ff ff 
+{
+ 102:	55                   	push   rbp
+    *z = x * y;
+ 103:	48 bd ff ff ff ff ff 	movabs rbp,0xff00ffffffffffff
+ 10a:	ff 00 ff 
+{
+ 10d:	53                   	push   rbx
+ 10e:	4c 8b 74 24 30       	mov    r14,QWORD PTR [rsp+0x30]
+ 113:	4c 8b 5c 24 40       	mov    r11,QWORD PTR [rsp+0x40]
+ 118:	4c 8b 4c 24 38       	mov    r9,QWORD PTR [rsp+0x38]
+    *z = x * y;
+ 11d:	44 89 f0             	mov    eax,r14d
+ 120:	44 89 f3             	mov    ebx,r14d
+{
+ 123:	4c 8b 54 24 48       	mov    r10,QWORD PTR [rsp+0x48]
+    *z = x * y;
+ 128:	41 0f af c3          	imul   eax,r11d
+ 12c:	44 89 de             	mov    esi,r11d
+ 12f:	c1 fb 18             	sar    ebx,0x18
+ 132:	4d 89 d8             	mov    r8,r11
+ 135:	66 c1 fe 08          	sar    si,0x8
+ 139:	88 c1                	mov    cl,al
+ 13b:	44 89 f0             	mov    eax,r14d
+ 13e:	66 c1 f8 08          	sar    ax,0x8
+ 142:	0f af c6             	imul   eax,esi
+ 145:	44 89 de             	mov    esi,r11d
+ 148:	c1 e6 08             	shl    esi,0x8
+ 14b:	c1 fe 18             	sar    esi,0x18
+ 14e:	88 c5                	mov    ch,al
+ 150:	44 89 f0             	mov    eax,r14d
+ 153:	c1 e0 08             	shl    eax,0x8
+ 156:	48 81 e1 ff ff 00 ff 	and    rcx,0xffffffffff00ffff
+ 15d:	c1 f8 18             	sar    eax,0x18
+ 160:	0f af c6             	imul   eax,esi
+ 163:	44 89 de             	mov    esi,r11d
+ 166:	c1 fe 18             	sar    esi,0x18
+ 169:	0f b6 c0             	movzx  eax,al
+ 16c:	48 c1 e0 10          	shl    rax,0x10
+ 170:	48 09 c1             	or     rcx,rax
+ 173:	89 d8                	mov    eax,ebx
+ 175:	0f af c6             	imul   eax,esi
+ 178:	4c 21 e9             	and    rcx,r13
+ 17b:	4c 89 de             	mov    rsi,r11
+ 17e:	48 c1 e6 10          	shl    rsi,0x10
+ 182:	48 c1 fe 38          	sar    rsi,0x38
+ 186:	0f b6 d8             	movzx  ebx,al
+ 189:	4c 89 f0             	mov    rax,r14
+ 18c:	48 c1 e3 18          	shl    rbx,0x18
+ 190:	48 c1 e0 18          	shl    rax,0x18
+ 194:	48 09 d9             	or     rcx,rbx
+ 197:	4c 89 db             	mov    rbx,r11
+ 19a:	48 c1 f8 38          	sar    rax,0x38
+ 19e:	48 c1 e3 18          	shl    rbx,0x18
+ 1a2:	4c 21 e1             	and    rcx,r12
+ 1a5:	48 c1 fb 38          	sar    rbx,0x38
+ 1a9:	0f af c3             	imul   eax,ebx
+ 1ac:	0f b6 c0             	movzx  eax,al
+ 1af:	48 c1 e0 20          	shl    rax,0x20
+ 1b3:	48 09 c1             	or     rcx,rax
+ 1b6:	4c 89 f0             	mov    rax,r14
+ 1b9:	48 c1 e0 10          	shl    rax,0x10
+ 1bd:	48 89 cb             	mov    rbx,rcx
+ 1c0:	48 b9 ff ff ff ff ff 	movabs rcx,0xffff00ffffffffff
+ 1c7:	00 ff ff 
+ 1ca:	48 c1 f8 38          	sar    rax,0x38
+ 1ce:	0f af c6             	imul   eax,esi
+ 1d1:	49 c1 e0 08          	shl    r8,0x8
+ 1d5:	48 21 cb             	and    rbx,rcx
+ 1d8:	49 c1 fb 38          	sar    r11,0x38
+ 1dc:	49 c1 f8 38          	sar    r8,0x38
+ 1e0:	0f b6 f0             	movzx  esi,al
+ 1e3:	48 89 f0             	mov    rax,rsi
+ 1e6:	48 89 de             	mov    rsi,rbx
+ 1e9:	44 89 d3             	mov    ebx,r10d
+ 1ec:	48 c1 e0 28          	shl    rax,0x28
+ 1f0:	c1 fb 18             	sar    ebx,0x18
+ 1f3:	48 09 c6             	or     rsi,rax
+ 1f6:	4c 89 f0             	mov    rax,r14
+ 1f9:	48 c1 e0 08          	shl    rax,0x8
+ 1fd:	48 21 ee             	and    rsi,rbp
+ 200:	48 c1 f8 38          	sar    rax,0x38
+ 204:	41 0f af c0          	imul   eax,r8d
+ 208:	44 0f b6 c0          	movzx  r8d,al
+ 20c:	4c 89 c0             	mov    rax,r8
+ 20f:	49 89 f0             	mov    r8,rsi
+ 212:	44 89 d6             	mov    esi,r10d
+ 215:	48 c1 e0 30          	shl    rax,0x30
+ 219:	66 c1 fe 08          	sar    si,0x8
+ 21d:	49 09 c0             	or     r8,rax
+ 220:	4c 89 f0             	mov    rax,r14
+ 223:	48 c1 f8 38          	sar    rax,0x38
+ 227:	41 0f af c3          	imul   eax,r11d
+ 22b:	49 bb ff ff ff ff ff 	movabs r11,0xffffffffffffff
+ 232:	ff ff 00 
+ 235:	4d 21 d8             	and    r8,r11
+ 238:	48 c1 e0 38          	shl    rax,0x38
+ 23c:	49 09 c0             	or     r8,rax
+ 23f:	44 89 c8             	mov    eax,r9d
+ 242:	41 0f af c2          	imul   eax,r10d
+ 246:	4c 89 07             	mov    QWORD PTR [rdi],r8
+ 249:	88 c2                	mov    dl,al
+ 24b:	44 89 c8             	mov    eax,r9d
+ 24e:	66 c1 f8 08          	sar    ax,0x8
+ 252:	0f af c6             	imul   eax,esi
+ 255:	44 89 d6             	mov    esi,r10d
+ 258:	c1 e6 08             	shl    esi,0x8
+ 25b:	c1 fe 18             	sar    esi,0x18
+ 25e:	88 c6                	mov    dh,al
+ 260:	44 89 c8             	mov    eax,r9d
+ 263:	c1 e0 08             	shl    eax,0x8
+ 266:	48 81 e2 ff ff 00 ff 	and    rdx,0xffffffffff00ffff
+ 26d:	c1 f8 18             	sar    eax,0x18
+ 270:	0f af c6             	imul   eax,esi
+ 273:	4c 89 d6             	mov    rsi,r10
+ 276:	0f b6 c0             	movzx  eax,al
+ 279:	48 c1 e0 10          	shl    rax,0x10
+ 27d:	48 09 c2             	or     rdx,rax
+ 280:	44 89 c8             	mov    eax,r9d
+ 283:	c1 f8 18             	sar    eax,0x18
+ 286:	0f af c3             	imul   eax,ebx
+ 289:	4c 21 ea             	and    rdx,r13
+ 28c:	48 c1 e6 18          	shl    rsi,0x18
+ 290:	48 c1 fe 38          	sar    rsi,0x38
+ 294:	0f b6 d8             	movzx  ebx,al
+ 297:	48 89 d8             	mov    rax,rbx
+ 29a:	48 89 d3             	mov    rbx,rdx
+ 29d:	4c 89 d2             	mov    rdx,r10
+ 2a0:	48 c1 e0 18          	shl    rax,0x18
+ 2a4:	48 c1 e2 10          	shl    rdx,0x10
+ 2a8:	48 09 c3             	or     rbx,rax
+ 2ab:	4c 89 c8             	mov    rax,r9
+ 2ae:	48 c1 fa 38          	sar    rdx,0x38
+ 2b2:	48 c1 e0 18          	shl    rax,0x18
+ 2b6:	4c 21 e3             	and    rbx,r12
+ 2b9:	48 c1 f8 38          	sar    rax,0x38
+ 2bd:	0f af c6             	imul   eax,esi
+ 2c0:	0f b6 f0             	movzx  esi,al
+ 2c3:	48 89 f0             	mov    rax,rsi
+ 2c6:	48 89 de             	mov    rsi,rbx
+}
+ 2c9:	5b                   	pop    rbx
+    *z = x * y;
+ 2ca:	48 c1 e0 20          	shl    rax,0x20
+ 2ce:	48 09 c6             	or     rsi,rax
+ 2d1:	4c 89 c8             	mov    rax,r9
+ 2d4:	48 c1 e0 10          	shl    rax,0x10
+ 2d8:	48 21 ce             	and    rsi,rcx
+ 2db:	48 c1 f8 38          	sar    rax,0x38
+ 2df:	48 89 f1             	mov    rcx,rsi
+ 2e2:	0f af c2             	imul   eax,edx
+ 2e5:	0f b6 d0             	movzx  edx,al
+ 2e8:	4c 89 d0             	mov    rax,r10
+ 2eb:	49 c1 fa 38          	sar    r10,0x38
+ 2ef:	48 c1 e2 28          	shl    rdx,0x28
+ 2f3:	48 c1 e0 08          	shl    rax,0x8
+ 2f7:	48 09 d1             	or     rcx,rdx
+ 2fa:	4c 89 ca             	mov    rdx,r9
+ 2fd:	48 c1 f8 38          	sar    rax,0x38
+ 301:	48 c1 e2 08          	shl    rdx,0x8
+ 305:	48 89 c6             	mov    rsi,rax
+ 308:	48 21 e9             	and    rcx,rbp
+}
+ 30b:	5d                   	pop    rbp
+    *z = x * y;
+ 30c:	48 c1 fa 38          	sar    rdx,0x38
+}
+ 310:	41 5c                	pop    r12
+ 312:	41 5d                	pop    r13
+    *z = x * y;
+ 314:	89 d0                	mov    eax,edx
+}
+ 316:	41 5e                	pop    r14
+    *z = x * y;
+ 318:	0f af c6             	imul   eax,esi
+ 31b:	0f b6 d0             	movzx  edx,al
+ 31e:	4c 89 c8             	mov    rax,r9
+ 321:	48 c1 f8 38          	sar    rax,0x38
+ 325:	48 c1 e2 30          	shl    rdx,0x30
+ 329:	41 0f af c2          	imul   eax,r10d
+ 32d:	48 09 ca             	or     rdx,rcx
+ 330:	48 c1 e0 38          	shl    rax,0x38
+ 334:	4c 21 da             	and    rdx,r11
+ 337:	48 09 d0             	or     rax,rdx
+ 33a:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+ 33e:	c3                   	ret    
+ 33f:	90                   	nop
+
+0000000000000340 <div16ib>:
+
+void div16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 340:	f3 0f 1e fa          	endbr64 
+ 344:	41 56                	push   r14
+    *z = x / y;
+ 346:	31 c9                	xor    ecx,ecx
+ 348:	31 d2                	xor    edx,edx
+{
+ 34a:	41 55                	push   r13
+    *z = x / y;
+ 34c:	49 bd ff ff ff 00 ff 	movabs r13,0xffffffff00ffffff
+ 353:	ff ff ff 
+{
+ 356:	41 54                	push   r12
+    *z = x / y;
+ 358:	49 bc ff ff ff ff 00 	movabs r12,0xffffff00ffffffff
+ 35f:	ff ff ff 
+{
+ 362:	55                   	push   rbp
+    *z = x / y;
+ 363:	48 bd ff ff ff ff ff 	movabs rbp,0xff00ffffffffffff
+ 36a:	ff 00 ff 
+{
+ 36d:	53                   	push   rbx
+ 36e:	48 8b 5c 24 30       	mov    rbx,QWORD PTR [rsp+0x30]
+ 373:	4c 8b 74 24 40       	mov    r14,QWORD PTR [rsp+0x40]
+ 378:	4c 8b 4c 24 38       	mov    r9,QWORD PTR [rsp+0x38]
+    *z = x / y;
+ 37d:	66 0f be c3          	movsx  ax,bl
+{
+ 381:	4c 8b 54 24 48       	mov    r10,QWORD PTR [rsp+0x48]
+    *z = x / y;
+ 386:	41 f6 fe             	idiv   r14b
+ 389:	44 89 f6             	mov    esi,r14d
+ 38c:	4d 89 f0             	mov    r8,r14
+ 38f:	66 c1 fe 08          	sar    si,0x8
+ 393:	88 c1                	mov    cl,al
+ 395:	89 d8                	mov    eax,ebx
+ 397:	66 c1 f8 08          	sar    ax,0x8
+ 39b:	40 f6 fe             	idiv   sil
+ 39e:	44 89 f6             	mov    esi,r14d
+ 3a1:	c1 e6 08             	shl    esi,0x8
+ 3a4:	c1 fe 18             	sar    esi,0x18
+ 3a7:	88 c5                	mov    ch,al
+ 3a9:	89 d8                	mov    eax,ebx
+ 3ab:	c1 e0 08             	shl    eax,0x8
+ 3ae:	48 81 e1 ff ff 00 ff 	and    rcx,0xffffffffff00ffff
+ 3b5:	c1 f8 18             	sar    eax,0x18
+ 3b8:	40 f6 fe             	idiv   sil
+ 3bb:	44 89 f6             	mov    esi,r14d
+ 3be:	c1 fe 18             	sar    esi,0x18
+ 3c1:	0f b6 c0             	movzx  eax,al
+ 3c4:	48 c1 e0 10          	shl    rax,0x10
+ 3c8:	48 09 c1             	or     rcx,rax
+ 3cb:	89 d8                	mov    eax,ebx
+ 3cd:	c1 f8 18             	sar    eax,0x18
+ 3d0:	40 f6 fe             	idiv   sil
+ 3d3:	44 0f b6 d8          	movzx  r11d,al
+ 3d7:	48 89 c8             	mov    rax,rcx
+ 3da:	4c 89 f1             	mov    rcx,r14
+ 3dd:	49 c1 e3 18          	shl    r11,0x18
+ 3e1:	4c 21 e8             	and    rax,r13
+ 3e4:	48 c1 e1 18          	shl    rcx,0x18
+ 3e8:	49 09 c3             	or     r11,rax
+ 3eb:	48 89 d8             	mov    rax,rbx
+ 3ee:	48 c1 f9 38          	sar    rcx,0x38
+ 3f2:	48 c1 e0 18          	shl    rax,0x18
+ 3f6:	4d 21 e3             	and    r11,r12
+ 3f9:	48 c1 f8 38          	sar    rax,0x38
+ 3fd:	f6 f9                	idiv   cl
+ 3ff:	4c 89 f1             	mov    rcx,r14
+ 402:	48 c1 e1 10          	shl    rcx,0x10
+ 406:	48 c1 f9 38          	sar    rcx,0x38
+ 40a:	0f b6 c0             	movzx  eax,al
+ 40d:	48 c1 e0 20          	shl    rax,0x20
+ 411:	49 09 c3             	or     r11,rax
+ 414:	48 89 d8             	mov    rax,rbx
+ 417:	48 c1 e0 10          	shl    rax,0x10
+ 41b:	4c 89 de             	mov    rsi,r11
+ 41e:	49 bb ff ff ff ff ff 	movabs r11,0xffffffffffffff
+ 425:	ff ff 00 
+ 428:	48 c1 f8 38          	sar    rax,0x38
+ 42c:	f6 f9                	idiv   cl
+ 42e:	48 b9 ff ff ff ff ff 	movabs rcx,0xffff00ffffffffff
+ 435:	00 ff ff 
+ 438:	49 c1 e0 08          	shl    r8,0x8
+ 43c:	49 c1 f8 38          	sar    r8,0x38
+ 440:	48 21 ce             	and    rsi,rcx
+ 443:	49 c1 fe 38          	sar    r14,0x38
+ 447:	0f b6 c0             	movzx  eax,al
+ 44a:	48 c1 e0 28          	shl    rax,0x28
+ 44e:	48 09 c6             	or     rsi,rax
+ 451:	48 89 d8             	mov    rax,rbx
+ 454:	48 c1 fb 38          	sar    rbx,0x38
+ 458:	48 c1 e0 08          	shl    rax,0x8
+ 45c:	48 21 ee             	and    rsi,rbp
+ 45f:	48 c1 f8 38          	sar    rax,0x38
+ 463:	41 f6 f8             	idiv   r8b
+ 466:	44 0f b6 c0          	movzx  r8d,al
+ 46a:	4c 89 c0             	mov    rax,r8
+ 46d:	49 89 f0             	mov    r8,rsi
+ 470:	44 89 d6             	mov    esi,r10d
+ 473:	48 c1 e0 30          	shl    rax,0x30
+ 477:	66 c1 fe 08          	sar    si,0x8
+ 47b:	49 09 c0             	or     r8,rax
+ 47e:	48 89 d8             	mov    rax,rbx
+ 481:	41 f6 fe             	idiv   r14b
+ 484:	4d 21 d8             	and    r8,r11
+ 487:	48 c1 e0 38          	shl    rax,0x38
+ 48b:	49 09 c0             	or     r8,rax
+ 48e:	66 41 0f be c1       	movsx  ax,r9b
+ 493:	41 f6 fa             	idiv   r10b
+ 496:	4c 89 07             	mov    QWORD PTR [rdi],r8
+ 499:	88 c2                	mov    dl,al
+ 49b:	44 89 c8             	mov    eax,r9d
+ 49e:	66 c1 f8 08          	sar    ax,0x8
+ 4a2:	40 f6 fe             	idiv   sil
+ 4a5:	44 89 d6             	mov    esi,r10d
+ 4a8:	c1 e6 08             	shl    esi,0x8
+ 4ab:	c1 fe 18             	sar    esi,0x18
+ 4ae:	88 c6                	mov    dh,al
+ 4b0:	44 89 c8             	mov    eax,r9d
+ 4b3:	c1 e0 08             	shl    eax,0x8
+ 4b6:	48 81 e2 ff ff 00 ff 	and    rdx,0xffffffffff00ffff
+ 4bd:	c1 f8 18             	sar    eax,0x18
+ 4c0:	40 f6 fe             	idiv   sil
+ 4c3:	44 89 d6             	mov    esi,r10d
+ 4c6:	c1 fe 18             	sar    esi,0x18
+ 4c9:	0f b6 c0             	movzx  eax,al
+ 4cc:	48 c1 e0 10          	shl    rax,0x10
+ 4d0:	48 09 c2             	or     rdx,rax
+ 4d3:	44 89 c8             	mov    eax,r9d
+ 4d6:	c1 f8 18             	sar    eax,0x18
+ 4d9:	40 f6 fe             	idiv   sil
+ 4dc:	0f b6 d8             	movzx  ebx,al
+ 4df:	4c 89 c8             	mov    rax,r9
+ 4e2:	48 c1 e3 18          	shl    rbx,0x18
+ 4e6:	48 c1 e0 18          	shl    rax,0x18
+ 4ea:	49 89 de             	mov    r14,rbx
+ 4ed:	48 89 d3             	mov    rbx,rdx
+ 4f0:	4c 89 d2             	mov    rdx,r10
+ 4f3:	48 c1 f8 38          	sar    rax,0x38
+ 4f7:	48 c1 e2 18          	shl    rdx,0x18
+ 4fb:	4c 21 eb             	and    rbx,r13
+ 4fe:	48 c1 fa 38          	sar    rdx,0x38
+ 502:	4c 09 f3             	or     rbx,r14
+ 505:	f6 fa                	idiv   dl
+ 507:	4c 21 e3             	and    rbx,r12
+ 50a:	4c 89 d2             	mov    rdx,r10
+ 50d:	48 89 de             	mov    rsi,rbx
+ 510:	48 c1 e2 10          	shl    rdx,0x10
+}
+ 514:	5b                   	pop    rbx
+    *z = x / y;
+ 515:	48 c1 fa 38          	sar    rdx,0x38
+ 519:	0f b6 c0             	movzx  eax,al
+ 51c:	48 c1 e0 20          	shl    rax,0x20
+ 520:	48 09 c6             	or     rsi,rax
+ 523:	4c 89 c8             	mov    rax,r9
+ 526:	48 c1 e0 10          	shl    rax,0x10
+ 52a:	48 21 ce             	and    rsi,rcx
+ 52d:	48 c1 f8 38          	sar    rax,0x38
+ 531:	48 89 f1             	mov    rcx,rsi
+ 534:	f6 fa                	idiv   dl
+ 536:	0f b6 d0             	movzx  edx,al
+ 539:	4c 89 c8             	mov    rax,r9
+ 53c:	49 c1 f9 38          	sar    r9,0x38
+ 540:	48 c1 e2 28          	shl    rdx,0x28
+ 544:	48 c1 e0 08          	shl    rax,0x8
+ 548:	48 09 d1             	or     rcx,rdx
+ 54b:	4c 89 d2             	mov    rdx,r10
+ 54e:	48 c1 f8 38          	sar    rax,0x38
+ 552:	48 c1 e2 08          	shl    rdx,0x8
+ 556:	49 c1 fa 38          	sar    r10,0x38
+ 55a:	48 21 e9             	and    rcx,rbp
+}
+ 55d:	5d                   	pop    rbp
+    *z = x / y;
+ 55e:	48 c1 fa 38          	sar    rdx,0x38
+}
+ 562:	41 5c                	pop    r12
+ 564:	41 5d                	pop    r13
+    *z = x / y;
+ 566:	f6 fa                	idiv   dl
+}
+ 568:	41 5e                	pop    r14
+    *z = x / y;
+ 56a:	0f b6 d0             	movzx  edx,al
+ 56d:	4c 89 c8             	mov    rax,r9
+ 570:	41 f6 fa             	idiv   r10b
+ 573:	48 c1 e2 30          	shl    rdx,0x30
+ 577:	48 09 ca             	or     rdx,rcx
+ 57a:	48 c1 e0 38          	shl    rax,0x38
+ 57e:	4c 21 da             	and    rdx,r11
+ 581:	48 09 d0             	or     rax,rdx
+ 584:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+ 588:	c3                   	ret    
+ 589:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+
+0000000000000590 <mod16ib>:
+
+void mod16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 590:	f3 0f 1e fa          	endbr64 
+ 594:	41 56                	push   r14
+    *z = x % y;
+ 596:	31 c9                	xor    ecx,ecx
+ 598:	31 d2                	xor    edx,edx
+{
+ 59a:	41 55                	push   r13
+    *z = x % y;
+ 59c:	49 bd ff ff ff 00 ff 	movabs r13,0xffffffff00ffffff
+ 5a3:	ff ff ff 
+{
+ 5a6:	41 54                	push   r12
+    *z = x % y;
+ 5a8:	49 bc ff ff ff ff 00 	movabs r12,0xffffff00ffffffff
+ 5af:	ff ff ff 
+{
+ 5b2:	55                   	push   rbp
+ 5b3:	53                   	push   rbx
+ 5b4:	48 8b 6c 24 30       	mov    rbp,QWORD PTR [rsp+0x30]
+    *z = x % y;
+ 5b9:	48 bb ff ff ff ff ff 	movabs rbx,0xff00ffffffffffff
+ 5c0:	ff 00 ff 
+{
+ 5c3:	4c 8b 74 24 40       	mov    r14,QWORD PTR [rsp+0x40]
+ 5c8:	4c 8b 4c 24 38       	mov    r9,QWORD PTR [rsp+0x38]
+    *z = x % y;
+ 5cd:	66 40 0f be c5       	movsx  ax,bpl
+{
+ 5d2:	4c 8b 54 24 48       	mov    r10,QWORD PTR [rsp+0x48]
+    *z = x % y;
+ 5d7:	41 f6 fe             	idiv   r14b
+ 5da:	44 89 f6             	mov    esi,r14d
+ 5dd:	4d 89 f0             	mov    r8,r14
+ 5e0:	66 c1 fe 08          	sar    si,0x8
+ 5e4:	0f b6 c4             	movzx  eax,ah
+ 5e7:	88 c1                	mov    cl,al
+ 5e9:	89 e8                	mov    eax,ebp
+ 5eb:	66 c1 f8 08          	sar    ax,0x8
+ 5ef:	40 f6 fe             	idiv   sil
+ 5f2:	44 89 f6             	mov    esi,r14d
+ 5f5:	c1 e6 08             	shl    esi,0x8
+ 5f8:	c1 fe 18             	sar    esi,0x18
+ 5fb:	0f b6 c4             	movzx  eax,ah
+ 5fe:	88 c5                	mov    ch,al
+ 600:	89 e8                	mov    eax,ebp
+ 602:	c1 e0 08             	shl    eax,0x8
+ 605:	48 81 e1 ff ff 00 ff 	and    rcx,0xffffffffff00ffff
+ 60c:	c1 f8 18             	sar    eax,0x18
+ 60f:	40 f6 fe             	idiv   sil
+ 612:	44 89 f6             	mov    esi,r14d
+ 615:	c1 fe 18             	sar    esi,0x18
+ 618:	0f b6 c4             	movzx  eax,ah
+ 61b:	48 c1 e0 10          	shl    rax,0x10
+ 61f:	48 09 c1             	or     rcx,rax
+ 622:	89 e8                	mov    eax,ebp
+ 624:	c1 f8 18             	sar    eax,0x18
+ 627:	4c 21 e9             	and    rcx,r13
+ 62a:	40 f6 fe             	idiv   sil
+ 62d:	4c 89 f6             	mov    rsi,r14
+ 630:	48 c1 e6 18          	shl    rsi,0x18
+ 634:	48 c1 fe 38          	sar    rsi,0x38
+ 638:	0f b6 c4             	movzx  eax,ah
+ 63b:	49 89 c3             	mov    r11,rax
+ 63e:	48 89 e8             	mov    rax,rbp
+ 641:	48 c1 e0 18          	shl    rax,0x18
+ 645:	49 c1 e3 18          	shl    r11,0x18
+ 649:	48 c1 f8 38          	sar    rax,0x38
+ 64d:	4c 09 d9             	or     rcx,r11
+ 650:	40 f6 fe             	idiv   sil
+ 653:	4c 21 e1             	and    rcx,r12
+ 656:	49 89 cb             	mov    r11,rcx
+ 659:	4c 89 f1             	mov    rcx,r14
+ 65c:	48 c1 e1 10          	shl    rcx,0x10
+ 660:	48 c1 f9 38          	sar    rcx,0x38
+ 664:	0f b6 c4             	movzx  eax,ah
+ 667:	48 c1 e0 20          	shl    rax,0x20
+ 66b:	49 09 c3             	or     r11,rax
+ 66e:	48 89 e8             	mov    rax,rbp
+ 671:	48 c1 e0 10          	shl    rax,0x10
+ 675:	4c 89 de             	mov    rsi,r11
+ 678:	49 bb ff ff ff ff ff 	movabs r11,0xffffffffffffff
+ 67f:	ff ff 00 
+ 682:	48 c1 f8 38          	sar    rax,0x38
+ 686:	f6 f9                	idiv   cl
+ 688:	48 b9 ff ff ff ff ff 	movabs rcx,0xffff00ffffffffff
+ 68f:	00 ff ff 
+ 692:	49 c1 e0 08          	shl    r8,0x8
+ 696:	49 c1 f8 38          	sar    r8,0x38
+ 69a:	48 21 ce             	and    rsi,rcx
+ 69d:	49 c1 fe 38          	sar    r14,0x38
+ 6a1:	0f b6 c4             	movzx  eax,ah
+ 6a4:	48 c1 e0 28          	shl    rax,0x28
+ 6a8:	48 09 c6             	or     rsi,rax
+ 6ab:	48 89 e8             	mov    rax,rbp
+ 6ae:	48 c1 fd 38          	sar    rbp,0x38
+ 6b2:	48 c1 e0 08          	shl    rax,0x8
+ 6b6:	48 21 de             	and    rsi,rbx
+ 6b9:	48 c1 f8 38          	sar    rax,0x38
+ 6bd:	41 f6 f8             	idiv   r8b
+ 6c0:	49 89 f0             	mov    r8,rsi
+ 6c3:	44 89 d6             	mov    esi,r10d
+ 6c6:	66 c1 fe 08          	sar    si,0x8
+ 6ca:	0f b6 c4             	movzx  eax,ah
+ 6cd:	48 c1 e0 30          	shl    rax,0x30
+ 6d1:	49 09 c0             	or     r8,rax
+ 6d4:	48 89 e8             	mov    rax,rbp
+ 6d7:	41 f6 fe             	idiv   r14b
+ 6da:	4d 21 d8             	and    r8,r11
+ 6dd:	0f b6 c4             	movzx  eax,ah
+ 6e0:	48 c1 e0 38          	shl    rax,0x38
+ 6e4:	49 09 c0             	or     r8,rax
+ 6e7:	66 41 0f be c1       	movsx  ax,r9b
+ 6ec:	41 f6 fa             	idiv   r10b
+ 6ef:	4c 89 07             	mov    QWORD PTR [rdi],r8
+ 6f2:	0f b6 c4             	movzx  eax,ah
+ 6f5:	88 c2                	mov    dl,al
+ 6f7:	44 89 c8             	mov    eax,r9d
+ 6fa:	66 c1 f8 08          	sar    ax,0x8
+ 6fe:	40 f6 fe             	idiv   sil
+ 701:	44 89 d6             	mov    esi,r10d
+ 704:	c1 e6 08             	shl    esi,0x8
+ 707:	c1 fe 18             	sar    esi,0x18
+ 70a:	0f b6 c4             	movzx  eax,ah
+ 70d:	88 c6                	mov    dh,al
+ 70f:	44 89 c8             	mov    eax,r9d
+ 712:	c1 e0 08             	shl    eax,0x8
+ 715:	48 81 e2 ff ff 00 ff 	and    rdx,0xffffffffff00ffff
+ 71c:	c1 f8 18             	sar    eax,0x18
+ 71f:	40 f6 fe             	idiv   sil
+ 722:	44 89 d6             	mov    esi,r10d
+ 725:	c1 fe 18             	sar    esi,0x18
+ 728:	0f b6 c4             	movzx  eax,ah
+ 72b:	48 c1 e0 10          	shl    rax,0x10
+ 72f:	48 09 c2             	or     rdx,rax
+ 732:	44 89 c8             	mov    eax,r9d
+ 735:	c1 f8 18             	sar    eax,0x18
+ 738:	40 f6 fe             	idiv   sil
+ 73b:	4c 21 ea             	and    rdx,r13
+ 73e:	0f b6 ec             	movzx  ebp,ah
+ 741:	4c 89 c8             	mov    rax,r9
+ 744:	49 89 ee             	mov    r14,rbp
+ 747:	48 89 d5             	mov    rbp,rdx
+ 74a:	4c 89 d2             	mov    rdx,r10
+ 74d:	48 c1 e0 18          	shl    rax,0x18
+ 751:	48 c1 e2 18          	shl    rdx,0x18
+ 755:	48 c1 f8 38          	sar    rax,0x38
+ 759:	48 c1 fa 38          	sar    rdx,0x38
+ 75d:	49 c1 e6 18          	shl    r14,0x18
+ 761:	f6 fa                	idiv   dl
+ 763:	4c 09 f5             	or     rbp,r14
+ 766:	4c 89 d2             	mov    rdx,r10
+ 769:	48 89 ee             	mov    rsi,rbp
+ 76c:	48 c1 e2 10          	shl    rdx,0x10
+ 770:	4c 21 e6             	and    rsi,r12
+ 773:	48 c1 fa 38          	sar    rdx,0x38
+ 777:	0f b6 c4             	movzx  eax,ah
+ 77a:	48 c1 e0 20          	shl    rax,0x20
+ 77e:	48 09 c6             	or     rsi,rax
+ 781:	4c 89 c8             	mov    rax,r9
+ 784:	48 c1 e0 10          	shl    rax,0x10
+ 788:	48 21 ce             	and    rsi,rcx
+ 78b:	48 c1 f8 38          	sar    rax,0x38
+ 78f:	48 89 f1             	mov    rcx,rsi
+ 792:	f6 fa                	idiv   dl
+ 794:	0f b6 d4             	movzx  edx,ah
+ 797:	4c 89 c8             	mov    rax,r9
+ 79a:	49 c1 f9 38          	sar    r9,0x38
+ 79e:	48 c1 e2 28          	shl    rdx,0x28
+ 7a2:	48 c1 e0 08          	shl    rax,0x8
+ 7a6:	48 09 d1             	or     rcx,rdx
+ 7a9:	4c 89 d2             	mov    rdx,r10
+ 7ac:	48 c1 f8 38          	sar    rax,0x38
+ 7b0:	48 c1 e2 08          	shl    rdx,0x8
+ 7b4:	49 c1 fa 38          	sar    r10,0x38
+ 7b8:	48 21 d9             	and    rcx,rbx
+}
+ 7bb:	5b                   	pop    rbx
+    *z = x % y;
+ 7bc:	48 c1 fa 38          	sar    rdx,0x38
+}
+ 7c0:	5d                   	pop    rbp
+ 7c1:	41 5c                	pop    r12
+    *z = x % y;
+ 7c3:	f6 fa                	idiv   dl
+}
+ 7c5:	41 5d                	pop    r13
+ 7c7:	41 5e                	pop    r14
+    *z = x % y;
+ 7c9:	0f b6 d4             	movzx  edx,ah
+ 7cc:	4c 89 c8             	mov    rax,r9
+ 7cf:	41 f6 fa             	idiv   r10b
+ 7d2:	48 c1 e2 30          	shl    rdx,0x30
+ 7d6:	48 09 ca             	or     rdx,rcx
+ 7d9:	0f b6 c4             	movzx  eax,ah
+ 7dc:	48 c1 e0 38          	shl    rax,0x38
+ 7e0:	4c 21 da             	and    rdx,r11
+ 7e3:	48 09 d0             	or     rax,rdx
+ 7e6:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+ 7ea:	c3                   	ret    
+ 7eb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+
+00000000000007f0 <and16ib>:
+
+void and16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 7f0:	f3 0f 1e fa          	endbr64 
+    *z = x & y;
+ 7f4:	48 8b 54 24 18       	mov    rdx,QWORD PTR [rsp+0x18]
+ 7f9:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+ 7fe:	48 23 54 24 08       	and    rdx,QWORD PTR [rsp+0x8]
+ 803:	48 23 44 24 10       	and    rax,QWORD PTR [rsp+0x10]
+ 808:	48 89 17             	mov    QWORD PTR [rdi],rdx
+ 80b:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+ 80f:	c3                   	ret    
+
+0000000000000810 <or16ib>:
+
+void or16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 810:	f3 0f 1e fa          	endbr64 
+    *z = x | y;
+ 814:	48 8b 54 24 18       	mov    rdx,QWORD PTR [rsp+0x18]
+ 819:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+ 81e:	48 0b 54 24 08       	or     rdx,QWORD PTR [rsp+0x8]
+ 823:	48 0b 44 24 10       	or     rax,QWORD PTR [rsp+0x10]
+ 828:	48 89 17             	mov    QWORD PTR [rdi],rdx
+ 82b:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+ 82f:	c3                   	ret    
+
+0000000000000830 <xor16ib>:
+
+void xor16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 830:	f3 0f 1e fa          	endbr64 
+    *z = x ^ y;
+ 834:	48 8b 54 24 18       	mov    rdx,QWORD PTR [rsp+0x18]
+ 839:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+ 83e:	48 33 54 24 08       	xor    rdx,QWORD PTR [rsp+0x8]
+ 843:	48 33 44 24 10       	xor    rax,QWORD PTR [rsp+0x10]
+ 848:	48 89 17             	mov    QWORD PTR [rdi],rdx
+ 84b:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+ 84f:	c3                   	ret    
+
+0000000000000850 <rshift16ib>:
+
+void rshift16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 850:	f3 0f 1e fa          	endbr64 
+ 854:	41 55                	push   r13
+    *z = x >> y;
+ 856:	31 c0                	xor    eax,eax
+{
+ 858:	41 54                	push   r12
+    *z = x >> y;
+ 85a:	49 bc ff ff ff 00 ff 	movabs r12,0xffffffff00ffffff
+ 861:	ff ff ff 
+{
+ 864:	55                   	push   rbp
+    *z = x >> y;
+ 865:	48 bd ff ff ff ff 00 	movabs rbp,0xffffff00ffffffff
+ 86c:	ff ff ff 
+{
+ 86f:	53                   	push   rbx
+ 870:	48 8b 54 24 28       	mov    rdx,QWORD PTR [rsp+0x28]
+    *z = x >> y;
+ 875:	31 db                	xor    ebx,ebx
+{
+ 877:	4c 8b 6c 24 38       	mov    r13,QWORD PTR [rsp+0x38]
+ 87c:	4c 8b 54 24 30       	mov    r10,QWORD PTR [rsp+0x30]
+    *z = x >> y;
+ 881:	89 d6                	mov    esi,edx
+ 883:	41 89 d1             	mov    r9d,edx
+{
+ 886:	4c 8b 5c 24 40       	mov    r11,QWORD PTR [rsp+0x40]
+    *z = x >> y;
+ 88b:	41 0f be cd          	movsx  ecx,r13b
+ 88f:	41 c1 e1 08          	shl    r9d,0x8
+ 893:	40 d2 fe             	sar    sil,cl
+ 896:	44 89 e9             	mov    ecx,r13d
+ 899:	41 c1 f9 18          	sar    r9d,0x18
+ 89d:	40 88 f3             	mov    bl,sil
+ 8a0:	89 d6                	mov    esi,edx
+ 8a2:	66 c1 f9 08          	sar    cx,0x8
+ 8a6:	66 c1 fe 08          	sar    si,0x8
+ 8aa:	40 d2 fe             	sar    sil,cl
+ 8ad:	89 f1                	mov    ecx,esi
+ 8af:	89 d6                	mov    esi,edx
+ 8b1:	88 cf                	mov    bh,cl
+ 8b3:	44 89 e9             	mov    ecx,r13d
+ 8b6:	c1 fe 18             	sar    esi,0x18
+ 8b9:	c1 e1 08             	shl    ecx,0x8
+ 8bc:	48 81 e3 ff ff 00 ff 	and    rbx,0xffffffffff00ffff
+ 8c3:	c1 f9 18             	sar    ecx,0x18
+ 8c6:	49 89 d8             	mov    r8,rbx
+ 8c9:	48 89 d3             	mov    rbx,rdx
+ 8cc:	41 d2 f9             	sar    r9b,cl
+ 8cf:	44 89 e9             	mov    ecx,r13d
+ 8d2:	48 c1 e3 10          	shl    rbx,0x10
+ 8d6:	c1 f9 18             	sar    ecx,0x18
+ 8d9:	45 0f b6 c9          	movzx  r9d,r9b
+ 8dd:	48 c1 fb 38          	sar    rbx,0x38
+ 8e1:	49 c1 e1 10          	shl    r9,0x10
+ 8e5:	40 d2 fe             	sar    sil,cl
+ 8e8:	4c 89 e9             	mov    rcx,r13
+ 8eb:	4d 09 c8             	or     r8,r9
+ 8ee:	40 0f b6 f6          	movzx  esi,sil
+ 8f2:	48 c1 e1 18          	shl    rcx,0x18
+ 8f6:	49 89 d1             	mov    r9,rdx
+ 8f9:	48 c1 e6 18          	shl    rsi,0x18
+ 8fd:	4d 21 e0             	and    r8,r12
+ 900:	48 c1 f9 38          	sar    rcx,0x38
+ 904:	4c 09 c6             	or     rsi,r8
+ 907:	49 89 d0             	mov    r8,rdx
+ 90a:	49 c1 e0 18          	shl    r8,0x18
+ 90e:	48 21 ee             	and    rsi,rbp
+ 911:	49 c1 f8 38          	sar    r8,0x38
+ 915:	41 d2 f8             	sar    r8b,cl
+ 918:	4c 89 e9             	mov    rcx,r13
+ 91b:	48 c1 e1 10          	shl    rcx,0x10
+ 91f:	45 0f b6 c0          	movzx  r8d,r8b
+ 923:	49 c1 e0 20          	shl    r8,0x20
+ 927:	48 c1 f9 38          	sar    rcx,0x38
+ 92b:	4c 09 c6             	or     rsi,r8
+ 92e:	d2 fb                	sar    bl,cl
+ 930:	49 b8 ff ff ff ff ff 	movabs r8,0xffff00ffffffffff
+ 937:	00 ff ff 
+ 93a:	49 c1 e1 08          	shl    r9,0x8
+ 93e:	0f b6 db             	movzx  ebx,bl
+ 941:	48 c1 fa 38          	sar    rdx,0x38
+ 945:	48 c1 e3 28          	shl    rbx,0x28
+ 949:	49 c1 f9 38          	sar    r9,0x38
+ 94d:	48 89 d9             	mov    rcx,rbx
+ 950:	48 89 f3             	mov    rbx,rsi
+ 953:	48 be ff ff ff ff ff 	movabs rsi,0xff00ffffffffffff
+ 95a:	ff 00 ff 
+ 95d:	4c 21 c3             	and    rbx,r8
+ 960:	48 09 cb             	or     rbx,rcx
+ 963:	4c 89 e9             	mov    rcx,r13
+ 966:	49 c1 fd 38          	sar    r13,0x38
+ 96a:	48 c1 e1 08          	shl    rcx,0x8
+ 96e:	48 21 f3             	and    rbx,rsi
+ 971:	48 c1 f9 38          	sar    rcx,0x38
+ 975:	41 d2 f9             	sar    r9b,cl
+ 978:	45 0f b6 c9          	movzx  r9d,r9b
+ 97c:	4c 89 c9             	mov    rcx,r9
+ 97f:	49 89 d9             	mov    r9,rbx
+ 982:	48 bb ff ff ff ff ff 	movabs rbx,0xffffffffffffff
+ 989:	ff ff 00 
+ 98c:	48 c1 e1 30          	shl    rcx,0x30
+ 990:	49 09 c9             	or     r9,rcx
+ 993:	4c 89 e9             	mov    rcx,r13
+ 996:	d2 fa                	sar    dl,cl
+ 998:	49 21 d9             	and    r9,rbx
+ 99b:	41 0f be cb          	movsx  ecx,r11b
+ 99f:	48 c1 e2 38          	shl    rdx,0x38
+ 9a3:	4c 09 ca             	or     rdx,r9
+ 9a6:	45 89 d1             	mov    r9d,r10d
+ 9a9:	41 d2 f9             	sar    r9b,cl
+ 9ac:	44 89 d9             	mov    ecx,r11d
+ 9af:	48 89 17             	mov    QWORD PTR [rdi],rdx
+ 9b2:	44 88 c8             	mov    al,r9b
+ 9b5:	45 89 d1             	mov    r9d,r10d
+ 9b8:	66 c1 f9 08          	sar    cx,0x8
+ 9bc:	66 41 c1 f9 08       	sar    r9w,0x8
+ 9c1:	41 d2 f9             	sar    r9b,cl
+ 9c4:	44 89 c9             	mov    ecx,r9d
+ 9c7:	45 89 d1             	mov    r9d,r10d
+ 9ca:	88 cc                	mov    ah,cl
+ 9cc:	44 89 d9             	mov    ecx,r11d
+ 9cf:	41 c1 e1 08          	shl    r9d,0x8
+ 9d3:	c1 e1 08             	shl    ecx,0x8
+ 9d6:	41 c1 f9 18          	sar    r9d,0x18
+ 9da:	48 25 ff ff 00 ff    	and    rax,0xffffffffff00ffff
+ 9e0:	c1 f9 18             	sar    ecx,0x18
+ 9e3:	41 d2 f9             	sar    r9b,cl
+ 9e6:	44 89 d9             	mov    ecx,r11d
+ 9e9:	45 0f b6 c9          	movzx  r9d,r9b
+ 9ed:	c1 f9 18             	sar    ecx,0x18
+ 9f0:	49 c1 e1 10          	shl    r9,0x10
+ 9f4:	4c 09 c8             	or     rax,r9
+ 9f7:	45 89 d1             	mov    r9d,r10d
+ 9fa:	41 c1 f9 18          	sar    r9d,0x18
+ 9fe:	41 d2 f9             	sar    r9b,cl
+ a01:	4c 21 e0             	and    rax,r12
+ a04:	4c 89 d9             	mov    rcx,r11
+ a07:	45 0f b6 c9          	movzx  r9d,r9b
+ a0b:	48 c1 e1 18          	shl    rcx,0x18
+ a0f:	49 c1 e1 18          	shl    r9,0x18
+ a13:	48 c1 f9 38          	sar    rcx,0x38
+ a17:	4c 09 c8             	or     rax,r9
+ a1a:	4d 89 d1             	mov    r9,r10
+ a1d:	49 c1 e1 18          	shl    r9,0x18
+ a21:	48 21 e8             	and    rax,rbp
+ a24:	49 c1 f9 38          	sar    r9,0x38
+ a28:	41 d2 f9             	sar    r9b,cl
+ a2b:	45 0f b6 c9          	movzx  r9d,r9b
+ a2f:	4c 89 c9             	mov    rcx,r9
+ a32:	49 89 c1             	mov    r9,rax
+ a35:	4c 89 d0             	mov    rax,r10
+ a38:	48 c1 e1 20          	shl    rcx,0x20
+ a3c:	48 c1 e0 10          	shl    rax,0x10
+ a40:	49 09 c9             	or     r9,rcx
+ a43:	4c 89 d9             	mov    rcx,r11
+ a46:	48 c1 f8 38          	sar    rax,0x38
+ a4a:	48 c1 e1 10          	shl    rcx,0x10
+ a4e:	4d 21 c1             	and    r9,r8
+ a51:	48 c1 f9 38          	sar    rcx,0x38
+ a55:	4d 89 c8             	mov    r8,r9
+ a58:	d2 f8                	sar    al,cl
+ a5a:	4c 89 d9             	mov    rcx,r11
+ a5d:	49 c1 fb 38          	sar    r11,0x38
+ a61:	0f b6 c0             	movzx  eax,al
+ a64:	48 c1 e1 08          	shl    rcx,0x8
+ a68:	48 c1 e0 28          	shl    rax,0x28
+ a6c:	48 c1 f9 38          	sar    rcx,0x38
+ a70:	49 09 c0             	or     r8,rax
+ a73:	4c 89 d0             	mov    rax,r10
+ a76:	48 c1 e0 08          	shl    rax,0x8
+ a7a:	49 21 f0             	and    r8,rsi
+ a7d:	48 c1 f8 38          	sar    rax,0x38
+ a81:	4c 89 c6             	mov    rsi,r8
+ a84:	d2 f8                	sar    al,cl
+ a86:	4c 89 d9             	mov    rcx,r11
+ a89:	0f b6 c0             	movzx  eax,al
+ a8c:	48 c1 e0 30          	shl    rax,0x30
+ a90:	48 09 c6             	or     rsi,rax
+ a93:	4c 89 d0             	mov    rax,r10
+ a96:	48 c1 f8 38          	sar    rax,0x38
+ a9a:	d2 f8                	sar    al,cl
+ a9c:	48 c1 e0 38          	shl    rax,0x38
+ aa0:	48 21 de             	and    rsi,rbx
+}
+ aa3:	5b                   	pop    rbx
+ aa4:	5d                   	pop    rbp
+    *z = x >> y;
+ aa5:	48 09 f0             	or     rax,rsi
+}
+ aa8:	41 5c                	pop    r12
+ aaa:	41 5d                	pop    r13
+    *z = x >> y;
+ aac:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+ ab0:	c3                   	ret    
+ ab1:	66 66 2e 0f 1f 84 00 	data16 nop WORD PTR cs:[rax+rax*1+0x0]
+ ab8:	00 00 00 00 
+ abc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+0000000000000ac0 <lshift16ib>:
+
+void lshift16ib(v16ib x, v16ib y, v16ib * z)
+{
+ ac0:	f3 0f 1e fa          	endbr64 
+ ac4:	41 55                	push   r13
+    *z = x << y;
+ ac6:	31 c0                	xor    eax,eax
+{
+ ac8:	41 54                	push   r12
+    *z = x << y;
+ aca:	49 bc ff ff ff 00 ff 	movabs r12,0xffffffff00ffffff
+ ad1:	ff ff ff 
+{
+ ad4:	55                   	push   rbp
+    *z = x << y;
+ ad5:	48 bd ff ff ff ff 00 	movabs rbp,0xffffff00ffffffff
+ adc:	ff ff ff 
+{
+ adf:	53                   	push   rbx
+ ae0:	48 8b 54 24 28       	mov    rdx,QWORD PTR [rsp+0x28]
+    *z = x << y;
+ ae5:	31 db                	xor    ebx,ebx
+{
+ ae7:	4c 8b 6c 24 38       	mov    r13,QWORD PTR [rsp+0x38]
+ aec:	4c 8b 54 24 30       	mov    r10,QWORD PTR [rsp+0x30]
+    *z = x << y;
+ af1:	89 d6                	mov    esi,edx
+ af3:	41 89 d1             	mov    r9d,edx
+{
+ af6:	4c 8b 5c 24 40       	mov    r11,QWORD PTR [rsp+0x40]
+    *z = x << y;
+ afb:	41 0f be cd          	movsx  ecx,r13b
+ aff:	41 c1 e1 08          	shl    r9d,0x8
+ b03:	d3 e6                	shl    esi,cl
+ b05:	44 89 e9             	mov    ecx,r13d
+ b08:	41 c1 f9 18          	sar    r9d,0x18
+ b0c:	40 88 f3             	mov    bl,sil
+ b0f:	89 d6                	mov    esi,edx
+ b11:	66 c1 f9 08          	sar    cx,0x8
+ b15:	66 c1 fe 08          	sar    si,0x8
+ b19:	d3 e6                	shl    esi,cl
+ b1b:	89 f1                	mov    ecx,esi
+ b1d:	89 d6                	mov    esi,edx
+ b1f:	88 cf                	mov    bh,cl
+ b21:	44 89 e9             	mov    ecx,r13d
+ b24:	c1 fe 18             	sar    esi,0x18
+ b27:	c1 e1 08             	shl    ecx,0x8
+ b2a:	48 81 e3 ff ff 00 ff 	and    rbx,0xffffffffff00ffff
+ b31:	c1 f9 18             	sar    ecx,0x18
+ b34:	49 89 d8             	mov    r8,rbx
+ b37:	48 89 d3             	mov    rbx,rdx
+ b3a:	41 d3 e1             	shl    r9d,cl
+ b3d:	44 89 e9             	mov    ecx,r13d
+ b40:	48 c1 e3 10          	shl    rbx,0x10
+ b44:	c1 f9 18             	sar    ecx,0x18
+ b47:	45 0f b6 c9          	movzx  r9d,r9b
+ b4b:	48 c1 fb 38          	sar    rbx,0x38
+ b4f:	49 c1 e1 10          	shl    r9,0x10
+ b53:	d3 e6                	shl    esi,cl
+ b55:	4c 89 e9             	mov    rcx,r13
+ b58:	4d 09 c8             	or     r8,r9
+ b5b:	40 0f b6 f6          	movzx  esi,sil
+ b5f:	48 c1 e1 18          	shl    rcx,0x18
+ b63:	49 89 d1             	mov    r9,rdx
+ b66:	48 c1 e6 18          	shl    rsi,0x18
+ b6a:	4d 21 e0             	and    r8,r12
+ b6d:	48 c1 f9 38          	sar    rcx,0x38
+ b71:	4c 09 c6             	or     rsi,r8
+ b74:	49 89 d0             	mov    r8,rdx
+ b77:	49 c1 e0 18          	shl    r8,0x18
+ b7b:	48 21 ee             	and    rsi,rbp
+ b7e:	49 c1 f8 38          	sar    r8,0x38
+ b82:	41 d3 e0             	shl    r8d,cl
+ b85:	4c 89 e9             	mov    rcx,r13
+ b88:	48 c1 e1 10          	shl    rcx,0x10
+ b8c:	45 0f b6 c0          	movzx  r8d,r8b
+ b90:	49 c1 e0 20          	shl    r8,0x20
+ b94:	48 c1 f9 38          	sar    rcx,0x38
+ b98:	4c 09 c6             	or     rsi,r8
+ b9b:	d3 e3                	shl    ebx,cl
+ b9d:	49 b8 ff ff ff ff ff 	movabs r8,0xffff00ffffffffff
+ ba4:	00 ff ff 
+ ba7:	49 c1 e1 08          	shl    r9,0x8
+ bab:	0f b6 db             	movzx  ebx,bl
+ bae:	48 c1 fa 38          	sar    rdx,0x38
+ bb2:	48 c1 e3 28          	shl    rbx,0x28
+ bb6:	49 c1 f9 38          	sar    r9,0x38
+ bba:	48 89 d9             	mov    rcx,rbx
+ bbd:	48 89 f3             	mov    rbx,rsi
+ bc0:	48 be ff ff ff ff ff 	movabs rsi,0xff00ffffffffffff
+ bc7:	ff 00 ff 
+ bca:	4c 21 c3             	and    rbx,r8
+ bcd:	48 09 cb             	or     rbx,rcx
+ bd0:	4c 89 e9             	mov    rcx,r13
+ bd3:	49 c1 fd 38          	sar    r13,0x38
+ bd7:	48 c1 e1 08          	shl    rcx,0x8
+ bdb:	48 21 f3             	and    rbx,rsi
+ bde:	48 c1 f9 38          	sar    rcx,0x38
+ be2:	41 d3 e1             	shl    r9d,cl
+ be5:	45 0f b6 c9          	movzx  r9d,r9b
+ be9:	4c 89 c9             	mov    rcx,r9
+ bec:	49 89 d9             	mov    r9,rbx
+ bef:	48 bb ff ff ff ff ff 	movabs rbx,0xffffffffffffff
+ bf6:	ff ff 00 
+ bf9:	48 c1 e1 30          	shl    rcx,0x30
+ bfd:	49 09 c9             	or     r9,rcx
+ c00:	4c 89 e9             	mov    rcx,r13
+ c03:	d3 e2                	shl    edx,cl
+ c05:	49 21 d9             	and    r9,rbx
+ c08:	41 0f be cb          	movsx  ecx,r11b
+ c0c:	48 c1 e2 38          	shl    rdx,0x38
+ c10:	4c 09 ca             	or     rdx,r9
+ c13:	45 89 d1             	mov    r9d,r10d
+ c16:	41 d3 e1             	shl    r9d,cl
+ c19:	44 89 d9             	mov    ecx,r11d
+ c1c:	48 89 17             	mov    QWORD PTR [rdi],rdx
+ c1f:	44 88 c8             	mov    al,r9b
+ c22:	45 89 d1             	mov    r9d,r10d
+ c25:	66 c1 f9 08          	sar    cx,0x8
+ c29:	66 41 c1 f9 08       	sar    r9w,0x8
+ c2e:	41 d3 e1             	shl    r9d,cl
+ c31:	44 89 c9             	mov    ecx,r9d
+ c34:	45 89 d1             	mov    r9d,r10d
+ c37:	88 cc                	mov    ah,cl
+ c39:	44 89 d9             	mov    ecx,r11d
+ c3c:	41 c1 e1 08          	shl    r9d,0x8
+ c40:	c1 e1 08             	shl    ecx,0x8
+ c43:	41 c1 f9 18          	sar    r9d,0x18
+ c47:	48 25 ff ff 00 ff    	and    rax,0xffffffffff00ffff
+ c4d:	c1 f9 18             	sar    ecx,0x18
+ c50:	41 d3 e1             	shl    r9d,cl
+ c53:	44 89 d9             	mov    ecx,r11d
+ c56:	45 0f b6 c9          	movzx  r9d,r9b
+ c5a:	c1 f9 18             	sar    ecx,0x18
+ c5d:	49 c1 e1 10          	shl    r9,0x10
+ c61:	4c 09 c8             	or     rax,r9
+ c64:	45 89 d1             	mov    r9d,r10d
+ c67:	41 c1 f9 18          	sar    r9d,0x18
+ c6b:	41 d3 e1             	shl    r9d,cl
+ c6e:	4c 21 e0             	and    rax,r12
+ c71:	4c 89 d9             	mov    rcx,r11
+ c74:	45 0f b6 c9          	movzx  r9d,r9b
+ c78:	48 c1 e1 18          	shl    rcx,0x18
+ c7c:	49 c1 e1 18          	shl    r9,0x18
+ c80:	48 c1 f9 38          	sar    rcx,0x38
+ c84:	4c 09 c8             	or     rax,r9
+ c87:	4d 89 d1             	mov    r9,r10
+ c8a:	49 c1 e1 18          	shl    r9,0x18
+ c8e:	48 21 e8             	and    rax,rbp
+ c91:	49 c1 f9 38          	sar    r9,0x38
+ c95:	41 d3 e1             	shl    r9d,cl
+ c98:	45 0f b6 c9          	movzx  r9d,r9b
+ c9c:	4c 89 c9             	mov    rcx,r9
+ c9f:	49 89 c1             	mov    r9,rax
+ ca2:	4c 89 d0             	mov    rax,r10
+ ca5:	48 c1 e1 20          	shl    rcx,0x20
+ ca9:	48 c1 e0 10          	shl    rax,0x10
+ cad:	49 09 c9             	or     r9,rcx
+ cb0:	4c 89 d9             	mov    rcx,r11
+ cb3:	48 c1 f8 38          	sar    rax,0x38
+ cb7:	48 c1 e1 10          	shl    rcx,0x10
+ cbb:	4d 21 c1             	and    r9,r8
+ cbe:	48 c1 f9 38          	sar    rcx,0x38
+ cc2:	4d 89 c8             	mov    r8,r9
+ cc5:	d3 e0                	shl    eax,cl
+ cc7:	4c 89 d9             	mov    rcx,r11
+ cca:	49 c1 fb 38          	sar    r11,0x38
+ cce:	0f b6 c0             	movzx  eax,al
+ cd1:	48 c1 e1 08          	shl    rcx,0x8
+ cd5:	48 c1 e0 28          	shl    rax,0x28
+ cd9:	48 c1 f9 38          	sar    rcx,0x38
+ cdd:	49 09 c0             	or     r8,rax
+ ce0:	4c 89 d0             	mov    rax,r10
+ ce3:	48 c1 e0 08          	shl    rax,0x8
+ ce7:	49 21 f0             	and    r8,rsi
+ cea:	48 c1 f8 38          	sar    rax,0x38
+ cee:	4c 89 c6             	mov    rsi,r8
+ cf1:	d3 e0                	shl    eax,cl
+ cf3:	4c 89 d9             	mov    rcx,r11
+ cf6:	0f b6 c0             	movzx  eax,al
+ cf9:	48 c1 e0 30          	shl    rax,0x30
+ cfd:	48 09 c6             	or     rsi,rax
+ d00:	4c 89 d0             	mov    rax,r10
+ d03:	48 c1 f8 38          	sar    rax,0x38
+ d07:	d3 e0                	shl    eax,cl
+ d09:	48 c1 e0 38          	shl    rax,0x38
+ d0d:	48 21 de             	and    rsi,rbx
+}
+ d10:	5b                   	pop    rbx
+ d11:	5d                   	pop    rbp
+    *z = x << y;
+ d12:	48 09 f0             	or     rax,rsi
+}
+ d15:	41 5c                	pop    r12
+ d17:	41 5d                	pop    r13
+    *z = x << y;
+ d19:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+ d1d:	c3                   	ret    
+ d1e:	66 90                	xchg   ax,ax
+
+0000000000000d20 <print_vectors>:
+
+void print_vectors(const char *message, const char *op, v16ib *x,v16ib  *y,v16ib  *z)
+{
+ d20:	f3 0f 1e fa          	endbr64 
+ d24:	41 57                	push   r15
+}
+
+__fortify_function int
+printf (const char *__restrict __fmt, ...)
+{
+  return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+ d26:	4c 8d 3d 00 00 00 00 	lea    r15,[rip+0x0]        # d2d <print_vectors+0xd>
+ d2d:	41 56                	push   r14
+ d2f:	49 89 f6             	mov    r14,rsi
+ d32:	41 55                	push   r13
+ d34:	49 89 d5             	mov    r13,rdx
+ d37:	41 54                	push   r12
+ d39:	49 89 cc             	mov    r12,rcx
+ d3c:	55                   	push   rbp
+ d3d:	4c 89 c5             	mov    rbp,r8
+ d40:	53                   	push   rbx
+    int i;
+
+    puts(message);
+ d41:	31 db                	xor    ebx,ebx
+{
+ d43:	48 83 ec 08          	sub    rsp,0x8
+    puts(message);
+ d47:	e8 00 00 00 00       	call   d4c <print_vectors+0x2c>
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ d4c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+        printf("%2d    %d %s %d = %d\n", i, (*x)[i], op, (*y)[i], (*z)[i]);
+ d50:	0f be 44 1d 00       	movsx  eax,BYTE PTR [rbp+rbx*1+0x0]
+ d55:	48 83 ec 08          	sub    rsp,0x8
+ d59:	45 0f be 0c 1c       	movsx  r9d,BYTE PTR [r12+rbx*1]
+ d5e:	89 da                	mov    edx,ebx
+ d60:	41 0f be 4c 1d 00    	movsx  ecx,BYTE PTR [r13+rbx*1+0x0]
+ d66:	4d 89 f0             	mov    r8,r14
+ d69:	4c 89 fe             	mov    rsi,r15
+ d6c:	bf 01 00 00 00       	mov    edi,0x1
+ d71:	50                   	push   rax
+ d72:	48 83 c3 01          	add    rbx,0x1
+ d76:	31 c0                	xor    eax,eax
+ d78:	e8 00 00 00 00       	call   d7d <print_vectors+0x5d>
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ d7d:	58                   	pop    rax
+ d7e:	5a                   	pop    rdx
+ d7f:	48 83 fb 10          	cmp    rbx,0x10
+ d83:	75 cb                	jne    d50 <print_vectors+0x30>
+
+/* Write a character to stdout.  */
+__STDIO_INLINE int
+putchar (int __c)
+{
+  return putc (__c, stdout);
+ d85:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # d8c <print_vectors+0x6c>
+    }
+
+    putchar('\n');
+}
+ d8c:	48 83 c4 08          	add    rsp,0x8
+ d90:	bf 0a 00 00 00       	mov    edi,0xa
+ d95:	5b                   	pop    rbx
+ d96:	5d                   	pop    rbp
+ d97:	41 5c                	pop    r12
+ d99:	41 5d                	pop    r13
+ d9b:	41 5e                	pop    r14
+ d9d:	41 5f                	pop    r15
+ d9f:	e9 00 00 00 00       	jmp    da4 <print_vectors+0x84>
+
+Disassembly of section .text.startup:
+
+0000000000000000 <main>:
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 57                	push   r15
+        x[i] = i*2;
+        y[i] = 16-i;
+    }
+
+    add16ib(x, y, &z);
+    print_vectors("vector addition", "+", &x, &y, &z);
+   6:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # d <main+0xd>
+   d:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 14 <main+0x14>
+    *z = x * y;
+  14:	49 bf ff ff ff ff 00 	movabs r15,0xffffff00ffffffff
+  1b:	ff ff ff 
+{
+  1e:	41 56                	push   r14
+    *z = x + y;
+  20:	49 be 7f 7f 7f 7f 7f 	movabs r14,0x7f7f7f7f7f7f7f7f
+  27:	7f 7f 7f 
+{
+  2a:	41 55                	push   r13
+  2c:	41 54                	push   r12
+  2e:	55                   	push   rbp
+    *z = x + y;
+  2f:	48 bd 80 80 80 80 80 	movabs rbp,0x8080808080808080
+  36:	80 80 80 
+{
+  39:	53                   	push   rbx
+  3a:	48 83 ec 48          	sub    rsp,0x48
+  3e:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  45:	00 00 
+  47:	48 89 44 24 38       	mov    QWORD PTR [rsp+0x38],rax
+  4c:	31 c0                	xor    eax,eax
+    print_vectors("vector addition", "+", &x, &y, &z);
+  4e:	48 8d 5c 24 20       	lea    rbx,[rsp+0x20]
+  53:	4c 8d 6c 24 10       	lea    r13,[rsp+0x10]
+  58:	49 89 e4             	mov    r12,rsp
+        x[i] = i*2;
+  5b:	48 8b 05 00 00 00 00 	mov    rax,QWORD PTR [rip+0x0]        # 62 <main+0x62>
+    print_vectors("vector addition", "+", &x, &y, &z);
+  62:	49 89 d8             	mov    r8,rbx
+  65:	4c 89 e9             	mov    rcx,r13
+  68:	4c 89 e2             	mov    rdx,r12
+        x[i] = i*2;
+  6b:	48 89 04 24          	mov    QWORD PTR [rsp],rax
+  6f:	48 8b 05 00 00 00 00 	mov    rax,QWORD PTR [rip+0x0]        # 76 <main+0x76>
+  76:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
+        y[i] = 16-i;
+  7b:	48 8b 05 00 00 00 00 	mov    rax,QWORD PTR [rip+0x0]        # 82 <main+0x82>
+  82:	48 89 44 24 10       	mov    QWORD PTR [rsp+0x10],rax
+  87:	48 8b 05 00 00 00 00 	mov    rax,QWORD PTR [rip+0x0]        # 8e <main+0x8e>
+  8e:	48 89 44 24 18       	mov    QWORD PTR [rsp+0x18],rax
+    *z = x + y;
+  93:	48 b8 10 11 12 13 14 	movabs rax,0x1716151413121110
+  9a:	15 16 17 
+  9d:	48 89 44 24 20       	mov    QWORD PTR [rsp+0x20],rax
+  a2:	48 b8 18 19 1a 1b 1c 	movabs rax,0x1f1e1d1c1b1a1918
+  a9:	1d 1e 1f 
+  ac:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
+    print_vectors("vector addition", "+", &x, &y, &z);
+  b1:	e8 00 00 00 00       	call   b6 <main+0xb6>
+
+    sub16ib(x, y, &z);
+  b6:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
+  ba:	48 8b 54 24 10       	mov    rdx,QWORD PTR [rsp+0x10]
+  bf:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
+  c4:	48 8b 44 24 18       	mov    rax,QWORD PTR [rsp+0x18]
+    *z = x - y;
+  c9:	48 89 f9             	mov    rcx,rdi
+  cc:	49 89 d0             	mov    r8,rdx
+  cf:	48 31 fa             	xor    rdx,rdi
+  d2:	4d 21 f0             	and    r8,r14
+  d5:	48 09 e9             	or     rcx,rbp
+  d8:	48 f7 d2             	not    rdx
+  db:	49 21 c6             	and    r14,rax
+  de:	4c 29 c1             	sub    rcx,r8
+  e1:	48 21 ea             	and    rdx,rbp
+  e4:	48 31 f0             	xor    rax,rsi
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+  e7:	49 89 d8             	mov    r8,rbx
+    *z = x - y;
+  ea:	48 31 ca             	xor    rdx,rcx
+  ed:	48 89 f1             	mov    rcx,rsi
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+  f0:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # f7 <main+0xf7>
+    *z = x - y;
+  f7:	48 f7 d0             	not    rax
+  fa:	48 09 e9             	or     rcx,rbp
+  fd:	48 21 e8             	and    rax,rbp
+ 100:	48 89 54 24 20       	mov    QWORD PTR [rsp+0x20],rdx
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+ 105:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 10c <main+0x10c>
+    *z = x - y;
+ 10c:	4c 29 f1             	sub    rcx,r14
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+ 10f:	4c 89 e2             	mov    rdx,r12
+    *z = x * y;
+ 112:	49 be ff ff ff ff ff 	movabs r14,0xffff00ffffffffff
+ 119:	00 ff ff 
+    *z = x - y;
+ 11c:	48 31 c8             	xor    rax,rcx
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+ 11f:	4c 89 e9             	mov    rcx,r13
+    *z = x - y;
+ 122:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+ 127:	e8 00 00 00 00       	call   12c <main+0x12c>
+
+    mul16ib(x, y, &z);
+ 12c:	4c 8b 1c 24          	mov    r11,QWORD PTR [rsp]
+ 130:	4c 8b 44 24 10       	mov    r8,QWORD PTR [rsp+0x10]
+    *z = x * y;
+ 135:	31 d2                	xor    edx,edx
+ 137:	31 c9                	xor    ecx,ecx
+    mul16ib(x, y, &z);
+ 139:	48 8b 7c 24 08       	mov    rdi,QWORD PTR [rsp+0x8]
+ 13e:	48 8b 74 24 18       	mov    rsi,QWORD PTR [rsp+0x18]
+    *z = x * y;
+ 143:	44 89 d8             	mov    eax,r11d
+ 146:	45 89 c1             	mov    r9d,r8d
+ 149:	4c 89 c5             	mov    rbp,r8
+ 14c:	4d 89 c2             	mov    r10,r8
+ 14f:	41 0f af c0          	imul   eax,r8d
+ 153:	66 41 c1 f9 08       	sar    r9w,0x8
+ 158:	88 c2                	mov    dl,al
+ 15a:	44 89 d8             	mov    eax,r11d
+ 15d:	66 c1 f8 08          	sar    ax,0x8
+ 161:	41 0f af c1          	imul   eax,r9d
+ 165:	45 89 c1             	mov    r9d,r8d
+ 168:	41 c1 e1 08          	shl    r9d,0x8
+ 16c:	41 c1 f9 18          	sar    r9d,0x18
+ 170:	88 c6                	mov    dh,al
+ 172:	44 89 d8             	mov    eax,r11d
+ 175:	c1 e0 08             	shl    eax,0x8
+ 178:	48 81 e2 ff ff 00 ff 	and    rdx,0xffffffffff00ffff
+ 17f:	c1 f8 18             	sar    eax,0x18
+ 182:	41 0f af c1          	imul   eax,r9d
+ 186:	45 89 c1             	mov    r9d,r8d
+ 189:	41 c1 f9 18          	sar    r9d,0x18
+ 18d:	0f b6 c0             	movzx  eax,al
+ 190:	48 c1 e0 10          	shl    rax,0x10
+ 194:	48 09 c2             	or     rdx,rax
+ 197:	44 89 d8             	mov    eax,r11d
+ 19a:	c1 f8 18             	sar    eax,0x18
+ 19d:	41 0f af c1          	imul   eax,r9d
+ 1a1:	48 c1 e5 18          	shl    rbp,0x18
+ 1a5:	49 c1 e2 10          	shl    r10,0x10
+ 1a9:	49 b9 ff ff ff 00 ff 	movabs r9,0xffffffff00ffffff
+ 1b0:	ff ff ff 
+ 1b3:	48 c1 fd 38          	sar    rbp,0x38
+ 1b7:	4c 21 ca             	and    rdx,r9
+ 1ba:	49 c1 fa 38          	sar    r10,0x38
+ 1be:	0f b6 c0             	movzx  eax,al
+ 1c1:	48 c1 e0 18          	shl    rax,0x18
+ 1c5:	48 09 c2             	or     rdx,rax
+ 1c8:	4c 89 d8             	mov    rax,r11
+ 1cb:	48 c1 e0 18          	shl    rax,0x18
+ 1cf:	4c 21 fa             	and    rdx,r15
+ 1d2:	48 c1 f8 38          	sar    rax,0x38
+ 1d6:	0f af c5             	imul   eax,ebp
+ 1d9:	0f b6 e8             	movzx  ebp,al
+ 1dc:	48 89 e8             	mov    rax,rbp
+ 1df:	48 89 d5             	mov    rbp,rdx
+ 1e2:	4c 89 c2             	mov    rdx,r8
+ 1e5:	49 c1 f8 38          	sar    r8,0x38
+ 1e9:	48 c1 e0 20          	shl    rax,0x20
+ 1ed:	48 c1 e2 08          	shl    rdx,0x8
+ 1f1:	48 09 c5             	or     rbp,rax
+ 1f4:	4c 89 d8             	mov    rax,r11
+ 1f7:	48 c1 fa 38          	sar    rdx,0x38
+ 1fb:	48 c1 e0 10          	shl    rax,0x10
+ 1ff:	48 c1 f8 38          	sar    rax,0x38
+ 203:	41 0f af c2          	imul   eax,r10d
+ 207:	44 0f b6 d0          	movzx  r10d,al
+ 20b:	4c 89 d0             	mov    rax,r10
+ 20e:	49 89 ea             	mov    r10,rbp
+ 211:	48 bd ff ff ff ff ff 	movabs rbp,0xff00ffffffffffff
+ 218:	ff 00 ff 
+ 21b:	48 c1 e0 28          	shl    rax,0x28
+ 21f:	4d 21 f2             	and    r10,r14
+ 222:	49 09 c2             	or     r10,rax
+ 225:	4c 89 d8             	mov    rax,r11
+ 228:	48 c1 e0 08          	shl    rax,0x8
+ 22c:	48 c1 f8 38          	sar    rax,0x38
+ 230:	0f af c2             	imul   eax,edx
+ 233:	0f b6 d0             	movzx  edx,al
+ 236:	48 89 d0             	mov    rax,rdx
+ 239:	4c 89 d2             	mov    rdx,r10
+ 23c:	41 89 fa             	mov    r10d,edi
+ 23f:	48 c1 e0 30          	shl    rax,0x30
+ 243:	48 21 ea             	and    rdx,rbp
+ 246:	48 09 c2             	or     rdx,rax
+ 249:	4c 89 d8             	mov    rax,r11
+ 24c:	49 bb ff ff ff ff ff 	movabs r11,0xffffffffffffff
+ 253:	ff ff 00 
+ 256:	48 c1 f8 38          	sar    rax,0x38
+ 25a:	41 0f af c0          	imul   eax,r8d
+ 25e:	41 89 f8             	mov    r8d,edi
+ 261:	48 c1 e0 38          	shl    rax,0x38
+ 265:	4c 21 da             	and    rdx,r11
+ 268:	66 41 c1 f8 08       	sar    r8w,0x8
+ 26d:	48 09 c2             	or     rdx,rax
+ 270:	89 f8                	mov    eax,edi
+ 272:	41 c1 fa 18          	sar    r10d,0x18
+ 276:	0f af c6             	imul   eax,esi
+ 279:	48 89 54 24 20       	mov    QWORD PTR [rsp+0x20],rdx
+    print_vectors("vector multiply", "*", &x, &y, &z);
+ 27e:	4c 89 e2             	mov    rdx,r12
+    *z = x * y;
+ 281:	88 c1                	mov    cl,al
+ 283:	89 f0                	mov    eax,esi
+ 285:	66 c1 f8 08          	sar    ax,0x8
+ 289:	41 0f af c0          	imul   eax,r8d
+ 28d:	41 89 f8             	mov    r8d,edi
+ 290:	41 c1 e0 08          	shl    r8d,0x8
+ 294:	41 c1 f8 18          	sar    r8d,0x18
+ 298:	88 c5                	mov    ch,al
+ 29a:	89 f0                	mov    eax,esi
+ 29c:	c1 e0 08             	shl    eax,0x8
+ 29f:	48 81 e1 ff ff 00 ff 	and    rcx,0xffffffffff00ffff
+ 2a6:	c1 f8 18             	sar    eax,0x18
+ 2a9:	41 0f af c0          	imul   eax,r8d
+ 2ad:	41 89 f0             	mov    r8d,esi
+ 2b0:	41 c1 f8 18          	sar    r8d,0x18
+ 2b4:	0f b6 c0             	movzx  eax,al
+ 2b7:	48 c1 e0 10          	shl    rax,0x10
+ 2bb:	48 09 c1             	or     rcx,rax
+ 2be:	44 89 c0             	mov    eax,r8d
+ 2c1:	41 0f af c2          	imul   eax,r10d
+ 2c5:	49 89 fa             	mov    r10,rdi
+ 2c8:	4c 21 c9             	and    rcx,r9
+ 2cb:	49 c1 e2 18          	shl    r10,0x18
+ 2cf:	49 c1 fa 38          	sar    r10,0x38
+ 2d3:	44 0f b6 c0          	movzx  r8d,al
+ 2d7:	48 89 f0             	mov    rax,rsi
+ 2da:	48 c1 e0 18          	shl    rax,0x18
+ 2de:	49 c1 e0 18          	shl    r8,0x18
+ 2e2:	48 c1 f8 38          	sar    rax,0x38
+ 2e6:	4c 09 c1             	or     rcx,r8
+ 2e9:	49 89 f8             	mov    r8,rdi
+ 2ec:	41 0f af c2          	imul   eax,r10d
+ 2f0:	4c 21 f9             	and    rcx,r15
+ 2f3:	49 c1 e0 10          	shl    r8,0x10
+ 2f7:	49 c1 f8 38          	sar    r8,0x38
+ 2fb:	44 0f b6 d0          	movzx  r10d,al
+ 2ff:	4c 89 d0             	mov    rax,r10
+ 302:	49 89 ca             	mov    r10,rcx
+ 305:	48 89 f9             	mov    rcx,rdi
+ 308:	48 c1 e0 20          	shl    rax,0x20
+ 30c:	49 09 c2             	or     r10,rax
+ 30f:	48 89 f0             	mov    rax,rsi
+ 312:	48 c1 e0 10          	shl    rax,0x10
+ 316:	48 c1 f8 38          	sar    rax,0x38
+ 31a:	41 0f af c0          	imul   eax,r8d
+ 31e:	48 c1 e1 08          	shl    rcx,0x8
+ 322:	4d 21 f2             	and    r10,r14
+ 325:	48 c1 ff 38          	sar    rdi,0x38
+ 329:	48 c1 f9 38          	sar    rcx,0x38
+ 32d:	44 0f b6 c0          	movzx  r8d,al
+ 331:	4c 89 c0             	mov    rax,r8
+ 334:	4d 89 d0             	mov    r8,r10
+ 337:	48 c1 e0 28          	shl    rax,0x28
+ 33b:	49 09 c0             	or     r8,rax
+ 33e:	48 89 f0             	mov    rax,rsi
+ 341:	48 c1 e0 08          	shl    rax,0x8
+ 345:	48 c1 f8 38          	sar    rax,0x38
+ 349:	0f af c1             	imul   eax,ecx
+ 34c:	0f b6 c8             	movzx  ecx,al
+ 34f:	48 89 c8             	mov    rax,rcx
+ 352:	4c 89 c1             	mov    rcx,r8
+    print_vectors("vector multiply", "*", &x, &y, &z);
+ 355:	49 89 d8             	mov    r8,rbx
+    *z = x * y;
+ 358:	48 c1 e0 30          	shl    rax,0x30
+ 35c:	48 21 e9             	and    rcx,rbp
+ 35f:	48 09 c1             	or     rcx,rax
+ 362:	48 89 f0             	mov    rax,rsi
+    print_vectors("vector multiply", "*", &x, &y, &z);
+ 365:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 36c <main+0x36c>
+    *z = x * y;
+ 36c:	48 c1 f8 38          	sar    rax,0x38
+ 370:	4c 21 d9             	and    rcx,r11
+ 373:	0f af c7             	imul   eax,edi
+    print_vectors("vector multiply", "*", &x, &y, &z);
+ 376:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 37d <main+0x37d>
+    *z = x * y;
+ 37d:	48 c1 e0 38          	shl    rax,0x38
+ 381:	48 09 c8             	or     rax,rcx
+    print_vectors("vector multiply", "*", &x, &y, &z);
+ 384:	4c 89 e9             	mov    rcx,r13
+    *z = x * y;
+ 387:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
+    print_vectors("vector multiply", "*", &x, &y, &z);
+ 38c:	e8 00 00 00 00       	call   391 <main+0x391>
+
+    div16ib(x, y, &z);
+ 391:	4c 8b 04 24          	mov    r8,QWORD PTR [rsp]
+ 395:	4c 8b 5c 24 10       	mov    r11,QWORD PTR [rsp+0x10]
+    *z = x / y;
+ 39a:	31 c9                	xor    ecx,ecx
+ 39c:	31 d2                	xor    edx,edx
+    div16ib(x, y, &z);
+ 39e:	48 8b 7c 24 08       	mov    rdi,QWORD PTR [rsp+0x8]
+ 3a3:	4c 8b 54 24 18       	mov    r10,QWORD PTR [rsp+0x18]
+    *z = x / y;
+ 3a8:	49 b9 ff ff ff 00 ff 	movabs r9,0xffffffff00ffffff
+ 3af:	ff ff ff 
+ 3b2:	66 41 0f be c0       	movsx  ax,r8b
+ 3b7:	44 89 de             	mov    esi,r11d
+ 3ba:	41 f6 fb             	idiv   r11b
+ 3bd:	66 c1 fe 08          	sar    si,0x8
+ 3c1:	88 c1                	mov    cl,al
+ 3c3:	44 89 c0             	mov    eax,r8d
+ 3c6:	66 c1 f8 08          	sar    ax,0x8
+ 3ca:	40 f6 fe             	idiv   sil
+ 3cd:	44 89 de             	mov    esi,r11d
+ 3d0:	c1 e6 08             	shl    esi,0x8
+ 3d3:	c1 fe 18             	sar    esi,0x18
+ 3d6:	88 c5                	mov    ch,al
+ 3d8:	44 89 c0             	mov    eax,r8d
+ 3db:	c1 e0 08             	shl    eax,0x8
+ 3de:	48 81 e1 ff ff 00 ff 	and    rcx,0xffffffffff00ffff
+ 3e5:	c1 f8 18             	sar    eax,0x18
+ 3e8:	40 f6 fe             	idiv   sil
+ 3eb:	44 89 de             	mov    esi,r11d
+ 3ee:	0f b6 c0             	movzx  eax,al
+ 3f1:	48 c1 e0 10          	shl    rax,0x10
+ 3f5:	48 09 c1             	or     rcx,rax
+ 3f8:	44 89 c0             	mov    eax,r8d
+ 3fb:	c1 fe 18             	sar    esi,0x18
+ 3fe:	c1 f8 18             	sar    eax,0x18
+ 401:	4c 21 c9             	and    rcx,r9
+ 404:	40 f6 fe             	idiv   sil
+ 407:	4c 89 de             	mov    rsi,r11
+ 40a:	48 c1 e6 18          	shl    rsi,0x18
+ 40e:	48 c1 fe 38          	sar    rsi,0x38
+ 412:	0f b6 c0             	movzx  eax,al
+ 415:	48 c1 e0 18          	shl    rax,0x18
+ 419:	48 09 c1             	or     rcx,rax
+ 41c:	4c 89 c0             	mov    rax,r8
+ 41f:	48 c1 e0 18          	shl    rax,0x18
+ 423:	4c 21 f9             	and    rcx,r15
+ 426:	48 c1 f8 38          	sar    rax,0x38
+ 42a:	40 f6 fe             	idiv   sil
+ 42d:	48 89 ce             	mov    rsi,rcx
+ 430:	4c 89 d9             	mov    rcx,r11
+ 433:	48 c1 e1 10          	shl    rcx,0x10
+ 437:	48 c1 f9 38          	sar    rcx,0x38
+ 43b:	0f b6 c0             	movzx  eax,al
+ 43e:	48 c1 e0 20          	shl    rax,0x20
+ 442:	48 09 c6             	or     rsi,rax
+ 445:	4c 89 c0             	mov    rax,r8
+ 448:	48 c1 e0 10          	shl    rax,0x10
+ 44c:	4c 21 f6             	and    rsi,r14
+ 44f:	48 c1 f8 38          	sar    rax,0x38
+ 453:	f6 f9                	idiv   cl
+ 455:	48 89 f1             	mov    rcx,rsi
+ 458:	4c 89 de             	mov    rsi,r11
+ 45b:	49 c1 fb 38          	sar    r11,0x38
+ 45f:	48 c1 e6 08          	shl    rsi,0x8
+ 463:	48 c1 fe 38          	sar    rsi,0x38
+ 467:	0f b6 c0             	movzx  eax,al
+ 46a:	48 c1 e0 28          	shl    rax,0x28
+ 46e:	48 09 c1             	or     rcx,rax
+ 471:	4c 89 c0             	mov    rax,r8
+ 474:	48 c1 e0 08          	shl    rax,0x8
+ 478:	48 21 e9             	and    rcx,rbp
+ 47b:	48 c1 f8 38          	sar    rax,0x38
+ 47f:	40 f6 fe             	idiv   sil
+ 482:	44 89 d6             	mov    esi,r10d
+ 485:	0f b6 c0             	movzx  eax,al
+ 488:	48 c1 e0 30          	shl    rax,0x30
+ 48c:	48 09 c1             	or     rcx,rax
+ 48f:	49 c1 f8 38          	sar    r8,0x38
+ 493:	4c 89 c0             	mov    rax,r8
+ 496:	66 c1 fe 08          	sar    si,0x8
+ 49a:	41 f6 fb             	idiv   r11b
+ 49d:	49 bb ff ff ff ff ff 	movabs r11,0xffffffffffffff
+ 4a4:	ff ff 00 
+ 4a7:	4c 21 d9             	and    rcx,r11
+ 4aa:	48 c1 e0 38          	shl    rax,0x38
+ 4ae:	48 09 c1             	or     rcx,rax
+ 4b1:	66 40 0f be c7       	movsx  ax,dil
+ 4b6:	41 f6 fa             	idiv   r10b
+ 4b9:	48 89 4c 24 20       	mov    QWORD PTR [rsp+0x20],rcx
+    print_vectors("vector divide", "/", &x, &y, &z);
+ 4be:	4c 89 e9             	mov    rcx,r13
+    *z = x / y;
+ 4c1:	88 c2                	mov    dl,al
+ 4c3:	89 f8                	mov    eax,edi
+ 4c5:	66 c1 f8 08          	sar    ax,0x8
+ 4c9:	40 f6 fe             	idiv   sil
+ 4cc:	44 89 d6             	mov    esi,r10d
+ 4cf:	c1 e6 08             	shl    esi,0x8
+ 4d2:	c1 fe 18             	sar    esi,0x18
+ 4d5:	88 c6                	mov    dh,al
+ 4d7:	89 f8                	mov    eax,edi
+ 4d9:	c1 e0 08             	shl    eax,0x8
+ 4dc:	48 81 e2 ff ff 00 ff 	and    rdx,0xffffffffff00ffff
+ 4e3:	c1 f8 18             	sar    eax,0x18
+ 4e6:	40 f6 fe             	idiv   sil
+ 4e9:	44 89 d6             	mov    esi,r10d
+ 4ec:	c1 fe 18             	sar    esi,0x18
+ 4ef:	0f b6 c0             	movzx  eax,al
+ 4f2:	48 c1 e0 10          	shl    rax,0x10
+ 4f6:	48 09 c2             	or     rdx,rax
+ 4f9:	89 f8                	mov    eax,edi
+ 4fb:	c1 f8 18             	sar    eax,0x18
+ 4fe:	4c 21 ca             	and    rdx,r9
+ 501:	40 f6 fe             	idiv   sil
+ 504:	0f b6 f0             	movzx  esi,al
+ 507:	48 89 f8             	mov    rax,rdi
+ 50a:	48 c1 e6 18          	shl    rsi,0x18
+ 50e:	48 c1 e0 18          	shl    rax,0x18
+ 512:	48 09 f2             	or     rdx,rsi
+ 515:	4c 89 d6             	mov    rsi,r10
+ 518:	48 c1 f8 38          	sar    rax,0x38
+ 51c:	48 c1 e6 18          	shl    rsi,0x18
+ 520:	4c 21 fa             	and    rdx,r15
+ 523:	48 c1 fe 38          	sar    rsi,0x38
+ 527:	40 f6 fe             	idiv   sil
+ 52a:	44 0f b6 c0          	movzx  r8d,al
+ 52e:	4c 89 c0             	mov    rax,r8
+ 531:	49 89 d0             	mov    r8,rdx
+ 534:	4c 89 d2             	mov    rdx,r10
+ 537:	48 c1 e0 20          	shl    rax,0x20
+ 53b:	49 09 c0             	or     r8,rax
+ 53e:	48 89 f8             	mov    rax,rdi
+ 541:	48 c1 e0 10          	shl    rax,0x10
+ 545:	48 c1 e2 10          	shl    rdx,0x10
+ 549:	48 c1 fa 38          	sar    rdx,0x38
+ 54d:	48 c1 f8 38          	sar    rax,0x38
+ 551:	f6 fa                	idiv   dl
+ 553:	4c 89 d2             	mov    rdx,r10
+ 556:	49 c1 fa 38          	sar    r10,0x38
+ 55a:	48 c1 e2 08          	shl    rdx,0x8
+ 55e:	48 c1 fa 38          	sar    rdx,0x38
+ 562:	0f b6 f0             	movzx  esi,al
+ 565:	48 89 f0             	mov    rax,rsi
+ 568:	4c 89 c6             	mov    rsi,r8
+    print_vectors("vector divide", "/", &x, &y, &z);
+ 56b:	49 89 d8             	mov    r8,rbx
+    *z = x / y;
+ 56e:	48 c1 e0 28          	shl    rax,0x28
+ 572:	4c 21 f6             	and    rsi,r14
+ 575:	48 09 c6             	or     rsi,rax
+ 578:	48 89 f8             	mov    rax,rdi
+ 57b:	48 c1 ff 38          	sar    rdi,0x38
+ 57f:	48 c1 e0 08          	shl    rax,0x8
+ 583:	48 21 ee             	and    rsi,rbp
+ 586:	48 c1 f8 38          	sar    rax,0x38
+ 58a:	f6 fa                	idiv   dl
+ 58c:	0f b6 d0             	movzx  edx,al
+ 58f:	48 89 d0             	mov    rax,rdx
+ 592:	48 89 f2             	mov    rdx,rsi
+    print_vectors("vector divide", "/", &x, &y, &z);
+ 595:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 59c <main+0x59c>
+    *z = x / y;
+ 59c:	48 c1 e0 30          	shl    rax,0x30
+ 5a0:	48 09 c2             	or     rdx,rax
+ 5a3:	48 89 f8             	mov    rax,rdi
+    print_vectors("vector divide", "/", &x, &y, &z);
+ 5a6:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 5ad <main+0x5ad>
+    *z = x / y;
+ 5ad:	41 f6 fa             	idiv   r10b
+ 5b0:	4c 21 da             	and    rdx,r11
+ 5b3:	48 c1 e0 38          	shl    rax,0x38
+ 5b7:	48 09 d0             	or     rax,rdx
+    print_vectors("vector divide", "/", &x, &y, &z);
+ 5ba:	4c 89 e2             	mov    rdx,r12
+    *z = x / y;
+ 5bd:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
+    print_vectors("vector divide", "/", &x, &y, &z);
+ 5c2:	e8 00 00 00 00       	call   5c7 <main+0x5c7>
+
+    mod16ib(x, y, &z);
+ 5c7:	4c 8b 04 24          	mov    r8,QWORD PTR [rsp]
+ 5cb:	4c 8b 5c 24 10       	mov    r11,QWORD PTR [rsp+0x10]
+    *z = x % y;
+ 5d0:	31 c9                	xor    ecx,ecx
+ 5d2:	31 d2                	xor    edx,edx
+    mod16ib(x, y, &z);
+ 5d4:	48 8b 7c 24 08       	mov    rdi,QWORD PTR [rsp+0x8]
+ 5d9:	4c 8b 54 24 18       	mov    r10,QWORD PTR [rsp+0x18]
+    *z = x % y;
+ 5de:	49 b9 ff ff ff 00 ff 	movabs r9,0xffffffff00ffffff
+ 5e5:	ff ff ff 
+ 5e8:	66 41 0f be c0       	movsx  ax,r8b
+ 5ed:	44 89 de             	mov    esi,r11d
+ 5f0:	41 f6 fb             	idiv   r11b
+ 5f3:	66 c1 fe 08          	sar    si,0x8
+ 5f7:	0f b6 c4             	movzx  eax,ah
+ 5fa:	88 c1                	mov    cl,al
+ 5fc:	44 89 c0             	mov    eax,r8d
+ 5ff:	66 c1 f8 08          	sar    ax,0x8
+ 603:	40 f6 fe             	idiv   sil
+ 606:	44 89 de             	mov    esi,r11d
+ 609:	c1 e6 08             	shl    esi,0x8
+ 60c:	c1 fe 18             	sar    esi,0x18
+ 60f:	0f b6 c4             	movzx  eax,ah
+ 612:	88 c5                	mov    ch,al
+ 614:	44 89 c0             	mov    eax,r8d
+ 617:	c1 e0 08             	shl    eax,0x8
+ 61a:	c1 f8 18             	sar    eax,0x18
+ 61d:	40 f6 fe             	idiv   sil
+ 620:	48 81 e1 ff ff 00 ff 	and    rcx,0xffffffffff00ffff
+ 627:	44 89 de             	mov    esi,r11d
+ 62a:	c1 fe 18             	sar    esi,0x18
+ 62d:	0f b6 c4             	movzx  eax,ah
+ 630:	48 c1 e0 10          	shl    rax,0x10
+ 634:	48 09 c1             	or     rcx,rax
+ 637:	44 89 c0             	mov    eax,r8d
+ 63a:	c1 f8 18             	sar    eax,0x18
+ 63d:	4c 21 c9             	and    rcx,r9
+ 640:	40 f6 fe             	idiv   sil
+ 643:	4c 89 de             	mov    rsi,r11
+ 646:	48 c1 e6 18          	shl    rsi,0x18
+ 64a:	48 c1 fe 38          	sar    rsi,0x38
+ 64e:	0f b6 c4             	movzx  eax,ah
+ 651:	48 c1 e0 18          	shl    rax,0x18
+ 655:	48 09 c1             	or     rcx,rax
+ 658:	4c 89 c0             	mov    rax,r8
+ 65b:	48 c1 e0 18          	shl    rax,0x18
+ 65f:	4c 21 f9             	and    rcx,r15
+ 662:	48 c1 f8 38          	sar    rax,0x38
+ 666:	40 f6 fe             	idiv   sil
+ 669:	48 89 ce             	mov    rsi,rcx
+ 66c:	4c 89 d9             	mov    rcx,r11
+ 66f:	48 c1 e1 10          	shl    rcx,0x10
+ 673:	48 c1 f9 38          	sar    rcx,0x38
+ 677:	0f b6 c4             	movzx  eax,ah
+ 67a:	48 c1 e0 20          	shl    rax,0x20
+ 67e:	48 09 c6             	or     rsi,rax
+ 681:	4c 89 c0             	mov    rax,r8
+ 684:	48 c1 e0 10          	shl    rax,0x10
+ 688:	4c 21 f6             	and    rsi,r14
+ 68b:	48 c1 f8 38          	sar    rax,0x38
+ 68f:	f6 f9                	idiv   cl
+ 691:	48 89 f1             	mov    rcx,rsi
+ 694:	4c 89 de             	mov    rsi,r11
+ 697:	48 c1 e6 08          	shl    rsi,0x8
+ 69b:	48 c1 fe 38          	sar    rsi,0x38
+ 69f:	0f b6 c4             	movzx  eax,ah
+ 6a2:	48 c1 e0 28          	shl    rax,0x28
+ 6a6:	48 09 c1             	or     rcx,rax
+ 6a9:	4c 89 c0             	mov    rax,r8
+ 6ac:	48 c1 e0 08          	shl    rax,0x8
+ 6b0:	48 c1 f8 38          	sar    rax,0x38
+ 6b4:	40 f6 fe             	idiv   sil
+ 6b7:	44 89 d6             	mov    esi,r10d
+ 6ba:	0f b6 c4             	movzx  eax,ah
+ 6bd:	48 c1 e0 30          	shl    rax,0x30
+ 6c1:	48 21 e9             	and    rcx,rbp
+ 6c4:	49 c1 f8 38          	sar    r8,0x38
+ 6c8:	49 c1 fb 38          	sar    r11,0x38
+ 6cc:	48 09 c1             	or     rcx,rax
+ 6cf:	4c 89 c0             	mov    rax,r8
+ 6d2:	66 c1 fe 08          	sar    si,0x8
+ 6d6:	41 f6 fb             	idiv   r11b
+ 6d9:	49 bb ff ff ff ff ff 	movabs r11,0xffffffffffffff
+ 6e0:	ff ff 00 
+ 6e3:	4c 21 d9             	and    rcx,r11
+ 6e6:	0f b6 c4             	movzx  eax,ah
+ 6e9:	48 c1 e0 38          	shl    rax,0x38
+ 6ed:	48 09 c1             	or     rcx,rax
+ 6f0:	66 40 0f be c7       	movsx  ax,dil
+ 6f5:	41 f6 fa             	idiv   r10b
+ 6f8:	48 89 4c 24 20       	mov    QWORD PTR [rsp+0x20],rcx
+    print_vectors("vector modulo", "%", &x, &y, &z);
+ 6fd:	4c 89 e9             	mov    rcx,r13
+    *z = x % y;
+ 700:	0f b6 c4             	movzx  eax,ah
+ 703:	88 c2                	mov    dl,al
+ 705:	89 f8                	mov    eax,edi
+ 707:	66 c1 f8 08          	sar    ax,0x8
+ 70b:	40 f6 fe             	idiv   sil
+ 70e:	44 89 d6             	mov    esi,r10d
+ 711:	c1 e6 08             	shl    esi,0x8
+ 714:	c1 fe 18             	sar    esi,0x18
+ 717:	0f b6 c4             	movzx  eax,ah
+ 71a:	88 c6                	mov    dh,al
+ 71c:	89 f8                	mov    eax,edi
+ 71e:	c1 e0 08             	shl    eax,0x8
+ 721:	48 81 e2 ff ff 00 ff 	and    rdx,0xffffffffff00ffff
+ 728:	c1 f8 18             	sar    eax,0x18
+ 72b:	40 f6 fe             	idiv   sil
+ 72e:	44 89 d6             	mov    esi,r10d
+ 731:	c1 fe 18             	sar    esi,0x18
+ 734:	0f b6 c4             	movzx  eax,ah
+ 737:	48 c1 e0 10          	shl    rax,0x10
+ 73b:	48 09 c2             	or     rdx,rax
+ 73e:	89 f8                	mov    eax,edi
+ 740:	c1 f8 18             	sar    eax,0x18
+ 743:	4c 21 ca             	and    rdx,r9
+ 746:	40 f6 fe             	idiv   sil
+ 749:	0f b6 f4             	movzx  esi,ah
+ 74c:	48 89 f8             	mov    rax,rdi
+ 74f:	48 c1 e6 18          	shl    rsi,0x18
+ 753:	48 c1 e0 18          	shl    rax,0x18
+ 757:	48 09 f2             	or     rdx,rsi
+ 75a:	4c 89 d6             	mov    rsi,r10
+ 75d:	48 c1 f8 38          	sar    rax,0x38
+ 761:	48 c1 e6 18          	shl    rsi,0x18
+ 765:	48 c1 fe 38          	sar    rsi,0x38
+ 769:	40 f6 fe             	idiv   sil
+ 76c:	0f b6 c4             	movzx  eax,ah
+ 76f:	48 c1 e0 20          	shl    rax,0x20
+ 773:	4c 21 fa             	and    rdx,r15
+ 776:	49 89 d0             	mov    r8,rdx
+ 779:	4c 89 d2             	mov    rdx,r10
+ 77c:	49 09 c0             	or     r8,rax
+ 77f:	48 89 f8             	mov    rax,rdi
+ 782:	48 c1 e2 10          	shl    rdx,0x10
+ 786:	48 c1 e0 10          	shl    rax,0x10
+ 78a:	48 c1 fa 38          	sar    rdx,0x38
+ 78e:	48 c1 f8 38          	sar    rax,0x38
+ 792:	f6 fa                	idiv   dl
+ 794:	4c 89 d2             	mov    rdx,r10
+ 797:	49 c1 fa 38          	sar    r10,0x38
+ 79b:	48 c1 e2 08          	shl    rdx,0x8
+ 79f:	48 c1 fa 38          	sar    rdx,0x38
+ 7a3:	0f b6 f4             	movzx  esi,ah
+ 7a6:	48 89 f0             	mov    rax,rsi
+ 7a9:	4c 89 c6             	mov    rsi,r8
+    print_vectors("vector modulo", "%", &x, &y, &z);
+ 7ac:	49 89 d8             	mov    r8,rbx
+    *z = x % y;
+ 7af:	48 c1 e0 28          	shl    rax,0x28
+ 7b3:	4c 21 f6             	and    rsi,r14
+ 7b6:	48 09 c6             	or     rsi,rax
+ 7b9:	48 89 f8             	mov    rax,rdi
+ 7bc:	48 c1 ff 38          	sar    rdi,0x38
+ 7c0:	48 c1 e0 08          	shl    rax,0x8
+ 7c4:	48 c1 f8 38          	sar    rax,0x38
+ 7c8:	f6 fa                	idiv   dl
+ 7ca:	0f b6 d4             	movzx  edx,ah
+ 7cd:	48 89 d0             	mov    rax,rdx
+ 7d0:	48 89 f2             	mov    rdx,rsi
+    print_vectors("vector modulo", "%", &x, &y, &z);
+ 7d3:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 7da <main+0x7da>
+    *z = x % y;
+ 7da:	48 c1 e0 30          	shl    rax,0x30
+ 7de:	48 21 ea             	and    rdx,rbp
+ 7e1:	48 09 c2             	or     rdx,rax
+ 7e4:	48 89 f8             	mov    rax,rdi
+    print_vectors("vector modulo", "%", &x, &y, &z);
+ 7e7:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 7ee <main+0x7ee>
+    *z = x % y;
+ 7ee:	41 f6 fa             	idiv   r10b
+ 7f1:	4c 21 da             	and    rdx,r11
+ 7f4:	0f b6 c4             	movzx  eax,ah
+ 7f7:	48 c1 e0 38          	shl    rax,0x38
+ 7fb:	48 09 d0             	or     rax,rdx
+    print_vectors("vector modulo", "%", &x, &y, &z);
+ 7fe:	4c 89 e2             	mov    rdx,r12
+    *z = x % y;
+ 801:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
+    print_vectors("vector modulo", "%", &x, &y, &z);
+ 806:	e8 00 00 00 00       	call   80b <main+0x80b>
+    *z = x & y;
+ 80b:	48 8b 14 24          	mov    rdx,QWORD PTR [rsp]
+
+    and16ib(x, y, &z);
+    print_vectors("vector bitwise and", "&", &x, &y, &z);
+ 80f:	49 89 d8             	mov    r8,rbx
+ 812:	4c 89 e9             	mov    rcx,r13
+    *z = x & y;
+ 815:	48 23 54 24 10       	and    rdx,QWORD PTR [rsp+0x10]
+ 81a:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+    print_vectors("vector bitwise and", "&", &x, &y, &z);
+ 81f:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 826 <main+0x826>
+ 826:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 82d <main+0x82d>
+    *z = x & y;
+ 82d:	48 23 44 24 18       	and    rax,QWORD PTR [rsp+0x18]
+ 832:	48 89 54 24 20       	mov    QWORD PTR [rsp+0x20],rdx
+    print_vectors("vector bitwise and", "&", &x, &y, &z);
+ 837:	4c 89 e2             	mov    rdx,r12
+    *z = x & y;
+ 83a:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
+    print_vectors("vector bitwise and", "&", &x, &y, &z);
+ 83f:	e8 00 00 00 00       	call   844 <main+0x844>
+    *z = x | y;
+ 844:	48 8b 14 24          	mov    rdx,QWORD PTR [rsp]
+
+    or16ib(x, y, &z);
+    print_vectors("vector bitwise or", "|", &x, &y, &z);
+ 848:	49 89 d8             	mov    r8,rbx
+ 84b:	4c 89 e9             	mov    rcx,r13
+    *z = x | y;
+ 84e:	48 0b 54 24 10       	or     rdx,QWORD PTR [rsp+0x10]
+ 853:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+    print_vectors("vector bitwise or", "|", &x, &y, &z);
+ 858:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 85f <main+0x85f>
+ 85f:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 866 <main+0x866>
+    *z = x | y;
+ 866:	48 0b 44 24 18       	or     rax,QWORD PTR [rsp+0x18]
+ 86b:	48 89 54 24 20       	mov    QWORD PTR [rsp+0x20],rdx
+    print_vectors("vector bitwise or", "|", &x, &y, &z);
+ 870:	4c 89 e2             	mov    rdx,r12
+    *z = x | y;
+ 873:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
+    print_vectors("vector bitwise or", "|", &x, &y, &z);
+ 878:	e8 00 00 00 00       	call   87d <main+0x87d>
+    *z = x ^ y;
+ 87d:	48 8b 14 24          	mov    rdx,QWORD PTR [rsp]
+
+    xor16ib(x, y, &z);
+    print_vectors("vector bitwise xor", "^", &x, &y, &z);
+ 881:	49 89 d8             	mov    r8,rbx
+ 884:	4c 89 e9             	mov    rcx,r13
+    *z = x ^ y;
+ 887:	48 33 54 24 10       	xor    rdx,QWORD PTR [rsp+0x10]
+ 88c:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+    print_vectors("vector bitwise xor", "^", &x, &y, &z);
+ 891:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 898 <main+0x898>
+ 898:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 89f <main+0x89f>
+    *z = x ^ y;
+ 89f:	48 33 44 24 18       	xor    rax,QWORD PTR [rsp+0x18]
+ 8a4:	48 89 54 24 20       	mov    QWORD PTR [rsp+0x20],rdx
+    print_vectors("vector bitwise xor", "^", &x, &y, &z);
+ 8a9:	4c 89 e2             	mov    rdx,r12
+    *z = x ^ y;
+ 8ac:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
+    print_vectors("vector bitwise xor", "^", &x, &y, &z);
+ 8b1:	e8 00 00 00 00       	call   8b6 <main+0x8b6>
+
+    rshift16ib(x, y, &z);
+ 8b6:	4c 8b 54 24 10       	mov    r10,QWORD PTR [rsp+0x10]
+ 8bb:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
+    *z = x >> y;
+ 8bf:	31 d2                	xor    edx,edx
+ 8c1:	31 c0                	xor    eax,eax
+    rshift16ib(x, y, &z);
+ 8c3:	4c 8b 44 24 18       	mov    r8,QWORD PTR [rsp+0x18]
+ 8c8:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
+    *z = x >> y;
+ 8cd:	41 0f be ca          	movsx  ecx,r10b
+ 8d1:	41 89 f9             	mov    r9d,edi
+ 8d4:	41 d2 f9             	sar    r9b,cl
+ 8d7:	89 f9                	mov    ecx,edi
+ 8d9:	66 c1 f9 08          	sar    cx,0x8
+ 8dd:	44 88 ca             	mov    dl,r9b
+ 8e0:	41 89 cb             	mov    r11d,ecx
+ 8e3:	44 89 d1             	mov    ecx,r10d
+ 8e6:	66 c1 f9 08          	sar    cx,0x8
+ 8ea:	45 89 d9             	mov    r9d,r11d
+ 8ed:	41 d2 f9             	sar    r9b,cl
+ 8f0:	44 89 c9             	mov    ecx,r9d
+ 8f3:	49 b9 ff ff ff 00 ff 	movabs r9,0xffffffff00ffffff
+ 8fa:	ff ff ff 
+ 8fd:	88 ce                	mov    dh,cl
+ 8ff:	89 f9                	mov    ecx,edi
+ 901:	c1 e1 08             	shl    ecx,0x8
+ 904:	48 81 e2 ff ff 00 ff 	and    rdx,0xffffffffff00ffff
+ 90b:	41 89 cb             	mov    r11d,ecx
+ 90e:	44 89 d1             	mov    ecx,r10d
+ 911:	c1 e1 08             	shl    ecx,0x8
+ 914:	41 c1 fb 18          	sar    r11d,0x18
+ 918:	c1 f9 18             	sar    ecx,0x18
+ 91b:	41 d2 fb             	sar    r11b,cl
+ 91e:	89 f9                	mov    ecx,edi
+ 920:	45 0f b6 db          	movzx  r11d,r11b
+ 924:	c1 f9 18             	sar    ecx,0x18
+ 927:	49 c1 e3 10          	shl    r11,0x10
+ 92b:	4c 09 da             	or     rdx,r11
+ 92e:	41 89 cb             	mov    r11d,ecx
+ 931:	44 89 d1             	mov    ecx,r10d
+ 934:	c1 f9 18             	sar    ecx,0x18
+ 937:	4c 21 ca             	and    rdx,r9
+ 93a:	41 d2 fb             	sar    r11b,cl
+ 93d:	48 89 f9             	mov    rcx,rdi
+ 940:	45 0f b6 db          	movzx  r11d,r11b
+ 944:	48 c1 e1 18          	shl    rcx,0x18
+ 948:	49 c1 e3 18          	shl    r11,0x18
+ 94c:	4c 09 da             	or     rdx,r11
+ 94f:	49 89 cb             	mov    r11,rcx
+ 952:	4c 89 d1             	mov    rcx,r10
+ 955:	48 c1 e1 18          	shl    rcx,0x18
+ 959:	49 c1 fb 38          	sar    r11,0x38
+ 95d:	4c 21 fa             	and    rdx,r15
+ 960:	48 c1 f9 38          	sar    rcx,0x38
+ 964:	41 d2 fb             	sar    r11b,cl
+ 967:	4c 89 d1             	mov    rcx,r10
+ 96a:	45 0f b6 db          	movzx  r11d,r11b
+ 96e:	49 c1 e3 20          	shl    r11,0x20
+ 972:	49 09 d3             	or     r11,rdx
+ 975:	48 89 fa             	mov    rdx,rdi
+ 978:	48 c1 e2 10          	shl    rdx,0x10
+ 97c:	48 c1 fa 38          	sar    rdx,0x38
+ 980:	48 c1 e1 10          	shl    rcx,0x10
+ 984:	4d 21 f3             	and    r11,r14
+ 987:	48 c1 f9 38          	sar    rcx,0x38
+ 98b:	d2 fa                	sar    dl,cl
+ 98d:	48 89 f9             	mov    rcx,rdi
+ 990:	48 c1 ff 38          	sar    rdi,0x38
+ 994:	0f b6 d2             	movzx  edx,dl
+ 997:	48 c1 e1 08          	shl    rcx,0x8
+ 99b:	48 c1 e2 28          	shl    rdx,0x28
+ 99f:	4c 09 da             	or     rdx,r11
+ 9a2:	49 89 cb             	mov    r11,rcx
+ 9a5:	4c 89 d1             	mov    rcx,r10
+ 9a8:	49 c1 fa 38          	sar    r10,0x38
+ 9ac:	48 c1 e1 08          	shl    rcx,0x8
+ 9b0:	49 c1 fb 38          	sar    r11,0x38
+ 9b4:	48 21 ea             	and    rdx,rbp
+ 9b7:	48 c1 f9 38          	sar    rcx,0x38
+ 9bb:	41 d2 fb             	sar    r11b,cl
+ 9be:	4c 89 d1             	mov    rcx,r10
+ 9c1:	45 0f b6 db          	movzx  r11d,r11b
+ 9c5:	40 d2 ff             	sar    dil,cl
+ 9c8:	41 0f be c8          	movsx  ecx,r8b
+ 9cc:	49 c1 e3 30          	shl    r11,0x30
+ 9d0:	48 c1 e7 38          	shl    rdi,0x38
+ 9d4:	4c 09 da             	or     rdx,r11
+ 9d7:	49 bb ff ff ff ff ff 	movabs r11,0xffffffffffffff
+ 9de:	ff ff 00 
+ 9e1:	4c 21 da             	and    rdx,r11
+ 9e4:	48 09 fa             	or     rdx,rdi
+ 9e7:	89 f7                	mov    edi,esi
+ 9e9:	40 d2 ff             	sar    dil,cl
+ 9ec:	44 89 c1             	mov    ecx,r8d
+ 9ef:	48 89 54 24 20       	mov    QWORD PTR [rsp+0x20],rdx
+    print_vectors("vector right shift", ">>", &x, &y, &z);
+ 9f4:	4c 89 e2             	mov    rdx,r12
+    *z = x >> y;
+ 9f7:	40 88 f8             	mov    al,dil
+ 9fa:	89 f7                	mov    edi,esi
+ 9fc:	66 c1 f9 08          	sar    cx,0x8
+ a00:	66 c1 ff 08          	sar    di,0x8
+ a04:	40 d2 ff             	sar    dil,cl
+ a07:	89 f9                	mov    ecx,edi
+ a09:	89 f7                	mov    edi,esi
+ a0b:	88 cc                	mov    ah,cl
+ a0d:	44 89 c1             	mov    ecx,r8d
+ a10:	c1 e7 08             	shl    edi,0x8
+ a13:	c1 e1 08             	shl    ecx,0x8
+ a16:	c1 ff 18             	sar    edi,0x18
+ a19:	48 25 ff ff 00 ff    	and    rax,0xffffffffff00ffff
+ a1f:	c1 f9 18             	sar    ecx,0x18
+ a22:	40 d2 ff             	sar    dil,cl
+ a25:	44 89 c1             	mov    ecx,r8d
+ a28:	40 0f b6 ff          	movzx  edi,dil
+ a2c:	48 c1 e7 10          	shl    rdi,0x10
+ a30:	48 09 f8             	or     rax,rdi
+ a33:	89 f7                	mov    edi,esi
+ a35:	c1 ff 18             	sar    edi,0x18
+ a38:	c1 f9 18             	sar    ecx,0x18
+ a3b:	4c 21 c8             	and    rax,r9
+ a3e:	40 d2 ff             	sar    dil,cl
+ a41:	4c 89 c1             	mov    rcx,r8
+ a44:	40 0f b6 ff          	movzx  edi,dil
+ a48:	48 c1 e1 18          	shl    rcx,0x18
+ a4c:	48 c1 e7 18          	shl    rdi,0x18
+ a50:	48 c1 f9 38          	sar    rcx,0x38
+ a54:	48 09 f8             	or     rax,rdi
+ a57:	48 89 f7             	mov    rdi,rsi
+ a5a:	48 c1 e7 18          	shl    rdi,0x18
+ a5e:	4c 21 f8             	and    rax,r15
+ a61:	48 c1 ff 38          	sar    rdi,0x38
+ a65:	40 d2 ff             	sar    dil,cl
+ a68:	4c 89 c1             	mov    rcx,r8
+ a6b:	44 0f b6 d7          	movzx  r10d,dil
+ a6f:	48 c1 e1 10          	shl    rcx,0x10
+ a73:	4c 89 d7             	mov    rdi,r10
+ a76:	49 89 c2             	mov    r10,rax
+ a79:	48 89 f0             	mov    rax,rsi
+ a7c:	48 c1 f9 38          	sar    rcx,0x38
+ a80:	48 c1 e0 10          	shl    rax,0x10
+ a84:	48 c1 e7 20          	shl    rdi,0x20
+ a88:	48 c1 f8 38          	sar    rax,0x38
+ a8c:	49 09 fa             	or     r10,rdi
+ a8f:	d2 f8                	sar    al,cl
+ a91:	4c 89 c1             	mov    rcx,r8
+ a94:	49 c1 f8 38          	sar    r8,0x38
+ a98:	0f b6 f8             	movzx  edi,al
+ a9b:	48 c1 e1 08          	shl    rcx,0x8
+ a9f:	48 89 f8             	mov    rax,rdi
+ aa2:	4c 89 d7             	mov    rdi,r10
+ aa5:	48 c1 f9 38          	sar    rcx,0x38
+ aa9:	48 c1 e0 28          	shl    rax,0x28
+ aad:	4c 21 f7             	and    rdi,r14
+ ab0:	48 09 c7             	or     rdi,rax
+ ab3:	48 89 f0             	mov    rax,rsi
+ ab6:	48 c1 fe 38          	sar    rsi,0x38
+ aba:	48 c1 e0 08          	shl    rax,0x8
+ abe:	48 c1 f8 38          	sar    rax,0x38
+ ac2:	d2 f8                	sar    al,cl
+ ac4:	0f b6 c0             	movzx  eax,al
+ ac7:	48 c1 e0 30          	shl    rax,0x30
+ acb:	48 89 c1             	mov    rcx,rax
+ ace:	48 89 f8             	mov    rax,rdi
+    print_vectors("vector right shift", ">>", &x, &y, &z);
+ ad1:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # ad8 <main+0xad8>
+    *z = x >> y;
+ ad8:	48 21 e8             	and    rax,rbp
+ adb:	48 09 c8             	or     rax,rcx
+ ade:	4c 89 c1             	mov    rcx,r8
+    print_vectors("vector right shift", ">>", &x, &y, &z);
+ ae1:	49 89 d8             	mov    r8,rbx
+    *z = x >> y;
+ ae4:	40 d2 fe             	sar    sil,cl
+ ae7:	4c 21 d8             	and    rax,r11
+    print_vectors("vector right shift", ">>", &x, &y, &z);
+ aea:	4c 89 e9             	mov    rcx,r13
+    *z = x >> y;
+ aed:	48 c1 e6 38          	shl    rsi,0x38
+ af1:	48 09 c6             	or     rsi,rax
+ af4:	48 89 74 24 28       	mov    QWORD PTR [rsp+0x28],rsi
+    print_vectors("vector right shift", ">>", &x, &y, &z);
+ af9:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # b00 <main+0xb00>
+ b00:	e8 00 00 00 00       	call   b05 <main+0xb05>
+
+    lshift16ib(x, y, &z);
+ b05:	4c 8b 54 24 10       	mov    r10,QWORD PTR [rsp+0x10]
+ b0a:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
+    *z = x << y;
+ b0e:	31 d2                	xor    edx,edx
+ b10:	31 c0                	xor    eax,eax
+    lshift16ib(x, y, &z);
+ b12:	4c 8b 44 24 18       	mov    r8,QWORD PTR [rsp+0x18]
+ b17:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
+    *z = x << y;
+ b1c:	41 0f be ca          	movsx  ecx,r10b
+ b20:	41 89 f9             	mov    r9d,edi
+ b23:	41 d3 e1             	shl    r9d,cl
+ b26:	89 f9                	mov    ecx,edi
+ b28:	66 c1 f9 08          	sar    cx,0x8
+ b2c:	44 88 ca             	mov    dl,r9b
+ b2f:	41 89 cb             	mov    r11d,ecx
+ b32:	44 89 d1             	mov    ecx,r10d
+ b35:	66 c1 f9 08          	sar    cx,0x8
+ b39:	45 89 d9             	mov    r9d,r11d
+ b3c:	41 d3 e1             	shl    r9d,cl
+ b3f:	44 89 c9             	mov    ecx,r9d
+ b42:	49 b9 ff ff ff 00 ff 	movabs r9,0xffffffff00ffffff
+ b49:	ff ff ff 
+ b4c:	88 ce                	mov    dh,cl
+ b4e:	89 f9                	mov    ecx,edi
+ b50:	c1 e1 08             	shl    ecx,0x8
+ b53:	48 81 e2 ff ff 00 ff 	and    rdx,0xffffffffff00ffff
+ b5a:	41 89 cb             	mov    r11d,ecx
+ b5d:	44 89 d1             	mov    ecx,r10d
+ b60:	c1 e1 08             	shl    ecx,0x8
+ b63:	41 c1 fb 18          	sar    r11d,0x18
+ b67:	c1 f9 18             	sar    ecx,0x18
+ b6a:	41 d3 e3             	shl    r11d,cl
+ b6d:	89 f9                	mov    ecx,edi
+ b6f:	45 0f b6 db          	movzx  r11d,r11b
+ b73:	c1 f9 18             	sar    ecx,0x18
+ b76:	49 c1 e3 10          	shl    r11,0x10
+ b7a:	4c 09 da             	or     rdx,r11
+ b7d:	41 89 cb             	mov    r11d,ecx
+ b80:	44 89 d1             	mov    ecx,r10d
+ b83:	c1 f9 18             	sar    ecx,0x18
+ b86:	4c 21 ca             	and    rdx,r9
+ b89:	41 d3 e3             	shl    r11d,cl
+ b8c:	48 89 f9             	mov    rcx,rdi
+ b8f:	45 0f b6 db          	movzx  r11d,r11b
+ b93:	48 c1 e1 18          	shl    rcx,0x18
+ b97:	49 c1 e3 18          	shl    r11,0x18
+ b9b:	4c 09 da             	or     rdx,r11
+ b9e:	49 89 cb             	mov    r11,rcx
+ ba1:	4c 89 d1             	mov    rcx,r10
+ ba4:	48 c1 e1 18          	shl    rcx,0x18
+ ba8:	49 c1 fb 38          	sar    r11,0x38
+ bac:	4c 21 fa             	and    rdx,r15
+ baf:	48 c1 f9 38          	sar    rcx,0x38
+ bb3:	41 d3 e3             	shl    r11d,cl
+ bb6:	4c 89 d1             	mov    rcx,r10
+ bb9:	45 0f b6 db          	movzx  r11d,r11b
+ bbd:	49 c1 e3 20          	shl    r11,0x20
+ bc1:	49 09 d3             	or     r11,rdx
+ bc4:	48 89 fa             	mov    rdx,rdi
+ bc7:	48 c1 e1 10          	shl    rcx,0x10
+ bcb:	48 c1 e2 10          	shl    rdx,0x10
+ bcf:	48 c1 f9 38          	sar    rcx,0x38
+ bd3:	4d 21 f3             	and    r11,r14
+ bd6:	48 c1 fa 38          	sar    rdx,0x38
+ bda:	d3 e2                	shl    edx,cl
+ bdc:	48 89 f9             	mov    rcx,rdi
+ bdf:	48 c1 ff 38          	sar    rdi,0x38
+ be3:	0f b6 d2             	movzx  edx,dl
+ be6:	48 c1 e1 08          	shl    rcx,0x8
+ bea:	48 c1 e2 28          	shl    rdx,0x28
+ bee:	4c 09 da             	or     rdx,r11
+ bf1:	49 89 cb             	mov    r11,rcx
+ bf4:	4c 89 d1             	mov    rcx,r10
+ bf7:	49 c1 fa 38          	sar    r10,0x38
+ bfb:	48 c1 e1 08          	shl    rcx,0x8
+ bff:	49 c1 fb 38          	sar    r11,0x38
+ c03:	48 21 ea             	and    rdx,rbp
+ c06:	48 c1 f9 38          	sar    rcx,0x38
+ c0a:	41 d3 e3             	shl    r11d,cl
+ c0d:	4c 89 d1             	mov    rcx,r10
+ c10:	45 0f b6 db          	movzx  r11d,r11b
+ c14:	d3 e7                	shl    edi,cl
+ c16:	41 0f be c8          	movsx  ecx,r8b
+ c1a:	49 c1 e3 30          	shl    r11,0x30
+ c1e:	48 c1 e7 38          	shl    rdi,0x38
+ c22:	4c 09 da             	or     rdx,r11
+ c25:	49 bb ff ff ff ff ff 	movabs r11,0xffffffffffffff
+ c2c:	ff ff 00 
+ c2f:	4c 21 da             	and    rdx,r11
+ c32:	48 09 fa             	or     rdx,rdi
+ c35:	89 f7                	mov    edi,esi
+ c37:	d3 e7                	shl    edi,cl
+ c39:	44 89 c1             	mov    ecx,r8d
+ c3c:	48 89 54 24 20       	mov    QWORD PTR [rsp+0x20],rdx
+    print_vectors("vector left shift", "<<", &x, &y, &z);
+ c41:	4c 89 e2             	mov    rdx,r12
+    *z = x << y;
+ c44:	40 88 f8             	mov    al,dil
+ c47:	89 f7                	mov    edi,esi
+ c49:	66 c1 f9 08          	sar    cx,0x8
+ c4d:	66 c1 ff 08          	sar    di,0x8
+ c51:	d3 e7                	shl    edi,cl
+ c53:	89 f9                	mov    ecx,edi
+ c55:	89 f7                	mov    edi,esi
+ c57:	88 cc                	mov    ah,cl
+ c59:	44 89 c1             	mov    ecx,r8d
+ c5c:	c1 e7 08             	shl    edi,0x8
+ c5f:	c1 e1 08             	shl    ecx,0x8
+ c62:	c1 ff 18             	sar    edi,0x18
+ c65:	c1 f9 18             	sar    ecx,0x18
+ c68:	d3 e7                	shl    edi,cl
+ c6a:	44 89 c1             	mov    ecx,r8d
+ c6d:	40 0f b6 ff          	movzx  edi,dil
+ c71:	48 c1 e7 10          	shl    rdi,0x10
+ c75:	48 25 ff ff 00 ff    	and    rax,0xffffffffff00ffff
+ c7b:	c1 f9 18             	sar    ecx,0x18
+ c7e:	48 09 f8             	or     rax,rdi
+ c81:	89 f7                	mov    edi,esi
+ c83:	c1 ff 18             	sar    edi,0x18
+ c86:	49 21 c1             	and    r9,rax
+ c89:	48 89 f0             	mov    rax,rsi
+ c8c:	d3 e7                	shl    edi,cl
+ c8e:	4c 89 c1             	mov    rcx,r8
+ c91:	48 c1 e0 18          	shl    rax,0x18
+ c95:	48 c1 e1 18          	shl    rcx,0x18
+ c99:	48 c1 f8 38          	sar    rax,0x38
+ c9d:	40 0f b6 ff          	movzx  edi,dil
+ ca1:	48 c1 f9 38          	sar    rcx,0x38
+ ca5:	48 c1 e7 18          	shl    rdi,0x18
+ ca9:	d3 e0                	shl    eax,cl
+ cab:	49 09 f9             	or     r9,rdi
+    print_vectors("vector left shift", "<<", &x, &y, &z);
+ cae:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # cb5 <main+0xcb5>
+    *z = x << y;
+ cb5:	4c 89 c1             	mov    rcx,r8
+ cb8:	0f b6 c0             	movzx  eax,al
+ cbb:	4d 21 cf             	and    r15,r9
+ cbe:	48 c1 e1 10          	shl    rcx,0x10
+ cc2:	48 c1 e0 20          	shl    rax,0x20
+ cc6:	48 c1 f9 38          	sar    rcx,0x38
+ cca:	49 09 c7             	or     r15,rax
+ ccd:	48 89 f0             	mov    rax,rsi
+ cd0:	48 c1 e0 10          	shl    rax,0x10
+ cd4:	4d 21 fe             	and    r14,r15
+ cd7:	48 c1 f8 38          	sar    rax,0x38
+ cdb:	d3 e0                	shl    eax,cl
+ cdd:	4c 89 c1             	mov    rcx,r8
+ ce0:	0f b6 c0             	movzx  eax,al
+ ce3:	48 c1 e1 08          	shl    rcx,0x8
+ ce7:	48 c1 e0 28          	shl    rax,0x28
+ ceb:	48 c1 f9 38          	sar    rcx,0x38
+ cef:	49 09 c6             	or     r14,rax
+ cf2:	48 89 f0             	mov    rax,rsi
+ cf5:	48 c1 e0 08          	shl    rax,0x8
+ cf9:	4c 21 f5             	and    rbp,r14
+ cfc:	48 c1 f8 38          	sar    rax,0x38
+ d00:	d3 e0                	shl    eax,cl
+ d02:	0f b6 c0             	movzx  eax,al
+ d05:	48 c1 e0 30          	shl    rax,0x30
+ d09:	48 09 c5             	or     rbp,rax
+ d0c:	49 c1 f8 38          	sar    r8,0x38
+ d10:	4c 89 c1             	mov    rcx,r8
+ d13:	48 c1 fe 38          	sar    rsi,0x38
+ d17:	4c 21 dd             	and    rbp,r11
+    print_vectors("vector left shift", "<<", &x, &y, &z);
+ d1a:	49 89 d8             	mov    r8,rbx
+    *z = x << y;
+ d1d:	d3 e6                	shl    esi,cl
+    print_vectors("vector left shift", "<<", &x, &y, &z);
+ d1f:	4c 89 e9             	mov    rcx,r13
+    *z = x << y;
+ d22:	48 c1 e6 38          	shl    rsi,0x38
+ d26:	48 09 ee             	or     rsi,rbp
+ d29:	48 89 74 24 28       	mov    QWORD PTR [rsp+0x28],rsi
+    print_vectors("vector left shift", "<<", &x, &y, &z);
+ d2e:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # d35 <main+0xd35>
+ d35:	e8 00 00 00 00       	call   d3a <main+0xd3a>
+
+    return 0;
+}
+ d3a:	48 8b 44 24 38       	mov    rax,QWORD PTR [rsp+0x38]
+ d3f:	64 48 33 04 25 28 00 	xor    rax,QWORD PTR fs:0x28
+ d46:	00 00 
+ d48:	75 11                	jne    d5b <main+0xd5b>
+ d4a:	48 83 c4 48          	add    rsp,0x48
+ d4e:	31 c0                	xor    eax,eax
+ d50:	5b                   	pop    rbx
+ d51:	5d                   	pop    rbp
+ d52:	41 5c                	pop    r12
+ d54:	41 5d                	pop    r13
+ d56:	41 5e                	pop    r14
+ d58:	41 5f                	pop    r15
+ d5a:	c3                   	ret    
+ d5b:	e8 00 00 00 00       	call   d60 <print_vectors+0x40>
