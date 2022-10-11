@@ -1,0 +1,137 @@
+
+simd15_4.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16float>:
+#include <stdio.h>
+
+typedef float v16float __attribute__((vector_size(16)));
+
+void add16float(v16float x, v16float y, v16float * z)
+{
+   0:	f3 0f 1e fa          	endbr64 
+    *z = x + y;
+   4:	0f 58 c1             	addps  xmm0,xmm1
+   7:	0f 29 07             	movaps XMMWORD PTR [rdi],xmm0
+}
+   a:	c3                   	ret    
+   b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+
+0000000000000010 <add16double>:
+
+typedef double v16double __attribute__((vector_size(16)));
+
+void add16double(v16double x, v16double y, v16double * z)
+{
+  10:	f3 0f 1e fa          	endbr64 
+    *z = x + y;
+  14:	66 0f 58 c1          	addpd  xmm0,xmm1
+  18:	0f 29 07             	movaps XMMWORD PTR [rdi],xmm0
+}
+  1b:	c3                   	ret    
+
+Disassembly of section .text.startup:
+
+0000000000000000 <main>:
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 54                	push   r12
+
+        add16float(x, y, &z);
+
+        int i;
+
+        puts("vector of floats");
+   6:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # d <main+0xd>
+{
+   d:	55                   	push   rbp
+}
+
+__fortify_function int
+printf (const char *__restrict __fmt, ...)
+{
+  return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+   e:	48 8d 2d 00 00 00 00 	lea    rbp,[rip+0x0]        # 15 <main+0x15>
+  15:	53                   	push   rbx
+        puts("vector of floats");
+  16:	31 db                	xor    ebx,ebx
+{
+  18:	48 83 ec 20          	sub    rsp,0x20
+    *z = x + y;
+  1c:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # 23 <main+0x23>
+{
+  23:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  2a:	00 00 
+  2c:	48 89 44 24 18       	mov    QWORD PTR [rsp+0x18],rax
+  31:	31 c0                	xor    eax,eax
+    *z = x + y;
+  33:	49 89 e4             	mov    r12,rsp
+  36:	0f 29 04 24          	movaps XMMWORD PTR [rsp],xmm0
+        puts("vector of floats");
+  3a:	e8 00 00 00 00       	call   3f <main+0x3f>
+
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+            printf("%d %f\n", i, z[i]);
+  3f:	66 0f ef c0          	pxor   xmm0,xmm0
+  43:	89 da                	mov    edx,ebx
+  45:	48 89 ee             	mov    rsi,rbp
+  48:	bf 01 00 00 00       	mov    edi,0x1
+  4d:	f3 41 0f 5a 04 9c    	cvtss2sd xmm0,DWORD PTR [r12+rbx*4]
+  53:	b8 01 00 00 00       	mov    eax,0x1
+  58:	48 83 c3 01          	add    rbx,0x1
+  5c:	e8 00 00 00 00       	call   61 <main+0x61>
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+  61:	48 83 fb 04          	cmp    rbx,0x4
+  65:	75 d8                	jne    3f <main+0x3f>
+
+/* Write a character to stdout.  */
+__STDIO_INLINE int
+putchar (int __c)
+{
+  return putc (__c, stdout);
+  67:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # 6e <main+0x6e>
+  6e:	bf 0a 00 00 00       	mov    edi,0xa
+  73:	e8 00 00 00 00       	call   78 <main+0x78>
+
+        add16double(x, y, &z);
+
+        int i;
+
+        puts("vector of doubles");
+  78:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 7f <main+0x7f>
+  7f:	e8 00 00 00 00       	call   84 <main+0x84>
+  84:	f2 0f 10 05 00 00 00 	movsd  xmm0,QWORD PTR [rip+0x0]        # 8c <main+0x8c>
+  8b:	00 
+  8c:	31 d2                	xor    edx,edx
+  8e:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 95 <main+0x95>
+  95:	bf 01 00 00 00       	mov    edi,0x1
+  9a:	b8 01 00 00 00       	mov    eax,0x1
+  9f:	e8 00 00 00 00       	call   a4 <main+0xa4>
+  a4:	ba 01 00 00 00       	mov    edx,0x1
+  a9:	bf 01 00 00 00       	mov    edi,0x1
+  ae:	f2 0f 10 05 00 00 00 	movsd  xmm0,QWORD PTR [rip+0x0]        # b6 <main+0xb6>
+  b5:	00 
+  b6:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # bd <main+0xbd>
+  bd:	b8 01 00 00 00       	mov    eax,0x1
+  c2:	e8 00 00 00 00       	call   c7 <main+0xc7>
+        for (i = 0; i < sizeof(v16double) / sizeof(double); i++) {
+            printf("%d %f\n", i, z[i]);
+        }
+    }
+    return 0;
+}
+  c7:	48 8b 44 24 18       	mov    rax,QWORD PTR [rsp+0x18]
+  cc:	64 48 33 04 25 28 00 	xor    rax,QWORD PTR fs:0x28
+  d3:	00 00 
+  d5:	75 0b                	jne    e2 <main+0xe2>
+  d7:	48 83 c4 20          	add    rsp,0x20
+  db:	31 c0                	xor    eax,eax
+  dd:	5b                   	pop    rbx
+  de:	5d                   	pop    rbp
+  df:	41 5c                	pop    r12
+  e1:	c3                   	ret    
+  e2:	e8 00 00 00 00       	call   e7 <.LC3+0xcf>
