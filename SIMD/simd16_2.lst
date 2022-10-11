@@ -1,0 +1,823 @@
+
+simd16_2.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <addVectors>:
+typedef float v1024f __attribute__((vector_size(1024)));
+
+void addVectors(v1024f * x, v1024f * y, v1024f * z)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 81 e4 00 fc ff ff 	and    rsp,0xfffffffffffffc00
+   f:	48 81 ec 00 10 00 00 	sub    rsp,0x1000
+  16:	48 83 0c 24 00       	or     QWORD PTR [rsp],0x0
+  1b:	48 81 ec 88 03 00 00 	sub    rsp,0x388
+  22:	48 89 bc 24 80 07 00 	mov    QWORD PTR [rsp+0x780],rdi
+  29:	00 
+  2a:	48 89 b4 24 78 07 00 	mov    QWORD PTR [rsp+0x778],rsi
+  31:	00 
+  32:	48 89 94 24 70 07 00 	mov    QWORD PTR [rsp+0x770],rdx
+  39:	00 
+    *z = *x + *y;
+  3a:	48 8b 94 24 80 07 00 	mov    rdx,QWORD PTR [rsp+0x780]
+  41:	00 
+  42:	48 8d 84 24 88 07 00 	lea    rax,[rsp+0x788]
+  49:	00 
+  4a:	48 89 d6             	mov    rsi,rdx
+  4d:	ba 80 00 00 00       	mov    edx,0x80
+  52:	48 89 c7             	mov    rdi,rax
+  55:	48 89 d1             	mov    rcx,rdx
+  58:	f3 48 a5             	rep movs QWORD PTR es:[rdi],QWORD PTR ds:[rsi]
+  5b:	48 8b 94 24 78 07 00 	mov    rdx,QWORD PTR [rsp+0x778]
+  62:	00 
+  63:	48 8d 84 24 88 0b 00 	lea    rax,[rsp+0xb88]
+  6a:	00 
+  6b:	48 89 d6             	mov    rsi,rdx
+  6e:	ba 80 00 00 00       	mov    edx,0x80
+  73:	48 89 c7             	mov    rdi,rax
+  76:	48 89 d1             	mov    rcx,rdx
+  79:	f3 48 a5             	rep movs QWORD PTR es:[rdi],QWORD PTR ds:[rsi]
+  7c:	0f 28 8c 24 88 07 00 	movaps xmm1,XMMWORD PTR [rsp+0x788]
+  83:	00 
+  84:	0f 28 84 24 88 0b 00 	movaps xmm0,XMMWORD PTR [rsp+0xb88]
+  8b:	00 
+  8c:	0f 58 c8             	addps  xmm1,xmm0
+  8f:	0f 29 8c 24 58 03 00 	movaps XMMWORD PTR [rsp+0x358],xmm1
+  96:	00 
+  97:	0f 28 8c 24 98 07 00 	movaps xmm1,XMMWORD PTR [rsp+0x798]
+  9e:	00 
+  9f:	0f 28 84 24 98 0b 00 	movaps xmm0,XMMWORD PTR [rsp+0xb98]
+  a6:	00 
+  a7:	0f 28 d1             	movaps xmm2,xmm1
+  aa:	0f 58 d0             	addps  xmm2,xmm0
+  ad:	0f 29 94 24 48 03 00 	movaps XMMWORD PTR [rsp+0x348],xmm2
+  b4:	00 
+  b5:	0f 28 8c 24 a8 07 00 	movaps xmm1,XMMWORD PTR [rsp+0x7a8]
+  bc:	00 
+  bd:	0f 28 84 24 a8 0b 00 	movaps xmm0,XMMWORD PTR [rsp+0xba8]
+  c4:	00 
+  c5:	0f 28 d9             	movaps xmm3,xmm1
+  c8:	0f 58 d8             	addps  xmm3,xmm0
+  cb:	0f 29 9c 24 38 03 00 	movaps XMMWORD PTR [rsp+0x338],xmm3
+  d2:	00 
+  d3:	0f 28 8c 24 b8 07 00 	movaps xmm1,XMMWORD PTR [rsp+0x7b8]
+  da:	00 
+  db:	0f 28 84 24 b8 0b 00 	movaps xmm0,XMMWORD PTR [rsp+0xbb8]
+  e2:	00 
+  e3:	0f 28 e1             	movaps xmm4,xmm1
+  e6:	0f 58 e0             	addps  xmm4,xmm0
+  e9:	0f 29 a4 24 28 03 00 	movaps XMMWORD PTR [rsp+0x328],xmm4
+  f0:	00 
+  f1:	0f 28 8c 24 c8 07 00 	movaps xmm1,XMMWORD PTR [rsp+0x7c8]
+  f8:	00 
+  f9:	0f 28 84 24 c8 0b 00 	movaps xmm0,XMMWORD PTR [rsp+0xbc8]
+ 100:	00 
+ 101:	0f 28 e9             	movaps xmm5,xmm1
+ 104:	0f 58 e8             	addps  xmm5,xmm0
+ 107:	0f 29 ac 24 18 03 00 	movaps XMMWORD PTR [rsp+0x318],xmm5
+ 10e:	00 
+ 10f:	0f 28 8c 24 d8 07 00 	movaps xmm1,XMMWORD PTR [rsp+0x7d8]
+ 116:	00 
+ 117:	0f 28 84 24 d8 0b 00 	movaps xmm0,XMMWORD PTR [rsp+0xbd8]
+ 11e:	00 
+ 11f:	0f 28 f1             	movaps xmm6,xmm1
+ 122:	0f 58 f0             	addps  xmm6,xmm0
+ 125:	0f 29 b4 24 08 03 00 	movaps XMMWORD PTR [rsp+0x308],xmm6
+ 12c:	00 
+ 12d:	0f 28 8c 24 e8 07 00 	movaps xmm1,XMMWORD PTR [rsp+0x7e8]
+ 134:	00 
+ 135:	0f 28 84 24 e8 0b 00 	movaps xmm0,XMMWORD PTR [rsp+0xbe8]
+ 13c:	00 
+ 13d:	0f 28 f9             	movaps xmm7,xmm1
+ 140:	0f 58 f8             	addps  xmm7,xmm0
+ 143:	0f 29 bc 24 f8 02 00 	movaps XMMWORD PTR [rsp+0x2f8],xmm7
+ 14a:	00 
+ 14b:	0f 28 8c 24 f8 07 00 	movaps xmm1,XMMWORD PTR [rsp+0x7f8]
+ 152:	00 
+ 153:	0f 28 84 24 f8 0b 00 	movaps xmm0,XMMWORD PTR [rsp+0xbf8]
+ 15a:	00 
+ 15b:	44 0f 28 c1          	movaps xmm8,xmm1
+ 15f:	44 0f 58 c0          	addps  xmm8,xmm0
+ 163:	44 0f 29 84 24 e8 02 	movaps XMMWORD PTR [rsp+0x2e8],xmm8
+ 16a:	00 00 
+ 16c:	0f 28 8c 24 08 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x808]
+ 173:	00 
+ 174:	0f 28 84 24 08 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xc08]
+ 17b:	00 
+ 17c:	44 0f 28 c9          	movaps xmm9,xmm1
+ 180:	44 0f 58 c8          	addps  xmm9,xmm0
+ 184:	44 0f 29 8c 24 d8 02 	movaps XMMWORD PTR [rsp+0x2d8],xmm9
+ 18b:	00 00 
+ 18d:	0f 28 8c 24 18 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x818]
+ 194:	00 
+ 195:	0f 28 84 24 18 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xc18]
+ 19c:	00 
+ 19d:	44 0f 28 d1          	movaps xmm10,xmm1
+ 1a1:	44 0f 58 d0          	addps  xmm10,xmm0
+ 1a5:	44 0f 29 94 24 c8 02 	movaps XMMWORD PTR [rsp+0x2c8],xmm10
+ 1ac:	00 00 
+ 1ae:	0f 28 8c 24 28 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x828]
+ 1b5:	00 
+ 1b6:	0f 28 84 24 28 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xc28]
+ 1bd:	00 
+ 1be:	44 0f 28 d9          	movaps xmm11,xmm1
+ 1c2:	44 0f 58 d8          	addps  xmm11,xmm0
+ 1c6:	44 0f 29 9c 24 b8 02 	movaps XMMWORD PTR [rsp+0x2b8],xmm11
+ 1cd:	00 00 
+ 1cf:	0f 28 8c 24 38 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x838]
+ 1d6:	00 
+ 1d7:	0f 28 84 24 38 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xc38]
+ 1de:	00 
+ 1df:	44 0f 28 e1          	movaps xmm12,xmm1
+ 1e3:	44 0f 58 e0          	addps  xmm12,xmm0
+ 1e7:	44 0f 29 a4 24 a8 02 	movaps XMMWORD PTR [rsp+0x2a8],xmm12
+ 1ee:	00 00 
+ 1f0:	0f 28 8c 24 48 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x848]
+ 1f7:	00 
+ 1f8:	0f 28 84 24 48 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xc48]
+ 1ff:	00 
+ 200:	44 0f 28 e9          	movaps xmm13,xmm1
+ 204:	44 0f 58 e8          	addps  xmm13,xmm0
+ 208:	44 0f 29 ac 24 98 02 	movaps XMMWORD PTR [rsp+0x298],xmm13
+ 20f:	00 00 
+ 211:	0f 28 8c 24 58 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x858]
+ 218:	00 
+ 219:	0f 28 84 24 58 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xc58]
+ 220:	00 
+ 221:	44 0f 28 f1          	movaps xmm14,xmm1
+ 225:	44 0f 58 f0          	addps  xmm14,xmm0
+ 229:	44 0f 29 b4 24 88 02 	movaps XMMWORD PTR [rsp+0x288],xmm14
+ 230:	00 00 
+ 232:	0f 28 8c 24 68 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x868]
+ 239:	00 
+ 23a:	0f 28 84 24 68 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xc68]
+ 241:	00 
+ 242:	44 0f 28 f9          	movaps xmm15,xmm1
+ 246:	44 0f 58 f8          	addps  xmm15,xmm0
+ 24a:	44 0f 29 bc 24 78 02 	movaps XMMWORD PTR [rsp+0x278],xmm15
+ 251:	00 00 
+ 253:	0f 28 8c 24 78 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x878]
+ 25a:	00 
+ 25b:	0f 28 84 24 78 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xc78]
+ 262:	00 
+ 263:	0f 28 d1             	movaps xmm2,xmm1
+ 266:	0f 58 d0             	addps  xmm2,xmm0
+ 269:	0f 29 94 24 68 02 00 	movaps XMMWORD PTR [rsp+0x268],xmm2
+ 270:	00 
+ 271:	0f 28 8c 24 88 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x888]
+ 278:	00 
+ 279:	0f 28 84 24 88 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xc88]
+ 280:	00 
+ 281:	0f 28 d9             	movaps xmm3,xmm1
+ 284:	0f 58 d8             	addps  xmm3,xmm0
+ 287:	0f 29 9c 24 58 02 00 	movaps XMMWORD PTR [rsp+0x258],xmm3
+ 28e:	00 
+ 28f:	0f 28 8c 24 98 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x898]
+ 296:	00 
+ 297:	0f 28 84 24 98 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xc98]
+ 29e:	00 
+ 29f:	0f 28 e1             	movaps xmm4,xmm1
+ 2a2:	0f 58 e0             	addps  xmm4,xmm0
+ 2a5:	0f 29 a4 24 48 02 00 	movaps XMMWORD PTR [rsp+0x248],xmm4
+ 2ac:	00 
+ 2ad:	0f 28 8c 24 a8 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x8a8]
+ 2b4:	00 
+ 2b5:	0f 28 84 24 a8 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xca8]
+ 2bc:	00 
+ 2bd:	0f 28 e9             	movaps xmm5,xmm1
+ 2c0:	0f 58 e8             	addps  xmm5,xmm0
+ 2c3:	0f 29 ac 24 38 02 00 	movaps XMMWORD PTR [rsp+0x238],xmm5
+ 2ca:	00 
+ 2cb:	0f 28 8c 24 b8 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x8b8]
+ 2d2:	00 
+ 2d3:	0f 28 84 24 b8 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xcb8]
+ 2da:	00 
+ 2db:	0f 28 f1             	movaps xmm6,xmm1
+ 2de:	0f 58 f0             	addps  xmm6,xmm0
+ 2e1:	0f 29 b4 24 28 02 00 	movaps XMMWORD PTR [rsp+0x228],xmm6
+ 2e8:	00 
+ 2e9:	0f 28 8c 24 c8 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x8c8]
+ 2f0:	00 
+ 2f1:	0f 28 84 24 c8 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xcc8]
+ 2f8:	00 
+ 2f9:	0f 28 f9             	movaps xmm7,xmm1
+ 2fc:	0f 58 f8             	addps  xmm7,xmm0
+ 2ff:	0f 29 bc 24 18 02 00 	movaps XMMWORD PTR [rsp+0x218],xmm7
+ 306:	00 
+ 307:	0f 28 8c 24 d8 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x8d8]
+ 30e:	00 
+ 30f:	0f 28 84 24 d8 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xcd8]
+ 316:	00 
+ 317:	44 0f 28 c1          	movaps xmm8,xmm1
+ 31b:	44 0f 58 c0          	addps  xmm8,xmm0
+ 31f:	44 0f 29 84 24 08 02 	movaps XMMWORD PTR [rsp+0x208],xmm8
+ 326:	00 00 
+ 328:	0f 28 8c 24 e8 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x8e8]
+ 32f:	00 
+ 330:	0f 28 84 24 e8 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xce8]
+ 337:	00 
+ 338:	44 0f 28 c9          	movaps xmm9,xmm1
+ 33c:	44 0f 58 c8          	addps  xmm9,xmm0
+ 340:	44 0f 29 8c 24 f8 01 	movaps XMMWORD PTR [rsp+0x1f8],xmm9
+ 347:	00 00 
+ 349:	0f 28 8c 24 f8 08 00 	movaps xmm1,XMMWORD PTR [rsp+0x8f8]
+ 350:	00 
+ 351:	0f 28 84 24 f8 0c 00 	movaps xmm0,XMMWORD PTR [rsp+0xcf8]
+ 358:	00 
+ 359:	44 0f 28 d1          	movaps xmm10,xmm1
+ 35d:	44 0f 58 d0          	addps  xmm10,xmm0
+ 361:	44 0f 29 94 24 e8 01 	movaps XMMWORD PTR [rsp+0x1e8],xmm10
+ 368:	00 00 
+ 36a:	0f 28 8c 24 08 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x908]
+ 371:	00 
+ 372:	0f 28 84 24 08 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xd08]
+ 379:	00 
+ 37a:	44 0f 28 d9          	movaps xmm11,xmm1
+ 37e:	44 0f 58 d8          	addps  xmm11,xmm0
+ 382:	44 0f 29 9c 24 d8 01 	movaps XMMWORD PTR [rsp+0x1d8],xmm11
+ 389:	00 00 
+ 38b:	0f 28 8c 24 18 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x918]
+ 392:	00 
+ 393:	0f 28 84 24 18 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xd18]
+ 39a:	00 
+ 39b:	44 0f 28 e1          	movaps xmm12,xmm1
+ 39f:	44 0f 58 e0          	addps  xmm12,xmm0
+ 3a3:	44 0f 29 a4 24 c8 01 	movaps XMMWORD PTR [rsp+0x1c8],xmm12
+ 3aa:	00 00 
+ 3ac:	0f 28 8c 24 28 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x928]
+ 3b3:	00 
+ 3b4:	0f 28 84 24 28 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xd28]
+ 3bb:	00 
+ 3bc:	44 0f 28 e9          	movaps xmm13,xmm1
+ 3c0:	44 0f 58 e8          	addps  xmm13,xmm0
+ 3c4:	44 0f 29 ac 24 b8 01 	movaps XMMWORD PTR [rsp+0x1b8],xmm13
+ 3cb:	00 00 
+ 3cd:	0f 28 8c 24 38 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x938]
+ 3d4:	00 
+ 3d5:	0f 28 84 24 38 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xd38]
+ 3dc:	00 
+ 3dd:	44 0f 28 f1          	movaps xmm14,xmm1
+ 3e1:	44 0f 58 f0          	addps  xmm14,xmm0
+ 3e5:	44 0f 29 b4 24 a8 01 	movaps XMMWORD PTR [rsp+0x1a8],xmm14
+ 3ec:	00 00 
+ 3ee:	0f 28 8c 24 48 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x948]
+ 3f5:	00 
+ 3f6:	0f 28 84 24 48 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xd48]
+ 3fd:	00 
+ 3fe:	44 0f 28 f9          	movaps xmm15,xmm1
+ 402:	44 0f 58 f8          	addps  xmm15,xmm0
+ 406:	44 0f 29 bc 24 98 01 	movaps XMMWORD PTR [rsp+0x198],xmm15
+ 40d:	00 00 
+ 40f:	0f 28 8c 24 58 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x958]
+ 416:	00 
+ 417:	0f 28 84 24 58 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xd58]
+ 41e:	00 
+ 41f:	0f 28 d1             	movaps xmm2,xmm1
+ 422:	0f 58 d0             	addps  xmm2,xmm0
+ 425:	0f 29 94 24 88 01 00 	movaps XMMWORD PTR [rsp+0x188],xmm2
+ 42c:	00 
+ 42d:	0f 28 8c 24 68 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x968]
+ 434:	00 
+ 435:	0f 28 84 24 68 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xd68]
+ 43c:	00 
+ 43d:	0f 28 d9             	movaps xmm3,xmm1
+ 440:	0f 58 d8             	addps  xmm3,xmm0
+ 443:	0f 29 9c 24 78 01 00 	movaps XMMWORD PTR [rsp+0x178],xmm3
+ 44a:	00 
+ 44b:	0f 28 8c 24 78 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x978]
+ 452:	00 
+ 453:	0f 28 84 24 78 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xd78]
+ 45a:	00 
+ 45b:	0f 28 e1             	movaps xmm4,xmm1
+ 45e:	0f 58 e0             	addps  xmm4,xmm0
+ 461:	0f 29 a4 24 68 01 00 	movaps XMMWORD PTR [rsp+0x168],xmm4
+ 468:	00 
+ 469:	0f 28 8c 24 88 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x988]
+ 470:	00 
+ 471:	0f 28 84 24 88 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xd88]
+ 478:	00 
+ 479:	0f 28 e9             	movaps xmm5,xmm1
+ 47c:	0f 58 e8             	addps  xmm5,xmm0
+ 47f:	0f 29 ac 24 58 01 00 	movaps XMMWORD PTR [rsp+0x158],xmm5
+ 486:	00 
+ 487:	0f 28 8c 24 98 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x998]
+ 48e:	00 
+ 48f:	0f 28 84 24 98 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xd98]
+ 496:	00 
+ 497:	0f 28 f1             	movaps xmm6,xmm1
+ 49a:	0f 58 f0             	addps  xmm6,xmm0
+ 49d:	0f 29 b4 24 48 01 00 	movaps XMMWORD PTR [rsp+0x148],xmm6
+ 4a4:	00 
+ 4a5:	0f 28 8c 24 a8 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x9a8]
+ 4ac:	00 
+ 4ad:	0f 28 84 24 a8 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xda8]
+ 4b4:	00 
+ 4b5:	0f 28 f9             	movaps xmm7,xmm1
+ 4b8:	0f 58 f8             	addps  xmm7,xmm0
+ 4bb:	0f 29 bc 24 38 01 00 	movaps XMMWORD PTR [rsp+0x138],xmm7
+ 4c2:	00 
+ 4c3:	0f 28 8c 24 b8 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x9b8]
+ 4ca:	00 
+ 4cb:	0f 28 84 24 b8 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xdb8]
+ 4d2:	00 
+ 4d3:	44 0f 28 c1          	movaps xmm8,xmm1
+ 4d7:	44 0f 58 c0          	addps  xmm8,xmm0
+ 4db:	44 0f 29 84 24 28 01 	movaps XMMWORD PTR [rsp+0x128],xmm8
+ 4e2:	00 00 
+ 4e4:	0f 28 8c 24 c8 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x9c8]
+ 4eb:	00 
+ 4ec:	0f 28 84 24 c8 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xdc8]
+ 4f3:	00 
+ 4f4:	44 0f 28 c9          	movaps xmm9,xmm1
+ 4f8:	44 0f 58 c8          	addps  xmm9,xmm0
+ 4fc:	44 0f 29 8c 24 18 01 	movaps XMMWORD PTR [rsp+0x118],xmm9
+ 503:	00 00 
+ 505:	0f 28 8c 24 d8 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x9d8]
+ 50c:	00 
+ 50d:	0f 28 84 24 d8 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xdd8]
+ 514:	00 
+ 515:	44 0f 28 d1          	movaps xmm10,xmm1
+ 519:	44 0f 58 d0          	addps  xmm10,xmm0
+ 51d:	44 0f 29 94 24 08 01 	movaps XMMWORD PTR [rsp+0x108],xmm10
+ 524:	00 00 
+ 526:	0f 28 8c 24 e8 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x9e8]
+ 52d:	00 
+ 52e:	0f 28 84 24 e8 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xde8]
+ 535:	00 
+ 536:	44 0f 28 d9          	movaps xmm11,xmm1
+ 53a:	44 0f 58 d8          	addps  xmm11,xmm0
+ 53e:	44 0f 29 9c 24 f8 00 	movaps XMMWORD PTR [rsp+0xf8],xmm11
+ 545:	00 00 
+ 547:	0f 28 8c 24 f8 09 00 	movaps xmm1,XMMWORD PTR [rsp+0x9f8]
+ 54e:	00 
+ 54f:	0f 28 84 24 f8 0d 00 	movaps xmm0,XMMWORD PTR [rsp+0xdf8]
+ 556:	00 
+ 557:	44 0f 28 e1          	movaps xmm12,xmm1
+ 55b:	44 0f 58 e0          	addps  xmm12,xmm0
+ 55f:	44 0f 29 a4 24 e8 00 	movaps XMMWORD PTR [rsp+0xe8],xmm12
+ 566:	00 00 
+ 568:	0f 28 8c 24 08 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xa08]
+ 56f:	00 
+ 570:	0f 28 84 24 08 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xe08]
+ 577:	00 
+ 578:	44 0f 28 e9          	movaps xmm13,xmm1
+ 57c:	44 0f 58 e8          	addps  xmm13,xmm0
+ 580:	44 0f 29 ac 24 d8 00 	movaps XMMWORD PTR [rsp+0xd8],xmm13
+ 587:	00 00 
+ 589:	0f 28 8c 24 18 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xa18]
+ 590:	00 
+ 591:	0f 28 84 24 18 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xe18]
+ 598:	00 
+ 599:	44 0f 28 f1          	movaps xmm14,xmm1
+ 59d:	44 0f 58 f0          	addps  xmm14,xmm0
+ 5a1:	44 0f 29 b4 24 c8 00 	movaps XMMWORD PTR [rsp+0xc8],xmm14
+ 5a8:	00 00 
+ 5aa:	0f 28 8c 24 28 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xa28]
+ 5b1:	00 
+ 5b2:	0f 28 84 24 28 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xe28]
+ 5b9:	00 
+ 5ba:	44 0f 28 f9          	movaps xmm15,xmm1
+ 5be:	44 0f 58 f8          	addps  xmm15,xmm0
+ 5c2:	44 0f 29 bc 24 b8 00 	movaps XMMWORD PTR [rsp+0xb8],xmm15
+ 5c9:	00 00 
+ 5cb:	0f 28 8c 24 38 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xa38]
+ 5d2:	00 
+ 5d3:	0f 28 84 24 38 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xe38]
+ 5da:	00 
+ 5db:	0f 28 d1             	movaps xmm2,xmm1
+ 5de:	0f 58 d0             	addps  xmm2,xmm0
+ 5e1:	0f 29 94 24 a8 00 00 	movaps XMMWORD PTR [rsp+0xa8],xmm2
+ 5e8:	00 
+ 5e9:	0f 28 8c 24 48 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xa48]
+ 5f0:	00 
+ 5f1:	0f 28 84 24 48 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xe48]
+ 5f8:	00 
+ 5f9:	0f 28 d9             	movaps xmm3,xmm1
+ 5fc:	0f 58 d8             	addps  xmm3,xmm0
+ 5ff:	0f 29 9c 24 98 00 00 	movaps XMMWORD PTR [rsp+0x98],xmm3
+ 606:	00 
+ 607:	0f 28 8c 24 58 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xa58]
+ 60e:	00 
+ 60f:	0f 28 84 24 58 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xe58]
+ 616:	00 
+ 617:	0f 28 e1             	movaps xmm4,xmm1
+ 61a:	0f 58 e0             	addps  xmm4,xmm0
+ 61d:	0f 29 a4 24 88 00 00 	movaps XMMWORD PTR [rsp+0x88],xmm4
+ 624:	00 
+ 625:	0f 28 8c 24 68 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xa68]
+ 62c:	00 
+ 62d:	0f 28 84 24 68 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xe68]
+ 634:	00 
+ 635:	0f 28 e9             	movaps xmm5,xmm1
+ 638:	0f 58 e8             	addps  xmm5,xmm0
+ 63b:	0f 29 6c 24 78       	movaps XMMWORD PTR [rsp+0x78],xmm5
+ 640:	0f 28 8c 24 78 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xa78]
+ 647:	00 
+ 648:	0f 28 84 24 78 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xe78]
+ 64f:	00 
+ 650:	0f 28 f1             	movaps xmm6,xmm1
+ 653:	0f 58 f0             	addps  xmm6,xmm0
+ 656:	0f 29 74 24 68       	movaps XMMWORD PTR [rsp+0x68],xmm6
+ 65b:	0f 28 8c 24 88 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xa88]
+ 662:	00 
+ 663:	0f 28 84 24 88 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xe88]
+ 66a:	00 
+ 66b:	0f 28 f9             	movaps xmm7,xmm1
+ 66e:	0f 58 f8             	addps  xmm7,xmm0
+ 671:	0f 29 7c 24 58       	movaps XMMWORD PTR [rsp+0x58],xmm7
+ 676:	0f 28 8c 24 98 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xa98]
+ 67d:	00 
+ 67e:	0f 28 84 24 98 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xe98]
+ 685:	00 
+ 686:	44 0f 28 f9          	movaps xmm15,xmm1
+ 68a:	44 0f 58 f8          	addps  xmm15,xmm0
+ 68e:	0f 28 8c 24 a8 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xaa8]
+ 695:	00 
+ 696:	0f 28 84 24 a8 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xea8]
+ 69d:	00 
+ 69e:	44 0f 28 f1          	movaps xmm14,xmm1
+ 6a2:	44 0f 58 f0          	addps  xmm14,xmm0
+ 6a6:	0f 28 8c 24 b8 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xab8]
+ 6ad:	00 
+ 6ae:	0f 28 84 24 b8 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xeb8]
+ 6b5:	00 
+ 6b6:	44 0f 28 e9          	movaps xmm13,xmm1
+ 6ba:	44 0f 58 e8          	addps  xmm13,xmm0
+ 6be:	0f 28 8c 24 c8 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xac8]
+ 6c5:	00 
+ 6c6:	0f 28 84 24 c8 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xec8]
+ 6cd:	00 
+ 6ce:	44 0f 28 e1          	movaps xmm12,xmm1
+ 6d2:	44 0f 58 e0          	addps  xmm12,xmm0
+ 6d6:	0f 28 8c 24 d8 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xad8]
+ 6dd:	00 
+ 6de:	0f 28 84 24 d8 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xed8]
+ 6e5:	00 
+ 6e6:	44 0f 28 d9          	movaps xmm11,xmm1
+ 6ea:	44 0f 58 d8          	addps  xmm11,xmm0
+ 6ee:	0f 28 8c 24 e8 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xae8]
+ 6f5:	00 
+ 6f6:	0f 28 84 24 e8 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xee8]
+ 6fd:	00 
+ 6fe:	44 0f 28 d1          	movaps xmm10,xmm1
+ 702:	44 0f 58 d0          	addps  xmm10,xmm0
+ 706:	0f 28 8c 24 f8 0a 00 	movaps xmm1,XMMWORD PTR [rsp+0xaf8]
+ 70d:	00 
+ 70e:	0f 28 84 24 f8 0e 00 	movaps xmm0,XMMWORD PTR [rsp+0xef8]
+ 715:	00 
+ 716:	44 0f 28 c9          	movaps xmm9,xmm1
+ 71a:	44 0f 58 c8          	addps  xmm9,xmm0
+ 71e:	0f 28 8c 24 08 0b 00 	movaps xmm1,XMMWORD PTR [rsp+0xb08]
+ 725:	00 
+ 726:	0f 28 84 24 08 0f 00 	movaps xmm0,XMMWORD PTR [rsp+0xf08]
+ 72d:	00 
+ 72e:	44 0f 28 c1          	movaps xmm8,xmm1
+ 732:	44 0f 58 c0          	addps  xmm8,xmm0
+ 736:	0f 28 8c 24 18 0b 00 	movaps xmm1,XMMWORD PTR [rsp+0xb18]
+ 73d:	00 
+ 73e:	0f 28 84 24 18 0f 00 	movaps xmm0,XMMWORD PTR [rsp+0xf18]
+ 745:	00 
+ 746:	0f 28 f9             	movaps xmm7,xmm1
+ 749:	0f 58 f8             	addps  xmm7,xmm0
+ 74c:	0f 28 8c 24 28 0b 00 	movaps xmm1,XMMWORD PTR [rsp+0xb28]
+ 753:	00 
+ 754:	0f 28 84 24 28 0f 00 	movaps xmm0,XMMWORD PTR [rsp+0xf28]
+ 75b:	00 
+ 75c:	0f 28 f1             	movaps xmm6,xmm1
+ 75f:	0f 58 f0             	addps  xmm6,xmm0
+ 762:	0f 28 8c 24 38 0b 00 	movaps xmm1,XMMWORD PTR [rsp+0xb38]
+ 769:	00 
+ 76a:	0f 28 84 24 38 0f 00 	movaps xmm0,XMMWORD PTR [rsp+0xf38]
+ 771:	00 
+ 772:	0f 28 e9             	movaps xmm5,xmm1
+ 775:	0f 58 e8             	addps  xmm5,xmm0
+ 778:	0f 28 8c 24 48 0b 00 	movaps xmm1,XMMWORD PTR [rsp+0xb48]
+ 77f:	00 
+ 780:	0f 28 84 24 48 0f 00 	movaps xmm0,XMMWORD PTR [rsp+0xf48]
+ 787:	00 
+ 788:	0f 28 e1             	movaps xmm4,xmm1
+ 78b:	0f 58 e0             	addps  xmm4,xmm0
+ 78e:	0f 28 8c 24 58 0b 00 	movaps xmm1,XMMWORD PTR [rsp+0xb58]
+ 795:	00 
+ 796:	0f 28 84 24 58 0f 00 	movaps xmm0,XMMWORD PTR [rsp+0xf58]
+ 79d:	00 
+ 79e:	0f 28 d9             	movaps xmm3,xmm1
+ 7a1:	0f 58 d8             	addps  xmm3,xmm0
+ 7a4:	0f 28 8c 24 68 0b 00 	movaps xmm1,XMMWORD PTR [rsp+0xb68]
+ 7ab:	00 
+ 7ac:	0f 28 84 24 68 0f 00 	movaps xmm0,XMMWORD PTR [rsp+0xf68]
+ 7b3:	00 
+ 7b4:	0f 28 d1             	movaps xmm2,xmm1
+ 7b7:	0f 58 d0             	addps  xmm2,xmm0
+ 7ba:	0f 28 8c 24 78 0b 00 	movaps xmm1,XMMWORD PTR [rsp+0xb78]
+ 7c1:	00 
+ 7c2:	0f 28 84 24 78 0f 00 	movaps xmm0,XMMWORD PTR [rsp+0xf78]
+ 7c9:	00 
+ 7ca:	0f 58 c1             	addps  xmm0,xmm1
+ 7cd:	0f 28 8c 24 58 03 00 	movaps xmm1,XMMWORD PTR [rsp+0x358]
+ 7d4:	00 
+ 7d5:	0f 29 8c 24 68 03 00 	movaps XMMWORD PTR [rsp+0x368],xmm1
+ 7dc:	00 
+ 7dd:	0f 28 8c 24 48 03 00 	movaps xmm1,XMMWORD PTR [rsp+0x348]
+ 7e4:	00 
+ 7e5:	0f 29 8c 24 78 03 00 	movaps XMMWORD PTR [rsp+0x378],xmm1
+ 7ec:	00 
+ 7ed:	0f 28 8c 24 38 03 00 	movaps xmm1,XMMWORD PTR [rsp+0x338]
+ 7f4:	00 
+ 7f5:	0f 29 8c 24 88 03 00 	movaps XMMWORD PTR [rsp+0x388],xmm1
+ 7fc:	00 
+ 7fd:	0f 28 8c 24 28 03 00 	movaps xmm1,XMMWORD PTR [rsp+0x328]
+ 804:	00 
+ 805:	0f 29 8c 24 98 03 00 	movaps XMMWORD PTR [rsp+0x398],xmm1
+ 80c:	00 
+ 80d:	0f 28 8c 24 18 03 00 	movaps xmm1,XMMWORD PTR [rsp+0x318]
+ 814:	00 
+ 815:	0f 29 8c 24 a8 03 00 	movaps XMMWORD PTR [rsp+0x3a8],xmm1
+ 81c:	00 
+ 81d:	0f 28 8c 24 08 03 00 	movaps xmm1,XMMWORD PTR [rsp+0x308]
+ 824:	00 
+ 825:	0f 29 8c 24 b8 03 00 	movaps XMMWORD PTR [rsp+0x3b8],xmm1
+ 82c:	00 
+ 82d:	0f 28 8c 24 f8 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x2f8]
+ 834:	00 
+ 835:	0f 29 8c 24 c8 03 00 	movaps XMMWORD PTR [rsp+0x3c8],xmm1
+ 83c:	00 
+ 83d:	0f 28 8c 24 e8 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x2e8]
+ 844:	00 
+ 845:	0f 29 8c 24 d8 03 00 	movaps XMMWORD PTR [rsp+0x3d8],xmm1
+ 84c:	00 
+ 84d:	0f 28 8c 24 d8 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x2d8]
+ 854:	00 
+ 855:	0f 29 8c 24 e8 03 00 	movaps XMMWORD PTR [rsp+0x3e8],xmm1
+ 85c:	00 
+ 85d:	0f 28 8c 24 c8 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x2c8]
+ 864:	00 
+ 865:	0f 29 8c 24 f8 03 00 	movaps XMMWORD PTR [rsp+0x3f8],xmm1
+ 86c:	00 
+ 86d:	0f 28 8c 24 b8 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x2b8]
+ 874:	00 
+ 875:	0f 29 8c 24 08 04 00 	movaps XMMWORD PTR [rsp+0x408],xmm1
+ 87c:	00 
+ 87d:	0f 28 8c 24 a8 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x2a8]
+ 884:	00 
+ 885:	0f 29 8c 24 18 04 00 	movaps XMMWORD PTR [rsp+0x418],xmm1
+ 88c:	00 
+ 88d:	0f 28 8c 24 98 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x298]
+ 894:	00 
+ 895:	0f 29 8c 24 28 04 00 	movaps XMMWORD PTR [rsp+0x428],xmm1
+ 89c:	00 
+ 89d:	0f 28 8c 24 88 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x288]
+ 8a4:	00 
+ 8a5:	0f 29 8c 24 38 04 00 	movaps XMMWORD PTR [rsp+0x438],xmm1
+ 8ac:	00 
+ 8ad:	0f 28 8c 24 78 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x278]
+ 8b4:	00 
+ 8b5:	0f 29 8c 24 48 04 00 	movaps XMMWORD PTR [rsp+0x448],xmm1
+ 8bc:	00 
+ 8bd:	0f 28 8c 24 68 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x268]
+ 8c4:	00 
+ 8c5:	0f 29 8c 24 58 04 00 	movaps XMMWORD PTR [rsp+0x458],xmm1
+ 8cc:	00 
+ 8cd:	0f 28 8c 24 58 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x258]
+ 8d4:	00 
+ 8d5:	0f 29 8c 24 68 04 00 	movaps XMMWORD PTR [rsp+0x468],xmm1
+ 8dc:	00 
+ 8dd:	0f 28 8c 24 48 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x248]
+ 8e4:	00 
+ 8e5:	0f 29 8c 24 78 04 00 	movaps XMMWORD PTR [rsp+0x478],xmm1
+ 8ec:	00 
+ 8ed:	0f 28 8c 24 38 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x238]
+ 8f4:	00 
+ 8f5:	0f 29 8c 24 88 04 00 	movaps XMMWORD PTR [rsp+0x488],xmm1
+ 8fc:	00 
+ 8fd:	0f 28 8c 24 28 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x228]
+ 904:	00 
+ 905:	0f 29 8c 24 98 04 00 	movaps XMMWORD PTR [rsp+0x498],xmm1
+ 90c:	00 
+ 90d:	0f 28 8c 24 18 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x218]
+ 914:	00 
+ 915:	0f 29 8c 24 a8 04 00 	movaps XMMWORD PTR [rsp+0x4a8],xmm1
+ 91c:	00 
+ 91d:	0f 28 8c 24 08 02 00 	movaps xmm1,XMMWORD PTR [rsp+0x208]
+ 924:	00 
+ 925:	0f 29 8c 24 b8 04 00 	movaps XMMWORD PTR [rsp+0x4b8],xmm1
+ 92c:	00 
+ 92d:	0f 28 8c 24 f8 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x1f8]
+ 934:	00 
+ 935:	0f 29 8c 24 c8 04 00 	movaps XMMWORD PTR [rsp+0x4c8],xmm1
+ 93c:	00 
+ 93d:	0f 28 8c 24 e8 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x1e8]
+ 944:	00 
+ 945:	0f 29 8c 24 d8 04 00 	movaps XMMWORD PTR [rsp+0x4d8],xmm1
+ 94c:	00 
+ 94d:	0f 28 8c 24 d8 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x1d8]
+ 954:	00 
+ 955:	0f 29 8c 24 e8 04 00 	movaps XMMWORD PTR [rsp+0x4e8],xmm1
+ 95c:	00 
+ 95d:	0f 28 8c 24 c8 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x1c8]
+ 964:	00 
+ 965:	0f 29 8c 24 f8 04 00 	movaps XMMWORD PTR [rsp+0x4f8],xmm1
+ 96c:	00 
+ 96d:	0f 28 8c 24 b8 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x1b8]
+ 974:	00 
+ 975:	0f 29 8c 24 08 05 00 	movaps XMMWORD PTR [rsp+0x508],xmm1
+ 97c:	00 
+ 97d:	0f 28 8c 24 a8 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x1a8]
+ 984:	00 
+ 985:	0f 29 8c 24 18 05 00 	movaps XMMWORD PTR [rsp+0x518],xmm1
+ 98c:	00 
+ 98d:	0f 28 8c 24 98 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x198]
+ 994:	00 
+ 995:	0f 29 8c 24 28 05 00 	movaps XMMWORD PTR [rsp+0x528],xmm1
+ 99c:	00 
+ 99d:	0f 28 8c 24 88 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x188]
+ 9a4:	00 
+ 9a5:	0f 29 8c 24 38 05 00 	movaps XMMWORD PTR [rsp+0x538],xmm1
+ 9ac:	00 
+ 9ad:	0f 28 8c 24 78 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x178]
+ 9b4:	00 
+ 9b5:	0f 29 8c 24 48 05 00 	movaps XMMWORD PTR [rsp+0x548],xmm1
+ 9bc:	00 
+ 9bd:	0f 28 8c 24 68 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x168]
+ 9c4:	00 
+ 9c5:	0f 29 8c 24 58 05 00 	movaps XMMWORD PTR [rsp+0x558],xmm1
+ 9cc:	00 
+ 9cd:	0f 28 8c 24 58 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x158]
+ 9d4:	00 
+ 9d5:	0f 29 8c 24 68 05 00 	movaps XMMWORD PTR [rsp+0x568],xmm1
+ 9dc:	00 
+ 9dd:	0f 28 8c 24 48 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x148]
+ 9e4:	00 
+ 9e5:	0f 29 8c 24 78 05 00 	movaps XMMWORD PTR [rsp+0x578],xmm1
+ 9ec:	00 
+ 9ed:	0f 28 8c 24 38 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x138]
+ 9f4:	00 
+ 9f5:	0f 29 8c 24 88 05 00 	movaps XMMWORD PTR [rsp+0x588],xmm1
+ 9fc:	00 
+ 9fd:	0f 28 8c 24 28 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x128]
+ a04:	00 
+ a05:	0f 29 8c 24 98 05 00 	movaps XMMWORD PTR [rsp+0x598],xmm1
+ a0c:	00 
+ a0d:	0f 28 8c 24 18 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x118]
+ a14:	00 
+ a15:	0f 29 8c 24 a8 05 00 	movaps XMMWORD PTR [rsp+0x5a8],xmm1
+ a1c:	00 
+ a1d:	0f 28 8c 24 08 01 00 	movaps xmm1,XMMWORD PTR [rsp+0x108]
+ a24:	00 
+ a25:	0f 29 8c 24 b8 05 00 	movaps XMMWORD PTR [rsp+0x5b8],xmm1
+ a2c:	00 
+ a2d:	0f 28 8c 24 f8 00 00 	movaps xmm1,XMMWORD PTR [rsp+0xf8]
+ a34:	00 
+ a35:	0f 29 8c 24 c8 05 00 	movaps XMMWORD PTR [rsp+0x5c8],xmm1
+ a3c:	00 
+ a3d:	0f 28 8c 24 e8 00 00 	movaps xmm1,XMMWORD PTR [rsp+0xe8]
+ a44:	00 
+ a45:	0f 29 8c 24 d8 05 00 	movaps XMMWORD PTR [rsp+0x5d8],xmm1
+ a4c:	00 
+ a4d:	0f 28 8c 24 d8 00 00 	movaps xmm1,XMMWORD PTR [rsp+0xd8]
+ a54:	00 
+ a55:	0f 29 8c 24 e8 05 00 	movaps XMMWORD PTR [rsp+0x5e8],xmm1
+ a5c:	00 
+ a5d:	0f 28 8c 24 c8 00 00 	movaps xmm1,XMMWORD PTR [rsp+0xc8]
+ a64:	00 
+ a65:	0f 29 8c 24 f8 05 00 	movaps XMMWORD PTR [rsp+0x5f8],xmm1
+ a6c:	00 
+ a6d:	0f 28 8c 24 b8 00 00 	movaps xmm1,XMMWORD PTR [rsp+0xb8]
+ a74:	00 
+ a75:	0f 29 8c 24 08 06 00 	movaps XMMWORD PTR [rsp+0x608],xmm1
+ a7c:	00 
+ a7d:	0f 28 8c 24 a8 00 00 	movaps xmm1,XMMWORD PTR [rsp+0xa8]
+ a84:	00 
+ a85:	0f 29 8c 24 18 06 00 	movaps XMMWORD PTR [rsp+0x618],xmm1
+ a8c:	00 
+ a8d:	0f 28 8c 24 98 00 00 	movaps xmm1,XMMWORD PTR [rsp+0x98]
+ a94:	00 
+ a95:	0f 29 8c 24 28 06 00 	movaps XMMWORD PTR [rsp+0x628],xmm1
+ a9c:	00 
+ a9d:	0f 28 8c 24 88 00 00 	movaps xmm1,XMMWORD PTR [rsp+0x88]
+ aa4:	00 
+ aa5:	0f 29 8c 24 38 06 00 	movaps XMMWORD PTR [rsp+0x638],xmm1
+ aac:	00 
+ aad:	0f 28 4c 24 78       	movaps xmm1,XMMWORD PTR [rsp+0x78]
+ ab2:	0f 29 8c 24 48 06 00 	movaps XMMWORD PTR [rsp+0x648],xmm1
+ ab9:	00 
+ aba:	0f 28 4c 24 68       	movaps xmm1,XMMWORD PTR [rsp+0x68]
+ abf:	0f 29 8c 24 58 06 00 	movaps XMMWORD PTR [rsp+0x658],xmm1
+ ac6:	00 
+ ac7:	0f 28 4c 24 58       	movaps xmm1,XMMWORD PTR [rsp+0x58]
+ acc:	0f 29 8c 24 68 06 00 	movaps XMMWORD PTR [rsp+0x668],xmm1
+ ad3:	00 
+ ad4:	44 0f 29 bc 24 78 06 	movaps XMMWORD PTR [rsp+0x678],xmm15
+ adb:	00 00 
+ add:	44 0f 29 b4 24 88 06 	movaps XMMWORD PTR [rsp+0x688],xmm14
+ ae4:	00 00 
+ ae6:	44 0f 29 ac 24 98 06 	movaps XMMWORD PTR [rsp+0x698],xmm13
+ aed:	00 00 
+ aef:	44 0f 29 a4 24 a8 06 	movaps XMMWORD PTR [rsp+0x6a8],xmm12
+ af6:	00 00 
+ af8:	44 0f 29 9c 24 b8 06 	movaps XMMWORD PTR [rsp+0x6b8],xmm11
+ aff:	00 00 
+ b01:	44 0f 29 94 24 c8 06 	movaps XMMWORD PTR [rsp+0x6c8],xmm10
+ b08:	00 00 
+ b0a:	44 0f 29 8c 24 d8 06 	movaps XMMWORD PTR [rsp+0x6d8],xmm9
+ b11:	00 00 
+ b13:	44 0f 29 84 24 e8 06 	movaps XMMWORD PTR [rsp+0x6e8],xmm8
+ b1a:	00 00 
+ b1c:	0f 29 bc 24 f8 06 00 	movaps XMMWORD PTR [rsp+0x6f8],xmm7
+ b23:	00 
+ b24:	0f 29 b4 24 08 07 00 	movaps XMMWORD PTR [rsp+0x708],xmm6
+ b2b:	00 
+ b2c:	0f 29 ac 24 18 07 00 	movaps XMMWORD PTR [rsp+0x718],xmm5
+ b33:	00 
+ b34:	0f 29 a4 24 28 07 00 	movaps XMMWORD PTR [rsp+0x728],xmm4
+ b3b:	00 
+ b3c:	0f 29 9c 24 38 07 00 	movaps XMMWORD PTR [rsp+0x738],xmm3
+ b43:	00 
+ b44:	0f 29 94 24 48 07 00 	movaps XMMWORD PTR [rsp+0x748],xmm2
+ b4b:	00 
+ b4c:	0f 29 84 24 58 07 00 	movaps XMMWORD PTR [rsp+0x758],xmm0
+ b53:	00 
+ b54:	48 8d 84 24 88 0f 00 	lea    rax,[rsp+0xf88]
+ b5b:	00 
+ b5c:	48 8d 94 24 68 03 00 	lea    rdx,[rsp+0x368]
+ b63:	00 
+ b64:	b9 80 00 00 00       	mov    ecx,0x80
+ b69:	48 89 c7             	mov    rdi,rax
+ b6c:	48 89 d6             	mov    rsi,rdx
+ b6f:	f3 48 a5             	rep movs QWORD PTR es:[rdi],QWORD PTR ds:[rsi]
+ b72:	48 8b 84 24 70 07 00 	mov    rax,QWORD PTR [rsp+0x770]
+ b79:	00 
+ b7a:	48 89 c7             	mov    rdi,rax
+ b7d:	48 8d 84 24 88 0f 00 	lea    rax,[rsp+0xf88]
+ b84:	00 
+ b85:	ba 80 00 00 00       	mov    edx,0x80
+ b8a:	48 89 c6             	mov    rsi,rax
+ b8d:	48 89 d1             	mov    rcx,rdx
+ b90:	f3 48 a5             	rep movs QWORD PTR es:[rdi],QWORD PTR ds:[rsi]
+}
+ b93:	90                   	nop
+ b94:	c9                   	leave  
+ b95:	c3                   	ret    
+
+0000000000000b96 <main>:
+
+int main(void)
+{
+ b96:	f3 0f 1e fa          	endbr64 
+ b9a:	55                   	push   rbp
+ b9b:	48 89 e5             	mov    rbp,rsp
+ b9e:	48 81 e4 00 fc ff ff 	and    rsp,0xfffffffffffffc00
+ ba5:	48 81 ec 00 10 00 00 	sub    rsp,0x1000
+ bac:	48 83 0c 24 00       	or     QWORD PTR [rsp],0x0
+ bb1:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+ bb8:	00 00 
+ bba:	48 89 84 24 f8 0f 00 	mov    QWORD PTR [rsp+0xff8],rax
+ bc1:	00 
+ bc2:	31 c0                	xor    eax,eax
+    v1024f x = { 1.0 };
+ bc4:	48 89 e2             	mov    rdx,rsp
+ bc7:	b8 00 00 00 00       	mov    eax,0x0
+ bcc:	b9 80 00 00 00       	mov    ecx,0x80
+ bd1:	48 89 d7             	mov    rdi,rdx
+ bd4:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+ bd7:	f3 0f 10 05 00 00 00 	movss  xmm0,DWORD PTR [rip+0x0]        # bdf <main+0x49>
+ bde:	00 
+ bdf:	f3 0f 11 04 24       	movss  DWORD PTR [rsp],xmm0
+    v1024f y = { 1.0 };
+ be4:	48 8d 94 24 00 04 00 	lea    rdx,[rsp+0x400]
+ beb:	00 
+ bec:	b8 00 00 00 00       	mov    eax,0x0
+ bf1:	b9 80 00 00 00       	mov    ecx,0x80
+ bf6:	48 89 d7             	mov    rdi,rdx
+ bf9:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+ bfc:	f3 0f 10 05 00 00 00 	movss  xmm0,DWORD PTR [rip+0x0]        # c04 <main+0x6e>
+ c03:	00 
+ c04:	f3 0f 11 84 24 00 04 	movss  DWORD PTR [rsp+0x400],xmm0
+ c0b:	00 00 
+    v1024f z;
+
+    addVectors(&x, &y, &z);
+ c0d:	48 8d 94 24 00 08 00 	lea    rdx,[rsp+0x800]
+ c14:	00 
+ c15:	48 8d 8c 24 00 04 00 	lea    rcx,[rsp+0x400]
+ c1c:	00 
+ c1d:	48 89 e0             	mov    rax,rsp
+ c20:	48 89 ce             	mov    rsi,rcx
+ c23:	48 89 c7             	mov    rdi,rax
+ c26:	e8 00 00 00 00       	call   c2b <main+0x95>
+
+    return 0;
+ c2b:	b8 00 00 00 00       	mov    eax,0x0
+}
+ c30:	48 8b b4 24 f8 0f 00 	mov    rsi,QWORD PTR [rsp+0xff8]
+ c37:	00 
+ c38:	64 48 33 34 25 28 00 	xor    rsi,QWORD PTR fs:0x28
+ c3f:	00 00 
+ c41:	74 05                	je     c48 <main+0xb2>
+ c43:	e8 00 00 00 00       	call   c48 <main+0xb2>
+ c48:	c9                   	leave  
+ c49:	c3                   	ret    
