@@ -1,0 +1,164 @@
+
+simd15_2.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16float>:
+#include <stdio.h>
+
+typedef float v16float __attribute__((vector_size(16)));
+
+void add16float(v16float x, v16float y, v16float * z)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+   c:	0f 29 4d e0          	movaps XMMWORD PTR [rbp-0x20],xmm1
+  10:	48 89 7d d8          	mov    QWORD PTR [rbp-0x28],rdi
+    *z = x + y;
+  14:	0f 28 45 f0          	movaps xmm0,XMMWORD PTR [rbp-0x10]
+  18:	0f 58 45 e0          	addps  xmm0,XMMWORD PTR [rbp-0x20]
+  1c:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  20:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+  23:	90                   	nop
+  24:	5d                   	pop    rbp
+  25:	c3                   	ret    
+
+0000000000000026 <add16double>:
+
+typedef double v16double __attribute__((vector_size(16)));
+
+void add16double(v16double x, v16double y, v16double * z)
+{
+  26:	f3 0f 1e fa          	endbr64 
+  2a:	55                   	push   rbp
+  2b:	48 89 e5             	mov    rbp,rsp
+  2e:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+  32:	0f 29 4d e0          	movaps XMMWORD PTR [rbp-0x20],xmm1
+  36:	48 89 7d d8          	mov    QWORD PTR [rbp-0x28],rdi
+    *z = x + y;
+  3a:	66 0f 28 45 f0       	movapd xmm0,XMMWORD PTR [rbp-0x10]
+  3f:	66 0f 58 45 e0       	addpd  xmm0,XMMWORD PTR [rbp-0x20]
+  44:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  48:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+}
+  4b:	90                   	nop
+  4c:	5d                   	pop    rbp
+  4d:	c3                   	ret    
+
+000000000000004e <main>:
+
+int main(void)
+{
+  4e:	f3 0f 1e fa          	endbr64 
+  52:	55                   	push   rbp
+  53:	48 89 e5             	mov    rbp,rsp
+  56:	48 83 ec 70          	sub    rsp,0x70
+  5a:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  61:	00 00 
+  63:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  67:	31 c0                	xor    eax,eax
+    {
+        v16float x = { 0, 1, 2, 3 };
+  69:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # 70 <main+0x22>
+  70:	0f 29 45 b0          	movaps XMMWORD PTR [rbp-0x50],xmm0
+        v16float y = { 0.1, 0.1, 0.1, 0.1 };
+  74:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # 7b <main+0x2d>
+  7b:	0f 29 45 c0          	movaps XMMWORD PTR [rbp-0x40],xmm0
+        v16float z;
+
+        add16float(x, y, &z);
+  7f:	48 8d 45 a0          	lea    rax,[rbp-0x60]
+  83:	0f 28 4d c0          	movaps xmm1,XMMWORD PTR [rbp-0x40]
+  87:	0f 28 45 b0          	movaps xmm0,XMMWORD PTR [rbp-0x50]
+  8b:	48 89 c7             	mov    rdi,rax
+  8e:	e8 00 00 00 00       	call   93 <main+0x45>
+
+        int i;
+
+        puts("vector of floats");
+  93:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 9a <main+0x4c>
+  9a:	e8 00 00 00 00       	call   9f <main+0x51>
+
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+  9f:	c7 45 98 00 00 00 00 	mov    DWORD PTR [rbp-0x68],0x0
+  a6:	eb 29                	jmp    d1 <main+0x83>
+            printf("%d %f\n", i, z[i]);
+  a8:	8b 45 98             	mov    eax,DWORD PTR [rbp-0x68]
+  ab:	48 98                	cdqe   
+  ad:	f3 0f 10 44 85 a0    	movss  xmm0,DWORD PTR [rbp+rax*4-0x60]
+  b3:	f3 0f 5a c0          	cvtss2sd xmm0,xmm0
+  b7:	8b 45 98             	mov    eax,DWORD PTR [rbp-0x68]
+  ba:	89 c6                	mov    esi,eax
+  bc:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # c3 <main+0x75>
+  c3:	b8 01 00 00 00       	mov    eax,0x1
+  c8:	e8 00 00 00 00       	call   cd <main+0x7f>
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+  cd:	83 45 98 01          	add    DWORD PTR [rbp-0x68],0x1
+  d1:	8b 45 98             	mov    eax,DWORD PTR [rbp-0x68]
+  d4:	83 f8 03             	cmp    eax,0x3
+  d7:	76 cf                	jbe    a8 <main+0x5a>
+        }
+    }
+
+    putchar('\n');
+  d9:	bf 0a 00 00 00       	mov    edi,0xa
+  de:	e8 00 00 00 00       	call   e3 <main+0x95>
+
+    {
+        v16double x = { 0, 1 };
+  e3:	66 0f 28 05 00 00 00 	movapd xmm0,XMMWORD PTR [rip+0x0]        # eb <main+0x9d>
+  ea:	00 
+  eb:	0f 29 45 d0          	movaps XMMWORD PTR [rbp-0x30],xmm0
+        v16double y = { 0.1, 0.1 };
+  ef:	66 0f 28 05 00 00 00 	movapd xmm0,XMMWORD PTR [rip+0x0]        # f7 <main+0xa9>
+  f6:	00 
+  f7:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+        v16double z;
+
+        add16double(x, y, &z);
+  fb:	48 8d 45 a0          	lea    rax,[rbp-0x60]
+  ff:	66 0f 28 4d e0       	movapd xmm1,XMMWORD PTR [rbp-0x20]
+ 104:	66 0f 28 45 d0       	movapd xmm0,XMMWORD PTR [rbp-0x30]
+ 109:	48 89 c7             	mov    rdi,rax
+ 10c:	e8 00 00 00 00       	call   111 <main+0xc3>
+
+        int i;
+
+        puts("vector of doubles");
+ 111:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 118 <main+0xca>
+ 118:	e8 00 00 00 00       	call   11d <main+0xcf>
+
+        for (i = 0; i < sizeof(v16double) / sizeof(double); i++) {
+ 11d:	c7 45 9c 00 00 00 00 	mov    DWORD PTR [rbp-0x64],0x0
+ 124:	eb 29                	jmp    14f <main+0x101>
+            printf("%d %f\n", i, z[i]);
+ 126:	8b 45 9c             	mov    eax,DWORD PTR [rbp-0x64]
+ 129:	48 98                	cdqe   
+ 12b:	48 8b 54 c5 a0       	mov    rdx,QWORD PTR [rbp+rax*8-0x60]
+ 130:	8b 45 9c             	mov    eax,DWORD PTR [rbp-0x64]
+ 133:	66 48 0f 6e c2       	movq   xmm0,rdx
+ 138:	89 c6                	mov    esi,eax
+ 13a:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 141 <main+0xf3>
+ 141:	b8 01 00 00 00       	mov    eax,0x1
+ 146:	e8 00 00 00 00       	call   14b <main+0xfd>
+        for (i = 0; i < sizeof(v16double) / sizeof(double); i++) {
+ 14b:	83 45 9c 01          	add    DWORD PTR [rbp-0x64],0x1
+ 14f:	8b 45 9c             	mov    eax,DWORD PTR [rbp-0x64]
+ 152:	83 f8 01             	cmp    eax,0x1
+ 155:	76 cf                	jbe    126 <main+0xd8>
+        }
+    }
+    return 0;
+ 157:	b8 00 00 00 00       	mov    eax,0x0
+}
+ 15c:	48 8b 4d f8          	mov    rcx,QWORD PTR [rbp-0x8]
+ 160:	64 48 33 0c 25 28 00 	xor    rcx,QWORD PTR fs:0x28
+ 167:	00 00 
+ 169:	74 05                	je     170 <main+0x122>
+ 16b:	e8 00 00 00 00       	call   170 <main+0x122>
+ 170:	c9                   	leave  
+ 171:	c3                   	ret    
