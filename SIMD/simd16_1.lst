@@ -1,0 +1,1645 @@
+
+simd16_1.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <addVectors>:
+typedef float v1024f __attribute__((vector_size(1024)));
+
+void addVectors(v1024f * x, v1024f * y, v1024f * z)
+{
+       0:	f3 0f 1e fa          	endbr64 
+       4:	55                   	push   rbp
+       5:	48 89 e5             	mov    rbp,rsp
+       8:	48 81 e4 00 fc ff ff 	and    rsp,0xfffffffffffffc00
+       f:	48 81 ec 00 10 00 00 	sub    rsp,0x1000
+      16:	48 83 0c 24 00       	or     QWORD PTR [rsp],0x0
+      1b:	48 81 ec 88 07 00 00 	sub    rsp,0x788
+      22:	48 89 bc 24 80 0b 00 	mov    QWORD PTR [rsp+0xb80],rdi
+      29:	00 
+      2a:	48 89 b4 24 78 0b 00 	mov    QWORD PTR [rsp+0xb78],rsi
+      31:	00 
+      32:	48 89 94 24 70 0b 00 	mov    QWORD PTR [rsp+0xb70],rdx
+      39:	00 
+    *z = *x + *y;
+      3a:	48 8b 94 24 80 0b 00 	mov    rdx,QWORD PTR [rsp+0xb80]
+      41:	00 
+      42:	48 8d 84 24 88 0b 00 	lea    rax,[rsp+0xb88]
+      49:	00 
+      4a:	48 89 d6             	mov    rsi,rdx
+      4d:	ba 80 00 00 00       	mov    edx,0x80
+      52:	48 89 c7             	mov    rdi,rax
+      55:	48 89 d1             	mov    rcx,rdx
+      58:	f3 48 a5             	rep movs QWORD PTR es:[rdi],QWORD PTR ds:[rsi]
+      5b:	48 8b 94 24 78 0b 00 	mov    rdx,QWORD PTR [rsp+0xb78]
+      62:	00 
+      63:	48 8d 84 24 88 0f 00 	lea    rax,[rsp+0xf88]
+      6a:	00 
+      6b:	48 89 d6             	mov    rsi,rdx
+      6e:	ba 80 00 00 00       	mov    edx,0x80
+      73:	48 89 c7             	mov    rdi,rax
+      76:	48 89 d1             	mov    rcx,rdx
+      79:	f3 48 a5             	rep movs QWORD PTR es:[rdi],QWORD PTR ds:[rsi]
+      7c:	d9 84 24 88 0b 00 00 	fld    DWORD PTR [rsp+0xb88]
+      83:	d9 84 24 88 0f 00 00 	fld    DWORD PTR [rsp+0xf88]
+      8a:	de c1                	faddp  st(1),st
+      8c:	d9 9c 24 64 07 00 00 	fstp   DWORD PTR [rsp+0x764]
+      93:	d9 84 24 8c 0b 00 00 	fld    DWORD PTR [rsp+0xb8c]
+      9a:	d9 84 24 8c 0f 00 00 	fld    DWORD PTR [rsp+0xf8c]
+      a1:	de c1                	faddp  st(1),st
+      a3:	d9 9c 24 60 07 00 00 	fstp   DWORD PTR [rsp+0x760]
+      aa:	d9 84 24 90 0b 00 00 	fld    DWORD PTR [rsp+0xb90]
+      b1:	d9 84 24 90 0f 00 00 	fld    DWORD PTR [rsp+0xf90]
+      b8:	de c1                	faddp  st(1),st
+      ba:	d9 9c 24 5c 07 00 00 	fstp   DWORD PTR [rsp+0x75c]
+      c1:	d9 84 24 94 0b 00 00 	fld    DWORD PTR [rsp+0xb94]
+      c8:	d9 84 24 94 0f 00 00 	fld    DWORD PTR [rsp+0xf94]
+      cf:	de c1                	faddp  st(1),st
+      d1:	d9 9c 24 58 07 00 00 	fstp   DWORD PTR [rsp+0x758]
+      d8:	d9 84 24 98 0b 00 00 	fld    DWORD PTR [rsp+0xb98]
+      df:	d9 84 24 98 0f 00 00 	fld    DWORD PTR [rsp+0xf98]
+      e6:	de c1                	faddp  st(1),st
+      e8:	d9 9c 24 54 07 00 00 	fstp   DWORD PTR [rsp+0x754]
+      ef:	d9 84 24 9c 0b 00 00 	fld    DWORD PTR [rsp+0xb9c]
+      f6:	d9 84 24 9c 0f 00 00 	fld    DWORD PTR [rsp+0xf9c]
+      fd:	de c1                	faddp  st(1),st
+      ff:	d9 9c 24 50 07 00 00 	fstp   DWORD PTR [rsp+0x750]
+     106:	d9 84 24 a0 0b 00 00 	fld    DWORD PTR [rsp+0xba0]
+     10d:	d9 84 24 a0 0f 00 00 	fld    DWORD PTR [rsp+0xfa0]
+     114:	de c1                	faddp  st(1),st
+     116:	d9 9c 24 4c 07 00 00 	fstp   DWORD PTR [rsp+0x74c]
+     11d:	d9 84 24 a4 0b 00 00 	fld    DWORD PTR [rsp+0xba4]
+     124:	d9 84 24 a4 0f 00 00 	fld    DWORD PTR [rsp+0xfa4]
+     12b:	de c1                	faddp  st(1),st
+     12d:	d9 9c 24 48 07 00 00 	fstp   DWORD PTR [rsp+0x748]
+     134:	d9 84 24 a8 0b 00 00 	fld    DWORD PTR [rsp+0xba8]
+     13b:	d9 84 24 a8 0f 00 00 	fld    DWORD PTR [rsp+0xfa8]
+     142:	de c1                	faddp  st(1),st
+     144:	d9 9c 24 44 07 00 00 	fstp   DWORD PTR [rsp+0x744]
+     14b:	d9 84 24 ac 0b 00 00 	fld    DWORD PTR [rsp+0xbac]
+     152:	d9 84 24 ac 0f 00 00 	fld    DWORD PTR [rsp+0xfac]
+     159:	de c1                	faddp  st(1),st
+     15b:	d9 9c 24 40 07 00 00 	fstp   DWORD PTR [rsp+0x740]
+     162:	d9 84 24 b0 0b 00 00 	fld    DWORD PTR [rsp+0xbb0]
+     169:	d9 84 24 b0 0f 00 00 	fld    DWORD PTR [rsp+0xfb0]
+     170:	de c1                	faddp  st(1),st
+     172:	d9 9c 24 3c 07 00 00 	fstp   DWORD PTR [rsp+0x73c]
+     179:	d9 84 24 b4 0b 00 00 	fld    DWORD PTR [rsp+0xbb4]
+     180:	d9 84 24 b4 0f 00 00 	fld    DWORD PTR [rsp+0xfb4]
+     187:	de c1                	faddp  st(1),st
+     189:	d9 9c 24 38 07 00 00 	fstp   DWORD PTR [rsp+0x738]
+     190:	d9 84 24 b8 0b 00 00 	fld    DWORD PTR [rsp+0xbb8]
+     197:	d9 84 24 b8 0f 00 00 	fld    DWORD PTR [rsp+0xfb8]
+     19e:	de c1                	faddp  st(1),st
+     1a0:	d9 9c 24 34 07 00 00 	fstp   DWORD PTR [rsp+0x734]
+     1a7:	d9 84 24 bc 0b 00 00 	fld    DWORD PTR [rsp+0xbbc]
+     1ae:	d9 84 24 bc 0f 00 00 	fld    DWORD PTR [rsp+0xfbc]
+     1b5:	de c1                	faddp  st(1),st
+     1b7:	d9 9c 24 30 07 00 00 	fstp   DWORD PTR [rsp+0x730]
+     1be:	d9 84 24 c0 0b 00 00 	fld    DWORD PTR [rsp+0xbc0]
+     1c5:	d9 84 24 c0 0f 00 00 	fld    DWORD PTR [rsp+0xfc0]
+     1cc:	de c1                	faddp  st(1),st
+     1ce:	d9 9c 24 2c 07 00 00 	fstp   DWORD PTR [rsp+0x72c]
+     1d5:	d9 84 24 c4 0b 00 00 	fld    DWORD PTR [rsp+0xbc4]
+     1dc:	d9 84 24 c4 0f 00 00 	fld    DWORD PTR [rsp+0xfc4]
+     1e3:	de c1                	faddp  st(1),st
+     1e5:	d9 9c 24 28 07 00 00 	fstp   DWORD PTR [rsp+0x728]
+     1ec:	d9 84 24 c8 0b 00 00 	fld    DWORD PTR [rsp+0xbc8]
+     1f3:	d9 84 24 c8 0f 00 00 	fld    DWORD PTR [rsp+0xfc8]
+     1fa:	de c1                	faddp  st(1),st
+     1fc:	d9 9c 24 24 07 00 00 	fstp   DWORD PTR [rsp+0x724]
+     203:	d9 84 24 cc 0b 00 00 	fld    DWORD PTR [rsp+0xbcc]
+     20a:	d9 84 24 cc 0f 00 00 	fld    DWORD PTR [rsp+0xfcc]
+     211:	de c1                	faddp  st(1),st
+     213:	d9 9c 24 20 07 00 00 	fstp   DWORD PTR [rsp+0x720]
+     21a:	d9 84 24 d0 0b 00 00 	fld    DWORD PTR [rsp+0xbd0]
+     221:	d9 84 24 d0 0f 00 00 	fld    DWORD PTR [rsp+0xfd0]
+     228:	de c1                	faddp  st(1),st
+     22a:	d9 9c 24 1c 07 00 00 	fstp   DWORD PTR [rsp+0x71c]
+     231:	d9 84 24 d4 0b 00 00 	fld    DWORD PTR [rsp+0xbd4]
+     238:	d9 84 24 d4 0f 00 00 	fld    DWORD PTR [rsp+0xfd4]
+     23f:	de c1                	faddp  st(1),st
+     241:	d9 9c 24 18 07 00 00 	fstp   DWORD PTR [rsp+0x718]
+     248:	d9 84 24 d8 0b 00 00 	fld    DWORD PTR [rsp+0xbd8]
+     24f:	d9 84 24 d8 0f 00 00 	fld    DWORD PTR [rsp+0xfd8]
+     256:	de c1                	faddp  st(1),st
+     258:	d9 9c 24 14 07 00 00 	fstp   DWORD PTR [rsp+0x714]
+     25f:	d9 84 24 dc 0b 00 00 	fld    DWORD PTR [rsp+0xbdc]
+     266:	d9 84 24 dc 0f 00 00 	fld    DWORD PTR [rsp+0xfdc]
+     26d:	de c1                	faddp  st(1),st
+     26f:	d9 9c 24 10 07 00 00 	fstp   DWORD PTR [rsp+0x710]
+     276:	d9 84 24 e0 0b 00 00 	fld    DWORD PTR [rsp+0xbe0]
+     27d:	d9 84 24 e0 0f 00 00 	fld    DWORD PTR [rsp+0xfe0]
+     284:	de c1                	faddp  st(1),st
+     286:	d9 9c 24 0c 07 00 00 	fstp   DWORD PTR [rsp+0x70c]
+     28d:	d9 84 24 e4 0b 00 00 	fld    DWORD PTR [rsp+0xbe4]
+     294:	d9 84 24 e4 0f 00 00 	fld    DWORD PTR [rsp+0xfe4]
+     29b:	de c1                	faddp  st(1),st
+     29d:	d9 9c 24 08 07 00 00 	fstp   DWORD PTR [rsp+0x708]
+     2a4:	d9 84 24 e8 0b 00 00 	fld    DWORD PTR [rsp+0xbe8]
+     2ab:	d9 84 24 e8 0f 00 00 	fld    DWORD PTR [rsp+0xfe8]
+     2b2:	de c1                	faddp  st(1),st
+     2b4:	d9 9c 24 04 07 00 00 	fstp   DWORD PTR [rsp+0x704]
+     2bb:	d9 84 24 ec 0b 00 00 	fld    DWORD PTR [rsp+0xbec]
+     2c2:	d9 84 24 ec 0f 00 00 	fld    DWORD PTR [rsp+0xfec]
+     2c9:	de c1                	faddp  st(1),st
+     2cb:	d9 9c 24 00 07 00 00 	fstp   DWORD PTR [rsp+0x700]
+     2d2:	d9 84 24 f0 0b 00 00 	fld    DWORD PTR [rsp+0xbf0]
+     2d9:	d9 84 24 f0 0f 00 00 	fld    DWORD PTR [rsp+0xff0]
+     2e0:	de c1                	faddp  st(1),st
+     2e2:	d9 9c 24 fc 06 00 00 	fstp   DWORD PTR [rsp+0x6fc]
+     2e9:	d9 84 24 f4 0b 00 00 	fld    DWORD PTR [rsp+0xbf4]
+     2f0:	d9 84 24 f4 0f 00 00 	fld    DWORD PTR [rsp+0xff4]
+     2f7:	de c1                	faddp  st(1),st
+     2f9:	d9 9c 24 f8 06 00 00 	fstp   DWORD PTR [rsp+0x6f8]
+     300:	d9 84 24 f8 0b 00 00 	fld    DWORD PTR [rsp+0xbf8]
+     307:	d9 84 24 f8 0f 00 00 	fld    DWORD PTR [rsp+0xff8]
+     30e:	de c1                	faddp  st(1),st
+     310:	d9 9c 24 f4 06 00 00 	fstp   DWORD PTR [rsp+0x6f4]
+     317:	d9 84 24 fc 0b 00 00 	fld    DWORD PTR [rsp+0xbfc]
+     31e:	d9 84 24 fc 0f 00 00 	fld    DWORD PTR [rsp+0xffc]
+     325:	de c1                	faddp  st(1),st
+     327:	d9 9c 24 f0 06 00 00 	fstp   DWORD PTR [rsp+0x6f0]
+     32e:	d9 84 24 00 0c 00 00 	fld    DWORD PTR [rsp+0xc00]
+     335:	d9 84 24 00 10 00 00 	fld    DWORD PTR [rsp+0x1000]
+     33c:	de c1                	faddp  st(1),st
+     33e:	d9 9c 24 ec 06 00 00 	fstp   DWORD PTR [rsp+0x6ec]
+     345:	d9 84 24 04 0c 00 00 	fld    DWORD PTR [rsp+0xc04]
+     34c:	d9 84 24 04 10 00 00 	fld    DWORD PTR [rsp+0x1004]
+     353:	de c1                	faddp  st(1),st
+     355:	d9 9c 24 e8 06 00 00 	fstp   DWORD PTR [rsp+0x6e8]
+     35c:	d9 84 24 08 0c 00 00 	fld    DWORD PTR [rsp+0xc08]
+     363:	d9 84 24 08 10 00 00 	fld    DWORD PTR [rsp+0x1008]
+     36a:	de c1                	faddp  st(1),st
+     36c:	d9 9c 24 e4 06 00 00 	fstp   DWORD PTR [rsp+0x6e4]
+     373:	d9 84 24 0c 0c 00 00 	fld    DWORD PTR [rsp+0xc0c]
+     37a:	d9 84 24 0c 10 00 00 	fld    DWORD PTR [rsp+0x100c]
+     381:	de c1                	faddp  st(1),st
+     383:	d9 9c 24 e0 06 00 00 	fstp   DWORD PTR [rsp+0x6e0]
+     38a:	d9 84 24 10 0c 00 00 	fld    DWORD PTR [rsp+0xc10]
+     391:	d9 84 24 10 10 00 00 	fld    DWORD PTR [rsp+0x1010]
+     398:	de c1                	faddp  st(1),st
+     39a:	d9 9c 24 dc 06 00 00 	fstp   DWORD PTR [rsp+0x6dc]
+     3a1:	d9 84 24 14 0c 00 00 	fld    DWORD PTR [rsp+0xc14]
+     3a8:	d9 84 24 14 10 00 00 	fld    DWORD PTR [rsp+0x1014]
+     3af:	de c1                	faddp  st(1),st
+     3b1:	d9 9c 24 d8 06 00 00 	fstp   DWORD PTR [rsp+0x6d8]
+     3b8:	d9 84 24 18 0c 00 00 	fld    DWORD PTR [rsp+0xc18]
+     3bf:	d9 84 24 18 10 00 00 	fld    DWORD PTR [rsp+0x1018]
+     3c6:	de c1                	faddp  st(1),st
+     3c8:	d9 9c 24 d4 06 00 00 	fstp   DWORD PTR [rsp+0x6d4]
+     3cf:	d9 84 24 1c 0c 00 00 	fld    DWORD PTR [rsp+0xc1c]
+     3d6:	d9 84 24 1c 10 00 00 	fld    DWORD PTR [rsp+0x101c]
+     3dd:	de c1                	faddp  st(1),st
+     3df:	d9 9c 24 d0 06 00 00 	fstp   DWORD PTR [rsp+0x6d0]
+     3e6:	d9 84 24 20 0c 00 00 	fld    DWORD PTR [rsp+0xc20]
+     3ed:	d9 84 24 20 10 00 00 	fld    DWORD PTR [rsp+0x1020]
+     3f4:	de c1                	faddp  st(1),st
+     3f6:	d9 9c 24 cc 06 00 00 	fstp   DWORD PTR [rsp+0x6cc]
+     3fd:	d9 84 24 24 0c 00 00 	fld    DWORD PTR [rsp+0xc24]
+     404:	d9 84 24 24 10 00 00 	fld    DWORD PTR [rsp+0x1024]
+     40b:	de c1                	faddp  st(1),st
+     40d:	d9 9c 24 c8 06 00 00 	fstp   DWORD PTR [rsp+0x6c8]
+     414:	d9 84 24 28 0c 00 00 	fld    DWORD PTR [rsp+0xc28]
+     41b:	d9 84 24 28 10 00 00 	fld    DWORD PTR [rsp+0x1028]
+     422:	de c1                	faddp  st(1),st
+     424:	d9 9c 24 c4 06 00 00 	fstp   DWORD PTR [rsp+0x6c4]
+     42b:	d9 84 24 2c 0c 00 00 	fld    DWORD PTR [rsp+0xc2c]
+     432:	d9 84 24 2c 10 00 00 	fld    DWORD PTR [rsp+0x102c]
+     439:	de c1                	faddp  st(1),st
+     43b:	d9 9c 24 c0 06 00 00 	fstp   DWORD PTR [rsp+0x6c0]
+     442:	d9 84 24 30 0c 00 00 	fld    DWORD PTR [rsp+0xc30]
+     449:	d9 84 24 30 10 00 00 	fld    DWORD PTR [rsp+0x1030]
+     450:	de c1                	faddp  st(1),st
+     452:	d9 9c 24 bc 06 00 00 	fstp   DWORD PTR [rsp+0x6bc]
+     459:	d9 84 24 34 0c 00 00 	fld    DWORD PTR [rsp+0xc34]
+     460:	d9 84 24 34 10 00 00 	fld    DWORD PTR [rsp+0x1034]
+     467:	de c1                	faddp  st(1),st
+     469:	d9 9c 24 b8 06 00 00 	fstp   DWORD PTR [rsp+0x6b8]
+     470:	d9 84 24 38 0c 00 00 	fld    DWORD PTR [rsp+0xc38]
+     477:	d9 84 24 38 10 00 00 	fld    DWORD PTR [rsp+0x1038]
+     47e:	de c1                	faddp  st(1),st
+     480:	d9 9c 24 b4 06 00 00 	fstp   DWORD PTR [rsp+0x6b4]
+     487:	d9 84 24 3c 0c 00 00 	fld    DWORD PTR [rsp+0xc3c]
+     48e:	d9 84 24 3c 10 00 00 	fld    DWORD PTR [rsp+0x103c]
+     495:	de c1                	faddp  st(1),st
+     497:	d9 9c 24 b0 06 00 00 	fstp   DWORD PTR [rsp+0x6b0]
+     49e:	d9 84 24 40 0c 00 00 	fld    DWORD PTR [rsp+0xc40]
+     4a5:	d9 84 24 40 10 00 00 	fld    DWORD PTR [rsp+0x1040]
+     4ac:	de c1                	faddp  st(1),st
+     4ae:	d9 9c 24 ac 06 00 00 	fstp   DWORD PTR [rsp+0x6ac]
+     4b5:	d9 84 24 44 0c 00 00 	fld    DWORD PTR [rsp+0xc44]
+     4bc:	d9 84 24 44 10 00 00 	fld    DWORD PTR [rsp+0x1044]
+     4c3:	de c1                	faddp  st(1),st
+     4c5:	d9 9c 24 a8 06 00 00 	fstp   DWORD PTR [rsp+0x6a8]
+     4cc:	d9 84 24 48 0c 00 00 	fld    DWORD PTR [rsp+0xc48]
+     4d3:	d9 84 24 48 10 00 00 	fld    DWORD PTR [rsp+0x1048]
+     4da:	de c1                	faddp  st(1),st
+     4dc:	d9 9c 24 a4 06 00 00 	fstp   DWORD PTR [rsp+0x6a4]
+     4e3:	d9 84 24 4c 0c 00 00 	fld    DWORD PTR [rsp+0xc4c]
+     4ea:	d9 84 24 4c 10 00 00 	fld    DWORD PTR [rsp+0x104c]
+     4f1:	de c1                	faddp  st(1),st
+     4f3:	d9 9c 24 a0 06 00 00 	fstp   DWORD PTR [rsp+0x6a0]
+     4fa:	d9 84 24 50 0c 00 00 	fld    DWORD PTR [rsp+0xc50]
+     501:	d9 84 24 50 10 00 00 	fld    DWORD PTR [rsp+0x1050]
+     508:	de c1                	faddp  st(1),st
+     50a:	d9 9c 24 9c 06 00 00 	fstp   DWORD PTR [rsp+0x69c]
+     511:	d9 84 24 54 0c 00 00 	fld    DWORD PTR [rsp+0xc54]
+     518:	d9 84 24 54 10 00 00 	fld    DWORD PTR [rsp+0x1054]
+     51f:	de c1                	faddp  st(1),st
+     521:	d9 9c 24 98 06 00 00 	fstp   DWORD PTR [rsp+0x698]
+     528:	d9 84 24 58 0c 00 00 	fld    DWORD PTR [rsp+0xc58]
+     52f:	d9 84 24 58 10 00 00 	fld    DWORD PTR [rsp+0x1058]
+     536:	de c1                	faddp  st(1),st
+     538:	d9 9c 24 94 06 00 00 	fstp   DWORD PTR [rsp+0x694]
+     53f:	d9 84 24 5c 0c 00 00 	fld    DWORD PTR [rsp+0xc5c]
+     546:	d9 84 24 5c 10 00 00 	fld    DWORD PTR [rsp+0x105c]
+     54d:	de c1                	faddp  st(1),st
+     54f:	d9 9c 24 90 06 00 00 	fstp   DWORD PTR [rsp+0x690]
+     556:	d9 84 24 60 0c 00 00 	fld    DWORD PTR [rsp+0xc60]
+     55d:	d9 84 24 60 10 00 00 	fld    DWORD PTR [rsp+0x1060]
+     564:	de c1                	faddp  st(1),st
+     566:	d9 9c 24 8c 06 00 00 	fstp   DWORD PTR [rsp+0x68c]
+     56d:	d9 84 24 64 0c 00 00 	fld    DWORD PTR [rsp+0xc64]
+     574:	d9 84 24 64 10 00 00 	fld    DWORD PTR [rsp+0x1064]
+     57b:	de c1                	faddp  st(1),st
+     57d:	d9 9c 24 88 06 00 00 	fstp   DWORD PTR [rsp+0x688]
+     584:	d9 84 24 68 0c 00 00 	fld    DWORD PTR [rsp+0xc68]
+     58b:	d9 84 24 68 10 00 00 	fld    DWORD PTR [rsp+0x1068]
+     592:	de c1                	faddp  st(1),st
+     594:	d9 9c 24 84 06 00 00 	fstp   DWORD PTR [rsp+0x684]
+     59b:	d9 84 24 6c 0c 00 00 	fld    DWORD PTR [rsp+0xc6c]
+     5a2:	d9 84 24 6c 10 00 00 	fld    DWORD PTR [rsp+0x106c]
+     5a9:	de c1                	faddp  st(1),st
+     5ab:	d9 9c 24 80 06 00 00 	fstp   DWORD PTR [rsp+0x680]
+     5b2:	d9 84 24 70 0c 00 00 	fld    DWORD PTR [rsp+0xc70]
+     5b9:	d9 84 24 70 10 00 00 	fld    DWORD PTR [rsp+0x1070]
+     5c0:	de c1                	faddp  st(1),st
+     5c2:	d9 9c 24 7c 06 00 00 	fstp   DWORD PTR [rsp+0x67c]
+     5c9:	d9 84 24 74 0c 00 00 	fld    DWORD PTR [rsp+0xc74]
+     5d0:	d9 84 24 74 10 00 00 	fld    DWORD PTR [rsp+0x1074]
+     5d7:	de c1                	faddp  st(1),st
+     5d9:	d9 9c 24 78 06 00 00 	fstp   DWORD PTR [rsp+0x678]
+     5e0:	d9 84 24 78 0c 00 00 	fld    DWORD PTR [rsp+0xc78]
+     5e7:	d9 84 24 78 10 00 00 	fld    DWORD PTR [rsp+0x1078]
+     5ee:	de c1                	faddp  st(1),st
+     5f0:	d9 9c 24 74 06 00 00 	fstp   DWORD PTR [rsp+0x674]
+     5f7:	d9 84 24 7c 0c 00 00 	fld    DWORD PTR [rsp+0xc7c]
+     5fe:	d9 84 24 7c 10 00 00 	fld    DWORD PTR [rsp+0x107c]
+     605:	de c1                	faddp  st(1),st
+     607:	d9 9c 24 70 06 00 00 	fstp   DWORD PTR [rsp+0x670]
+     60e:	d9 84 24 80 0c 00 00 	fld    DWORD PTR [rsp+0xc80]
+     615:	d9 84 24 80 10 00 00 	fld    DWORD PTR [rsp+0x1080]
+     61c:	de c1                	faddp  st(1),st
+     61e:	d9 9c 24 6c 06 00 00 	fstp   DWORD PTR [rsp+0x66c]
+     625:	d9 84 24 84 0c 00 00 	fld    DWORD PTR [rsp+0xc84]
+     62c:	d9 84 24 84 10 00 00 	fld    DWORD PTR [rsp+0x1084]
+     633:	de c1                	faddp  st(1),st
+     635:	d9 9c 24 68 06 00 00 	fstp   DWORD PTR [rsp+0x668]
+     63c:	d9 84 24 88 0c 00 00 	fld    DWORD PTR [rsp+0xc88]
+     643:	d9 84 24 88 10 00 00 	fld    DWORD PTR [rsp+0x1088]
+     64a:	de c1                	faddp  st(1),st
+     64c:	d9 9c 24 64 06 00 00 	fstp   DWORD PTR [rsp+0x664]
+     653:	d9 84 24 8c 0c 00 00 	fld    DWORD PTR [rsp+0xc8c]
+     65a:	d9 84 24 8c 10 00 00 	fld    DWORD PTR [rsp+0x108c]
+     661:	de c1                	faddp  st(1),st
+     663:	d9 9c 24 60 06 00 00 	fstp   DWORD PTR [rsp+0x660]
+     66a:	d9 84 24 90 0c 00 00 	fld    DWORD PTR [rsp+0xc90]
+     671:	d9 84 24 90 10 00 00 	fld    DWORD PTR [rsp+0x1090]
+     678:	de c1                	faddp  st(1),st
+     67a:	d9 9c 24 5c 06 00 00 	fstp   DWORD PTR [rsp+0x65c]
+     681:	d9 84 24 94 0c 00 00 	fld    DWORD PTR [rsp+0xc94]
+     688:	d9 84 24 94 10 00 00 	fld    DWORD PTR [rsp+0x1094]
+     68f:	de c1                	faddp  st(1),st
+     691:	d9 9c 24 58 06 00 00 	fstp   DWORD PTR [rsp+0x658]
+     698:	d9 84 24 98 0c 00 00 	fld    DWORD PTR [rsp+0xc98]
+     69f:	d9 84 24 98 10 00 00 	fld    DWORD PTR [rsp+0x1098]
+     6a6:	de c1                	faddp  st(1),st
+     6a8:	d9 9c 24 54 06 00 00 	fstp   DWORD PTR [rsp+0x654]
+     6af:	d9 84 24 9c 0c 00 00 	fld    DWORD PTR [rsp+0xc9c]
+     6b6:	d9 84 24 9c 10 00 00 	fld    DWORD PTR [rsp+0x109c]
+     6bd:	de c1                	faddp  st(1),st
+     6bf:	d9 9c 24 50 06 00 00 	fstp   DWORD PTR [rsp+0x650]
+     6c6:	d9 84 24 a0 0c 00 00 	fld    DWORD PTR [rsp+0xca0]
+     6cd:	d9 84 24 a0 10 00 00 	fld    DWORD PTR [rsp+0x10a0]
+     6d4:	de c1                	faddp  st(1),st
+     6d6:	d9 9c 24 4c 06 00 00 	fstp   DWORD PTR [rsp+0x64c]
+     6dd:	d9 84 24 a4 0c 00 00 	fld    DWORD PTR [rsp+0xca4]
+     6e4:	d9 84 24 a4 10 00 00 	fld    DWORD PTR [rsp+0x10a4]
+     6eb:	de c1                	faddp  st(1),st
+     6ed:	d9 9c 24 48 06 00 00 	fstp   DWORD PTR [rsp+0x648]
+     6f4:	d9 84 24 a8 0c 00 00 	fld    DWORD PTR [rsp+0xca8]
+     6fb:	d9 84 24 a8 10 00 00 	fld    DWORD PTR [rsp+0x10a8]
+     702:	de c1                	faddp  st(1),st
+     704:	d9 9c 24 44 06 00 00 	fstp   DWORD PTR [rsp+0x644]
+     70b:	d9 84 24 ac 0c 00 00 	fld    DWORD PTR [rsp+0xcac]
+     712:	d9 84 24 ac 10 00 00 	fld    DWORD PTR [rsp+0x10ac]
+     719:	de c1                	faddp  st(1),st
+     71b:	d9 9c 24 40 06 00 00 	fstp   DWORD PTR [rsp+0x640]
+     722:	d9 84 24 b0 0c 00 00 	fld    DWORD PTR [rsp+0xcb0]
+     729:	d9 84 24 b0 10 00 00 	fld    DWORD PTR [rsp+0x10b0]
+     730:	de c1                	faddp  st(1),st
+     732:	d9 9c 24 3c 06 00 00 	fstp   DWORD PTR [rsp+0x63c]
+     739:	d9 84 24 b4 0c 00 00 	fld    DWORD PTR [rsp+0xcb4]
+     740:	d9 84 24 b4 10 00 00 	fld    DWORD PTR [rsp+0x10b4]
+     747:	de c1                	faddp  st(1),st
+     749:	d9 9c 24 38 06 00 00 	fstp   DWORD PTR [rsp+0x638]
+     750:	d9 84 24 b8 0c 00 00 	fld    DWORD PTR [rsp+0xcb8]
+     757:	d9 84 24 b8 10 00 00 	fld    DWORD PTR [rsp+0x10b8]
+     75e:	de c1                	faddp  st(1),st
+     760:	d9 9c 24 34 06 00 00 	fstp   DWORD PTR [rsp+0x634]
+     767:	d9 84 24 bc 0c 00 00 	fld    DWORD PTR [rsp+0xcbc]
+     76e:	d9 84 24 bc 10 00 00 	fld    DWORD PTR [rsp+0x10bc]
+     775:	de c1                	faddp  st(1),st
+     777:	d9 9c 24 30 06 00 00 	fstp   DWORD PTR [rsp+0x630]
+     77e:	d9 84 24 c0 0c 00 00 	fld    DWORD PTR [rsp+0xcc0]
+     785:	d9 84 24 c0 10 00 00 	fld    DWORD PTR [rsp+0x10c0]
+     78c:	de c1                	faddp  st(1),st
+     78e:	d9 9c 24 2c 06 00 00 	fstp   DWORD PTR [rsp+0x62c]
+     795:	d9 84 24 c4 0c 00 00 	fld    DWORD PTR [rsp+0xcc4]
+     79c:	d9 84 24 c4 10 00 00 	fld    DWORD PTR [rsp+0x10c4]
+     7a3:	de c1                	faddp  st(1),st
+     7a5:	d9 9c 24 28 06 00 00 	fstp   DWORD PTR [rsp+0x628]
+     7ac:	d9 84 24 c8 0c 00 00 	fld    DWORD PTR [rsp+0xcc8]
+     7b3:	d9 84 24 c8 10 00 00 	fld    DWORD PTR [rsp+0x10c8]
+     7ba:	de c1                	faddp  st(1),st
+     7bc:	d9 9c 24 24 06 00 00 	fstp   DWORD PTR [rsp+0x624]
+     7c3:	d9 84 24 cc 0c 00 00 	fld    DWORD PTR [rsp+0xccc]
+     7ca:	d9 84 24 cc 10 00 00 	fld    DWORD PTR [rsp+0x10cc]
+     7d1:	de c1                	faddp  st(1),st
+     7d3:	d9 9c 24 20 06 00 00 	fstp   DWORD PTR [rsp+0x620]
+     7da:	d9 84 24 d0 0c 00 00 	fld    DWORD PTR [rsp+0xcd0]
+     7e1:	d9 84 24 d0 10 00 00 	fld    DWORD PTR [rsp+0x10d0]
+     7e8:	de c1                	faddp  st(1),st
+     7ea:	d9 9c 24 1c 06 00 00 	fstp   DWORD PTR [rsp+0x61c]
+     7f1:	d9 84 24 d4 0c 00 00 	fld    DWORD PTR [rsp+0xcd4]
+     7f8:	d9 84 24 d4 10 00 00 	fld    DWORD PTR [rsp+0x10d4]
+     7ff:	de c1                	faddp  st(1),st
+     801:	d9 9c 24 18 06 00 00 	fstp   DWORD PTR [rsp+0x618]
+     808:	d9 84 24 d8 0c 00 00 	fld    DWORD PTR [rsp+0xcd8]
+     80f:	d9 84 24 d8 10 00 00 	fld    DWORD PTR [rsp+0x10d8]
+     816:	de c1                	faddp  st(1),st
+     818:	d9 9c 24 14 06 00 00 	fstp   DWORD PTR [rsp+0x614]
+     81f:	d9 84 24 dc 0c 00 00 	fld    DWORD PTR [rsp+0xcdc]
+     826:	d9 84 24 dc 10 00 00 	fld    DWORD PTR [rsp+0x10dc]
+     82d:	de c1                	faddp  st(1),st
+     82f:	d9 9c 24 10 06 00 00 	fstp   DWORD PTR [rsp+0x610]
+     836:	d9 84 24 e0 0c 00 00 	fld    DWORD PTR [rsp+0xce0]
+     83d:	d9 84 24 e0 10 00 00 	fld    DWORD PTR [rsp+0x10e0]
+     844:	de c1                	faddp  st(1),st
+     846:	d9 9c 24 0c 06 00 00 	fstp   DWORD PTR [rsp+0x60c]
+     84d:	d9 84 24 e4 0c 00 00 	fld    DWORD PTR [rsp+0xce4]
+     854:	d9 84 24 e4 10 00 00 	fld    DWORD PTR [rsp+0x10e4]
+     85b:	de c1                	faddp  st(1),st
+     85d:	d9 9c 24 08 06 00 00 	fstp   DWORD PTR [rsp+0x608]
+     864:	d9 84 24 e8 0c 00 00 	fld    DWORD PTR [rsp+0xce8]
+     86b:	d9 84 24 e8 10 00 00 	fld    DWORD PTR [rsp+0x10e8]
+     872:	de c1                	faddp  st(1),st
+     874:	d9 9c 24 04 06 00 00 	fstp   DWORD PTR [rsp+0x604]
+     87b:	d9 84 24 ec 0c 00 00 	fld    DWORD PTR [rsp+0xcec]
+     882:	d9 84 24 ec 10 00 00 	fld    DWORD PTR [rsp+0x10ec]
+     889:	de c1                	faddp  st(1),st
+     88b:	d9 9c 24 00 06 00 00 	fstp   DWORD PTR [rsp+0x600]
+     892:	d9 84 24 f0 0c 00 00 	fld    DWORD PTR [rsp+0xcf0]
+     899:	d9 84 24 f0 10 00 00 	fld    DWORD PTR [rsp+0x10f0]
+     8a0:	de c1                	faddp  st(1),st
+     8a2:	d9 9c 24 fc 05 00 00 	fstp   DWORD PTR [rsp+0x5fc]
+     8a9:	d9 84 24 f4 0c 00 00 	fld    DWORD PTR [rsp+0xcf4]
+     8b0:	d9 84 24 f4 10 00 00 	fld    DWORD PTR [rsp+0x10f4]
+     8b7:	de c1                	faddp  st(1),st
+     8b9:	d9 9c 24 f8 05 00 00 	fstp   DWORD PTR [rsp+0x5f8]
+     8c0:	d9 84 24 f8 0c 00 00 	fld    DWORD PTR [rsp+0xcf8]
+     8c7:	d9 84 24 f8 10 00 00 	fld    DWORD PTR [rsp+0x10f8]
+     8ce:	de c1                	faddp  st(1),st
+     8d0:	d9 9c 24 f4 05 00 00 	fstp   DWORD PTR [rsp+0x5f4]
+     8d7:	d9 84 24 fc 0c 00 00 	fld    DWORD PTR [rsp+0xcfc]
+     8de:	d9 84 24 fc 10 00 00 	fld    DWORD PTR [rsp+0x10fc]
+     8e5:	de c1                	faddp  st(1),st
+     8e7:	d9 9c 24 f0 05 00 00 	fstp   DWORD PTR [rsp+0x5f0]
+     8ee:	d9 84 24 00 0d 00 00 	fld    DWORD PTR [rsp+0xd00]
+     8f5:	d9 84 24 00 11 00 00 	fld    DWORD PTR [rsp+0x1100]
+     8fc:	de c1                	faddp  st(1),st
+     8fe:	d9 9c 24 ec 05 00 00 	fstp   DWORD PTR [rsp+0x5ec]
+     905:	d9 84 24 04 0d 00 00 	fld    DWORD PTR [rsp+0xd04]
+     90c:	d9 84 24 04 11 00 00 	fld    DWORD PTR [rsp+0x1104]
+     913:	de c1                	faddp  st(1),st
+     915:	d9 9c 24 e8 05 00 00 	fstp   DWORD PTR [rsp+0x5e8]
+     91c:	d9 84 24 08 0d 00 00 	fld    DWORD PTR [rsp+0xd08]
+     923:	d9 84 24 08 11 00 00 	fld    DWORD PTR [rsp+0x1108]
+     92a:	de c1                	faddp  st(1),st
+     92c:	d9 9c 24 e4 05 00 00 	fstp   DWORD PTR [rsp+0x5e4]
+     933:	d9 84 24 0c 0d 00 00 	fld    DWORD PTR [rsp+0xd0c]
+     93a:	d9 84 24 0c 11 00 00 	fld    DWORD PTR [rsp+0x110c]
+     941:	de c1                	faddp  st(1),st
+     943:	d9 9c 24 e0 05 00 00 	fstp   DWORD PTR [rsp+0x5e0]
+     94a:	d9 84 24 10 0d 00 00 	fld    DWORD PTR [rsp+0xd10]
+     951:	d9 84 24 10 11 00 00 	fld    DWORD PTR [rsp+0x1110]
+     958:	de c1                	faddp  st(1),st
+     95a:	d9 9c 24 dc 05 00 00 	fstp   DWORD PTR [rsp+0x5dc]
+     961:	d9 84 24 14 0d 00 00 	fld    DWORD PTR [rsp+0xd14]
+     968:	d9 84 24 14 11 00 00 	fld    DWORD PTR [rsp+0x1114]
+     96f:	de c1                	faddp  st(1),st
+     971:	d9 9c 24 d8 05 00 00 	fstp   DWORD PTR [rsp+0x5d8]
+     978:	d9 84 24 18 0d 00 00 	fld    DWORD PTR [rsp+0xd18]
+     97f:	d9 84 24 18 11 00 00 	fld    DWORD PTR [rsp+0x1118]
+     986:	de c1                	faddp  st(1),st
+     988:	d9 9c 24 d4 05 00 00 	fstp   DWORD PTR [rsp+0x5d4]
+     98f:	d9 84 24 1c 0d 00 00 	fld    DWORD PTR [rsp+0xd1c]
+     996:	d9 84 24 1c 11 00 00 	fld    DWORD PTR [rsp+0x111c]
+     99d:	de c1                	faddp  st(1),st
+     99f:	d9 9c 24 d0 05 00 00 	fstp   DWORD PTR [rsp+0x5d0]
+     9a6:	d9 84 24 20 0d 00 00 	fld    DWORD PTR [rsp+0xd20]
+     9ad:	d9 84 24 20 11 00 00 	fld    DWORD PTR [rsp+0x1120]
+     9b4:	de c1                	faddp  st(1),st
+     9b6:	d9 9c 24 cc 05 00 00 	fstp   DWORD PTR [rsp+0x5cc]
+     9bd:	d9 84 24 24 0d 00 00 	fld    DWORD PTR [rsp+0xd24]
+     9c4:	d9 84 24 24 11 00 00 	fld    DWORD PTR [rsp+0x1124]
+     9cb:	de c1                	faddp  st(1),st
+     9cd:	d9 9c 24 c8 05 00 00 	fstp   DWORD PTR [rsp+0x5c8]
+     9d4:	d9 84 24 28 0d 00 00 	fld    DWORD PTR [rsp+0xd28]
+     9db:	d9 84 24 28 11 00 00 	fld    DWORD PTR [rsp+0x1128]
+     9e2:	de c1                	faddp  st(1),st
+     9e4:	d9 9c 24 c4 05 00 00 	fstp   DWORD PTR [rsp+0x5c4]
+     9eb:	d9 84 24 2c 0d 00 00 	fld    DWORD PTR [rsp+0xd2c]
+     9f2:	d9 84 24 2c 11 00 00 	fld    DWORD PTR [rsp+0x112c]
+     9f9:	de c1                	faddp  st(1),st
+     9fb:	d9 9c 24 c0 05 00 00 	fstp   DWORD PTR [rsp+0x5c0]
+     a02:	d9 84 24 30 0d 00 00 	fld    DWORD PTR [rsp+0xd30]
+     a09:	d9 84 24 30 11 00 00 	fld    DWORD PTR [rsp+0x1130]
+     a10:	de c1                	faddp  st(1),st
+     a12:	d9 9c 24 bc 05 00 00 	fstp   DWORD PTR [rsp+0x5bc]
+     a19:	d9 84 24 34 0d 00 00 	fld    DWORD PTR [rsp+0xd34]
+     a20:	d9 84 24 34 11 00 00 	fld    DWORD PTR [rsp+0x1134]
+     a27:	de c1                	faddp  st(1),st
+     a29:	d9 9c 24 b8 05 00 00 	fstp   DWORD PTR [rsp+0x5b8]
+     a30:	d9 84 24 38 0d 00 00 	fld    DWORD PTR [rsp+0xd38]
+     a37:	d9 84 24 38 11 00 00 	fld    DWORD PTR [rsp+0x1138]
+     a3e:	de c1                	faddp  st(1),st
+     a40:	d9 9c 24 b4 05 00 00 	fstp   DWORD PTR [rsp+0x5b4]
+     a47:	d9 84 24 3c 0d 00 00 	fld    DWORD PTR [rsp+0xd3c]
+     a4e:	d9 84 24 3c 11 00 00 	fld    DWORD PTR [rsp+0x113c]
+     a55:	de c1                	faddp  st(1),st
+     a57:	d9 9c 24 b0 05 00 00 	fstp   DWORD PTR [rsp+0x5b0]
+     a5e:	d9 84 24 40 0d 00 00 	fld    DWORD PTR [rsp+0xd40]
+     a65:	d9 84 24 40 11 00 00 	fld    DWORD PTR [rsp+0x1140]
+     a6c:	de c1                	faddp  st(1),st
+     a6e:	d9 9c 24 ac 05 00 00 	fstp   DWORD PTR [rsp+0x5ac]
+     a75:	d9 84 24 44 0d 00 00 	fld    DWORD PTR [rsp+0xd44]
+     a7c:	d9 84 24 44 11 00 00 	fld    DWORD PTR [rsp+0x1144]
+     a83:	de c1                	faddp  st(1),st
+     a85:	d9 9c 24 a8 05 00 00 	fstp   DWORD PTR [rsp+0x5a8]
+     a8c:	d9 84 24 48 0d 00 00 	fld    DWORD PTR [rsp+0xd48]
+     a93:	d9 84 24 48 11 00 00 	fld    DWORD PTR [rsp+0x1148]
+     a9a:	de c1                	faddp  st(1),st
+     a9c:	d9 9c 24 a4 05 00 00 	fstp   DWORD PTR [rsp+0x5a4]
+     aa3:	d9 84 24 4c 0d 00 00 	fld    DWORD PTR [rsp+0xd4c]
+     aaa:	d9 84 24 4c 11 00 00 	fld    DWORD PTR [rsp+0x114c]
+     ab1:	de c1                	faddp  st(1),st
+     ab3:	d9 9c 24 a0 05 00 00 	fstp   DWORD PTR [rsp+0x5a0]
+     aba:	d9 84 24 50 0d 00 00 	fld    DWORD PTR [rsp+0xd50]
+     ac1:	d9 84 24 50 11 00 00 	fld    DWORD PTR [rsp+0x1150]
+     ac8:	de c1                	faddp  st(1),st
+     aca:	d9 9c 24 9c 05 00 00 	fstp   DWORD PTR [rsp+0x59c]
+     ad1:	d9 84 24 54 0d 00 00 	fld    DWORD PTR [rsp+0xd54]
+     ad8:	d9 84 24 54 11 00 00 	fld    DWORD PTR [rsp+0x1154]
+     adf:	de c1                	faddp  st(1),st
+     ae1:	d9 9c 24 98 05 00 00 	fstp   DWORD PTR [rsp+0x598]
+     ae8:	d9 84 24 58 0d 00 00 	fld    DWORD PTR [rsp+0xd58]
+     aef:	d9 84 24 58 11 00 00 	fld    DWORD PTR [rsp+0x1158]
+     af6:	de c1                	faddp  st(1),st
+     af8:	d9 9c 24 94 05 00 00 	fstp   DWORD PTR [rsp+0x594]
+     aff:	d9 84 24 5c 0d 00 00 	fld    DWORD PTR [rsp+0xd5c]
+     b06:	d9 84 24 5c 11 00 00 	fld    DWORD PTR [rsp+0x115c]
+     b0d:	de c1                	faddp  st(1),st
+     b0f:	d9 9c 24 90 05 00 00 	fstp   DWORD PTR [rsp+0x590]
+     b16:	d9 84 24 60 0d 00 00 	fld    DWORD PTR [rsp+0xd60]
+     b1d:	d9 84 24 60 11 00 00 	fld    DWORD PTR [rsp+0x1160]
+     b24:	de c1                	faddp  st(1),st
+     b26:	d9 9c 24 8c 05 00 00 	fstp   DWORD PTR [rsp+0x58c]
+     b2d:	d9 84 24 64 0d 00 00 	fld    DWORD PTR [rsp+0xd64]
+     b34:	d9 84 24 64 11 00 00 	fld    DWORD PTR [rsp+0x1164]
+     b3b:	de c1                	faddp  st(1),st
+     b3d:	d9 9c 24 88 05 00 00 	fstp   DWORD PTR [rsp+0x588]
+     b44:	d9 84 24 68 0d 00 00 	fld    DWORD PTR [rsp+0xd68]
+     b4b:	d9 84 24 68 11 00 00 	fld    DWORD PTR [rsp+0x1168]
+     b52:	de c1                	faddp  st(1),st
+     b54:	d9 9c 24 84 05 00 00 	fstp   DWORD PTR [rsp+0x584]
+     b5b:	d9 84 24 6c 0d 00 00 	fld    DWORD PTR [rsp+0xd6c]
+     b62:	d9 84 24 6c 11 00 00 	fld    DWORD PTR [rsp+0x116c]
+     b69:	de c1                	faddp  st(1),st
+     b6b:	d9 9c 24 80 05 00 00 	fstp   DWORD PTR [rsp+0x580]
+     b72:	d9 84 24 70 0d 00 00 	fld    DWORD PTR [rsp+0xd70]
+     b79:	d9 84 24 70 11 00 00 	fld    DWORD PTR [rsp+0x1170]
+     b80:	de c1                	faddp  st(1),st
+     b82:	d9 9c 24 7c 05 00 00 	fstp   DWORD PTR [rsp+0x57c]
+     b89:	d9 84 24 74 0d 00 00 	fld    DWORD PTR [rsp+0xd74]
+     b90:	d9 84 24 74 11 00 00 	fld    DWORD PTR [rsp+0x1174]
+     b97:	de c1                	faddp  st(1),st
+     b99:	d9 9c 24 78 05 00 00 	fstp   DWORD PTR [rsp+0x578]
+     ba0:	d9 84 24 78 0d 00 00 	fld    DWORD PTR [rsp+0xd78]
+     ba7:	d9 84 24 78 11 00 00 	fld    DWORD PTR [rsp+0x1178]
+     bae:	de c1                	faddp  st(1),st
+     bb0:	d9 9c 24 74 05 00 00 	fstp   DWORD PTR [rsp+0x574]
+     bb7:	d9 84 24 7c 0d 00 00 	fld    DWORD PTR [rsp+0xd7c]
+     bbe:	d9 84 24 7c 11 00 00 	fld    DWORD PTR [rsp+0x117c]
+     bc5:	de c1                	faddp  st(1),st
+     bc7:	d9 9c 24 70 05 00 00 	fstp   DWORD PTR [rsp+0x570]
+     bce:	d9 84 24 80 0d 00 00 	fld    DWORD PTR [rsp+0xd80]
+     bd5:	d9 84 24 80 11 00 00 	fld    DWORD PTR [rsp+0x1180]
+     bdc:	de c1                	faddp  st(1),st
+     bde:	d9 9c 24 6c 05 00 00 	fstp   DWORD PTR [rsp+0x56c]
+     be5:	d9 84 24 84 0d 00 00 	fld    DWORD PTR [rsp+0xd84]
+     bec:	d9 84 24 84 11 00 00 	fld    DWORD PTR [rsp+0x1184]
+     bf3:	de c1                	faddp  st(1),st
+     bf5:	d9 9c 24 68 05 00 00 	fstp   DWORD PTR [rsp+0x568]
+     bfc:	d9 84 24 88 0d 00 00 	fld    DWORD PTR [rsp+0xd88]
+     c03:	d9 84 24 88 11 00 00 	fld    DWORD PTR [rsp+0x1188]
+     c0a:	de c1                	faddp  st(1),st
+     c0c:	d9 9c 24 64 05 00 00 	fstp   DWORD PTR [rsp+0x564]
+     c13:	d9 84 24 8c 0d 00 00 	fld    DWORD PTR [rsp+0xd8c]
+     c1a:	d9 84 24 8c 11 00 00 	fld    DWORD PTR [rsp+0x118c]
+     c21:	de c1                	faddp  st(1),st
+     c23:	d9 9c 24 60 05 00 00 	fstp   DWORD PTR [rsp+0x560]
+     c2a:	d9 84 24 90 0d 00 00 	fld    DWORD PTR [rsp+0xd90]
+     c31:	d9 84 24 90 11 00 00 	fld    DWORD PTR [rsp+0x1190]
+     c38:	de c1                	faddp  st(1),st
+     c3a:	d9 9c 24 5c 05 00 00 	fstp   DWORD PTR [rsp+0x55c]
+     c41:	d9 84 24 94 0d 00 00 	fld    DWORD PTR [rsp+0xd94]
+     c48:	d9 84 24 94 11 00 00 	fld    DWORD PTR [rsp+0x1194]
+     c4f:	de c1                	faddp  st(1),st
+     c51:	d9 9c 24 58 05 00 00 	fstp   DWORD PTR [rsp+0x558]
+     c58:	d9 84 24 98 0d 00 00 	fld    DWORD PTR [rsp+0xd98]
+     c5f:	d9 84 24 98 11 00 00 	fld    DWORD PTR [rsp+0x1198]
+     c66:	de c1                	faddp  st(1),st
+     c68:	d9 9c 24 54 05 00 00 	fstp   DWORD PTR [rsp+0x554]
+     c6f:	d9 84 24 9c 0d 00 00 	fld    DWORD PTR [rsp+0xd9c]
+     c76:	d9 84 24 9c 11 00 00 	fld    DWORD PTR [rsp+0x119c]
+     c7d:	de c1                	faddp  st(1),st
+     c7f:	d9 9c 24 50 05 00 00 	fstp   DWORD PTR [rsp+0x550]
+     c86:	d9 84 24 a0 0d 00 00 	fld    DWORD PTR [rsp+0xda0]
+     c8d:	d9 84 24 a0 11 00 00 	fld    DWORD PTR [rsp+0x11a0]
+     c94:	de c1                	faddp  st(1),st
+     c96:	d9 9c 24 4c 05 00 00 	fstp   DWORD PTR [rsp+0x54c]
+     c9d:	d9 84 24 a4 0d 00 00 	fld    DWORD PTR [rsp+0xda4]
+     ca4:	d9 84 24 a4 11 00 00 	fld    DWORD PTR [rsp+0x11a4]
+     cab:	de c1                	faddp  st(1),st
+     cad:	d9 9c 24 48 05 00 00 	fstp   DWORD PTR [rsp+0x548]
+     cb4:	d9 84 24 a8 0d 00 00 	fld    DWORD PTR [rsp+0xda8]
+     cbb:	d9 84 24 a8 11 00 00 	fld    DWORD PTR [rsp+0x11a8]
+     cc2:	de c1                	faddp  st(1),st
+     cc4:	d9 9c 24 44 05 00 00 	fstp   DWORD PTR [rsp+0x544]
+     ccb:	d9 84 24 ac 0d 00 00 	fld    DWORD PTR [rsp+0xdac]
+     cd2:	d9 84 24 ac 11 00 00 	fld    DWORD PTR [rsp+0x11ac]
+     cd9:	de c1                	faddp  st(1),st
+     cdb:	d9 9c 24 40 05 00 00 	fstp   DWORD PTR [rsp+0x540]
+     ce2:	d9 84 24 b0 0d 00 00 	fld    DWORD PTR [rsp+0xdb0]
+     ce9:	d9 84 24 b0 11 00 00 	fld    DWORD PTR [rsp+0x11b0]
+     cf0:	de c1                	faddp  st(1),st
+     cf2:	d9 9c 24 3c 05 00 00 	fstp   DWORD PTR [rsp+0x53c]
+     cf9:	d9 84 24 b4 0d 00 00 	fld    DWORD PTR [rsp+0xdb4]
+     d00:	d9 84 24 b4 11 00 00 	fld    DWORD PTR [rsp+0x11b4]
+     d07:	de c1                	faddp  st(1),st
+     d09:	d9 9c 24 38 05 00 00 	fstp   DWORD PTR [rsp+0x538]
+     d10:	d9 84 24 b8 0d 00 00 	fld    DWORD PTR [rsp+0xdb8]
+     d17:	d9 84 24 b8 11 00 00 	fld    DWORD PTR [rsp+0x11b8]
+     d1e:	de c1                	faddp  st(1),st
+     d20:	d9 9c 24 34 05 00 00 	fstp   DWORD PTR [rsp+0x534]
+     d27:	d9 84 24 bc 0d 00 00 	fld    DWORD PTR [rsp+0xdbc]
+     d2e:	d9 84 24 bc 11 00 00 	fld    DWORD PTR [rsp+0x11bc]
+     d35:	de c1                	faddp  st(1),st
+     d37:	d9 9c 24 30 05 00 00 	fstp   DWORD PTR [rsp+0x530]
+     d3e:	d9 84 24 c0 0d 00 00 	fld    DWORD PTR [rsp+0xdc0]
+     d45:	d9 84 24 c0 11 00 00 	fld    DWORD PTR [rsp+0x11c0]
+     d4c:	de c1                	faddp  st(1),st
+     d4e:	d9 9c 24 2c 05 00 00 	fstp   DWORD PTR [rsp+0x52c]
+     d55:	d9 84 24 c4 0d 00 00 	fld    DWORD PTR [rsp+0xdc4]
+     d5c:	d9 84 24 c4 11 00 00 	fld    DWORD PTR [rsp+0x11c4]
+     d63:	de c1                	faddp  st(1),st
+     d65:	d9 9c 24 28 05 00 00 	fstp   DWORD PTR [rsp+0x528]
+     d6c:	d9 84 24 c8 0d 00 00 	fld    DWORD PTR [rsp+0xdc8]
+     d73:	d9 84 24 c8 11 00 00 	fld    DWORD PTR [rsp+0x11c8]
+     d7a:	de c1                	faddp  st(1),st
+     d7c:	d9 9c 24 24 05 00 00 	fstp   DWORD PTR [rsp+0x524]
+     d83:	d9 84 24 cc 0d 00 00 	fld    DWORD PTR [rsp+0xdcc]
+     d8a:	d9 84 24 cc 11 00 00 	fld    DWORD PTR [rsp+0x11cc]
+     d91:	de c1                	faddp  st(1),st
+     d93:	d9 9c 24 20 05 00 00 	fstp   DWORD PTR [rsp+0x520]
+     d9a:	d9 84 24 d0 0d 00 00 	fld    DWORD PTR [rsp+0xdd0]
+     da1:	d9 84 24 d0 11 00 00 	fld    DWORD PTR [rsp+0x11d0]
+     da8:	de c1                	faddp  st(1),st
+     daa:	d9 9c 24 1c 05 00 00 	fstp   DWORD PTR [rsp+0x51c]
+     db1:	d9 84 24 d4 0d 00 00 	fld    DWORD PTR [rsp+0xdd4]
+     db8:	d9 84 24 d4 11 00 00 	fld    DWORD PTR [rsp+0x11d4]
+     dbf:	de c1                	faddp  st(1),st
+     dc1:	d9 9c 24 18 05 00 00 	fstp   DWORD PTR [rsp+0x518]
+     dc8:	d9 84 24 d8 0d 00 00 	fld    DWORD PTR [rsp+0xdd8]
+     dcf:	d9 84 24 d8 11 00 00 	fld    DWORD PTR [rsp+0x11d8]
+     dd6:	de c1                	faddp  st(1),st
+     dd8:	d9 9c 24 14 05 00 00 	fstp   DWORD PTR [rsp+0x514]
+     ddf:	d9 84 24 dc 0d 00 00 	fld    DWORD PTR [rsp+0xddc]
+     de6:	d9 84 24 dc 11 00 00 	fld    DWORD PTR [rsp+0x11dc]
+     ded:	de c1                	faddp  st(1),st
+     def:	d9 9c 24 10 05 00 00 	fstp   DWORD PTR [rsp+0x510]
+     df6:	d9 84 24 e0 0d 00 00 	fld    DWORD PTR [rsp+0xde0]
+     dfd:	d9 84 24 e0 11 00 00 	fld    DWORD PTR [rsp+0x11e0]
+     e04:	de c1                	faddp  st(1),st
+     e06:	d9 9c 24 0c 05 00 00 	fstp   DWORD PTR [rsp+0x50c]
+     e0d:	d9 84 24 e4 0d 00 00 	fld    DWORD PTR [rsp+0xde4]
+     e14:	d9 84 24 e4 11 00 00 	fld    DWORD PTR [rsp+0x11e4]
+     e1b:	de c1                	faddp  st(1),st
+     e1d:	d9 9c 24 08 05 00 00 	fstp   DWORD PTR [rsp+0x508]
+     e24:	d9 84 24 e8 0d 00 00 	fld    DWORD PTR [rsp+0xde8]
+     e2b:	d9 84 24 e8 11 00 00 	fld    DWORD PTR [rsp+0x11e8]
+     e32:	de c1                	faddp  st(1),st
+     e34:	d9 9c 24 04 05 00 00 	fstp   DWORD PTR [rsp+0x504]
+     e3b:	d9 84 24 ec 0d 00 00 	fld    DWORD PTR [rsp+0xdec]
+     e42:	d9 84 24 ec 11 00 00 	fld    DWORD PTR [rsp+0x11ec]
+     e49:	de c1                	faddp  st(1),st
+     e4b:	d9 9c 24 00 05 00 00 	fstp   DWORD PTR [rsp+0x500]
+     e52:	d9 84 24 f0 0d 00 00 	fld    DWORD PTR [rsp+0xdf0]
+     e59:	d9 84 24 f0 11 00 00 	fld    DWORD PTR [rsp+0x11f0]
+     e60:	de c1                	faddp  st(1),st
+     e62:	d9 9c 24 fc 04 00 00 	fstp   DWORD PTR [rsp+0x4fc]
+     e69:	d9 84 24 f4 0d 00 00 	fld    DWORD PTR [rsp+0xdf4]
+     e70:	d9 84 24 f4 11 00 00 	fld    DWORD PTR [rsp+0x11f4]
+     e77:	de c1                	faddp  st(1),st
+     e79:	d9 9c 24 f8 04 00 00 	fstp   DWORD PTR [rsp+0x4f8]
+     e80:	d9 84 24 f8 0d 00 00 	fld    DWORD PTR [rsp+0xdf8]
+     e87:	d9 84 24 f8 11 00 00 	fld    DWORD PTR [rsp+0x11f8]
+     e8e:	de c1                	faddp  st(1),st
+     e90:	d9 9c 24 f4 04 00 00 	fstp   DWORD PTR [rsp+0x4f4]
+     e97:	d9 84 24 fc 0d 00 00 	fld    DWORD PTR [rsp+0xdfc]
+     e9e:	d9 84 24 fc 11 00 00 	fld    DWORD PTR [rsp+0x11fc]
+     ea5:	de c1                	faddp  st(1),st
+     ea7:	d9 9c 24 f0 04 00 00 	fstp   DWORD PTR [rsp+0x4f0]
+     eae:	d9 84 24 00 0e 00 00 	fld    DWORD PTR [rsp+0xe00]
+     eb5:	d9 84 24 00 12 00 00 	fld    DWORD PTR [rsp+0x1200]
+     ebc:	de c1                	faddp  st(1),st
+     ebe:	d9 9c 24 ec 04 00 00 	fstp   DWORD PTR [rsp+0x4ec]
+     ec5:	d9 84 24 04 0e 00 00 	fld    DWORD PTR [rsp+0xe04]
+     ecc:	d9 84 24 04 12 00 00 	fld    DWORD PTR [rsp+0x1204]
+     ed3:	de c1                	faddp  st(1),st
+     ed5:	d9 9c 24 e8 04 00 00 	fstp   DWORD PTR [rsp+0x4e8]
+     edc:	d9 84 24 08 0e 00 00 	fld    DWORD PTR [rsp+0xe08]
+     ee3:	d9 84 24 08 12 00 00 	fld    DWORD PTR [rsp+0x1208]
+     eea:	de c1                	faddp  st(1),st
+     eec:	d9 9c 24 e4 04 00 00 	fstp   DWORD PTR [rsp+0x4e4]
+     ef3:	d9 84 24 0c 0e 00 00 	fld    DWORD PTR [rsp+0xe0c]
+     efa:	d9 84 24 0c 12 00 00 	fld    DWORD PTR [rsp+0x120c]
+     f01:	de c1                	faddp  st(1),st
+     f03:	d9 9c 24 e0 04 00 00 	fstp   DWORD PTR [rsp+0x4e0]
+     f0a:	d9 84 24 10 0e 00 00 	fld    DWORD PTR [rsp+0xe10]
+     f11:	d9 84 24 10 12 00 00 	fld    DWORD PTR [rsp+0x1210]
+     f18:	de c1                	faddp  st(1),st
+     f1a:	d9 9c 24 dc 04 00 00 	fstp   DWORD PTR [rsp+0x4dc]
+     f21:	d9 84 24 14 0e 00 00 	fld    DWORD PTR [rsp+0xe14]
+     f28:	d9 84 24 14 12 00 00 	fld    DWORD PTR [rsp+0x1214]
+     f2f:	de c1                	faddp  st(1),st
+     f31:	d9 9c 24 d8 04 00 00 	fstp   DWORD PTR [rsp+0x4d8]
+     f38:	d9 84 24 18 0e 00 00 	fld    DWORD PTR [rsp+0xe18]
+     f3f:	d9 84 24 18 12 00 00 	fld    DWORD PTR [rsp+0x1218]
+     f46:	de c1                	faddp  st(1),st
+     f48:	d9 9c 24 d4 04 00 00 	fstp   DWORD PTR [rsp+0x4d4]
+     f4f:	d9 84 24 1c 0e 00 00 	fld    DWORD PTR [rsp+0xe1c]
+     f56:	d9 84 24 1c 12 00 00 	fld    DWORD PTR [rsp+0x121c]
+     f5d:	de c1                	faddp  st(1),st
+     f5f:	d9 9c 24 d0 04 00 00 	fstp   DWORD PTR [rsp+0x4d0]
+     f66:	d9 84 24 20 0e 00 00 	fld    DWORD PTR [rsp+0xe20]
+     f6d:	d9 84 24 20 12 00 00 	fld    DWORD PTR [rsp+0x1220]
+     f74:	de c1                	faddp  st(1),st
+     f76:	d9 9c 24 cc 04 00 00 	fstp   DWORD PTR [rsp+0x4cc]
+     f7d:	d9 84 24 24 0e 00 00 	fld    DWORD PTR [rsp+0xe24]
+     f84:	d9 84 24 24 12 00 00 	fld    DWORD PTR [rsp+0x1224]
+     f8b:	de c1                	faddp  st(1),st
+     f8d:	d9 9c 24 c8 04 00 00 	fstp   DWORD PTR [rsp+0x4c8]
+     f94:	d9 84 24 28 0e 00 00 	fld    DWORD PTR [rsp+0xe28]
+     f9b:	d9 84 24 28 12 00 00 	fld    DWORD PTR [rsp+0x1228]
+     fa2:	de c1                	faddp  st(1),st
+     fa4:	d9 9c 24 c4 04 00 00 	fstp   DWORD PTR [rsp+0x4c4]
+     fab:	d9 84 24 2c 0e 00 00 	fld    DWORD PTR [rsp+0xe2c]
+     fb2:	d9 84 24 2c 12 00 00 	fld    DWORD PTR [rsp+0x122c]
+     fb9:	de c1                	faddp  st(1),st
+     fbb:	d9 9c 24 c0 04 00 00 	fstp   DWORD PTR [rsp+0x4c0]
+     fc2:	d9 84 24 30 0e 00 00 	fld    DWORD PTR [rsp+0xe30]
+     fc9:	d9 84 24 30 12 00 00 	fld    DWORD PTR [rsp+0x1230]
+     fd0:	de c1                	faddp  st(1),st
+     fd2:	d9 9c 24 bc 04 00 00 	fstp   DWORD PTR [rsp+0x4bc]
+     fd9:	d9 84 24 34 0e 00 00 	fld    DWORD PTR [rsp+0xe34]
+     fe0:	d9 84 24 34 12 00 00 	fld    DWORD PTR [rsp+0x1234]
+     fe7:	de c1                	faddp  st(1),st
+     fe9:	d9 9c 24 b8 04 00 00 	fstp   DWORD PTR [rsp+0x4b8]
+     ff0:	d9 84 24 38 0e 00 00 	fld    DWORD PTR [rsp+0xe38]
+     ff7:	d9 84 24 38 12 00 00 	fld    DWORD PTR [rsp+0x1238]
+     ffe:	de c1                	faddp  st(1),st
+    1000:	d9 9c 24 b4 04 00 00 	fstp   DWORD PTR [rsp+0x4b4]
+    1007:	d9 84 24 3c 0e 00 00 	fld    DWORD PTR [rsp+0xe3c]
+    100e:	d9 84 24 3c 12 00 00 	fld    DWORD PTR [rsp+0x123c]
+    1015:	de c1                	faddp  st(1),st
+    1017:	d9 9c 24 b0 04 00 00 	fstp   DWORD PTR [rsp+0x4b0]
+    101e:	d9 84 24 40 0e 00 00 	fld    DWORD PTR [rsp+0xe40]
+    1025:	d9 84 24 40 12 00 00 	fld    DWORD PTR [rsp+0x1240]
+    102c:	de c1                	faddp  st(1),st
+    102e:	d9 9c 24 ac 04 00 00 	fstp   DWORD PTR [rsp+0x4ac]
+    1035:	d9 84 24 44 0e 00 00 	fld    DWORD PTR [rsp+0xe44]
+    103c:	d9 84 24 44 12 00 00 	fld    DWORD PTR [rsp+0x1244]
+    1043:	de c1                	faddp  st(1),st
+    1045:	d9 9c 24 a8 04 00 00 	fstp   DWORD PTR [rsp+0x4a8]
+    104c:	d9 84 24 48 0e 00 00 	fld    DWORD PTR [rsp+0xe48]
+    1053:	d9 84 24 48 12 00 00 	fld    DWORD PTR [rsp+0x1248]
+    105a:	de c1                	faddp  st(1),st
+    105c:	d9 9c 24 a4 04 00 00 	fstp   DWORD PTR [rsp+0x4a4]
+    1063:	d9 84 24 4c 0e 00 00 	fld    DWORD PTR [rsp+0xe4c]
+    106a:	d9 84 24 4c 12 00 00 	fld    DWORD PTR [rsp+0x124c]
+    1071:	de c1                	faddp  st(1),st
+    1073:	d9 9c 24 a0 04 00 00 	fstp   DWORD PTR [rsp+0x4a0]
+    107a:	d9 84 24 50 0e 00 00 	fld    DWORD PTR [rsp+0xe50]
+    1081:	d9 84 24 50 12 00 00 	fld    DWORD PTR [rsp+0x1250]
+    1088:	de c1                	faddp  st(1),st
+    108a:	d9 9c 24 9c 04 00 00 	fstp   DWORD PTR [rsp+0x49c]
+    1091:	d9 84 24 54 0e 00 00 	fld    DWORD PTR [rsp+0xe54]
+    1098:	d9 84 24 54 12 00 00 	fld    DWORD PTR [rsp+0x1254]
+    109f:	de c1                	faddp  st(1),st
+    10a1:	d9 9c 24 98 04 00 00 	fstp   DWORD PTR [rsp+0x498]
+    10a8:	d9 84 24 58 0e 00 00 	fld    DWORD PTR [rsp+0xe58]
+    10af:	d9 84 24 58 12 00 00 	fld    DWORD PTR [rsp+0x1258]
+    10b6:	de c1                	faddp  st(1),st
+    10b8:	d9 9c 24 94 04 00 00 	fstp   DWORD PTR [rsp+0x494]
+    10bf:	d9 84 24 5c 0e 00 00 	fld    DWORD PTR [rsp+0xe5c]
+    10c6:	d9 84 24 5c 12 00 00 	fld    DWORD PTR [rsp+0x125c]
+    10cd:	de c1                	faddp  st(1),st
+    10cf:	d9 9c 24 90 04 00 00 	fstp   DWORD PTR [rsp+0x490]
+    10d6:	d9 84 24 60 0e 00 00 	fld    DWORD PTR [rsp+0xe60]
+    10dd:	d9 84 24 60 12 00 00 	fld    DWORD PTR [rsp+0x1260]
+    10e4:	de c1                	faddp  st(1),st
+    10e6:	d9 9c 24 8c 04 00 00 	fstp   DWORD PTR [rsp+0x48c]
+    10ed:	d9 84 24 64 0e 00 00 	fld    DWORD PTR [rsp+0xe64]
+    10f4:	d9 84 24 64 12 00 00 	fld    DWORD PTR [rsp+0x1264]
+    10fb:	de c1                	faddp  st(1),st
+    10fd:	d9 9c 24 88 04 00 00 	fstp   DWORD PTR [rsp+0x488]
+    1104:	d9 84 24 68 0e 00 00 	fld    DWORD PTR [rsp+0xe68]
+    110b:	d9 84 24 68 12 00 00 	fld    DWORD PTR [rsp+0x1268]
+    1112:	de c1                	faddp  st(1),st
+    1114:	d9 9c 24 84 04 00 00 	fstp   DWORD PTR [rsp+0x484]
+    111b:	d9 84 24 6c 0e 00 00 	fld    DWORD PTR [rsp+0xe6c]
+    1122:	d9 84 24 6c 12 00 00 	fld    DWORD PTR [rsp+0x126c]
+    1129:	de c1                	faddp  st(1),st
+    112b:	d9 9c 24 80 04 00 00 	fstp   DWORD PTR [rsp+0x480]
+    1132:	d9 84 24 70 0e 00 00 	fld    DWORD PTR [rsp+0xe70]
+    1139:	d9 84 24 70 12 00 00 	fld    DWORD PTR [rsp+0x1270]
+    1140:	de c1                	faddp  st(1),st
+    1142:	d9 9c 24 7c 04 00 00 	fstp   DWORD PTR [rsp+0x47c]
+    1149:	d9 84 24 74 0e 00 00 	fld    DWORD PTR [rsp+0xe74]
+    1150:	d9 84 24 74 12 00 00 	fld    DWORD PTR [rsp+0x1274]
+    1157:	de c1                	faddp  st(1),st
+    1159:	d9 9c 24 78 04 00 00 	fstp   DWORD PTR [rsp+0x478]
+    1160:	d9 84 24 78 0e 00 00 	fld    DWORD PTR [rsp+0xe78]
+    1167:	d9 84 24 78 12 00 00 	fld    DWORD PTR [rsp+0x1278]
+    116e:	de c1                	faddp  st(1),st
+    1170:	d9 9c 24 74 04 00 00 	fstp   DWORD PTR [rsp+0x474]
+    1177:	d9 84 24 7c 0e 00 00 	fld    DWORD PTR [rsp+0xe7c]
+    117e:	d9 84 24 7c 12 00 00 	fld    DWORD PTR [rsp+0x127c]
+    1185:	de c1                	faddp  st(1),st
+    1187:	d9 9c 24 70 04 00 00 	fstp   DWORD PTR [rsp+0x470]
+    118e:	d9 84 24 80 0e 00 00 	fld    DWORD PTR [rsp+0xe80]
+    1195:	d9 84 24 80 12 00 00 	fld    DWORD PTR [rsp+0x1280]
+    119c:	de c1                	faddp  st(1),st
+    119e:	d9 9c 24 6c 04 00 00 	fstp   DWORD PTR [rsp+0x46c]
+    11a5:	d9 84 24 84 0e 00 00 	fld    DWORD PTR [rsp+0xe84]
+    11ac:	d9 84 24 84 12 00 00 	fld    DWORD PTR [rsp+0x1284]
+    11b3:	de c1                	faddp  st(1),st
+    11b5:	d9 9c 24 68 04 00 00 	fstp   DWORD PTR [rsp+0x468]
+    11bc:	d9 84 24 88 0e 00 00 	fld    DWORD PTR [rsp+0xe88]
+    11c3:	d9 84 24 88 12 00 00 	fld    DWORD PTR [rsp+0x1288]
+    11ca:	de c1                	faddp  st(1),st
+    11cc:	d9 9c 24 64 04 00 00 	fstp   DWORD PTR [rsp+0x464]
+    11d3:	d9 84 24 8c 0e 00 00 	fld    DWORD PTR [rsp+0xe8c]
+    11da:	d9 84 24 8c 12 00 00 	fld    DWORD PTR [rsp+0x128c]
+    11e1:	de c1                	faddp  st(1),st
+    11e3:	d9 9c 24 60 04 00 00 	fstp   DWORD PTR [rsp+0x460]
+    11ea:	d9 84 24 90 0e 00 00 	fld    DWORD PTR [rsp+0xe90]
+    11f1:	d9 84 24 90 12 00 00 	fld    DWORD PTR [rsp+0x1290]
+    11f8:	de c1                	faddp  st(1),st
+    11fa:	d9 9c 24 5c 04 00 00 	fstp   DWORD PTR [rsp+0x45c]
+    1201:	d9 84 24 94 0e 00 00 	fld    DWORD PTR [rsp+0xe94]
+    1208:	d9 84 24 94 12 00 00 	fld    DWORD PTR [rsp+0x1294]
+    120f:	de c1                	faddp  st(1),st
+    1211:	d9 9c 24 58 04 00 00 	fstp   DWORD PTR [rsp+0x458]
+    1218:	d9 84 24 98 0e 00 00 	fld    DWORD PTR [rsp+0xe98]
+    121f:	d9 84 24 98 12 00 00 	fld    DWORD PTR [rsp+0x1298]
+    1226:	de c1                	faddp  st(1),st
+    1228:	d9 9c 24 54 04 00 00 	fstp   DWORD PTR [rsp+0x454]
+    122f:	d9 84 24 9c 0e 00 00 	fld    DWORD PTR [rsp+0xe9c]
+    1236:	d9 84 24 9c 12 00 00 	fld    DWORD PTR [rsp+0x129c]
+    123d:	de c1                	faddp  st(1),st
+    123f:	d9 9c 24 50 04 00 00 	fstp   DWORD PTR [rsp+0x450]
+    1246:	d9 84 24 a0 0e 00 00 	fld    DWORD PTR [rsp+0xea0]
+    124d:	d9 84 24 a0 12 00 00 	fld    DWORD PTR [rsp+0x12a0]
+    1254:	de c1                	faddp  st(1),st
+    1256:	d9 9c 24 4c 04 00 00 	fstp   DWORD PTR [rsp+0x44c]
+    125d:	d9 84 24 a4 0e 00 00 	fld    DWORD PTR [rsp+0xea4]
+    1264:	d9 84 24 a4 12 00 00 	fld    DWORD PTR [rsp+0x12a4]
+    126b:	de c1                	faddp  st(1),st
+    126d:	d9 9c 24 48 04 00 00 	fstp   DWORD PTR [rsp+0x448]
+    1274:	d9 84 24 a8 0e 00 00 	fld    DWORD PTR [rsp+0xea8]
+    127b:	d9 84 24 a8 12 00 00 	fld    DWORD PTR [rsp+0x12a8]
+    1282:	de c1                	faddp  st(1),st
+    1284:	d9 9c 24 44 04 00 00 	fstp   DWORD PTR [rsp+0x444]
+    128b:	d9 84 24 ac 0e 00 00 	fld    DWORD PTR [rsp+0xeac]
+    1292:	d9 84 24 ac 12 00 00 	fld    DWORD PTR [rsp+0x12ac]
+    1299:	de c1                	faddp  st(1),st
+    129b:	d9 9c 24 40 04 00 00 	fstp   DWORD PTR [rsp+0x440]
+    12a2:	d9 84 24 b0 0e 00 00 	fld    DWORD PTR [rsp+0xeb0]
+    12a9:	d9 84 24 b0 12 00 00 	fld    DWORD PTR [rsp+0x12b0]
+    12b0:	de c1                	faddp  st(1),st
+    12b2:	d9 9c 24 3c 04 00 00 	fstp   DWORD PTR [rsp+0x43c]
+    12b9:	d9 84 24 b4 0e 00 00 	fld    DWORD PTR [rsp+0xeb4]
+    12c0:	d9 84 24 b4 12 00 00 	fld    DWORD PTR [rsp+0x12b4]
+    12c7:	de c1                	faddp  st(1),st
+    12c9:	d9 9c 24 38 04 00 00 	fstp   DWORD PTR [rsp+0x438]
+    12d0:	d9 84 24 b8 0e 00 00 	fld    DWORD PTR [rsp+0xeb8]
+    12d7:	d9 84 24 b8 12 00 00 	fld    DWORD PTR [rsp+0x12b8]
+    12de:	de c1                	faddp  st(1),st
+    12e0:	d9 9c 24 34 04 00 00 	fstp   DWORD PTR [rsp+0x434]
+    12e7:	d9 84 24 bc 0e 00 00 	fld    DWORD PTR [rsp+0xebc]
+    12ee:	d9 84 24 bc 12 00 00 	fld    DWORD PTR [rsp+0x12bc]
+    12f5:	de c1                	faddp  st(1),st
+    12f7:	d9 9c 24 30 04 00 00 	fstp   DWORD PTR [rsp+0x430]
+    12fe:	d9 84 24 c0 0e 00 00 	fld    DWORD PTR [rsp+0xec0]
+    1305:	d9 84 24 c0 12 00 00 	fld    DWORD PTR [rsp+0x12c0]
+    130c:	de c1                	faddp  st(1),st
+    130e:	d9 9c 24 2c 04 00 00 	fstp   DWORD PTR [rsp+0x42c]
+    1315:	d9 84 24 c4 0e 00 00 	fld    DWORD PTR [rsp+0xec4]
+    131c:	d9 84 24 c4 12 00 00 	fld    DWORD PTR [rsp+0x12c4]
+    1323:	de c1                	faddp  st(1),st
+    1325:	d9 9c 24 28 04 00 00 	fstp   DWORD PTR [rsp+0x428]
+    132c:	d9 84 24 c8 0e 00 00 	fld    DWORD PTR [rsp+0xec8]
+    1333:	d9 84 24 c8 12 00 00 	fld    DWORD PTR [rsp+0x12c8]
+    133a:	de c1                	faddp  st(1),st
+    133c:	d9 9c 24 24 04 00 00 	fstp   DWORD PTR [rsp+0x424]
+    1343:	d9 84 24 cc 0e 00 00 	fld    DWORD PTR [rsp+0xecc]
+    134a:	d9 84 24 cc 12 00 00 	fld    DWORD PTR [rsp+0x12cc]
+    1351:	de c1                	faddp  st(1),st
+    1353:	d9 9c 24 20 04 00 00 	fstp   DWORD PTR [rsp+0x420]
+    135a:	d9 84 24 d0 0e 00 00 	fld    DWORD PTR [rsp+0xed0]
+    1361:	d9 84 24 d0 12 00 00 	fld    DWORD PTR [rsp+0x12d0]
+    1368:	de c1                	faddp  st(1),st
+    136a:	d9 9c 24 1c 04 00 00 	fstp   DWORD PTR [rsp+0x41c]
+    1371:	d9 84 24 d4 0e 00 00 	fld    DWORD PTR [rsp+0xed4]
+    1378:	d9 84 24 d4 12 00 00 	fld    DWORD PTR [rsp+0x12d4]
+    137f:	de c1                	faddp  st(1),st
+    1381:	d9 9c 24 18 04 00 00 	fstp   DWORD PTR [rsp+0x418]
+    1388:	d9 84 24 d8 0e 00 00 	fld    DWORD PTR [rsp+0xed8]
+    138f:	d9 84 24 d8 12 00 00 	fld    DWORD PTR [rsp+0x12d8]
+    1396:	de c1                	faddp  st(1),st
+    1398:	d9 9c 24 14 04 00 00 	fstp   DWORD PTR [rsp+0x414]
+    139f:	d9 84 24 dc 0e 00 00 	fld    DWORD PTR [rsp+0xedc]
+    13a6:	d9 84 24 dc 12 00 00 	fld    DWORD PTR [rsp+0x12dc]
+    13ad:	de c1                	faddp  st(1),st
+    13af:	d9 9c 24 10 04 00 00 	fstp   DWORD PTR [rsp+0x410]
+    13b6:	d9 84 24 e0 0e 00 00 	fld    DWORD PTR [rsp+0xee0]
+    13bd:	d9 84 24 e0 12 00 00 	fld    DWORD PTR [rsp+0x12e0]
+    13c4:	de c1                	faddp  st(1),st
+    13c6:	d9 9c 24 0c 04 00 00 	fstp   DWORD PTR [rsp+0x40c]
+    13cd:	d9 84 24 e4 0e 00 00 	fld    DWORD PTR [rsp+0xee4]
+    13d4:	d9 84 24 e4 12 00 00 	fld    DWORD PTR [rsp+0x12e4]
+    13db:	de c1                	faddp  st(1),st
+    13dd:	d9 9c 24 08 04 00 00 	fstp   DWORD PTR [rsp+0x408]
+    13e4:	d9 84 24 e8 0e 00 00 	fld    DWORD PTR [rsp+0xee8]
+    13eb:	d9 84 24 e8 12 00 00 	fld    DWORD PTR [rsp+0x12e8]
+    13f2:	de c1                	faddp  st(1),st
+    13f4:	d9 9c 24 04 04 00 00 	fstp   DWORD PTR [rsp+0x404]
+    13fb:	d9 84 24 ec 0e 00 00 	fld    DWORD PTR [rsp+0xeec]
+    1402:	d9 84 24 ec 12 00 00 	fld    DWORD PTR [rsp+0x12ec]
+    1409:	de c1                	faddp  st(1),st
+    140b:	d9 9c 24 00 04 00 00 	fstp   DWORD PTR [rsp+0x400]
+    1412:	d9 84 24 f0 0e 00 00 	fld    DWORD PTR [rsp+0xef0]
+    1419:	d9 84 24 f0 12 00 00 	fld    DWORD PTR [rsp+0x12f0]
+    1420:	de c1                	faddp  st(1),st
+    1422:	d9 9c 24 fc 03 00 00 	fstp   DWORD PTR [rsp+0x3fc]
+    1429:	d9 84 24 f4 0e 00 00 	fld    DWORD PTR [rsp+0xef4]
+    1430:	d9 84 24 f4 12 00 00 	fld    DWORD PTR [rsp+0x12f4]
+    1437:	de c1                	faddp  st(1),st
+    1439:	d9 9c 24 f8 03 00 00 	fstp   DWORD PTR [rsp+0x3f8]
+    1440:	d9 84 24 f8 0e 00 00 	fld    DWORD PTR [rsp+0xef8]
+    1447:	d9 84 24 f8 12 00 00 	fld    DWORD PTR [rsp+0x12f8]
+    144e:	de c1                	faddp  st(1),st
+    1450:	d9 9c 24 f4 03 00 00 	fstp   DWORD PTR [rsp+0x3f4]
+    1457:	d9 84 24 fc 0e 00 00 	fld    DWORD PTR [rsp+0xefc]
+    145e:	d9 84 24 fc 12 00 00 	fld    DWORD PTR [rsp+0x12fc]
+    1465:	de c1                	faddp  st(1),st
+    1467:	d9 9c 24 f0 03 00 00 	fstp   DWORD PTR [rsp+0x3f0]
+    146e:	d9 84 24 00 0f 00 00 	fld    DWORD PTR [rsp+0xf00]
+    1475:	d9 84 24 00 13 00 00 	fld    DWORD PTR [rsp+0x1300]
+    147c:	de c1                	faddp  st(1),st
+    147e:	d9 9c 24 ec 03 00 00 	fstp   DWORD PTR [rsp+0x3ec]
+    1485:	d9 84 24 04 0f 00 00 	fld    DWORD PTR [rsp+0xf04]
+    148c:	d9 84 24 04 13 00 00 	fld    DWORD PTR [rsp+0x1304]
+    1493:	de c1                	faddp  st(1),st
+    1495:	d9 9c 24 e8 03 00 00 	fstp   DWORD PTR [rsp+0x3e8]
+    149c:	d9 84 24 08 0f 00 00 	fld    DWORD PTR [rsp+0xf08]
+    14a3:	d9 84 24 08 13 00 00 	fld    DWORD PTR [rsp+0x1308]
+    14aa:	de c1                	faddp  st(1),st
+    14ac:	d9 9c 24 e4 03 00 00 	fstp   DWORD PTR [rsp+0x3e4]
+    14b3:	d9 84 24 0c 0f 00 00 	fld    DWORD PTR [rsp+0xf0c]
+    14ba:	d9 84 24 0c 13 00 00 	fld    DWORD PTR [rsp+0x130c]
+    14c1:	de c1                	faddp  st(1),st
+    14c3:	d9 9c 24 e0 03 00 00 	fstp   DWORD PTR [rsp+0x3e0]
+    14ca:	d9 84 24 10 0f 00 00 	fld    DWORD PTR [rsp+0xf10]
+    14d1:	d9 84 24 10 13 00 00 	fld    DWORD PTR [rsp+0x1310]
+    14d8:	de c1                	faddp  st(1),st
+    14da:	d9 9c 24 dc 03 00 00 	fstp   DWORD PTR [rsp+0x3dc]
+    14e1:	d9 84 24 14 0f 00 00 	fld    DWORD PTR [rsp+0xf14]
+    14e8:	d9 84 24 14 13 00 00 	fld    DWORD PTR [rsp+0x1314]
+    14ef:	de c1                	faddp  st(1),st
+    14f1:	d9 9c 24 d8 03 00 00 	fstp   DWORD PTR [rsp+0x3d8]
+    14f8:	d9 84 24 18 0f 00 00 	fld    DWORD PTR [rsp+0xf18]
+    14ff:	d9 84 24 18 13 00 00 	fld    DWORD PTR [rsp+0x1318]
+    1506:	de c1                	faddp  st(1),st
+    1508:	d9 9c 24 d4 03 00 00 	fstp   DWORD PTR [rsp+0x3d4]
+    150f:	d9 84 24 1c 0f 00 00 	fld    DWORD PTR [rsp+0xf1c]
+    1516:	d9 84 24 1c 13 00 00 	fld    DWORD PTR [rsp+0x131c]
+    151d:	de c1                	faddp  st(1),st
+    151f:	d9 9c 24 d0 03 00 00 	fstp   DWORD PTR [rsp+0x3d0]
+    1526:	d9 84 24 20 0f 00 00 	fld    DWORD PTR [rsp+0xf20]
+    152d:	d9 84 24 20 13 00 00 	fld    DWORD PTR [rsp+0x1320]
+    1534:	de c1                	faddp  st(1),st
+    1536:	d9 9c 24 cc 03 00 00 	fstp   DWORD PTR [rsp+0x3cc]
+    153d:	d9 84 24 24 0f 00 00 	fld    DWORD PTR [rsp+0xf24]
+    1544:	d9 84 24 24 13 00 00 	fld    DWORD PTR [rsp+0x1324]
+    154b:	de c1                	faddp  st(1),st
+    154d:	d9 9c 24 c8 03 00 00 	fstp   DWORD PTR [rsp+0x3c8]
+    1554:	d9 84 24 28 0f 00 00 	fld    DWORD PTR [rsp+0xf28]
+    155b:	d9 84 24 28 13 00 00 	fld    DWORD PTR [rsp+0x1328]
+    1562:	de c1                	faddp  st(1),st
+    1564:	d9 9c 24 c4 03 00 00 	fstp   DWORD PTR [rsp+0x3c4]
+    156b:	d9 84 24 2c 0f 00 00 	fld    DWORD PTR [rsp+0xf2c]
+    1572:	d9 84 24 2c 13 00 00 	fld    DWORD PTR [rsp+0x132c]
+    1579:	de c1                	faddp  st(1),st
+    157b:	d9 9c 24 c0 03 00 00 	fstp   DWORD PTR [rsp+0x3c0]
+    1582:	d9 84 24 30 0f 00 00 	fld    DWORD PTR [rsp+0xf30]
+    1589:	d9 84 24 30 13 00 00 	fld    DWORD PTR [rsp+0x1330]
+    1590:	de c1                	faddp  st(1),st
+    1592:	d9 9c 24 bc 03 00 00 	fstp   DWORD PTR [rsp+0x3bc]
+    1599:	d9 84 24 34 0f 00 00 	fld    DWORD PTR [rsp+0xf34]
+    15a0:	d9 84 24 34 13 00 00 	fld    DWORD PTR [rsp+0x1334]
+    15a7:	de c1                	faddp  st(1),st
+    15a9:	d9 9c 24 b8 03 00 00 	fstp   DWORD PTR [rsp+0x3b8]
+    15b0:	d9 84 24 38 0f 00 00 	fld    DWORD PTR [rsp+0xf38]
+    15b7:	d9 84 24 38 13 00 00 	fld    DWORD PTR [rsp+0x1338]
+    15be:	de c1                	faddp  st(1),st
+    15c0:	d9 9c 24 b4 03 00 00 	fstp   DWORD PTR [rsp+0x3b4]
+    15c7:	d9 84 24 3c 0f 00 00 	fld    DWORD PTR [rsp+0xf3c]
+    15ce:	d9 84 24 3c 13 00 00 	fld    DWORD PTR [rsp+0x133c]
+    15d5:	de c1                	faddp  st(1),st
+    15d7:	d9 9c 24 b0 03 00 00 	fstp   DWORD PTR [rsp+0x3b0]
+    15de:	d9 84 24 40 0f 00 00 	fld    DWORD PTR [rsp+0xf40]
+    15e5:	d9 84 24 40 13 00 00 	fld    DWORD PTR [rsp+0x1340]
+    15ec:	de c1                	faddp  st(1),st
+    15ee:	d9 9c 24 ac 03 00 00 	fstp   DWORD PTR [rsp+0x3ac]
+    15f5:	d9 84 24 44 0f 00 00 	fld    DWORD PTR [rsp+0xf44]
+    15fc:	d9 84 24 44 13 00 00 	fld    DWORD PTR [rsp+0x1344]
+    1603:	de c1                	faddp  st(1),st
+    1605:	d9 9c 24 a8 03 00 00 	fstp   DWORD PTR [rsp+0x3a8]
+    160c:	d9 84 24 48 0f 00 00 	fld    DWORD PTR [rsp+0xf48]
+    1613:	d9 84 24 48 13 00 00 	fld    DWORD PTR [rsp+0x1348]
+    161a:	de c1                	faddp  st(1),st
+    161c:	d9 9c 24 a4 03 00 00 	fstp   DWORD PTR [rsp+0x3a4]
+    1623:	d9 84 24 4c 0f 00 00 	fld    DWORD PTR [rsp+0xf4c]
+    162a:	d9 84 24 4c 13 00 00 	fld    DWORD PTR [rsp+0x134c]
+    1631:	de c1                	faddp  st(1),st
+    1633:	d9 9c 24 a0 03 00 00 	fstp   DWORD PTR [rsp+0x3a0]
+    163a:	d9 84 24 50 0f 00 00 	fld    DWORD PTR [rsp+0xf50]
+    1641:	d9 84 24 50 13 00 00 	fld    DWORD PTR [rsp+0x1350]
+    1648:	de c1                	faddp  st(1),st
+    164a:	d9 9c 24 9c 03 00 00 	fstp   DWORD PTR [rsp+0x39c]
+    1651:	d9 84 24 54 0f 00 00 	fld    DWORD PTR [rsp+0xf54]
+    1658:	d9 84 24 54 13 00 00 	fld    DWORD PTR [rsp+0x1354]
+    165f:	de c1                	faddp  st(1),st
+    1661:	d9 9c 24 98 03 00 00 	fstp   DWORD PTR [rsp+0x398]
+    1668:	d9 84 24 58 0f 00 00 	fld    DWORD PTR [rsp+0xf58]
+    166f:	d9 84 24 58 13 00 00 	fld    DWORD PTR [rsp+0x1358]
+    1676:	de c1                	faddp  st(1),st
+    1678:	d9 9c 24 94 03 00 00 	fstp   DWORD PTR [rsp+0x394]
+    167f:	d9 84 24 5c 0f 00 00 	fld    DWORD PTR [rsp+0xf5c]
+    1686:	d9 84 24 5c 13 00 00 	fld    DWORD PTR [rsp+0x135c]
+    168d:	de c1                	faddp  st(1),st
+    168f:	d9 9c 24 90 03 00 00 	fstp   DWORD PTR [rsp+0x390]
+    1696:	d9 84 24 60 0f 00 00 	fld    DWORD PTR [rsp+0xf60]
+    169d:	d9 84 24 60 13 00 00 	fld    DWORD PTR [rsp+0x1360]
+    16a4:	de c1                	faddp  st(1),st
+    16a6:	d9 9c 24 8c 03 00 00 	fstp   DWORD PTR [rsp+0x38c]
+    16ad:	d9 84 24 64 0f 00 00 	fld    DWORD PTR [rsp+0xf64]
+    16b4:	d9 84 24 64 13 00 00 	fld    DWORD PTR [rsp+0x1364]
+    16bb:	de c1                	faddp  st(1),st
+    16bd:	d9 9c 24 88 03 00 00 	fstp   DWORD PTR [rsp+0x388]
+    16c4:	d9 84 24 68 0f 00 00 	fld    DWORD PTR [rsp+0xf68]
+    16cb:	d9 84 24 68 13 00 00 	fld    DWORD PTR [rsp+0x1368]
+    16d2:	de c1                	faddp  st(1),st
+    16d4:	d9 9c 24 84 03 00 00 	fstp   DWORD PTR [rsp+0x384]
+    16db:	d9 84 24 6c 0f 00 00 	fld    DWORD PTR [rsp+0xf6c]
+    16e2:	d9 84 24 6c 13 00 00 	fld    DWORD PTR [rsp+0x136c]
+    16e9:	de c1                	faddp  st(1),st
+    16eb:	d9 84 24 70 0f 00 00 	fld    DWORD PTR [rsp+0xf70]
+    16f2:	d9 84 24 70 13 00 00 	fld    DWORD PTR [rsp+0x1370]
+    16f9:	de c1                	faddp  st(1),st
+    16fb:	d9 84 24 74 0f 00 00 	fld    DWORD PTR [rsp+0xf74]
+    1702:	d9 84 24 74 13 00 00 	fld    DWORD PTR [rsp+0x1374]
+    1709:	de c1                	faddp  st(1),st
+    170b:	d9 84 24 78 0f 00 00 	fld    DWORD PTR [rsp+0xf78]
+    1712:	d9 84 24 78 13 00 00 	fld    DWORD PTR [rsp+0x1378]
+    1719:	de c1                	faddp  st(1),st
+    171b:	d9 84 24 7c 0f 00 00 	fld    DWORD PTR [rsp+0xf7c]
+    1722:	d9 84 24 7c 13 00 00 	fld    DWORD PTR [rsp+0x137c]
+    1729:	de c1                	faddp  st(1),st
+    172b:	d9 84 24 80 0f 00 00 	fld    DWORD PTR [rsp+0xf80]
+    1732:	d9 84 24 80 13 00 00 	fld    DWORD PTR [rsp+0x1380]
+    1739:	de c1                	faddp  st(1),st
+    173b:	d9 84 24 84 0f 00 00 	fld    DWORD PTR [rsp+0xf84]
+    1742:	d9 84 24 84 13 00 00 	fld    DWORD PTR [rsp+0x1384]
+    1749:	de c1                	faddp  st(1),st
+    174b:	d9 84 24 64 07 00 00 	fld    DWORD PTR [rsp+0x764]
+    1752:	d9 9c 24 68 07 00 00 	fstp   DWORD PTR [rsp+0x768]
+    1759:	d9 84 24 60 07 00 00 	fld    DWORD PTR [rsp+0x760]
+    1760:	d9 9c 24 6c 07 00 00 	fstp   DWORD PTR [rsp+0x76c]
+    1767:	d9 84 24 5c 07 00 00 	fld    DWORD PTR [rsp+0x75c]
+    176e:	d9 9c 24 70 07 00 00 	fstp   DWORD PTR [rsp+0x770]
+    1775:	d9 84 24 58 07 00 00 	fld    DWORD PTR [rsp+0x758]
+    177c:	d9 9c 24 74 07 00 00 	fstp   DWORD PTR [rsp+0x774]
+    1783:	d9 84 24 54 07 00 00 	fld    DWORD PTR [rsp+0x754]
+    178a:	d9 9c 24 78 07 00 00 	fstp   DWORD PTR [rsp+0x778]
+    1791:	d9 84 24 50 07 00 00 	fld    DWORD PTR [rsp+0x750]
+    1798:	d9 9c 24 7c 07 00 00 	fstp   DWORD PTR [rsp+0x77c]
+    179f:	d9 84 24 4c 07 00 00 	fld    DWORD PTR [rsp+0x74c]
+    17a6:	d9 9c 24 80 07 00 00 	fstp   DWORD PTR [rsp+0x780]
+    17ad:	d9 84 24 48 07 00 00 	fld    DWORD PTR [rsp+0x748]
+    17b4:	d9 9c 24 84 07 00 00 	fstp   DWORD PTR [rsp+0x784]
+    17bb:	d9 84 24 44 07 00 00 	fld    DWORD PTR [rsp+0x744]
+    17c2:	d9 9c 24 88 07 00 00 	fstp   DWORD PTR [rsp+0x788]
+    17c9:	d9 84 24 40 07 00 00 	fld    DWORD PTR [rsp+0x740]
+    17d0:	d9 9c 24 8c 07 00 00 	fstp   DWORD PTR [rsp+0x78c]
+    17d7:	d9 84 24 3c 07 00 00 	fld    DWORD PTR [rsp+0x73c]
+    17de:	d9 9c 24 90 07 00 00 	fstp   DWORD PTR [rsp+0x790]
+    17e5:	d9 84 24 38 07 00 00 	fld    DWORD PTR [rsp+0x738]
+    17ec:	d9 9c 24 94 07 00 00 	fstp   DWORD PTR [rsp+0x794]
+    17f3:	d9 84 24 34 07 00 00 	fld    DWORD PTR [rsp+0x734]
+    17fa:	d9 9c 24 98 07 00 00 	fstp   DWORD PTR [rsp+0x798]
+    1801:	d9 84 24 30 07 00 00 	fld    DWORD PTR [rsp+0x730]
+    1808:	d9 9c 24 9c 07 00 00 	fstp   DWORD PTR [rsp+0x79c]
+    180f:	d9 84 24 2c 07 00 00 	fld    DWORD PTR [rsp+0x72c]
+    1816:	d9 9c 24 a0 07 00 00 	fstp   DWORD PTR [rsp+0x7a0]
+    181d:	d9 84 24 28 07 00 00 	fld    DWORD PTR [rsp+0x728]
+    1824:	d9 9c 24 a4 07 00 00 	fstp   DWORD PTR [rsp+0x7a4]
+    182b:	d9 84 24 24 07 00 00 	fld    DWORD PTR [rsp+0x724]
+    1832:	d9 9c 24 a8 07 00 00 	fstp   DWORD PTR [rsp+0x7a8]
+    1839:	d9 84 24 20 07 00 00 	fld    DWORD PTR [rsp+0x720]
+    1840:	d9 9c 24 ac 07 00 00 	fstp   DWORD PTR [rsp+0x7ac]
+    1847:	d9 84 24 1c 07 00 00 	fld    DWORD PTR [rsp+0x71c]
+    184e:	d9 9c 24 b0 07 00 00 	fstp   DWORD PTR [rsp+0x7b0]
+    1855:	d9 84 24 18 07 00 00 	fld    DWORD PTR [rsp+0x718]
+    185c:	d9 9c 24 b4 07 00 00 	fstp   DWORD PTR [rsp+0x7b4]
+    1863:	d9 84 24 14 07 00 00 	fld    DWORD PTR [rsp+0x714]
+    186a:	d9 9c 24 b8 07 00 00 	fstp   DWORD PTR [rsp+0x7b8]
+    1871:	d9 84 24 10 07 00 00 	fld    DWORD PTR [rsp+0x710]
+    1878:	d9 9c 24 bc 07 00 00 	fstp   DWORD PTR [rsp+0x7bc]
+    187f:	d9 84 24 0c 07 00 00 	fld    DWORD PTR [rsp+0x70c]
+    1886:	d9 9c 24 c0 07 00 00 	fstp   DWORD PTR [rsp+0x7c0]
+    188d:	d9 84 24 08 07 00 00 	fld    DWORD PTR [rsp+0x708]
+    1894:	d9 9c 24 c4 07 00 00 	fstp   DWORD PTR [rsp+0x7c4]
+    189b:	d9 84 24 04 07 00 00 	fld    DWORD PTR [rsp+0x704]
+    18a2:	d9 9c 24 c8 07 00 00 	fstp   DWORD PTR [rsp+0x7c8]
+    18a9:	d9 84 24 00 07 00 00 	fld    DWORD PTR [rsp+0x700]
+    18b0:	d9 9c 24 cc 07 00 00 	fstp   DWORD PTR [rsp+0x7cc]
+    18b7:	d9 84 24 fc 06 00 00 	fld    DWORD PTR [rsp+0x6fc]
+    18be:	d9 9c 24 d0 07 00 00 	fstp   DWORD PTR [rsp+0x7d0]
+    18c5:	d9 84 24 f8 06 00 00 	fld    DWORD PTR [rsp+0x6f8]
+    18cc:	d9 9c 24 d4 07 00 00 	fstp   DWORD PTR [rsp+0x7d4]
+    18d3:	d9 84 24 f4 06 00 00 	fld    DWORD PTR [rsp+0x6f4]
+    18da:	d9 9c 24 d8 07 00 00 	fstp   DWORD PTR [rsp+0x7d8]
+    18e1:	d9 84 24 f0 06 00 00 	fld    DWORD PTR [rsp+0x6f0]
+    18e8:	d9 9c 24 dc 07 00 00 	fstp   DWORD PTR [rsp+0x7dc]
+    18ef:	d9 84 24 ec 06 00 00 	fld    DWORD PTR [rsp+0x6ec]
+    18f6:	d9 9c 24 e0 07 00 00 	fstp   DWORD PTR [rsp+0x7e0]
+    18fd:	d9 84 24 e8 06 00 00 	fld    DWORD PTR [rsp+0x6e8]
+    1904:	d9 9c 24 e4 07 00 00 	fstp   DWORD PTR [rsp+0x7e4]
+    190b:	d9 84 24 e4 06 00 00 	fld    DWORD PTR [rsp+0x6e4]
+    1912:	d9 9c 24 e8 07 00 00 	fstp   DWORD PTR [rsp+0x7e8]
+    1919:	d9 84 24 e0 06 00 00 	fld    DWORD PTR [rsp+0x6e0]
+    1920:	d9 9c 24 ec 07 00 00 	fstp   DWORD PTR [rsp+0x7ec]
+    1927:	d9 84 24 dc 06 00 00 	fld    DWORD PTR [rsp+0x6dc]
+    192e:	d9 9c 24 f0 07 00 00 	fstp   DWORD PTR [rsp+0x7f0]
+    1935:	d9 84 24 d8 06 00 00 	fld    DWORD PTR [rsp+0x6d8]
+    193c:	d9 9c 24 f4 07 00 00 	fstp   DWORD PTR [rsp+0x7f4]
+    1943:	d9 84 24 d4 06 00 00 	fld    DWORD PTR [rsp+0x6d4]
+    194a:	d9 9c 24 f8 07 00 00 	fstp   DWORD PTR [rsp+0x7f8]
+    1951:	d9 84 24 d0 06 00 00 	fld    DWORD PTR [rsp+0x6d0]
+    1958:	d9 9c 24 fc 07 00 00 	fstp   DWORD PTR [rsp+0x7fc]
+    195f:	d9 84 24 cc 06 00 00 	fld    DWORD PTR [rsp+0x6cc]
+    1966:	d9 9c 24 00 08 00 00 	fstp   DWORD PTR [rsp+0x800]
+    196d:	d9 84 24 c8 06 00 00 	fld    DWORD PTR [rsp+0x6c8]
+    1974:	d9 9c 24 04 08 00 00 	fstp   DWORD PTR [rsp+0x804]
+    197b:	d9 84 24 c4 06 00 00 	fld    DWORD PTR [rsp+0x6c4]
+    1982:	d9 9c 24 08 08 00 00 	fstp   DWORD PTR [rsp+0x808]
+    1989:	d9 84 24 c0 06 00 00 	fld    DWORD PTR [rsp+0x6c0]
+    1990:	d9 9c 24 0c 08 00 00 	fstp   DWORD PTR [rsp+0x80c]
+    1997:	d9 84 24 bc 06 00 00 	fld    DWORD PTR [rsp+0x6bc]
+    199e:	d9 9c 24 10 08 00 00 	fstp   DWORD PTR [rsp+0x810]
+    19a5:	d9 84 24 b8 06 00 00 	fld    DWORD PTR [rsp+0x6b8]
+    19ac:	d9 9c 24 14 08 00 00 	fstp   DWORD PTR [rsp+0x814]
+    19b3:	d9 84 24 b4 06 00 00 	fld    DWORD PTR [rsp+0x6b4]
+    19ba:	d9 9c 24 18 08 00 00 	fstp   DWORD PTR [rsp+0x818]
+    19c1:	d9 84 24 b0 06 00 00 	fld    DWORD PTR [rsp+0x6b0]
+    19c8:	d9 9c 24 1c 08 00 00 	fstp   DWORD PTR [rsp+0x81c]
+    19cf:	d9 84 24 ac 06 00 00 	fld    DWORD PTR [rsp+0x6ac]
+    19d6:	d9 9c 24 20 08 00 00 	fstp   DWORD PTR [rsp+0x820]
+    19dd:	d9 84 24 a8 06 00 00 	fld    DWORD PTR [rsp+0x6a8]
+    19e4:	d9 9c 24 24 08 00 00 	fstp   DWORD PTR [rsp+0x824]
+    19eb:	d9 84 24 a4 06 00 00 	fld    DWORD PTR [rsp+0x6a4]
+    19f2:	d9 9c 24 28 08 00 00 	fstp   DWORD PTR [rsp+0x828]
+    19f9:	d9 84 24 a0 06 00 00 	fld    DWORD PTR [rsp+0x6a0]
+    1a00:	d9 9c 24 2c 08 00 00 	fstp   DWORD PTR [rsp+0x82c]
+    1a07:	d9 84 24 9c 06 00 00 	fld    DWORD PTR [rsp+0x69c]
+    1a0e:	d9 9c 24 30 08 00 00 	fstp   DWORD PTR [rsp+0x830]
+    1a15:	d9 84 24 98 06 00 00 	fld    DWORD PTR [rsp+0x698]
+    1a1c:	d9 9c 24 34 08 00 00 	fstp   DWORD PTR [rsp+0x834]
+    1a23:	d9 84 24 94 06 00 00 	fld    DWORD PTR [rsp+0x694]
+    1a2a:	d9 9c 24 38 08 00 00 	fstp   DWORD PTR [rsp+0x838]
+    1a31:	d9 84 24 90 06 00 00 	fld    DWORD PTR [rsp+0x690]
+    1a38:	d9 9c 24 3c 08 00 00 	fstp   DWORD PTR [rsp+0x83c]
+    1a3f:	d9 84 24 8c 06 00 00 	fld    DWORD PTR [rsp+0x68c]
+    1a46:	d9 9c 24 40 08 00 00 	fstp   DWORD PTR [rsp+0x840]
+    1a4d:	d9 84 24 88 06 00 00 	fld    DWORD PTR [rsp+0x688]
+    1a54:	d9 9c 24 44 08 00 00 	fstp   DWORD PTR [rsp+0x844]
+    1a5b:	d9 84 24 84 06 00 00 	fld    DWORD PTR [rsp+0x684]
+    1a62:	d9 9c 24 48 08 00 00 	fstp   DWORD PTR [rsp+0x848]
+    1a69:	d9 84 24 80 06 00 00 	fld    DWORD PTR [rsp+0x680]
+    1a70:	d9 9c 24 4c 08 00 00 	fstp   DWORD PTR [rsp+0x84c]
+    1a77:	d9 84 24 7c 06 00 00 	fld    DWORD PTR [rsp+0x67c]
+    1a7e:	d9 9c 24 50 08 00 00 	fstp   DWORD PTR [rsp+0x850]
+    1a85:	d9 84 24 78 06 00 00 	fld    DWORD PTR [rsp+0x678]
+    1a8c:	d9 9c 24 54 08 00 00 	fstp   DWORD PTR [rsp+0x854]
+    1a93:	d9 84 24 74 06 00 00 	fld    DWORD PTR [rsp+0x674]
+    1a9a:	d9 9c 24 58 08 00 00 	fstp   DWORD PTR [rsp+0x858]
+    1aa1:	d9 84 24 70 06 00 00 	fld    DWORD PTR [rsp+0x670]
+    1aa8:	d9 9c 24 5c 08 00 00 	fstp   DWORD PTR [rsp+0x85c]
+    1aaf:	d9 84 24 6c 06 00 00 	fld    DWORD PTR [rsp+0x66c]
+    1ab6:	d9 9c 24 60 08 00 00 	fstp   DWORD PTR [rsp+0x860]
+    1abd:	d9 84 24 68 06 00 00 	fld    DWORD PTR [rsp+0x668]
+    1ac4:	d9 9c 24 64 08 00 00 	fstp   DWORD PTR [rsp+0x864]
+    1acb:	d9 84 24 64 06 00 00 	fld    DWORD PTR [rsp+0x664]
+    1ad2:	d9 9c 24 68 08 00 00 	fstp   DWORD PTR [rsp+0x868]
+    1ad9:	d9 84 24 60 06 00 00 	fld    DWORD PTR [rsp+0x660]
+    1ae0:	d9 9c 24 6c 08 00 00 	fstp   DWORD PTR [rsp+0x86c]
+    1ae7:	d9 84 24 5c 06 00 00 	fld    DWORD PTR [rsp+0x65c]
+    1aee:	d9 9c 24 70 08 00 00 	fstp   DWORD PTR [rsp+0x870]
+    1af5:	d9 84 24 58 06 00 00 	fld    DWORD PTR [rsp+0x658]
+    1afc:	d9 9c 24 74 08 00 00 	fstp   DWORD PTR [rsp+0x874]
+    1b03:	d9 84 24 54 06 00 00 	fld    DWORD PTR [rsp+0x654]
+    1b0a:	d9 9c 24 78 08 00 00 	fstp   DWORD PTR [rsp+0x878]
+    1b11:	d9 84 24 50 06 00 00 	fld    DWORD PTR [rsp+0x650]
+    1b18:	d9 9c 24 7c 08 00 00 	fstp   DWORD PTR [rsp+0x87c]
+    1b1f:	d9 84 24 4c 06 00 00 	fld    DWORD PTR [rsp+0x64c]
+    1b26:	d9 9c 24 80 08 00 00 	fstp   DWORD PTR [rsp+0x880]
+    1b2d:	d9 84 24 48 06 00 00 	fld    DWORD PTR [rsp+0x648]
+    1b34:	d9 9c 24 84 08 00 00 	fstp   DWORD PTR [rsp+0x884]
+    1b3b:	d9 84 24 44 06 00 00 	fld    DWORD PTR [rsp+0x644]
+    1b42:	d9 9c 24 88 08 00 00 	fstp   DWORD PTR [rsp+0x888]
+    1b49:	d9 84 24 40 06 00 00 	fld    DWORD PTR [rsp+0x640]
+    1b50:	d9 9c 24 8c 08 00 00 	fstp   DWORD PTR [rsp+0x88c]
+    1b57:	d9 84 24 3c 06 00 00 	fld    DWORD PTR [rsp+0x63c]
+    1b5e:	d9 9c 24 90 08 00 00 	fstp   DWORD PTR [rsp+0x890]
+    1b65:	d9 84 24 38 06 00 00 	fld    DWORD PTR [rsp+0x638]
+    1b6c:	d9 9c 24 94 08 00 00 	fstp   DWORD PTR [rsp+0x894]
+    1b73:	d9 84 24 34 06 00 00 	fld    DWORD PTR [rsp+0x634]
+    1b7a:	d9 9c 24 98 08 00 00 	fstp   DWORD PTR [rsp+0x898]
+    1b81:	d9 84 24 30 06 00 00 	fld    DWORD PTR [rsp+0x630]
+    1b88:	d9 9c 24 9c 08 00 00 	fstp   DWORD PTR [rsp+0x89c]
+    1b8f:	d9 84 24 2c 06 00 00 	fld    DWORD PTR [rsp+0x62c]
+    1b96:	d9 9c 24 a0 08 00 00 	fstp   DWORD PTR [rsp+0x8a0]
+    1b9d:	d9 84 24 28 06 00 00 	fld    DWORD PTR [rsp+0x628]
+    1ba4:	d9 9c 24 a4 08 00 00 	fstp   DWORD PTR [rsp+0x8a4]
+    1bab:	d9 84 24 24 06 00 00 	fld    DWORD PTR [rsp+0x624]
+    1bb2:	d9 9c 24 a8 08 00 00 	fstp   DWORD PTR [rsp+0x8a8]
+    1bb9:	d9 84 24 20 06 00 00 	fld    DWORD PTR [rsp+0x620]
+    1bc0:	d9 9c 24 ac 08 00 00 	fstp   DWORD PTR [rsp+0x8ac]
+    1bc7:	d9 84 24 1c 06 00 00 	fld    DWORD PTR [rsp+0x61c]
+    1bce:	d9 9c 24 b0 08 00 00 	fstp   DWORD PTR [rsp+0x8b0]
+    1bd5:	d9 84 24 18 06 00 00 	fld    DWORD PTR [rsp+0x618]
+    1bdc:	d9 9c 24 b4 08 00 00 	fstp   DWORD PTR [rsp+0x8b4]
+    1be3:	d9 84 24 14 06 00 00 	fld    DWORD PTR [rsp+0x614]
+    1bea:	d9 9c 24 b8 08 00 00 	fstp   DWORD PTR [rsp+0x8b8]
+    1bf1:	d9 84 24 10 06 00 00 	fld    DWORD PTR [rsp+0x610]
+    1bf8:	d9 9c 24 bc 08 00 00 	fstp   DWORD PTR [rsp+0x8bc]
+    1bff:	d9 84 24 0c 06 00 00 	fld    DWORD PTR [rsp+0x60c]
+    1c06:	d9 9c 24 c0 08 00 00 	fstp   DWORD PTR [rsp+0x8c0]
+    1c0d:	d9 84 24 08 06 00 00 	fld    DWORD PTR [rsp+0x608]
+    1c14:	d9 9c 24 c4 08 00 00 	fstp   DWORD PTR [rsp+0x8c4]
+    1c1b:	d9 84 24 04 06 00 00 	fld    DWORD PTR [rsp+0x604]
+    1c22:	d9 9c 24 c8 08 00 00 	fstp   DWORD PTR [rsp+0x8c8]
+    1c29:	d9 84 24 00 06 00 00 	fld    DWORD PTR [rsp+0x600]
+    1c30:	d9 9c 24 cc 08 00 00 	fstp   DWORD PTR [rsp+0x8cc]
+    1c37:	d9 84 24 fc 05 00 00 	fld    DWORD PTR [rsp+0x5fc]
+    1c3e:	d9 9c 24 d0 08 00 00 	fstp   DWORD PTR [rsp+0x8d0]
+    1c45:	d9 84 24 f8 05 00 00 	fld    DWORD PTR [rsp+0x5f8]
+    1c4c:	d9 9c 24 d4 08 00 00 	fstp   DWORD PTR [rsp+0x8d4]
+    1c53:	d9 84 24 f4 05 00 00 	fld    DWORD PTR [rsp+0x5f4]
+    1c5a:	d9 9c 24 d8 08 00 00 	fstp   DWORD PTR [rsp+0x8d8]
+    1c61:	d9 84 24 f0 05 00 00 	fld    DWORD PTR [rsp+0x5f0]
+    1c68:	d9 9c 24 dc 08 00 00 	fstp   DWORD PTR [rsp+0x8dc]
+    1c6f:	d9 84 24 ec 05 00 00 	fld    DWORD PTR [rsp+0x5ec]
+    1c76:	d9 9c 24 e0 08 00 00 	fstp   DWORD PTR [rsp+0x8e0]
+    1c7d:	d9 84 24 e8 05 00 00 	fld    DWORD PTR [rsp+0x5e8]
+    1c84:	d9 9c 24 e4 08 00 00 	fstp   DWORD PTR [rsp+0x8e4]
+    1c8b:	d9 84 24 e4 05 00 00 	fld    DWORD PTR [rsp+0x5e4]
+    1c92:	d9 9c 24 e8 08 00 00 	fstp   DWORD PTR [rsp+0x8e8]
+    1c99:	d9 84 24 e0 05 00 00 	fld    DWORD PTR [rsp+0x5e0]
+    1ca0:	d9 9c 24 ec 08 00 00 	fstp   DWORD PTR [rsp+0x8ec]
+    1ca7:	d9 84 24 dc 05 00 00 	fld    DWORD PTR [rsp+0x5dc]
+    1cae:	d9 9c 24 f0 08 00 00 	fstp   DWORD PTR [rsp+0x8f0]
+    1cb5:	d9 84 24 d8 05 00 00 	fld    DWORD PTR [rsp+0x5d8]
+    1cbc:	d9 9c 24 f4 08 00 00 	fstp   DWORD PTR [rsp+0x8f4]
+    1cc3:	d9 84 24 d4 05 00 00 	fld    DWORD PTR [rsp+0x5d4]
+    1cca:	d9 9c 24 f8 08 00 00 	fstp   DWORD PTR [rsp+0x8f8]
+    1cd1:	d9 84 24 d0 05 00 00 	fld    DWORD PTR [rsp+0x5d0]
+    1cd8:	d9 9c 24 fc 08 00 00 	fstp   DWORD PTR [rsp+0x8fc]
+    1cdf:	d9 84 24 cc 05 00 00 	fld    DWORD PTR [rsp+0x5cc]
+    1ce6:	d9 9c 24 00 09 00 00 	fstp   DWORD PTR [rsp+0x900]
+    1ced:	d9 84 24 c8 05 00 00 	fld    DWORD PTR [rsp+0x5c8]
+    1cf4:	d9 9c 24 04 09 00 00 	fstp   DWORD PTR [rsp+0x904]
+    1cfb:	d9 84 24 c4 05 00 00 	fld    DWORD PTR [rsp+0x5c4]
+    1d02:	d9 9c 24 08 09 00 00 	fstp   DWORD PTR [rsp+0x908]
+    1d09:	d9 84 24 c0 05 00 00 	fld    DWORD PTR [rsp+0x5c0]
+    1d10:	d9 9c 24 0c 09 00 00 	fstp   DWORD PTR [rsp+0x90c]
+    1d17:	d9 84 24 bc 05 00 00 	fld    DWORD PTR [rsp+0x5bc]
+    1d1e:	d9 9c 24 10 09 00 00 	fstp   DWORD PTR [rsp+0x910]
+    1d25:	d9 84 24 b8 05 00 00 	fld    DWORD PTR [rsp+0x5b8]
+    1d2c:	d9 9c 24 14 09 00 00 	fstp   DWORD PTR [rsp+0x914]
+    1d33:	d9 84 24 b4 05 00 00 	fld    DWORD PTR [rsp+0x5b4]
+    1d3a:	d9 9c 24 18 09 00 00 	fstp   DWORD PTR [rsp+0x918]
+    1d41:	d9 84 24 b0 05 00 00 	fld    DWORD PTR [rsp+0x5b0]
+    1d48:	d9 9c 24 1c 09 00 00 	fstp   DWORD PTR [rsp+0x91c]
+    1d4f:	d9 84 24 ac 05 00 00 	fld    DWORD PTR [rsp+0x5ac]
+    1d56:	d9 9c 24 20 09 00 00 	fstp   DWORD PTR [rsp+0x920]
+    1d5d:	d9 84 24 a8 05 00 00 	fld    DWORD PTR [rsp+0x5a8]
+    1d64:	d9 9c 24 24 09 00 00 	fstp   DWORD PTR [rsp+0x924]
+    1d6b:	d9 84 24 a4 05 00 00 	fld    DWORD PTR [rsp+0x5a4]
+    1d72:	d9 9c 24 28 09 00 00 	fstp   DWORD PTR [rsp+0x928]
+    1d79:	d9 84 24 a0 05 00 00 	fld    DWORD PTR [rsp+0x5a0]
+    1d80:	d9 9c 24 2c 09 00 00 	fstp   DWORD PTR [rsp+0x92c]
+    1d87:	d9 84 24 9c 05 00 00 	fld    DWORD PTR [rsp+0x59c]
+    1d8e:	d9 9c 24 30 09 00 00 	fstp   DWORD PTR [rsp+0x930]
+    1d95:	d9 84 24 98 05 00 00 	fld    DWORD PTR [rsp+0x598]
+    1d9c:	d9 9c 24 34 09 00 00 	fstp   DWORD PTR [rsp+0x934]
+    1da3:	d9 84 24 94 05 00 00 	fld    DWORD PTR [rsp+0x594]
+    1daa:	d9 9c 24 38 09 00 00 	fstp   DWORD PTR [rsp+0x938]
+    1db1:	d9 84 24 90 05 00 00 	fld    DWORD PTR [rsp+0x590]
+    1db8:	d9 9c 24 3c 09 00 00 	fstp   DWORD PTR [rsp+0x93c]
+    1dbf:	d9 84 24 8c 05 00 00 	fld    DWORD PTR [rsp+0x58c]
+    1dc6:	d9 9c 24 40 09 00 00 	fstp   DWORD PTR [rsp+0x940]
+    1dcd:	d9 84 24 88 05 00 00 	fld    DWORD PTR [rsp+0x588]
+    1dd4:	d9 9c 24 44 09 00 00 	fstp   DWORD PTR [rsp+0x944]
+    1ddb:	d9 84 24 84 05 00 00 	fld    DWORD PTR [rsp+0x584]
+    1de2:	d9 9c 24 48 09 00 00 	fstp   DWORD PTR [rsp+0x948]
+    1de9:	d9 84 24 80 05 00 00 	fld    DWORD PTR [rsp+0x580]
+    1df0:	d9 9c 24 4c 09 00 00 	fstp   DWORD PTR [rsp+0x94c]
+    1df7:	d9 84 24 7c 05 00 00 	fld    DWORD PTR [rsp+0x57c]
+    1dfe:	d9 9c 24 50 09 00 00 	fstp   DWORD PTR [rsp+0x950]
+    1e05:	d9 84 24 78 05 00 00 	fld    DWORD PTR [rsp+0x578]
+    1e0c:	d9 9c 24 54 09 00 00 	fstp   DWORD PTR [rsp+0x954]
+    1e13:	d9 84 24 74 05 00 00 	fld    DWORD PTR [rsp+0x574]
+    1e1a:	d9 9c 24 58 09 00 00 	fstp   DWORD PTR [rsp+0x958]
+    1e21:	d9 84 24 70 05 00 00 	fld    DWORD PTR [rsp+0x570]
+    1e28:	d9 9c 24 5c 09 00 00 	fstp   DWORD PTR [rsp+0x95c]
+    1e2f:	d9 84 24 6c 05 00 00 	fld    DWORD PTR [rsp+0x56c]
+    1e36:	d9 9c 24 60 09 00 00 	fstp   DWORD PTR [rsp+0x960]
+    1e3d:	d9 84 24 68 05 00 00 	fld    DWORD PTR [rsp+0x568]
+    1e44:	d9 9c 24 64 09 00 00 	fstp   DWORD PTR [rsp+0x964]
+    1e4b:	d9 84 24 64 05 00 00 	fld    DWORD PTR [rsp+0x564]
+    1e52:	d9 9c 24 68 09 00 00 	fstp   DWORD PTR [rsp+0x968]
+    1e59:	d9 84 24 60 05 00 00 	fld    DWORD PTR [rsp+0x560]
+    1e60:	d9 9c 24 6c 09 00 00 	fstp   DWORD PTR [rsp+0x96c]
+    1e67:	d9 84 24 5c 05 00 00 	fld    DWORD PTR [rsp+0x55c]
+    1e6e:	d9 9c 24 70 09 00 00 	fstp   DWORD PTR [rsp+0x970]
+    1e75:	d9 84 24 58 05 00 00 	fld    DWORD PTR [rsp+0x558]
+    1e7c:	d9 9c 24 74 09 00 00 	fstp   DWORD PTR [rsp+0x974]
+    1e83:	d9 84 24 54 05 00 00 	fld    DWORD PTR [rsp+0x554]
+    1e8a:	d9 9c 24 78 09 00 00 	fstp   DWORD PTR [rsp+0x978]
+    1e91:	d9 84 24 50 05 00 00 	fld    DWORD PTR [rsp+0x550]
+    1e98:	d9 9c 24 7c 09 00 00 	fstp   DWORD PTR [rsp+0x97c]
+    1e9f:	d9 84 24 4c 05 00 00 	fld    DWORD PTR [rsp+0x54c]
+    1ea6:	d9 9c 24 80 09 00 00 	fstp   DWORD PTR [rsp+0x980]
+    1ead:	d9 84 24 48 05 00 00 	fld    DWORD PTR [rsp+0x548]
+    1eb4:	d9 9c 24 84 09 00 00 	fstp   DWORD PTR [rsp+0x984]
+    1ebb:	d9 84 24 44 05 00 00 	fld    DWORD PTR [rsp+0x544]
+    1ec2:	d9 9c 24 88 09 00 00 	fstp   DWORD PTR [rsp+0x988]
+    1ec9:	d9 84 24 40 05 00 00 	fld    DWORD PTR [rsp+0x540]
+    1ed0:	d9 9c 24 8c 09 00 00 	fstp   DWORD PTR [rsp+0x98c]
+    1ed7:	d9 84 24 3c 05 00 00 	fld    DWORD PTR [rsp+0x53c]
+    1ede:	d9 9c 24 90 09 00 00 	fstp   DWORD PTR [rsp+0x990]
+    1ee5:	d9 84 24 38 05 00 00 	fld    DWORD PTR [rsp+0x538]
+    1eec:	d9 9c 24 94 09 00 00 	fstp   DWORD PTR [rsp+0x994]
+    1ef3:	d9 84 24 34 05 00 00 	fld    DWORD PTR [rsp+0x534]
+    1efa:	d9 9c 24 98 09 00 00 	fstp   DWORD PTR [rsp+0x998]
+    1f01:	d9 84 24 30 05 00 00 	fld    DWORD PTR [rsp+0x530]
+    1f08:	d9 9c 24 9c 09 00 00 	fstp   DWORD PTR [rsp+0x99c]
+    1f0f:	d9 84 24 2c 05 00 00 	fld    DWORD PTR [rsp+0x52c]
+    1f16:	d9 9c 24 a0 09 00 00 	fstp   DWORD PTR [rsp+0x9a0]
+    1f1d:	d9 84 24 28 05 00 00 	fld    DWORD PTR [rsp+0x528]
+    1f24:	d9 9c 24 a4 09 00 00 	fstp   DWORD PTR [rsp+0x9a4]
+    1f2b:	d9 84 24 24 05 00 00 	fld    DWORD PTR [rsp+0x524]
+    1f32:	d9 9c 24 a8 09 00 00 	fstp   DWORD PTR [rsp+0x9a8]
+    1f39:	d9 84 24 20 05 00 00 	fld    DWORD PTR [rsp+0x520]
+    1f40:	d9 9c 24 ac 09 00 00 	fstp   DWORD PTR [rsp+0x9ac]
+    1f47:	d9 84 24 1c 05 00 00 	fld    DWORD PTR [rsp+0x51c]
+    1f4e:	d9 9c 24 b0 09 00 00 	fstp   DWORD PTR [rsp+0x9b0]
+    1f55:	d9 84 24 18 05 00 00 	fld    DWORD PTR [rsp+0x518]
+    1f5c:	d9 9c 24 b4 09 00 00 	fstp   DWORD PTR [rsp+0x9b4]
+    1f63:	d9 84 24 14 05 00 00 	fld    DWORD PTR [rsp+0x514]
+    1f6a:	d9 9c 24 b8 09 00 00 	fstp   DWORD PTR [rsp+0x9b8]
+    1f71:	d9 84 24 10 05 00 00 	fld    DWORD PTR [rsp+0x510]
+    1f78:	d9 9c 24 bc 09 00 00 	fstp   DWORD PTR [rsp+0x9bc]
+    1f7f:	d9 84 24 0c 05 00 00 	fld    DWORD PTR [rsp+0x50c]
+    1f86:	d9 9c 24 c0 09 00 00 	fstp   DWORD PTR [rsp+0x9c0]
+    1f8d:	d9 84 24 08 05 00 00 	fld    DWORD PTR [rsp+0x508]
+    1f94:	d9 9c 24 c4 09 00 00 	fstp   DWORD PTR [rsp+0x9c4]
+    1f9b:	d9 84 24 04 05 00 00 	fld    DWORD PTR [rsp+0x504]
+    1fa2:	d9 9c 24 c8 09 00 00 	fstp   DWORD PTR [rsp+0x9c8]
+    1fa9:	d9 84 24 00 05 00 00 	fld    DWORD PTR [rsp+0x500]
+    1fb0:	d9 9c 24 cc 09 00 00 	fstp   DWORD PTR [rsp+0x9cc]
+    1fb7:	d9 84 24 fc 04 00 00 	fld    DWORD PTR [rsp+0x4fc]
+    1fbe:	d9 9c 24 d0 09 00 00 	fstp   DWORD PTR [rsp+0x9d0]
+    1fc5:	d9 84 24 f8 04 00 00 	fld    DWORD PTR [rsp+0x4f8]
+    1fcc:	d9 9c 24 d4 09 00 00 	fstp   DWORD PTR [rsp+0x9d4]
+    1fd3:	d9 84 24 f4 04 00 00 	fld    DWORD PTR [rsp+0x4f4]
+    1fda:	d9 9c 24 d8 09 00 00 	fstp   DWORD PTR [rsp+0x9d8]
+    1fe1:	d9 84 24 f0 04 00 00 	fld    DWORD PTR [rsp+0x4f0]
+    1fe8:	d9 9c 24 dc 09 00 00 	fstp   DWORD PTR [rsp+0x9dc]
+    1fef:	d9 84 24 ec 04 00 00 	fld    DWORD PTR [rsp+0x4ec]
+    1ff6:	d9 9c 24 e0 09 00 00 	fstp   DWORD PTR [rsp+0x9e0]
+    1ffd:	d9 84 24 e8 04 00 00 	fld    DWORD PTR [rsp+0x4e8]
+    2004:	d9 9c 24 e4 09 00 00 	fstp   DWORD PTR [rsp+0x9e4]
+    200b:	d9 84 24 e4 04 00 00 	fld    DWORD PTR [rsp+0x4e4]
+    2012:	d9 9c 24 e8 09 00 00 	fstp   DWORD PTR [rsp+0x9e8]
+    2019:	d9 84 24 e0 04 00 00 	fld    DWORD PTR [rsp+0x4e0]
+    2020:	d9 9c 24 ec 09 00 00 	fstp   DWORD PTR [rsp+0x9ec]
+    2027:	d9 84 24 dc 04 00 00 	fld    DWORD PTR [rsp+0x4dc]
+    202e:	d9 9c 24 f0 09 00 00 	fstp   DWORD PTR [rsp+0x9f0]
+    2035:	d9 84 24 d8 04 00 00 	fld    DWORD PTR [rsp+0x4d8]
+    203c:	d9 9c 24 f4 09 00 00 	fstp   DWORD PTR [rsp+0x9f4]
+    2043:	d9 84 24 d4 04 00 00 	fld    DWORD PTR [rsp+0x4d4]
+    204a:	d9 9c 24 f8 09 00 00 	fstp   DWORD PTR [rsp+0x9f8]
+    2051:	d9 84 24 d0 04 00 00 	fld    DWORD PTR [rsp+0x4d0]
+    2058:	d9 9c 24 fc 09 00 00 	fstp   DWORD PTR [rsp+0x9fc]
+    205f:	d9 84 24 cc 04 00 00 	fld    DWORD PTR [rsp+0x4cc]
+    2066:	d9 9c 24 00 0a 00 00 	fstp   DWORD PTR [rsp+0xa00]
+    206d:	d9 84 24 c8 04 00 00 	fld    DWORD PTR [rsp+0x4c8]
+    2074:	d9 9c 24 04 0a 00 00 	fstp   DWORD PTR [rsp+0xa04]
+    207b:	d9 84 24 c4 04 00 00 	fld    DWORD PTR [rsp+0x4c4]
+    2082:	d9 9c 24 08 0a 00 00 	fstp   DWORD PTR [rsp+0xa08]
+    2089:	d9 84 24 c0 04 00 00 	fld    DWORD PTR [rsp+0x4c0]
+    2090:	d9 9c 24 0c 0a 00 00 	fstp   DWORD PTR [rsp+0xa0c]
+    2097:	d9 84 24 bc 04 00 00 	fld    DWORD PTR [rsp+0x4bc]
+    209e:	d9 9c 24 10 0a 00 00 	fstp   DWORD PTR [rsp+0xa10]
+    20a5:	d9 84 24 b8 04 00 00 	fld    DWORD PTR [rsp+0x4b8]
+    20ac:	d9 9c 24 14 0a 00 00 	fstp   DWORD PTR [rsp+0xa14]
+    20b3:	d9 84 24 b4 04 00 00 	fld    DWORD PTR [rsp+0x4b4]
+    20ba:	d9 9c 24 18 0a 00 00 	fstp   DWORD PTR [rsp+0xa18]
+    20c1:	d9 84 24 b0 04 00 00 	fld    DWORD PTR [rsp+0x4b0]
+    20c8:	d9 9c 24 1c 0a 00 00 	fstp   DWORD PTR [rsp+0xa1c]
+    20cf:	d9 84 24 ac 04 00 00 	fld    DWORD PTR [rsp+0x4ac]
+    20d6:	d9 9c 24 20 0a 00 00 	fstp   DWORD PTR [rsp+0xa20]
+    20dd:	d9 84 24 a8 04 00 00 	fld    DWORD PTR [rsp+0x4a8]
+    20e4:	d9 9c 24 24 0a 00 00 	fstp   DWORD PTR [rsp+0xa24]
+    20eb:	d9 84 24 a4 04 00 00 	fld    DWORD PTR [rsp+0x4a4]
+    20f2:	d9 9c 24 28 0a 00 00 	fstp   DWORD PTR [rsp+0xa28]
+    20f9:	d9 84 24 a0 04 00 00 	fld    DWORD PTR [rsp+0x4a0]
+    2100:	d9 9c 24 2c 0a 00 00 	fstp   DWORD PTR [rsp+0xa2c]
+    2107:	d9 84 24 9c 04 00 00 	fld    DWORD PTR [rsp+0x49c]
+    210e:	d9 9c 24 30 0a 00 00 	fstp   DWORD PTR [rsp+0xa30]
+    2115:	d9 84 24 98 04 00 00 	fld    DWORD PTR [rsp+0x498]
+    211c:	d9 9c 24 34 0a 00 00 	fstp   DWORD PTR [rsp+0xa34]
+    2123:	d9 84 24 94 04 00 00 	fld    DWORD PTR [rsp+0x494]
+    212a:	d9 9c 24 38 0a 00 00 	fstp   DWORD PTR [rsp+0xa38]
+    2131:	d9 84 24 90 04 00 00 	fld    DWORD PTR [rsp+0x490]
+    2138:	d9 9c 24 3c 0a 00 00 	fstp   DWORD PTR [rsp+0xa3c]
+    213f:	d9 84 24 8c 04 00 00 	fld    DWORD PTR [rsp+0x48c]
+    2146:	d9 9c 24 40 0a 00 00 	fstp   DWORD PTR [rsp+0xa40]
+    214d:	d9 84 24 88 04 00 00 	fld    DWORD PTR [rsp+0x488]
+    2154:	d9 9c 24 44 0a 00 00 	fstp   DWORD PTR [rsp+0xa44]
+    215b:	d9 84 24 84 04 00 00 	fld    DWORD PTR [rsp+0x484]
+    2162:	d9 9c 24 48 0a 00 00 	fstp   DWORD PTR [rsp+0xa48]
+    2169:	d9 84 24 80 04 00 00 	fld    DWORD PTR [rsp+0x480]
+    2170:	d9 9c 24 4c 0a 00 00 	fstp   DWORD PTR [rsp+0xa4c]
+    2177:	d9 84 24 7c 04 00 00 	fld    DWORD PTR [rsp+0x47c]
+    217e:	d9 9c 24 50 0a 00 00 	fstp   DWORD PTR [rsp+0xa50]
+    2185:	d9 84 24 78 04 00 00 	fld    DWORD PTR [rsp+0x478]
+    218c:	d9 9c 24 54 0a 00 00 	fstp   DWORD PTR [rsp+0xa54]
+    2193:	d9 84 24 74 04 00 00 	fld    DWORD PTR [rsp+0x474]
+    219a:	d9 9c 24 58 0a 00 00 	fstp   DWORD PTR [rsp+0xa58]
+    21a1:	d9 84 24 70 04 00 00 	fld    DWORD PTR [rsp+0x470]
+    21a8:	d9 9c 24 5c 0a 00 00 	fstp   DWORD PTR [rsp+0xa5c]
+    21af:	d9 84 24 6c 04 00 00 	fld    DWORD PTR [rsp+0x46c]
+    21b6:	d9 9c 24 60 0a 00 00 	fstp   DWORD PTR [rsp+0xa60]
+    21bd:	d9 84 24 68 04 00 00 	fld    DWORD PTR [rsp+0x468]
+    21c4:	d9 9c 24 64 0a 00 00 	fstp   DWORD PTR [rsp+0xa64]
+    21cb:	d9 84 24 64 04 00 00 	fld    DWORD PTR [rsp+0x464]
+    21d2:	d9 9c 24 68 0a 00 00 	fstp   DWORD PTR [rsp+0xa68]
+    21d9:	d9 84 24 60 04 00 00 	fld    DWORD PTR [rsp+0x460]
+    21e0:	d9 9c 24 6c 0a 00 00 	fstp   DWORD PTR [rsp+0xa6c]
+    21e7:	d9 84 24 5c 04 00 00 	fld    DWORD PTR [rsp+0x45c]
+    21ee:	d9 9c 24 70 0a 00 00 	fstp   DWORD PTR [rsp+0xa70]
+    21f5:	d9 84 24 58 04 00 00 	fld    DWORD PTR [rsp+0x458]
+    21fc:	d9 9c 24 74 0a 00 00 	fstp   DWORD PTR [rsp+0xa74]
+    2203:	d9 84 24 54 04 00 00 	fld    DWORD PTR [rsp+0x454]
+    220a:	d9 9c 24 78 0a 00 00 	fstp   DWORD PTR [rsp+0xa78]
+    2211:	d9 84 24 50 04 00 00 	fld    DWORD PTR [rsp+0x450]
+    2218:	d9 9c 24 7c 0a 00 00 	fstp   DWORD PTR [rsp+0xa7c]
+    221f:	d9 84 24 4c 04 00 00 	fld    DWORD PTR [rsp+0x44c]
+    2226:	d9 9c 24 80 0a 00 00 	fstp   DWORD PTR [rsp+0xa80]
+    222d:	d9 84 24 48 04 00 00 	fld    DWORD PTR [rsp+0x448]
+    2234:	d9 9c 24 84 0a 00 00 	fstp   DWORD PTR [rsp+0xa84]
+    223b:	d9 84 24 44 04 00 00 	fld    DWORD PTR [rsp+0x444]
+    2242:	d9 9c 24 88 0a 00 00 	fstp   DWORD PTR [rsp+0xa88]
+    2249:	d9 84 24 40 04 00 00 	fld    DWORD PTR [rsp+0x440]
+    2250:	d9 9c 24 8c 0a 00 00 	fstp   DWORD PTR [rsp+0xa8c]
+    2257:	d9 84 24 3c 04 00 00 	fld    DWORD PTR [rsp+0x43c]
+    225e:	d9 9c 24 90 0a 00 00 	fstp   DWORD PTR [rsp+0xa90]
+    2265:	d9 84 24 38 04 00 00 	fld    DWORD PTR [rsp+0x438]
+    226c:	d9 9c 24 94 0a 00 00 	fstp   DWORD PTR [rsp+0xa94]
+    2273:	d9 84 24 34 04 00 00 	fld    DWORD PTR [rsp+0x434]
+    227a:	d9 9c 24 98 0a 00 00 	fstp   DWORD PTR [rsp+0xa98]
+    2281:	d9 84 24 30 04 00 00 	fld    DWORD PTR [rsp+0x430]
+    2288:	d9 9c 24 9c 0a 00 00 	fstp   DWORD PTR [rsp+0xa9c]
+    228f:	d9 84 24 2c 04 00 00 	fld    DWORD PTR [rsp+0x42c]
+    2296:	d9 9c 24 a0 0a 00 00 	fstp   DWORD PTR [rsp+0xaa0]
+    229d:	d9 84 24 28 04 00 00 	fld    DWORD PTR [rsp+0x428]
+    22a4:	d9 9c 24 a4 0a 00 00 	fstp   DWORD PTR [rsp+0xaa4]
+    22ab:	d9 84 24 24 04 00 00 	fld    DWORD PTR [rsp+0x424]
+    22b2:	d9 9c 24 a8 0a 00 00 	fstp   DWORD PTR [rsp+0xaa8]
+    22b9:	d9 84 24 20 04 00 00 	fld    DWORD PTR [rsp+0x420]
+    22c0:	d9 9c 24 ac 0a 00 00 	fstp   DWORD PTR [rsp+0xaac]
+    22c7:	d9 84 24 1c 04 00 00 	fld    DWORD PTR [rsp+0x41c]
+    22ce:	d9 9c 24 b0 0a 00 00 	fstp   DWORD PTR [rsp+0xab0]
+    22d5:	d9 84 24 18 04 00 00 	fld    DWORD PTR [rsp+0x418]
+    22dc:	d9 9c 24 b4 0a 00 00 	fstp   DWORD PTR [rsp+0xab4]
+    22e3:	d9 84 24 14 04 00 00 	fld    DWORD PTR [rsp+0x414]
+    22ea:	d9 9c 24 b8 0a 00 00 	fstp   DWORD PTR [rsp+0xab8]
+    22f1:	d9 84 24 10 04 00 00 	fld    DWORD PTR [rsp+0x410]
+    22f8:	d9 9c 24 bc 0a 00 00 	fstp   DWORD PTR [rsp+0xabc]
+    22ff:	d9 84 24 0c 04 00 00 	fld    DWORD PTR [rsp+0x40c]
+    2306:	d9 9c 24 c0 0a 00 00 	fstp   DWORD PTR [rsp+0xac0]
+    230d:	d9 84 24 08 04 00 00 	fld    DWORD PTR [rsp+0x408]
+    2314:	d9 9c 24 c4 0a 00 00 	fstp   DWORD PTR [rsp+0xac4]
+    231b:	d9 84 24 04 04 00 00 	fld    DWORD PTR [rsp+0x404]
+    2322:	d9 9c 24 c8 0a 00 00 	fstp   DWORD PTR [rsp+0xac8]
+    2329:	d9 84 24 00 04 00 00 	fld    DWORD PTR [rsp+0x400]
+    2330:	d9 9c 24 cc 0a 00 00 	fstp   DWORD PTR [rsp+0xacc]
+    2337:	d9 84 24 fc 03 00 00 	fld    DWORD PTR [rsp+0x3fc]
+    233e:	d9 9c 24 d0 0a 00 00 	fstp   DWORD PTR [rsp+0xad0]
+    2345:	d9 84 24 f8 03 00 00 	fld    DWORD PTR [rsp+0x3f8]
+    234c:	d9 9c 24 d4 0a 00 00 	fstp   DWORD PTR [rsp+0xad4]
+    2353:	d9 84 24 f4 03 00 00 	fld    DWORD PTR [rsp+0x3f4]
+    235a:	d9 9c 24 d8 0a 00 00 	fstp   DWORD PTR [rsp+0xad8]
+    2361:	d9 84 24 f0 03 00 00 	fld    DWORD PTR [rsp+0x3f0]
+    2368:	d9 9c 24 dc 0a 00 00 	fstp   DWORD PTR [rsp+0xadc]
+    236f:	d9 84 24 ec 03 00 00 	fld    DWORD PTR [rsp+0x3ec]
+    2376:	d9 9c 24 e0 0a 00 00 	fstp   DWORD PTR [rsp+0xae0]
+    237d:	d9 84 24 e8 03 00 00 	fld    DWORD PTR [rsp+0x3e8]
+    2384:	d9 9c 24 e4 0a 00 00 	fstp   DWORD PTR [rsp+0xae4]
+    238b:	d9 84 24 e4 03 00 00 	fld    DWORD PTR [rsp+0x3e4]
+    2392:	d9 9c 24 e8 0a 00 00 	fstp   DWORD PTR [rsp+0xae8]
+    2399:	d9 84 24 e0 03 00 00 	fld    DWORD PTR [rsp+0x3e0]
+    23a0:	d9 9c 24 ec 0a 00 00 	fstp   DWORD PTR [rsp+0xaec]
+    23a7:	d9 84 24 dc 03 00 00 	fld    DWORD PTR [rsp+0x3dc]
+    23ae:	d9 9c 24 f0 0a 00 00 	fstp   DWORD PTR [rsp+0xaf0]
+    23b5:	d9 84 24 d8 03 00 00 	fld    DWORD PTR [rsp+0x3d8]
+    23bc:	d9 9c 24 f4 0a 00 00 	fstp   DWORD PTR [rsp+0xaf4]
+    23c3:	d9 84 24 d4 03 00 00 	fld    DWORD PTR [rsp+0x3d4]
+    23ca:	d9 9c 24 f8 0a 00 00 	fstp   DWORD PTR [rsp+0xaf8]
+    23d1:	d9 84 24 d0 03 00 00 	fld    DWORD PTR [rsp+0x3d0]
+    23d8:	d9 9c 24 fc 0a 00 00 	fstp   DWORD PTR [rsp+0xafc]
+    23df:	d9 84 24 cc 03 00 00 	fld    DWORD PTR [rsp+0x3cc]
+    23e6:	d9 9c 24 00 0b 00 00 	fstp   DWORD PTR [rsp+0xb00]
+    23ed:	d9 84 24 c8 03 00 00 	fld    DWORD PTR [rsp+0x3c8]
+    23f4:	d9 9c 24 04 0b 00 00 	fstp   DWORD PTR [rsp+0xb04]
+    23fb:	d9 84 24 c4 03 00 00 	fld    DWORD PTR [rsp+0x3c4]
+    2402:	d9 9c 24 08 0b 00 00 	fstp   DWORD PTR [rsp+0xb08]
+    2409:	d9 84 24 c0 03 00 00 	fld    DWORD PTR [rsp+0x3c0]
+    2410:	d9 9c 24 0c 0b 00 00 	fstp   DWORD PTR [rsp+0xb0c]
+    2417:	d9 84 24 bc 03 00 00 	fld    DWORD PTR [rsp+0x3bc]
+    241e:	d9 9c 24 10 0b 00 00 	fstp   DWORD PTR [rsp+0xb10]
+    2425:	d9 84 24 b8 03 00 00 	fld    DWORD PTR [rsp+0x3b8]
+    242c:	d9 9c 24 14 0b 00 00 	fstp   DWORD PTR [rsp+0xb14]
+    2433:	d9 84 24 b4 03 00 00 	fld    DWORD PTR [rsp+0x3b4]
+    243a:	d9 9c 24 18 0b 00 00 	fstp   DWORD PTR [rsp+0xb18]
+    2441:	d9 84 24 b0 03 00 00 	fld    DWORD PTR [rsp+0x3b0]
+    2448:	d9 9c 24 1c 0b 00 00 	fstp   DWORD PTR [rsp+0xb1c]
+    244f:	d9 84 24 ac 03 00 00 	fld    DWORD PTR [rsp+0x3ac]
+    2456:	d9 9c 24 20 0b 00 00 	fstp   DWORD PTR [rsp+0xb20]
+    245d:	d9 84 24 a8 03 00 00 	fld    DWORD PTR [rsp+0x3a8]
+    2464:	d9 9c 24 24 0b 00 00 	fstp   DWORD PTR [rsp+0xb24]
+    246b:	d9 84 24 a4 03 00 00 	fld    DWORD PTR [rsp+0x3a4]
+    2472:	d9 9c 24 28 0b 00 00 	fstp   DWORD PTR [rsp+0xb28]
+    2479:	d9 84 24 a0 03 00 00 	fld    DWORD PTR [rsp+0x3a0]
+    2480:	d9 9c 24 2c 0b 00 00 	fstp   DWORD PTR [rsp+0xb2c]
+    2487:	d9 84 24 9c 03 00 00 	fld    DWORD PTR [rsp+0x39c]
+    248e:	d9 9c 24 30 0b 00 00 	fstp   DWORD PTR [rsp+0xb30]
+    2495:	d9 84 24 98 03 00 00 	fld    DWORD PTR [rsp+0x398]
+    249c:	d9 9c 24 34 0b 00 00 	fstp   DWORD PTR [rsp+0xb34]
+    24a3:	d9 84 24 94 03 00 00 	fld    DWORD PTR [rsp+0x394]
+    24aa:	d9 9c 24 38 0b 00 00 	fstp   DWORD PTR [rsp+0xb38]
+    24b1:	d9 84 24 90 03 00 00 	fld    DWORD PTR [rsp+0x390]
+    24b8:	d9 9c 24 3c 0b 00 00 	fstp   DWORD PTR [rsp+0xb3c]
+    24bf:	d9 84 24 8c 03 00 00 	fld    DWORD PTR [rsp+0x38c]
+    24c6:	d9 9c 24 40 0b 00 00 	fstp   DWORD PTR [rsp+0xb40]
+    24cd:	d9 84 24 88 03 00 00 	fld    DWORD PTR [rsp+0x388]
+    24d4:	d9 9c 24 44 0b 00 00 	fstp   DWORD PTR [rsp+0xb44]
+    24db:	d9 84 24 84 03 00 00 	fld    DWORD PTR [rsp+0x384]
+    24e2:	d9 9c 24 48 0b 00 00 	fstp   DWORD PTR [rsp+0xb48]
+    24e9:	d9 ce                	fxch   st(6)
+    24eb:	d9 9c 24 4c 0b 00 00 	fstp   DWORD PTR [rsp+0xb4c]
+    24f2:	d9 cc                	fxch   st(4)
+    24f4:	d9 9c 24 50 0b 00 00 	fstp   DWORD PTR [rsp+0xb50]
+    24fb:	d9 ca                	fxch   st(2)
+    24fd:	d9 9c 24 54 0b 00 00 	fstp   DWORD PTR [rsp+0xb54]
+    2504:	d9 9c 24 58 0b 00 00 	fstp   DWORD PTR [rsp+0xb58]
+    250b:	d9 9c 24 5c 0b 00 00 	fstp   DWORD PTR [rsp+0xb5c]
+    2512:	d9 9c 24 60 0b 00 00 	fstp   DWORD PTR [rsp+0xb60]
+    2519:	d9 9c 24 64 0b 00 00 	fstp   DWORD PTR [rsp+0xb64]
+    2520:	48 8d 84 24 88 13 00 	lea    rax,[rsp+0x1388]
+    2527:	00 
+    2528:	48 8d 94 24 68 07 00 	lea    rdx,[rsp+0x768]
+    252f:	00 
+    2530:	b9 80 00 00 00       	mov    ecx,0x80
+    2535:	48 89 c7             	mov    rdi,rax
+    2538:	48 89 d6             	mov    rsi,rdx
+    253b:	f3 48 a5             	rep movs QWORD PTR es:[rdi],QWORD PTR ds:[rsi]
+    253e:	48 8b 84 24 70 0b 00 	mov    rax,QWORD PTR [rsp+0xb70]
+    2545:	00 
+    2546:	48 89 c7             	mov    rdi,rax
+    2549:	48 8d 84 24 88 13 00 	lea    rax,[rsp+0x1388]
+    2550:	00 
+    2551:	ba 80 00 00 00       	mov    edx,0x80
+    2556:	48 89 c6             	mov    rsi,rax
+    2559:	48 89 d1             	mov    rcx,rdx
+    255c:	f3 48 a5             	rep movs QWORD PTR es:[rdi],QWORD PTR ds:[rsi]
+}
+    255f:	90                   	nop
+    2560:	c9                   	leave  
+    2561:	c3                   	ret    
+
+0000000000002562 <main>:
+
+int main(void)
+{
+    2562:	f3 0f 1e fa          	endbr64 
+    2566:	55                   	push   rbp
+    2567:	48 89 e5             	mov    rbp,rsp
+    256a:	48 81 e4 00 fc ff ff 	and    rsp,0xfffffffffffffc00
+    2571:	48 81 ec 00 10 00 00 	sub    rsp,0x1000
+    2578:	48 83 0c 24 00       	or     QWORD PTR [rsp],0x0
+    257d:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+    2584:	00 00 
+    2586:	48 89 84 24 f8 0f 00 	mov    QWORD PTR [rsp+0xff8],rax
+    258d:	00 
+    258e:	31 c0                	xor    eax,eax
+    v1024f x = { 1.0 };
+    2590:	48 89 e2             	mov    rdx,rsp
+    2593:	b8 00 00 00 00       	mov    eax,0x0
+    2598:	b9 80 00 00 00       	mov    ecx,0x80
+    259d:	48 89 d7             	mov    rdi,rdx
+    25a0:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+    25a3:	d9 e8                	fld1   
+    25a5:	d9 1c 24             	fstp   DWORD PTR [rsp]
+    v1024f y = { 1.0 };
+    25a8:	48 8d 94 24 00 04 00 	lea    rdx,[rsp+0x400]
+    25af:	00 
+    25b0:	b8 00 00 00 00       	mov    eax,0x0
+    25b5:	b9 80 00 00 00       	mov    ecx,0x80
+    25ba:	48 89 d7             	mov    rdi,rdx
+    25bd:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
+    25c0:	d9 e8                	fld1   
+    25c2:	d9 9c 24 00 04 00 00 	fstp   DWORD PTR [rsp+0x400]
+    v1024f z;
+
+    addVectors(&x, &y, &z);
+    25c9:	48 8d 94 24 00 08 00 	lea    rdx,[rsp+0x800]
+    25d0:	00 
+    25d1:	48 8d 8c 24 00 04 00 	lea    rcx,[rsp+0x400]
+    25d8:	00 
+    25d9:	48 89 e0             	mov    rax,rsp
+    25dc:	48 89 ce             	mov    rsi,rcx
+    25df:	48 89 c7             	mov    rdi,rax
+    25e2:	e8 00 00 00 00       	call   25e7 <main+0x85>
+
+    return 0;
+    25e7:	b8 00 00 00 00       	mov    eax,0x0
+}
+    25ec:	48 8b b4 24 f8 0f 00 	mov    rsi,QWORD PTR [rsp+0xff8]
+    25f3:	00 
+    25f4:	64 48 33 34 25 28 00 	xor    rsi,QWORD PTR fs:0x28
+    25fb:	00 00 
+    25fd:	74 05                	je     2604 <main+0xa2>
+    25ff:	e8 00 00 00 00       	call   2604 <main+0xa2>
+    2604:	c9                   	leave  
+    2605:	c3                   	ret    
