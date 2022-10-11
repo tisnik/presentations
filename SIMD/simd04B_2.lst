@@ -1,0 +1,86 @@
+
+simd04B_2.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef signed short int v16us __attribute__((vector_size(16)));
+typedef signed int v16ui __attribute__((vector_size(16)));
+typedef signed long int v16ul __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 83 ec 48          	sub    rsp,0x48
+    {
+        v16ub x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+   c:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 14 <main+0x14>
+  13:	00 
+  14:	0f 29 85 40 ff ff ff 	movaps XMMWORD PTR [rbp-0xc0],xmm0
+        v16ub y = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+  1b:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 23 <main+0x23>
+  22:	00 
+  23:	0f 29 85 50 ff ff ff 	movaps XMMWORD PTR [rbp-0xb0],xmm0
+        v16ub z = x + y;
+  2a:	66 0f 6f 85 40 ff ff 	movdqa xmm0,XMMWORD PTR [rbp-0xc0]
+  31:	ff 
+  32:	66 0f fc 85 50 ff ff 	paddb  xmm0,XMMWORD PTR [rbp-0xb0]
+  39:	ff 
+  3a:	0f 29 85 60 ff ff ff 	movaps XMMWORD PTR [rbp-0xa0],xmm0
+    }
+
+    {
+        v16us x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+  41:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 49 <main+0x49>
+  48:	00 
+  49:	0f 29 85 70 ff ff ff 	movaps XMMWORD PTR [rbp-0x90],xmm0
+        v16us y = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+  50:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 58 <main+0x58>
+  57:	00 
+  58:	0f 29 45 80          	movaps XMMWORD PTR [rbp-0x80],xmm0
+        v16us z = x + y;
+  5c:	66 0f 6f 85 70 ff ff 	movdqa xmm0,XMMWORD PTR [rbp-0x90]
+  63:	ff 
+  64:	66 0f fd 45 80       	paddw  xmm0,XMMWORD PTR [rbp-0x80]
+  69:	0f 29 45 90          	movaps XMMWORD PTR [rbp-0x70],xmm0
+    }
+
+    {
+        v16ui x = { 1, 2, 3, 4 };
+  6d:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 75 <main+0x75>
+  74:	00 
+  75:	0f 29 45 a0          	movaps XMMWORD PTR [rbp-0x60],xmm0
+        v16ui y = { 0xff, 0xff, 0xff, 0xff };
+  79:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 81 <main+0x81>
+  80:	00 
+  81:	0f 29 45 b0          	movaps XMMWORD PTR [rbp-0x50],xmm0
+        v16ui z = x + y;
+  85:	66 0f 6f 45 a0       	movdqa xmm0,XMMWORD PTR [rbp-0x60]
+  8a:	66 0f fe 45 b0       	paddd  xmm0,XMMWORD PTR [rbp-0x50]
+  8f:	0f 29 45 c0          	movaps XMMWORD PTR [rbp-0x40],xmm0
+    }
+
+    {
+        v16ui x = { 1, 2 };
+  93:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 9b <main+0x9b>
+  9a:	00 
+  9b:	0f 29 45 d0          	movaps XMMWORD PTR [rbp-0x30],xmm0
+        v16ui y = { 0xff, 0xff };
+  9f:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # a7 <main+0xa7>
+  a6:	00 
+  a7:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+        v16ui z = x + y;
+  ab:	66 0f 6f 45 d0       	movdqa xmm0,XMMWORD PTR [rbp-0x30]
+  b0:	66 0f fe 45 e0       	paddd  xmm0,XMMWORD PTR [rbp-0x20]
+  b5:	0f 29 45 f0          	movaps XMMWORD PTR [rbp-0x10],xmm0
+    }
+
+
+    return 0;
+  b9:	b8 00 00 00 00       	mov    eax,0x0
+}
+  be:	c9                   	leave  
+  bf:	c3                   	ret    
