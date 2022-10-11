@@ -1,0 +1,314 @@
+
+simd14_3.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16ub>:
+#include <stdio.h>
+
+typedef signed char v16ib __attribute__((vector_size(16)));
+
+void add16ub(v16ib x, v16ib y, v16ib * z)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	4c 8b 44 24 18       	mov    r8,QWORD PTR [rsp+0x18]
+   9:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
+    *z = x + y;
+   e:	48 ba 7f 7f 7f 7f 7f 	movabs rdx,0x7f7f7f7f7f7f7f7f
+  15:	7f 7f 7f 
+{
+  18:	4c 8b 4c 24 20       	mov    r9,QWORD PTR [rsp+0x20]
+  1d:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+    *z = x + y;
+  22:	4c 89 c6             	mov    rsi,r8
+  25:	49 89 ca             	mov    r10,rcx
+  28:	4c 31 c1             	xor    rcx,r8
+  2b:	49 b8 80 80 80 80 80 	movabs r8,0x8080808080808080
+  32:	80 80 80 
+  35:	48 21 d6             	and    rsi,rdx
+  38:	49 21 d2             	and    r10,rdx
+  3b:	4c 21 c1             	and    rcx,r8
+  3e:	4c 01 d6             	add    rsi,r10
+  41:	48 31 f1             	xor    rcx,rsi
+  44:	4c 89 ce             	mov    rsi,r9
+  47:	48 21 d6             	and    rsi,rdx
+  4a:	48 21 c2             	and    rdx,rax
+  4d:	4c 31 c8             	xor    rax,r9
+  50:	48 89 0f             	mov    QWORD PTR [rdi],rcx
+  53:	48 01 f2             	add    rdx,rsi
+  56:	4c 21 c0             	and    rax,r8
+  59:	48 31 d0             	xor    rax,rdx
+  5c:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+  60:	c3                   	ret    
+  61:	66 66 2e 0f 1f 84 00 	data16 nop WORD PTR cs:[rax+rax*1+0x0]
+  68:	00 00 00 00 
+  6c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+0000000000000070 <add16us>:
+
+typedef signed short v16is __attribute__((vector_size(16)));
+
+void add16us(v16is x, v16is y, v16is * z)
+{
+  70:	f3 0f 1e fa          	endbr64 
+  74:	4c 8b 44 24 18       	mov    r8,QWORD PTR [rsp+0x18]
+  79:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
+    *z = x + y;
+  7e:	48 ba ff 7f ff 7f ff 	movabs rdx,0x7fff7fff7fff7fff
+  85:	7f ff 7f 
+{
+  88:	4c 8b 4c 24 20       	mov    r9,QWORD PTR [rsp+0x20]
+  8d:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+    *z = x + y;
+  92:	4c 89 c6             	mov    rsi,r8
+  95:	49 89 ca             	mov    r10,rcx
+  98:	4c 31 c1             	xor    rcx,r8
+  9b:	49 b8 00 80 00 80 00 	movabs r8,0x8000800080008000
+  a2:	80 00 80 
+  a5:	48 21 d6             	and    rsi,rdx
+  a8:	49 21 d2             	and    r10,rdx
+  ab:	4c 21 c1             	and    rcx,r8
+  ae:	4c 01 d6             	add    rsi,r10
+  b1:	48 31 f1             	xor    rcx,rsi
+  b4:	4c 89 ce             	mov    rsi,r9
+  b7:	48 21 d6             	and    rsi,rdx
+  ba:	48 21 c2             	and    rdx,rax
+  bd:	4c 31 c8             	xor    rax,r9
+  c0:	48 89 0f             	mov    QWORD PTR [rdi],rcx
+  c3:	48 01 f2             	add    rdx,rsi
+  c6:	4c 21 c0             	and    rax,r8
+  c9:	48 31 d0             	xor    rax,rdx
+  cc:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+  d0:	c3                   	ret    
+  d1:	66 66 2e 0f 1f 84 00 	data16 nop WORD PTR cs:[rax+rax*1+0x0]
+  d8:	00 00 00 00 
+  dc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+00000000000000e0 <add16ui>:
+
+typedef signed int v16ii __attribute__((vector_size(16)));
+
+void add16ui(v16ii x, v16ii y, v16ii * z)
+{
+  e0:	f3 0f 1e fa          	endbr64 
+  e4:	48 8b 4c 24 18       	mov    rcx,QWORD PTR [rsp+0x18]
+  e9:	4c 8b 4c 24 08       	mov    r9,QWORD PTR [rsp+0x8]
+  ee:	4c 8b 44 24 10       	mov    r8,QWORD PTR [rsp+0x10]
+  f3:	48 8b 74 24 20       	mov    rsi,QWORD PTR [rsp+0x20]
+    *z = x + y;
+  f8:	48 89 c8             	mov    rax,rcx
+  fb:	4c 89 ca             	mov    rdx,r9
+  fe:	48 c1 f8 20          	sar    rax,0x20
+ 102:	48 c1 fa 20          	sar    rdx,0x20
+ 106:	01 c2                	add    edx,eax
+ 108:	48 89 d0             	mov    rax,rdx
+ 10b:	41 8d 14 09          	lea    edx,[r9+rcx*1]
+ 10f:	4c 89 c1             	mov    rcx,r8
+ 112:	48 c1 e0 20          	shl    rax,0x20
+ 116:	48 c1 f9 20          	sar    rcx,0x20
+ 11a:	48 09 c2             	or     rdx,rax
+ 11d:	48 89 f0             	mov    rax,rsi
+ 120:	48 c1 f8 20          	sar    rax,0x20
+ 124:	48 89 17             	mov    QWORD PTR [rdi],rdx
+ 127:	01 c8                	add    eax,ecx
+ 129:	48 c1 e0 20          	shl    rax,0x20
+ 12d:	48 89 c1             	mov    rcx,rax
+ 130:	41 8d 04 30          	lea    eax,[r8+rsi*1]
+ 134:	48 09 c8             	or     rax,rcx
+ 137:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+ 13b:	c3                   	ret    
+ 13c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+0000000000000140 <add16ul>:
+
+typedef signed long int v16il __attribute__((vector_size(16)));
+
+void add16ul(v16il x, v16il y, v16il * z)
+{
+ 140:	f3 0f 1e fa          	endbr64 
+    *z = x + y;
+ 144:	48 8b 54 24 18       	mov    rdx,QWORD PTR [rsp+0x18]
+ 149:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+ 14e:	48 03 54 24 08       	add    rdx,QWORD PTR [rsp+0x8]
+ 153:	48 03 44 24 10       	add    rax,QWORD PTR [rsp+0x10]
+ 158:	48 89 17             	mov    QWORD PTR [rdi],rdx
+ 15b:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+}
+ 15f:	c3                   	ret    
+
+Disassembly of section .text.startup:
+
+0000000000000000 <main>:
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 54                	push   r12
+
+        add16ub(x, y, &z);
+
+        int i;
+
+        puts("vector of signed chars");
+   6:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # d <main+0xd>
+    *z = x + y;
+   d:	48 ba 07 08 09 0a 0b 	movabs rdx,0xe0d0c0b0a090807
+  14:	0c 0d 0e 
+}
+
+__fortify_function int
+printf (const char *__restrict __fmt, ...)
+{
+  return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+  17:	4c 8d 25 00 00 00 00 	lea    r12,[rip+0x0]        # 1e <main+0x1e>
+{
+  1e:	55                   	push   rbp
+  1f:	53                   	push   rbx
+        puts("vector of signed chars");
+  20:	31 db                	xor    ebx,ebx
+{
+  22:	48 83 ec 20          	sub    rsp,0x20
+  26:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  2d:	00 00 
+  2f:	48 89 44 24 18       	mov    QWORD PTR [rsp+0x18],rax
+  34:	31 c0                	xor    eax,eax
+    *z = x + y;
+  36:	48 89 e5             	mov    rbp,rsp
+  39:	48 89 54 24 08       	mov    QWORD PTR [rsp+0x8],rdx
+  3e:	48 b8 ff 00 01 02 03 	movabs rax,0x6050403020100ff
+  45:	04 05 06 
+  48:	48 89 04 24          	mov    QWORD PTR [rsp],rax
+        puts("vector of signed chars");
+  4c:	e8 00 00 00 00       	call   51 <main+0x51>
+
+        for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+  51:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+            printf("%d %d\n", i, z[i]);
+  58:	0f be 4c 1d 00       	movsx  ecx,BYTE PTR [rbp+rbx*1+0x0]
+  5d:	89 da                	mov    edx,ebx
+  5f:	4c 89 e6             	mov    rsi,r12
+  62:	bf 01 00 00 00       	mov    edi,0x1
+  67:	31 c0                	xor    eax,eax
+  69:	48 83 c3 01          	add    rbx,0x1
+  6d:	e8 00 00 00 00       	call   72 <main+0x72>
+        for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+  72:	48 83 fb 10          	cmp    rbx,0x10
+  76:	75 e0                	jne    58 <main+0x58>
+
+/* Write a character to stdout.  */
+__STDIO_INLINE int
+putchar (int __c)
+{
+  return putc (__c, stdout);
+  78:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # 7f <main+0x7f>
+  7f:	bf 0a 00 00 00       	mov    edi,0xa
+
+        add16us(x, y, &z);
+
+        int i;
+
+        puts("vector of signed short ints");
+  84:	31 db                	xor    ebx,ebx
+  86:	4c 8d 25 00 00 00 00 	lea    r12,[rip+0x0]        # 8d <main+0x8d>
+  8d:	e8 00 00 00 00       	call   92 <main+0x92>
+  92:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 99 <main+0x99>
+    *z = x + y;
+  99:	48 b8 ff ff 00 00 01 	movabs rax,0x200010000ffff
+  a0:	00 02 00 
+  a3:	48 ba 03 00 04 00 05 	movabs rdx,0x6000500040003
+  aa:	00 06 00 
+  ad:	48 89 04 24          	mov    QWORD PTR [rsp],rax
+  b1:	48 89 54 24 08       	mov    QWORD PTR [rsp+0x8],rdx
+        puts("vector of signed short ints");
+  b6:	e8 00 00 00 00       	call   bb <main+0xbb>
+
+        for (i = 0; i < sizeof(v16is) / sizeof(signed short); i++) {
+  bb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+            printf("%d %d\n", i, z[i]);
+  c0:	0f bf 4c 5d 00       	movsx  ecx,WORD PTR [rbp+rbx*2+0x0]
+  c5:	89 da                	mov    edx,ebx
+  c7:	4c 89 e6             	mov    rsi,r12
+  ca:	bf 01 00 00 00       	mov    edi,0x1
+  cf:	31 c0                	xor    eax,eax
+  d1:	48 83 c3 01          	add    rbx,0x1
+  d5:	e8 00 00 00 00       	call   da <main+0xda>
+        for (i = 0; i < sizeof(v16is) / sizeof(signed short); i++) {
+  da:	48 83 fb 08          	cmp    rbx,0x8
+  de:	75 e0                	jne    c0 <main+0xc0>
+  e0:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # e7 <main+0xe7>
+  e7:	bf 0a 00 00 00       	mov    edi,0xa
+
+        add16ui(x, y, &z);
+
+        int i;
+
+        puts("vector of signed ints");
+  ec:	31 db                	xor    ebx,ebx
+  ee:	4c 8d 25 00 00 00 00 	lea    r12,[rip+0x0]        # f5 <main+0xf5>
+  f5:	e8 00 00 00 00       	call   fa <main+0xfa>
+    *z = x + y;
+  fa:	b8 ff ff ff ff       	mov    eax,0xffffffff
+  ff:	48 ba 01 00 00 00 02 	movabs rdx,0x200000001
+ 106:	00 00 00 
+        puts("vector of signed ints");
+ 109:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 110 <main+0x110>
+    *z = x + y;
+ 110:	48 89 04 24          	mov    QWORD PTR [rsp],rax
+ 114:	48 89 54 24 08       	mov    QWORD PTR [rsp+0x8],rdx
+        puts("vector of signed ints");
+ 119:	e8 00 00 00 00       	call   11e <main+0x11e>
+ 11e:	8b 4c 9d 00          	mov    ecx,DWORD PTR [rbp+rbx*4+0x0]
+ 122:	89 da                	mov    edx,ebx
+ 124:	4c 89 e6             	mov    rsi,r12
+ 127:	bf 01 00 00 00       	mov    edi,0x1
+ 12c:	31 c0                	xor    eax,eax
+ 12e:	48 83 c3 01          	add    rbx,0x1
+ 132:	e8 00 00 00 00       	call   137 <main+0x137>
+
+        for (i = 0; i < sizeof(v16ii) / sizeof(signed int); i++) {
+ 137:	48 83 fb 04          	cmp    rbx,0x4
+ 13b:	75 e1                	jne    11e <main+0x11e>
+ 13d:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # 144 <main+0x144>
+ 144:	bf 0a 00 00 00       	mov    edi,0xa
+ 149:	e8 00 00 00 00       	call   14e <main+0x14e>
+
+        add16ul(x, y, &z);
+
+        int i;
+
+        puts("vector of signed longs");
+ 14e:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 155 <main+0x155>
+ 155:	e8 00 00 00 00       	call   15a <main+0x15a>
+ 15a:	31 d2                	xor    edx,edx
+ 15c:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
+ 163:	31 c0                	xor    eax,eax
+ 165:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 16c <main+0x16c>
+ 16c:	bf 01 00 00 00       	mov    edi,0x1
+ 171:	e8 00 00 00 00       	call   176 <main+0x176>
+ 176:	31 c9                	xor    ecx,ecx
+ 178:	31 c0                	xor    eax,eax
+ 17a:	ba 01 00 00 00       	mov    edx,0x1
+ 17f:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 186 <main+0x186>
+ 186:	bf 01 00 00 00       	mov    edi,0x1
+ 18b:	e8 00 00 00 00       	call   190 <main+0x190>
+            printf("%d %ld\n", i, z[i]);
+        }
+    }
+
+    return 0;
+}
+ 190:	48 8b 44 24 18       	mov    rax,QWORD PTR [rsp+0x18]
+ 195:	64 48 33 04 25 28 00 	xor    rax,QWORD PTR fs:0x28
+ 19c:	00 00 
+ 19e:	75 0b                	jne    1ab <main+0x1ab>
+ 1a0:	48 83 c4 20          	add    rsp,0x20
+ 1a4:	31 c0                	xor    eax,eax
+ 1a6:	5b                   	pop    rbx
+ 1a7:	5d                   	pop    rbp
+ 1a8:	41 5c                	pop    r12
+ 1aa:	c3                   	ret    
+ 1ab:	e8 00 00 00 00       	call   1b0 <add16ul+0x70>
