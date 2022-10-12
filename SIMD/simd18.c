@@ -29,7 +29,8 @@ void print_vectors(const char *message, const char op, v16float * x,
 
     puts(message);
     for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
-        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i], (*z)[i]);
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
+               (*z)[i]);
     }
 
     putchar('\n');
