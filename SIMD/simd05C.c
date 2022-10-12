@@ -11,7 +11,7 @@ int main(void)
 
     int i;
 
-    for (i = 0; i < sizeof(v16us)/sizeof(item); i++) {
+    for (i = 0; i < sizeof(v16us) / sizeof(item); i++) {
         printf("%d %d\n", i, z[i]);
     }
 
