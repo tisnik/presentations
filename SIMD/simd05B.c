@@ -10,7 +10,7 @@ int main(void)
 
     int i;
 
-    for (i = 0; i < sizeof(v16us)/sizeof(unsigned short int); i++) {
+    for (i = 0; i < sizeof(v16us) / sizeof(unsigned short int); i++) {
         printf("%d %d\n", i, z[i]);
     }
 
