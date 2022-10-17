@@ -1,0 +1,150 @@
+
+simd04B_1.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef signed short int v16us __attribute__((vector_size(16)));
+typedef signed int v16ui __attribute__((vector_size(16)));
+typedef signed long int v16ul __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	d10303ff 	sub	sp, sp, #0xc0
+    {
+        v16ub x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+   4:	d2804020 	mov	x0, #0x201                 	// #513
+   8:	f2a08060 	movk	x0, #0x403, lsl #16
+   c:	f2c0c0a0 	movk	x0, #0x605, lsl #32
+  10:	f2e100e0 	movk	x0, #0x807, lsl #48
+  14:	d2800001 	mov	x1, #0x0                   	// #0
+  18:	a90b07e0 	stp	x0, x1, [sp, #176]
+        v16ub y = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+  1c:	90000000 	adrp	x0, 0 <main>
+  20:	91000000 	add	x0, x0, #0x0
+  24:	a9400400 	ldp	x0, x1, [x0]
+  28:	a90a07e0 	stp	x0, x1, [sp, #160]
+  2c:	f9405be0 	ldr	x0, [sp, #176]
+  30:	f94053e1 	ldr	x1, [sp, #160]
+        v16ub z = x + y;
+  34:	ca010003 	eor	x3, x0, x1
+  38:	9200d821 	and	x1, x1, #0x7f7f7f7f7f7f7f7f
+  3c:	9200d802 	and	x2, x0, #0x7f7f7f7f7f7f7f7f
+  40:	9201c060 	and	x0, x3, #0x8080808080808080
+  44:	8b010041 	add	x1, x2, x1
+  48:	ca000024 	eor	x4, x1, x0
+  4c:	f9405fe0 	ldr	x0, [sp, #184]
+  50:	f94057e1 	ldr	x1, [sp, #168]
+  54:	ca010003 	eor	x3, x0, x1
+  58:	9200d821 	and	x1, x1, #0x7f7f7f7f7f7f7f7f
+  5c:	9200d802 	and	x2, x0, #0x7f7f7f7f7f7f7f7f
+  60:	9201c060 	and	x0, x3, #0x8080808080808080
+  64:	8b010041 	add	x1, x2, x1
+  68:	ca000022 	eor	x2, x1, x0
+  6c:	d2800000 	mov	x0, #0x0                   	// #0
+  70:	d2800001 	mov	x1, #0x0                   	// #0
+  74:	aa0403e0 	mov	x0, x4
+  78:	aa0203e1 	mov	x1, x2
+  7c:	a90907e0 	stp	x0, x1, [sp, #144]
+    }
+
+    {
+        v16us x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+  80:	90000000 	adrp	x0, 0 <main>
+  84:	91000000 	add	x0, x0, #0x0
+  88:	a9400400 	ldp	x0, x1, [x0]
+  8c:	a90807e0 	stp	x0, x1, [sp, #128]
+        v16us y = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+  90:	90000000 	adrp	x0, 0 <main>
+  94:	91000000 	add	x0, x0, #0x0
+  98:	a9400400 	ldp	x0, x1, [x0]
+  9c:	a90707e0 	stp	x0, x1, [sp, #112]
+  a0:	f94043e0 	ldr	x0, [sp, #128]
+  a4:	f9403be1 	ldr	x1, [sp, #112]
+        v16us z = x + y;
+  a8:	ca010003 	eor	x3, x0, x1
+  ac:	9200b821 	and	x1, x1, #0x7fff7fff7fff7fff
+  b0:	9200b802 	and	x2, x0, #0x7fff7fff7fff7fff
+  b4:	92018060 	and	x0, x3, #0x8000800080008000
+  b8:	8b010041 	add	x1, x2, x1
+  bc:	ca000024 	eor	x4, x1, x0
+  c0:	f94047e0 	ldr	x0, [sp, #136]
+  c4:	f9403fe1 	ldr	x1, [sp, #120]
+  c8:	ca010003 	eor	x3, x0, x1
+  cc:	9200b821 	and	x1, x1, #0x7fff7fff7fff7fff
+  d0:	9200b802 	and	x2, x0, #0x7fff7fff7fff7fff
+  d4:	92018060 	and	x0, x3, #0x8000800080008000
+  d8:	8b010041 	add	x1, x2, x1
+  dc:	ca000022 	eor	x2, x1, x0
+  e0:	d2800000 	mov	x0, #0x0                   	// #0
+  e4:	d2800001 	mov	x1, #0x0                   	// #0
+  e8:	aa0403e0 	mov	x0, x4
+  ec:	aa0203e1 	mov	x1, x2
+  f0:	a90607e0 	stp	x0, x1, [sp, #96]
+    }
+
+    {
+        v16ui x = { 1, 2, 3, 4 };
+  f4:	90000000 	adrp	x0, 0 <main>
+  f8:	91000000 	add	x0, x0, #0x0
+  fc:	a9400400 	ldp	x0, x1, [x0]
+ 100:	a90507e0 	stp	x0, x1, [sp, #80]
+        v16ui y = { 0xff, 0xff, 0xff, 0xff };
+ 104:	90000000 	adrp	x0, 0 <main>
+ 108:	91000000 	add	x0, x0, #0x0
+ 10c:	a9400400 	ldp	x0, x1, [x0]
+ 110:	a90407e0 	stp	x0, x1, [sp, #64]
+ 114:	b94053e1 	ldr	w1, [sp, #80]
+ 118:	b94043e0 	ldr	w0, [sp, #64]
+        v16ui z = x + y;
+ 11c:	0b000025 	add	w5, w1, w0
+ 120:	b94057e1 	ldr	w1, [sp, #84]
+ 124:	b94047e0 	ldr	w0, [sp, #68]
+ 128:	0b000024 	add	w4, w1, w0
+ 12c:	b9405be1 	ldr	w1, [sp, #88]
+ 130:	b9404be0 	ldr	w0, [sp, #72]
+ 134:	0b000023 	add	w3, w1, w0
+ 138:	b9405fe1 	ldr	w1, [sp, #92]
+ 13c:	b9404fe0 	ldr	w0, [sp, #76]
+ 140:	0b000022 	add	w2, w1, w0
+ 144:	d2800000 	mov	x0, #0x0                   	// #0
+ 148:	d2800001 	mov	x1, #0x0                   	// #0
+ 14c:	b3407ca0 	bfxil	x0, x5, #0, #32
+ 150:	b3607c80 	bfi	x0, x4, #32, #32
+ 154:	b3407c61 	bfxil	x1, x3, #0, #32
+ 158:	b3607c41 	bfi	x1, x2, #32, #32
+ 15c:	a90307e0 	stp	x0, x1, [sp, #48]
+    }
+
+    {
+        v16ul x = { 1, 2 };
+ 160:	90000000 	adrp	x0, 0 <main>
+ 164:	91000000 	add	x0, x0, #0x0
+ 168:	a9400400 	ldp	x0, x1, [x0]
+ 16c:	a90207e0 	stp	x0, x1, [sp, #32]
+        v16ul y = { 0xff, 0xff };
+ 170:	90000000 	adrp	x0, 0 <main>
+ 174:	91000000 	add	x0, x0, #0x0
+ 178:	a9400400 	ldp	x0, x1, [x0]
+ 17c:	a90107e0 	stp	x0, x1, [sp, #16]
+ 180:	f94013e1 	ldr	x1, [sp, #32]
+ 184:	f9400be0 	ldr	x0, [sp, #16]
+        v16ul z = x + y;
+ 188:	8b000023 	add	x3, x1, x0
+ 18c:	f94017e1 	ldr	x1, [sp, #40]
+ 190:	f9400fe0 	ldr	x0, [sp, #24]
+ 194:	8b000022 	add	x2, x1, x0
+ 198:	d2800000 	mov	x0, #0x0                   	// #0
+ 19c:	d2800001 	mov	x1, #0x0                   	// #0
+ 1a0:	aa0303e0 	mov	x0, x3
+ 1a4:	aa0203e1 	mov	x1, x2
+ 1a8:	a90007e0 	stp	x0, x1, [sp]
+    }
+
+
+    return 0;
+ 1ac:	52800000 	mov	w0, #0x0                   	// #0
+}
+ 1b0:	910303ff 	add	sp, sp, #0xc0
+ 1b4:	d65f03c0 	ret
