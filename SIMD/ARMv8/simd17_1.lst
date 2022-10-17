@@ -1,0 +1,1006 @@
+
+simd17_1.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16ib>:
+#include <stdio.h>
+
+typedef signed char v16ib __attribute__((vector_size(16)));
+
+void add16ib(v16ib x, v16ib y, v16ib * z)
+{
+   0:	d100c3ff 	sub	sp, sp, #0x30
+   4:	3d800be0 	str	q0, [sp, #32]
+   8:	3d8007e1 	str	q1, [sp, #16]
+   c:	f90007e0 	str	x0, [sp, #8]
+  10:	f94013e0 	ldr	x0, [sp, #32]
+  14:	f9400be1 	ldr	x1, [sp, #16]
+    *z = x + y;
+  18:	ca010003 	eor	x3, x0, x1
+  1c:	9200d821 	and	x1, x1, #0x7f7f7f7f7f7f7f7f
+  20:	9200d802 	and	x2, x0, #0x7f7f7f7f7f7f7f7f
+  24:	9201c060 	and	x0, x3, #0x8080808080808080
+  28:	8b010041 	add	x1, x2, x1
+  2c:	ca000024 	eor	x4, x1, x0
+  30:	f94017e0 	ldr	x0, [sp, #40]
+  34:	f9400fe1 	ldr	x1, [sp, #24]
+  38:	ca010003 	eor	x3, x0, x1
+  3c:	9200d821 	and	x1, x1, #0x7f7f7f7f7f7f7f7f
+  40:	9200d802 	and	x2, x0, #0x7f7f7f7f7f7f7f7f
+  44:	9201c060 	and	x0, x3, #0x8080808080808080
+  48:	8b010041 	add	x1, x2, x1
+  4c:	ca000022 	eor	x2, x1, x0
+  50:	d2800000 	mov	x0, #0x0                   	// #0
+  54:	d2800001 	mov	x1, #0x0                   	// #0
+  58:	aa0403e0 	mov	x0, x4
+  5c:	aa0203e1 	mov	x1, x2
+  60:	f94007e2 	ldr	x2, [sp, #8]
+  64:	a9000440 	stp	x0, x1, [x2]
+}
+  68:	d503201f 	nop
+  6c:	9100c3ff 	add	sp, sp, #0x30
+  70:	d65f03c0 	ret
+
+0000000000000074 <sub16ib>:
+
+void sub16ib(v16ib x, v16ib y, v16ib * z)
+{
+  74:	d100c3ff 	sub	sp, sp, #0x30
+  78:	3d800be0 	str	q0, [sp, #32]
+  7c:	3d8007e1 	str	q1, [sp, #16]
+  80:	f90007e0 	str	x0, [sp, #8]
+  84:	f94013e0 	ldr	x0, [sp, #32]
+  88:	f9400be1 	ldr	x1, [sp, #16]
+    *z = x - y;
+  8c:	ca010003 	eor	x3, x0, x1
+  90:	9200d821 	and	x1, x1, #0x7f7f7f7f7f7f7f7f
+  94:	b201c002 	orr	x2, x0, #0x8080808080808080
+  98:	aa2303e0 	mvn	x0, x3
+  9c:	9201c000 	and	x0, x0, #0x8080808080808080
+  a0:	cb010041 	sub	x1, x2, x1
+  a4:	ca000024 	eor	x4, x1, x0
+  a8:	f94017e0 	ldr	x0, [sp, #40]
+  ac:	f9400fe1 	ldr	x1, [sp, #24]
+  b0:	ca010003 	eor	x3, x0, x1
+  b4:	9200d821 	and	x1, x1, #0x7f7f7f7f7f7f7f7f
+  b8:	b201c002 	orr	x2, x0, #0x8080808080808080
+  bc:	aa2303e0 	mvn	x0, x3
+  c0:	9201c000 	and	x0, x0, #0x8080808080808080
+  c4:	cb010041 	sub	x1, x2, x1
+  c8:	ca000022 	eor	x2, x1, x0
+  cc:	d2800000 	mov	x0, #0x0                   	// #0
+  d0:	d2800001 	mov	x1, #0x0                   	// #0
+  d4:	aa0403e0 	mov	x0, x4
+  d8:	aa0203e1 	mov	x1, x2
+  dc:	f94007e2 	ldr	x2, [sp, #8]
+  e0:	a9000440 	stp	x0, x1, [x2]
+}
+  e4:	d503201f 	nop
+  e8:	9100c3ff 	add	sp, sp, #0x30
+  ec:	d65f03c0 	ret
+
+00000000000000f0 <mul16ib>:
+
+void mul16ib(v16ib x, v16ib y, v16ib * z)
+{
+  f0:	d100c3ff 	sub	sp, sp, #0x30
+  f4:	3d800be0 	str	q0, [sp, #32]
+  f8:	3d8007e1 	str	q1, [sp, #16]
+  fc:	f90007e0 	str	x0, [sp, #8]
+ 100:	39c083e1 	ldrsb	w1, [sp, #32]
+ 104:	39c043e0 	ldrsb	w0, [sp, #16]
+    *z = x * y;
+ 108:	1b007c20 	mul	w0, w1, w0
+ 10c:	13001c11 	sxtb	w17, w0
+ 110:	39c087e1 	ldrsb	w1, [sp, #33]
+ 114:	39c047e0 	ldrsb	w0, [sp, #17]
+ 118:	1b007c20 	mul	w0, w1, w0
+ 11c:	13001c10 	sxtb	w16, w0
+ 120:	39c08be1 	ldrsb	w1, [sp, #34]
+ 124:	39c04be0 	ldrsb	w0, [sp, #18]
+ 128:	1b007c20 	mul	w0, w1, w0
+ 12c:	13001c0f 	sxtb	w15, w0
+ 130:	39c08fe1 	ldrsb	w1, [sp, #35]
+ 134:	39c04fe0 	ldrsb	w0, [sp, #19]
+ 138:	1b007c20 	mul	w0, w1, w0
+ 13c:	13001c0e 	sxtb	w14, w0
+ 140:	39c093e1 	ldrsb	w1, [sp, #36]
+ 144:	39c053e0 	ldrsb	w0, [sp, #20]
+ 148:	1b007c20 	mul	w0, w1, w0
+ 14c:	13001c0d 	sxtb	w13, w0
+ 150:	39c097e1 	ldrsb	w1, [sp, #37]
+ 154:	39c057e0 	ldrsb	w0, [sp, #21]
+ 158:	1b007c20 	mul	w0, w1, w0
+ 15c:	13001c0c 	sxtb	w12, w0
+ 160:	39c09be1 	ldrsb	w1, [sp, #38]
+ 164:	39c05be0 	ldrsb	w0, [sp, #22]
+ 168:	1b007c20 	mul	w0, w1, w0
+ 16c:	13001c0b 	sxtb	w11, w0
+ 170:	39c09fe1 	ldrsb	w1, [sp, #39]
+ 174:	39c05fe0 	ldrsb	w0, [sp, #23]
+ 178:	1b007c20 	mul	w0, w1, w0
+ 17c:	13001c0a 	sxtb	w10, w0
+ 180:	39c0a3e1 	ldrsb	w1, [sp, #40]
+ 184:	39c063e0 	ldrsb	w0, [sp, #24]
+ 188:	1b007c20 	mul	w0, w1, w0
+ 18c:	13001c09 	sxtb	w9, w0
+ 190:	39c0a7e1 	ldrsb	w1, [sp, #41]
+ 194:	39c067e0 	ldrsb	w0, [sp, #25]
+ 198:	1b007c20 	mul	w0, w1, w0
+ 19c:	13001c08 	sxtb	w8, w0
+ 1a0:	39c0abe1 	ldrsb	w1, [sp, #42]
+ 1a4:	39c06be0 	ldrsb	w0, [sp, #26]
+ 1a8:	1b007c20 	mul	w0, w1, w0
+ 1ac:	13001c07 	sxtb	w7, w0
+ 1b0:	39c0afe1 	ldrsb	w1, [sp, #43]
+ 1b4:	39c06fe0 	ldrsb	w0, [sp, #27]
+ 1b8:	1b007c20 	mul	w0, w1, w0
+ 1bc:	13001c06 	sxtb	w6, w0
+ 1c0:	39c0b3e1 	ldrsb	w1, [sp, #44]
+ 1c4:	39c073e0 	ldrsb	w0, [sp, #28]
+ 1c8:	1b007c20 	mul	w0, w1, w0
+ 1cc:	13001c05 	sxtb	w5, w0
+ 1d0:	39c0b7e1 	ldrsb	w1, [sp, #45]
+ 1d4:	39c077e0 	ldrsb	w0, [sp, #29]
+ 1d8:	1b007c20 	mul	w0, w1, w0
+ 1dc:	13001c04 	sxtb	w4, w0
+ 1e0:	39c0bbe1 	ldrsb	w1, [sp, #46]
+ 1e4:	39c07be0 	ldrsb	w0, [sp, #30]
+ 1e8:	1b007c20 	mul	w0, w1, w0
+ 1ec:	13001c03 	sxtb	w3, w0
+ 1f0:	39c0bfe1 	ldrsb	w1, [sp, #47]
+ 1f4:	39c07fe0 	ldrsb	w0, [sp, #31]
+ 1f8:	1b007c20 	mul	w0, w1, w0
+ 1fc:	13001c02 	sxtb	w2, w0
+ 200:	d2800000 	mov	x0, #0x0                   	// #0
+ 204:	d2800001 	mov	x1, #0x0                   	// #0
+ 208:	b3401e20 	bfxil	x0, x17, #0, #8
+ 20c:	b3781e00 	bfi	x0, x16, #8, #8
+ 210:	b3701de0 	bfi	x0, x15, #16, #8
+ 214:	b3681dc0 	bfi	x0, x14, #24, #8
+ 218:	b3601da0 	bfi	x0, x13, #32, #8
+ 21c:	b3581d80 	bfi	x0, x12, #40, #8
+ 220:	b3501d60 	bfi	x0, x11, #48, #8
+ 224:	b3481d40 	bfi	x0, x10, #56, #8
+ 228:	b3401d21 	bfxil	x1, x9, #0, #8
+ 22c:	b3781d01 	bfi	x1, x8, #8, #8
+ 230:	b3701ce1 	bfi	x1, x7, #16, #8
+ 234:	b3681cc1 	bfi	x1, x6, #24, #8
+ 238:	b3601ca1 	bfi	x1, x5, #32, #8
+ 23c:	b3581c81 	bfi	x1, x4, #40, #8
+ 240:	b3501c61 	bfi	x1, x3, #48, #8
+ 244:	b3481c41 	bfi	x1, x2, #56, #8
+ 248:	f94007e2 	ldr	x2, [sp, #8]
+ 24c:	a9000440 	stp	x0, x1, [x2]
+}
+ 250:	d503201f 	nop
+ 254:	9100c3ff 	add	sp, sp, #0x30
+ 258:	d65f03c0 	ret
+
+000000000000025c <div16ib>:
+
+void div16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 25c:	d100c3ff 	sub	sp, sp, #0x30
+ 260:	3d800be0 	str	q0, [sp, #32]
+ 264:	3d8007e1 	str	q1, [sp, #16]
+ 268:	f90007e0 	str	x0, [sp, #8]
+ 26c:	39c083e1 	ldrsb	w1, [sp, #32]
+ 270:	39c043e0 	ldrsb	w0, [sp, #16]
+    *z = x / y;
+ 274:	1ac00c20 	sdiv	w0, w1, w0
+ 278:	13001c11 	sxtb	w17, w0
+ 27c:	39c087e1 	ldrsb	w1, [sp, #33]
+ 280:	39c047e0 	ldrsb	w0, [sp, #17]
+ 284:	1ac00c20 	sdiv	w0, w1, w0
+ 288:	13001c10 	sxtb	w16, w0
+ 28c:	39c08be1 	ldrsb	w1, [sp, #34]
+ 290:	39c04be0 	ldrsb	w0, [sp, #18]
+ 294:	1ac00c20 	sdiv	w0, w1, w0
+ 298:	13001c0f 	sxtb	w15, w0
+ 29c:	39c08fe1 	ldrsb	w1, [sp, #35]
+ 2a0:	39c04fe0 	ldrsb	w0, [sp, #19]
+ 2a4:	1ac00c20 	sdiv	w0, w1, w0
+ 2a8:	13001c0e 	sxtb	w14, w0
+ 2ac:	39c093e1 	ldrsb	w1, [sp, #36]
+ 2b0:	39c053e0 	ldrsb	w0, [sp, #20]
+ 2b4:	1ac00c20 	sdiv	w0, w1, w0
+ 2b8:	13001c0d 	sxtb	w13, w0
+ 2bc:	39c097e1 	ldrsb	w1, [sp, #37]
+ 2c0:	39c057e0 	ldrsb	w0, [sp, #21]
+ 2c4:	1ac00c20 	sdiv	w0, w1, w0
+ 2c8:	13001c0c 	sxtb	w12, w0
+ 2cc:	39c09be1 	ldrsb	w1, [sp, #38]
+ 2d0:	39c05be0 	ldrsb	w0, [sp, #22]
+ 2d4:	1ac00c20 	sdiv	w0, w1, w0
+ 2d8:	13001c0b 	sxtb	w11, w0
+ 2dc:	39c09fe1 	ldrsb	w1, [sp, #39]
+ 2e0:	39c05fe0 	ldrsb	w0, [sp, #23]
+ 2e4:	1ac00c20 	sdiv	w0, w1, w0
+ 2e8:	13001c0a 	sxtb	w10, w0
+ 2ec:	39c0a3e1 	ldrsb	w1, [sp, #40]
+ 2f0:	39c063e0 	ldrsb	w0, [sp, #24]
+ 2f4:	1ac00c20 	sdiv	w0, w1, w0
+ 2f8:	13001c09 	sxtb	w9, w0
+ 2fc:	39c0a7e1 	ldrsb	w1, [sp, #41]
+ 300:	39c067e0 	ldrsb	w0, [sp, #25]
+ 304:	1ac00c20 	sdiv	w0, w1, w0
+ 308:	13001c08 	sxtb	w8, w0
+ 30c:	39c0abe1 	ldrsb	w1, [sp, #42]
+ 310:	39c06be0 	ldrsb	w0, [sp, #26]
+ 314:	1ac00c20 	sdiv	w0, w1, w0
+ 318:	13001c07 	sxtb	w7, w0
+ 31c:	39c0afe1 	ldrsb	w1, [sp, #43]
+ 320:	39c06fe0 	ldrsb	w0, [sp, #27]
+ 324:	1ac00c20 	sdiv	w0, w1, w0
+ 328:	13001c06 	sxtb	w6, w0
+ 32c:	39c0b3e1 	ldrsb	w1, [sp, #44]
+ 330:	39c073e0 	ldrsb	w0, [sp, #28]
+ 334:	1ac00c20 	sdiv	w0, w1, w0
+ 338:	13001c05 	sxtb	w5, w0
+ 33c:	39c0b7e1 	ldrsb	w1, [sp, #45]
+ 340:	39c077e0 	ldrsb	w0, [sp, #29]
+ 344:	1ac00c20 	sdiv	w0, w1, w0
+ 348:	13001c04 	sxtb	w4, w0
+ 34c:	39c0bbe1 	ldrsb	w1, [sp, #46]
+ 350:	39c07be0 	ldrsb	w0, [sp, #30]
+ 354:	1ac00c20 	sdiv	w0, w1, w0
+ 358:	13001c03 	sxtb	w3, w0
+ 35c:	39c0bfe1 	ldrsb	w1, [sp, #47]
+ 360:	39c07fe0 	ldrsb	w0, [sp, #31]
+ 364:	1ac00c20 	sdiv	w0, w1, w0
+ 368:	13001c02 	sxtb	w2, w0
+ 36c:	d2800000 	mov	x0, #0x0                   	// #0
+ 370:	d2800001 	mov	x1, #0x0                   	// #0
+ 374:	b3401e20 	bfxil	x0, x17, #0, #8
+ 378:	b3781e00 	bfi	x0, x16, #8, #8
+ 37c:	b3701de0 	bfi	x0, x15, #16, #8
+ 380:	b3681dc0 	bfi	x0, x14, #24, #8
+ 384:	b3601da0 	bfi	x0, x13, #32, #8
+ 388:	b3581d80 	bfi	x0, x12, #40, #8
+ 38c:	b3501d60 	bfi	x0, x11, #48, #8
+ 390:	b3481d40 	bfi	x0, x10, #56, #8
+ 394:	b3401d21 	bfxil	x1, x9, #0, #8
+ 398:	b3781d01 	bfi	x1, x8, #8, #8
+ 39c:	b3701ce1 	bfi	x1, x7, #16, #8
+ 3a0:	b3681cc1 	bfi	x1, x6, #24, #8
+ 3a4:	b3601ca1 	bfi	x1, x5, #32, #8
+ 3a8:	b3581c81 	bfi	x1, x4, #40, #8
+ 3ac:	b3501c61 	bfi	x1, x3, #48, #8
+ 3b0:	b3481c41 	bfi	x1, x2, #56, #8
+ 3b4:	f94007e2 	ldr	x2, [sp, #8]
+ 3b8:	a9000440 	stp	x0, x1, [x2]
+}
+ 3bc:	d503201f 	nop
+ 3c0:	9100c3ff 	add	sp, sp, #0x30
+ 3c4:	d65f03c0 	ret
+
+00000000000003c8 <mod16ib>:
+
+void mod16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 3c8:	d100c3ff 	sub	sp, sp, #0x30
+ 3cc:	3d800be0 	str	q0, [sp, #32]
+ 3d0:	3d8007e1 	str	q1, [sp, #16]
+ 3d4:	f90007e0 	str	x0, [sp, #8]
+ 3d8:	39c083e0 	ldrsb	w0, [sp, #32]
+ 3dc:	39c043e1 	ldrsb	w1, [sp, #16]
+    *z = x % y;
+ 3e0:	1ac10c02 	sdiv	w2, w0, w1
+ 3e4:	1b017c41 	mul	w1, w2, w1
+ 3e8:	4b010000 	sub	w0, w0, w1
+ 3ec:	13001c11 	sxtb	w17, w0
+ 3f0:	39c087e0 	ldrsb	w0, [sp, #33]
+ 3f4:	39c047e1 	ldrsb	w1, [sp, #17]
+ 3f8:	1ac10c02 	sdiv	w2, w0, w1
+ 3fc:	1b017c41 	mul	w1, w2, w1
+ 400:	4b010000 	sub	w0, w0, w1
+ 404:	13001c10 	sxtb	w16, w0
+ 408:	39c08be0 	ldrsb	w0, [sp, #34]
+ 40c:	39c04be1 	ldrsb	w1, [sp, #18]
+ 410:	1ac10c02 	sdiv	w2, w0, w1
+ 414:	1b017c41 	mul	w1, w2, w1
+ 418:	4b010000 	sub	w0, w0, w1
+ 41c:	13001c0f 	sxtb	w15, w0
+ 420:	39c08fe0 	ldrsb	w0, [sp, #35]
+ 424:	39c04fe1 	ldrsb	w1, [sp, #19]
+ 428:	1ac10c02 	sdiv	w2, w0, w1
+ 42c:	1b017c41 	mul	w1, w2, w1
+ 430:	4b010000 	sub	w0, w0, w1
+ 434:	13001c0e 	sxtb	w14, w0
+ 438:	39c093e0 	ldrsb	w0, [sp, #36]
+ 43c:	39c053e1 	ldrsb	w1, [sp, #20]
+ 440:	1ac10c02 	sdiv	w2, w0, w1
+ 444:	1b017c41 	mul	w1, w2, w1
+ 448:	4b010000 	sub	w0, w0, w1
+ 44c:	13001c0d 	sxtb	w13, w0
+ 450:	39c097e0 	ldrsb	w0, [sp, #37]
+ 454:	39c057e1 	ldrsb	w1, [sp, #21]
+ 458:	1ac10c02 	sdiv	w2, w0, w1
+ 45c:	1b017c41 	mul	w1, w2, w1
+ 460:	4b010000 	sub	w0, w0, w1
+ 464:	13001c0c 	sxtb	w12, w0
+ 468:	39c09be0 	ldrsb	w0, [sp, #38]
+ 46c:	39c05be1 	ldrsb	w1, [sp, #22]
+ 470:	1ac10c02 	sdiv	w2, w0, w1
+ 474:	1b017c41 	mul	w1, w2, w1
+ 478:	4b010000 	sub	w0, w0, w1
+ 47c:	13001c0b 	sxtb	w11, w0
+ 480:	39c09fe0 	ldrsb	w0, [sp, #39]
+ 484:	39c05fe1 	ldrsb	w1, [sp, #23]
+ 488:	1ac10c02 	sdiv	w2, w0, w1
+ 48c:	1b017c41 	mul	w1, w2, w1
+ 490:	4b010000 	sub	w0, w0, w1
+ 494:	13001c0a 	sxtb	w10, w0
+ 498:	39c0a3e0 	ldrsb	w0, [sp, #40]
+ 49c:	39c063e1 	ldrsb	w1, [sp, #24]
+ 4a0:	1ac10c02 	sdiv	w2, w0, w1
+ 4a4:	1b017c41 	mul	w1, w2, w1
+ 4a8:	4b010000 	sub	w0, w0, w1
+ 4ac:	13001c09 	sxtb	w9, w0
+ 4b0:	39c0a7e0 	ldrsb	w0, [sp, #41]
+ 4b4:	39c067e1 	ldrsb	w1, [sp, #25]
+ 4b8:	1ac10c02 	sdiv	w2, w0, w1
+ 4bc:	1b017c41 	mul	w1, w2, w1
+ 4c0:	4b010000 	sub	w0, w0, w1
+ 4c4:	13001c08 	sxtb	w8, w0
+ 4c8:	39c0abe0 	ldrsb	w0, [sp, #42]
+ 4cc:	39c06be1 	ldrsb	w1, [sp, #26]
+ 4d0:	1ac10c02 	sdiv	w2, w0, w1
+ 4d4:	1b017c41 	mul	w1, w2, w1
+ 4d8:	4b010000 	sub	w0, w0, w1
+ 4dc:	13001c07 	sxtb	w7, w0
+ 4e0:	39c0afe0 	ldrsb	w0, [sp, #43]
+ 4e4:	39c06fe1 	ldrsb	w1, [sp, #27]
+ 4e8:	1ac10c02 	sdiv	w2, w0, w1
+ 4ec:	1b017c41 	mul	w1, w2, w1
+ 4f0:	4b010000 	sub	w0, w0, w1
+ 4f4:	13001c06 	sxtb	w6, w0
+ 4f8:	39c0b3e0 	ldrsb	w0, [sp, #44]
+ 4fc:	39c073e1 	ldrsb	w1, [sp, #28]
+ 500:	1ac10c02 	sdiv	w2, w0, w1
+ 504:	1b017c41 	mul	w1, w2, w1
+ 508:	4b010000 	sub	w0, w0, w1
+ 50c:	13001c05 	sxtb	w5, w0
+ 510:	39c0b7e0 	ldrsb	w0, [sp, #45]
+ 514:	39c077e1 	ldrsb	w1, [sp, #29]
+ 518:	1ac10c02 	sdiv	w2, w0, w1
+ 51c:	1b017c41 	mul	w1, w2, w1
+ 520:	4b010000 	sub	w0, w0, w1
+ 524:	13001c04 	sxtb	w4, w0
+ 528:	39c0bbe0 	ldrsb	w0, [sp, #46]
+ 52c:	39c07be1 	ldrsb	w1, [sp, #30]
+ 530:	1ac10c02 	sdiv	w2, w0, w1
+ 534:	1b017c41 	mul	w1, w2, w1
+ 538:	4b010000 	sub	w0, w0, w1
+ 53c:	13001c03 	sxtb	w3, w0
+ 540:	39c0bfe0 	ldrsb	w0, [sp, #47]
+ 544:	39c07fe1 	ldrsb	w1, [sp, #31]
+ 548:	1ac10c02 	sdiv	w2, w0, w1
+ 54c:	1b017c41 	mul	w1, w2, w1
+ 550:	4b010000 	sub	w0, w0, w1
+ 554:	13001c02 	sxtb	w2, w0
+ 558:	d2800000 	mov	x0, #0x0                   	// #0
+ 55c:	d2800001 	mov	x1, #0x0                   	// #0
+ 560:	b3401e20 	bfxil	x0, x17, #0, #8
+ 564:	b3781e00 	bfi	x0, x16, #8, #8
+ 568:	b3701de0 	bfi	x0, x15, #16, #8
+ 56c:	b3681dc0 	bfi	x0, x14, #24, #8
+ 570:	b3601da0 	bfi	x0, x13, #32, #8
+ 574:	b3581d80 	bfi	x0, x12, #40, #8
+ 578:	b3501d60 	bfi	x0, x11, #48, #8
+ 57c:	b3481d40 	bfi	x0, x10, #56, #8
+ 580:	b3401d21 	bfxil	x1, x9, #0, #8
+ 584:	b3781d01 	bfi	x1, x8, #8, #8
+ 588:	b3701ce1 	bfi	x1, x7, #16, #8
+ 58c:	b3681cc1 	bfi	x1, x6, #24, #8
+ 590:	b3601ca1 	bfi	x1, x5, #32, #8
+ 594:	b3581c81 	bfi	x1, x4, #40, #8
+ 598:	b3501c61 	bfi	x1, x3, #48, #8
+ 59c:	b3481c41 	bfi	x1, x2, #56, #8
+ 5a0:	f94007e2 	ldr	x2, [sp, #8]
+ 5a4:	a9000440 	stp	x0, x1, [x2]
+}
+ 5a8:	d503201f 	nop
+ 5ac:	9100c3ff 	add	sp, sp, #0x30
+ 5b0:	d65f03c0 	ret
+
+00000000000005b4 <and16ib>:
+
+void and16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 5b4:	d100c3ff 	sub	sp, sp, #0x30
+ 5b8:	3d800be0 	str	q0, [sp, #32]
+ 5bc:	3d8007e1 	str	q1, [sp, #16]
+ 5c0:	f90007e0 	str	x0, [sp, #8]
+ 5c4:	f94013e1 	ldr	x1, [sp, #32]
+ 5c8:	f9400be0 	ldr	x0, [sp, #16]
+    *z = x & y;
+ 5cc:	8a000023 	and	x3, x1, x0
+ 5d0:	f94017e1 	ldr	x1, [sp, #40]
+ 5d4:	f9400fe0 	ldr	x0, [sp, #24]
+ 5d8:	8a000022 	and	x2, x1, x0
+ 5dc:	d2800000 	mov	x0, #0x0                   	// #0
+ 5e0:	d2800001 	mov	x1, #0x0                   	// #0
+ 5e4:	aa0303e0 	mov	x0, x3
+ 5e8:	aa0203e1 	mov	x1, x2
+ 5ec:	f94007e2 	ldr	x2, [sp, #8]
+ 5f0:	a9000440 	stp	x0, x1, [x2]
+}
+ 5f4:	d503201f 	nop
+ 5f8:	9100c3ff 	add	sp, sp, #0x30
+ 5fc:	d65f03c0 	ret
+
+0000000000000600 <or16ib>:
+
+void or16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 600:	d100c3ff 	sub	sp, sp, #0x30
+ 604:	3d800be0 	str	q0, [sp, #32]
+ 608:	3d8007e1 	str	q1, [sp, #16]
+ 60c:	f90007e0 	str	x0, [sp, #8]
+ 610:	f94013e1 	ldr	x1, [sp, #32]
+ 614:	f9400be0 	ldr	x0, [sp, #16]
+    *z = x | y;
+ 618:	aa000023 	orr	x3, x1, x0
+ 61c:	f94017e1 	ldr	x1, [sp, #40]
+ 620:	f9400fe0 	ldr	x0, [sp, #24]
+ 624:	aa000022 	orr	x2, x1, x0
+ 628:	d2800000 	mov	x0, #0x0                   	// #0
+ 62c:	d2800001 	mov	x1, #0x0                   	// #0
+ 630:	aa0303e0 	mov	x0, x3
+ 634:	aa0203e1 	mov	x1, x2
+ 638:	f94007e2 	ldr	x2, [sp, #8]
+ 63c:	a9000440 	stp	x0, x1, [x2]
+}
+ 640:	d503201f 	nop
+ 644:	9100c3ff 	add	sp, sp, #0x30
+ 648:	d65f03c0 	ret
+
+000000000000064c <xor16ib>:
+
+void xor16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 64c:	d100c3ff 	sub	sp, sp, #0x30
+ 650:	3d800be0 	str	q0, [sp, #32]
+ 654:	3d8007e1 	str	q1, [sp, #16]
+ 658:	f90007e0 	str	x0, [sp, #8]
+ 65c:	f94013e1 	ldr	x1, [sp, #32]
+ 660:	f9400be0 	ldr	x0, [sp, #16]
+    *z = x ^ y;
+ 664:	ca000023 	eor	x3, x1, x0
+ 668:	f94017e1 	ldr	x1, [sp, #40]
+ 66c:	f9400fe0 	ldr	x0, [sp, #24]
+ 670:	ca000022 	eor	x2, x1, x0
+ 674:	d2800000 	mov	x0, #0x0                   	// #0
+ 678:	d2800001 	mov	x1, #0x0                   	// #0
+ 67c:	aa0303e0 	mov	x0, x3
+ 680:	aa0203e1 	mov	x1, x2
+ 684:	f94007e2 	ldr	x2, [sp, #8]
+ 688:	a9000440 	stp	x0, x1, [x2]
+}
+ 68c:	d503201f 	nop
+ 690:	9100c3ff 	add	sp, sp, #0x30
+ 694:	d65f03c0 	ret
+
+0000000000000698 <rshift16ib>:
+
+void rshift16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 698:	d100c3ff 	sub	sp, sp, #0x30
+ 69c:	3d800be0 	str	q0, [sp, #32]
+ 6a0:	3d8007e1 	str	q1, [sp, #16]
+ 6a4:	f90007e0 	str	x0, [sp, #8]
+ 6a8:	39c083e1 	ldrsb	w1, [sp, #32]
+ 6ac:	39c043e0 	ldrsb	w0, [sp, #16]
+    *z = x >> y;
+ 6b0:	1ac02820 	asr	w0, w1, w0
+ 6b4:	13001c11 	sxtb	w17, w0
+ 6b8:	39c087e1 	ldrsb	w1, [sp, #33]
+ 6bc:	39c047e0 	ldrsb	w0, [sp, #17]
+ 6c0:	1ac02820 	asr	w0, w1, w0
+ 6c4:	13001c10 	sxtb	w16, w0
+ 6c8:	39c08be1 	ldrsb	w1, [sp, #34]
+ 6cc:	39c04be0 	ldrsb	w0, [sp, #18]
+ 6d0:	1ac02820 	asr	w0, w1, w0
+ 6d4:	13001c0f 	sxtb	w15, w0
+ 6d8:	39c08fe1 	ldrsb	w1, [sp, #35]
+ 6dc:	39c04fe0 	ldrsb	w0, [sp, #19]
+ 6e0:	1ac02820 	asr	w0, w1, w0
+ 6e4:	13001c0e 	sxtb	w14, w0
+ 6e8:	39c093e1 	ldrsb	w1, [sp, #36]
+ 6ec:	39c053e0 	ldrsb	w0, [sp, #20]
+ 6f0:	1ac02820 	asr	w0, w1, w0
+ 6f4:	13001c0d 	sxtb	w13, w0
+ 6f8:	39c097e1 	ldrsb	w1, [sp, #37]
+ 6fc:	39c057e0 	ldrsb	w0, [sp, #21]
+ 700:	1ac02820 	asr	w0, w1, w0
+ 704:	13001c0c 	sxtb	w12, w0
+ 708:	39c09be1 	ldrsb	w1, [sp, #38]
+ 70c:	39c05be0 	ldrsb	w0, [sp, #22]
+ 710:	1ac02820 	asr	w0, w1, w0
+ 714:	13001c0b 	sxtb	w11, w0
+ 718:	39c09fe1 	ldrsb	w1, [sp, #39]
+ 71c:	39c05fe0 	ldrsb	w0, [sp, #23]
+ 720:	1ac02820 	asr	w0, w1, w0
+ 724:	13001c0a 	sxtb	w10, w0
+ 728:	39c0a3e1 	ldrsb	w1, [sp, #40]
+ 72c:	39c063e0 	ldrsb	w0, [sp, #24]
+ 730:	1ac02820 	asr	w0, w1, w0
+ 734:	13001c09 	sxtb	w9, w0
+ 738:	39c0a7e1 	ldrsb	w1, [sp, #41]
+ 73c:	39c067e0 	ldrsb	w0, [sp, #25]
+ 740:	1ac02820 	asr	w0, w1, w0
+ 744:	13001c08 	sxtb	w8, w0
+ 748:	39c0abe1 	ldrsb	w1, [sp, #42]
+ 74c:	39c06be0 	ldrsb	w0, [sp, #26]
+ 750:	1ac02820 	asr	w0, w1, w0
+ 754:	13001c07 	sxtb	w7, w0
+ 758:	39c0afe1 	ldrsb	w1, [sp, #43]
+ 75c:	39c06fe0 	ldrsb	w0, [sp, #27]
+ 760:	1ac02820 	asr	w0, w1, w0
+ 764:	13001c06 	sxtb	w6, w0
+ 768:	39c0b3e1 	ldrsb	w1, [sp, #44]
+ 76c:	39c073e0 	ldrsb	w0, [sp, #28]
+ 770:	1ac02820 	asr	w0, w1, w0
+ 774:	13001c05 	sxtb	w5, w0
+ 778:	39c0b7e1 	ldrsb	w1, [sp, #45]
+ 77c:	39c077e0 	ldrsb	w0, [sp, #29]
+ 780:	1ac02820 	asr	w0, w1, w0
+ 784:	13001c04 	sxtb	w4, w0
+ 788:	39c0bbe1 	ldrsb	w1, [sp, #46]
+ 78c:	39c07be0 	ldrsb	w0, [sp, #30]
+ 790:	1ac02820 	asr	w0, w1, w0
+ 794:	13001c03 	sxtb	w3, w0
+ 798:	39c0bfe1 	ldrsb	w1, [sp, #47]
+ 79c:	39c07fe0 	ldrsb	w0, [sp, #31]
+ 7a0:	1ac02820 	asr	w0, w1, w0
+ 7a4:	13001c02 	sxtb	w2, w0
+ 7a8:	d2800000 	mov	x0, #0x0                   	// #0
+ 7ac:	d2800001 	mov	x1, #0x0                   	// #0
+ 7b0:	b3401e20 	bfxil	x0, x17, #0, #8
+ 7b4:	b3781e00 	bfi	x0, x16, #8, #8
+ 7b8:	b3701de0 	bfi	x0, x15, #16, #8
+ 7bc:	b3681dc0 	bfi	x0, x14, #24, #8
+ 7c0:	b3601da0 	bfi	x0, x13, #32, #8
+ 7c4:	b3581d80 	bfi	x0, x12, #40, #8
+ 7c8:	b3501d60 	bfi	x0, x11, #48, #8
+ 7cc:	b3481d40 	bfi	x0, x10, #56, #8
+ 7d0:	b3401d21 	bfxil	x1, x9, #0, #8
+ 7d4:	b3781d01 	bfi	x1, x8, #8, #8
+ 7d8:	b3701ce1 	bfi	x1, x7, #16, #8
+ 7dc:	b3681cc1 	bfi	x1, x6, #24, #8
+ 7e0:	b3601ca1 	bfi	x1, x5, #32, #8
+ 7e4:	b3581c81 	bfi	x1, x4, #40, #8
+ 7e8:	b3501c61 	bfi	x1, x3, #48, #8
+ 7ec:	b3481c41 	bfi	x1, x2, #56, #8
+ 7f0:	f94007e2 	ldr	x2, [sp, #8]
+ 7f4:	a9000440 	stp	x0, x1, [x2]
+}
+ 7f8:	d503201f 	nop
+ 7fc:	9100c3ff 	add	sp, sp, #0x30
+ 800:	d65f03c0 	ret
+
+0000000000000804 <lshift16ib>:
+
+void lshift16ib(v16ib x, v16ib y, v16ib * z)
+{
+ 804:	d100c3ff 	sub	sp, sp, #0x30
+ 808:	3d800be0 	str	q0, [sp, #32]
+ 80c:	3d8007e1 	str	q1, [sp, #16]
+ 810:	f90007e0 	str	x0, [sp, #8]
+ 814:	39c083e1 	ldrsb	w1, [sp, #32]
+ 818:	39c043e0 	ldrsb	w0, [sp, #16]
+    *z = x << y;
+ 81c:	1ac02020 	lsl	w0, w1, w0
+ 820:	13001c11 	sxtb	w17, w0
+ 824:	39c087e1 	ldrsb	w1, [sp, #33]
+ 828:	39c047e0 	ldrsb	w0, [sp, #17]
+ 82c:	1ac02020 	lsl	w0, w1, w0
+ 830:	13001c10 	sxtb	w16, w0
+ 834:	39c08be1 	ldrsb	w1, [sp, #34]
+ 838:	39c04be0 	ldrsb	w0, [sp, #18]
+ 83c:	1ac02020 	lsl	w0, w1, w0
+ 840:	13001c0f 	sxtb	w15, w0
+ 844:	39c08fe1 	ldrsb	w1, [sp, #35]
+ 848:	39c04fe0 	ldrsb	w0, [sp, #19]
+ 84c:	1ac02020 	lsl	w0, w1, w0
+ 850:	13001c0e 	sxtb	w14, w0
+ 854:	39c093e1 	ldrsb	w1, [sp, #36]
+ 858:	39c053e0 	ldrsb	w0, [sp, #20]
+ 85c:	1ac02020 	lsl	w0, w1, w0
+ 860:	13001c0d 	sxtb	w13, w0
+ 864:	39c097e1 	ldrsb	w1, [sp, #37]
+ 868:	39c057e0 	ldrsb	w0, [sp, #21]
+ 86c:	1ac02020 	lsl	w0, w1, w0
+ 870:	13001c0c 	sxtb	w12, w0
+ 874:	39c09be1 	ldrsb	w1, [sp, #38]
+ 878:	39c05be0 	ldrsb	w0, [sp, #22]
+ 87c:	1ac02020 	lsl	w0, w1, w0
+ 880:	13001c0b 	sxtb	w11, w0
+ 884:	39c09fe1 	ldrsb	w1, [sp, #39]
+ 888:	39c05fe0 	ldrsb	w0, [sp, #23]
+ 88c:	1ac02020 	lsl	w0, w1, w0
+ 890:	13001c0a 	sxtb	w10, w0
+ 894:	39c0a3e1 	ldrsb	w1, [sp, #40]
+ 898:	39c063e0 	ldrsb	w0, [sp, #24]
+ 89c:	1ac02020 	lsl	w0, w1, w0
+ 8a0:	13001c09 	sxtb	w9, w0
+ 8a4:	39c0a7e1 	ldrsb	w1, [sp, #41]
+ 8a8:	39c067e0 	ldrsb	w0, [sp, #25]
+ 8ac:	1ac02020 	lsl	w0, w1, w0
+ 8b0:	13001c08 	sxtb	w8, w0
+ 8b4:	39c0abe1 	ldrsb	w1, [sp, #42]
+ 8b8:	39c06be0 	ldrsb	w0, [sp, #26]
+ 8bc:	1ac02020 	lsl	w0, w1, w0
+ 8c0:	13001c07 	sxtb	w7, w0
+ 8c4:	39c0afe1 	ldrsb	w1, [sp, #43]
+ 8c8:	39c06fe0 	ldrsb	w0, [sp, #27]
+ 8cc:	1ac02020 	lsl	w0, w1, w0
+ 8d0:	13001c06 	sxtb	w6, w0
+ 8d4:	39c0b3e1 	ldrsb	w1, [sp, #44]
+ 8d8:	39c073e0 	ldrsb	w0, [sp, #28]
+ 8dc:	1ac02020 	lsl	w0, w1, w0
+ 8e0:	13001c05 	sxtb	w5, w0
+ 8e4:	39c0b7e1 	ldrsb	w1, [sp, #45]
+ 8e8:	39c077e0 	ldrsb	w0, [sp, #29]
+ 8ec:	1ac02020 	lsl	w0, w1, w0
+ 8f0:	13001c04 	sxtb	w4, w0
+ 8f4:	39c0bbe1 	ldrsb	w1, [sp, #46]
+ 8f8:	39c07be0 	ldrsb	w0, [sp, #30]
+ 8fc:	1ac02020 	lsl	w0, w1, w0
+ 900:	13001c03 	sxtb	w3, w0
+ 904:	39c0bfe1 	ldrsb	w1, [sp, #47]
+ 908:	39c07fe0 	ldrsb	w0, [sp, #31]
+ 90c:	1ac02020 	lsl	w0, w1, w0
+ 910:	13001c02 	sxtb	w2, w0
+ 914:	d2800000 	mov	x0, #0x0                   	// #0
+ 918:	d2800001 	mov	x1, #0x0                   	// #0
+ 91c:	b3401e20 	bfxil	x0, x17, #0, #8
+ 920:	b3781e00 	bfi	x0, x16, #8, #8
+ 924:	b3701de0 	bfi	x0, x15, #16, #8
+ 928:	b3681dc0 	bfi	x0, x14, #24, #8
+ 92c:	b3601da0 	bfi	x0, x13, #32, #8
+ 930:	b3581d80 	bfi	x0, x12, #40, #8
+ 934:	b3501d60 	bfi	x0, x11, #48, #8
+ 938:	b3481d40 	bfi	x0, x10, #56, #8
+ 93c:	b3401d21 	bfxil	x1, x9, #0, #8
+ 940:	b3781d01 	bfi	x1, x8, #8, #8
+ 944:	b3701ce1 	bfi	x1, x7, #16, #8
+ 948:	b3681cc1 	bfi	x1, x6, #24, #8
+ 94c:	b3601ca1 	bfi	x1, x5, #32, #8
+ 950:	b3581c81 	bfi	x1, x4, #40, #8
+ 954:	b3501c61 	bfi	x1, x3, #48, #8
+ 958:	b3481c41 	bfi	x1, x2, #56, #8
+ 95c:	f94007e2 	ldr	x2, [sp, #8]
+ 960:	a9000440 	stp	x0, x1, [x2]
+}
+ 964:	d503201f 	nop
+ 968:	9100c3ff 	add	sp, sp, #0x30
+ 96c:	d65f03c0 	ret
+
+0000000000000970 <print_vectors>:
+
+void print_vectors(const char *message, const char *op, v16ib * x,
+                   v16ib * y, v16ib * z)
+{
+ 970:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
+ 974:	910003fd 	mov	x29, sp
+ 978:	f9001fe0 	str	x0, [sp, #56]
+ 97c:	f9001be1 	str	x1, [sp, #48]
+ 980:	f90017e2 	str	x2, [sp, #40]
+ 984:	f90013e3 	str	x3, [sp, #32]
+ 988:	f9000fe4 	str	x4, [sp, #24]
+    int i;
+
+    puts(message);
+ 98c:	f9401fe0 	ldr	x0, [sp, #56]
+ 990:	94000000 	bl	0 <puts>
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ 994:	b9004fff 	str	wzr, [sp, #76]
+ 998:	14000016 	b	9f0 <print_vectors+0x80>
+        printf("%2d    %d %s %d = %d\n", i, (*x)[i], op, (*y)[i], (*z)[i]);
+ 99c:	f94017e1 	ldr	x1, [sp, #40]
+ 9a0:	b9804fe0 	ldrsw	x0, [sp, #76]
+ 9a4:	38e06820 	ldrsb	w0, [x1, x0]
+ 9a8:	2a0003e2 	mov	w2, w0
+ 9ac:	f94013e1 	ldr	x1, [sp, #32]
+ 9b0:	b9804fe0 	ldrsw	x0, [sp, #76]
+ 9b4:	38e06820 	ldrsb	w0, [x1, x0]
+ 9b8:	2a0003e3 	mov	w3, w0
+ 9bc:	f9400fe1 	ldr	x1, [sp, #24]
+ 9c0:	b9804fe0 	ldrsw	x0, [sp, #76]
+ 9c4:	38e06820 	ldrsb	w0, [x1, x0]
+ 9c8:	2a0003e5 	mov	w5, w0
+ 9cc:	2a0303e4 	mov	w4, w3
+ 9d0:	f9401be3 	ldr	x3, [sp, #48]
+ 9d4:	b9404fe1 	ldr	w1, [sp, #76]
+ 9d8:	90000000 	adrp	x0, 0 <add16ib>
+ 9dc:	91000000 	add	x0, x0, #0x0
+ 9e0:	94000000 	bl	0 <printf>
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ 9e4:	b9404fe0 	ldr	w0, [sp, #76]
+ 9e8:	11000400 	add	w0, w0, #0x1
+ 9ec:	b9004fe0 	str	w0, [sp, #76]
+ 9f0:	b9404fe0 	ldr	w0, [sp, #76]
+ 9f4:	71003c1f 	cmp	w0, #0xf
+ 9f8:	54fffd29 	b.ls	99c <print_vectors+0x2c>  // b.plast
+    }
+
+    putchar('\n');
+ 9fc:	52800140 	mov	w0, #0xa                   	// #10
+ a00:	94000000 	bl	0 <putchar>
+}
+ a04:	d503201f 	nop
+ a08:	a8c57bfd 	ldp	x29, x30, [sp], #80
+ a0c:	d65f03c0 	ret
+
+0000000000000a10 <main>:
+
+int main(void)
+{
+ a10:	a9b97bfd 	stp	x29, x30, [sp, #-112]!
+ a14:	910003fd 	mov	x29, sp
+    v16ib x;
+    v16ib y;
+    v16ib z;
+    int i;
+
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ a18:	b9006fff 	str	wzr, [sp, #108]
+ a1c:	14000015 	b	a70 <main+0x60>
+        x[i] = i * 2;
+ a20:	b9406fe0 	ldr	w0, [sp, #108]
+ a24:	12001c00 	and	w0, w0, #0xff
+ a28:	531f1800 	ubfiz	w0, w0, #1, #7
+ a2c:	12001c00 	and	w0, w0, #0xff
+ a30:	13001c02 	sxtb	w2, w0
+ a34:	b9806fe0 	ldrsw	x0, [sp, #108]
+ a38:	910143e1 	add	x1, sp, #0x50
+ a3c:	38206822 	strb	w2, [x1, x0]
+        y[i] = 16 - i;
+ a40:	b9406fe0 	ldr	w0, [sp, #108]
+ a44:	12001c00 	and	w0, w0, #0xff
+ a48:	52800201 	mov	w1, #0x10                  	// #16
+ a4c:	4b000020 	sub	w0, w1, w0
+ a50:	12001c00 	and	w0, w0, #0xff
+ a54:	13001c02 	sxtb	w2, w0
+ a58:	b9806fe0 	ldrsw	x0, [sp, #108]
+ a5c:	910103e1 	add	x1, sp, #0x40
+ a60:	38206822 	strb	w2, [x1, x0]
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ a64:	b9406fe0 	ldr	w0, [sp, #108]
+ a68:	11000400 	add	w0, w0, #0x1
+ a6c:	b9006fe0 	str	w0, [sp, #108]
+ a70:	b9406fe0 	ldr	w0, [sp, #108]
+ a74:	71003c1f 	cmp	w0, #0xf
+ a78:	54fffd49 	b.ls	a20 <main+0x10>  // b.plast
+    }
+
+    add16ib(x, y, &z);
+ a7c:	a94507e0 	ldp	x0, x1, [sp, #80]
+ a80:	a90107e0 	stp	x0, x1, [sp, #16]
+ a84:	a94407e0 	ldp	x0, x1, [sp, #64]
+ a88:	a90207e0 	stp	x0, x1, [sp, #32]
+ a8c:	9100c3e0 	add	x0, sp, #0x30
+ a90:	3dc00be1 	ldr	q1, [sp, #32]
+ a94:	3dc007e0 	ldr	q0, [sp, #16]
+ a98:	94000000 	bl	0 <add16ib>
+    print_vectors("vector addition", "+", &x, &y, &z);
+ a9c:	9100c3e2 	add	x2, sp, #0x30
+ aa0:	910103e1 	add	x1, sp, #0x40
+ aa4:	910143e0 	add	x0, sp, #0x50
+ aa8:	aa0203e4 	mov	x4, x2
+ aac:	aa0103e3 	mov	x3, x1
+ ab0:	aa0003e2 	mov	x2, x0
+ ab4:	90000000 	adrp	x0, 0 <add16ib>
+ ab8:	91000001 	add	x1, x0, #0x0
+ abc:	90000000 	adrp	x0, 0 <add16ib>
+ ac0:	91000000 	add	x0, x0, #0x0
+ ac4:	94000000 	bl	970 <print_vectors>
+
+    sub16ib(x, y, &z);
+ ac8:	a94507e0 	ldp	x0, x1, [sp, #80]
+ acc:	a90107e0 	stp	x0, x1, [sp, #16]
+ ad0:	a94407e0 	ldp	x0, x1, [sp, #64]
+ ad4:	a90207e0 	stp	x0, x1, [sp, #32]
+ ad8:	9100c3e0 	add	x0, sp, #0x30
+ adc:	3dc00be1 	ldr	q1, [sp, #32]
+ ae0:	3dc007e0 	ldr	q0, [sp, #16]
+ ae4:	94000000 	bl	74 <sub16ib>
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+ ae8:	9100c3e2 	add	x2, sp, #0x30
+ aec:	910103e1 	add	x1, sp, #0x40
+ af0:	910143e0 	add	x0, sp, #0x50
+ af4:	aa0203e4 	mov	x4, x2
+ af8:	aa0103e3 	mov	x3, x1
+ afc:	aa0003e2 	mov	x2, x0
+ b00:	90000000 	adrp	x0, 0 <add16ib>
+ b04:	91000001 	add	x1, x0, #0x0
+ b08:	90000000 	adrp	x0, 0 <add16ib>
+ b0c:	91000000 	add	x0, x0, #0x0
+ b10:	94000000 	bl	970 <print_vectors>
+
+    mul16ib(x, y, &z);
+ b14:	a94507e0 	ldp	x0, x1, [sp, #80]
+ b18:	a90107e0 	stp	x0, x1, [sp, #16]
+ b1c:	a94407e0 	ldp	x0, x1, [sp, #64]
+ b20:	a90207e0 	stp	x0, x1, [sp, #32]
+ b24:	9100c3e0 	add	x0, sp, #0x30
+ b28:	3dc00be1 	ldr	q1, [sp, #32]
+ b2c:	3dc007e0 	ldr	q0, [sp, #16]
+ b30:	94000000 	bl	f0 <mul16ib>
+    print_vectors("vector multiply", "*", &x, &y, &z);
+ b34:	9100c3e2 	add	x2, sp, #0x30
+ b38:	910103e1 	add	x1, sp, #0x40
+ b3c:	910143e0 	add	x0, sp, #0x50
+ b40:	aa0203e4 	mov	x4, x2
+ b44:	aa0103e3 	mov	x3, x1
+ b48:	aa0003e2 	mov	x2, x0
+ b4c:	90000000 	adrp	x0, 0 <add16ib>
+ b50:	91000001 	add	x1, x0, #0x0
+ b54:	90000000 	adrp	x0, 0 <add16ib>
+ b58:	91000000 	add	x0, x0, #0x0
+ b5c:	94000000 	bl	970 <print_vectors>
+
+    div16ib(x, y, &z);
+ b60:	a94507e0 	ldp	x0, x1, [sp, #80]
+ b64:	a90107e0 	stp	x0, x1, [sp, #16]
+ b68:	a94407e0 	ldp	x0, x1, [sp, #64]
+ b6c:	a90207e0 	stp	x0, x1, [sp, #32]
+ b70:	9100c3e0 	add	x0, sp, #0x30
+ b74:	3dc00be1 	ldr	q1, [sp, #32]
+ b78:	3dc007e0 	ldr	q0, [sp, #16]
+ b7c:	94000000 	bl	25c <div16ib>
+    print_vectors("vector divide", "/", &x, &y, &z);
+ b80:	9100c3e2 	add	x2, sp, #0x30
+ b84:	910103e1 	add	x1, sp, #0x40
+ b88:	910143e0 	add	x0, sp, #0x50
+ b8c:	aa0203e4 	mov	x4, x2
+ b90:	aa0103e3 	mov	x3, x1
+ b94:	aa0003e2 	mov	x2, x0
+ b98:	90000000 	adrp	x0, 0 <add16ib>
+ b9c:	91000001 	add	x1, x0, #0x0
+ ba0:	90000000 	adrp	x0, 0 <add16ib>
+ ba4:	91000000 	add	x0, x0, #0x0
+ ba8:	94000000 	bl	970 <print_vectors>
+
+    mod16ib(x, y, &z);
+ bac:	a94507e0 	ldp	x0, x1, [sp, #80]
+ bb0:	a90107e0 	stp	x0, x1, [sp, #16]
+ bb4:	a94407e0 	ldp	x0, x1, [sp, #64]
+ bb8:	a90207e0 	stp	x0, x1, [sp, #32]
+ bbc:	9100c3e0 	add	x0, sp, #0x30
+ bc0:	3dc00be1 	ldr	q1, [sp, #32]
+ bc4:	3dc007e0 	ldr	q0, [sp, #16]
+ bc8:	94000000 	bl	3c8 <mod16ib>
+    print_vectors("vector modulo", "%", &x, &y, &z);
+ bcc:	9100c3e2 	add	x2, sp, #0x30
+ bd0:	910103e1 	add	x1, sp, #0x40
+ bd4:	910143e0 	add	x0, sp, #0x50
+ bd8:	aa0203e4 	mov	x4, x2
+ bdc:	aa0103e3 	mov	x3, x1
+ be0:	aa0003e2 	mov	x2, x0
+ be4:	90000000 	adrp	x0, 0 <add16ib>
+ be8:	91000001 	add	x1, x0, #0x0
+ bec:	90000000 	adrp	x0, 0 <add16ib>
+ bf0:	91000000 	add	x0, x0, #0x0
+ bf4:	94000000 	bl	970 <print_vectors>
+
+    and16ib(x, y, &z);
+ bf8:	a94507e0 	ldp	x0, x1, [sp, #80]
+ bfc:	a90107e0 	stp	x0, x1, [sp, #16]
+ c00:	a94407e0 	ldp	x0, x1, [sp, #64]
+ c04:	a90207e0 	stp	x0, x1, [sp, #32]
+ c08:	9100c3e0 	add	x0, sp, #0x30
+ c0c:	3dc00be1 	ldr	q1, [sp, #32]
+ c10:	3dc007e0 	ldr	q0, [sp, #16]
+ c14:	94000000 	bl	5b4 <and16ib>
+    print_vectors("vector bitwise and", "&", &x, &y, &z);
+ c18:	9100c3e2 	add	x2, sp, #0x30
+ c1c:	910103e1 	add	x1, sp, #0x40
+ c20:	910143e0 	add	x0, sp, #0x50
+ c24:	aa0203e4 	mov	x4, x2
+ c28:	aa0103e3 	mov	x3, x1
+ c2c:	aa0003e2 	mov	x2, x0
+ c30:	90000000 	adrp	x0, 0 <add16ib>
+ c34:	91000001 	add	x1, x0, #0x0
+ c38:	90000000 	adrp	x0, 0 <add16ib>
+ c3c:	91000000 	add	x0, x0, #0x0
+ c40:	94000000 	bl	970 <print_vectors>
+
+    or16ib(x, y, &z);
+ c44:	a94507e0 	ldp	x0, x1, [sp, #80]
+ c48:	a90107e0 	stp	x0, x1, [sp, #16]
+ c4c:	a94407e0 	ldp	x0, x1, [sp, #64]
+ c50:	a90207e0 	stp	x0, x1, [sp, #32]
+ c54:	9100c3e0 	add	x0, sp, #0x30
+ c58:	3dc00be1 	ldr	q1, [sp, #32]
+ c5c:	3dc007e0 	ldr	q0, [sp, #16]
+ c60:	94000000 	bl	600 <or16ib>
+    print_vectors("vector bitwise or", "|", &x, &y, &z);
+ c64:	9100c3e2 	add	x2, sp, #0x30
+ c68:	910103e1 	add	x1, sp, #0x40
+ c6c:	910143e0 	add	x0, sp, #0x50
+ c70:	aa0203e4 	mov	x4, x2
+ c74:	aa0103e3 	mov	x3, x1
+ c78:	aa0003e2 	mov	x2, x0
+ c7c:	90000000 	adrp	x0, 0 <add16ib>
+ c80:	91000001 	add	x1, x0, #0x0
+ c84:	90000000 	adrp	x0, 0 <add16ib>
+ c88:	91000000 	add	x0, x0, #0x0
+ c8c:	94000000 	bl	970 <print_vectors>
+
+    xor16ib(x, y, &z);
+ c90:	a94507e0 	ldp	x0, x1, [sp, #80]
+ c94:	a90107e0 	stp	x0, x1, [sp, #16]
+ c98:	a94407e0 	ldp	x0, x1, [sp, #64]
+ c9c:	a90207e0 	stp	x0, x1, [sp, #32]
+ ca0:	9100c3e0 	add	x0, sp, #0x30
+ ca4:	3dc00be1 	ldr	q1, [sp, #32]
+ ca8:	3dc007e0 	ldr	q0, [sp, #16]
+ cac:	94000000 	bl	64c <xor16ib>
+    print_vectors("vector bitwise xor", "^", &x, &y, &z);
+ cb0:	9100c3e2 	add	x2, sp, #0x30
+ cb4:	910103e1 	add	x1, sp, #0x40
+ cb8:	910143e0 	add	x0, sp, #0x50
+ cbc:	aa0203e4 	mov	x4, x2
+ cc0:	aa0103e3 	mov	x3, x1
+ cc4:	aa0003e2 	mov	x2, x0
+ cc8:	90000000 	adrp	x0, 0 <add16ib>
+ ccc:	91000001 	add	x1, x0, #0x0
+ cd0:	90000000 	adrp	x0, 0 <add16ib>
+ cd4:	91000000 	add	x0, x0, #0x0
+ cd8:	94000000 	bl	970 <print_vectors>
+
+    rshift16ib(x, y, &z);
+ cdc:	a94507e0 	ldp	x0, x1, [sp, #80]
+ ce0:	a90107e0 	stp	x0, x1, [sp, #16]
+ ce4:	a94407e0 	ldp	x0, x1, [sp, #64]
+ ce8:	a90207e0 	stp	x0, x1, [sp, #32]
+ cec:	9100c3e0 	add	x0, sp, #0x30
+ cf0:	3dc00be1 	ldr	q1, [sp, #32]
+ cf4:	3dc007e0 	ldr	q0, [sp, #16]
+ cf8:	94000000 	bl	698 <rshift16ib>
+    print_vectors("vector right shift", ">>", &x, &y, &z);
+ cfc:	9100c3e2 	add	x2, sp, #0x30
+ d00:	910103e1 	add	x1, sp, #0x40
+ d04:	910143e0 	add	x0, sp, #0x50
+ d08:	aa0203e4 	mov	x4, x2
+ d0c:	aa0103e3 	mov	x3, x1
+ d10:	aa0003e2 	mov	x2, x0
+ d14:	90000000 	adrp	x0, 0 <add16ib>
+ d18:	91000001 	add	x1, x0, #0x0
+ d1c:	90000000 	adrp	x0, 0 <add16ib>
+ d20:	91000000 	add	x0, x0, #0x0
+ d24:	94000000 	bl	970 <print_vectors>
+
+    lshift16ib(x, y, &z);
+ d28:	a94507e0 	ldp	x0, x1, [sp, #80]
+ d2c:	a90107e0 	stp	x0, x1, [sp, #16]
+ d30:	a94407e0 	ldp	x0, x1, [sp, #64]
+ d34:	a90207e0 	stp	x0, x1, [sp, #32]
+ d38:	9100c3e0 	add	x0, sp, #0x30
+ d3c:	3dc00be1 	ldr	q1, [sp, #32]
+ d40:	3dc007e0 	ldr	q0, [sp, #16]
+ d44:	94000000 	bl	804 <lshift16ib>
+    print_vectors("vector left shift", "<<", &x, &y, &z);
+ d48:	9100c3e2 	add	x2, sp, #0x30
+ d4c:	910103e1 	add	x1, sp, #0x40
+ d50:	910143e0 	add	x0, sp, #0x50
+ d54:	aa0203e4 	mov	x4, x2
+ d58:	aa0103e3 	mov	x3, x1
+ d5c:	aa0003e2 	mov	x2, x0
+ d60:	90000000 	adrp	x0, 0 <add16ib>
+ d64:	91000001 	add	x1, x0, #0x0
+ d68:	90000000 	adrp	x0, 0 <add16ib>
+ d6c:	91000000 	add	x0, x0, #0x0
+ d70:	94000000 	bl	970 <print_vectors>
+
+    return 0;
+ d74:	52800000 	mov	w0, #0x0                   	// #0
+}
+ d78:	a8c77bfd 	ldp	x29, x30, [sp], #112
+ d7c:	d65f03c0 	ret
