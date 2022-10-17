@@ -1,0 +1,119 @@
+
+simd15_4.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16float>:
+
+typedef float v16float __attribute__((vector_size(16)));
+
+void add16float(v16float x, v16float y, v16float * z)
+{
+    *z = x + y;
+   0:	4e21d400 	fadd	v0.4s, v0.4s, v1.4s
+   4:	3d800000 	str	q0, [x0]
+}
+   8:	d65f03c0 	ret
+   c:	d503201f 	nop
+
+0000000000000010 <add16double>:
+
+typedef double v16double __attribute__((vector_size(16)));
+
+void add16double(v16double x, v16double y, v16double * z)
+{
+    *z = x + y;
+  10:	4e61d400 	fadd	v0.2d, v0.2d, v1.2d
+  14:	3d800000 	str	q0, [x0]
+}
+  18:	d65f03c0 	ret
+
+Disassembly of section .text.startup:
+
+0000000000000000 <main>:
+
+int main(void)
+{
+   0:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+    *z = x + y;
+   4:	90000000 	adrp	x0, 0 <main>
+{
+   8:	910003fd 	mov	x29, sp
+    *z = x + y;
+   c:	3dc00000 	ldr	q0, [x0]
+
+        add16float(x, y, &z);
+
+        int i;
+
+        puts("vector of floats");
+  10:	90000000 	adrp	x0, 0 <main>
+  14:	91000000 	add	x0, x0, #0x0
+{
+  18:	a90153f3 	stp	x19, x20, [sp, #16]
+  1c:	90000014 	adrp	x20, 0 <main>
+
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+  20:	52800013 	mov	w19, #0x0                   	// #0
+  24:	91000294 	add	x20, x20, #0x0
+{
+  28:	f90013f5 	str	x21, [sp, #32]
+  2c:	9100c3f5 	add	x21, sp, #0x30
+    *z = x + y;
+  30:	3d800fe0 	str	q0, [sp, #48]
+        puts("vector of floats");
+  34:	94000000 	bl	0 <puts>
+            printf("%d %f\n", i, z[i]);
+  38:	bc4046a0 	ldr	s0, [x21], #4
+  3c:	2a1303e1 	mov	w1, w19
+  40:	aa1403e0 	mov	x0, x20
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+  44:	11000673 	add	w19, w19, #0x1
+            printf("%d %f\n", i, z[i]);
+  48:	1e22c000 	fcvt	d0, s0
+  4c:	94000000 	bl	0 <printf>
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+  50:	7100127f 	cmp	w19, #0x4
+  54:	54ffff21 	b.ne	38 <main+0x38>  // b.any
+
+/* Write a character to stdout.  */
+__STDIO_INLINE int
+putchar (int __c)
+{
+  return putc (__c, stdout);
+  58:	90000001 	adrp	x1, 0 <stdout>
+  5c:	52800140 	mov	w0, #0xa                   	// #10
+  60:	f9400021 	ldr	x1, [x1]
+  64:	94000000 	bl	0 <putc>
+
+        add16double(x, y, &z);
+
+        int i;
+
+        puts("vector of doubles");
+  68:	90000000 	adrp	x0, 0 <main>
+  6c:	91000000 	add	x0, x0, #0x0
+  70:	94000000 	bl	0 <puts>
+
+        for (i = 0; i < sizeof(v16double) / sizeof(double); i++) {
+            printf("%d %f\n", i, z[i]);
+  74:	90000000 	adrp	x0, 0 <main>
+  78:	52800001 	mov	w1, #0x0                   	// #0
+  7c:	fd400000 	ldr	d0, [x0]
+  80:	aa1403e0 	mov	x0, x20
+  84:	94000000 	bl	0 <printf>
+  88:	90000000 	adrp	x0, 0 <main>
+  8c:	52800021 	mov	w1, #0x1                   	// #1
+  90:	fd400000 	ldr	d0, [x0]
+  94:	aa1403e0 	mov	x0, x20
+  98:	94000000 	bl	0 <printf>
+        }
+    }
+    return 0;
+}
+  9c:	a94153f3 	ldp	x19, x20, [sp, #16]
+  a0:	52800000 	mov	w0, #0x0                   	// #0
+  a4:	f94013f5 	ldr	x21, [sp, #32]
+  a8:	a8c47bfd 	ldp	x29, x30, [sp], #64
+  ac:	d65f03c0 	ret
