@@ -1,0 +1,31 @@
+
+simd07_2.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef float v16f __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	d100c3ff 	sub	sp, sp, #0x30
+    v16f x = { 1, 2, 3, 4 };
+   4:	90000000 	adrp	x0, 0 <main>
+   8:	3dc00000 	ldr	q0, [x0]
+   c:	3d800be0 	str	q0, [sp, #32]
+    v16f y = { 0.1, 0.1, 0.1, 0.1 };
+  10:	90000000 	adrp	x0, 0 <main>
+  14:	3dc00000 	ldr	q0, [x0]
+  18:	3d8007e0 	str	q0, [sp, #16]
+    v16f z = x + y;
+  1c:	3dc00be1 	ldr	q1, [sp, #32]
+  20:	3dc007e0 	ldr	q0, [sp, #16]
+  24:	4e20d420 	fadd	v0.4s, v1.4s, v0.4s
+  28:	3d8003e0 	str	q0, [sp]
+
+    return 0;
+  2c:	52800000 	mov	w0, #0x0                   	// #0
+}
+  30:	9100c3ff 	add	sp, sp, #0x30
+  34:	d65f03c0 	ret
