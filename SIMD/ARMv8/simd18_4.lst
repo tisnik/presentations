@@ -1,0 +1,220 @@
+
+simd18_4.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16float>:
+
+typedef float v16float __attribute__((vector_size(16)));
+
+void add16float(v16float x, v16float y, v16float * z)
+{
+    *z = x + y;
+   0:	4e21d400 	fadd	v0.4s, v0.4s, v1.4s
+   4:	3d800000 	str	q0, [x0]
+}
+   8:	d65f03c0 	ret
+   c:	d503201f 	nop
+
+0000000000000010 <sub16float>:
+
+void sub16float(v16float x, v16float y, v16float * z)
+{
+    *z = x - y;
+  10:	4ea1d400 	fsub	v0.4s, v0.4s, v1.4s
+  14:	3d800000 	str	q0, [x0]
+}
+  18:	d65f03c0 	ret
+  1c:	d503201f 	nop
+
+0000000000000020 <mul16float>:
+
+void mul16float(v16float x, v16float y, v16float * z)
+{
+    *z = x * y;
+  20:	6e21dc00 	fmul	v0.4s, v0.4s, v1.4s
+  24:	3d800000 	str	q0, [x0]
+}
+  28:	d65f03c0 	ret
+  2c:	d503201f 	nop
+
+0000000000000030 <div16float>:
+
+void div16float(v16float x, v16float y, v16float * z)
+{
+    *z = x / y;
+  30:	6e21fc00 	fdiv	v0.4s, v0.4s, v1.4s
+  34:	3d800000 	str	q0, [x0]
+}
+  38:	d65f03c0 	ret
+  3c:	d503201f 	nop
+
+0000000000000040 <print_vectors>:
+
+void print_vectors(const char *message, const char op, v16float * x,
+                   v16float * y, v16float * z)
+{
+  40:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+  44:	910003fd 	mov	x29, sp
+  48:	a90153f3 	stp	x19, x20, [sp, #16]
+  4c:	90000014 	adrp	x20, 0 <add16float>
+  50:	91000294 	add	x20, x20, #0x0
+    int i;
+
+    puts(message);
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
+  54:	d2800013 	mov	x19, #0x0                   	// #0
+{
+  58:	a9025bf5 	stp	x21, x22, [sp, #32]
+  5c:	aa0303f6 	mov	x22, x3
+  60:	aa0403f5 	mov	x21, x4
+  64:	a90363f7 	stp	x23, x24, [sp, #48]
+  68:	aa0203f7 	mov	x23, x2
+  6c:	12001c38 	and	w24, w1, #0xff
+    puts(message);
+  70:	94000000 	bl	0 <puts>
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
+  74:	bc737aa2 	ldr	s2, [x21, x19, lsl #2]
+  78:	2a1303e1 	mov	w1, w19
+  7c:	bc737ac1 	ldr	s1, [x22, x19, lsl #2]
+  80:	2a1803e2 	mov	w2, w24
+  84:	bc737ae0 	ldr	s0, [x23, x19, lsl #2]
+  88:	aa1403e0 	mov	x0, x20
+  8c:	1e22c042 	fcvt	d2, s2
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+  90:	91000673 	add	x19, x19, #0x1
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
+  94:	1e22c021 	fcvt	d1, s1
+  98:	1e22c000 	fcvt	d0, s0
+  9c:	94000000 	bl	0 <printf>
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+  a0:	f100127f 	cmp	x19, #0x4
+  a4:	54fffe81 	b.ne	74 <print_vectors+0x34>  // b.any
+               (*z)[i]);
+    }
+
+    putchar('\n');
+}
+  a8:	a94153f3 	ldp	x19, x20, [sp, #16]
+
+/* Write a character to stdout.  */
+__STDIO_INLINE int
+putchar (int __c)
+{
+  return putc (__c, stdout);
+  ac:	90000001 	adrp	x1, 0 <stdout>
+  b0:	a9425bf5 	ldp	x21, x22, [sp, #32]
+  b4:	52800140 	mov	w0, #0xa                   	// #10
+  b8:	a94363f7 	ldp	x23, x24, [sp, #48]
+  bc:	a8c47bfd 	ldp	x29, x30, [sp], #64
+  c0:	f9400021 	ldr	x1, [x1]
+  c4:	14000000 	b	0 <putc>
+
+Disassembly of section .text.startup:
+
+0000000000000000 <main>:
+
+int main(void)
+{
+   0:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+    v16float y;
+    v16float z;
+    int i;
+
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+        x[i] = i;
+   4:	90000000 	adrp	x0, 0 <main>
+        y[i] = i + 0.1;
+    }
+
+    add16float(x, y, &z);
+    print_vectors("vector addition", '+', &x, &y, &z);
+   8:	52800561 	mov	w1, #0x2b                  	// #43
+{
+   c:	910003fd 	mov	x29, sp
+        x[i] = i;
+  10:	3dc00002 	ldr	q2, [x0]
+        y[i] = i + 0.1;
+  14:	90000000 	adrp	x0, 0 <main>
+    print_vectors("vector addition", '+', &x, &y, &z);
+  18:	9100c3e4 	add	x4, sp, #0x30
+  1c:	910083e3 	add	x3, sp, #0x20
+        y[i] = i + 0.1;
+  20:	3dc00001 	ldr	q1, [x0]
+    *z = x + y;
+  24:	90000000 	adrp	x0, 0 <main>
+    print_vectors("vector addition", '+', &x, &y, &z);
+  28:	910043e2 	add	x2, sp, #0x10
+    *z = x + y;
+  2c:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector addition", '+', &x, &y, &z);
+  30:	90000000 	adrp	x0, 0 <main>
+  34:	91000000 	add	x0, x0, #0x0
+        y[i] = i + 0.1;
+  38:	ad0087e2 	stp	q2, q1, [sp, #16]
+    *z = x + y;
+  3c:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector addition", '+', &x, &y, &z);
+  40:	94000000 	bl	40 <main+0x40>
+    *z = x - y;
+  44:	90000000 	adrp	x0, 0 <main>
+
+    sub16float(x, y, &z);
+    print_vectors("vector subtraction", '-', &x, &y, &z);
+  48:	9100c3e4 	add	x4, sp, #0x30
+  4c:	910083e3 	add	x3, sp, #0x20
+    *z = x - y;
+  50:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector subtraction", '-', &x, &y, &z);
+  54:	910043e2 	add	x2, sp, #0x10
+  58:	528005a1 	mov	w1, #0x2d                  	// #45
+  5c:	90000000 	adrp	x0, 0 <main>
+  60:	91000000 	add	x0, x0, #0x0
+    *z = x - y;
+  64:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector subtraction", '-', &x, &y, &z);
+  68:	94000000 	bl	40 <main+0x40>
+    *z = x * y;
+  6c:	90000000 	adrp	x0, 0 <main>
+
+    mul16float(x, y, &z);
+    print_vectors("vector multiply", '*', &x, &y, &z);
+  70:	9100c3e4 	add	x4, sp, #0x30
+  74:	910083e3 	add	x3, sp, #0x20
+    *z = x * y;
+  78:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector multiply", '*', &x, &y, &z);
+  7c:	910043e2 	add	x2, sp, #0x10
+  80:	52800541 	mov	w1, #0x2a                  	// #42
+  84:	90000000 	adrp	x0, 0 <main>
+  88:	91000000 	add	x0, x0, #0x0
+    *z = x * y;
+  8c:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector multiply", '*', &x, &y, &z);
+  90:	94000000 	bl	40 <main+0x40>
+    *z = x / y;
+  94:	90000000 	adrp	x0, 0 <main>
+
+    div16float(x, y, &z);
+    print_vectors("vector divide", '/', &x, &y, &z);
+  98:	9100c3e4 	add	x4, sp, #0x30
+  9c:	910083e3 	add	x3, sp, #0x20
+    *z = x / y;
+  a0:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector divide", '/', &x, &y, &z);
+  a4:	910043e2 	add	x2, sp, #0x10
+  a8:	528005e1 	mov	w1, #0x2f                  	// #47
+  ac:	90000000 	adrp	x0, 0 <main>
+  b0:	91000000 	add	x0, x0, #0x0
+    *z = x / y;
+  b4:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector divide", '/', &x, &y, &z);
+  b8:	94000000 	bl	40 <main+0x40>
+
+    return 0;
+}
+  bc:	52800000 	mov	w0, #0x0                   	// #0
+  c0:	a8c47bfd 	ldp	x29, x30, [sp], #64
+  c4:	d65f03c0 	ret
