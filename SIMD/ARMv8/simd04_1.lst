@@ -1,0 +1,50 @@
+
+simd04_1.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef unsigned short int v16us __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	d100c3ff 	sub	sp, sp, #0x30
+    v16us x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+   4:	90000000 	adrp	x0, 0 <main>
+   8:	91000000 	add	x0, x0, #0x0
+   c:	a9400400 	ldp	x0, x1, [x0]
+  10:	a90207e0 	stp	x0, x1, [sp, #32]
+    v16us y = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+  14:	90000000 	adrp	x0, 0 <main>
+  18:	91000000 	add	x0, x0, #0x0
+  1c:	a9400400 	ldp	x0, x1, [x0]
+  20:	a90107e0 	stp	x0, x1, [sp, #16]
+  24:	f94013e0 	ldr	x0, [sp, #32]
+  28:	f9400be1 	ldr	x1, [sp, #16]
+    v16us z = x + y;
+  2c:	ca010003 	eor	x3, x0, x1
+  30:	9200b821 	and	x1, x1, #0x7fff7fff7fff7fff
+  34:	9200b802 	and	x2, x0, #0x7fff7fff7fff7fff
+  38:	92018060 	and	x0, x3, #0x8000800080008000
+  3c:	8b010041 	add	x1, x2, x1
+  40:	ca000024 	eor	x4, x1, x0
+  44:	f94017e0 	ldr	x0, [sp, #40]
+  48:	f9400fe1 	ldr	x1, [sp, #24]
+  4c:	ca010003 	eor	x3, x0, x1
+  50:	9200b821 	and	x1, x1, #0x7fff7fff7fff7fff
+  54:	9200b802 	and	x2, x0, #0x7fff7fff7fff7fff
+  58:	92018060 	and	x0, x3, #0x8000800080008000
+  5c:	8b010041 	add	x1, x2, x1
+  60:	ca000022 	eor	x2, x1, x0
+  64:	d2800000 	mov	x0, #0x0                   	// #0
+  68:	d2800001 	mov	x1, #0x0                   	// #0
+  6c:	aa0403e0 	mov	x0, x4
+  70:	aa0203e1 	mov	x1, x2
+  74:	a90007e0 	stp	x0, x1, [sp]
+
+    return 0;
+  78:	52800000 	mov	w0, #0x0                   	// #0
+}
+  7c:	9100c3ff 	add	sp, sp, #0x30
+  80:	d65f03c0 	ret
