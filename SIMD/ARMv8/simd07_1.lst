@@ -1,0 +1,63 @@
+
+simd07_1.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef float v16f __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	d10103ff 	sub	sp, sp, #0x40
+    v16f x = { 1, 2, 3, 4 };
+   4:	1e2e1000 	fmov	s0, #1.000000000000000000e+00
+   8:	bd0033e0 	str	s0, [sp, #48]
+   c:	1e201000 	fmov	s0, #2.000000000000000000e+00
+  10:	bd0037e0 	str	s0, [sp, #52]
+  14:	1e211000 	fmov	s0, #3.000000000000000000e+00
+  18:	bd003be0 	str	s0, [sp, #56]
+  1c:	1e221000 	fmov	s0, #4.000000000000000000e+00
+  20:	bd003fe0 	str	s0, [sp, #60]
+    v16f y = { 0.1, 0.1, 0.1, 0.1 };
+  24:	529999a0 	mov	w0, #0xcccd                	// #52429
+  28:	72a7b980 	movk	w0, #0x3dcc, lsl #16
+  2c:	1e270000 	fmov	s0, w0
+  30:	bd0023e0 	str	s0, [sp, #32]
+  34:	529999a0 	mov	w0, #0xcccd                	// #52429
+  38:	72a7b980 	movk	w0, #0x3dcc, lsl #16
+  3c:	1e270000 	fmov	s0, w0
+  40:	bd0027e0 	str	s0, [sp, #36]
+  44:	529999a0 	mov	w0, #0xcccd                	// #52429
+  48:	72a7b980 	movk	w0, #0x3dcc, lsl #16
+  4c:	1e270000 	fmov	s0, w0
+  50:	bd002be0 	str	s0, [sp, #40]
+  54:	529999a0 	mov	w0, #0xcccd                	// #52429
+  58:	72a7b980 	movk	w0, #0x3dcc, lsl #16
+  5c:	1e270000 	fmov	s0, w0
+  60:	bd002fe0 	str	s0, [sp, #44]
+  64:	bd4033e1 	ldr	s1, [sp, #48]
+  68:	bd4023e0 	ldr	s0, [sp, #32]
+    v16f z = x + y;
+  6c:	1e202823 	fadd	s3, s1, s0
+  70:	bd4037e1 	ldr	s1, [sp, #52]
+  74:	bd4027e0 	ldr	s0, [sp, #36]
+  78:	1e202822 	fadd	s2, s1, s0
+  7c:	bd403be1 	ldr	s1, [sp, #56]
+  80:	bd402be0 	ldr	s0, [sp, #40]
+  84:	1e202821 	fadd	s1, s1, s0
+  88:	bd403fe4 	ldr	s4, [sp, #60]
+  8c:	bd402fe0 	ldr	s0, [sp, #44]
+  90:	1e202880 	fadd	s0, s4, s0
+  94:	bd0003e3 	str	s3, [sp]
+  98:	bd0007e2 	str	s2, [sp, #4]
+  9c:	bd000be1 	str	s1, [sp, #8]
+  a0:	bd000fe0 	str	s0, [sp, #12]
+  a4:	a94007e0 	ldp	x0, x1, [sp]
+  a8:	a90107e0 	stp	x0, x1, [sp, #16]
+
+    return 0;
+  ac:	52800000 	mov	w0, #0x0                   	// #0
+}
+  b0:	910103ff 	add	sp, sp, #0x40
+  b4:	d65f03c0 	ret
