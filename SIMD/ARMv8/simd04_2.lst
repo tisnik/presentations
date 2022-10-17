@@ -1,0 +1,30 @@
+
+simd04_2.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef unsigned short int v16us __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	d100c3ff 	sub	sp, sp, #0x30
+    v16us x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+   4:	90000000 	adrp	x0, 0 <main>
+   8:	3dc00000 	ldr	q0, [x0]
+   c:	3d800be0 	str	q0, [sp, #32]
+    v16us y = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+  10:	4f0787e0 	movi	v0.8h, #0xff
+  14:	3d8007e0 	str	q0, [sp, #16]
+    v16us z = x + y;
+  18:	3dc00be1 	ldr	q1, [sp, #32]
+  1c:	3dc007e0 	ldr	q0, [sp, #16]
+  20:	4e608420 	add	v0.8h, v1.8h, v0.8h
+  24:	3d8003e0 	str	q0, [sp]
+
+    return 0;
+  28:	52800000 	mov	w0, #0x0                   	// #0
+}
+  2c:	9100c3ff 	add	sp, sp, #0x30
+  30:	d65f03c0 	ret
