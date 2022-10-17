@@ -1,0 +1,135 @@
+
+simd12_2.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef float v256f __attribute__((vector_size(256)));
+
+int main(void)
+{
+   0:	d11103ff 	sub	sp, sp, #0x440
+   4:	6d0027e8 	stp	d8, d9, [sp]
+   8:	6d012fea 	stp	d10, d11, [sp, #16]
+   c:	6d0237ec 	stp	d12, d13, [sp, #32]
+  10:	6d033fee 	stp	d14, d15, [sp, #48]
+    v256f x = { 1.0 };
+  14:	910d03e0 	add	x0, sp, #0x340
+  18:	4f000400 	movi	v0.4s, #0x0
+  1c:	ad000000 	stp	q0, q0, [x0]
+  20:	ad010000 	stp	q0, q0, [x0, #32]
+  24:	ad020000 	stp	q0, q0, [x0, #64]
+  28:	ad030000 	stp	q0, q0, [x0, #96]
+  2c:	ad040000 	stp	q0, q0, [x0, #128]
+  30:	ad050000 	stp	q0, q0, [x0, #160]
+  34:	ad060000 	stp	q0, q0, [x0, #192]
+  38:	ad070000 	stp	q0, q0, [x0, #224]
+  3c:	1e2e1000 	fmov	s0, #1.000000000000000000e+00
+  40:	bd0343e0 	str	s0, [sp, #832]
+    v256f y = { 1.0 };
+  44:	910903e0 	add	x0, sp, #0x240
+  48:	4f000400 	movi	v0.4s, #0x0
+  4c:	ad000000 	stp	q0, q0, [x0]
+  50:	ad010000 	stp	q0, q0, [x0, #32]
+  54:	ad020000 	stp	q0, q0, [x0, #64]
+  58:	ad030000 	stp	q0, q0, [x0, #96]
+  5c:	ad040000 	stp	q0, q0, [x0, #128]
+  60:	ad050000 	stp	q0, q0, [x0, #160]
+  64:	ad060000 	stp	q0, q0, [x0, #192]
+  68:	ad070000 	stp	q0, q0, [x0, #224]
+  6c:	1e2e1000 	fmov	s0, #1.000000000000000000e+00
+  70:	bd0243e0 	str	s0, [sp, #576]
+  74:	3dc0d3e1 	ldr	q1, [sp, #832]
+  78:	3dc093e0 	ldr	q0, [sp, #576]
+    v256f z = x + y;
+  7c:	4e20d42f 	fadd	v15.4s, v1.4s, v0.4s
+  80:	3dc0d7e1 	ldr	q1, [sp, #848]
+  84:	3dc097e0 	ldr	q0, [sp, #592]
+  88:	4e20d42e 	fadd	v14.4s, v1.4s, v0.4s
+  8c:	3dc0dbe1 	ldr	q1, [sp, #864]
+  90:	3dc09be0 	ldr	q0, [sp, #608]
+  94:	4e20d42d 	fadd	v13.4s, v1.4s, v0.4s
+  98:	3dc0dfe1 	ldr	q1, [sp, #880]
+  9c:	3dc09fe0 	ldr	q0, [sp, #624]
+  a0:	4e20d42c 	fadd	v12.4s, v1.4s, v0.4s
+  a4:	3dc0e3e1 	ldr	q1, [sp, #896]
+  a8:	3dc0a3e0 	ldr	q0, [sp, #640]
+  ac:	4e20d42b 	fadd	v11.4s, v1.4s, v0.4s
+  b0:	3dc0e7e1 	ldr	q1, [sp, #912]
+  b4:	3dc0a7e0 	ldr	q0, [sp, #656]
+  b8:	4e20d42a 	fadd	v10.4s, v1.4s, v0.4s
+  bc:	3dc0ebe1 	ldr	q1, [sp, #928]
+  c0:	3dc0abe0 	ldr	q0, [sp, #672]
+  c4:	4e20d429 	fadd	v9.4s, v1.4s, v0.4s
+  c8:	3dc0efe1 	ldr	q1, [sp, #944]
+  cc:	3dc0afe0 	ldr	q0, [sp, #688]
+  d0:	4e20d428 	fadd	v8.4s, v1.4s, v0.4s
+  d4:	3dc0f3e1 	ldr	q1, [sp, #960]
+  d8:	3dc0b3e0 	ldr	q0, [sp, #704]
+  dc:	4e20d427 	fadd	v7.4s, v1.4s, v0.4s
+  e0:	3dc0f7e1 	ldr	q1, [sp, #976]
+  e4:	3dc0b7e0 	ldr	q0, [sp, #720]
+  e8:	4e20d426 	fadd	v6.4s, v1.4s, v0.4s
+  ec:	3dc0fbe1 	ldr	q1, [sp, #992]
+  f0:	3dc0bbe0 	ldr	q0, [sp, #736]
+  f4:	4e20d425 	fadd	v5.4s, v1.4s, v0.4s
+  f8:	3dc0ffe1 	ldr	q1, [sp, #1008]
+  fc:	3dc0bfe0 	ldr	q0, [sp, #752]
+ 100:	4e20d424 	fadd	v4.4s, v1.4s, v0.4s
+ 104:	3dc103e1 	ldr	q1, [sp, #1024]
+ 108:	3dc0c3e0 	ldr	q0, [sp, #768]
+ 10c:	4e20d423 	fadd	v3.4s, v1.4s, v0.4s
+ 110:	3dc107e1 	ldr	q1, [sp, #1040]
+ 114:	3dc0c7e0 	ldr	q0, [sp, #784]
+ 118:	4e20d422 	fadd	v2.4s, v1.4s, v0.4s
+ 11c:	3dc10be1 	ldr	q1, [sp, #1056]
+ 120:	3dc0cbe0 	ldr	q0, [sp, #800]
+ 124:	4e20d421 	fadd	v1.4s, v1.4s, v0.4s
+ 128:	3dc10ff0 	ldr	q16, [sp, #1072]
+ 12c:	3dc0cfe0 	ldr	q0, [sp, #816]
+ 130:	4e20d600 	fadd	v0.4s, v16.4s, v0.4s
+ 134:	3d8013ef 	str	q15, [sp, #64]
+ 138:	3d8017ee 	str	q14, [sp, #80]
+ 13c:	3d801bed 	str	q13, [sp, #96]
+ 140:	3d801fec 	str	q12, [sp, #112]
+ 144:	3d8023eb 	str	q11, [sp, #128]
+ 148:	3d8027ea 	str	q10, [sp, #144]
+ 14c:	3d802be9 	str	q9, [sp, #160]
+ 150:	3d802fe8 	str	q8, [sp, #176]
+ 154:	3d8033e7 	str	q7, [sp, #192]
+ 158:	3d8037e6 	str	q6, [sp, #208]
+ 15c:	3d803be5 	str	q5, [sp, #224]
+ 160:	3d803fe4 	str	q4, [sp, #240]
+ 164:	3d8043e3 	str	q3, [sp, #256]
+ 168:	3d8047e2 	str	q2, [sp, #272]
+ 16c:	3d804be1 	str	q1, [sp, #288]
+ 170:	3d804fe0 	str	q0, [sp, #304]
+ 174:	910503e0 	add	x0, sp, #0x140
+ 178:	910103e1 	add	x1, sp, #0x40
+ 17c:	ad400420 	ldp	q0, q1, [x1]
+ 180:	ad000400 	stp	q0, q1, [x0]
+ 184:	ad410420 	ldp	q0, q1, [x1, #32]
+ 188:	ad010400 	stp	q0, q1, [x0, #32]
+ 18c:	ad420420 	ldp	q0, q1, [x1, #64]
+ 190:	ad020400 	stp	q0, q1, [x0, #64]
+ 194:	ad430420 	ldp	q0, q1, [x1, #96]
+ 198:	ad030400 	stp	q0, q1, [x0, #96]
+ 19c:	ad440420 	ldp	q0, q1, [x1, #128]
+ 1a0:	ad040400 	stp	q0, q1, [x0, #128]
+ 1a4:	ad450420 	ldp	q0, q1, [x1, #160]
+ 1a8:	ad050400 	stp	q0, q1, [x0, #160]
+ 1ac:	ad460420 	ldp	q0, q1, [x1, #192]
+ 1b0:	ad060400 	stp	q0, q1, [x0, #192]
+ 1b4:	ad470420 	ldp	q0, q1, [x1, #224]
+ 1b8:	ad070400 	stp	q0, q1, [x0, #224]
+
+    return 0;
+ 1bc:	52800000 	mov	w0, #0x0                   	// #0
+}
+ 1c0:	6d4027e8 	ldp	d8, d9, [sp]
+ 1c4:	6d412fea 	ldp	d10, d11, [sp, #16]
+ 1c8:	6d4237ec 	ldp	d12, d13, [sp, #32]
+ 1cc:	6d433fee 	ldp	d14, d15, [sp, #48]
+ 1d0:	911103ff 	add	sp, sp, #0x440
+ 1d4:	d65f03c0 	ret
