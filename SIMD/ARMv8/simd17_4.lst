@@ -1,0 +1,558 @@
+
+simd17_4.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16ib>:
+
+typedef signed char v16ib __attribute__((vector_size(16)));
+
+void add16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x + y;
+   0:	4e218400 	add	v0.16b, v0.16b, v1.16b
+   4:	3d800000 	str	q0, [x0]
+}
+   8:	d65f03c0 	ret
+   c:	d503201f 	nop
+
+0000000000000010 <sub16ib>:
+
+void sub16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x - y;
+  10:	6e218400 	sub	v0.16b, v0.16b, v1.16b
+  14:	3d800000 	str	q0, [x0]
+}
+  18:	d65f03c0 	ret
+  1c:	d503201f 	nop
+
+0000000000000020 <mul16ib>:
+
+void mul16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x * y;
+  20:	4e219c00 	mul	v0.16b, v0.16b, v1.16b
+  24:	3d800000 	str	q0, [x0]
+}
+  28:	d65f03c0 	ret
+  2c:	d503201f 	nop
+
+0000000000000030 <div16ib>:
+
+void div16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x / y;
+  30:	0e012c26 	smov	w6, v1.b[0]
+  34:	0e012c01 	smov	w1, v0.b[0]
+  38:	0e032c25 	smov	w5, v1.b[1]
+  3c:	0e032c04 	smov	w4, v0.b[1]
+  40:	0e052c28 	smov	w8, v1.b[2]
+  44:	0e052c03 	smov	w3, v0.b[2]
+  48:	0e072c27 	smov	w7, v1.b[3]
+  4c:	0e072c02 	smov	w2, v0.b[3]
+  50:	0e0b2c0b 	smov	w11, v0.b[5]
+  54:	0e0d2c2f 	smov	w15, v1.b[6]
+  58:	1ac60c21 	sdiv	w1, w1, w6
+  5c:	0e092c26 	smov	w6, v1.b[4]
+  60:	0e0d2c0a 	smov	w10, v0.b[6]
+  64:	0e0f2c2e 	smov	w14, v1.b[7]
+  68:	1ac50c84 	sdiv	w4, w4, w5
+  6c:	0e0b2c25 	smov	w5, v1.b[5]
+  70:	0e0f2c09 	smov	w9, v0.b[7]
+  74:	0e112c2d 	smov	w13, v1.b[8]
+  78:	1e270022 	fmov	s2, w1
+  7c:	0e092c01 	smov	w1, v0.b[4]
+  80:	1ac80c63 	sdiv	w3, w3, w8
+  84:	0e112c08 	smov	w8, v0.b[8]
+  88:	4e031c82 	mov	v2.b[1], w4
+  8c:	0e132c2c 	smov	w12, v1.b[9]
+  90:	1ac70c42 	sdiv	w2, w2, w7
+  94:	0e132c07 	smov	w7, v0.b[9]
+  98:	0e152c31 	smov	w17, v1.b[10]
+  9c:	0e172c30 	smov	w16, v1.b[11]
+  a0:	1ac60c21 	sdiv	w1, w1, w6
+  a4:	0e152c06 	smov	w6, v0.b[10]
+  a8:	4e051c62 	mov	v2.b[2], w3
+  ac:	0e192c04 	smov	w4, v0.b[12]
+  b0:	1ac50d6b 	sdiv	w11, w11, w5
+  b4:	0e172c05 	smov	w5, v0.b[11]
+  b8:	0e1b2c03 	smov	w3, v0.b[13]
+  bc:	1acf0d4a 	sdiv	w10, w10, w15
+  c0:	0e192c2f 	smov	w15, v1.b[12]
+  c4:	4e071c42 	mov	v2.b[3], w2
+  c8:	0e1d2c02 	smov	w2, v0.b[14]
+  cc:	1ace0d29 	sdiv	w9, w9, w14
+  d0:	0e1b2c2e 	smov	w14, v1.b[13]
+  d4:	1acd0d08 	sdiv	w8, w8, w13
+  d8:	0e1d2c2d 	smov	w13, v1.b[14]
+  dc:	4e091c22 	mov	v2.b[4], w1
+  e0:	0e1f2c01 	smov	w1, v0.b[15]
+  e4:	1acc0ce7 	sdiv	w7, w7, w12
+  e8:	0e1f2c2c 	smov	w12, v1.b[15]
+  ec:	1ad10cc6 	sdiv	w6, w6, w17
+  f0:	4e0b1d62 	mov	v2.b[5], w11
+  f4:	1ad00ca5 	sdiv	w5, w5, w16
+  f8:	1acf0c84 	sdiv	w4, w4, w15
+  fc:	4e0d1d42 	mov	v2.b[6], w10
+ 100:	1ace0c63 	sdiv	w3, w3, w14
+ 104:	1acd0c42 	sdiv	w2, w2, w13
+ 108:	4e0f1d22 	mov	v2.b[7], w9
+ 10c:	1acc0c21 	sdiv	w1, w1, w12
+ 110:	4e111d02 	mov	v2.b[8], w8
+ 114:	4e131ce2 	mov	v2.b[9], w7
+ 118:	4e151cc2 	mov	v2.b[10], w6
+ 11c:	4e171ca2 	mov	v2.b[11], w5
+ 120:	4e191c82 	mov	v2.b[12], w4
+ 124:	4e1b1c62 	mov	v2.b[13], w3
+ 128:	4e1d1c42 	mov	v2.b[14], w2
+ 12c:	4e1f1c22 	mov	v2.b[15], w1
+ 130:	3d800002 	str	q2, [x0]
+}
+ 134:	d65f03c0 	ret
+ 138:	d503201f 	nop
+ 13c:	d503201f 	nop
+
+0000000000000140 <mod16ib>:
+
+void mod16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x % y;
+ 140:	0e012c07 	smov	w7, v0.b[0]
+ 144:	0e012c23 	smov	w3, v1.b[0]
+ 148:	0e032c06 	smov	w6, v0.b[1]
+ 14c:	0e032c25 	smov	w5, v1.b[1]
+ 150:	0e052c11 	smov	w17, v0.b[2]
+ 154:	0e052c30 	smov	w16, v1.b[2]
+ 158:	0e072c0f 	smov	w15, v0.b[3]
+ 15c:	0e072c24 	smov	w4, v1.b[3]
+{
+ 160:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    *z = x % y;
+ 164:	0e092c2e 	smov	w14, v1.b[4]
+ 168:	0e0b2c0d 	smov	w13, v0.b[5]
+ 16c:	1ac30ce1 	sdiv	w1, w7, w3
+{
+ 170:	910003fd 	mov	x29, sp
+    *z = x % y;
+ 174:	0e0b2c2c 	smov	w12, v1.b[5]
+ 178:	1ac50cc2 	sdiv	w2, w6, w5
+{
+ 17c:	a90153f3 	stp	x19, x20, [sp, #16]
+    *z = x % y;
+ 180:	0e092c14 	smov	w20, v0.b[4]
+ 184:	1b039c21 	msub	w1, w1, w3, w7
+ 188:	0e0d2c0b 	smov	w11, v0.b[6]
+ 18c:	1ad00e23 	sdiv	w3, w17, w16
+ 190:	1e270022 	fmov	s2, w1
+ 194:	1b059841 	msub	w1, w2, w5, w6
+ 198:	0e0d2c2a 	smov	w10, v1.b[6]
+ 19c:	1ac40de2 	sdiv	w2, w15, w4
+ 1a0:	0e0f2c09 	smov	w9, v0.b[7]
+ 1a4:	0e0f2c27 	smov	w7, v1.b[7]
+ 1a8:	0e112c08 	smov	w8, v0.b[8]
+ 1ac:	4e031c22 	mov	v2.b[1], w1
+ 1b0:	1b10c463 	msub	w3, w3, w16, w17
+ 1b4:	1ace0e81 	sdiv	w1, w20, w14
+ 1b8:	0e112c26 	smov	w6, v1.b[8]
+ 1bc:	1b04bc42 	msub	w2, w2, w4, w15
+ 1c0:	0e132c13 	smov	w19, v0.b[9]
+ 1c4:	1acc0da4 	sdiv	w4, w13, w12
+ 1c8:	0e132c25 	smov	w5, v1.b[9]
+ 1cc:	4e051c62 	mov	v2.b[2], w3
+ 1d0:	0e152c1e 	smov	w30, v0.b[10]
+ 1d4:	1b0ed021 	msub	w1, w1, w14, w20
+ 1d8:	0e152c32 	smov	w18, v1.b[10]
+ 1dc:	1aca0d63 	sdiv	w3, w11, w10
+ 1e0:	0e172c11 	smov	w17, v0.b[11]
+ 1e4:	1b0cb484 	msub	w4, w4, w12, w13
+ 1e8:	0e172c30 	smov	w16, v1.b[11]
+ 1ec:	4e071c42 	mov	v2.b[3], w2
+ 1f0:	0e192c0f 	smov	w15, v0.b[12]
+ 1f4:	1ac70d22 	sdiv	w2, w9, w7
+ 1f8:	0e192c2e 	smov	w14, v1.b[12]
+ 1fc:	1b0aac63 	msub	w3, w3, w10, w11
+ 200:	0e1b2c0d 	smov	w13, v0.b[13]
+ 204:	0e1b2c2c 	smov	w12, v1.b[13]
+ 208:	0e1d2c0b 	smov	w11, v0.b[14]
+ 20c:	4e091c22 	mov	v2.b[4], w1
+ 210:	0e1d2c2a 	smov	w10, v1.b[14]
+ 214:	1ac60d01 	sdiv	w1, w8, w6
+ 218:	1b07a442 	msub	w2, w2, w7, w9
+ 21c:	0e1f2c09 	smov	w9, v0.b[15]
+ 220:	1ac50e67 	sdiv	w7, w19, w5
+ 224:	4e0b1c82 	mov	v2.b[5], w4
+ 228:	1ace0de4 	sdiv	w4, w15, w14
+ 22c:	1b06a021 	msub	w1, w1, w6, w8
+ 230:	0e1f2c28 	smov	w8, v1.b[15]
+ 234:	1ad20fc6 	sdiv	w6, w30, w18
+ 238:	1b05cce7 	msub	w7, w7, w5, w19
+ 23c:	4e0d1c62 	mov	v2.b[6], w3
+ 240:	1ad00e25 	sdiv	w5, w17, w16
+ 244:	1b0ebc84 	msub	w4, w4, w14, w15
+}
+ 248:	a94153f3 	ldp	x19, x20, [sp, #16]
+    *z = x % y;
+ 24c:	1b12f8c6 	msub	w6, w6, w18, w30
+ 250:	1acc0da3 	sdiv	w3, w13, w12
+ 254:	4e0f1c42 	mov	v2.b[7], w2
+ 258:	1b10c4a5 	msub	w5, w5, w16, w17
+ 25c:	1aca0d62 	sdiv	w2, w11, w10
+}
+ 260:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    *z = x % y;
+ 264:	4e111c22 	mov	v2.b[8], w1
+ 268:	1ac80d21 	sdiv	w1, w9, w8
+ 26c:	1b0cb463 	msub	w3, w3, w12, w13
+ 270:	1b0aac42 	msub	w2, w2, w10, w11
+ 274:	4e131ce2 	mov	v2.b[9], w7
+ 278:	1b08a421 	msub	w1, w1, w8, w9
+ 27c:	4e151cc2 	mov	v2.b[10], w6
+ 280:	4e171ca2 	mov	v2.b[11], w5
+ 284:	4e191c82 	mov	v2.b[12], w4
+ 288:	4e1b1c62 	mov	v2.b[13], w3
+ 28c:	4e1d1c42 	mov	v2.b[14], w2
+ 290:	4e1f1c22 	mov	v2.b[15], w1
+ 294:	3d800002 	str	q2, [x0]
+}
+ 298:	d65f03c0 	ret
+ 29c:	d503201f 	nop
+
+00000000000002a0 <and16ib>:
+
+void and16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x & y;
+ 2a0:	4e211c00 	and	v0.16b, v0.16b, v1.16b
+ 2a4:	3d800000 	str	q0, [x0]
+}
+ 2a8:	d65f03c0 	ret
+ 2ac:	d503201f 	nop
+
+00000000000002b0 <or16ib>:
+
+void or16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x | y;
+ 2b0:	4ea11c00 	orr	v0.16b, v0.16b, v1.16b
+ 2b4:	3d800000 	str	q0, [x0]
+}
+ 2b8:	d65f03c0 	ret
+ 2bc:	d503201f 	nop
+
+00000000000002c0 <xor16ib>:
+
+void xor16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x ^ y;
+ 2c0:	6e211c00 	eor	v0.16b, v0.16b, v1.16b
+ 2c4:	3d800000 	str	q0, [x0]
+}
+ 2c8:	d65f03c0 	ret
+ 2cc:	d503201f 	nop
+
+00000000000002d0 <rshift16ib>:
+
+void rshift16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x >> y;
+ 2d0:	6e20b821 	neg	v1.16b, v1.16b
+ 2d4:	4e214400 	sshl	v0.16b, v0.16b, v1.16b
+ 2d8:	3d800000 	str	q0, [x0]
+}
+ 2dc:	d65f03c0 	ret
+
+00000000000002e0 <lshift16ib>:
+
+void lshift16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x << y;
+ 2e0:	4e214400 	sshl	v0.16b, v0.16b, v1.16b
+ 2e4:	3d800000 	str	q0, [x0]
+}
+ 2e8:	d65f03c0 	ret
+ 2ec:	d503201f 	nop
+
+00000000000002f0 <print_vectors>:
+
+void print_vectors(const char *message, const char *op, v16ib * x,
+                   v16ib * y, v16ib * z)
+{
+ 2f0:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+ 2f4:	910003fd 	mov	x29, sp
+ 2f8:	a90153f3 	stp	x19, x20, [sp, #16]
+ 2fc:	90000014 	adrp	x20, 0 <add16ib>
+ 300:	91000294 	add	x20, x20, #0x0
+    int i;
+
+    puts(message);
+ 304:	d2800013 	mov	x19, #0x0                   	// #0
+{
+ 308:	a9025bf5 	stp	x21, x22, [sp, #32]
+ 30c:	aa0303f6 	mov	x22, x3
+ 310:	aa0403f5 	mov	x21, x4
+ 314:	a90363f7 	stp	x23, x24, [sp, #48]
+ 318:	aa0103f8 	mov	x24, x1
+ 31c:	aa0203f7 	mov	x23, x2
+    puts(message);
+ 320:	94000000 	bl	0 <puts>
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ 324:	d503201f 	nop
+        printf("%2d    %d %s %d = %d\n", i, (*x)[i], op, (*y)[i], (*z)[i]);
+ 328:	38f36aa5 	ldrsb	w5, [x21, x19]
+ 32c:	2a1303e1 	mov	w1, w19
+ 330:	38f36ac4 	ldrsb	w4, [x22, x19]
+ 334:	aa1803e3 	mov	x3, x24
+ 338:	38f36ae2 	ldrsb	w2, [x23, x19]
+ 33c:	aa1403e0 	mov	x0, x20
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ 340:	91000673 	add	x19, x19, #0x1
+        printf("%2d    %d %s %d = %d\n", i, (*x)[i], op, (*y)[i], (*z)[i]);
+ 344:	94000000 	bl	0 <printf>
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+ 348:	f100427f 	cmp	x19, #0x10
+ 34c:	54fffee1 	b.ne	328 <print_vectors+0x38>  // b.any
+    }
+
+    putchar('\n');
+}
+ 350:	a94153f3 	ldp	x19, x20, [sp, #16]
+
+/* Write a character to stdout.  */
+__STDIO_INLINE int
+putchar (int __c)
+{
+  return putc (__c, stdout);
+ 354:	90000001 	adrp	x1, 0 <stdout>
+ 358:	a9425bf5 	ldp	x21, x22, [sp, #32]
+ 35c:	52800140 	mov	w0, #0xa                   	// #10
+ 360:	a94363f7 	ldp	x23, x24, [sp, #48]
+ 364:	a8c47bfd 	ldp	x29, x30, [sp], #64
+ 368:	f9400021 	ldr	x1, [x1]
+ 36c:	14000000 	b	0 <putc>
+
+Disassembly of section .text.startup:
+
+0000000000000000 <main>:
+
+int main(void)
+{
+   0:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+    v16ib y;
+    v16ib z;
+    int i;
+
+    for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+        x[i] = i * 2;
+   4:	90000000 	adrp	x0, 0 <main>
+        y[i] = 16 - i;
+    }
+
+    add16ib(x, y, &z);
+    print_vectors("vector addition", "+", &x, &y, &z);
+   8:	90000001 	adrp	x1, 0 <main>
+{
+   c:	910003fd 	mov	x29, sp
+        x[i] = i * 2;
+  10:	3dc00002 	ldr	q2, [x0]
+        y[i] = 16 - i;
+  14:	90000000 	adrp	x0, 0 <main>
+    print_vectors("vector addition", "+", &x, &y, &z);
+  18:	9100c3e4 	add	x4, sp, #0x30
+  1c:	910083e3 	add	x3, sp, #0x20
+        y[i] = 16 - i;
+  20:	3dc00001 	ldr	q1, [x0]
+    *z = x + y;
+  24:	90000000 	adrp	x0, 0 <main>
+    print_vectors("vector addition", "+", &x, &y, &z);
+  28:	910043e2 	add	x2, sp, #0x10
+  2c:	91000021 	add	x1, x1, #0x0
+    *z = x + y;
+  30:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector addition", "+", &x, &y, &z);
+  34:	90000000 	adrp	x0, 0 <main>
+  38:	91000000 	add	x0, x0, #0x0
+        y[i] = 16 - i;
+  3c:	ad0087e2 	stp	q2, q1, [sp, #16]
+    *z = x + y;
+  40:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector addition", "+", &x, &y, &z);
+  44:	94000000 	bl	2f0 <print_vectors>
+    *z = x - y;
+  48:	90000000 	adrp	x0, 0 <main>
+
+    sub16ib(x, y, &z);
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+  4c:	9100c3e4 	add	x4, sp, #0x30
+  50:	910083e3 	add	x3, sp, #0x20
+    *z = x - y;
+  54:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+  58:	910043e2 	add	x2, sp, #0x10
+  5c:	90000001 	adrp	x1, 0 <main>
+  60:	90000000 	adrp	x0, 0 <main>
+  64:	91000021 	add	x1, x1, #0x0
+  68:	91000000 	add	x0, x0, #0x0
+    *z = x - y;
+  6c:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector subtraction", "-", &x, &y, &z);
+  70:	94000000 	bl	2f0 <print_vectors>
+    *z = x * y;
+  74:	90000000 	adrp	x0, 0 <main>
+
+    mul16ib(x, y, &z);
+    print_vectors("vector multiply", "*", &x, &y, &z);
+  78:	9100c3e4 	add	x4, sp, #0x30
+  7c:	910083e3 	add	x3, sp, #0x20
+    *z = x * y;
+  80:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector multiply", "*", &x, &y, &z);
+  84:	910043e2 	add	x2, sp, #0x10
+  88:	90000001 	adrp	x1, 0 <main>
+  8c:	90000000 	adrp	x0, 0 <main>
+  90:	91000021 	add	x1, x1, #0x0
+  94:	91000000 	add	x0, x0, #0x0
+    *z = x * y;
+  98:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector multiply", "*", &x, &y, &z);
+  9c:	94000000 	bl	2f0 <print_vectors>
+    *z = x / y;
+  a0:	90000000 	adrp	x0, 0 <main>
+
+    div16ib(x, y, &z);
+    print_vectors("vector divide", "/", &x, &y, &z);
+  a4:	9100c3e4 	add	x4, sp, #0x30
+  a8:	910083e3 	add	x3, sp, #0x20
+    *z = x / y;
+  ac:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector divide", "/", &x, &y, &z);
+  b0:	910043e2 	add	x2, sp, #0x10
+  b4:	90000001 	adrp	x1, 0 <main>
+  b8:	90000000 	adrp	x0, 0 <main>
+  bc:	91000021 	add	x1, x1, #0x0
+  c0:	91000000 	add	x0, x0, #0x0
+    *z = x / y;
+  c4:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector divide", "/", &x, &y, &z);
+  c8:	94000000 	bl	2f0 <print_vectors>
+    *z = x % y;
+  cc:	90000000 	adrp	x0, 0 <main>
+
+    mod16ib(x, y, &z);
+    print_vectors("vector modulo", "%", &x, &y, &z);
+  d0:	9100c3e4 	add	x4, sp, #0x30
+  d4:	910083e3 	add	x3, sp, #0x20
+    *z = x % y;
+  d8:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector modulo", "%", &x, &y, &z);
+  dc:	910043e2 	add	x2, sp, #0x10
+  e0:	90000001 	adrp	x1, 0 <main>
+  e4:	90000000 	adrp	x0, 0 <main>
+  e8:	91000021 	add	x1, x1, #0x0
+  ec:	91000000 	add	x0, x0, #0x0
+    *z = x % y;
+  f0:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector modulo", "%", &x, &y, &z);
+  f4:	94000000 	bl	2f0 <print_vectors>
+    *z = x & y;
+  f8:	90000000 	adrp	x0, 0 <main>
+
+    and16ib(x, y, &z);
+    print_vectors("vector bitwise and", "&", &x, &y, &z);
+  fc:	9100c3e4 	add	x4, sp, #0x30
+ 100:	910083e3 	add	x3, sp, #0x20
+    *z = x & y;
+ 104:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector bitwise and", "&", &x, &y, &z);
+ 108:	910043e2 	add	x2, sp, #0x10
+ 10c:	90000001 	adrp	x1, 0 <main>
+ 110:	90000000 	adrp	x0, 0 <main>
+ 114:	91000021 	add	x1, x1, #0x0
+ 118:	91000000 	add	x0, x0, #0x0
+    *z = x & y;
+ 11c:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector bitwise and", "&", &x, &y, &z);
+ 120:	94000000 	bl	2f0 <print_vectors>
+    *z = x | y;
+ 124:	90000000 	adrp	x0, 0 <main>
+
+    or16ib(x, y, &z);
+    print_vectors("vector bitwise or", "|", &x, &y, &z);
+ 128:	9100c3e4 	add	x4, sp, #0x30
+ 12c:	910083e3 	add	x3, sp, #0x20
+    *z = x | y;
+ 130:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector bitwise or", "|", &x, &y, &z);
+ 134:	910043e2 	add	x2, sp, #0x10
+ 138:	90000001 	adrp	x1, 0 <main>
+ 13c:	90000000 	adrp	x0, 0 <main>
+ 140:	91000021 	add	x1, x1, #0x0
+ 144:	91000000 	add	x0, x0, #0x0
+    *z = x | y;
+ 148:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector bitwise or", "|", &x, &y, &z);
+ 14c:	94000000 	bl	2f0 <print_vectors>
+    *z = x ^ y;
+ 150:	90000000 	adrp	x0, 0 <main>
+
+    xor16ib(x, y, &z);
+    print_vectors("vector bitwise xor", "^", &x, &y, &z);
+ 154:	9100c3e4 	add	x4, sp, #0x30
+ 158:	910083e3 	add	x3, sp, #0x20
+    *z = x ^ y;
+ 15c:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector bitwise xor", "^", &x, &y, &z);
+ 160:	910043e2 	add	x2, sp, #0x10
+ 164:	90000001 	adrp	x1, 0 <main>
+ 168:	90000000 	adrp	x0, 0 <main>
+ 16c:	91000021 	add	x1, x1, #0x0
+ 170:	91000000 	add	x0, x0, #0x0
+    *z = x ^ y;
+ 174:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector bitwise xor", "^", &x, &y, &z);
+ 178:	94000000 	bl	2f0 <print_vectors>
+    *z = x >> y;
+ 17c:	90000000 	adrp	x0, 0 <main>
+
+    rshift16ib(x, y, &z);
+    print_vectors("vector right shift", ">>", &x, &y, &z);
+ 180:	9100c3e4 	add	x4, sp, #0x30
+ 184:	910083e3 	add	x3, sp, #0x20
+    *z = x >> y;
+ 188:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector right shift", ">>", &x, &y, &z);
+ 18c:	910043e2 	add	x2, sp, #0x10
+ 190:	90000001 	adrp	x1, 0 <main>
+ 194:	90000000 	adrp	x0, 0 <main>
+ 198:	91000021 	add	x1, x1, #0x0
+ 19c:	91000000 	add	x0, x0, #0x0
+    *z = x >> y;
+ 1a0:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector right shift", ">>", &x, &y, &z);
+ 1a4:	94000000 	bl	2f0 <print_vectors>
+    *z = x << y;
+ 1a8:	90000000 	adrp	x0, 0 <main>
+
+    lshift16ib(x, y, &z);
+    print_vectors("vector left shift", "<<", &x, &y, &z);
+ 1ac:	9100c3e4 	add	x4, sp, #0x30
+ 1b0:	910083e3 	add	x3, sp, #0x20
+    *z = x << y;
+ 1b4:	3dc00000 	ldr	q0, [x0]
+    print_vectors("vector left shift", "<<", &x, &y, &z);
+ 1b8:	910043e2 	add	x2, sp, #0x10
+ 1bc:	90000001 	adrp	x1, 0 <main>
+ 1c0:	90000000 	adrp	x0, 0 <main>
+ 1c4:	91000021 	add	x1, x1, #0x0
+ 1c8:	91000000 	add	x0, x0, #0x0
+    *z = x << y;
+ 1cc:	3d800fe0 	str	q0, [sp, #48]
+    print_vectors("vector left shift", "<<", &x, &y, &z);
+ 1d0:	94000000 	bl	2f0 <print_vectors>
+
+    return 0;
+}
+ 1d4:	52800000 	mov	w0, #0x0                   	// #0
+ 1d8:	a8c47bfd 	ldp	x29, x30, [sp], #64
+ 1dc:	d65f03c0 	ret
