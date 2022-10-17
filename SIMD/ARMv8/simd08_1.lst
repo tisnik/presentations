@@ -1,0 +1,41 @@
+
+simd08_1.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef double v16d __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	d10103ff 	sub	sp, sp, #0x40
+    v16d x = { 1, 2 };
+   4:	1e6e1000 	fmov	d0, #1.000000000000000000e+00
+   8:	fd001be0 	str	d0, [sp, #48]
+   c:	1e601000 	fmov	d0, #2.000000000000000000e+00
+  10:	fd001fe0 	str	d0, [sp, #56]
+    v16d y = { 0.1, 0.1 };
+  14:	90000000 	adrp	x0, 0 <main>
+  18:	fd400000 	ldr	d0, [x0]
+  1c:	fd0013e0 	str	d0, [sp, #32]
+  20:	90000000 	adrp	x0, 0 <main>
+  24:	fd400000 	ldr	d0, [x0]
+  28:	fd0017e0 	str	d0, [sp, #40]
+  2c:	fd401be1 	ldr	d1, [sp, #48]
+  30:	fd4013e0 	ldr	d0, [sp, #32]
+    v16d z = x + y;
+  34:	1e602821 	fadd	d1, d1, d0
+  38:	fd401fe2 	ldr	d2, [sp, #56]
+  3c:	fd4017e0 	ldr	d0, [sp, #40]
+  40:	1e602840 	fadd	d0, d2, d0
+  44:	fd0003e1 	str	d1, [sp]
+  48:	fd0007e0 	str	d0, [sp, #8]
+  4c:	a94007e0 	ldp	x0, x1, [sp]
+  50:	a90107e0 	stp	x0, x1, [sp, #16]
+
+    return 0;
+  54:	52800000 	mov	w0, #0x0                   	// #0
+}
+  58:	910103ff 	add	sp, sp, #0x40
+  5c:	d65f03c0 	ret
