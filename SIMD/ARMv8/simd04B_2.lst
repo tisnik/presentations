@@ -1,0 +1,81 @@
+
+simd04B_2.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+typedef signed short int v16us __attribute__((vector_size(16)));
+typedef signed int v16ui __attribute__((vector_size(16)));
+typedef signed long int v16ul __attribute__((vector_size(16)));
+
+int main(void)
+{
+   0:	d10303ff 	sub	sp, sp, #0xc0
+    {
+        v16ub x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+   4:	90000000 	adrp	x0, 0 <main>
+   8:	3dc00000 	ldr	q0, [x0]
+   c:	3d802fe0 	str	q0, [sp, #176]
+        v16ub y = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+  10:	90000000 	adrp	x0, 0 <main>
+  14:	3dc00000 	ldr	q0, [x0]
+  18:	3d802be0 	str	q0, [sp, #160]
+        v16ub z = x + y;
+  1c:	3dc02fe1 	ldr	q1, [sp, #176]
+  20:	3dc02be0 	ldr	q0, [sp, #160]
+  24:	4e208420 	add	v0.16b, v1.16b, v0.16b
+  28:	3d8027e0 	str	q0, [sp, #144]
+    }
+
+    {
+        v16us x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+  2c:	90000000 	adrp	x0, 0 <main>
+  30:	3dc00000 	ldr	q0, [x0]
+  34:	3d8023e0 	str	q0, [sp, #128]
+        v16us y = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+  38:	4f0787e0 	movi	v0.8h, #0xff
+  3c:	3d801fe0 	str	q0, [sp, #112]
+        v16us z = x + y;
+  40:	3dc023e1 	ldr	q1, [sp, #128]
+  44:	3dc01fe0 	ldr	q0, [sp, #112]
+  48:	4e608420 	add	v0.8h, v1.8h, v0.8h
+  4c:	3d801be0 	str	q0, [sp, #96]
+    }
+
+    {
+        v16ui x = { 1, 2, 3, 4 };
+  50:	90000000 	adrp	x0, 0 <main>
+  54:	3dc00000 	ldr	q0, [x0]
+  58:	3d8017e0 	str	q0, [sp, #80]
+        v16ui y = { 0xff, 0xff, 0xff, 0xff };
+  5c:	4f0707e0 	movi	v0.4s, #0xff
+  60:	3d8013e0 	str	q0, [sp, #64]
+        v16ui z = x + y;
+  64:	3dc017e1 	ldr	q1, [sp, #80]
+  68:	3dc013e0 	ldr	q0, [sp, #64]
+  6c:	4ea08420 	add	v0.4s, v1.4s, v0.4s
+  70:	3d800fe0 	str	q0, [sp, #48]
+    }
+
+    {
+        v16ul x = { 1, 2 };
+  74:	90000000 	adrp	x0, 0 <main>
+  78:	3dc00000 	ldr	q0, [x0]
+  7c:	3d800be0 	str	q0, [sp, #32]
+        v16ul y = { 0xff, 0xff };
+  80:	6f00e420 	movi	v0.2d, #0xff
+  84:	3d8007e0 	str	q0, [sp, #16]
+        v16ul z = x + y;
+  88:	3dc00be1 	ldr	q1, [sp, #32]
+  8c:	3dc007e0 	ldr	q0, [sp, #16]
+  90:	4ee08420 	add	v0.2d, v1.2d, v0.2d
+  94:	3d8003e0 	str	q0, [sp]
+    }
+
+
+    return 0;
+  98:	52800000 	mov	w0, #0x0                   	// #0
+}
+  9c:	910303ff 	add	sp, sp, #0xc0
+  a0:	d65f03c0 	ret
