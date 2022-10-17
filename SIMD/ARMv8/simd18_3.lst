@@ -1,0 +1,316 @@
+
+simd18_3.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16float>:
+#include <stdio.h>
+
+typedef float v16float __attribute__((vector_size(16)));
+
+void add16float(v16float x, v16float y, v16float * z)
+{
+   0:	d10083ff 	sub	sp, sp, #0x20
+   4:	6d000be1 	stp	d1, d2, [sp]
+    *z = x + y;
+   8:	2d401be7 	ldp	s7, s6, [sp]
+{
+   c:	6d0107e0 	stp	d0, d1, [sp, #16]
+    *z = x + y;
+  10:	2d4113e5 	ldp	s5, s4, [sp, #8]
+  14:	2d420be3 	ldp	s3, s2, [sp, #16]
+  18:	2d4303e1 	ldp	s1, s0, [sp, #24]
+  1c:	1e272863 	fadd	s3, s3, s7
+  20:	1e262842 	fadd	s2, s2, s6
+  24:	1e252821 	fadd	s1, s1, s5
+  28:	1e242800 	fadd	s0, s0, s4
+  2c:	2d000803 	stp	s3, s2, [x0]
+  30:	2d010001 	stp	s1, s0, [x0, #8]
+}
+  34:	910083ff 	add	sp, sp, #0x20
+  38:	d65f03c0 	ret
+  3c:	d503201f 	nop
+
+0000000000000040 <sub16float>:
+
+void sub16float(v16float x, v16float y, v16float * z)
+{
+  40:	d10083ff 	sub	sp, sp, #0x20
+  44:	6d000be1 	stp	d1, d2, [sp]
+    *z = x - y;
+  48:	2d401be7 	ldp	s7, s6, [sp]
+{
+  4c:	6d0107e0 	stp	d0, d1, [sp, #16]
+    *z = x - y;
+  50:	2d4113e5 	ldp	s5, s4, [sp, #8]
+  54:	2d420be3 	ldp	s3, s2, [sp, #16]
+  58:	2d4303e1 	ldp	s1, s0, [sp, #24]
+  5c:	1e273863 	fsub	s3, s3, s7
+  60:	1e263842 	fsub	s2, s2, s6
+  64:	1e253821 	fsub	s1, s1, s5
+  68:	1e243800 	fsub	s0, s0, s4
+  6c:	2d000803 	stp	s3, s2, [x0]
+  70:	2d010001 	stp	s1, s0, [x0, #8]
+}
+  74:	910083ff 	add	sp, sp, #0x20
+  78:	d65f03c0 	ret
+  7c:	d503201f 	nop
+
+0000000000000080 <mul16float>:
+
+void mul16float(v16float x, v16float y, v16float * z)
+{
+  80:	d10083ff 	sub	sp, sp, #0x20
+  84:	6d000be1 	stp	d1, d2, [sp]
+    *z = x * y;
+  88:	2d401be7 	ldp	s7, s6, [sp]
+{
+  8c:	6d0107e0 	stp	d0, d1, [sp, #16]
+    *z = x * y;
+  90:	2d4113e5 	ldp	s5, s4, [sp, #8]
+  94:	2d420be3 	ldp	s3, s2, [sp, #16]
+  98:	2d4303e1 	ldp	s1, s0, [sp, #24]
+  9c:	1e270863 	fmul	s3, s3, s7
+  a0:	1e260842 	fmul	s2, s2, s6
+  a4:	1e250821 	fmul	s1, s1, s5
+  a8:	1e240800 	fmul	s0, s0, s4
+  ac:	2d000803 	stp	s3, s2, [x0]
+  b0:	2d010001 	stp	s1, s0, [x0, #8]
+}
+  b4:	910083ff 	add	sp, sp, #0x20
+  b8:	d65f03c0 	ret
+  bc:	d503201f 	nop
+
+00000000000000c0 <div16float>:
+
+void div16float(v16float x, v16float y, v16float * z)
+{
+  c0:	d10083ff 	sub	sp, sp, #0x20
+  c4:	6d000be1 	stp	d1, d2, [sp]
+    *z = x / y;
+  c8:	2d401be7 	ldp	s7, s6, [sp]
+{
+  cc:	6d0107e0 	stp	d0, d1, [sp, #16]
+    *z = x / y;
+  d0:	2d4113e5 	ldp	s5, s4, [sp, #8]
+  d4:	2d420be3 	ldp	s3, s2, [sp, #16]
+  d8:	2d4303e1 	ldp	s1, s0, [sp, #24]
+  dc:	1e271863 	fdiv	s3, s3, s7
+  e0:	1e261842 	fdiv	s2, s2, s6
+  e4:	1e251821 	fdiv	s1, s1, s5
+  e8:	1e241800 	fdiv	s0, s0, s4
+  ec:	2d000803 	stp	s3, s2, [x0]
+  f0:	2d010001 	stp	s1, s0, [x0, #8]
+}
+  f4:	910083ff 	add	sp, sp, #0x20
+  f8:	d65f03c0 	ret
+  fc:	d503201f 	nop
+
+0000000000000100 <print_vectors>:
+
+void print_vectors(const char *message, const char op, v16float * x,
+                   v16float * y, v16float * z)
+{
+ 100:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+ 104:	910003fd 	mov	x29, sp
+ 108:	a90153f3 	stp	x19, x20, [sp, #16]
+ 10c:	90000014 	adrp	x20, 0 <add16float>
+ 110:	91000294 	add	x20, x20, #0x0
+    int i;
+
+    puts(message);
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
+ 114:	d2800013 	mov	x19, #0x0                   	// #0
+{
+ 118:	a9025bf5 	stp	x21, x22, [sp, #32]
+ 11c:	aa0303f6 	mov	x22, x3
+ 120:	aa0403f5 	mov	x21, x4
+ 124:	a90363f7 	stp	x23, x24, [sp, #48]
+ 128:	aa0203f7 	mov	x23, x2
+ 12c:	12001c38 	and	w24, w1, #0xff
+    puts(message);
+ 130:	94000000 	bl	0 <puts>
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
+ 134:	bc737aa2 	ldr	s2, [x21, x19, lsl #2]
+ 138:	2a1303e1 	mov	w1, w19
+ 13c:	bc737ac1 	ldr	s1, [x22, x19, lsl #2]
+ 140:	2a1803e2 	mov	w2, w24
+ 144:	bc737ae0 	ldr	s0, [x23, x19, lsl #2]
+ 148:	aa1403e0 	mov	x0, x20
+ 14c:	1e22c042 	fcvt	d2, s2
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 150:	91000673 	add	x19, x19, #0x1
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
+ 154:	1e22c021 	fcvt	d1, s1
+ 158:	1e22c000 	fcvt	d0, s0
+ 15c:	94000000 	bl	0 <printf>
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 160:	f100127f 	cmp	x19, #0x4
+ 164:	54fffe81 	b.ne	134 <print_vectors+0x34>  // b.any
+               (*z)[i]);
+    }
+
+    putchar('\n');
+}
+ 168:	a94153f3 	ldp	x19, x20, [sp, #16]
+
+/* Write a character to stdout.  */
+__STDIO_INLINE int
+putchar (int __c)
+{
+  return putc (__c, stdout);
+ 16c:	90000001 	adrp	x1, 0 <stdout>
+ 170:	a9425bf5 	ldp	x21, x22, [sp, #32]
+ 174:	52800140 	mov	w0, #0xa                   	// #10
+ 178:	a94363f7 	ldp	x23, x24, [sp, #48]
+ 17c:	a8c47bfd 	ldp	x29, x30, [sp], #64
+ 180:	f9400021 	ldr	x1, [x1]
+ 184:	14000000 	b	0 <putc>
+
+Disassembly of section .text.startup:
+
+0000000000000000 <main>:
+    *z = x + y;
+   0:	529999a1 	mov	w1, #0xcccd                	// #52429
+   4:	528cccc0 	mov	w0, #0x6666                	// #26214
+    v16float z;
+    int i;
+
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+        x[i] = i;
+        y[i] = i + 0.1;
+   8:	d29999a6 	mov	x6, #0xcccd                	// #52429
+   c:	d28cccc5 	mov	x5, #0x6666                	// #26214
+    *z = x + y;
+  10:	72a7b981 	movk	w1, #0x3dcc, lsl #16
+  14:	72a800c0 	movk	w0, #0x4006, lsl #16
+        y[i] = i + 0.1;
+  18:	f2a7b986 	movk	x6, #0x3dcc, lsl #16
+  1c:	f2a800c5 	movk	x5, #0x4006, lsl #16
+{
+  20:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+    *z = x + y;
+  24:	1e270023 	fmov	s3, w1
+  28:	1e270002 	fmov	s2, w0
+  2c:	52866661 	mov	w1, #0x3333                	// #13107
+  30:	52866660 	mov	w0, #0x3333                	// #13107
+        x[i] = i;
+  34:	d2a80007 	mov	x7, #0x40000000            	// #1073741824
+        y[i] = i + 0.1;
+  38:	f2d999a6 	movk	x6, #0xcccd, lsl #32
+  3c:	f2ccccc5 	movk	x5, #0x6666, lsl #32
+        x[i] = i;
+  40:	d2e7f008 	mov	x8, #0x3f80000000000000    	// #4575657221408423936
+  44:	f2e80807 	movk	x7, #0x4040, lsl #48
+        y[i] = i + 0.1;
+  48:	f2e7f186 	movk	x6, #0x3f8c, lsl #48
+  4c:	f2e808c5 	movk	x5, #0x4046, lsl #48
+    *z = x + y;
+  50:	72a81061 	movk	w1, #0x4083, lsl #16
+  54:	72a81860 	movk	w0, #0x40c3, lsl #16
+  58:	1e270021 	fmov	s1, w1
+  5c:	1e270000 	fmov	s0, w0
+{
+  60:	910003fd 	mov	x29, sp
+    }
+
+    add16float(x, y, &z);
+    print_vectors("vector addition", '+', &x, &y, &z);
+  64:	9100c3e4 	add	x4, sp, #0x30
+  68:	910083e3 	add	x3, sp, #0x20
+  6c:	910043e2 	add	x2, sp, #0x10
+  70:	52800561 	mov	w1, #0x2b                  	// #43
+  74:	90000000 	adrp	x0, 0 <main>
+  78:	91000000 	add	x0, x0, #0x0
+        x[i] = i;
+  7c:	a9011fe8 	stp	x8, x7, [sp, #16]
+        y[i] = i + 0.1;
+  80:	a90217e6 	stp	x6, x5, [sp, #32]
+    *z = x + y;
+  84:	2d060be3 	stp	s3, s2, [sp, #48]
+  88:	2d0703e1 	stp	s1, s0, [sp, #56]
+    print_vectors("vector addition", '+', &x, &y, &z);
+  8c:	94000000 	bl	100 <main+0x100>
+    *z = x - y;
+  90:	529999a1 	mov	w1, #0xcccd                	// #52429
+  94:	52999a00 	mov	w0, #0xccd0                	// #52432
+  98:	72b7b981 	movk	w1, #0xbdcc, lsl #16
+  9c:	72b7b980 	movk	w0, #0xbdcc, lsl #16
+  a0:	1e270022 	fmov	s2, w1
+  a4:	1e270001 	fmov	s1, w0
+  a8:	51004000 	sub	w0, w0, #0x10
+  ac:	1e270000 	fmov	s0, w0
+
+    sub16float(x, y, &z);
+    print_vectors("vector subtraction", '-', &x, &y, &z);
+  b0:	9100c3e4 	add	x4, sp, #0x30
+  b4:	910083e3 	add	x3, sp, #0x20
+  b8:	910043e2 	add	x2, sp, #0x10
+  bc:	528005a1 	mov	w1, #0x2d                  	// #45
+  c0:	90000000 	adrp	x0, 0 <main>
+  c4:	91000000 	add	x0, x0, #0x0
+    *z = x - y;
+  c8:	2d0607e2 	stp	s2, s1, [sp, #48]
+  cc:	2d0703e0 	stp	s0, s0, [sp, #56]
+    print_vectors("vector subtraction", '-', &x, &y, &z);
+  d0:	94000000 	bl	100 <main+0x100>
+    *z = x * y;
+  d4:	529999a0 	mov	w0, #0xcccd                	// #52429
+  d8:	52800001 	mov	w1, #0x0                   	// #0
+  dc:	72a7f180 	movk	w0, #0x3f8c, lsl #16
+  e0:	1e270023 	fmov	s3, w1
+  e4:	1e270002 	fmov	s2, w0
+  e8:	528cccc1 	mov	w1, #0x6666                	// #26214
+  ec:	52999980 	mov	w0, #0xcccc                	// #52428
+  f0:	72a810c1 	movk	w1, #0x4086, lsl #16
+  f4:	72a82280 	movk	w0, #0x4114, lsl #16
+  f8:	1e270021 	fmov	s1, w1
+  fc:	1e270000 	fmov	s0, w0
+
+    mul16float(x, y, &z);
+    print_vectors("vector multiply", '*', &x, &y, &z);
+ 100:	9100c3e4 	add	x4, sp, #0x30
+ 104:	910083e3 	add	x3, sp, #0x20
+ 108:	910043e2 	add	x2, sp, #0x10
+ 10c:	52800541 	mov	w1, #0x2a                  	// #42
+ 110:	90000000 	adrp	x0, 0 <main>
+ 114:	91000000 	add	x0, x0, #0x0
+    *z = x * y;
+ 118:	2d060be3 	stp	s3, s2, [sp, #48]
+ 11c:	2d0703e1 	stp	s1, s0, [sp, #56]
+    print_vectors("vector multiply", '*', &x, &y, &z);
+ 120:	94000000 	bl	100 <main+0x100>
+    *z = x / y;
+ 124:	529745c0 	mov	w0, #0xba2e                	// #47662
+ 128:	52800001 	mov	w1, #0x0                   	// #0
+ 12c:	72a7ed00 	movk	w0, #0x3f68, lsl #16
+ 130:	1e270023 	fmov	s3, w1
+ 134:	1e270002 	fmov	s2, w0
+ 138:	5299e7c1 	mov	w1, #0xcf3e                	// #53054
+ 13c:	5297be00 	mov	w0, #0xbdf0                	// #48624
+ 140:	72a7ee61 	movk	w1, #0x3f73, lsl #16
+ 144:	72a7eee0 	movk	w0, #0x3f77, lsl #16
+ 148:	1e270021 	fmov	s1, w1
+ 14c:	1e270000 	fmov	s0, w0
+
+    div16float(x, y, &z);
+    print_vectors("vector divide", '/', &x, &y, &z);
+ 150:	9100c3e4 	add	x4, sp, #0x30
+ 154:	910083e3 	add	x3, sp, #0x20
+ 158:	910043e2 	add	x2, sp, #0x10
+ 15c:	528005e1 	mov	w1, #0x2f                  	// #47
+ 160:	90000000 	adrp	x0, 0 <main>
+ 164:	91000000 	add	x0, x0, #0x0
+    *z = x / y;
+ 168:	2d060be3 	stp	s3, s2, [sp, #48]
+ 16c:	2d0703e1 	stp	s1, s0, [sp, #56]
+    print_vectors("vector divide", '/', &x, &y, &z);
+ 170:	94000000 	bl	100 <main+0x100>
+
+    return 0;
+}
+ 174:	52800000 	mov	w0, #0x0                   	// #0
+ 178:	a8c47bfd 	ldp	x29, x30, [sp], #64
+ 17c:	d65f03c0 	ret
