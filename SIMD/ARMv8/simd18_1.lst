@@ -1,0 +1,354 @@
+
+simd18_1.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16float>:
+#include <stdio.h>
+
+typedef float v16float __attribute__((vector_size(16)));
+
+void add16float(v16float x, v16float y, v16float * z)
+{
+   0:	d10143ff 	sub	sp, sp, #0x50
+   4:	fd001be0 	str	d0, [sp, #48]
+   8:	fd001fe1 	str	d1, [sp, #56]
+   c:	fd0013e1 	str	d1, [sp, #32]
+  10:	fd0017e2 	str	d2, [sp, #40]
+  14:	f9000fe0 	str	x0, [sp, #24]
+  18:	bd4033e1 	ldr	s1, [sp, #48]
+  1c:	bd4023e0 	ldr	s0, [sp, #32]
+    *z = x + y;
+  20:	1e202823 	fadd	s3, s1, s0
+  24:	bd4037e1 	ldr	s1, [sp, #52]
+  28:	bd4027e0 	ldr	s0, [sp, #36]
+  2c:	1e202822 	fadd	s2, s1, s0
+  30:	bd403be1 	ldr	s1, [sp, #56]
+  34:	bd402be0 	ldr	s0, [sp, #40]
+  38:	1e202821 	fadd	s1, s1, s0
+  3c:	bd403fe4 	ldr	s4, [sp, #60]
+  40:	bd402fe0 	ldr	s0, [sp, #44]
+  44:	1e202880 	fadd	s0, s4, s0
+  48:	bd0003e3 	str	s3, [sp]
+  4c:	bd0007e2 	str	s2, [sp, #4]
+  50:	bd000be1 	str	s1, [sp, #8]
+  54:	bd000fe0 	str	s0, [sp, #12]
+  58:	a94007e0 	ldp	x0, x1, [sp]
+  5c:	a90407e0 	stp	x0, x1, [sp, #64]
+  60:	f9400fe2 	ldr	x2, [sp, #24]
+  64:	a94407e0 	ldp	x0, x1, [sp, #64]
+  68:	a9000440 	stp	x0, x1, [x2]
+}
+  6c:	d503201f 	nop
+  70:	910143ff 	add	sp, sp, #0x50
+  74:	d65f03c0 	ret
+
+0000000000000078 <sub16float>:
+
+void sub16float(v16float x, v16float y, v16float * z)
+{
+  78:	d10143ff 	sub	sp, sp, #0x50
+  7c:	fd001be0 	str	d0, [sp, #48]
+  80:	fd001fe1 	str	d1, [sp, #56]
+  84:	fd0013e1 	str	d1, [sp, #32]
+  88:	fd0017e2 	str	d2, [sp, #40]
+  8c:	f9000fe0 	str	x0, [sp, #24]
+  90:	bd4033e1 	ldr	s1, [sp, #48]
+  94:	bd4023e0 	ldr	s0, [sp, #32]
+    *z = x - y;
+  98:	1e203823 	fsub	s3, s1, s0
+  9c:	bd4037e1 	ldr	s1, [sp, #52]
+  a0:	bd4027e0 	ldr	s0, [sp, #36]
+  a4:	1e203822 	fsub	s2, s1, s0
+  a8:	bd403be1 	ldr	s1, [sp, #56]
+  ac:	bd402be0 	ldr	s0, [sp, #40]
+  b0:	1e203821 	fsub	s1, s1, s0
+  b4:	bd403fe4 	ldr	s4, [sp, #60]
+  b8:	bd402fe0 	ldr	s0, [sp, #44]
+  bc:	1e203880 	fsub	s0, s4, s0
+  c0:	bd0003e3 	str	s3, [sp]
+  c4:	bd0007e2 	str	s2, [sp, #4]
+  c8:	bd000be1 	str	s1, [sp, #8]
+  cc:	bd000fe0 	str	s0, [sp, #12]
+  d0:	a94007e0 	ldp	x0, x1, [sp]
+  d4:	a90407e0 	stp	x0, x1, [sp, #64]
+  d8:	f9400fe2 	ldr	x2, [sp, #24]
+  dc:	a94407e0 	ldp	x0, x1, [sp, #64]
+  e0:	a9000440 	stp	x0, x1, [x2]
+}
+  e4:	d503201f 	nop
+  e8:	910143ff 	add	sp, sp, #0x50
+  ec:	d65f03c0 	ret
+
+00000000000000f0 <mul16float>:
+
+void mul16float(v16float x, v16float y, v16float * z)
+{
+  f0:	d10143ff 	sub	sp, sp, #0x50
+  f4:	fd001be0 	str	d0, [sp, #48]
+  f8:	fd001fe1 	str	d1, [sp, #56]
+  fc:	fd0013e1 	str	d1, [sp, #32]
+ 100:	fd0017e2 	str	d2, [sp, #40]
+ 104:	f9000fe0 	str	x0, [sp, #24]
+ 108:	bd4033e1 	ldr	s1, [sp, #48]
+ 10c:	bd4023e0 	ldr	s0, [sp, #32]
+    *z = x * y;
+ 110:	1e200823 	fmul	s3, s1, s0
+ 114:	bd4037e1 	ldr	s1, [sp, #52]
+ 118:	bd4027e0 	ldr	s0, [sp, #36]
+ 11c:	1e200822 	fmul	s2, s1, s0
+ 120:	bd403be1 	ldr	s1, [sp, #56]
+ 124:	bd402be0 	ldr	s0, [sp, #40]
+ 128:	1e200821 	fmul	s1, s1, s0
+ 12c:	bd403fe4 	ldr	s4, [sp, #60]
+ 130:	bd402fe0 	ldr	s0, [sp, #44]
+ 134:	1e200880 	fmul	s0, s4, s0
+ 138:	bd0003e3 	str	s3, [sp]
+ 13c:	bd0007e2 	str	s2, [sp, #4]
+ 140:	bd000be1 	str	s1, [sp, #8]
+ 144:	bd000fe0 	str	s0, [sp, #12]
+ 148:	a94007e0 	ldp	x0, x1, [sp]
+ 14c:	a90407e0 	stp	x0, x1, [sp, #64]
+ 150:	f9400fe2 	ldr	x2, [sp, #24]
+ 154:	a94407e0 	ldp	x0, x1, [sp, #64]
+ 158:	a9000440 	stp	x0, x1, [x2]
+}
+ 15c:	d503201f 	nop
+ 160:	910143ff 	add	sp, sp, #0x50
+ 164:	d65f03c0 	ret
+
+0000000000000168 <div16float>:
+
+void div16float(v16float x, v16float y, v16float * z)
+{
+ 168:	d10143ff 	sub	sp, sp, #0x50
+ 16c:	fd001be0 	str	d0, [sp, #48]
+ 170:	fd001fe1 	str	d1, [sp, #56]
+ 174:	fd0013e1 	str	d1, [sp, #32]
+ 178:	fd0017e2 	str	d2, [sp, #40]
+ 17c:	f9000fe0 	str	x0, [sp, #24]
+ 180:	bd4033e1 	ldr	s1, [sp, #48]
+ 184:	bd4023e0 	ldr	s0, [sp, #32]
+    *z = x / y;
+ 188:	1e201823 	fdiv	s3, s1, s0
+ 18c:	bd4037e1 	ldr	s1, [sp, #52]
+ 190:	bd4027e0 	ldr	s0, [sp, #36]
+ 194:	1e201822 	fdiv	s2, s1, s0
+ 198:	bd403be1 	ldr	s1, [sp, #56]
+ 19c:	bd402be0 	ldr	s0, [sp, #40]
+ 1a0:	1e201821 	fdiv	s1, s1, s0
+ 1a4:	bd403fe4 	ldr	s4, [sp, #60]
+ 1a8:	bd402fe0 	ldr	s0, [sp, #44]
+ 1ac:	1e201880 	fdiv	s0, s4, s0
+ 1b0:	bd0003e3 	str	s3, [sp]
+ 1b4:	bd0007e2 	str	s2, [sp, #4]
+ 1b8:	bd000be1 	str	s1, [sp, #8]
+ 1bc:	bd000fe0 	str	s0, [sp, #12]
+ 1c0:	a94007e0 	ldp	x0, x1, [sp]
+ 1c4:	a90407e0 	stp	x0, x1, [sp, #64]
+ 1c8:	f9400fe2 	ldr	x2, [sp, #24]
+ 1cc:	a94407e0 	ldp	x0, x1, [sp, #64]
+ 1d0:	a9000440 	stp	x0, x1, [x2]
+}
+ 1d4:	d503201f 	nop
+ 1d8:	910143ff 	add	sp, sp, #0x50
+ 1dc:	d65f03c0 	ret
+
+00000000000001e0 <print_vectors>:
+
+void print_vectors(const char *message, const char op, v16float * x,
+                   v16float * y, v16float * z)
+{
+ 1e0:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
+ 1e4:	910003fd 	mov	x29, sp
+ 1e8:	f9001fe0 	str	x0, [sp, #56]
+ 1ec:	3900dfe1 	strb	w1, [sp, #55]
+ 1f0:	f90017e2 	str	x2, [sp, #40]
+ 1f4:	f90013e3 	str	x3, [sp, #32]
+ 1f8:	f9000fe4 	str	x4, [sp, #24]
+    int i;
+
+    puts(message);
+ 1fc:	f9401fe0 	ldr	x0, [sp, #56]
+ 200:	94000000 	bl	0 <puts>
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 204:	b9004fff 	str	wzr, [sp, #76]
+ 208:	14000017 	b	264 <print_vectors+0x84>
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
+ 20c:	f94017e0 	ldr	x0, [sp, #40]
+ 210:	b9804fe1 	ldrsw	x1, [sp, #76]
+ 214:	bc617800 	ldr	s0, [x0, x1, lsl #2]
+ 218:	1e22c003 	fcvt	d3, s0
+ 21c:	3940dfe2 	ldrb	w2, [sp, #55]
+ 220:	f94013e0 	ldr	x0, [sp, #32]
+ 224:	b9804fe1 	ldrsw	x1, [sp, #76]
+ 228:	bc617800 	ldr	s0, [x0, x1, lsl #2]
+ 22c:	1e22c001 	fcvt	d1, s0
+               (*z)[i]);
+ 230:	f9400fe0 	ldr	x0, [sp, #24]
+ 234:	b9804fe1 	ldrsw	x1, [sp, #76]
+ 238:	bc617800 	ldr	s0, [x0, x1, lsl #2]
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
+ 23c:	1e22c000 	fcvt	d0, s0
+ 240:	1e604002 	fmov	d2, d0
+ 244:	1e604060 	fmov	d0, d3
+ 248:	b9404fe1 	ldr	w1, [sp, #76]
+ 24c:	90000000 	adrp	x0, 0 <add16float>
+ 250:	91000000 	add	x0, x0, #0x0
+ 254:	94000000 	bl	0 <printf>
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 258:	b9404fe0 	ldr	w0, [sp, #76]
+ 25c:	11000400 	add	w0, w0, #0x1
+ 260:	b9004fe0 	str	w0, [sp, #76]
+ 264:	b9404fe0 	ldr	w0, [sp, #76]
+ 268:	71000c1f 	cmp	w0, #0x3
+ 26c:	54fffd09 	b.ls	20c <print_vectors+0x2c>  // b.plast
+    }
+
+    putchar('\n');
+ 270:	52800140 	mov	w0, #0xa                   	// #10
+ 274:	94000000 	bl	0 <putchar>
+}
+ 278:	d503201f 	nop
+ 27c:	a8c57bfd 	ldp	x29, x30, [sp], #80
+ 280:	d65f03c0 	ret
+
+0000000000000284 <main>:
+
+int main(void)
+{
+ 284:	a9b37bfd 	stp	x29, x30, [sp, #-208]!
+ 288:	910003fd 	mov	x29, sp
+    v16float x;
+    v16float y;
+    v16float z;
+    int i;
+
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 28c:	b9004fff 	str	wzr, [sp, #76]
+ 290:	14000014 	b	2e0 <main+0x5c>
+        x[i] = i;
+ 294:	b9404fe0 	ldr	w0, [sp, #76]
+ 298:	1e220000 	scvtf	s0, w0
+ 29c:	b9804fe0 	ldrsw	x0, [sp, #76]
+ 2a0:	d37ef400 	lsl	x0, x0, #2
+ 2a4:	9100c3e1 	add	x1, sp, #0x30
+ 2a8:	bc206820 	str	s0, [x1, x0]
+        y[i] = i + 0.1;
+ 2ac:	b9404fe0 	ldr	w0, [sp, #76]
+ 2b0:	1e620000 	scvtf	d0, w0
+ 2b4:	90000000 	adrp	x0, 0 <add16float>
+ 2b8:	fd400001 	ldr	d1, [x0]
+ 2bc:	1e612800 	fadd	d0, d0, d1
+ 2c0:	1e624000 	fcvt	s0, d0
+ 2c4:	b9804fe0 	ldrsw	x0, [sp, #76]
+ 2c8:	d37ef400 	lsl	x0, x0, #2
+ 2cc:	910083e1 	add	x1, sp, #0x20
+ 2d0:	bc206820 	str	s0, [x1, x0]
+    for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+ 2d4:	b9404fe0 	ldr	w0, [sp, #76]
+ 2d8:	11000400 	add	w0, w0, #0x1
+ 2dc:	b9004fe0 	str	w0, [sp, #76]
+ 2e0:	b9404fe0 	ldr	w0, [sp, #76]
+ 2e4:	71000c1f 	cmp	w0, #0x3
+ 2e8:	54fffd69 	b.ls	294 <main+0x10>  // b.plast
+    }
+
+    add16float(x, y, &z);
+ 2ec:	a94307e0 	ldp	x0, x1, [sp, #48]
+ 2f0:	a90c07e0 	stp	x0, x1, [sp, #192]
+ 2f4:	a94207e0 	ldp	x0, x1, [sp, #32]
+ 2f8:	a90b07e0 	stp	x0, x1, [sp, #176]
+ 2fc:	910043e0 	add	x0, sp, #0x10
+ 300:	fd405be1 	ldr	d1, [sp, #176]
+ 304:	fd405fe2 	ldr	d2, [sp, #184]
+ 308:	fd4063e0 	ldr	d0, [sp, #192]
+ 30c:	fd4067e1 	ldr	d1, [sp, #200]
+ 310:	94000000 	bl	0 <add16float>
+    print_vectors("vector addition", '+', &x, &y, &z);
+ 314:	910043e2 	add	x2, sp, #0x10
+ 318:	910083e1 	add	x1, sp, #0x20
+ 31c:	9100c3e0 	add	x0, sp, #0x30
+ 320:	aa0203e4 	mov	x4, x2
+ 324:	aa0103e3 	mov	x3, x1
+ 328:	aa0003e2 	mov	x2, x0
+ 32c:	52800561 	mov	w1, #0x2b                  	// #43
+ 330:	90000000 	adrp	x0, 0 <add16float>
+ 334:	91000000 	add	x0, x0, #0x0
+ 338:	94000000 	bl	1e0 <print_vectors>
+
+    sub16float(x, y, &z);
+ 33c:	a94307e0 	ldp	x0, x1, [sp, #48]
+ 340:	a90a07e0 	stp	x0, x1, [sp, #160]
+ 344:	a94207e0 	ldp	x0, x1, [sp, #32]
+ 348:	a90907e0 	stp	x0, x1, [sp, #144]
+ 34c:	910043e0 	add	x0, sp, #0x10
+ 350:	fd404be1 	ldr	d1, [sp, #144]
+ 354:	fd404fe2 	ldr	d2, [sp, #152]
+ 358:	fd4053e0 	ldr	d0, [sp, #160]
+ 35c:	fd4057e1 	ldr	d1, [sp, #168]
+ 360:	94000000 	bl	78 <sub16float>
+    print_vectors("vector subtraction", '-', &x, &y, &z);
+ 364:	910043e2 	add	x2, sp, #0x10
+ 368:	910083e1 	add	x1, sp, #0x20
+ 36c:	9100c3e0 	add	x0, sp, #0x30
+ 370:	aa0203e4 	mov	x4, x2
+ 374:	aa0103e3 	mov	x3, x1
+ 378:	aa0003e2 	mov	x2, x0
+ 37c:	528005a1 	mov	w1, #0x2d                  	// #45
+ 380:	90000000 	adrp	x0, 0 <add16float>
+ 384:	91000000 	add	x0, x0, #0x0
+ 388:	94000000 	bl	1e0 <print_vectors>
+
+    mul16float(x, y, &z);
+ 38c:	a94307e0 	ldp	x0, x1, [sp, #48]
+ 390:	a90807e0 	stp	x0, x1, [sp, #128]
+ 394:	a94207e0 	ldp	x0, x1, [sp, #32]
+ 398:	a90707e0 	stp	x0, x1, [sp, #112]
+ 39c:	910043e0 	add	x0, sp, #0x10
+ 3a0:	fd403be1 	ldr	d1, [sp, #112]
+ 3a4:	fd403fe2 	ldr	d2, [sp, #120]
+ 3a8:	fd4043e0 	ldr	d0, [sp, #128]
+ 3ac:	fd4047e1 	ldr	d1, [sp, #136]
+ 3b0:	94000000 	bl	f0 <mul16float>
+    print_vectors("vector multiply", '*', &x, &y, &z);
+ 3b4:	910043e2 	add	x2, sp, #0x10
+ 3b8:	910083e1 	add	x1, sp, #0x20
+ 3bc:	9100c3e0 	add	x0, sp, #0x30
+ 3c0:	aa0203e4 	mov	x4, x2
+ 3c4:	aa0103e3 	mov	x3, x1
+ 3c8:	aa0003e2 	mov	x2, x0
+ 3cc:	52800541 	mov	w1, #0x2a                  	// #42
+ 3d0:	90000000 	adrp	x0, 0 <add16float>
+ 3d4:	91000000 	add	x0, x0, #0x0
+ 3d8:	94000000 	bl	1e0 <print_vectors>
+
+    div16float(x, y, &z);
+ 3dc:	a94307e0 	ldp	x0, x1, [sp, #48]
+ 3e0:	a90607e0 	stp	x0, x1, [sp, #96]
+ 3e4:	a94207e0 	ldp	x0, x1, [sp, #32]
+ 3e8:	a90507e0 	stp	x0, x1, [sp, #80]
+ 3ec:	910043e0 	add	x0, sp, #0x10
+ 3f0:	fd402be1 	ldr	d1, [sp, #80]
+ 3f4:	fd402fe2 	ldr	d2, [sp, #88]
+ 3f8:	fd4033e0 	ldr	d0, [sp, #96]
+ 3fc:	fd4037e1 	ldr	d1, [sp, #104]
+ 400:	94000000 	bl	168 <div16float>
+    print_vectors("vector divide", '/', &x, &y, &z);
+ 404:	910043e2 	add	x2, sp, #0x10
+ 408:	910083e1 	add	x1, sp, #0x20
+ 40c:	9100c3e0 	add	x0, sp, #0x30
+ 410:	aa0203e4 	mov	x4, x2
+ 414:	aa0103e3 	mov	x3, x1
+ 418:	aa0003e2 	mov	x2, x0
+ 41c:	528005e1 	mov	w1, #0x2f                  	// #47
+ 420:	90000000 	adrp	x0, 0 <add16float>
+ 424:	91000000 	add	x0, x0, #0x0
+ 428:	94000000 	bl	1e0 <print_vectors>
+
+    return 0;
+ 42c:	52800000 	mov	w0, #0x0                   	// #0
+}
+ 430:	a8cd7bfd 	ldp	x29, x30, [sp], #208
+ 434:	d65f03c0 	ret
