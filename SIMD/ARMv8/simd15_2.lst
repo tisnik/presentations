@@ -1,0 +1,156 @@
+
+simd15_2.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16float>:
+#include <stdio.h>
+
+typedef float v16float __attribute__((vector_size(16)));
+
+void add16float(v16float x, v16float y, v16float * z)
+{
+   0:	d100c3ff 	sub	sp, sp, #0x30
+   4:	3d800be0 	str	q0, [sp, #32]
+   8:	3d8007e1 	str	q1, [sp, #16]
+   c:	f90007e0 	str	x0, [sp, #8]
+    *z = x + y;
+  10:	3dc00be1 	ldr	q1, [sp, #32]
+  14:	3dc007e0 	ldr	q0, [sp, #16]
+  18:	4e20d420 	fadd	v0.4s, v1.4s, v0.4s
+  1c:	f94007e0 	ldr	x0, [sp, #8]
+  20:	3d800000 	str	q0, [x0]
+}
+  24:	d503201f 	nop
+  28:	9100c3ff 	add	sp, sp, #0x30
+  2c:	d65f03c0 	ret
+
+0000000000000030 <add16double>:
+
+typedef double v16double __attribute__((vector_size(16)));
+
+void add16double(v16double x, v16double y, v16double * z)
+{
+  30:	d100c3ff 	sub	sp, sp, #0x30
+  34:	3d800be0 	str	q0, [sp, #32]
+  38:	3d8007e1 	str	q1, [sp, #16]
+  3c:	f90007e0 	str	x0, [sp, #8]
+    *z = x + y;
+  40:	3dc00be1 	ldr	q1, [sp, #32]
+  44:	3dc007e0 	ldr	q0, [sp, #16]
+  48:	4e60d420 	fadd	v0.2d, v1.2d, v0.2d
+  4c:	f94007e0 	ldr	x0, [sp, #8]
+  50:	3d800000 	str	q0, [x0]
+}
+  54:	d503201f 	nop
+  58:	9100c3ff 	add	sp, sp, #0x30
+  5c:	d65f03c0 	ret
+
+0000000000000060 <main>:
+
+int main(void)
+{
+  60:	a9b87bfd 	stp	x29, x30, [sp, #-128]!
+  64:	910003fd 	mov	x29, sp
+    {
+        v16float x = { 0, 1, 2, 3 };
+  68:	90000000 	adrp	x0, 0 <add16float>
+  6c:	3dc00000 	ldr	q0, [x0]
+  70:	3d801be0 	str	q0, [sp, #96]
+        v16float y = { 0.1, 0.1, 0.1, 0.1 };
+  74:	90000000 	adrp	x0, 0 <add16float>
+  78:	3dc00000 	ldr	q0, [x0]
+  7c:	3d8017e0 	str	q0, [sp, #80]
+        v16float z;
+
+        add16float(x, y, &z);
+  80:	910083e0 	add	x0, sp, #0x20
+  84:	3dc017e1 	ldr	q1, [sp, #80]
+  88:	3dc01be0 	ldr	q0, [sp, #96]
+  8c:	94000000 	bl	0 <add16float>
+
+        int i;
+
+        puts("vector of floats");
+  90:	90000000 	adrp	x0, 0 <add16float>
+  94:	91000000 	add	x0, x0, #0x0
+  98:	94000000 	bl	0 <puts>
+
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+  9c:	b9007fff 	str	wzr, [sp, #124]
+  a0:	1400000d 	b	d4 <main+0x74>
+            printf("%d %f\n", i, z[i]);
+  a4:	b9807fe0 	ldrsw	x0, [sp, #124]
+  a8:	d37ef400 	lsl	x0, x0, #2
+  ac:	910083e1 	add	x1, sp, #0x20
+  b0:	bc606820 	ldr	s0, [x1, x0]
+  b4:	1e22c000 	fcvt	d0, s0
+  b8:	b9407fe1 	ldr	w1, [sp, #124]
+  bc:	90000000 	adrp	x0, 0 <add16float>
+  c0:	91000000 	add	x0, x0, #0x0
+  c4:	94000000 	bl	0 <printf>
+        for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
+  c8:	b9407fe0 	ldr	w0, [sp, #124]
+  cc:	11000400 	add	w0, w0, #0x1
+  d0:	b9007fe0 	str	w0, [sp, #124]
+  d4:	b9407fe0 	ldr	w0, [sp, #124]
+  d8:	71000c1f 	cmp	w0, #0x3
+  dc:	54fffe49 	b.ls	a4 <main+0x44>  // b.plast
+        }
+    }
+
+    putchar('\n');
+  e0:	52800140 	mov	w0, #0xa                   	// #10
+  e4:	94000000 	bl	0 <putchar>
+
+    {
+        v16double x = { 0, 1 };
+  e8:	90000000 	adrp	x0, 0 <add16float>
+  ec:	3dc00000 	ldr	q0, [x0]
+  f0:	3d8013e0 	str	q0, [sp, #64]
+        v16double y = { 0.1, 0.1 };
+  f4:	90000000 	adrp	x0, 0 <add16float>
+  f8:	3dc00000 	ldr	q0, [x0]
+  fc:	3d800fe0 	str	q0, [sp, #48]
+        v16double z;
+
+        add16double(x, y, &z);
+ 100:	910043e0 	add	x0, sp, #0x10
+ 104:	3dc00fe1 	ldr	q1, [sp, #48]
+ 108:	3dc013e0 	ldr	q0, [sp, #64]
+ 10c:	94000000 	bl	30 <add16double>
+
+        int i;
+
+        puts("vector of doubles");
+ 110:	90000000 	adrp	x0, 0 <add16float>
+ 114:	91000000 	add	x0, x0, #0x0
+ 118:	94000000 	bl	0 <puts>
+
+        for (i = 0; i < sizeof(v16double) / sizeof(double); i++) {
+ 11c:	b9007bff 	str	wzr, [sp, #120]
+ 120:	1400000c 	b	150 <main+0xf0>
+            printf("%d %f\n", i, z[i]);
+ 124:	b9807be0 	ldrsw	x0, [sp, #120]
+ 128:	d37df000 	lsl	x0, x0, #3
+ 12c:	910043e1 	add	x1, sp, #0x10
+ 130:	fc606820 	ldr	d0, [x1, x0]
+ 134:	b9407be1 	ldr	w1, [sp, #120]
+ 138:	90000000 	adrp	x0, 0 <add16float>
+ 13c:	91000000 	add	x0, x0, #0x0
+ 140:	94000000 	bl	0 <printf>
+        for (i = 0; i < sizeof(v16double) / sizeof(double); i++) {
+ 144:	b9407be0 	ldr	w0, [sp, #120]
+ 148:	11000400 	add	w0, w0, #0x1
+ 14c:	b9007be0 	str	w0, [sp, #120]
+ 150:	b9407be0 	ldr	w0, [sp, #120]
+ 154:	7100041f 	cmp	w0, #0x1
+ 158:	54fffe69 	b.ls	124 <main+0xc4>  // b.plast
+        }
+    }
+    return 0;
+ 15c:	52800000 	mov	w0, #0x0                   	// #0
+}
+ 160:	a8c87bfd 	ldp	x29, x30, [sp], #128
+ 164:	d65f03c0 	ret
