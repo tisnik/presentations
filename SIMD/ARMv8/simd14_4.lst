@@ -1,0 +1,210 @@
+
+simd14_4.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16ib>:
+
+typedef signed char v16ib __attribute__((vector_size(16)));
+
+void add16ib(v16ib x, v16ib y, v16ib * z)
+{
+    *z = x + y;
+   0:	4e218400 	add	v0.16b, v0.16b, v1.16b
+   4:	3d800000 	str	q0, [x0]
+}
+   8:	d65f03c0 	ret
+   c:	d503201f 	nop
+
+0000000000000010 <add16is>:
+
+typedef signed short v16is __attribute__((vector_size(16)));
+
+void add16is(v16is x, v16is y, v16is * z)
+{
+    *z = x + y;
+  10:	4e618400 	add	v0.8h, v0.8h, v1.8h
+  14:	3d800000 	str	q0, [x0]
+}
+  18:	d65f03c0 	ret
+  1c:	d503201f 	nop
+
+0000000000000020 <add16ii>:
+
+typedef signed int v16ii __attribute__((vector_size(16)));
+
+void add16ii(v16ii x, v16ii y, v16ii * z)
+{
+    *z = x + y;
+  20:	4ea18400 	add	v0.4s, v0.4s, v1.4s
+  24:	3d800000 	str	q0, [x0]
+}
+  28:	d65f03c0 	ret
+  2c:	d503201f 	nop
+
+0000000000000030 <add16il>:
+
+typedef signed long int v16il __attribute__((vector_size(16)));
+
+void add16il(v16il x, v16il y, v16il * z)
+{
+    *z = x + y;
+  30:	4ee18400 	add	v0.2d, v0.2d, v1.2d
+  34:	3d800000 	str	q0, [x0]
+}
+  38:	d65f03c0 	ret
+
+Disassembly of section .text.startup:
+
+0000000000000000 <main>:
+
+int main(void)
+{
+   0:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+    *z = x + y;
+   4:	90000000 	adrp	x0, 0 <main>
+{
+   8:	910003fd 	mov	x29, sp
+    *z = x + y;
+   c:	3dc00000 	ldr	q0, [x0]
+
+        add16ib(x, y, &z);
+
+        int i;
+
+        puts("vector of signed chars");
+  10:	90000000 	adrp	x0, 0 <main>
+  14:	91000000 	add	x0, x0, #0x0
+{
+  18:	a90153f3 	stp	x19, x20, [sp, #16]
+  1c:	9100c3f4 	add	x20, sp, #0x30
+
+        for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+  20:	52800013 	mov	w19, #0x0                   	// #0
+{
+  24:	a9025bf5 	stp	x21, x22, [sp, #32]
+  28:	90000015 	adrp	x21, 0 <main>
+  2c:	910002b5 	add	x21, x21, #0x0
+    *z = x + y;
+  30:	3d800fe0 	str	q0, [sp, #48]
+        puts("vector of signed chars");
+  34:	94000000 	bl	0 <puts>
+            printf("%d %d\n", i, z[i]);
+  38:	38c01682 	ldrsb	w2, [x20], #1
+  3c:	2a1303e1 	mov	w1, w19
+  40:	aa1503e0 	mov	x0, x21
+        for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+  44:	11000673 	add	w19, w19, #0x1
+            printf("%d %d\n", i, z[i]);
+  48:	94000000 	bl	0 <printf>
+        for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
+  4c:	7100427f 	cmp	w19, #0x10
+  50:	54ffff41 	b.ne	38 <main+0x38>  // b.any
+
+/* Write a character to stdout.  */
+__STDIO_INLINE int
+putchar (int __c)
+{
+  return putc (__c, stdout);
+  54:	90000016 	adrp	x22, 0 <stdout>
+  58:	52800140 	mov	w0, #0xa                   	// #10
+  5c:	9100c3f4 	add	x20, sp, #0x30
+
+        int i;
+
+        puts("vector of signed short ints");
+
+        for (i = 0; i < sizeof(v16is) / sizeof(signed short); i++) {
+  60:	52800013 	mov	w19, #0x0                   	// #0
+  64:	f94002c1 	ldr	x1, [x22]
+  68:	94000000 	bl	0 <putc>
+    *z = x + y;
+  6c:	90000001 	adrp	x1, 0 <main>
+        puts("vector of signed short ints");
+  70:	90000000 	adrp	x0, 0 <main>
+  74:	91000000 	add	x0, x0, #0x0
+    *z = x + y;
+  78:	3dc00020 	ldr	q0, [x1]
+  7c:	3d800fe0 	str	q0, [sp, #48]
+        puts("vector of signed short ints");
+  80:	94000000 	bl	0 <puts>
+        for (i = 0; i < sizeof(v16is) / sizeof(signed short); i++) {
+  84:	d503201f 	nop
+            printf("%d %d\n", i, z[i]);
+  88:	78c02682 	ldrsh	w2, [x20], #2
+  8c:	2a1303e1 	mov	w1, w19
+  90:	aa1503e0 	mov	x0, x21
+        for (i = 0; i < sizeof(v16is) / sizeof(signed short); i++) {
+  94:	11000673 	add	w19, w19, #0x1
+            printf("%d %d\n", i, z[i]);
+  98:	94000000 	bl	0 <printf>
+        for (i = 0; i < sizeof(v16is) / sizeof(signed short); i++) {
+  9c:	7100227f 	cmp	w19, #0x8
+  a0:	54ffff41 	b.ne	88 <main+0x88>  // b.any
+  a4:	f94002c1 	ldr	x1, [x22]
+  a8:	52800140 	mov	w0, #0xa                   	// #10
+  ac:	9100c3f4 	add	x20, sp, #0x30
+
+        int i;
+
+        puts("vector of signed ints");
+
+        for (i = 0; i < sizeof(v16ii) / sizeof(signed int); i++) {
+  b0:	52800013 	mov	w19, #0x0                   	// #0
+  b4:	94000000 	bl	0 <putc>
+    *z = x + y;
+  b8:	90000001 	adrp	x1, 0 <main>
+        puts("vector of signed ints");
+  bc:	90000000 	adrp	x0, 0 <main>
+  c0:	91000000 	add	x0, x0, #0x0
+    *z = x + y;
+  c4:	3dc00020 	ldr	q0, [x1]
+  c8:	3d800fe0 	str	q0, [sp, #48]
+        puts("vector of signed ints");
+  cc:	94000000 	bl	0 <puts>
+            printf("%d %d\n", i, z[i]);
+  d0:	b8404682 	ldr	w2, [x20], #4
+  d4:	2a1303e1 	mov	w1, w19
+  d8:	aa1503e0 	mov	x0, x21
+        for (i = 0; i < sizeof(v16ii) / sizeof(signed int); i++) {
+  dc:	11000673 	add	w19, w19, #0x1
+            printf("%d %d\n", i, z[i]);
+  e0:	94000000 	bl	0 <printf>
+        for (i = 0; i < sizeof(v16ii) / sizeof(signed int); i++) {
+  e4:	7100127f 	cmp	w19, #0x4
+  e8:	54ffff41 	b.ne	d0 <main+0xd0>  // b.any
+  ec:	f94002c1 	ldr	x1, [x22]
+  f0:	52800140 	mov	w0, #0xa                   	// #10
+        int i;
+
+        puts("vector of signed longs");
+
+        for (i = 0; i < sizeof(v16il) / sizeof(signed long); i++) {
+            printf("%d %ld\n", i, z[i]);
+  f4:	90000013 	adrp	x19, 0 <main>
+  f8:	91000273 	add	x19, x19, #0x0
+  fc:	94000000 	bl	0 <putc>
+        puts("vector of signed longs");
+ 100:	90000000 	adrp	x0, 0 <main>
+ 104:	91000000 	add	x0, x0, #0x0
+ 108:	94000000 	bl	0 <puts>
+            printf("%d %ld\n", i, z[i]);
+ 10c:	aa1303e0 	mov	x0, x19
+ 110:	92800002 	mov	x2, #0xffffffffffffffff    	// #-1
+ 114:	52800001 	mov	w1, #0x0                   	// #0
+ 118:	94000000 	bl	0 <printf>
+ 11c:	aa1303e0 	mov	x0, x19
+ 120:	d2800002 	mov	x2, #0x0                   	// #0
+ 124:	52800021 	mov	w1, #0x1                   	// #1
+ 128:	94000000 	bl	0 <printf>
+        }
+    }
+
+    return 0;
+}
+ 12c:	a94153f3 	ldp	x19, x20, [sp, #16]
+ 130:	52800000 	mov	w0, #0x0                   	// #0
+ 134:	a9425bf5 	ldp	x21, x22, [sp, #32]
+ 138:	a8c47bfd 	ldp	x29, x30, [sp], #64
+ 13c:	d65f03c0 	ret
