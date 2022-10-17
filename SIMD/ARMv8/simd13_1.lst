@@ -1,0 +1,366 @@
+
+simd13_1.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add16ub>:
+#include <stdio.h>
+
+typedef unsigned char v16ub __attribute__((vector_size(16)));
+
+void add16ub(v16ub x, v16ub y, v16ub * z)
+{
+   0:	d100c3ff 	sub	sp, sp, #0x30
+   4:	3d800be0 	str	q0, [sp, #32]
+   8:	3d8007e1 	str	q1, [sp, #16]
+   c:	f90007e0 	str	x0, [sp, #8]
+  10:	f94013e0 	ldr	x0, [sp, #32]
+  14:	f9400be1 	ldr	x1, [sp, #16]
+    *z = x + y;
+  18:	ca010003 	eor	x3, x0, x1
+  1c:	9200d821 	and	x1, x1, #0x7f7f7f7f7f7f7f7f
+  20:	9200d802 	and	x2, x0, #0x7f7f7f7f7f7f7f7f
+  24:	9201c060 	and	x0, x3, #0x8080808080808080
+  28:	8b010041 	add	x1, x2, x1
+  2c:	ca000024 	eor	x4, x1, x0
+  30:	f94017e0 	ldr	x0, [sp, #40]
+  34:	f9400fe1 	ldr	x1, [sp, #24]
+  38:	ca010003 	eor	x3, x0, x1
+  3c:	9200d821 	and	x1, x1, #0x7f7f7f7f7f7f7f7f
+  40:	9200d802 	and	x2, x0, #0x7f7f7f7f7f7f7f7f
+  44:	9201c060 	and	x0, x3, #0x8080808080808080
+  48:	8b010041 	add	x1, x2, x1
+  4c:	ca000022 	eor	x2, x1, x0
+  50:	d2800000 	mov	x0, #0x0                   	// #0
+  54:	d2800001 	mov	x1, #0x0                   	// #0
+  58:	aa0403e0 	mov	x0, x4
+  5c:	aa0203e1 	mov	x1, x2
+  60:	f94007e2 	ldr	x2, [sp, #8]
+  64:	a9000440 	stp	x0, x1, [x2]
+}
+  68:	d503201f 	nop
+  6c:	9100c3ff 	add	sp, sp, #0x30
+  70:	d65f03c0 	ret
+
+0000000000000074 <add16us>:
+
+typedef unsigned short v16us __attribute__((vector_size(16)));
+
+void add16us(v16us x, v16us y, v16us * z)
+{
+  74:	d100c3ff 	sub	sp, sp, #0x30
+  78:	3d800be0 	str	q0, [sp, #32]
+  7c:	3d8007e1 	str	q1, [sp, #16]
+  80:	f90007e0 	str	x0, [sp, #8]
+  84:	f94013e0 	ldr	x0, [sp, #32]
+  88:	f9400be1 	ldr	x1, [sp, #16]
+    *z = x + y;
+  8c:	ca010003 	eor	x3, x0, x1
+  90:	9200b821 	and	x1, x1, #0x7fff7fff7fff7fff
+  94:	9200b802 	and	x2, x0, #0x7fff7fff7fff7fff
+  98:	92018060 	and	x0, x3, #0x8000800080008000
+  9c:	8b010041 	add	x1, x2, x1
+  a0:	ca000024 	eor	x4, x1, x0
+  a4:	f94017e0 	ldr	x0, [sp, #40]
+  a8:	f9400fe1 	ldr	x1, [sp, #24]
+  ac:	ca010003 	eor	x3, x0, x1
+  b0:	9200b821 	and	x1, x1, #0x7fff7fff7fff7fff
+  b4:	9200b802 	and	x2, x0, #0x7fff7fff7fff7fff
+  b8:	92018060 	and	x0, x3, #0x8000800080008000
+  bc:	8b010041 	add	x1, x2, x1
+  c0:	ca000022 	eor	x2, x1, x0
+  c4:	d2800000 	mov	x0, #0x0                   	// #0
+  c8:	d2800001 	mov	x1, #0x0                   	// #0
+  cc:	aa0403e0 	mov	x0, x4
+  d0:	aa0203e1 	mov	x1, x2
+  d4:	f94007e2 	ldr	x2, [sp, #8]
+  d8:	a9000440 	stp	x0, x1, [x2]
+}
+  dc:	d503201f 	nop
+  e0:	9100c3ff 	add	sp, sp, #0x30
+  e4:	d65f03c0 	ret
+
+00000000000000e8 <add16ui>:
+
+typedef unsigned int v16ui __attribute__((vector_size(16)));
+
+void add16ui(v16ui x, v16ui y, v16ui * z)
+{
+  e8:	d100c3ff 	sub	sp, sp, #0x30
+  ec:	3d800be0 	str	q0, [sp, #32]
+  f0:	3d8007e1 	str	q1, [sp, #16]
+  f4:	f90007e0 	str	x0, [sp, #8]
+  f8:	b94023e1 	ldr	w1, [sp, #32]
+  fc:	b94013e0 	ldr	w0, [sp, #16]
+    *z = x + y;
+ 100:	0b000025 	add	w5, w1, w0
+ 104:	b94027e1 	ldr	w1, [sp, #36]
+ 108:	b94017e0 	ldr	w0, [sp, #20]
+ 10c:	0b000024 	add	w4, w1, w0
+ 110:	b9402be1 	ldr	w1, [sp, #40]
+ 114:	b9401be0 	ldr	w0, [sp, #24]
+ 118:	0b000023 	add	w3, w1, w0
+ 11c:	b9402fe1 	ldr	w1, [sp, #44]
+ 120:	b9401fe0 	ldr	w0, [sp, #28]
+ 124:	0b000022 	add	w2, w1, w0
+ 128:	d2800000 	mov	x0, #0x0                   	// #0
+ 12c:	d2800001 	mov	x1, #0x0                   	// #0
+ 130:	b3407ca0 	bfxil	x0, x5, #0, #32
+ 134:	b3607c80 	bfi	x0, x4, #32, #32
+ 138:	b3407c61 	bfxil	x1, x3, #0, #32
+ 13c:	b3607c41 	bfi	x1, x2, #32, #32
+ 140:	f94007e2 	ldr	x2, [sp, #8]
+ 144:	a9000440 	stp	x0, x1, [x2]
+}
+ 148:	d503201f 	nop
+ 14c:	9100c3ff 	add	sp, sp, #0x30
+ 150:	d65f03c0 	ret
+
+0000000000000154 <add16ul>:
+
+typedef unsigned long int v16ul __attribute__((vector_size(16)));
+
+void add16ul(v16ul x, v16ul y, v16ul * z)
+{
+ 154:	d100c3ff 	sub	sp, sp, #0x30
+ 158:	3d800be0 	str	q0, [sp, #32]
+ 15c:	3d8007e1 	str	q1, [sp, #16]
+ 160:	f90007e0 	str	x0, [sp, #8]
+ 164:	f94013e1 	ldr	x1, [sp, #32]
+ 168:	f9400be0 	ldr	x0, [sp, #16]
+    *z = x + y;
+ 16c:	8b000023 	add	x3, x1, x0
+ 170:	f94017e1 	ldr	x1, [sp, #40]
+ 174:	f9400fe0 	ldr	x0, [sp, #24]
+ 178:	8b000022 	add	x2, x1, x0
+ 17c:	d2800000 	mov	x0, #0x0                   	// #0
+ 180:	d2800001 	mov	x1, #0x0                   	// #0
+ 184:	aa0303e0 	mov	x0, x3
+ 188:	aa0203e1 	mov	x1, x2
+ 18c:	f94007e2 	ldr	x2, [sp, #8]
+ 190:	a9000440 	stp	x0, x1, [x2]
+}
+ 194:	d503201f 	nop
+ 198:	9100c3ff 	add	sp, sp, #0x30
+ 19c:	d65f03c0 	ret
+
+00000000000001a0 <main>:
+
+int main(void)
+{
+ 1a0:	a9b27bfd 	stp	x29, x30, [sp, #-224]!
+ 1a4:	910003fd 	mov	x29, sp
+    {
+        v16ub x = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+ 1a8:	90000000 	adrp	x0, 0 <add16ub>
+ 1ac:	91000000 	add	x0, x0, #0x0
+ 1b0:	a9400400 	ldp	x0, x1, [x0]
+ 1b4:	a90c07e0 	stp	x0, x1, [sp, #192]
+        v16ub y =
+ 1b8:	92800000 	mov	x0, #0xffffffffffffffff    	// #-1
+ 1bc:	92800001 	mov	x1, #0xffffffffffffffff    	// #-1
+ 1c0:	a90b07e0 	stp	x0, x1, [sp, #176]
+            { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+            0xff, 0xff, 0xff, 0xff, 0xff, 0xff
+        };
+        v16ub z;
+
+        add16ub(x, y, &z);
+ 1c4:	910103e0 	add	x0, sp, #0x40
+ 1c8:	3dc02fe1 	ldr	q1, [sp, #176]
+ 1cc:	3dc033e0 	ldr	q0, [sp, #192]
+ 1d0:	94000000 	bl	0 <add16ub>
+
+        int i;
+
+        puts("vector of unsigned chars");
+ 1d4:	90000000 	adrp	x0, 0 <add16ub>
+ 1d8:	91000000 	add	x0, x0, #0x0
+ 1dc:	94000000 	bl	0 <puts>
+
+        for (i = 0; i < sizeof(v16ub) / sizeof(unsigned char); i++) {
+ 1e0:	b900dfff 	str	wzr, [sp, #220]
+ 1e4:	1400000c 	b	214 <main+0x74>
+            printf("%d %u\n", i, z[i]);
+ 1e8:	b980dfe0 	ldrsw	x0, [sp, #220]
+ 1ec:	910103e1 	add	x1, sp, #0x40
+ 1f0:	38606820 	ldrb	w0, [x1, x0]
+ 1f4:	2a0003e2 	mov	w2, w0
+ 1f8:	b940dfe1 	ldr	w1, [sp, #220]
+ 1fc:	90000000 	adrp	x0, 0 <add16ub>
+ 200:	91000000 	add	x0, x0, #0x0
+ 204:	94000000 	bl	0 <printf>
+        for (i = 0; i < sizeof(v16ub) / sizeof(unsigned char); i++) {
+ 208:	b940dfe0 	ldr	w0, [sp, #220]
+ 20c:	11000400 	add	w0, w0, #0x1
+ 210:	b900dfe0 	str	w0, [sp, #220]
+ 214:	b940dfe0 	ldr	w0, [sp, #220]
+ 218:	71003c1f 	cmp	w0, #0xf
+ 21c:	54fffe69 	b.ls	1e8 <main+0x48>  // b.plast
+        }
+    }
+
+    putchar('\n');
+ 220:	52800140 	mov	w0, #0xa                   	// #10
+ 224:	94000000 	bl	0 <putchar>
+
+    {
+        v16us x = { 0, 1, 2, 3, 4, 5, 6, 7 };
+ 228:	90000000 	adrp	x0, 0 <add16ub>
+ 22c:	91000000 	add	x0, x0, #0x0
+ 230:	a9400400 	ldp	x0, x1, [x0]
+ 234:	a90a07e0 	stp	x0, x1, [sp, #160]
+        v16us y = { 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff,
+ 238:	92800000 	mov	x0, #0xffffffffffffffff    	// #-1
+ 23c:	92800001 	mov	x1, #0xffffffffffffffff    	// #-1
+ 240:	a90907e0 	stp	x0, x1, [sp, #144]
+            0xffff
+        };
+        v16us z;
+
+        add16us(x, y, &z);
+ 244:	9100c3e0 	add	x0, sp, #0x30
+ 248:	3dc027e1 	ldr	q1, [sp, #144]
+ 24c:	3dc02be0 	ldr	q0, [sp, #160]
+ 250:	94000000 	bl	74 <add16us>
+
+        int i;
+
+        puts("vector of unsigned short ints");
+ 254:	90000000 	adrp	x0, 0 <add16ub>
+ 258:	91000000 	add	x0, x0, #0x0
+ 25c:	94000000 	bl	0 <puts>
+
+        for (i = 0; i < sizeof(v16us) / sizeof(unsigned short); i++) {
+ 260:	b900dbff 	str	wzr, [sp, #216]
+ 264:	1400000d 	b	298 <main+0xf8>
+            printf("%d %u\n", i, z[i]);
+ 268:	b980dbe0 	ldrsw	x0, [sp, #216]
+ 26c:	d37ff800 	lsl	x0, x0, #1
+ 270:	9100c3e1 	add	x1, sp, #0x30
+ 274:	78606820 	ldrh	w0, [x1, x0]
+ 278:	2a0003e2 	mov	w2, w0
+ 27c:	b940dbe1 	ldr	w1, [sp, #216]
+ 280:	90000000 	adrp	x0, 0 <add16ub>
+ 284:	91000000 	add	x0, x0, #0x0
+ 288:	94000000 	bl	0 <printf>
+        for (i = 0; i < sizeof(v16us) / sizeof(unsigned short); i++) {
+ 28c:	b940dbe0 	ldr	w0, [sp, #216]
+ 290:	11000400 	add	w0, w0, #0x1
+ 294:	b900dbe0 	str	w0, [sp, #216]
+ 298:	b940dbe0 	ldr	w0, [sp, #216]
+ 29c:	71001c1f 	cmp	w0, #0x7
+ 2a0:	54fffe49 	b.ls	268 <main+0xc8>  // b.plast
+        }
+    }
+
+    putchar('\n');
+ 2a4:	52800140 	mov	w0, #0xa                   	// #10
+ 2a8:	94000000 	bl	0 <putchar>
+
+    {
+        v16ui x = { 0, 1, 2, 3 };
+ 2ac:	90000000 	adrp	x0, 0 <add16ub>
+ 2b0:	91000000 	add	x0, x0, #0x0
+ 2b4:	a9400400 	ldp	x0, x1, [x0]
+ 2b8:	a90807e0 	stp	x0, x1, [sp, #128]
+        v16ui y = { 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff };
+ 2bc:	92800000 	mov	x0, #0xffffffffffffffff    	// #-1
+ 2c0:	92800001 	mov	x1, #0xffffffffffffffff    	// #-1
+ 2c4:	a90707e0 	stp	x0, x1, [sp, #112]
+        v16ui z;
+
+        add16ui(x, y, &z);
+ 2c8:	910083e0 	add	x0, sp, #0x20
+ 2cc:	3dc01fe1 	ldr	q1, [sp, #112]
+ 2d0:	3dc023e0 	ldr	q0, [sp, #128]
+ 2d4:	94000000 	bl	e8 <add16ui>
+
+        int i;
+
+        puts("vector of unsigned ints");
+ 2d8:	90000000 	adrp	x0, 0 <add16ub>
+ 2dc:	91000000 	add	x0, x0, #0x0
+ 2e0:	94000000 	bl	0 <puts>
+
+        for (i = 0; i < sizeof(v16ui) / sizeof(unsigned int); i++) {
+ 2e4:	b900d7ff 	str	wzr, [sp, #212]
+ 2e8:	1400000d 	b	31c <main+0x17c>
+            printf("%d %u\n", i, z[i]);
+ 2ec:	b980d7e0 	ldrsw	x0, [sp, #212]
+ 2f0:	d37ef400 	lsl	x0, x0, #2
+ 2f4:	910083e1 	add	x1, sp, #0x20
+ 2f8:	b8606820 	ldr	w0, [x1, x0]
+ 2fc:	2a0003e2 	mov	w2, w0
+ 300:	b940d7e1 	ldr	w1, [sp, #212]
+ 304:	90000000 	adrp	x0, 0 <add16ub>
+ 308:	91000000 	add	x0, x0, #0x0
+ 30c:	94000000 	bl	0 <printf>
+        for (i = 0; i < sizeof(v16ui) / sizeof(unsigned int); i++) {
+ 310:	b940d7e0 	ldr	w0, [sp, #212]
+ 314:	11000400 	add	w0, w0, #0x1
+ 318:	b900d7e0 	str	w0, [sp, #212]
+ 31c:	b940d7e0 	ldr	w0, [sp, #212]
+ 320:	71000c1f 	cmp	w0, #0x3
+ 324:	54fffe49 	b.ls	2ec <main+0x14c>  // b.plast
+        }
+    }
+
+    putchar('\n');
+ 328:	52800140 	mov	w0, #0xa                   	// #10
+ 32c:	94000000 	bl	0 <putchar>
+
+    {
+        v16ul x = { 0, 1 };
+ 330:	90000000 	adrp	x0, 0 <add16ub>
+ 334:	91000000 	add	x0, x0, #0x0
+ 338:	a9400400 	ldp	x0, x1, [x0]
+ 33c:	a90607e0 	stp	x0, x1, [sp, #96]
+        v16ul y = { 0xffffffffffffffff, 0xffffffffffffffff };
+ 340:	92800000 	mov	x0, #0xffffffffffffffff    	// #-1
+ 344:	92800001 	mov	x1, #0xffffffffffffffff    	// #-1
+ 348:	a90507e0 	stp	x0, x1, [sp, #80]
+        v16ul z;
+
+        add16ul(x, y, &z);
+ 34c:	910043e0 	add	x0, sp, #0x10
+ 350:	3dc017e1 	ldr	q1, [sp, #80]
+ 354:	3dc01be0 	ldr	q0, [sp, #96]
+ 358:	94000000 	bl	154 <add16ul>
+
+        int i;
+
+        puts("vector of unsigned longs");
+ 35c:	90000000 	adrp	x0, 0 <add16ub>
+ 360:	91000000 	add	x0, x0, #0x0
+ 364:	94000000 	bl	0 <puts>
+
+        for (i = 0; i < sizeof(v16ul) / sizeof(unsigned long); i++) {
+ 368:	b900d3ff 	str	wzr, [sp, #208]
+ 36c:	1400000d 	b	3a0 <main+0x200>
+            printf("%d %lu\n", i, z[i]);
+ 370:	b980d3e0 	ldrsw	x0, [sp, #208]
+ 374:	d37df000 	lsl	x0, x0, #3
+ 378:	910043e1 	add	x1, sp, #0x10
+ 37c:	f8606820 	ldr	x0, [x1, x0]
+ 380:	aa0003e2 	mov	x2, x0
+ 384:	b940d3e1 	ldr	w1, [sp, #208]
+ 388:	90000000 	adrp	x0, 0 <add16ub>
+ 38c:	91000000 	add	x0, x0, #0x0
+ 390:	94000000 	bl	0 <printf>
+        for (i = 0; i < sizeof(v16ul) / sizeof(unsigned long); i++) {
+ 394:	b940d3e0 	ldr	w0, [sp, #208]
+ 398:	11000400 	add	w0, w0, #0x1
+ 39c:	b900d3e0 	str	w0, [sp, #208]
+ 3a0:	b940d3e0 	ldr	w0, [sp, #208]
+ 3a4:	7100041f 	cmp	w0, #0x1
+ 3a8:	54fffe49 	b.ls	370 <main+0x1d0>  // b.plast
+        }
+    }
+
+    return 0;
+ 3ac:	52800000 	mov	w0, #0x0                   	// #0
+}
+ 3b0:	a8ce7bfd 	ldp	x29, x30, [sp], #224
+ 3b4:	d65f03c0 	ret
