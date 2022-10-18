@@ -134,7 +134,7 @@ SVE         Scalable Vector Extension               ARMv8.2-A and newer
 
 ### "special" typedefs
 
-```C
+```c
 #include <stdio.h>
 
 typedef unsigned short int v16us __attribute__((vector_size(16)));
@@ -150,7 +150,7 @@ int main(void)
 
 ### Vector size, number of elements
 
-```C
+```c
 #include <stdio.h>
 
 typedef unsigned char v16ub __attribute__((vector_size(16)));
@@ -176,7 +176,7 @@ int main(void)
 
 ### Vector add
 
-```C
+```c
 #include <stdio.h>
 
 typedef signed char v16ub __attribute__((vector_size(16)));
@@ -217,7 +217,7 @@ int main(void)
 
 ### Accessing vector items
 
-```C
+```c
 #include <stdio.h>
 
 typedef unsigned short int v16us __attribute__((vector_size(16)));
@@ -240,7 +240,7 @@ int main(void)
 
 ### Vector is not an array!
 
-```C
+```c
 typedef float v1024f __attribute__((vector_size(1024)));
 
 void addVectors(v1024f * x, v1024f * y, v1024f * z)
@@ -262,7 +262,7 @@ int main(void)
 
 ### Let's look into assembly
 
-```C
+```c
 #include <stdio.h>
 
 typedef signed char v16ib __attribute__((vector_size(16)));
@@ -378,7 +378,7 @@ int main(void)
 
 ### Floats and doubles
 
-```C
+```c
 #include <stdio.h>
 
 typedef float v16float __attribute__((vector_size(16)));
