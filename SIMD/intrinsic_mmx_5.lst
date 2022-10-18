@@ -1,0 +1,71 @@
+
+intrinsic_mmx_5.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+#include <stdio.h>
+#include <mmintrin.h>
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 83 ec 30          	sub    rsp,0x30
+   c:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  13:	00 00 
+  15:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  19:	31 c0                	xor    eax,eax
+    __v8qi x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+  1b:	48 8b 05 00 00 00 00 	mov    rax,QWORD PTR [rip+0x0]        # 22 <main+0x22>
+  22:	48 89 45 e0          	mov    QWORD PTR [rbp-0x20],rax
+    __v8qi y = { 99, 98, 97, 96, 95, 94, 93, 92 };
+  26:	48 8b 05 00 00 00 00 	mov    rax,QWORD PTR [rip+0x0]        # 2d <main+0x2d>
+  2d:	48 89 45 e8          	mov    QWORD PTR [rbp-0x18],rax
+    __v8qi z;
+    int i;
+
+    z = __builtin_ia32_punpckhbw(x, y);
+  31:	0f 6f 4d e8          	movq   mm1,QWORD PTR [rbp-0x18]
+  35:	0f 6f 45 e0          	movq   mm0,QWORD PTR [rbp-0x20]
+  39:	0f 68 c1             	punpckhbw mm0,mm1
+  3c:	0f 7f 45 f0          	movq   QWORD PTR [rbp-0x10],mm0
+
+    for (i = 0; i < 8; i++) {
+  40:	c7 45 dc 00 00 00 00 	mov    DWORD PTR [rbp-0x24],0x0
+  47:	eb 44                	jmp    8d <main+0x8d>
+        printf("%d %d %d %d\n", i, x[i], y[i], z[i]);
+  49:	8b 45 dc             	mov    eax,DWORD PTR [rbp-0x24]
+  4c:	48 98                	cdqe   
+  4e:	0f b6 44 05 f0       	movzx  eax,BYTE PTR [rbp+rax*1-0x10]
+  53:	0f be f0             	movsx  esi,al
+  56:	8b 45 dc             	mov    eax,DWORD PTR [rbp-0x24]
+  59:	48 98                	cdqe   
+  5b:	0f b6 44 05 e8       	movzx  eax,BYTE PTR [rbp+rax*1-0x18]
+  60:	0f be c8             	movsx  ecx,al
+  63:	8b 45 dc             	mov    eax,DWORD PTR [rbp-0x24]
+  66:	48 98                	cdqe   
+  68:	0f b6 44 05 e0       	movzx  eax,BYTE PTR [rbp+rax*1-0x20]
+  6d:	0f be d0             	movsx  edx,al
+  70:	8b 45 dc             	mov    eax,DWORD PTR [rbp-0x24]
+  73:	41 89 f0             	mov    r8d,esi
+  76:	89 c6                	mov    esi,eax
+  78:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 7f <main+0x7f>
+  7f:	b8 00 00 00 00       	mov    eax,0x0
+  84:	e8 00 00 00 00       	call   89 <main+0x89>
+    for (i = 0; i < 8; i++) {
+  89:	83 45 dc 01          	add    DWORD PTR [rbp-0x24],0x1
+  8d:	83 7d dc 07          	cmp    DWORD PTR [rbp-0x24],0x7
+  91:	7e b6                	jle    49 <main+0x49>
+  93:	b8 00 00 00 00       	mov    eax,0x0
+    }
+}
+  98:	48 8b 7d f8          	mov    rdi,QWORD PTR [rbp-0x8]
+  9c:	64 48 33 3c 25 28 00 	xor    rdi,QWORD PTR fs:0x28
+  a3:	00 00 
+  a5:	74 05                	je     ac <main+0xac>
+  a7:	e8 00 00 00 00       	call   ac <main+0xac>
+  ac:	c9                   	leave  
+  ad:	c3                   	ret    
