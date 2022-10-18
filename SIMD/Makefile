@@ -11,7 +11,12 @@ all:	simd04_1.lst simd04_2.lst \
     	simd15_1.lst simd15_2.lst simd15_3.lst simd15_4.lst \
     	simd16_1.lst simd16_2.lst simd16_3.lst simd16_4.lst \
     	simd17_1.lst simd17_2.lst simd17_3.lst simd17_4.lst \
-    	simd18_1.lst simd18_2.lst simd18_3.lst simd18_4.lst
+    	simd18_1.lst simd18_2.lst simd18_3.lst simd18_4.lst \
+	intrinsic_mmx_1.lst \
+	intrinsic_mmx_2.lst \
+	intrinsic_mmx_3.lst \
+	intrinsic_mmx_4.lst \
+	intrinsic_mmx_5.lst
 
 clean:
 	rm *.lst
@@ -121,3 +126,18 @@ simd18_3.o:	simd18.c
 
 simd18_4.o:	simd18.c
 	gcc -c -O3 -g -o $@ $<
+
+intrinsic_mmx_1.o:	intrinsic_mmx_1.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_mmx_2.o:	intrinsic_mmx_2.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_mmx_3.o:	intrinsic_mmx_3.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_mmx_4.o:	intrinsic_mmx_4.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_mmx_5.o:	intrinsic_mmx_5.c
+	gcc -c -O0 -g -o $@ $<
