@@ -47,6 +47,9 @@ layout: default
 * [Rust programming language (EN)](summer_camp_2021/rust.md)
 * [Python programming language](summer_camp_2021/python.md)
 
+### ByteFest 2022
+* [Nintendo Entertainment System](ByteFest2022/nes.md)
+
 ### OpenAlt 2020
 * [Použití programovacího jazyka Rust na produkčním systému](openalt2020/rust_in_production.md)
 
@@ -90,6 +93,7 @@ layout: default
 * [JIT](coffee-talks/jit.md)
 * [Pattern matching in Python](coffee-talks/pattern-matching.md)
 * [NATS JetStream](coffee-talks/nats-jetstream.md)
+* [SIMD in GCC](coffee-talks/simd_in_gcc.md)
 
 
 
