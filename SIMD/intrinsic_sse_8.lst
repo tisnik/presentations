@@ -1,0 +1,140 @@
+
+intrinsic_sse_8.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <print_results>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 83 ec 30          	sub    rsp,0x30
+   c:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+  10:	48 89 75 e0          	mov    QWORD PTR [rbp-0x20],rsi
+  14:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
+  18:	48 89 4d d0          	mov    QWORD PTR [rbp-0x30],rcx
+  1c:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+  20:	48 89 c7             	mov    rdi,rax
+  23:	e8 00 00 00 00       	call   28 <print_results+0x28>
+  28:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
+  2f:	eb 74                	jmp    a5 <print_results+0xa5>
+  31:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+  35:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+  38:	48 63 d2             	movsxd rdx,edx
+  3b:	f3 0f 10 04 90       	movss  xmm0,DWORD PTR [rax+rdx*4]
+  40:	66 0f ef c9          	pxor   xmm1,xmm1
+  44:	0f 2e c1             	ucomiss xmm0,xmm1
+  47:	7a 12                	jp     5b <print_results+0x5b>
+  49:	66 0f ef c9          	pxor   xmm1,xmm1
+  4d:	0f 2e c1             	ucomiss xmm0,xmm1
+  50:	75 09                	jne    5b <print_results+0x5b>
+  52:	48 8d 05 00 00 00 00 	lea    rax,[rip+0x0]        # 59 <print_results+0x59>
+  59:	eb 07                	jmp    62 <print_results+0x62>
+  5b:	48 8d 05 00 00 00 00 	lea    rax,[rip+0x0]        # 62 <print_results+0x62>
+  62:	48 8b 55 d8          	mov    rdx,QWORD PTR [rbp-0x28]
+  66:	8b 4d fc             	mov    ecx,DWORD PTR [rbp-0x4]
+  69:	48 63 c9             	movsxd rcx,ecx
+  6c:	f3 0f 10 04 8a       	movss  xmm0,DWORD PTR [rdx+rcx*4]
+  71:	f3 0f 5a c8          	cvtss2sd xmm1,xmm0
+  75:	48 8b 55 e0          	mov    rdx,QWORD PTR [rbp-0x20]
+  79:	8b 4d fc             	mov    ecx,DWORD PTR [rbp-0x4]
+  7c:	48 63 c9             	movsxd rcx,ecx
+  7f:	f3 0f 10 04 8a       	movss  xmm0,DWORD PTR [rdx+rcx*4]
+  84:	f3 0f 5a c0          	cvtss2sd xmm0,xmm0
+  88:	8b 4d fc             	mov    ecx,DWORD PTR [rbp-0x4]
+  8b:	48 89 c2             	mov    rdx,rax
+  8e:	89 ce                	mov    esi,ecx
+  90:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 97 <print_results+0x97>
+  97:	b8 02 00 00 00       	mov    eax,0x2
+  9c:	e8 00 00 00 00       	call   a1 <print_results+0xa1>
+  a1:	83 45 fc 01          	add    DWORD PTR [rbp-0x4],0x1
+  a5:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  a8:	83 f8 03             	cmp    eax,0x3
+  ab:	76 84                	jbe    31 <print_results+0x31>
+  ad:	bf 0a 00 00 00       	mov    edi,0xa
+  b2:	e8 00 00 00 00       	call   b7 <print_results+0xb7>
+  b7:	90                   	nop
+  b8:	c9                   	leave  
+  b9:	c3                   	ret    
+
+00000000000000ba <main>:
+  ba:	f3 0f 1e fa          	endbr64 
+  be:	55                   	push   rbp
+  bf:	48 89 e5             	mov    rbp,rsp
+  c2:	48 83 ec 40          	sub    rsp,0x40
+  c6:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  cd:	00 00 
+  cf:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  d3:	31 c0                	xor    eax,eax
+  d5:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # dc <main+0x22>
+  dc:	0f 29 45 c0          	movaps XMMWORD PTR [rbp-0x40],xmm0
+  e0:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # e7 <main+0x2d>
+  e7:	0f 29 45 d0          	movaps XMMWORD PTR [rbp-0x30],xmm0
+  eb:	0f 28 45 d0          	movaps xmm0,XMMWORD PTR [rbp-0x30]
+  ef:	0f 28 4d c0          	movaps xmm1,XMMWORD PTR [rbp-0x40]
+  f3:	0f c2 c1 00          	cmpeqps xmm0,xmm1
+  f7:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+  fb:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+  ff:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ 103:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ 107:	48 89 c6             	mov    rsi,rax
+ 10a:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 111 <main+0x57>
+ 111:	e8 00 00 00 00       	call   116 <main+0x5c>
+ 116:	0f 28 45 d0          	movaps xmm0,XMMWORD PTR [rbp-0x30]
+ 11a:	0f 28 4d c0          	movaps xmm1,XMMWORD PTR [rbp-0x40]
+ 11e:	0f c2 c1 01          	cmpltps xmm0,xmm1
+ 122:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+ 126:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ 12a:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ 12e:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ 132:	48 89 c6             	mov    rsi,rax
+ 135:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 13c <main+0x82>
+ 13c:	e8 00 00 00 00       	call   141 <main+0x87>
+ 141:	0f 28 4d d0          	movaps xmm1,XMMWORD PTR [rbp-0x30]
+ 145:	0f 28 45 c0          	movaps xmm0,XMMWORD PTR [rbp-0x40]
+ 149:	0f c2 c1 01          	cmpltps xmm0,xmm1
+ 14d:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+ 151:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ 155:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ 159:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ 15d:	48 89 c6             	mov    rsi,rax
+ 160:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 167 <main+0xad>
+ 167:	e8 00 00 00 00       	call   16c <main+0xb2>
+ 16c:	0f 28 45 d0          	movaps xmm0,XMMWORD PTR [rbp-0x30]
+ 170:	0f 28 4d c0          	movaps xmm1,XMMWORD PTR [rbp-0x40]
+ 174:	0f c2 c1 02          	cmpleps xmm0,xmm1
+ 178:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+ 17c:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ 180:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ 184:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ 188:	48 89 c6             	mov    rsi,rax
+ 18b:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 192 <main+0xd8>
+ 192:	e8 00 00 00 00       	call   197 <main+0xdd>
+ 197:	0f 28 4d d0          	movaps xmm1,XMMWORD PTR [rbp-0x30]
+ 19b:	0f 28 45 c0          	movaps xmm0,XMMWORD PTR [rbp-0x40]
+ 19f:	0f c2 c1 02          	cmpleps xmm0,xmm1
+ 1a3:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+ 1a7:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ 1ab:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ 1af:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ 1b3:	48 89 c6             	mov    rsi,rax
+ 1b6:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 1bd <main+0x103>
+ 1bd:	e8 00 00 00 00       	call   1c2 <main+0x108>
+ 1c2:	0f 28 45 d0          	movaps xmm0,XMMWORD PTR [rbp-0x30]
+ 1c6:	0f 28 4d c0          	movaps xmm1,XMMWORD PTR [rbp-0x40]
+ 1ca:	0f c2 c1 04          	cmpneqps xmm0,xmm1
+ 1ce:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+ 1d2:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
+ 1d6:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
+ 1da:	48 8d 45 c0          	lea    rax,[rbp-0x40]
+ 1de:	48 89 c6             	mov    rsi,rax
+ 1e1:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 1e8 <main+0x12e>
+ 1e8:	e8 00 00 00 00       	call   1ed <main+0x133>
+ 1ed:	b8 00 00 00 00       	mov    eax,0x0
+ 1f2:	48 8b 75 f8          	mov    rsi,QWORD PTR [rbp-0x8]
+ 1f6:	64 48 33 34 25 28 00 	xor    rsi,QWORD PTR fs:0x28
+ 1fd:	00 00 
+ 1ff:	74 05                	je     206 <main+0x14c>
+ 201:	e8 00 00 00 00       	call   206 <main+0x14c>
+ 206:	c9                   	leave  
+ 207:	c3                   	ret    
