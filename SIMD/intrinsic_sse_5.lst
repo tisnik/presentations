@@ -1,0 +1,71 @@
+
+intrinsic_sse_5.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+#include <stdio.h>
+#include <xmmintrin.h>
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 83 ec 50          	sub    rsp,0x50
+   c:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  13:	00 00 
+  15:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  19:	31 c0                	xor    eax,eax
+    __v4sf x = { 1.0, 2.0, 3.0, 4.0 };
+  1b:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # 22 <main+0x22>
+  22:	0f 29 45 c0          	movaps XMMWORD PTR [rbp-0x40],xmm0
+    __v4sf y = { 0.1, 0.1, 0.1, 0.1 };
+  26:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # 2d <main+0x2d>
+  2d:	0f 29 45 d0          	movaps XMMWORD PTR [rbp-0x30],xmm0
+    __v4sf z;
+    int i;
+
+    z = __builtin_ia32_addps(x, y);
+  31:	0f 28 45 d0          	movaps xmm0,XMMWORD PTR [rbp-0x30]
+  35:	0f 28 4d c0          	movaps xmm1,XMMWORD PTR [rbp-0x40]
+  39:	0f 58 c1             	addps  xmm0,xmm1
+  3c:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+
+    for (i = 0; i < sizeof(x)/sizeof(float); i++) {
+  40:	c7 45 bc 00 00 00 00 	mov    DWORD PTR [rbp-0x44],0x0
+  47:	eb 47                	jmp    90 <main+0x90>
+        printf("%2d %f %f %f\n", i, x[i], y[i], z[i]);
+  49:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
+  4c:	48 98                	cdqe   
+  4e:	f3 0f 10 44 85 e0    	movss  xmm0,DWORD PTR [rbp+rax*4-0x20]
+  54:	f3 0f 5a d0          	cvtss2sd xmm2,xmm0
+  58:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
+  5b:	48 98                	cdqe   
+  5d:	f3 0f 10 44 85 d0    	movss  xmm0,DWORD PTR [rbp+rax*4-0x30]
+  63:	f3 0f 5a c8          	cvtss2sd xmm1,xmm0
+  67:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
+  6a:	48 98                	cdqe   
+  6c:	f3 0f 10 44 85 c0    	movss  xmm0,DWORD PTR [rbp+rax*4-0x40]
+  72:	f3 0f 5a c0          	cvtss2sd xmm0,xmm0
+  76:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
+  79:	89 c6                	mov    esi,eax
+  7b:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 82 <main+0x82>
+  82:	b8 03 00 00 00       	mov    eax,0x3
+  87:	e8 00 00 00 00       	call   8c <main+0x8c>
+    for (i = 0; i < sizeof(x)/sizeof(float); i++) {
+  8c:	83 45 bc 01          	add    DWORD PTR [rbp-0x44],0x1
+  90:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
+  93:	83 f8 03             	cmp    eax,0x3
+  96:	76 b1                	jbe    49 <main+0x49>
+  98:	b8 00 00 00 00       	mov    eax,0x0
+    }
+}
+  9d:	48 8b 55 f8          	mov    rdx,QWORD PTR [rbp-0x8]
+  a1:	64 48 33 14 25 28 00 	xor    rdx,QWORD PTR fs:0x28
+  a8:	00 00 
+  aa:	74 05                	je     b1 <main+0xb1>
+  ac:	e8 00 00 00 00       	call   b1 <main+0xb1>
+  b1:	c9                   	leave  
+  b2:	c3                   	ret    
