@@ -1,0 +1,117 @@
+
+intrinsic_sse_9.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <print_results>:
+#include <stdio.h>
+#include <xmmintrin.h>
+
+void print_results(const char *title, __v4sf *x, __v4sf *y)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 83 ec 30          	sub    rsp,0x30
+   c:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+  10:	48 89 75 e0          	mov    QWORD PTR [rbp-0x20],rsi
+  14:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
+    int i;
+
+    puts(title);
+  18:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+  1c:	48 89 c7             	mov    rdi,rax
+  1f:	e8 00 00 00 00       	call   24 <print_results+0x24>
+    for (i = 0; i < sizeof(*x)/sizeof(float); i++) {
+  24:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
+  2b:	eb 40                	jmp    6d <print_results+0x6d>
+        printf("%2d  %5.2f  %3.1f\n", i, (*x)[i], (*y)[i]);
+  2d:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  31:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+  34:	48 63 d2             	movsxd rdx,edx
+  37:	f3 0f 10 04 90       	movss  xmm0,DWORD PTR [rax+rdx*4]
+  3c:	f3 0f 5a c8          	cvtss2sd xmm1,xmm0
+  40:	48 8b 45 e0          	mov    rax,QWORD PTR [rbp-0x20]
+  44:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+  47:	48 63 d2             	movsxd rdx,edx
+  4a:	f3 0f 10 04 90       	movss  xmm0,DWORD PTR [rax+rdx*4]
+  4f:	f3 0f 5a c0          	cvtss2sd xmm0,xmm0
+  53:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  56:	89 c6                	mov    esi,eax
+  58:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 5f <print_results+0x5f>
+  5f:	b8 02 00 00 00       	mov    eax,0x2
+  64:	e8 00 00 00 00       	call   69 <print_results+0x69>
+    for (i = 0; i < sizeof(*x)/sizeof(float); i++) {
+  69:	83 45 fc 01          	add    DWORD PTR [rbp-0x4],0x1
+  6d:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  70:	83 f8 03             	cmp    eax,0x3
+  73:	76 b8                	jbe    2d <print_results+0x2d>
+    }
+
+    putchar('\n');
+  75:	bf 0a 00 00 00       	mov    edi,0xa
+  7a:	e8 00 00 00 00       	call   7f <print_results+0x7f>
+}
+  7f:	90                   	nop
+  80:	c9                   	leave  
+  81:	c3                   	ret    
+
+0000000000000082 <main>:
+
+int main(void)
+{
+  82:	f3 0f 1e fa          	endbr64 
+  86:	55                   	push   rbp
+  87:	48 89 e5             	mov    rbp,rsp
+  8a:	48 83 ec 30          	sub    rsp,0x30
+  8e:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  95:	00 00 
+  97:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  9b:	31 c0                	xor    eax,eax
+    __v4sf x = { 1, 2, 4, 10 };
+  9d:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # a4 <main+0x22>
+  a4:	0f 29 45 d0          	movaps XMMWORD PTR [rbp-0x30],xmm0
+    __v4sf y;
+
+    y = __builtin_ia32_rcpps(x);
+  a8:	0f 28 45 d0          	movaps xmm0,XMMWORD PTR [rbp-0x30]
+  ac:	0f 53 c0             	rcpps  xmm0,xmm0
+  af:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+    print_results(" #   x     1/x", &x, &y);
+  b3:	48 8d 55 e0          	lea    rdx,[rbp-0x20]
+  b7:	48 8d 45 d0          	lea    rax,[rbp-0x30]
+  bb:	48 89 c6             	mov    rsi,rax
+  be:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # c5 <main+0x43>
+  c5:	e8 00 00 00 00       	call   ca <main+0x48>
+
+    y = __builtin_ia32_sqrtps(x);
+  ca:	0f 28 45 d0          	movaps xmm0,XMMWORD PTR [rbp-0x30]
+  ce:	0f 51 c0             	sqrtps xmm0,xmm0
+  d1:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+    print_results(" #   x     sqrt(x)", &x, &y);
+  d5:	48 8d 55 e0          	lea    rdx,[rbp-0x20]
+  d9:	48 8d 45 d0          	lea    rax,[rbp-0x30]
+  dd:	48 89 c6             	mov    rsi,rax
+  e0:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # e7 <main+0x65>
+  e7:	e8 00 00 00 00       	call   ec <main+0x6a>
+
+    y = __builtin_ia32_rsqrtps(x);
+  ec:	0f 28 45 d0          	movaps xmm0,XMMWORD PTR [rbp-0x30]
+  f0:	0f 52 c0             	rsqrtps xmm0,xmm0
+  f3:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+    print_results(" #   x     1/sqrt(x)", &x, &y);
+  f7:	48 8d 55 e0          	lea    rdx,[rbp-0x20]
+  fb:	48 8d 45 d0          	lea    rax,[rbp-0x30]
+  ff:	48 89 c6             	mov    rsi,rax
+ 102:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 109 <main+0x87>
+ 109:	e8 00 00 00 00       	call   10e <main+0x8c>
+ 10e:	b8 00 00 00 00       	mov    eax,0x0
+}
+ 113:	48 8b 4d f8          	mov    rcx,QWORD PTR [rbp-0x8]
+ 117:	64 48 33 0c 25 28 00 	xor    rcx,QWORD PTR fs:0x28
+ 11e:	00 00 
+ 120:	74 05                	je     127 <main+0xa5>
+ 122:	e8 00 00 00 00       	call   127 <main+0xa5>
+ 127:	c9                   	leave  
+ 128:	c3                   	ret    
