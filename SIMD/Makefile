@@ -16,7 +16,18 @@ all:	simd04_1.lst simd04_2.lst \
 	intrinsic_mmx_2.lst \
 	intrinsic_mmx_3.lst \
 	intrinsic_mmx_4.lst \
-	intrinsic_mmx_5.lst
+	intrinsic_mmx_5.lst \
+	intrinsic_sse_1.lst \
+	intrinsic_sse_2.lst \
+	intrinsic_sse_3.lst \
+	intrinsic_sse_4.lst \
+	intrinsic_sse_5.lst \
+	intrinsic_sse_6.lst \
+	intrinsic_sse_7.lst \
+	intrinsic_sse_8.lst \
+	intrinsic_sse_9.lst \
+	intrinsic_sse_A.lst \
+	intrinsic_sse_B.lst
 
 clean:
 	rm *.lst
@@ -140,4 +151,37 @@ intrinsic_mmx_4.o:	intrinsic_mmx_4.c
 	gcc -c -O0 -g -o $@ $<
 
 intrinsic_mmx_5.o:	intrinsic_mmx_5.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_1.o:	intrinsic_sse_1.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_2.o:	intrinsic_sse_2.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_3.o:	intrinsic_sse_3.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_4.o:	intrinsic_sse_4.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_5.o:	intrinsic_sse_5.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_6.o:	intrinsic_sse_6.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_7.o:	intrinsic_sse_7.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_8.o:	intrinsic_sse_8.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_9.o:	intrinsic_sse_9.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_A.o:	intrinsic_sse_A.c
+	gcc -c -O0 -g -o $@ $<
+
+intrinsic_sse_B.o:	intrinsic_sse_B.c
 	gcc -c -O0 -g -o $@ $<
