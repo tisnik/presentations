@@ -26,9 +26,9 @@ int main(void)
     }
 
     {
-        v16ui x = { 1, 2 };
-        v16ui y = { 0xff, 0xff };
-        v16ui z = x + y;
+        v16ul x = { 1, 2 };
+        v16ul y = { 0xff, 0xff };
+        v16ul z = x + y;
     }
 
 
