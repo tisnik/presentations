@@ -82,28 +82,26 @@ int main(void)
     }
 
     {
-        v16ui x = { 1, 2 };
- 10e:	48 b8 01 00 00 00 02 	movabs rax,0x200000001
- 115:	00 00 00 
- 118:	ba 00 00 00 00       	mov    edx,0x0
- 11d:	48 89 45 d0          	mov    QWORD PTR [rbp-0x30],rax
- 121:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
-        v16ui y = { 0xff, 0xff };
- 125:	48 b8 ff 00 00 00 ff 	movabs rax,0xff000000ff
- 12c:	00 00 00 
- 12f:	ba 00 00 00 00       	mov    edx,0x0
- 134:	48 89 45 e0          	mov    QWORD PTR [rbp-0x20],rax
- 138:	48 89 55 e8          	mov    QWORD PTR [rbp-0x18],rdx
-        v16ui z = x + y;
- 13c:	c7 45 f0 00 01 00 00 	mov    DWORD PTR [rbp-0x10],0x100
- 143:	c7 45 f4 01 01 00 00 	mov    DWORD PTR [rbp-0xc],0x101
- 14a:	c7 45 f8 00 00 00 00 	mov    DWORD PTR [rbp-0x8],0x0
- 151:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
+        v16ul x = { 1, 2 };
+ 10e:	b8 01 00 00 00       	mov    eax,0x1
+ 113:	ba 02 00 00 00       	mov    edx,0x2
+ 118:	48 89 45 d0          	mov    QWORD PTR [rbp-0x30],rax
+ 11c:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
+        v16ul y = { 0xff, 0xff };
+ 120:	b8 ff 00 00 00       	mov    eax,0xff
+ 125:	ba ff 00 00 00       	mov    edx,0xff
+ 12a:	48 89 45 e0          	mov    QWORD PTR [rbp-0x20],rax
+ 12e:	48 89 55 e8          	mov    QWORD PTR [rbp-0x18],rdx
+        v16ul z = x + y;
+ 132:	48 c7 45 f0 00 01 00 	mov    QWORD PTR [rbp-0x10],0x100
+ 139:	00 
+ 13a:	48 c7 45 f8 01 01 00 	mov    QWORD PTR [rbp-0x8],0x101
+ 141:	00 
     }
 
 
     return 0;
- 158:	b8 00 00 00 00       	mov    eax,0x0
+ 142:	b8 00 00 00 00       	mov    eax,0x0
 }
- 15d:	c9                   	leave  
- 15e:	c3                   	ret    
+ 147:	c9                   	leave  
+ 148:	c3                   	ret    
