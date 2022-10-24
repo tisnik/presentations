@@ -4,12 +4,12 @@ simd14_3.o:     file format elf64-x86-64
 
 Disassembly of section .text:
 
-0000000000000000 <add16ub>:
+0000000000000000 <add16ib>:
 #include <stdio.h>
 
 typedef signed char v16ib __attribute__((vector_size(16)));
 
-void add16ub(v16ib x, v16ib y, v16ib * z)
+void add16ib(v16ib x, v16ib y, v16ib * z)
 {
    0:	f3 0f 1e fa          	endbr64 
    4:	4c 8b 44 24 18       	mov    r8,QWORD PTR [rsp+0x18]
@@ -46,11 +46,11 @@ void add16ub(v16ib x, v16ib y, v16ib * z)
   68:	00 00 00 00 
   6c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
 
-0000000000000070 <add16us>:
+0000000000000070 <add16is>:
 
 typedef signed short v16is __attribute__((vector_size(16)));
 
-void add16us(v16is x, v16is y, v16is * z)
+void add16is(v16is x, v16is y, v16is * z)
 {
   70:	f3 0f 1e fa          	endbr64 
   74:	4c 8b 44 24 18       	mov    r8,QWORD PTR [rsp+0x18]
@@ -87,11 +87,11 @@ void add16us(v16is x, v16is y, v16is * z)
   d8:	00 00 00 00 
   dc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
 
-00000000000000e0 <add16ui>:
+00000000000000e0 <add16ii>:
 
 typedef signed int v16ii __attribute__((vector_size(16)));
 
-void add16ui(v16ii x, v16ii y, v16ii * z)
+void add16ii(v16ii x, v16ii y, v16ii * z)
 {
   e0:	f3 0f 1e fa          	endbr64 
   e4:	48 8b 4c 24 18       	mov    rcx,QWORD PTR [rsp+0x18]
@@ -123,11 +123,11 @@ void add16ui(v16ii x, v16ii y, v16ii * z)
  13b:	c3                   	ret    
  13c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
 
-0000000000000140 <add16ul>:
+0000000000000140 <add16il>:
 
 typedef signed long int v16il __attribute__((vector_size(16)));
 
-void add16ul(v16il x, v16il y, v16il * z)
+void add16il(v16il x, v16il y, v16il * z)
 {
  140:	f3 0f 1e fa          	endbr64 
     *z = x + y;
@@ -149,7 +149,7 @@ int main(void)
    0:	f3 0f 1e fa          	endbr64 
    4:	41 54                	push   r12
 
-        add16ub(x, y, &z);
+        add16ib(x, y, &z);
 
         int i;
 
@@ -207,7 +207,7 @@ putchar (int __c)
   78:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # 7f <main+0x7f>
   7f:	bf 0a 00 00 00       	mov    edi,0xa
 
-        add16us(x, y, &z);
+        add16is(x, y, &z);
 
         int i;
 
@@ -242,7 +242,7 @@ putchar (int __c)
   e0:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # e7 <main+0xe7>
   e7:	bf 0a 00 00 00       	mov    edi,0xa
 
-        add16ui(x, y, &z);
+        add16ii(x, y, &z);
 
         int i;
 
@@ -276,7 +276,7 @@ putchar (int __c)
  144:	bf 0a 00 00 00       	mov    edi,0xa
  149:	e8 00 00 00 00       	call   14e <main+0x14e>
 
-        add16ul(x, y, &z);
+        add16il(x, y, &z);
 
         int i;
 
@@ -311,4 +311,4 @@ putchar (int __c)
  1a7:	5d                   	pop    rbp
  1a8:	41 5c                	pop    r12
  1aa:	c3                   	ret    
- 1ab:	e8 00 00 00 00       	call   1b0 <add16ul+0x70>
+ 1ab:	e8 00 00 00 00       	call   1b0 <add16il+0x70>

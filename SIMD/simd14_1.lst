@@ -4,12 +4,12 @@ simd14_1.o:     file format elf64-x86-64
 
 Disassembly of section .text:
 
-0000000000000000 <add16ub>:
+0000000000000000 <add16ib>:
 #include <stdio.h>
 
 typedef signed char v16ib __attribute__((vector_size(16)));
 
-void add16ub(v16ib x, v16ib y, v16ib * z)
+void add16ib(v16ib x, v16ib y, v16ib * z)
 {
    0:	f3 0f 1e fa          	endbr64 
    4:	55                   	push   rbp
@@ -60,11 +60,11 @@ void add16ub(v16ib x, v16ib y, v16ib * z)
   a4:	5d                   	pop    rbp
   a5:	c3                   	ret    
 
-00000000000000a6 <add16us>:
+00000000000000a6 <add16is>:
 
 typedef signed short v16is __attribute__((vector_size(16)));
 
-void add16us(v16is x, v16is y, v16is * z)
+void add16is(v16is x, v16is y, v16is * z)
 {
   a6:	f3 0f 1e fa          	endbr64 
   aa:	55                   	push   rbp
@@ -115,11 +115,11 @@ void add16us(v16is x, v16is y, v16is * z)
  14a:	5d                   	pop    rbp
  14b:	c3                   	ret    
 
-000000000000014c <add16ui>:
+000000000000014c <add16ii>:
 
 typedef signed int v16ii __attribute__((vector_size(16)));
 
-void add16ui(v16ii x, v16ii y, v16ii * z)
+void add16ii(v16ii x, v16ii y, v16ii * z)
 {
  14c:	f3 0f 1e fa          	endbr64 
  150:	55                   	push   rbp
@@ -174,11 +174,11 @@ void add16ui(v16ii x, v16ii y, v16ii * z)
  1e8:	5d                   	pop    rbp
  1e9:	c3                   	ret    
 
-00000000000001ea <add16ul>:
+00000000000001ea <add16il>:
 
 typedef signed long int v16il __attribute__((vector_size(16)));
 
-void add16ul(v16il x, v16il y, v16il * z)
+void add16il(v16il x, v16il y, v16il * z)
 {
  1ea:	f3 0f 1e fa          	endbr64 
  1ee:	55                   	push   rbp
@@ -233,7 +233,7 @@ int main(void)
         };
         v16ib z;
 
-        add16ub(x, y, &z);
+        add16ib(x, y, &z);
  27c:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
  283:	ff 75 88             	push   QWORD PTR [rbp-0x78]
  286:	ff 75 80             	push   QWORD PTR [rbp-0x80]
@@ -293,7 +293,7 @@ int main(void)
         };
         v16is z;
 
-        add16us(x, y, &z);
+        add16is(x, y, &z);
  32d:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
  334:	ff 75 a8             	push   QWORD PTR [rbp-0x58]
  337:	ff 75 a0             	push   QWORD PTR [rbp-0x60]
@@ -351,7 +351,7 @@ int main(void)
  3d7:	ff 
         v16ii z;
 
-        add16ui(x, y, &z);
+        add16ii(x, y, &z);
  3d8:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
  3df:	ff 75 c8             	push   QWORD PTR [rbp-0x38]
  3e2:	ff 75 c0             	push   QWORD PTR [rbp-0x40]
@@ -405,7 +405,7 @@ int main(void)
  474:	ff 
         v16il z;
 
-        add16ul(x, y, &z);
+        add16il(x, y, &z);
  475:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
  47c:	ff 75 e8             	push   QWORD PTR [rbp-0x18]
  47f:	ff 75 e0             	push   QWORD PTR [rbp-0x20]

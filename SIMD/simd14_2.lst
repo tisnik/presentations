@@ -4,12 +4,12 @@ simd14_2.o:     file format elf64-x86-64
 
 Disassembly of section .text:
 
-0000000000000000 <add16ub>:
+0000000000000000 <add16ib>:
 #include <stdio.h>
 
 typedef signed char v16ib __attribute__((vector_size(16)));
 
-void add16ub(v16ib x, v16ib y, v16ib * z)
+void add16ib(v16ib x, v16ib y, v16ib * z)
 {
    0:	f3 0f 1e fa          	endbr64 
    4:	55                   	push   rbp
@@ -27,11 +27,11 @@ void add16ub(v16ib x, v16ib y, v16ib * z)
   26:	5d                   	pop    rbp
   27:	c3                   	ret    
 
-0000000000000028 <add16us>:
+0000000000000028 <add16is>:
 
 typedef signed short v16is __attribute__((vector_size(16)));
 
-void add16us(v16is x, v16is y, v16is * z)
+void add16is(v16is x, v16is y, v16is * z)
 {
   28:	f3 0f 1e fa          	endbr64 
   2c:	55                   	push   rbp
@@ -49,11 +49,11 @@ void add16us(v16is x, v16is y, v16is * z)
   4e:	5d                   	pop    rbp
   4f:	c3                   	ret    
 
-0000000000000050 <add16ui>:
+0000000000000050 <add16ii>:
 
 typedef signed int v16ii __attribute__((vector_size(16)));
 
-void add16ui(v16ii x, v16ii y, v16ii * z)
+void add16ii(v16ii x, v16ii y, v16ii * z)
 {
   50:	f3 0f 1e fa          	endbr64 
   54:	55                   	push   rbp
@@ -71,11 +71,11 @@ void add16ui(v16ii x, v16ii y, v16ii * z)
   76:	5d                   	pop    rbp
   77:	c3                   	ret    
 
-0000000000000078 <add16ul>:
+0000000000000078 <add16il>:
 
 typedef signed long int v16il __attribute__((vector_size(16)));
 
-void add16ul(v16il x, v16il y, v16il * z)
+void add16il(v16il x, v16il y, v16il * z)
 {
   78:	f3 0f 1e fa          	endbr64 
   7c:	55                   	push   rbp
@@ -118,7 +118,7 @@ int main(void)
         };
         v16ib z;
 
-        add16ub(x, y, &z);
+        add16ib(x, y, &z);
   d5:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
   dc:	66 0f 6f 4d 80       	movdqa xmm1,XMMWORD PTR [rbp-0x80]
   e1:	66 0f 6f 85 70 ff ff 	movdqa xmm0,XMMWORD PTR [rbp-0x90]
@@ -171,7 +171,7 @@ int main(void)
         };
         v16is z;
 
-        add16us(x, y, &z);
+        add16is(x, y, &z);
  165:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
  16c:	66 0f 6f 4d a0       	movdqa xmm1,XMMWORD PTR [rbp-0x60]
  171:	66 0f 6f 45 90       	movdqa xmm0,XMMWORD PTR [rbp-0x70]
@@ -221,7 +221,7 @@ int main(void)
  1ee:	0f 29 45 c0          	movaps XMMWORD PTR [rbp-0x40],xmm0
         v16ii z;
 
-        add16ui(x, y, &z);
+        add16ii(x, y, &z);
  1f2:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
  1f9:	66 0f 6f 4d c0       	movdqa xmm1,XMMWORD PTR [rbp-0x40]
  1fe:	66 0f 6f 45 b0       	movdqa xmm0,XMMWORD PTR [rbp-0x50]
@@ -269,7 +269,7 @@ int main(void)
  277:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
         v16il z;
 
-        add16ul(x, y, &z);
+        add16il(x, y, &z);
  27b:	48 8d 85 60 ff ff ff 	lea    rax,[rbp-0xa0]
  282:	66 0f 6f 4d e0       	movdqa xmm1,XMMWORD PTR [rbp-0x20]
  287:	66 0f 6f 45 d0       	movdqa xmm0,XMMWORD PTR [rbp-0x30]
