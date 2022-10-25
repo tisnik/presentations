@@ -51,10 +51,12 @@ int read_chunks(FILE * f)
     unsigned char type[4];
     size_t read_bytes;
     int length;
+    long position;
 
-    printf("Chunk Length\n");
+    printf("Chunk Length Position\n");
 
     do {
+        position = ftell(f);
 
         read_bytes = fread(&buffer, sizeof(buffer), 1, f);
         if (read_bytes != 1) {
@@ -69,8 +71,8 @@ int read_chunks(FILE * f)
             return 1;
         }
 
-        printf("%c%c%c%c  %d\n", type[0], type[1], type[2], type[3],
-               length);
+        printf("%c%c%c%c  %6d   %6ld\n", type[0], type[1], type[2], type[3],
+               length, position);
         fseek(f, length + 4, SEEK_CUR);
     } while (!(type[0] == 'I' && type[1] == 'E' && type[2] == 'N' && type[3] == 'D'));
 
