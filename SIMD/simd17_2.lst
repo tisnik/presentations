@@ -824,7 +824,8 @@ void lshift16ib(v16ib x, v16ib y, v16ib * z)
 
 0000000000000915 <print_vectors>:
 
-void print_vectors(const char *message, const char *op, v16ib *x,v16ib  *y,v16ib  *z)
+void print_vectors(const char *message, const char *op, v16ib * x,
+                   v16ib * y, v16ib * z)
 {
  915:	f3 0f 1e fa          	endbr64 
  919:	55                   	push   rbp
@@ -903,14 +904,14 @@ int main(void)
     for (i = 0; i < sizeof(v16ib) / sizeof(signed char); i++) {
  9ce:	c7 45 bc 00 00 00 00 	mov    DWORD PTR [rbp-0x44],0x0
  9d5:	eb 2b                	jmp    a02 <main+0x4f>
-        x[i] = i*2;
+        x[i] = i * 2;
  9d7:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
  9da:	01 c0                	add    eax,eax
  9dc:	89 c2                	mov    edx,eax
  9de:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
  9e1:	48 98                	cdqe   
  9e3:	88 54 05 c0          	mov    BYTE PTR [rbp+rax*1-0x40],dl
-        y[i] = 16-i;
+        y[i] = 16 - i;
  9e7:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
  9ea:	ba 10 00 00 00       	mov    edx,0x10
  9ef:	29 c2                	sub    edx,eax

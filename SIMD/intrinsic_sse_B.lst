@@ -5,6 +5,11 @@ intrinsic_sse_B.o:     file format elf64-x86-64
 Disassembly of section .text:
 
 0000000000000000 <print_results>:
+#include <stdio.h>
+#include <xmmintrin.h>
+
+void print_results(const char *title, __v4sf * x, __v4sf * y, __v4sf * z)
+{
    0:	f3 0f 1e fa          	endbr64 
    4:	55                   	push   rbp
    5:	48 89 e5             	mov    rbp,rsp
@@ -13,11 +18,16 @@ Disassembly of section .text:
   10:	48 89 75 e0          	mov    QWORD PTR [rbp-0x20],rsi
   14:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
   18:	48 89 4d d0          	mov    QWORD PTR [rbp-0x30],rcx
+    int i;
+
+    puts(title);
   1c:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
   20:	48 89 c7             	mov    rdi,rax
   23:	e8 00 00 00 00       	call   28 <print_results+0x28>
+    for (i = 0; i < sizeof(*x) / sizeof(float); i++) {
   28:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
   2f:	eb 53                	jmp    84 <print_results+0x84>
+        printf("%2d  %2.0f  %2.0f  %2.0f\n", i, (*x)[i], (*y)[i], (*z)[i]);
   31:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
   35:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
   38:	48 63 d2             	movsxd rdx,edx
@@ -38,17 +48,25 @@ Disassembly of section .text:
   6f:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 76 <print_results+0x76>
   76:	b8 03 00 00 00       	mov    eax,0x3
   7b:	e8 00 00 00 00       	call   80 <print_results+0x80>
+    for (i = 0; i < sizeof(*x) / sizeof(float); i++) {
   80:	83 45 fc 01          	add    DWORD PTR [rbp-0x4],0x1
   84:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
   87:	83 f8 03             	cmp    eax,0x3
   8a:	76 a5                	jbe    31 <print_results+0x31>
+    }
+
+    putchar('\n');
   8c:	bf 0a 00 00 00       	mov    edi,0xa
   91:	e8 00 00 00 00       	call   96 <print_results+0x96>
+}
   96:	90                   	nop
   97:	c9                   	leave  
   98:	c3                   	ret    
 
 0000000000000099 <main>:
+
+int main(void)
+{
   99:	f3 0f 1e fa          	endbr64 
   9d:	55                   	push   rbp
   9e:	48 89 e5             	mov    rbp,rsp
@@ -57,24 +75,33 @@ Disassembly of section .text:
   ac:	00 00 
   ae:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
   b2:	31 c0                	xor    eax,eax
+    __v4sf x = { 1, 2, 3, 4 };
   b4:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # bb <main+0x22>
   bb:	0f 29 45 c0          	movaps XMMWORD PTR [rbp-0x40],xmm0
+    __v4sf y = { 6, 7, 8, 9 };
   bf:	0f 28 05 00 00 00 00 	movaps xmm0,XMMWORD PTR [rip+0x0]        # c6 <main+0x2d>
   c6:	0f 29 45 d0          	movaps XMMWORD PTR [rbp-0x30],xmm0
+    __v4sf z;
+
+    z = __builtin_ia32_unpckhps(x, y);
   ca:	0f 28 4d d0          	movaps xmm1,XMMWORD PTR [rbp-0x30]
   ce:	0f 28 45 c0          	movaps xmm0,XMMWORD PTR [rbp-0x40]
   d2:	0f 15 c1             	unpckhps xmm0,xmm1
   d5:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+    print_results(" #   x   y   z", &x, &y, &z);
   d9:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
   dd:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
   e1:	48 8d 45 c0          	lea    rax,[rbp-0x40]
   e5:	48 89 c6             	mov    rsi,rax
   e8:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # ef <main+0x56>
   ef:	e8 00 00 00 00       	call   f4 <main+0x5b>
+
+    z = __builtin_ia32_unpcklps(x, y);
   f4:	0f 28 4d d0          	movaps xmm1,XMMWORD PTR [rbp-0x30]
   f8:	0f 28 45 c0          	movaps xmm0,XMMWORD PTR [rbp-0x40]
   fc:	0f 14 c1             	unpcklps xmm0,xmm1
   ff:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
+    print_results(" #   x   y   z", &x, &y, &z);
  103:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
  107:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
  10b:	48 8d 45 c0          	lea    rax,[rbp-0x40]
@@ -82,6 +109,7 @@ Disassembly of section .text:
  112:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 119 <main+0x80>
  119:	e8 00 00 00 00       	call   11e <main+0x85>
  11e:	b8 00 00 00 00       	mov    eax,0x0
+}
  123:	48 8b 75 f8          	mov    rsi,QWORD PTR [rbp-0x8]
  127:	64 48 33 34 25 28 00 	xor    rsi,QWORD PTR fs:0x28
  12e:	00 00 

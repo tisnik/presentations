@@ -855,7 +855,8 @@ void lshift16ib(v16ib x, v16ib y, v16ib * z)
 
 0000000000000bd0 <print_vectors>:
 
-void print_vectors(const char *message, const char *op, v16ib *x,v16ib  *y,v16ib  *z)
+void print_vectors(const char *message, const char *op, v16ib * x,
+                   v16ib * y, v16ib * z)
 {
  bd0:	f3 0f 1e fa          	endbr64 
  bd4:	41 57                	push   r15
@@ -932,8 +933,8 @@ int main(void)
 {
    0:	f3 0f 1e fa          	endbr64 
    4:	41 57                	push   r15
-        x[i] = i*2;
-        y[i] = 16-i;
+        x[i] = i * 2;
+        y[i] = 16 - i;
     }
 
     add16ib(x, y, &z);
@@ -947,7 +948,7 @@ int main(void)
   1a:	55                   	push   rbp
   1b:	53                   	push   rbx
   1c:	48 81 ec 78 08 00 00 	sub    rsp,0x878
-        x[i] = i*2;
+        x[i] = i * 2;
   23:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 2b <main+0x2b>
   2a:	00 
 {
@@ -961,10 +962,10 @@ int main(void)
   45:	00 
   46:	4c 8d a4 24 30 08 00 	lea    r12,[rsp+0x830]
   4d:	00 
-        x[i] = i*2;
+        x[i] = i * 2;
   4e:	0f 29 84 24 30 08 00 	movaps XMMWORD PTR [rsp+0x830],xmm0
   55:	00 
-        y[i] = 16-i;
+        y[i] = 16 - i;
   56:	66 0f 6f 05 00 00 00 	movdqa xmm0,XMMWORD PTR [rip+0x0]        # 5e <main+0x5e>
   5d:	00 
     print_vectors("vector addition", "+", &x, &y, &z);
@@ -972,7 +973,7 @@ int main(void)
   61:	4c 89 e2             	mov    rdx,r12
   64:	48 8d 9c 24 50 08 00 	lea    rbx,[rsp+0x850]
   6b:	00 
-        y[i] = 16-i;
+        y[i] = 16 - i;
   6c:	0f 29 84 24 40 08 00 	movaps XMMWORD PTR [rsp+0x840],xmm0
   73:	00 
     *z = x + y;

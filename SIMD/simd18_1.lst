@@ -195,11 +195,13 @@ void print_vectors(const char *message, const char op, v16float * x,
     for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
  1b5:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
  1bc:	eb 67                	jmp    225 <print_vectors+0x9d>
-        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i], (*z)[i]);
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
+               (*z)[i]);
  1be:	48 8b 45 c8          	mov    rax,QWORD PTR [rbp-0x38]
  1c2:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
  1c5:	48 63 d2             	movsxd rdx,edx
  1c8:	d9 04 90             	fld    DWORD PTR [rax+rdx*4]
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
  1cb:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
  1cf:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
  1d2:	48 63 d2             	movsxd rdx,edx

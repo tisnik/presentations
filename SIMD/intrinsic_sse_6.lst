@@ -35,7 +35,7 @@ int main(void)
   3d:	66 0f 58 c1          	addpd  xmm0,xmm1
   41:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
 
-    for (i = 0; i < sizeof(x)/sizeof(double); i++) {
+    for (i = 0; i < sizeof(x) / sizeof(double); i++) {
   45:	c7 45 bc 00 00 00 00 	mov    DWORD PTR [rbp-0x44],0x0
   4c:	eb 47                	jmp    95 <main+0x95>
         printf("%2d %lf %lf %lf\n", i, x[i], y[i], z[i]);
@@ -56,7 +56,7 @@ int main(void)
   80:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 87 <main+0x87>
   87:	b8 03 00 00 00       	mov    eax,0x3
   8c:	e8 00 00 00 00       	call   91 <main+0x91>
-    for (i = 0; i < sizeof(x)/sizeof(double); i++) {
+    for (i = 0; i < sizeof(x) / sizeof(double); i++) {
   91:	83 45 bc 01          	add    DWORD PTR [rbp-0x44],0x1
   95:	8b 45 bc             	mov    eax,DWORD PTR [rbp-0x44]
   98:	83 f8 01             	cmp    eax,0x1

@@ -88,7 +88,7 @@ printf (const char *__restrict __fmt, ...)
     puts(message);
   6a:	e8 00 00 00 00       	call   6f <print_vectors+0x2f>
     for (i = 0; i < sizeof(v16float) / sizeof(float); i++) {
-        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i], (*z)[i]);
+        printf("%2d    %5.3f %c %5.3f = %5.3f\n", i, (*x)[i], op, (*y)[i],
   6f:	66 0f ef c0          	pxor   xmm0,xmm0
   73:	66 0f ef d2          	pxor   xmm2,xmm2
   77:	66 0f ef c9          	pxor   xmm1,xmm1
@@ -112,6 +112,7 @@ putchar (int __c)
 {
   return putc (__c, stdout);
   ae:	48 8b 35 00 00 00 00 	mov    rsi,QWORD PTR [rip+0x0]        # b5 <print_vectors+0x75>
+               (*z)[i]);
     }
 
     putchar('\n');

@@ -8,7 +8,7 @@ Disassembly of section .text:
 #include <stdio.h>
 #include <xmmintrin.h>
 
-void print_results(const char *title, __v4sf *x, __v4sf *y)
+void print_results(const char *title, __v4sf * x, __v4sf * y)
 {
    0:	f3 0f 1e fa          	endbr64 
    4:	55                   	push   rbp
@@ -23,7 +23,7 @@ void print_results(const char *title, __v4sf *x, __v4sf *y)
   18:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
   1c:	48 89 c7             	mov    rdi,rax
   1f:	e8 00 00 00 00       	call   24 <print_results+0x24>
-    for (i = 0; i < sizeof(*x)/sizeof(float); i++) {
+    for (i = 0; i < sizeof(*x) / sizeof(float); i++) {
   24:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
   2b:	eb 40                	jmp    6d <print_results+0x6d>
         printf("%2d  %5.2f  %3.1f\n", i, (*x)[i], (*y)[i]);
@@ -42,7 +42,7 @@ void print_results(const char *title, __v4sf *x, __v4sf *y)
   58:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 5f <print_results+0x5f>
   5f:	b8 02 00 00 00       	mov    eax,0x2
   64:	e8 00 00 00 00       	call   69 <print_results+0x69>
-    for (i = 0; i < sizeof(*x)/sizeof(float); i++) {
+    for (i = 0; i < sizeof(*x) / sizeof(float); i++) {
   69:	83 45 fc 01          	add    DWORD PTR [rbp-0x4],0x1
   6d:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
   70:	83 f8 03             	cmp    eax,0x3

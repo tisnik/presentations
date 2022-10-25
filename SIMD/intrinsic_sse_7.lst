@@ -8,7 +8,8 @@ Disassembly of section .text:
 #include <stdio.h>
 #include <xmmintrin.h>
 
-void print_results(const char *title, __v16qi *x, __v16qi *y, __v16qi *z)
+void print_results(const char *title, __v16qi * x, __v16qi * y,
+                   __v16qi * z)
 {
    0:	f3 0f 1e fa          	endbr64 
    4:	55                   	push   rbp
@@ -24,14 +25,16 @@ void print_results(const char *title, __v16qi *x, __v16qi *y, __v16qi *z)
   1c:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
   20:	48 89 c7             	mov    rdi,rax
   23:	e8 00 00 00 00       	call   28 <print_results+0x28>
-    for (i = 0; i < sizeof(*x)/sizeof(char); i++) {
+    for (i = 0; i < sizeof(*x) / sizeof(char); i++) {
   28:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
   2f:	eb 5e                	jmp    8f <print_results+0x8f>
-        printf("%2d %2d %2d  %s\n", i, (*x)[i], (*y)[i], (*z)[i] == 0 ? "no":"yes");
+        printf("%2d %2d %2d  %s\n", i, (*x)[i], (*y)[i],
+               (*z)[i] == 0 ? "no" : "yes");
   31:	48 8b 55 d0          	mov    rdx,QWORD PTR [rbp-0x30]
   35:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
   38:	48 98                	cdqe   
   3a:	0f b6 04 02          	movzx  eax,BYTE PTR [rdx+rax*1]
+        printf("%2d %2d %2d  %s\n", i, (*x)[i], (*y)[i],
   3e:	84 c0                	test   al,al
   40:	75 09                	jne    4b <print_results+0x4b>
   42:	48 8d 05 00 00 00 00 	lea    rax,[rip+0x0]        # 49 <print_results+0x49>
@@ -52,7 +55,7 @@ void print_results(const char *title, __v16qi *x, __v16qi *y, __v16qi *z)
   7a:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 81 <print_results+0x81>
   81:	b8 00 00 00 00       	mov    eax,0x0
   86:	e8 00 00 00 00       	call   8b <print_results+0x8b>
-    for (i = 0; i < sizeof(*x)/sizeof(char); i++) {
+    for (i = 0; i < sizeof(*x) / sizeof(char); i++) {
   8b:	83 45 fc 01          	add    DWORD PTR [rbp-0x4],0x1
   8f:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
   92:	83 f8 0f             	cmp    eax,0xf
@@ -94,7 +97,7 @@ int main(void)
   dc:	66 0f 6f 4d c0       	movdqa xmm1,XMMWORD PTR [rbp-0x40]
   e1:	66 0f 74 c1          	pcmpeqb xmm0,xmm1
   e5:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
-    print_results(" #  x  y  equal?", &x, &y, &z);
+    print_results(" #  x  y  x==y?", &x, &y, &z);
   e9:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
   ed:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
   f1:	48 8d 45 c0          	lea    rax,[rbp-0x40]
@@ -107,7 +110,7 @@ int main(void)
  109:	66 0f 6f 45 c0       	movdqa xmm0,XMMWORD PTR [rbp-0x40]
  10e:	66 0f 64 c1          	pcmpgtb xmm0,xmm1
  112:	0f 29 45 e0          	movaps XMMWORD PTR [rbp-0x20],xmm0
-    print_results(" #  x  y  >?", &x, &y, &z);
+    print_results(" #  x  y  x>y?", &x, &y, &z);
  116:	48 8d 4d e0          	lea    rcx,[rbp-0x20]
  11a:	48 8d 55 d0          	lea    rdx,[rbp-0x30]
  11e:	48 8d 45 c0          	lea    rax,[rbp-0x40]
