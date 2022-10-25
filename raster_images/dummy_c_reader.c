@@ -63,7 +63,7 @@ int read_chunks(FILE * f)
         }
         length = (int) buffer[3] | (int) buffer[2] << 8 | (int) buffer[1] << 16 | (int) buffer[0] << 24;
 
-        read_bytes = fread(&type, sizeof(length), 1, f);
+        read_bytes = fread(&type, sizeof(type), 1, f);
         if (read_bytes != 1) {
             printf("Read error!\n");
             return 1;
