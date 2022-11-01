@@ -1,0 +1,199 @@
+
+simd21_avx.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <add32float>:
+#include <stdio.h>
+
+typedef float v32float __attribute__((vector_size(32)));
+
+void add32float(v32float x, v32float y, v32float * z)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 83 e4 e0          	and    rsp,0xffffffffffffffe0
+   c:	c5 fc 29 44 24 e0    	vmovaps YMMWORD PTR [rsp-0x20],ymm0
+  12:	c5 fc 29 4c 24 c0    	vmovaps YMMWORD PTR [rsp-0x40],ymm1
+  18:	48 89 7c 24 b8       	mov    QWORD PTR [rsp-0x48],rdi
+    *z = x + y;
+  1d:	c5 fc 28 44 24 e0    	vmovaps ymm0,YMMWORD PTR [rsp-0x20]
+  23:	c5 fc 58 44 24 c0    	vaddps ymm0,ymm0,YMMWORD PTR [rsp-0x40]
+  29:	48 8b 44 24 b8       	mov    rax,QWORD PTR [rsp-0x48]
+  2e:	c5 fc 29 00          	vmovaps YMMWORD PTR [rax],ymm0
+}
+  32:	90                   	nop
+  33:	c9                   	leave  
+  34:	c3                   	ret    
+
+0000000000000035 <add32double>:
+
+typedef double v32double __attribute__((vector_size(32)));
+
+void add32double(v32double x, v32double y, v32double * z)
+{
+  35:	f3 0f 1e fa          	endbr64 
+  39:	55                   	push   rbp
+  3a:	48 89 e5             	mov    rbp,rsp
+  3d:	48 83 e4 e0          	and    rsp,0xffffffffffffffe0
+  41:	c5 fd 29 44 24 e0    	vmovapd YMMWORD PTR [rsp-0x20],ymm0
+  47:	c5 fd 29 4c 24 c0    	vmovapd YMMWORD PTR [rsp-0x40],ymm1
+  4d:	48 89 7c 24 b8       	mov    QWORD PTR [rsp-0x48],rdi
+    *z = x + y;
+  52:	c5 fd 28 44 24 e0    	vmovapd ymm0,YMMWORD PTR [rsp-0x20]
+  58:	c5 fd 58 44 24 c0    	vaddpd ymm0,ymm0,YMMWORD PTR [rsp-0x40]
+  5e:	48 8b 44 24 b8       	mov    rax,QWORD PTR [rsp-0x48]
+  63:	c5 fd 29 00          	vmovapd YMMWORD PTR [rax],ymm0
+}
+  67:	90                   	nop
+  68:	c9                   	leave  
+  69:	c3                   	ret    
+
+000000000000006a <main>:
+
+int main(void)
+{
+  6a:	f3 0f 1e fa          	endbr64 
+  6e:	4c 8d 54 24 08       	lea    r10,[rsp+0x8]
+  73:	48 83 e4 e0          	and    rsp,0xffffffffffffffe0
+  77:	41 ff 72 f8          	push   QWORD PTR [r10-0x8]
+  7b:	55                   	push   rbp
+  7c:	48 89 e5             	mov    rbp,rsp
+  7f:	41 52                	push   r10
+  81:	48 81 ec a8 00 00 00 	sub    rsp,0xa8
+  88:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  8f:	00 00 
+  91:	48 89 45 e8          	mov    QWORD PTR [rbp-0x18],rax
+  95:	31 c0                	xor    eax,eax
+    {
+        v32float x = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0};
+  97:	c5 fc 28 05 00 00 00 	vmovaps ymm0,YMMWORD PTR [rip+0x0]        # 9f <main+0x35>
+  9e:	00 
+  9f:	c5 fc 29 85 70 ff ff 	vmovaps YMMWORD PTR [rbp-0x90],ymm0
+  a6:	ff 
+        v32float y = {0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5};
+  a7:	c5 fc 28 05 00 00 00 	vmovaps ymm0,YMMWORD PTR [rip+0x0]        # af <main+0x45>
+  ae:	00 
+  af:	c5 fc 29 45 90       	vmovaps YMMWORD PTR [rbp-0x70],ymm0
+        v32float z;
+        int i;
+
+        add32float(x, y, &z);
+  b4:	c5 fc 28 4d 90       	vmovaps ymm1,YMMWORD PTR [rbp-0x70]
+  b9:	c5 fc 28 85 70 ff ff 	vmovaps ymm0,YMMWORD PTR [rbp-0x90]
+  c0:	ff 
+  c1:	48 8d 45 b0          	lea    rax,[rbp-0x50]
+  c5:	48 89 c7             	mov    rdi,rax
+  c8:	e8 00 00 00 00       	call   cd <main+0x63>
+
+        puts("vector of floats");
+  cd:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # d4 <main+0x6a>
+  d4:	e8 00 00 00 00       	call   d9 <main+0x6f>
+
+        for (i = 0; i < sizeof(v32float) / sizeof(float); i++) {
+  d9:	c7 85 68 ff ff ff 00 	mov    DWORD PTR [rbp-0x98],0x0
+  e0:	00 00 00 
+  e3:	eb 59                	jmp    13e <main+0xd4>
+            printf("%d     %f + %f = %f\n", i, x[i], y[i], z[i]);
+  e5:	8b 85 68 ff ff ff    	mov    eax,DWORD PTR [rbp-0x98]
+  eb:	48 98                	cdqe   
+  ed:	c5 fa 10 44 85 b0    	vmovss xmm0,DWORD PTR [rbp+rax*4-0x50]
+  f3:	c5 fa 5a d0          	vcvtss2sd xmm2,xmm0,xmm0
+  f7:	8b 85 68 ff ff ff    	mov    eax,DWORD PTR [rbp-0x98]
+  fd:	48 98                	cdqe   
+  ff:	c5 fa 10 44 85 90    	vmovss xmm0,DWORD PTR [rbp+rax*4-0x70]
+ 105:	c5 fa 5a c8          	vcvtss2sd xmm1,xmm0,xmm0
+ 109:	8b 85 68 ff ff ff    	mov    eax,DWORD PTR [rbp-0x98]
+ 10f:	48 98                	cdqe   
+ 111:	c5 fa 10 84 85 70 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0x90]
+ 118:	ff ff 
+ 11a:	c5 fa 5a c0          	vcvtss2sd xmm0,xmm0,xmm0
+ 11e:	8b 85 68 ff ff ff    	mov    eax,DWORD PTR [rbp-0x98]
+ 124:	89 c6                	mov    esi,eax
+ 126:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 12d <main+0xc3>
+ 12d:	b8 03 00 00 00       	mov    eax,0x3
+ 132:	e8 00 00 00 00       	call   137 <main+0xcd>
+        for (i = 0; i < sizeof(v32float) / sizeof(float); i++) {
+ 137:	83 85 68 ff ff ff 01 	add    DWORD PTR [rbp-0x98],0x1
+ 13e:	8b 85 68 ff ff ff    	mov    eax,DWORD PTR [rbp-0x98]
+ 144:	83 f8 07             	cmp    eax,0x7
+ 147:	76 9c                	jbe    e5 <main+0x7b>
+        }
+    }
+
+    putchar('\n');
+ 149:	bf 0a 00 00 00       	mov    edi,0xa
+ 14e:	e8 00 00 00 00       	call   153 <main+0xe9>
+
+    {
+        v32double x = {1.0, 2.0, 3.0, 4.0};
+ 153:	c5 fd 28 05 00 00 00 	vmovapd ymm0,YMMWORD PTR [rip+0x0]        # 15b <main+0xf1>
+ 15a:	00 
+ 15b:	c5 fd 29 85 70 ff ff 	vmovapd YMMWORD PTR [rbp-0x90],ymm0
+ 162:	ff 
+        v32double y = {0.5, 0.5, 0.5, 0.5};
+ 163:	c5 fd 28 05 00 00 00 	vmovapd ymm0,YMMWORD PTR [rip+0x0]        # 16b <main+0x101>
+ 16a:	00 
+ 16b:	c5 fd 29 45 90       	vmovapd YMMWORD PTR [rbp-0x70],ymm0
+        v32double z;
+        int i;
+
+        add32double(x, y, &z);
+ 170:	c5 fd 28 4d 90       	vmovapd ymm1,YMMWORD PTR [rbp-0x70]
+ 175:	c5 fd 28 85 70 ff ff 	vmovapd ymm0,YMMWORD PTR [rbp-0x90]
+ 17c:	ff 
+ 17d:	48 8d 45 b0          	lea    rax,[rbp-0x50]
+ 181:	48 89 c7             	mov    rdi,rax
+ 184:	e8 00 00 00 00       	call   189 <main+0x11f>
+
+        puts("vector of doubles");
+ 189:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 190 <main+0x126>
+ 190:	e8 00 00 00 00       	call   195 <main+0x12b>
+
+        for (i = 0; i < sizeof(v32double) / sizeof(double); i++) {
+ 195:	c7 85 6c ff ff ff 00 	mov    DWORD PTR [rbp-0x94],0x0
+ 19c:	00 00 00 
+ 19f:	eb 59                	jmp    1fa <main+0x190>
+            printf("%d     %f + %f = %f\n", i, x[i], y[i], z[i]);
+ 1a1:	8b 85 6c ff ff ff    	mov    eax,DWORD PTR [rbp-0x94]
+ 1a7:	48 98                	cdqe   
+ 1a9:	c5 fb 10 4c c5 b0    	vmovsd xmm1,QWORD PTR [rbp+rax*8-0x50]
+ 1af:	8b 85 6c ff ff ff    	mov    eax,DWORD PTR [rbp-0x94]
+ 1b5:	48 98                	cdqe   
+ 1b7:	c5 fb 10 44 c5 90    	vmovsd xmm0,QWORD PTR [rbp+rax*8-0x70]
+ 1bd:	8b 85 6c ff ff ff    	mov    eax,DWORD PTR [rbp-0x94]
+ 1c3:	48 98                	cdqe   
+ 1c5:	48 8b 94 c5 70 ff ff 	mov    rdx,QWORD PTR [rbp+rax*8-0x90]
+ 1cc:	ff 
+ 1cd:	8b 85 6c ff ff ff    	mov    eax,DWORD PTR [rbp-0x94]
+ 1d3:	c5 f9 28 d1          	vmovapd xmm2,xmm1
+ 1d7:	c5 f9 28 c8          	vmovapd xmm1,xmm0
+ 1db:	c4 e1 f9 6e c2       	vmovq  xmm0,rdx
+ 1e0:	89 c6                	mov    esi,eax
+ 1e2:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 1e9 <main+0x17f>
+ 1e9:	b8 03 00 00 00       	mov    eax,0x3
+ 1ee:	e8 00 00 00 00       	call   1f3 <main+0x189>
+        for (i = 0; i < sizeof(v32double) / sizeof(double); i++) {
+ 1f3:	83 85 6c ff ff ff 01 	add    DWORD PTR [rbp-0x94],0x1
+ 1fa:	8b 85 6c ff ff ff    	mov    eax,DWORD PTR [rbp-0x94]
+ 200:	83 f8 03             	cmp    eax,0x3
+ 203:	76 9c                	jbe    1a1 <main+0x137>
+        }
+    }
+
+
+    return 0;
+ 205:	b8 00 00 00 00       	mov    eax,0x0
+}
+ 20a:	48 8b 4d e8          	mov    rcx,QWORD PTR [rbp-0x18]
+ 20e:	64 48 33 0c 25 28 00 	xor    rcx,QWORD PTR fs:0x28
+ 215:	00 00 
+ 217:	74 05                	je     21e <main+0x1b4>
+ 219:	e8 00 00 00 00       	call   21e <main+0x1b4>
+ 21e:	48 81 c4 a8 00 00 00 	add    rsp,0xa8
+ 225:	41 5a                	pop    r10
+ 227:	5d                   	pop    rbp
+ 228:	49 8d 62 f8          	lea    rsp,[r10-0x8]
+ 22c:	c3                   	ret    
