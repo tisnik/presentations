@@ -12,6 +12,9 @@ all:	simd04_1.lst simd04_2.lst \
     	simd16_1.lst simd16_2.lst simd16_3.lst simd16_4.lst \
     	simd17_1.lst simd17_2.lst simd17_3.lst simd17_4.lst \
     	simd18_1.lst simd18_2.lst simd18_3.lst simd18_4.lst \
+	simd19_sse.lst simd19_avx.lst simd19_avx2.lst \
+	simd20_sse.lst simd20_avx.lst simd20_avx2.lst \
+	simd21_sse.lst simd21_avx.lst simd21_avx2.lst \
 	intrinsic_mmx_1.lst \
 	intrinsic_mmx_2.lst \
 	intrinsic_mmx_3.lst \
@@ -138,6 +141,33 @@ simd18_3.o:	simd18.c
 simd18_4.o:	simd18.c
 	gcc -c -O3 -g -o $@ $<
 
+simd19_sse.o:	simd19.c
+	gcc -c -O0 -msse -mno-avx -g -o $@ $<
+
+simd19_avx.o:	simd19.c
+	gcc -c -O0 -mavx -g -o $@ $<
+
+simd19_avx2.o:	simd19.c
+	gcc -c -O0 -mavx2 -g -o $@ $<
+
+simd20_sse.o:	simd20.c
+	gcc -c -O0 -msse -mno-avx -g -o $@ $<
+
+simd20_avx.o:	simd20.c
+	gcc -c -O0 -mavx -g -o $@ $<
+
+simd20_avx2.o:	simd20.c
+	gcc -c -O0 -mavx2 -g -o $@ $<
+
+simd21_sse.o:	simd21.c
+	gcc -c -O0 -msse -mno-avx -g -o $@ $<
+
+simd21_avx.o:	simd21.c
+	gcc -c -O0 -mavx -g -o $@ $<
+
+simd21_avx2.o:	simd21.c
+	gcc -c -O0 -mavx2 -g -o $@ $<
+
 intrinsic_mmx_1.o:	intrinsic_mmx_1.c
 	gcc -c -O0 -g -o $@ $<
 
@@ -185,3 +215,12 @@ intrinsic_sse_A.o:	intrinsic_sse_A.c
 
 intrinsic_sse_B.o:	intrinsic_sse_B.c
 	gcc -c -O0 -g -o $@ $<
+
+intrinsic_avx_1.o:	intrinsic_avx_1.c
+	gcc -c -mavx -O0 -g -o $@ $<
+
+intrinsic_avx_2.o:	intrinsic_avx_2.c
+	gcc -c -mavx -O0 -g -o $@ $<
+
+intrinsic_avx_3.o:	intrinsic_avx_3.c
+	gcc -c -mavx -O0 -g -o $@ $<
