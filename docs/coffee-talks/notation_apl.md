@@ -347,6 +347,27 @@ R∊R∘.×R
 (~R∊R∘.×R)/R
 ```
 
+* Number of primes in given range
+
+```apl
+⍴(~R∊R∘.×R)/R
+```
+
+* As a function
+
+```apl
+primes←{{(~⍵∊⍵∘.×⍵)/⍵}1↓⍳⍵}
+      primes 10
+2 3 5 7
+```
+
+* Tacit variant
+
+```apl
+((⊢~∘.×⍨)1↓⍳)100
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+```
+
 ## Implementations of APL
 
 * dyalog
