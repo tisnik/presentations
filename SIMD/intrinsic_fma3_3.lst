@@ -1,0 +1,126 @@
+
+intrinsic_fma3_3.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <print_results>:
+#include <immintrin.h>
+#include <float.h>
+
+void print_results(const char *title, __v4sf * a, __v4sf * b, __v4sf * c,
+                   __v4sf * result)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 83 ec 40          	sub    rsp,0x40
+   c:	48 89 7d e8          	mov    QWORD PTR [rbp-0x18],rdi
+  10:	48 89 75 e0          	mov    QWORD PTR [rbp-0x20],rsi
+  14:	48 89 55 d8          	mov    QWORD PTR [rbp-0x28],rdx
+  18:	48 89 4d d0          	mov    QWORD PTR [rbp-0x30],rcx
+  1c:	4c 89 45 c8          	mov    QWORD PTR [rbp-0x38],r8
+    int i;
+
+    puts(title);
+  20:	48 8b 45 e8          	mov    rax,QWORD PTR [rbp-0x18]
+  24:	48 89 c7             	mov    rdi,rax
+  27:	e8 00 00 00 00       	call   2c <print_results+0x2c>
+    for (i = 0; i < sizeof(*a) / sizeof(float); i++) {
+  2c:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
+  33:	eb 66                	jmp    9b <print_results+0x9b>
+        printf("%2d  %5.2g * %5.2g + %5.2g = %5.2g\n", i, (*a)[i], (*b)[i],
+               (*c)[i], (*result)[i]);
+  35:	48 8b 45 c8          	mov    rax,QWORD PTR [rbp-0x38]
+  39:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+  3c:	48 63 d2             	movsxd rdx,edx
+  3f:	c5 fa 10 04 90       	vmovss xmm0,DWORD PTR [rax+rdx*4]
+        printf("%2d  %5.2g * %5.2g + %5.2g = %5.2g\n", i, (*a)[i], (*b)[i],
+  44:	c5 fa 5a d8          	vcvtss2sd xmm3,xmm0,xmm0
+               (*c)[i], (*result)[i]);
+  48:	48 8b 45 d0          	mov    rax,QWORD PTR [rbp-0x30]
+  4c:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+  4f:	48 63 d2             	movsxd rdx,edx
+  52:	c5 fa 10 04 90       	vmovss xmm0,DWORD PTR [rax+rdx*4]
+        printf("%2d  %5.2g * %5.2g + %5.2g = %5.2g\n", i, (*a)[i], (*b)[i],
+  57:	c5 fa 5a d0          	vcvtss2sd xmm2,xmm0,xmm0
+  5b:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
+  5f:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+  62:	48 63 d2             	movsxd rdx,edx
+  65:	c5 fa 10 04 90       	vmovss xmm0,DWORD PTR [rax+rdx*4]
+  6a:	c5 fa 5a c8          	vcvtss2sd xmm1,xmm0,xmm0
+  6e:	48 8b 45 e0          	mov    rax,QWORD PTR [rbp-0x20]
+  72:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+  75:	48 63 d2             	movsxd rdx,edx
+  78:	c5 fa 10 04 90       	vmovss xmm0,DWORD PTR [rax+rdx*4]
+  7d:	c5 fa 5a c0          	vcvtss2sd xmm0,xmm0,xmm0
+  81:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  84:	89 c6                	mov    esi,eax
+  86:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 8d <print_results+0x8d>
+  8d:	b8 04 00 00 00       	mov    eax,0x4
+  92:	e8 00 00 00 00       	call   97 <print_results+0x97>
+    for (i = 0; i < sizeof(*a) / sizeof(float); i++) {
+  97:	83 45 fc 01          	add    DWORD PTR [rbp-0x4],0x1
+  9b:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  9e:	83 f8 03             	cmp    eax,0x3
+  a1:	76 92                	jbe    35 <print_results+0x35>
+    }
+
+    putchar('\n');
+  a3:	bf 0a 00 00 00       	mov    edi,0xa
+  a8:	e8 00 00 00 00       	call   ad <print_results+0xad>
+}
+  ad:	90                   	nop
+  ae:	c9                   	leave  
+  af:	c3                   	ret    
+
+00000000000000b0 <main>:
+
+int main(void)
+{
+  b0:	f3 0f 1e fa          	endbr64 
+  b4:	55                   	push   rbp
+  b5:	48 89 e5             	mov    rbp,rsp
+  b8:	48 83 ec 50          	sub    rsp,0x50
+  bc:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  c3:	00 00 
+  c5:	48 89 45 f8          	mov    QWORD PTR [rbp-0x8],rax
+  c9:	31 c0                	xor    eax,eax
+    __v4sf a = { 0.8, 0.9, 1.0, 1.1 };
+  cb:	c5 f8 28 05 00 00 00 	vmovaps xmm0,XMMWORD PTR [rip+0x0]        # d3 <main+0x23>
+  d2:	00 
+  d3:	c5 f8 29 45 b0       	vmovaps XMMWORD PTR [rbp-0x50],xmm0
+    __v4sf b = { FLT_MAX, FLT_MAX, FLT_MAX, FLT_MAX };
+  d8:	c5 f8 28 05 00 00 00 	vmovaps xmm0,XMMWORD PTR [rip+0x0]        # e0 <main+0x30>
+  df:	00 
+  e0:	c5 f8 29 45 c0       	vmovaps XMMWORD PTR [rbp-0x40],xmm0
+    __v4sf c = { 0, 0, 0, 0 };;
+  e5:	c5 f8 57 c0          	vxorps xmm0,xmm0,xmm0
+  e9:	c5 f8 29 45 d0       	vmovaps XMMWORD PTR [rbp-0x30],xmm0
+    __v4sf result;
+
+    result = __builtin_ia32_vfmaddps(a, b, c);
+  ee:	c5 f8 28 45 d0       	vmovaps xmm0,XMMWORD PTR [rbp-0x30]
+  f3:	c5 f8 28 4d c0       	vmovaps xmm1,XMMWORD PTR [rbp-0x40]
+  f8:	c5 f8 28 55 b0       	vmovaps xmm2,XMMWORD PTR [rbp-0x50]
+  fd:	c4 e2 69 b8 c1       	vfmadd231ps xmm0,xmm2,xmm1
+ 102:	c5 f8 29 45 e0       	vmovaps XMMWORD PTR [rbp-0x20],xmm0
+    print_results(" #     a      b       c       result", &a, &b, &c,
+ 107:	48 8d 75 e0          	lea    rsi,[rbp-0x20]
+ 10b:	48 8d 4d d0          	lea    rcx,[rbp-0x30]
+ 10f:	48 8d 55 c0          	lea    rdx,[rbp-0x40]
+ 113:	48 8d 45 b0          	lea    rax,[rbp-0x50]
+ 117:	49 89 f0             	mov    r8,rsi
+ 11a:	48 89 c6             	mov    rsi,rax
+ 11d:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 124 <main+0x74>
+ 124:	e8 00 00 00 00       	call   129 <main+0x79>
+ 129:	b8 00 00 00 00       	mov    eax,0x0
+                  &result);
+}
+ 12e:	48 8b 7d f8          	mov    rdi,QWORD PTR [rbp-0x8]
+ 132:	64 48 33 3c 25 28 00 	xor    rdi,QWORD PTR fs:0x28
+ 139:	00 00 
+ 13b:	74 05                	je     142 <main+0x92>
+ 13d:	e8 00 00 00 00       	call   142 <main+0x92>
+ 142:	c9                   	leave  
+ 143:	c3                   	ret    
