@@ -1,0 +1,137 @@
+
+intrinsic_f16c_3.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <print_vectors>:
+#include <stdio.h>
+#include <immintrin.h>
+
+void print_vectors(__v4sf x, __v4sf y, __v8hi half)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 83 ec 40          	sub    rsp,0x40
+   c:	c5 f8 29 45 e0       	vmovaps XMMWORD PTR [rbp-0x20],xmm0
+  11:	c5 f8 29 4d d0       	vmovaps XMMWORD PTR [rbp-0x30],xmm1
+  16:	c5 f8 29 55 c0       	vmovaps XMMWORD PTR [rbp-0x40],xmm2
+    int i;
+
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+  1b:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
+  22:	eb 45                	jmp    69 <print_vectors+0x69>
+        printf("%2d   %9.8f   %04x   %9.8f\n", i, x[i], half[i], y[i]);
+  24:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  27:	48 98                	cdqe   
+  29:	c5 fa 10 44 85 d0    	vmovss xmm0,DWORD PTR [rbp+rax*4-0x30]
+  2f:	c5 fa 5a c8          	vcvtss2sd xmm1,xmm0,xmm0
+  33:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  36:	48 98                	cdqe   
+  38:	0f b7 44 45 c0       	movzx  eax,WORD PTR [rbp+rax*2-0x40]
+  3d:	0f bf d0             	movsx  edx,ax
+  40:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  43:	48 98                	cdqe   
+  45:	c5 fa 10 44 85 e0    	vmovss xmm0,DWORD PTR [rbp+rax*4-0x20]
+  4b:	c5 fa 5a c0          	vcvtss2sd xmm0,xmm0,xmm0
+  4f:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  52:	89 c6                	mov    esi,eax
+  54:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 5b <print_vectors+0x5b>
+  5b:	b8 02 00 00 00       	mov    eax,0x2
+  60:	e8 00 00 00 00       	call   65 <print_vectors+0x65>
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+  65:	83 45 fc 01          	add    DWORD PTR [rbp-0x4],0x1
+  69:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  6c:	83 f8 03             	cmp    eax,0x3
+  6f:	76 b3                	jbe    24 <print_vectors+0x24>
+    }
+
+    putchar('\n');
+  71:	bf 0a 00 00 00       	mov    edi,0xa
+  76:	e8 00 00 00 00       	call   7b <print_vectors+0x7b>
+}
+  7b:	90                   	nop
+  7c:	c9                   	leave  
+  7d:	c3                   	ret    
+
+000000000000007e <main>:
+
+int main(void)
+{
+  7e:	f3 0f 1e fa          	endbr64 
+  82:	55                   	push   rbp
+  83:	48 89 e5             	mov    rbp,rsp
+  86:	48 83 ec 30          	sub    rsp,0x30
+    __v4sf x = { 5e-4, 5e-5, 5e-6, 5e-7 };
+  8a:	c5 f8 28 05 00 00 00 	vmovaps xmm0,XMMWORD PTR [rip+0x0]        # 92 <main+0x14>
+  91:	00 
+  92:	c5 f8 29 45 d0       	vmovaps XMMWORD PTR [rbp-0x30],xmm0
+    __v8hi half;
+    __v4sf y;
+
+    // round to nearest even
+    half = __builtin_ia32_vcvtps2ph(x, 0);
+  97:	c5 f8 28 45 d0       	vmovaps xmm0,XMMWORD PTR [rbp-0x30]
+  9c:	c4 e3 79 1d c0 00    	vcvtps2ph xmm0,xmm0,0x0
+  a2:	c5 f8 29 45 e0       	vmovaps XMMWORD PTR [rbp-0x20],xmm0
+    y = __builtin_ia32_vcvtph2ps(half);
+  a7:	c5 f9 6f 45 e0       	vmovdqa xmm0,XMMWORD PTR [rbp-0x20]
+  ac:	c4 e2 79 13 c0       	vcvtph2ps xmm0,xmm0
+  b1:	c5 f8 29 45 f0       	vmovaps XMMWORD PTR [rbp-0x10],xmm0
+    print_vectors(x, y, half);
+  b6:	c5 f9 6f 55 e0       	vmovdqa xmm2,XMMWORD PTR [rbp-0x20]
+  bb:	c5 f8 28 4d f0       	vmovaps xmm1,XMMWORD PTR [rbp-0x10]
+  c0:	c5 f8 28 45 d0       	vmovaps xmm0,XMMWORD PTR [rbp-0x30]
+  c5:	e8 00 00 00 00       	call   ca <main+0x4c>
+
+    // round down
+    half = __builtin_ia32_vcvtps2ph(x, 1);
+  ca:	c5 f8 28 45 d0       	vmovaps xmm0,XMMWORD PTR [rbp-0x30]
+  cf:	c4 e3 79 1d c0 01    	vcvtps2ph xmm0,xmm0,0x1
+  d5:	c5 f8 29 45 e0       	vmovaps XMMWORD PTR [rbp-0x20],xmm0
+    y = __builtin_ia32_vcvtph2ps(half);
+  da:	c5 f9 6f 45 e0       	vmovdqa xmm0,XMMWORD PTR [rbp-0x20]
+  df:	c4 e2 79 13 c0       	vcvtph2ps xmm0,xmm0
+  e4:	c5 f8 29 45 f0       	vmovaps XMMWORD PTR [rbp-0x10],xmm0
+    print_vectors(x, y, half);
+  e9:	c5 f9 6f 55 e0       	vmovdqa xmm2,XMMWORD PTR [rbp-0x20]
+  ee:	c5 f8 28 4d f0       	vmovaps xmm1,XMMWORD PTR [rbp-0x10]
+  f3:	c5 f8 28 45 d0       	vmovaps xmm0,XMMWORD PTR [rbp-0x30]
+  f8:	e8 00 00 00 00       	call   fd <main+0x7f>
+
+    // round up
+    half = __builtin_ia32_vcvtps2ph(x, 2);
+  fd:	c5 f8 28 45 d0       	vmovaps xmm0,XMMWORD PTR [rbp-0x30]
+ 102:	c4 e3 79 1d c0 02    	vcvtps2ph xmm0,xmm0,0x2
+ 108:	c5 f8 29 45 e0       	vmovaps XMMWORD PTR [rbp-0x20],xmm0
+    y = __builtin_ia32_vcvtph2ps(half);
+ 10d:	c5 f9 6f 45 e0       	vmovdqa xmm0,XMMWORD PTR [rbp-0x20]
+ 112:	c4 e2 79 13 c0       	vcvtph2ps xmm0,xmm0
+ 117:	c5 f8 29 45 f0       	vmovaps XMMWORD PTR [rbp-0x10],xmm0
+    print_vectors(x, y, half);
+ 11c:	c5 f9 6f 55 e0       	vmovdqa xmm2,XMMWORD PTR [rbp-0x20]
+ 121:	c5 f8 28 4d f0       	vmovaps xmm1,XMMWORD PTR [rbp-0x10]
+ 126:	c5 f8 28 45 d0       	vmovaps xmm0,XMMWORD PTR [rbp-0x30]
+ 12b:	e8 00 00 00 00       	call   130 <main+0xb2>
+
+    // truncate
+    half = __builtin_ia32_vcvtps2ph(x, 3);
+ 130:	c5 f8 28 45 d0       	vmovaps xmm0,XMMWORD PTR [rbp-0x30]
+ 135:	c4 e3 79 1d c0 03    	vcvtps2ph xmm0,xmm0,0x3
+ 13b:	c5 f8 29 45 e0       	vmovaps XMMWORD PTR [rbp-0x20],xmm0
+    y = __builtin_ia32_vcvtph2ps(half);
+ 140:	c5 f9 6f 45 e0       	vmovdqa xmm0,XMMWORD PTR [rbp-0x20]
+ 145:	c4 e2 79 13 c0       	vcvtph2ps xmm0,xmm0
+ 14a:	c5 f8 29 45 f0       	vmovaps XMMWORD PTR [rbp-0x10],xmm0
+    print_vectors(x, y, half);
+ 14f:	c5 f9 6f 55 e0       	vmovdqa xmm2,XMMWORD PTR [rbp-0x20]
+ 154:	c5 f8 28 4d f0       	vmovaps xmm1,XMMWORD PTR [rbp-0x10]
+ 159:	c5 f8 28 45 d0       	vmovaps xmm0,XMMWORD PTR [rbp-0x30]
+ 15e:	e8 00 00 00 00       	call   163 <main+0xe5>
+
+    return 0;
+ 163:	b8 00 00 00 00       	mov    eax,0x0
+}
+ 168:	c9                   	leave  
+ 169:	c3                   	ret    
