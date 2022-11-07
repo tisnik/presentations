@@ -30,7 +30,16 @@ all:	simd04_1.lst simd04_2.lst \
 	intrinsic_sse_8.lst \
 	intrinsic_sse_9.lst \
 	intrinsic_sse_A.lst \
-	intrinsic_sse_B.lst
+	intrinsic_sse_B.lst \
+	intrinsic_f16c_1.lst \
+	intrinsic_f16c_2.lst \
+	intrinsic_f16c_3.lst \
+	intrinsic_f16c_4.lst \
+	intrinsic_fma3_1.lst \
+	intrinsic_fma3_2.lst \
+	intrinsic_fma3_3.lst \
+	intrinsic_fma3_4.lst \
+	intrinsic_fma3_5.lst
 
 clean:
 	rm *.lst
@@ -224,3 +233,30 @@ intrinsic_avx_2.o:	intrinsic_avx_2.c
 
 intrinsic_avx_3.o:	intrinsic_avx_3.c
 	gcc -c -mavx -O0 -g -o $@ $<
+
+intrinsic_f16c_1.o:	intrinsic_f16c_1.c
+	gcc -c -mf16c -O0 -g -o $@ $<
+
+intrinsic_f16c_2.o:	intrinsic_f16c_2.c
+	gcc -c -mf16c -O0 -g -o $@ $<
+
+intrinsic_f16c_3.o:	intrinsic_f16c_3.c
+	gcc -c -mf16c -O0 -g -o $@ $<
+
+intrinsic_f16c_4.o:	intrinsic_f16c_4.c
+	gcc -c -mf16c -O0 -g -o $@ $<
+
+intrinsic_fma3_1.o:	intrinsic_fma3_1.c
+	gcc -c -mfma -O0 -g -o $@ $<
+
+intrinsic_fma3_2.o:	intrinsic_fma3_2.c
+	gcc -c -mfma -O0 -g -o $@ $<
+
+intrinsic_fma3_3.o:	intrinsic_fma3_3.c
+	gcc -c -mfma -O0 -g -o $@ $<
+
+intrinsic_fma3_4.o:	intrinsic_fma3_4.c
+	gcc -c -mfma -O0 -g -o $@ $<
+
+intrinsic_fma3_5.o:	intrinsic_fma3_5.c
+	gcc -c -mfma -O0 -g -o $@ $<
