@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     printf("Arguments count: %d\n", argc);
 
     for (i = 0; i < argc; i++) {
-        printf("Argument #1 is '%s'\n", argv[i]);
+        printf("Argument #%d is '%s'\n", i, argv[i]);
     }
 
     return 0;
