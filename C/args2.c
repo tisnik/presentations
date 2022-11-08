@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
         char *argument;
 
         argument = argv[i];
+        printf("Testing argument '%s'\n", argument);
+
         if (startswith("-name=", argument)) {
             printf("Found name in argument '%s'\n", argument);
         }
