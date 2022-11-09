@@ -2,6 +2,11 @@
 
 ## Pass structures by reference, not by value
 
+* All data types are passed by value into functions and methods
+    - that's good from "state-space" perspective
+    - not so good from performance point of view
+    - (and no nice solution like `const` and `mut` exists in Go)
+
 ## Problem definition
 
 * Large structures passed by value everywhere in the code
