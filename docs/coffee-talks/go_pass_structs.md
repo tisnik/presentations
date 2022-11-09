@@ -1,4 +1,4 @@
-# Trivial performance improvement in Go
+# Simple but useful performance improvement in Go
 
 ## Pass structures by reference, not by value
 
