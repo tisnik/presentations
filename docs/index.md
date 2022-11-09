@@ -94,6 +94,7 @@ layout: default
 * [Pattern matching in Python](coffee-talks/pattern-matching.md)
 * [NATS JetStream](coffee-talks/nats-jetstream.md)
 * [SIMD in GCC](coffee-talks/simd_in_gcc.md)
+* [Pass structures by value or reference?](coffee-talks/go_pass_structs.md)
 
 
 
