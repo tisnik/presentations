@@ -142,8 +142,10 @@ func GetStorageConfigurationByValue(configuration ConfigStruct) StorageConfigura
 ### Dirty solution
 
 * the only solution possible in Go
-    - different semantic (passing by reference -> struct can be changed within)
+    - different semantic:
+        - passing by reference -> struct can be changed within
 * unfortunately we can't distinguish between `const` and `mut`
+    - mutation (or no mutation) has to be checked by unit tests
 
 ```go
 func GetStorageConfigurationByReference(configuration *ConfigStruct) StorageConfiguration {
