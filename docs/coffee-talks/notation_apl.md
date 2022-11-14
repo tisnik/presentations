@@ -186,6 +186,21 @@ plus x y <= rec x {
 
 ## Feel of APL
 
+* Vectors
+* Functions
+    - monadic
+    - dyadic
+* Operators
+    - reduce
+    - scan
+    - inner product
+    - outer product
+* Combinators ("trains")
+    - atop
+    - fork
+
+## Feel of APL
+
 * Operators (function-like)
 
 ```
