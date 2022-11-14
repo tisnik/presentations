@@ -356,7 +356,7 @@ R∊R∘.×R
 * As a function
 
 ```apl
-primes←{{(~⍵∊⍵∘.×⍵)/⍵}1↓⍳⍵}
+primes←{ {(~⍵∊⍵∘.×⍵)/⍵}1↓⍳⍵}
       primes 10
 2 3 5 7
 ```
