@@ -99,6 +99,12 @@
 (⍺ f ⍵) g (⍺ h ⍵)
 ```
 
+- or in Python/Go/C>
+
+```c
+g(f(⍺, ⍵), h(⍺, ⍵))
+```
+
 * **⍺** - parameter passed to function **f** and **h**
 * **⍵** - parameter passed to function **f** and **h**
 * **f** is dyadic function 
