@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>HTMX - elementary example</title>
+        <script type="text/javascript" src="htmx.min.js">
+        </script>
+    </head>
+    <body>
+        <button hx-post="/cgi-bin/answer2"
+                hx-trigger="click"
+                hx-target="#answer-div"
+                hx-swap="outerHTML">
+            Retrieve answer!
+        </button>
+
+        <div id="answer-div">
+            Answer...?
+        </div>
+    </body>
+</html>
