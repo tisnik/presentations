@@ -1,0 +1,4 @@
+#!/usr/bin/env python3
+
+import sys
+print('200 OK\r\n\r\n<div style="color:red">42</div>')
