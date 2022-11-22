@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>HTMX - elementary example</title>
+        <script type="text/javascript" src="htmx.min.js">
+        </script>
+    </head>
+    <body>
+        <img src="apl_logo.png" hx-get="APL.txt"     hx-trigger="click" hx-target="#language" />
+        <img src="Clojure.png"  hx-get="Clojure.txt" hx-trigger="click" hx-target="#language" />
+        <img src="C.png"        hx-get="C.txt"       hx-trigger="click" hx-target="#language" />
+        <img src="Go.png"       hx-get="Go.txt"      hx-trigger="click" hx-target="#language" />
+        <img src="Java.png"     hx-get="Java.txt"    hx-trigger="click" hx-target="#language" />
+        <img src="Python.png"   hx-get="Python.txt"  hx-trigger="click" hx-target="#language" />
+        <img src="Rust.png"     hx-get="Rust.txt"    hx-trigger="click" hx-target="#language" />
+        <div id="language">
+        </div>
+    </body>
+</html>
