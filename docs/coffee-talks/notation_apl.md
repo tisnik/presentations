@@ -8,6 +8,10 @@
 * in human-made design
 * or in abstract ideas
 
+![cone](images/cone.jpg)
+![spiral](images/spiral.jpg)
+![bricks](images/bricks.jpg)
+
 
 
 ### Patterns in IT
