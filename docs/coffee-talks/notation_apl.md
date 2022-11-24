@@ -42,6 +42,8 @@
 * Fully suported by Apache Camel
     - [https://camel.apache.org/components/3.17.x/eips/enterprise-integration-patterns.html](https://camel.apache.org/components/3.17.x/eips/enterprise-integration-patterns.html)
 
+![eip](images/eip.png)
+
 
 
 ### Common idioms, notation, code structure, algorithms
