@@ -1,8 +1,59 @@
-# Importance of notations and the APL programming language
+# Patterns in IT, importance of notations, and the APL programming language
+
+
+
+## Pattern
+
+* a regularity in the world
+* in human-made design
+* or in abstract ideas
+
+
+
+### Patterns in IT
+
+* Why?
+    - general, reusable solution
+* Multiple levels
+    - common idioms, notation, code structure, algorithms
+    - SW design patterns (by Gang of Four)
+    - enterprise integration patterns
+
+
+
+### SW design patterns
+
+* General, reusable solution to a commonly occurring problem
+* Not a finished design that can be transformed directly into source or machine code
+    - A description or template for how to solve given problems
+* Formalized best practices that the programmer can use to solve common problems
+
+
+
+### Enterprise integration patterns
+
+* To help developers design and build distributed applications or integrate existing ones
+* Provide a technology-independent vocabulary and visual notation taken from proven solutions to recurring problems
+* Also share common "gotchas" and design considerations
+* Fully suported by Apache Camel
+    - [https://camel.apache.org/components/3.17.x/eips/enterprise-integration-patterns.html](https://camel.apache.org/components/3.17.x/eips/enterprise-integration-patterns.html)
+
+
+
+### Common idioms, notation, code structure, algorithms
+
+* Everyday's programmers tasks
+* Depends on ecosystem
+    - idioms in Java are different from Go, ...
+* Algorithms are usually not well formalized on source level
+    - just "hidden" in libraries and macros
+    - this is where notation became very important
+
+
 
 ## Notations
 
-* notation is a system of
+* Notation is a system of
     - graphics or symbols
     - characters
     - abbreviated expressions
@@ -409,3 +460,6 @@ primes←{ {(~⍵∊⍵∘.×⍵)/⍵}1↓⍳⍵}
 * [Dyalog Modern Programming Language, Morten Kromberg, Talks at Google](https://www.youtube.com/watch?v=PlM9BXfu7UY)
 * [The J Language: Consistency, Adjacency, and Solution-Oriented Programming - Tracy Harms](https://www.youtube.com/watch?v=gLULrFY2-fI)
 * [Un-directed programming](https://www.sacrideo.us/un-structured-programming/)
+* [Pattern](https://en.wikipedia.org/wiki/Pattern)
+* [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/)
+* [Enterprise Integration Patterns](https://camel.apache.org/components/3.17.x/eips/enterprise-integration-patterns.html)
