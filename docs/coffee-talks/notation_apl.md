@@ -1,6 +1,6 @@
-# Patterns in IT, importance of notations, and the APL programming language
+# Patterns in IT, importance of notation, and the APL programming language
 
-
+---
 
 ## Pattern
 
@@ -8,11 +8,19 @@
 * in human-made design
 * or in abstract ideas
 
+---
+
 ![cone](images/cone.jpg)
+
+---
+
 ![spiral](images/spiral.jpg)
+
+---
+
 ![bricks](images/bricks.jpg)
 
-
+---
 
 ### Patterns in IT
 
@@ -23,7 +31,7 @@
     - SW design patterns (by Gang of Four)
     - enterprise integration patterns
 
-
+---
 
 ### SW design patterns
 
@@ -32,7 +40,11 @@
     - A description or template for how to solve given problems
 * Formalized best practices that the programmer can use to solve common problems
 
+---
 
+![gang_of_four](images/gang_of_four.gif)
+
+---
 
 ### Enterprise integration patterns
 
@@ -42,9 +54,15 @@
 * Fully suported by Apache Camel
     - [https://camel.apache.org/components/3.17.x/eips/enterprise-integration-patterns.html](https://camel.apache.org/components/3.17.x/eips/enterprise-integration-patterns.html)
 
+---
+
+![apache](images/apache_camel_logo.png)
+
+---
+
 ![eip](images/eip.png)
 
-
+---
 
 ### Common idioms, notation, code structure, algorithms
 
@@ -55,7 +73,7 @@
     - just "hidden" in libraries and macros
     - this is where notation became very important
 
-
+---
 
 ## Notations
 
@@ -64,23 +82,33 @@
     - characters
     - abbreviated expressions
 
+---
+
+## Notation
+
 * a collection of related symbols
     - that are each given an arbitrary meaning
     - created to facilitate structured communication
     - within a domain knowledge or field of study!
 
-* symbols
-    - mark, sign, word
-    - indication
-    - is understood as representing an idea, object, or relationship
-    - pictorial/associative/abstract/conceptual
-    - stop sign, arrow
+---
+
+## Symbols
+* mark, sign, word
+* indication
+* is understood as representing an idea, object, or relationship
+* pictorial/associative/abstract/conceptual
+* stop sign, arrow
+
+---
 
 ### Why?
 
 * human brain is excellent in recognizing patterns
 * and can be train to recognize new set of patterns
 * **Notation as a tool of thought**
+
+---
 
 ### Examples of notations
 
@@ -90,21 +118,31 @@
 * Feynman diagrams
 * etc.
 
+---
+
 #### Music notation
 
 ![Music](images/notation_music.png)
+
+---
 
 #### Chemistry notation
 
 ![Chemistry](images/notation_chemistry.png)
 
+---
+
 #### Traffic
 
 ![Traffic](images/notation_traffic.jpg)
 
+---
+
 #### Maps
 
 ![Maps](images/map.png)
+
+---
 
 #### Math
 
@@ -114,6 +152,8 @@
 
 ![Math3](images/notation_math_3.png)
 
+---
+
 #### Chess moves notation
 
 ```
@@ -122,8 +162,9 @@
 0-0 ♝xc3
 ```
 
+---
 
-## Classic programming languages
+## Notatation in classic programming languages
 
 * i.e. almost all languages with some exceptions
 * most are based on "1.5D" text flow
@@ -133,10 +174,19 @@
 * linear text - from speech where it make sense
 * a lot of context everywhere!
 
+---
+
+![typewriter](images/typewriter.jpg)
+
+---
+
 ### Exceptions
 
 * Fortress
     - rendered via LaTeX
+
+---
+
 * Algol 68 Report
     - ∧, ∨
     - ×, ÷, ÷×, ÷*, %×
@@ -145,11 +195,19 @@
     - ×:=, ÷:=, ÷×:=, ÷*:=,  %×:=
     - ¬, ↑, ↓, ⌊, ⌈, ⊥
     - ⊂, ≡, ␣, ⊃, ⎩, ⎧
+
+---
+
 * Epigram
     - "2D" blocks
     - rendered via LaTeX
 
+---
+
+
 ### Examples
+
+---
 
 #### Algol
 
