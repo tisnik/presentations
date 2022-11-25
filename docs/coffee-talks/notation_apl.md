@@ -216,6 +216,8 @@
 real avogadro = 6.0221415⏨23
 ```
 
+---
+
 #### Epigram
 
 ```epigram
@@ -225,6 +227,8 @@ data !---------! where !----------! ; !-----------!
 ```
 
 ![Epigram1](images/notation_epigram1.png)
+
+---
 
 ```
 plus x y <= rec x {
@@ -237,20 +241,36 @@ plus x y <= rec x {
 
 ![Epigram2](images/notation_epigram2.png)
 
+---
+
 #### Fortress
 
 ![Fortress1](images/notation_fortress1.png)
 
+---
+
 ![Fortress2](images/notation_fortress2.png)
+
+---
 
 ![Fortress3](images/notation_fortress3.png)
 
+---
 
+## Notation-first language
+
+---
+
+![apl](images/apl.png)
+
+---
 
 ## APL programming language
 
 * "A Programming Language"
     - impossible to come with shorter term :)
+
+---
 
 ### Origins of APL
 
@@ -261,6 +281,11 @@ plus x y <= rec x {
 * during his work for IBM (yes, IBM!) it was translater into aprogramming language
 * in 1979, Iverson received the Turing Award for his work on APL
 * "A shocking brevity"
+
+---
+
+### Origins of APL (cont.)
+
 * Common idioms are to be recognized in no time
     - like quadratic formula
 * later IBM discouraged customers from using it
@@ -268,11 +293,17 @@ plus x y <= rec x {
     - prefer to use languages based on "methodologies"
     - basically to split design, analytics, development, and testing
     - OTOH IBM was almost never good at PL design
-* btw how to made money
+* btw how they made money
     - $1 for one CPU second
     - $1 for 1kB of output
 
+---
+
+### Welcome to Egypt
+
 ![APL](images/notation_this_is_apl.png)
+
+---
 
 ### Kenneth E. Iverson
 
@@ -284,11 +315,15 @@ plus x y <= rec x {
 * Honorary doctorate, York University, 1998
 * ”Meeting Ken Iversion could cause mental transformations.”
 
+---
+
 ### "Array languages"
 
 * An array:
     - rectangular collection of numbers, characters and arrays
     - arranged along zero or more axes
+
+---
 
 ### APL today
 
@@ -303,6 +338,8 @@ plus x y <= rec x {
 * Insurance companies
 * Big data processing
 
+---
+
 ## Feel of APL
 
 * Vectors
@@ -314,13 +351,18 @@ plus x y <= rec x {
     - scan
     - inner product
     - outer product
+
+---
+
 * Combinators ("trains")
     - atop
     - fork
 
+---
+
 ## Feel of APL
 
-* Operators (function-like)
+* Functions (operator-like)
 
 ```
       monadic               dyadic
@@ -332,12 +374,24 @@ plus x y <= rec x {
 ⌹     matrix inversion      matrix division
 ⍉     matrix transposition
 ⌽     reverse               rotation
-/                           reduce
-.                           inner product
-◦.                          outer product
+↑                           take
+↓                           drop
 ```
 
-* Expression
+* Operators
+
+```
+/       reduce
+\       scan
+.       inner product
+◦.      outer product
+```
+
+---
+
+### Expressions
+
+* Written using functions
 
 ```apl
 1+2×3
@@ -348,6 +402,8 @@ plus x y <= rec x {
 ```apl
 2×3+1
 ```
+
+---
 
 * Vectors
 
@@ -365,11 +421,26 @@ VECTOR[1 3 5]
 'xenobiotic'[10 10 1]
 ```
 
+---
+
+### Vector constructor
+
 * Vector containing 1, 2, 3, 4 .. 10
 
 ```
 ι10
 ```
+
+* Vector shape
+
+```
+⍴ 1 2 3 4
+⍴ι10
+```
+
+---
+
+### Vector operations
 
 * Item-by-item operations
 
@@ -384,7 +455,11 @@ VECTOR[1 3 5]
 +/ 1 2 3 4
 ```
 
-* Calculate the sum of all integers ranging from 1 to 100
+---
+
+### Reduce usage
+
+* Calculate sum of all integers ranging from 1 to 100
 
 ```apl
 +/ι100
@@ -409,8 +484,10 @@ X ← 1 2 3 4 5
 (+/X)÷⍴X
 ```
 
-* Scan operator
-    - like reduce, but returns all intermediate results
+---
+
+### Scan operator
+* like reduce, but returns all intermediate results
 
 ```apl
 +\ 1 2 3 4 5
@@ -422,7 +499,9 @@ X ← 1 2 3 4 5
 ×\⍳10
 ```
 
-* Take and drop functions
+---
+
+### Take and drop functions
 
 ```apl
 list ← ι10
@@ -437,6 +516,8 @@ revenues ← 56 59 67 64 60 61 68 73 78 75 81 84
 (1↓revenues)-(¯1↓revenues)
 100×((1↓revenues)÷(¯1↓revenues))-1
 ```
+
+---
 
 * Matrices
 
