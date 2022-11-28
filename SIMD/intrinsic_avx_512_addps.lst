@@ -1,0 +1,204 @@
+
+intrinsic_avx_512_addps.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+#include <stdio.h>
+#include <immintrin.h>
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	4c 8d 54 24 08       	lea    r10,[rsp+0x8]
+   9:	48 83 e4 c0          	and    rsp,0xffffffffffffffc0
+   d:	41 ff 72 f8          	push   QWORD PTR [r10-0x8]
+  11:	55                   	push   rbp
+  12:	48 89 e5             	mov    rbp,rsp
+  15:	41 52                	push   r10
+  17:	48 81 ec a8 01 00 00 	sub    rsp,0x1a8
+  1e:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  25:	00 00 
+  27:	48 89 45 c8          	mov    QWORD PTR [rbp-0x38],rax
+  2b:	31 c0                	xor    eax,eax
+    __v16sf x = { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0 };
+  2d:	62 f1 7c 48 28 05 00 	vmovaps zmm0,ZMMWORD PTR [rip+0x0]        # 37 <main+0x37>
+  34:	00 00 00 
+  37:	62 f1 7c 48 29 85 90 	vmovaps ZMMWORD PTR [rbp-0x170],zmm0
+  3e:	fe ff ff 
+    __v16sf y = { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6 };
+  41:	62 f1 7c 48 28 05 00 	vmovaps zmm0,ZMMWORD PTR [rip+0x0]        # 4b <main+0x4b>
+  48:	00 00 00 
+  4b:	62 f1 7c 48 29 85 d0 	vmovaps ZMMWORD PTR [rbp-0x130],zmm0
+  52:	fe ff ff 
+    __v16sf z = -x;
+  55:	62 f1 7c 48 28 8d 90 	vmovaps zmm1,ZMMWORD PTR [rbp-0x170]
+  5c:	fe ff ff 
+  5f:	62 f1 7c 48 28 05 00 	vmovaps zmm0,ZMMWORD PTR [rip+0x0]        # 69 <main+0x69>
+  66:	00 00 00 
+  69:	62 f1 75 48 ef c0    	vpxord zmm0,zmm1,zmm0
+  6f:	62 f1 7c 48 29 85 10 	vmovaps ZMMWORD PTR [rbp-0xf0],zmm0
+  76:	ff ff ff 
+    __v16sf w;
+    int i;
+
+    w = __builtin_ia32_addps512_mask(x, y, z, 0, _MM_FROUND_CUR_DIRECTION);
+  79:	62 f1 7c 48 28 85 10 	vmovaps zmm0,ZMMWORD PTR [rbp-0xf0]
+  80:	ff ff ff 
+  83:	62 f1 7c 48 28 8d d0 	vmovaps zmm1,ZMMWORD PTR [rbp-0x130]
+  8a:	fe ff ff 
+  8d:	62 f1 7c 48 28 95 90 	vmovaps zmm2,ZMMWORD PTR [rbp-0x170]
+  94:	fe ff ff 
+  97:	c5 f4 47 c9          	kxorw  k1,k1,k1
+  9b:	62 f1 6c 49 58 c1    	vaddps zmm0{k1},zmm2,zmm1
+  a1:	62 f1 7c 48 29 85 50 	vmovaps ZMMWORD PTR [rbp-0xb0],zmm0
+  a8:	ff ff ff 
+
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+  ab:	c7 85 8c fe ff ff 00 	mov    DWORD PTR [rbp-0x174],0x0
+  b2:	00 00 00 
+  b5:	eb 74                	jmp    12b <main+0x12b>
+        printf("%2d  %5.1f  %5.1f  %5.1f  %5.1f\n", i, x[i], y[i], z[i], w[i]);
+  b7:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+  bd:	48 98                	cdqe   
+  bf:	c5 fa 10 84 85 50 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xb0]
+  c6:	ff ff 
+  c8:	c5 fa 5a d8          	vcvtss2sd xmm3,xmm0,xmm0
+  cc:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+  d2:	48 98                	cdqe   
+  d4:	c5 fa 10 84 85 10 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xf0]
+  db:	ff ff 
+  dd:	c5 fa 5a d0          	vcvtss2sd xmm2,xmm0,xmm0
+  e1:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+  e7:	48 98                	cdqe   
+  e9:	c5 fa 10 84 85 d0 fe 	vmovss xmm0,DWORD PTR [rbp+rax*4-0x130]
+  f0:	ff ff 
+  f2:	c5 fa 5a c8          	vcvtss2sd xmm1,xmm0,xmm0
+  f6:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+  fc:	48 98                	cdqe   
+  fe:	c5 fa 10 84 85 90 fe 	vmovss xmm0,DWORD PTR [rbp+rax*4-0x170]
+ 105:	ff ff 
+ 107:	c5 fa 5a c0          	vcvtss2sd xmm0,xmm0,xmm0
+ 10b:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 111:	89 c6                	mov    esi,eax
+ 113:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 11a <main+0x11a>
+ 11a:	b8 04 00 00 00       	mov    eax,0x4
+ 11f:	e8 00 00 00 00       	call   124 <main+0x124>
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+ 124:	83 85 8c fe ff ff 01 	add    DWORD PTR [rbp-0x174],0x1
+ 12b:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 131:	83 f8 0f             	cmp    eax,0xf
+ 134:	76 81                	jbe    b7 <main+0xb7>
+    }
+
+    w = __builtin_ia32_addps512_mask(x, y, z, 0xf0f0, _MM_FROUND_CUR_DIRECTION);
+ 136:	62 f1 7c 48 28 85 10 	vmovaps zmm0,ZMMWORD PTR [rbp-0xf0]
+ 13d:	ff ff ff 
+ 140:	62 f1 7c 48 28 8d d0 	vmovaps zmm1,ZMMWORD PTR [rbp-0x130]
+ 147:	fe ff ff 
+ 14a:	62 f1 7c 48 28 95 90 	vmovaps zmm2,ZMMWORD PTR [rbp-0x170]
+ 151:	fe ff ff 
+ 154:	b8 f0 f0 ff ff       	mov    eax,0xfffff0f0
+ 159:	c5 f8 92 d0          	kmovw  k2,eax
+ 15d:	62 f1 6c 4a 58 c1    	vaddps zmm0{k2},zmm2,zmm1
+ 163:	62 f1 7c 48 29 85 50 	vmovaps ZMMWORD PTR [rbp-0xb0],zmm0
+ 16a:	ff ff ff 
+
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+ 16d:	c7 85 8c fe ff ff 00 	mov    DWORD PTR [rbp-0x174],0x0
+ 174:	00 00 00 
+ 177:	eb 74                	jmp    1ed <main+0x1ed>
+        printf("%2d  %5.1f  %5.1f  %5.1f  %5.1f\n", i, x[i], y[i], z[i], w[i]);
+ 179:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 17f:	48 98                	cdqe   
+ 181:	c5 fa 10 84 85 50 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xb0]
+ 188:	ff ff 
+ 18a:	c5 fa 5a d8          	vcvtss2sd xmm3,xmm0,xmm0
+ 18e:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 194:	48 98                	cdqe   
+ 196:	c5 fa 10 84 85 10 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xf0]
+ 19d:	ff ff 
+ 19f:	c5 fa 5a d0          	vcvtss2sd xmm2,xmm0,xmm0
+ 1a3:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 1a9:	48 98                	cdqe   
+ 1ab:	c5 fa 10 84 85 d0 fe 	vmovss xmm0,DWORD PTR [rbp+rax*4-0x130]
+ 1b2:	ff ff 
+ 1b4:	c5 fa 5a c8          	vcvtss2sd xmm1,xmm0,xmm0
+ 1b8:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 1be:	48 98                	cdqe   
+ 1c0:	c5 fa 10 84 85 90 fe 	vmovss xmm0,DWORD PTR [rbp+rax*4-0x170]
+ 1c7:	ff ff 
+ 1c9:	c5 fa 5a c0          	vcvtss2sd xmm0,xmm0,xmm0
+ 1cd:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 1d3:	89 c6                	mov    esi,eax
+ 1d5:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 1dc <main+0x1dc>
+ 1dc:	b8 04 00 00 00       	mov    eax,0x4
+ 1e1:	e8 00 00 00 00       	call   1e6 <main+0x1e6>
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+ 1e6:	83 85 8c fe ff ff 01 	add    DWORD PTR [rbp-0x174],0x1
+ 1ed:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 1f3:	83 f8 0f             	cmp    eax,0xf
+ 1f6:	76 81                	jbe    179 <main+0x179>
+    }
+
+    w = __builtin_ia32_addps512_mask(x, y, z, -1, _MM_FROUND_CUR_DIRECTION);
+ 1f8:	62 f1 7c 48 28 85 10 	vmovaps zmm0,ZMMWORD PTR [rbp-0xf0]
+ 1ff:	ff ff ff 
+ 202:	62 f1 7c 48 28 8d d0 	vmovaps zmm1,ZMMWORD PTR [rbp-0x130]
+ 209:	fe ff ff 
+ 20c:	62 f1 7c 48 28 95 90 	vmovaps zmm2,ZMMWORD PTR [rbp-0x170]
+ 213:	fe ff ff 
+ 216:	c5 f4 46 c9          	kxnorw k1,k1,k1
+ 21a:	62 f1 6c 49 58 c1    	vaddps zmm0{k1},zmm2,zmm1
+ 220:	62 f1 7c 48 29 85 50 	vmovaps ZMMWORD PTR [rbp-0xb0],zmm0
+ 227:	ff ff ff 
+
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+ 22a:	c7 85 8c fe ff ff 00 	mov    DWORD PTR [rbp-0x174],0x0
+ 231:	00 00 00 
+ 234:	eb 74                	jmp    2aa <main+0x2aa>
+        printf("%2d  %5.1f  %5.1f  %5.1f  %5.1f\n", i, x[i], y[i], z[i], w[i]);
+ 236:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 23c:	48 98                	cdqe   
+ 23e:	c5 fa 10 84 85 50 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xb0]
+ 245:	ff ff 
+ 247:	c5 fa 5a d8          	vcvtss2sd xmm3,xmm0,xmm0
+ 24b:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 251:	48 98                	cdqe   
+ 253:	c5 fa 10 84 85 10 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xf0]
+ 25a:	ff ff 
+ 25c:	c5 fa 5a d0          	vcvtss2sd xmm2,xmm0,xmm0
+ 260:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 266:	48 98                	cdqe   
+ 268:	c5 fa 10 84 85 d0 fe 	vmovss xmm0,DWORD PTR [rbp+rax*4-0x130]
+ 26f:	ff ff 
+ 271:	c5 fa 5a c8          	vcvtss2sd xmm1,xmm0,xmm0
+ 275:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 27b:	48 98                	cdqe   
+ 27d:	c5 fa 10 84 85 90 fe 	vmovss xmm0,DWORD PTR [rbp+rax*4-0x170]
+ 284:	ff ff 
+ 286:	c5 fa 5a c0          	vcvtss2sd xmm0,xmm0,xmm0
+ 28a:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 290:	89 c6                	mov    esi,eax
+ 292:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 299 <main+0x299>
+ 299:	b8 04 00 00 00       	mov    eax,0x4
+ 29e:	e8 00 00 00 00       	call   2a3 <main+0x2a3>
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+ 2a3:	83 85 8c fe ff ff 01 	add    DWORD PTR [rbp-0x174],0x1
+ 2aa:	8b 85 8c fe ff ff    	mov    eax,DWORD PTR [rbp-0x174]
+ 2b0:	83 f8 0f             	cmp    eax,0xf
+ 2b3:	76 81                	jbe    236 <main+0x236>
+ 2b5:	b8 00 00 00 00       	mov    eax,0x0
+    }
+}
+ 2ba:	48 8b 55 c8          	mov    rdx,QWORD PTR [rbp-0x38]
+ 2be:	64 48 33 14 25 28 00 	xor    rdx,QWORD PTR fs:0x28
+ 2c5:	00 00 
+ 2c7:	74 05                	je     2ce <main+0x2ce>
+ 2c9:	e8 00 00 00 00       	call   2ce <main+0x2ce>
+ 2ce:	48 81 c4 a8 01 00 00 	add    rsp,0x1a8
+ 2d5:	41 5a                	pop    r10
+ 2d7:	5d                   	pop    rbp
+ 2d8:	49 8d 62 f8          	lea    rsp,[r10-0x8]
+ 2dc:	c3                   	ret    
