@@ -1,0 +1,95 @@
+
+intrinsic_avx_512_k_registers.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+#include <stdio.h>
+#include <immintrin.h>
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	48 83 ec 10          	sub    rsp,0x10
+    short unsigned int x = 2;
+   c:	66 c7 45 fa 02 00    	mov    WORD PTR [rbp-0x6],0x2
+    short unsigned int y = 3;
+  12:	66 c7 45 fc 03 00    	mov    WORD PTR [rbp-0x4],0x3
+    short unsigned int z;
+
+    z = __builtin_ia32_kandhi(x, y);
+  18:	0f b7 45 fc          	movzx  eax,WORD PTR [rbp-0x4]
+  1c:	0f b7 55 fa          	movzx  edx,WORD PTR [rbp-0x6]
+  20:	c5 f8 92 ca          	kmovw  k1,edx
+  24:	c5 f8 92 d0          	kmovw  k2,eax
+  28:	c5 f4 41 c2          	kandw  k0,k1,k2
+  2c:	c5 f8 91 45 fe       	kmovw  WORD PTR [rbp-0x2],k0
+    printf("and: %d\n", z);
+  31:	0f b7 45 fe          	movzx  eax,WORD PTR [rbp-0x2]
+  35:	89 c6                	mov    esi,eax
+  37:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 3e <main+0x3e>
+  3e:	b8 00 00 00 00       	mov    eax,0x0
+  43:	e8 00 00 00 00       	call   48 <main+0x48>
+
+    z = __builtin_ia32_kandnhi(x, y);
+  48:	0f b7 45 fc          	movzx  eax,WORD PTR [rbp-0x4]
+  4c:	0f b7 55 fa          	movzx  edx,WORD PTR [rbp-0x6]
+  50:	c5 f8 92 da          	kmovw  k3,edx
+  54:	c5 f8 92 e0          	kmovw  k4,eax
+  58:	c5 e4 42 c4          	kandnw k0,k3,k4
+  5c:	c5 f8 91 45 fe       	kmovw  WORD PTR [rbp-0x2],k0
+    printf("and not: %d\n", z);
+  61:	0f b7 45 fe          	movzx  eax,WORD PTR [rbp-0x2]
+  65:	89 c6                	mov    esi,eax
+  67:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 6e <main+0x6e>
+  6e:	b8 00 00 00 00       	mov    eax,0x0
+  73:	e8 00 00 00 00       	call   78 <main+0x78>
+
+    z = __builtin_ia32_korhi(x, y);
+  78:	0f b7 45 fc          	movzx  eax,WORD PTR [rbp-0x4]
+  7c:	0f b7 55 fa          	movzx  edx,WORD PTR [rbp-0x6]
+  80:	c5 f8 92 ea          	kmovw  k5,edx
+  84:	c5 f8 92 f0          	kmovw  k6,eax
+  88:	c5 d4 45 c6          	korw   k0,k5,k6
+  8c:	c5 f8 91 45 fe       	kmovw  WORD PTR [rbp-0x2],k0
+    printf("or: %d\n", z);
+  91:	0f b7 45 fe          	movzx  eax,WORD PTR [rbp-0x2]
+  95:	89 c6                	mov    esi,eax
+  97:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 9e <main+0x9e>
+  9e:	b8 00 00 00 00       	mov    eax,0x0
+  a3:	e8 00 00 00 00       	call   a8 <main+0xa8>
+
+    z = __builtin_ia32_kxorhi(x, y);
+  a8:	0f b7 45 fc          	movzx  eax,WORD PTR [rbp-0x4]
+  ac:	0f b7 55 fa          	movzx  edx,WORD PTR [rbp-0x6]
+  b0:	c5 f8 92 fa          	kmovw  k7,edx
+  b4:	c5 f8 92 c8          	kmovw  k1,eax
+  b8:	c5 c4 47 c1          	kxorw  k0,k7,k1
+  bc:	c5 f8 91 45 fe       	kmovw  WORD PTR [rbp-0x2],k0
+    printf("xor: %d\n", z);
+  c1:	0f b7 45 fe          	movzx  eax,WORD PTR [rbp-0x2]
+  c5:	89 c6                	mov    esi,eax
+  c7:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # ce <main+0xce>
+  ce:	b8 00 00 00 00       	mov    eax,0x0
+  d3:	e8 00 00 00 00       	call   d8 <main+0xd8>
+
+    z = __builtin_ia32_kxnorhi(x, y);
+  d8:	0f b7 45 fc          	movzx  eax,WORD PTR [rbp-0x4]
+  dc:	0f b7 55 fa          	movzx  edx,WORD PTR [rbp-0x6]
+  e0:	c5 f8 92 d2          	kmovw  k2,edx
+  e4:	c5 f8 92 d8          	kmovw  k3,eax
+  e8:	c5 ec 46 c3          	kxnorw k0,k2,k3
+  ec:	c5 f8 91 45 fe       	kmovw  WORD PTR [rbp-0x2],k0
+    printf("xnor: %d\n", z);
+  f1:	0f b7 45 fe          	movzx  eax,WORD PTR [rbp-0x2]
+  f5:	89 c6                	mov    esi,eax
+  f7:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # fe <main+0xfe>
+  fe:	b8 00 00 00 00       	mov    eax,0x0
+ 103:	e8 00 00 00 00       	call   108 <main+0x108>
+ 108:	b8 00 00 00 00       	mov    eax,0x0
+}
+ 10d:	c9                   	leave  
+ 10e:	c3                   	ret    
