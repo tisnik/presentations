@@ -1,0 +1,193 @@
+
+intrinsic_avx_512_compress.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+#include <stdio.h>
+#include <immintrin.h>
+
+int main(void)
+{
+   0:	f3 0f 1e fa          	endbr64 
+   4:	4c 8d 54 24 08       	lea    r10,[rsp+0x8]
+   9:	48 83 e4 c0          	and    rsp,0xffffffffffffffc0
+   d:	41 ff 72 f8          	push   QWORD PTR [r10-0x8]
+  11:	55                   	push   rbp
+  12:	48 89 e5             	mov    rbp,rsp
+  15:	41 52                	push   r10
+  17:	48 81 ec 68 01 00 00 	sub    rsp,0x168
+  1e:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  25:	00 00 
+  27:	48 89 45 c8          	mov    QWORD PTR [rbp-0x38],rax
+  2b:	31 c0                	xor    eax,eax
+    __v16sf x = { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0 };
+  2d:	62 f1 7c 48 28 05 00 	vmovaps zmm0,ZMMWORD PTR [rip+0x0]        # 37 <main+0x37>
+  34:	00 00 00 
+  37:	62 f1 7c 48 29 85 d0 	vmovaps ZMMWORD PTR [rbp-0x130],zmm0
+  3e:	fe ff ff 
+    __v16sf y = -x;
+  41:	62 f1 7c 48 28 8d d0 	vmovaps zmm1,ZMMWORD PTR [rbp-0x130]
+  48:	fe ff ff 
+  4b:	62 f1 7c 48 28 05 00 	vmovaps zmm0,ZMMWORD PTR [rip+0x0]        # 55 <main+0x55>
+  52:	00 00 00 
+  55:	62 f1 75 48 ef c0    	vpxord zmm0,zmm1,zmm0
+  5b:	62 f1 7c 48 29 85 10 	vmovaps ZMMWORD PTR [rbp-0xf0],zmm0
+  62:	ff ff ff 
+    __v16sf z;
+    int i;
+
+    z = __builtin_ia32_compresssf512_mask(x, y, 0b1010101010101010);
+  65:	62 f1 7c 48 28 8d 10 	vmovaps zmm1,ZMMWORD PTR [rbp-0xf0]
+  6c:	ff ff ff 
+  6f:	62 f1 7c 48 28 85 d0 	vmovaps zmm0,ZMMWORD PTR [rbp-0x130]
+  76:	fe ff ff 
+  79:	b8 aa aa ff ff       	mov    eax,0xffffaaaa
+  7e:	c5 f8 92 c8          	kmovw  k1,eax
+  82:	62 f2 7d 49 8a c1    	vcompressps zmm1{k1},zmm0
+  88:	62 f1 7c 48 28 c1    	vmovaps zmm0,zmm1
+  8e:	62 f1 7c 48 29 85 50 	vmovaps ZMMWORD PTR [rbp-0xb0],zmm0
+  95:	ff ff ff 
+
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+  98:	c7 85 cc fe ff ff 00 	mov    DWORD PTR [rbp-0x134],0x0
+  9f:	00 00 00 
+  a2:	eb 5f                	jmp    103 <main+0x103>
+        printf("%2d %f %f %f\n", i, x[i], y[i], z[i]);
+  a4:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+  aa:	48 98                	cdqe   
+  ac:	c5 fa 10 84 85 50 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xb0]
+  b3:	ff ff 
+  b5:	c5 fa 5a d0          	vcvtss2sd xmm2,xmm0,xmm0
+  b9:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+  bf:	48 98                	cdqe   
+  c1:	c5 fa 10 84 85 10 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xf0]
+  c8:	ff ff 
+  ca:	c5 fa 5a c8          	vcvtss2sd xmm1,xmm0,xmm0
+  ce:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+  d4:	48 98                	cdqe   
+  d6:	c5 fa 10 84 85 d0 fe 	vmovss xmm0,DWORD PTR [rbp+rax*4-0x130]
+  dd:	ff ff 
+  df:	c5 fa 5a c0          	vcvtss2sd xmm0,xmm0,xmm0
+  e3:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+  e9:	89 c6                	mov    esi,eax
+  eb:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # f2 <main+0xf2>
+  f2:	b8 03 00 00 00       	mov    eax,0x3
+  f7:	e8 00 00 00 00       	call   fc <main+0xfc>
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+  fc:	83 85 cc fe ff ff 01 	add    DWORD PTR [rbp-0x134],0x1
+ 103:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 109:	83 f8 0f             	cmp    eax,0xf
+ 10c:	76 96                	jbe    a4 <main+0xa4>
+    }
+
+    putchar('\n');
+ 10e:	bf 0a 00 00 00       	mov    edi,0xa
+ 113:	e8 00 00 00 00       	call   118 <main+0x118>
+
+    z = __builtin_ia32_compresssf512_mask(x, y, 0b0000000011111111);
+ 118:	62 f1 7c 48 28 8d 10 	vmovaps zmm1,ZMMWORD PTR [rbp-0xf0]
+ 11f:	ff ff ff 
+ 122:	62 f1 7c 48 28 85 d0 	vmovaps zmm0,ZMMWORD PTR [rbp-0x130]
+ 129:	fe ff ff 
+ 12c:	b8 ff 00 00 00       	mov    eax,0xff
+ 131:	c5 f8 92 d0          	kmovw  k2,eax
+ 135:	62 f2 7d 4a 8a c1    	vcompressps zmm1{k2},zmm0
+ 13b:	62 f1 7c 48 28 c1    	vmovaps zmm0,zmm1
+ 141:	62 f1 7c 48 29 85 50 	vmovaps ZMMWORD PTR [rbp-0xb0],zmm0
+ 148:	ff ff ff 
+
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+ 14b:	c7 85 cc fe ff ff 00 	mov    DWORD PTR [rbp-0x134],0x0
+ 152:	00 00 00 
+ 155:	eb 5f                	jmp    1b6 <main+0x1b6>
+        printf("%2d %f %f %f\n", i, x[i], y[i], z[i]);
+ 157:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 15d:	48 98                	cdqe   
+ 15f:	c5 fa 10 84 85 50 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xb0]
+ 166:	ff ff 
+ 168:	c5 fa 5a d0          	vcvtss2sd xmm2,xmm0,xmm0
+ 16c:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 172:	48 98                	cdqe   
+ 174:	c5 fa 10 84 85 10 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xf0]
+ 17b:	ff ff 
+ 17d:	c5 fa 5a c8          	vcvtss2sd xmm1,xmm0,xmm0
+ 181:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 187:	48 98                	cdqe   
+ 189:	c5 fa 10 84 85 d0 fe 	vmovss xmm0,DWORD PTR [rbp+rax*4-0x130]
+ 190:	ff ff 
+ 192:	c5 fa 5a c0          	vcvtss2sd xmm0,xmm0,xmm0
+ 196:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 19c:	89 c6                	mov    esi,eax
+ 19e:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 1a5 <main+0x1a5>
+ 1a5:	b8 03 00 00 00       	mov    eax,0x3
+ 1aa:	e8 00 00 00 00       	call   1af <main+0x1af>
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+ 1af:	83 85 cc fe ff ff 01 	add    DWORD PTR [rbp-0x134],0x1
+ 1b6:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 1bc:	83 f8 0f             	cmp    eax,0xf
+ 1bf:	76 96                	jbe    157 <main+0x157>
+    }
+
+    putchar('\n');
+ 1c1:	bf 0a 00 00 00       	mov    edi,0xa
+ 1c6:	e8 00 00 00 00       	call   1cb <main+0x1cb>
+
+    z = __builtin_ia32_compresssf512_mask(x, y, 0b1111111100000000);
+ 1cb:	62 f1 7c 48 28 8d 10 	vmovaps zmm1,ZMMWORD PTR [rbp-0xf0]
+ 1d2:	ff ff ff 
+ 1d5:	62 f1 7c 48 28 85 d0 	vmovaps zmm0,ZMMWORD PTR [rbp-0x130]
+ 1dc:	fe ff ff 
+ 1df:	b8 00 ff ff ff       	mov    eax,0xffffff00
+ 1e4:	c5 f8 92 d8          	kmovw  k3,eax
+ 1e8:	62 f2 7d 4b 8a c1    	vcompressps zmm1{k3},zmm0
+ 1ee:	62 f1 7c 48 28 c1    	vmovaps zmm0,zmm1
+ 1f4:	62 f1 7c 48 29 85 50 	vmovaps ZMMWORD PTR [rbp-0xb0],zmm0
+ 1fb:	ff ff ff 
+
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+ 1fe:	c7 85 cc fe ff ff 00 	mov    DWORD PTR [rbp-0x134],0x0
+ 205:	00 00 00 
+ 208:	eb 5f                	jmp    269 <main+0x269>
+        printf("%2d %f %f %f\n", i, x[i], y[i], z[i]);
+ 20a:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 210:	48 98                	cdqe   
+ 212:	c5 fa 10 84 85 50 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xb0]
+ 219:	ff ff 
+ 21b:	c5 fa 5a d0          	vcvtss2sd xmm2,xmm0,xmm0
+ 21f:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 225:	48 98                	cdqe   
+ 227:	c5 fa 10 84 85 10 ff 	vmovss xmm0,DWORD PTR [rbp+rax*4-0xf0]
+ 22e:	ff ff 
+ 230:	c5 fa 5a c8          	vcvtss2sd xmm1,xmm0,xmm0
+ 234:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 23a:	48 98                	cdqe   
+ 23c:	c5 fa 10 84 85 d0 fe 	vmovss xmm0,DWORD PTR [rbp+rax*4-0x130]
+ 243:	ff ff 
+ 245:	c5 fa 5a c0          	vcvtss2sd xmm0,xmm0,xmm0
+ 249:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 24f:	89 c6                	mov    esi,eax
+ 251:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 258 <main+0x258>
+ 258:	b8 03 00 00 00       	mov    eax,0x3
+ 25d:	e8 00 00 00 00       	call   262 <main+0x262>
+    for (i = 0; i < sizeof(x) / sizeof(float); i++) {
+ 262:	83 85 cc fe ff ff 01 	add    DWORD PTR [rbp-0x134],0x1
+ 269:	8b 85 cc fe ff ff    	mov    eax,DWORD PTR [rbp-0x134]
+ 26f:	83 f8 0f             	cmp    eax,0xf
+ 272:	76 96                	jbe    20a <main+0x20a>
+    }
+
+    return 0;
+ 274:	b8 00 00 00 00       	mov    eax,0x0
+}
+ 279:	48 8b 55 c8          	mov    rdx,QWORD PTR [rbp-0x38]
+ 27d:	64 48 33 14 25 28 00 	xor    rdx,QWORD PTR fs:0x28
+ 284:	00 00 
+ 286:	74 05                	je     28d <main+0x28d>
+ 288:	e8 00 00 00 00       	call   28d <main+0x28d>
+ 28d:	48 81 c4 68 01 00 00 	add    rsp,0x168
+ 294:	41 5a                	pop    r10
+ 296:	5d                   	pop    rbp
+ 297:	49 8d 62 f8          	lea    rsp,[r10-0x8]
+ 29b:	c3                   	ret    
