@@ -39,7 +39,12 @@ all:	simd04_1.lst simd04_2.lst \
 	intrinsic_fma3_2.lst \
 	intrinsic_fma3_3.lst \
 	intrinsic_fma3_4.lst \
-	intrinsic_fma3_5.lst
+	intrinsic_fma3_5.lst \
+	intrinsic_avx_512_k_registers.lst \
+	intrinsic_avx_512_vblendps.c \
+	intrinsic_avx_512_addps.c \
+	intrinsic_avx_512_compress.c \
+	intrinsic_avx_512_permute.c
 
 clean:
 	rm *.lst
@@ -260,3 +265,18 @@ intrinsic_fma3_4.o:	intrinsic_fma3_4.c
 
 intrinsic_fma3_5.o:	intrinsic_fma3_5.c
 	gcc -c -mfma -O0 -g -o $@ $<
+
+intrinsic_avx_512_k_registers.o:	intrinsic_avx_512_k_registers.c
+	gcc -c -mavx512f -O0 -g -o $@ $<
+
+intrinsic_avx_512_vblendps.o:	intrinsic_avx_512_vblendps.c
+	gcc -c -mavx512f -O0 -g -o $@ $<
+
+intrinsic_avx_512_addps.o:	intrinsic_avx_512_addps.c
+	gcc -c -mavx512f -O0 -g -o $@ $<
+
+intrinsic_avx_512_compress.o:	intrinsic_avx_512_compress.c
+	gcc -c -mavx512f -O0 -g -o $@ $<
+
+intrinsic_avx_512_permute.o:	intrinsic_avx_512_permute.c
+	gcc -c -mavx512f -O0 -g -o $@ $<
