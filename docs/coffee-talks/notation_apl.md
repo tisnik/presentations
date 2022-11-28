@@ -281,6 +281,7 @@ plus x y <= rec x {
 * during his work for IBM (yes, IBM!) it was translater into aprogramming language
 * in 1979, Iverson received the Turing Award for his work on APL
 * "A shocking brevity"
+* "It is a lot easier to find your errors in four lines of code than in four hundred."
 
 ---
 
@@ -405,7 +406,10 @@ plus x y <= rec x {
 
 ---
 
-* Vectors
+### Vectors
+
+* Elementary data type in APL
+    - Written without commas and other special symbol
 
 ```apl
 ⍴ 1 2 3 4
@@ -413,8 +417,16 @@ plus x y <= rec x {
 VECTOR ← 1 2 3 4 5 6
 ⍴VECTOR
 
-EMPTY_LIST ← ι0
+EMPTY_VECTOR ← ι0
+```
 
+---
+
+### Selectors
+
+* Selectors are also vectors!
+
+```apl
 VECTOR[3]
 VECTOR[1 3 5]
 
@@ -431,25 +443,61 @@ VECTOR[1 3 5]
 ι10
 ```
 
-* Vector shape
+---
 
-```
+### Vector shape
+
+* Vector shape is ... vector, of course
+
+```apl
 ⍴ 1 2 3 4
 ⍴ι10
 ```
 
 ---
 
-### Vector operations
+### Reshape, matrices
+
+* Dyadic ⍴ is *reshape* function
+    - left argument: shape (vector)
+    - right argument: vector or matrix
+
+```apl
+2 2 ⍴ 1 2 3 4
+```
+
+---
+
+### Matrices
+
+* "vector of vectors"
+    - *shape*
+    - *dimension(s)*
+
+```apl
+4 3 ⍴ ⍳12
+
+Mat ← 3 3 ρ ι 9
+Mat[2;2]
+```
+
+---
+
+### Vector and matrices operations
 
 * Item-by-item operations
+    - *broadcasting*
 
 ```apl
 ÷1 2 3 4 5
 10÷1 2 3 4 5
 ```
 
-* Reduce operator
+---
+
+### Reduce operator
+
+* Combined with any dyadic function
 
 ```apl
 +/ 1 2 3 4
@@ -471,10 +519,16 @@ VECTOR[1 3 5]
 */ι100
 ```
 
+---
+
 * Factorial function
+    - monadic function has only one parameter ⍵
+    - dyadic function has two parameters ⍺ and ⍵
+    - factorial is typical monadic function
 
 ```apl
 fact←{×/⍳⍵}
+fact 10
 ```
 
 * Average
@@ -487,13 +541,15 @@ X ← 1 2 3 4 5
 ---
 
 ### Scan operator
-* like reduce, but returns all intermediate results
+
+* like *reduce*
+    - but returns all intermediate results
 
 ```apl
 +\ 1 2 3 4 5
 ```
 
-* Factorial 1! to 10!
+* Vector of factorials from 1! to 10!
 
 ```apl
 ×\⍳10
@@ -501,12 +557,21 @@ X ← 1 2 3 4 5
 
 ---
 
+### Each operator
+
+```apl
+fact←{×⌿⍳⍵}
+fact¨ 10 20 1 0 2
+```
+
+---
+
 ### Take and drop functions
 
 ```apl
-list ← ι10
-1 ↑ list
-1 ↓ list
+vector ← ι10
+1 ↑ vector
+1 ↓ vector
 ```
 
 * Absolute and relative change computation
@@ -519,17 +584,13 @@ revenues ← 56 59 67 64 60 61 68 73 78 75 81 84
 
 ---
 
-* Matrices
+### Outer product
 
-```apl
-4 3 ⍴ ⍳12
-
-Mat ← 3 3 ρ ι 9
-Mat[2;2]
-```
-
-* Outer product
-     - very powerful operation
+* very powerful operation
+    - left argument
+    - outer product symbols ∘.
+    - function (like ×)
+    - right argument
 
 ```apl
 (⍳5)∘.×(⍳5)
@@ -538,29 +599,42 @@ Mat[2;2]
 (⍳5)∘.≥(⍳5)
 ```
 
+* letter frequency computation
+
 ```apl
 'abcd' ∘.= 'cabbage'
 +/ 'abcd' ∘.= 'cabbage'
 ```
 
+---
+
 ### Prime number generator (step-by-step)
 
+* Find all prime numbers from 1 to x
 * Well let's start with the final not-idiomatic form
 
 ```apl
 (∼R∈R∘.×R)/R←1↓⍳x
 ```
 
-* Step-by-step
+* insane?
+   - let's do it step by step
+
+---
+
+### Prime number generator step-by-step
 
 ```apl
 ⍳x
+1↓⍳x
 R←1↓⍳x
 R∘.×R
 R∊R∘.×R
 ~R∊R∘.×R
 (~R∊R∘.×R)/R
 ```
+
+---
 
 * Number of primes in given range
 
@@ -576,19 +650,29 @@ primes←{ {(~⍵∊⍵∘.×⍵)/⍵}1↓⍳⍵}
 2 3 5 7
 ```
 
+---
+
+### Point-free style in APL
+
 * Tacit variant
+   - without usage of ⍵
+   - without variable R
 
 ```apl
 ((⊢~∘.×⍨)1↓⍳)100
 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 ```
 
+---
+
 ## Implementations of APL
 
-* dyalog
+* Dyalog APL
 * GNU APL
 * ngl/apl
 * NARS2000
+
+---
 
 ## Links
 
@@ -612,3 +696,5 @@ primes←{ {(~⍵∊⍵∘.×⍵)/⍵}1↓⍳⍵}
 * [Pattern](https://en.wikipedia.org/wiki/Pattern)
 * [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/)
 * [Enterprise Integration Patterns](https://camel.apache.org/components/3.17.x/eips/enterprise-integration-patterns.html)
+* [Impending kOS](https://vector.org.uk/impending-kos/)
+* [APL Primitives](https://www.microapl.com/apl_help/ch_020_020.htm)
