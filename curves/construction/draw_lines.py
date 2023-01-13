@@ -18,11 +18,11 @@ try:
 
     # vertikální úsečky
     for x in range(0, width, 30):
-        draw.line((x, 0, x, height-1), fill=(255, 255, 255))
+        draw.line((x, 0, x, height - 1), fill=(255, 255, 255))
 
     # horizontální úsečky
     for y in range(0, height, 30):
-        draw.line((0, y, width-1, y), fill=(255, 255, 255))
+        draw.line((0, y, width - 1, y), fill=(255, 255, 255))
 
     # uložení upraveného obrázku
     test_image.save("grid.png")
