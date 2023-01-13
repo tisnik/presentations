@@ -19,10 +19,10 @@ try:
     height = test_image.size[1]
 
     # vykreslení čtverce, ve kterém se bude provádět konstrukce kružnice
-    x1 = width/2 - RADIUS
-    y1 = height/2 - RADIUS
-    x2 = width/2 + RADIUS
-    y2 = height/2 + RADIUS
+    x1 = width / 2 - RADIUS
+    y1 = height / 2 - RADIUS
+    x2 = width / 2 + RADIUS
+    y2 = height / 2 + RADIUS
 
     draw.rectangle((x1, y1, x2, y2), outline=(255, 255, 255))
 
