@@ -1,0 +1,3 @@
+as sections2.s -o sections2.o
+ld -s sections2.o
+
