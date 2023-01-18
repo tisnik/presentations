@@ -7,7 +7,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"gopkg.in/mgo.v2/bson"
-	"io/ioutil"
+	"os"
 
 	"github.com/ugorji/go/codec"
 )
@@ -89,7 +89,7 @@ func encodeVectorIntoMsgPack(vector Vector) ([]byte, error) {
 }
 
 func saveVector(encodedVector []byte, filename string) {
-	err := ioutil.WriteFile(filename, encodedVector, 0o644)
+	err := os.WriteFile(filename, encodedVector, 0o644)
 	if err != nil {
 		fmt.Println(err)
 	} else {
