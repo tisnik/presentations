@@ -7,7 +7,7 @@
 int main()
 {
     void *library;
-    GoInt64 (*sum)(int* values, GoInt length);
+    GoInt64(*sum) (int *values, GoInt length);
 
     /* pokus o otevreni a nacteni sdilene knihovny */
     library = dlopen("./so9.so", RTLD_LAZY);
@@ -22,10 +22,10 @@ int main()
 
     if (sum != NULL) {
         int ret;
-        int input[] = {1,2,3,4};
-        printf("address for 'sum' retrieved: %p\n", (void*)sum);
+        int input[] = { 1, 2, 3, 4 };
+        printf("address for 'sum' retrieved: %p\n", (void *) sum);
         puts("Calling 'sum'...");
-        ret = sum(input, sizeof(input)/sizeof(int));
+        ret = sum(input, sizeof(input) / sizeof(int));
         printf("...called, return value: %d\n", ret);
     } else {
         puts("unable to retrieve address for 'sum'");
