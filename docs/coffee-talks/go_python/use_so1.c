@@ -21,11 +21,11 @@ int main()
     hello = dlsym(library, "hello");
 
     /* pro preklad s --pedantic
-    *(void **) (&hello) = dlsym(library, "hello");
-    */
+     *(void **) (&hello) = dlsym(library, "hello");
+     */
 
     if (hello != NULL) {
-        printf("address for 'hello' retrieved: %p\n", (void*)hello);
+        printf("address for 'hello' retrieved: %p\n", (void *) hello);
         puts("Calling 'hello'...");
         hello();
         puts("...called");
