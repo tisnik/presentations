@@ -25,7 +25,7 @@ int main()
         v.X = 1.0;
         v.Y = 1.0;
         double ret;
-        printf("address for 'length' retrieved: %p\n", (void*)length);
+        printf("address for 'length' retrieved: %p\n", (void *) length);
         puts("Calling 'length'...");
         ret = length(v);
         printf("...called, vector length: %f\n", ret);
