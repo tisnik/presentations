@@ -1,0 +1,3 @@
+as jumps.s -o jumps.o
+ld -s jumps.o
+

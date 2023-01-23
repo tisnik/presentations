@@ -1,0 +1,2 @@
+objdump -d -Mintel --visualize-jumps jumps.o
+

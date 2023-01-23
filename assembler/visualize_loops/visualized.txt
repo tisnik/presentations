@@ -1,0 +1,20 @@
+
+jumps.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+   0:	             90                   	nop
+   1:	      /----- eb 0b                	jmp    e <sys_exit+0xd>
+   3:	/-----|----> 90                   	nop
+   4:	|     |      cd 80                	int    0x80
+   6:	|  /--|----> bb 01 00 00 00       	mov    ebx,0x1
+   b:	|  |  |      90                   	nop
+   c:	|  |  |  /-- eb 08                	jmp    16 <sys_exit+0x15>
+   e:	|  |  \--|-> b8 01 00 00 00       	mov    eax,0x1
+  13:	|  |     |   90                   	nop
+  14:	|  \-----|-- eb f0                	jmp    6 <sys_exit+0x5>
+  16:	|        \-> ff cb                	dec    ebx
+  18:	|            90                   	nop
+  19:	\----------- eb e8                	jmp    3 <sys_exit+0x2>
