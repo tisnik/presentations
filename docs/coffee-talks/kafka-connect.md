@@ -1,4 +1,4 @@
-# Monitoring Apache Kafka
+# Kafka Connect framework
 
 ![Kafka logo](images/kafka_logo.png)
 
@@ -10,6 +10,8 @@
 * Lambda architecture
 * Kappa architecture
 * Logging platform
+* Service mesh communication layer
+* and more
 
 ![Kafka streams](images/kafka_streams.png)
 
@@ -21,6 +23,10 @@
 
 * (ZooKeeper)
 * Message brokers
+* Producers
+* Consumers
+* DB backends
+* and ... connectors
 
 
 
@@ -40,19 +46,6 @@
 * Sources
 * Kafka Cluster
 * Sinks
-
-
-postgres=# create database kafka_source;
-CREATE DATABASE
-create table source(id numeric, name varchar, surname varchar);
-
-postgres=# create database kafka_sink;
-CREATE DATABASE
-create table t1 (message varchar);
-
-
-postgres://postgres:postgres@127.0.0.1:5432/kafka_source
-postgres://postgres:postgres@127.0.0.1:5432/kafka_sink
 
 
 ## Use cases
@@ -97,10 +90,76 @@ postgres://postgres:postgres@127.0.0.1:5432/kafka_sink
 * Lightweight data transformations
 
 
+## File sources and sinks
 
-## JDBC source
+### Schema-less
 
-* any insert/update/delete as event to Kafka
+* `$KAFKA_PATH/config/connect-standalone.properties`
+
+```property
+plugin.path=/home/ptisnovs/kafka/kafka_2.12-3.3.2/libs/
+```
+
+* `$KAFKA_PATH/config/connect-file-sink.properties`
+
+```propery
+name=local-file-sink
+connector.class=FileStreamSink
+tasks.max=1
+file=test.sink.txt
+topics=connect-test-1
+key.converter=org.apache.kafka.connect.storage.StringConverter
+value.converter=org.apache.kafka.connect.storage.StringConverter
+key.converter.schemas.enable=false
+value.converter.schemas.enable=false
+```
+
+* Start the connector
+
+```bash
+bin/connect-standalone.sh config/connect-standalone.properties config/connect-file-sink.properties
+```
+
+* Produce some messages
+
+```bash
+kafkacat -b localhost:9092 -P -t connect-test-1
+```
+
+### JSON messages
+
+* `$KAFKA_PATH/config/connect-file-sink-2.properties`
+
+```property
+name=local-file-sink-json
+connector.class=FileStreamSink
+tasks.max=1
+file=test.sink.txt
+topics=connect-test-2
+key.converter=org.apache.kafka.connect.json.JsonConverter
+value.converter=org.apache.kafka.connect.json.JsonConverter
+key.converter.schemas.enable=false
+value.converter.schemas.enable=false
+```
+
+## JDBC sink
+
+* Any insert/update/delete as event to Kafka
+* Schema needs to be provided!
+
+```property
+name=db-sink
+connector.class=io.confluent.connect.jdbc.JdbcSinkConnector
+tasks.max=1
+topics=connect-test-3
+key.converter=org.apache.kafka.connect.json.JsonConverter
+value.converter=org.apache.kafka.connect.json.JsonConverter
+key.converter.schemas.enable=false
+value.converter.schemas.enable=false
+connection.url=jdbc:postgresql://localhost:5432/kafka_sink?user=postgres&password=postgres
+auto.create=true
+delete.enabled=false
+```
 
 
 
