@@ -39,4 +39,5 @@ func main() {
 	testCopyFile("08_defer_practical_usage.go", "/dev/full")
 	testCopyFile("/dev/null", "new2.go")
 }
+
 // DONE
