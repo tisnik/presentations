@@ -1,5 +1,5 @@
 " Slideshow tool v1.1
-" Pavel Tisnovsky 2012, 2013, 2014, 2015, 2016, 2017
+" Pavel Tisnovsky 2012, 2013, 2014, 2015, 2016, 2017, 2023
 
 let g:slides=readfile("list.txt")
 let g:index=0
@@ -48,6 +48,9 @@ endfunction
 
 function! ShowActualSlide()
     execute "edit" g:slides[g:index]
+    " move cursor at the very beginning of line
+    normal gg
+    normal 0
 endfunction
 
 function! StatusLine()
@@ -57,7 +60,7 @@ endfunction
 " Hot keys
 map <PageUp>   :call ShowPrevSlide()<cr>
 map <PageDown> :call ShowNextSlide()<cr>
-map <Space> :call ShowNextSlide()<cr>
+map <Space>    :call ShowNextSlide()<cr>
 map <Home>     :call ShowFirstSlide()<cr>
 map <End>      :call ShowLastSlide()<cr>
 
