@@ -4,10 +4,10 @@
 ■ Email    <tisnik 0x40 centrum 0x2e cz>
 ■ Datum    2023-10-07
 
-
 Obsah přednášky (1)
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Programovací jazyk Python
+▶ Funkcionální programování
 
 Programovací jazyk Python
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -28,4 +28,21 @@ Programovací jazyk Python
         - Big data
     ◆ Tzv. „glue“ jazyk
     ◆ Vestavitelný interpret Pythonu
+
+Funkcionální programování
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Funkce jsou plnohodnotnými typy
+▶ Čisté funkce (bez vedlejších efektů)
+    ◆ referenční průhlednost (transparency)
+    ◆ volání funkce s danými parametry lze nahradit za výsledek
+▶ Preferuje se použití neměnitelných hodnot
+    ◆ immutable values/variables
+    ◆ čistě funkcionální datové struktury
+
+Proč funkcionální programování?
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Funkce bez vedlejších efektů se snadno testují
+▶ Funkce bez vedlejších efektů se snadno ladí
+▶ Stav aplikace je izolován
+▶ Zajištěn souběh či paralelní běh částí programu
 
