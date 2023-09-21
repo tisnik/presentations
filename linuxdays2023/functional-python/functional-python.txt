@@ -45,4 +45,25 @@ Proč funkcionální programování?
 ▶ Funkce bez vedlejších efektů se snadno ladí
 ▶ Stav aplikace je izolován
 ▶ Zajištěn souběh či paralelní běh částí programu
+▶ Neměnné hodnoty: méně možností vytvořit vedlejší efekt
+
+Funkce jsou plnohodnotnými typy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ "Functions are first-class citizens"
+    ◆ v mnoha materiálech se toto tvrzení rychle přejde
+    ◆ ovšem má mnoho důsledků zasahujících do sémantiky
+▶ Některé zásadní důsledky pro programovací jazyk
+    ◆ musí být podporovány funkce vyššího řádu
+    ◆ musí být podporovány uzávěry (pokud se nemění sémantika viditelnosti)
+    ◆ typicky se vyžadují nelokální změny stavu aplikace
+
+Funkce jsou plnohodnotnými typy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Další vlastnosti jazyka vyplývající z tohoto tvrzení
+    ◆ může být možné skládat funkce (compose)
+    ◆ může být možné transformovat funkce
+        - někdy i curryfikace jako forma transformace
+    ◆ je možné si zapamatovat výsledky funkcí
+        - čisté funkce lze chápat jako mapy/slovníky na steroidech
+
 
