@@ -66,4 +66,40 @@ Funkce jsou plnohodnotnými typy
     ◆ je možné si zapamatovat výsledky funkcí
         - čisté funkce lze chápat jako mapy/slovníky na steroidech
 
+Python jako funkcionální jazyk?
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ V Pythonu jsou funkce plnohodnotnými datovými typy
+    ◆ se všemi z toho plynoucími důsledky
+    ◆ "funkční" literál poněkud matoucí
+▶ Neměnitelné datové typy?
+    ◆ standardní jen částečně (řetězce, n-tice)
+    ◆ existují rozšiřující knihovny
+    
+Funkcionální koncepty v Pythonu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Funkce vyššího řádu
+▶ Anonymní funkce (lambdy)
+    ◆ jen omezeně
+▶ Uzávěry (closures)
+▶ Generátorové notace
+    ◆ pro seznamy, množiny, slovníky i n-tice
+▶ Parciální funkce
+    ◆ transformace
+▶ Caching výsledků funkcí
 
+Praktická část
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Lambda výrazy
+▶ Funkce vyššího řádu
+▶ Uzávěry
+▶ Generátorové notace
+▶ Parciální funkce
+▶ Caching výsledků funkcí
+
+Lambda výrazy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Funkce vyššího řádu
+Uzávěry
+Generátorové notace
+Parciální funkce
+Caching výsledků funkcí
