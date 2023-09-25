@@ -4,10 +4,11 @@
 ■ Email    <tisnik 0x40 centrum 0x2e cz>
 ■ Datum    2023-10-07
 
-Obsah přednášky (1)
+Obsah přednášky
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Programovací jazyk Python
 ▶ Funkcionální programování
+▶ Praktická část
 
 Programovací jazyk Python
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -74,7 +75,7 @@ Python jako funkcionální jazyk?
 ▶ Neměnitelné datové typy?
     ◆ standardní jen částečně (řetězce, n-tice)
     ◆ existují rozšiřující knihovny
-    
+
 Funkcionální koncepty v Pythonu
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Funkce vyššího řádu
@@ -98,8 +99,22 @@ Praktická část
 
 Lambda výrazy
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ V Pythonu skutečně "jen" výrazy
+    ◆ teoreticky stačí, ovšem sémantika Pythonu je problematická
+
 Funkce vyššího řádu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Jejich existence plyne z definice funkcí jako plnohodnotného typu
+▶ Standardní funkce vyššího řádu
+    ◆ map
+    ◆ filter
+    ◆ reduce (z functools)
+
 Uzávěry
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Generátorové notace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Parciální funkce
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Caching výsledků funkcí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
