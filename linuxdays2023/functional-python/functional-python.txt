@@ -112,8 +112,21 @@ Funkce vyššího řádu
 
 Uzávěry
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Jejich existence je očekávána protože
+    ◆ funkce jsou plnohodnotnými typy
+    ◆ proměnné vně bloku jsou dostupné (viditelné)
+▶ V Pythonu poněkud problematické
+    ◆ neglobální, nelokální proměnné
+    ◆ modifikace proměnných
+
 Generátorové notace
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Idiomatická syntaxe pro přepis funkcí typu map a filter
+    ◆ pro n-tice
+    ◆ pro seznamy
+    ◆ pro množiny
+    ◆ pro slovníky
+
 Parciální funkce
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Caching výsledků funkcí
