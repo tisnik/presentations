@@ -1,0 +1,10 @@
+
+Funkce jsou plnohodnotnými typy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ "Functions are first-class citizens"
+    ◆ v mnoha materiálech se toto tvrzení rychle přejde
+    ◆ ovšem má mnoho důsledků zasahujících do sémantiky
+▶ Některé zásadní důsledky pro programovací jazyk
+    ◆ musí být podporovány funkce vyššího řádu
+    ◆ musí být podporovány uzávěry (pokud se nemění sémantika viditelnosti)
+    ◆ typicky se vyžadují nelokální změny stavu aplikace

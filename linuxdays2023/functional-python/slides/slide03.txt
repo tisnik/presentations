@@ -1,0 +1,10 @@
+
+Funkcionální programování
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Funkce jsou plnohodnotnými typy
+▶ Čisté funkce (bez vedlejších efektů)
+    ◆ referenční průhlednost (transparency)
+    ◆ volání funkce s danými parametry lze nahradit za výsledek
+▶ Preferuje se použití neměnitelných hodnot
+    ◆ immutable values/variables
+    ◆ čistě funkcionální datové struktury

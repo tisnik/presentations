@@ -1,0 +1,9 @@
+
+Uzávěry
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Jejich existence je očekávána protože
+    ◆ funkce jsou plnohodnotnými typy
+    ◆ proměnné vně bloku jsou dostupné (viditelné)
+▶ V Pythonu poněkud problematické
+    ◆ neglobální, nelokální proměnné
+    ◆ modifikace proměnných

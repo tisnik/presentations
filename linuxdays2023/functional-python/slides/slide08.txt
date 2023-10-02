@@ -1,0 +1,12 @@
+
+Funkcionální koncepty v Pythonu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Funkce vyššího řádu
+▶ Anonymní funkce (lambdy)
+    ◆ jen omezeně
+▶ Uzávěry (closures)
+▶ Generátorové notace
+    ◆ pro seznamy, množiny, slovníky i n-tice
+▶ Parciální funkce
+    ◆ transformace
+▶ Caching výsledků funkcí

@@ -1,0 +1,20 @@
+
+Programovací jazyk Python
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Typické použití Pythonu
+    ◆ Nástroje a utility ovládané z příkazového řádku
+    ◆ Aplikace s grafickým uživatelským rozhraním
+    ◆ Client-server
+        - serverová část (Flask, Django, CherryPy, ...)
+        - klient (Brython, spíše technologické demo)
+    ◆ Numerické výpočty, symbolické výpočty
+        - NumPy
+        - SciPy
+        - Matplotlib
+    ◆ Moderní způsoby využití Pythonu
+        - AI
+        - Machine Learning (Deep Learning)
+          PyTorch
+        - Big data
+    ◆ Tzv. „glue“ jazyk
+    ◆ Vestavitelný interpret Pythonu

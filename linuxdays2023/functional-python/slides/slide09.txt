@@ -1,0 +1,10 @@
+
+Praktická část
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Lambda výrazy
+▶ Funkce vyššího řádu
+▶ Uzávěry
+▶ Generátorové notace
+▶ Parciální funkce
+▶ Caching výsledků funkcí
+▶ Persistentní datové struktury

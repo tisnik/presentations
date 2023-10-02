@@ -1,0 +1,8 @@
+
+Proč funkcionální programování?
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Funkce bez vedlejších efektů se snadno testují
+▶ Funkce bez vedlejších efektů se snadno ladí
+▶ Stav aplikace je izolován
+▶ Zajištěn souběh či paralelní běh částí programu
+▶ Neměnné hodnoty: méně možností vytvořit vedlejší efekt

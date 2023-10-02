@@ -1,0 +1,8 @@
+
+Generátorové notace
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Idiomatická syntaxe pro přepis funkcí typu map a filter
+    ◆ pro n-tice
+    ◆ pro seznamy
+    ◆ pro množiny
+    ◆ pro slovníky

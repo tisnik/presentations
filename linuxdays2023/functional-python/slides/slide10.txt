@@ -1,0 +1,5 @@
+
+Lambda výrazy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ V Pythonu skutečně "jen" výrazy
+    ◆ teoreticky stačí, ovšem sémantika Pythonu je problematická

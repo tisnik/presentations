@@ -1,0 +1,7 @@
+
+Parciální funkce a metody
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Opět podporováno knihovnou functools
+▶ Částečná aplikace parametrů
+▶ Výsledkem bude nová plně použitelná funkce
+▶ Lze ovšem aplikovat i na metody

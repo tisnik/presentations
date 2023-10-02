@@ -1,0 +1,9 @@
+
+Python jako funkcionální jazyk?
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ V Pythonu jsou funkce plnohodnotnými datovými typy
+    ◆ se všemi z toho plynoucími důsledky
+    ◆ "funkční" literál poněkud matoucí
+▶ Neměnitelné datové typy?
+    ◆ standardní jen částečně (řetězce, n-tice)
+    ◆ existují rozšiřující knihovny

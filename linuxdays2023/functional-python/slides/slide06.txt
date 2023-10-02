@@ -1,0 +1,9 @@
+
+Funkce jsou plnohodnotnými typy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Další vlastnosti jazyka vyplývající z tohoto tvrzení
+    ◆ může být možné skládat funkce (compose)
+    ◆ může být možné transformovat funkce
+        - někdy i curryfikace jako forma transformace
+    ◆ je možné si zapamatovat výsledky funkcí
+        - čisté funkce lze chápat jako mapy/slovníky na steroidech

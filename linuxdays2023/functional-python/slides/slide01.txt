@@ -1,0 +1,6 @@
+
+Obsah přednášky
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Programovací jazyk Python
+▶ Funkcionální programování
+▶ Praktická část

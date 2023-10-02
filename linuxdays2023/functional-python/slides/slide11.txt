@@ -1,0 +1,8 @@
+
+Funkce vyššího řádu
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Jejich existence plyne z definice funkcí jako plnohodnotného typu
+▶ Standardní funkce vyššího řádu
+    ◆ map
+    ◆ filter
+    ◆ reduce (z functools)
