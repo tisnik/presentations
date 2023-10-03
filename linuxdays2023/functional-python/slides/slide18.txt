@@ -1,1 +1,6 @@
 
+Persistentní datové struktury
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Sdílení struktury
+▶ Problém přístupu z vláken
+▶ Knihovna Pyrsistent (a další)

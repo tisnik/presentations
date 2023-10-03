@@ -1,0 +1,8 @@
+
+Persistentní vektory
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Založeny na RRB stromech
+    ◆ RRB-Trees, Relaxed Radix Balanced Trees
+    ◆ přístup, insert: log_32(N)
+        - což je prakticky konstantní složitost
+    ◆ dtto pro persistentní množiny
