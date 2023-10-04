@@ -7,4 +7,5 @@ Praktická část
 ▶ Generátorové notace
 ▶ Parciální funkce
 ▶ Caching výsledků funkcí
+▶ Dekorátory
 ▶ Persistentní datové struktury

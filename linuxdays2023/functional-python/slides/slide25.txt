@@ -1,6 +1,5 @@
 
-Dekorátory
+Persistentní mapy
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Prakticky: transformace funkce
-    ◆ obalení funkce jinou funkcí
-    ◆ velmi užitečné v praxi
+▶ Problematika klíčů, které nejsou řetězci
+    ◆ syntaxe, ne sémantika

@@ -1,6 +1,3 @@
 
-Persistentní datové struktury
+Praktické používání dekorátorů
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-▶ Sdílení struktury
-▶ Problém přístupu z vláken
-▶ Knihovna Pyrsistent (a další)

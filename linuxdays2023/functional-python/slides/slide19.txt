@@ -1,16 +1,7 @@
 
-Persistentní datové struktury: Pyrsistent
-▶ Podporované datové struktury
-    ◆ pvector
-        - persistentní vektor
-        - obdoba Pythonovského seznamu
-    ◆ pset
-        - persistentní množina
-    ◆ pmap
-        - persistentní mapa
-        - (asociativní pole)
-    ◆ plist
-        - persistentní seznam
-        - (interně dosti odlišný od vektorů)
-    ◆ pdeque
-        - persistentní obousměrná fronta
+Caching výsledků funkcí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Referenčně transparentní funkce
+    ◆ návratová hodnota(y) závisí pouze na parametrech
+    ◆ což znamená, že jde o zobrazení
+    ◆ a může být uloženo do mapy (cache)
