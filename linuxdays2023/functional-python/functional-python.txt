@@ -96,6 +96,7 @@ Praktická část
 ▶ Generátorové notace
 ▶ Parciální funkce
 ▶ Caching výsledků funkcí
+▶ Dekorátory
 ▶ Persistentní datové struktury
 
 Lambda výrazy
@@ -141,12 +142,24 @@ Parciální funkce a metody
 Ukázky tvorby a použití parciálních funkcí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
+Dekorátory
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Prakticky: transformace funkce
+    ◆ obalení funkce jinou funkcí
+    ◆ velmi užitečné v praxi
+
+Praktické používání dekorátorů
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
 Caching výsledků funkcí
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Referenčně transparentní funkce
     ◆ návratová hodnota(y) závisí pouze na parametrech
     ◆ což znamená, že jde o zobrazení
     ◆ a může být uloženo do mapy (cache)
+
+Ukázky použití dekorátoru @cache a @lru_cache
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Persistentní datové struktury
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -179,3 +192,12 @@ Persistentní vektory
         - což je prakticky konstantní složitost
     ◆ dtto pro persistentní množiny
 
+Persistentní množiny
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Prvky nejsou přístupné přes index
+▶ Test na existenci prvku v množině
+
+Persistentní mapy
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+▶ Problematika klíčů, které nejsou řetězci
+    ◆ syntaxe, ne sémantika
