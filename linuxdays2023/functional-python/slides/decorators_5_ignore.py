@@ -1,3 +1,7 @@
+#
+# Dekorátor @ignore
+#
+
 from funcy import ignore
 
 @ignore(errors=ZeroDivisionError, default=-1)
