@@ -1,3 +1,7 @@
+#
+# Dekorátor @retry
+#
+
 from funcy import retry
 
 
