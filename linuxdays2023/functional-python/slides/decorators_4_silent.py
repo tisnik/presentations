@@ -1,3 +1,7 @@
+#
+# Dekorátor @silent
+#
+
 from funcy import silent
 
 @silent
