@@ -1,3 +1,7 @@
+#
+# Funkce vyššího řádu akceptující jinou funkci
+#
+
 def add(x, y):
     return x + y
 
