@@ -1,3 +1,6 @@
+#
+# Persistentní vektory
+#
 
 from pyrsistent import v
 
