@@ -1,3 +1,7 @@
+#
+# Čítač realizovaný uzávěrrem: nefunční varianta
+#
+
 def createCounter():
     counter = 0
     def next():
