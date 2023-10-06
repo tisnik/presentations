@@ -1,3 +1,7 @@
+#
+# Dekorátor @lru_cache
+#
+
 from time import time
 from functools import lru_cache
 
