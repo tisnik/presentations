@@ -1,3 +1,7 @@
+#
+# Dekorátor @reraise
+#
+
 from funcy import reraise
 
 class MathError(Exception):
