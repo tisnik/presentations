@@ -1,3 +1,7 @@
+#
+# Částečně vyhodnocená metoda
+#
+
 class Foo:
     def __init__(self):
         self._enabled = False
