@@ -1,3 +1,7 @@
+#
+# Dekorátor @cache
+#
+
 from time import time
 from functools import cache
 
