@@ -1,0 +1,4 @@
+#!/bin/sh
+cd slides/
+gvim -S _.vim
+
