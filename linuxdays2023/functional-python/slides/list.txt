@@ -34,6 +34,16 @@ partial2.py
 partial_method.py
 slide17.txt
 slide18.txt
+decorators_1.py
+decorators_2.py
+decorators_3_measure_time.py
+decorators_4_silent.py
+decorators_5_ignore.py
+decorators_6_ignore.py
+decorators_7_ignore.py
+decorators_8_reraise.py
+decorators_9_retry.py
+decorators_A_retry.py
 slide19.txt
 slide20.txt
 cache.py

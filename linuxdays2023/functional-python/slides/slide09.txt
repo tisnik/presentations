@@ -5,7 +5,7 @@ Praktická část
 ▶ Funkce vyššího řádu
 ▶ Uzávěry
 ▶ Generátorové notace
-▶ Parciální funkce
+▶ Částečně vyhodnocené funkce
 ▶ Caching výsledků funkcí
 ▶ Dekorátory
 ▶ Persistentní datové struktury

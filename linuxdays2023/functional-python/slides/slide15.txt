@@ -1,5 +1,5 @@
 
-Parciální funkce a metody
+Částečně vyhodnocené funkce a metody
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Opět podporováno knihovnou functools
 ▶ Částečná aplikace parametrů

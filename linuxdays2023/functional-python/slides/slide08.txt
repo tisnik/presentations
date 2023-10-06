@@ -7,6 +7,6 @@ Funkcionální koncepty v Pythonu
 ▶ Uzávěry (closures)
 ▶ Generátorové notace
     ◆ pro seznamy, množiny, slovníky i n-tice
-▶ Parciální funkce
+▶ Částečně vyhodnocené funkce
     ◆ transformace
 ▶ Caching výsledků funkcí
