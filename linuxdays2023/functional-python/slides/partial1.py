@@ -1,3 +1,7 @@
+#
+# Částečně vyhodnocená funkce
+#
+
 from functools import partial
 
 
