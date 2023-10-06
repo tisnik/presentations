@@ -1,3 +1,7 @@
+#
+# Persistentní množiny
+#
+
 from pyrsistent import s
 
 set1 = s(1, 2, 3)
