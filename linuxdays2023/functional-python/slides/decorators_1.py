@@ -1,3 +1,7 @@
+#
+# Vytvoření a aplikace nového dekorátoru
+#
+
 from funcy import decorator
 
 
