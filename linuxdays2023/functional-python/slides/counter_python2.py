@@ -1,3 +1,7 @@
+#
+# Čítač realizovaný uzávěrrem: varianta pro Python 2
+#
+
 def createCounter():
     counter = [0]
     def next():
