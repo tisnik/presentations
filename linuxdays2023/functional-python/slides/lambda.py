@@ -1,3 +1,7 @@
+#
+# Lambda výraz jako plnohodnotný typ
+#
+
 (lambda x,y:x+y)(1, 2)
 
 foo=lambda x,y:x+y
