@@ -84,7 +84,7 @@ Funkcionální koncepty v Pythonu
 ▶ Uzávěry (closures)
 ▶ Generátorové notace
     ◆ pro seznamy, množiny, slovníky i n-tice
-▶ Parciální funkce
+▶ Částečně vyhodnocené funkce
     ◆ transformace
 ▶ Caching výsledků funkcí
 
@@ -94,7 +94,7 @@ Praktická část
 ▶ Funkce vyššího řádu
 ▶ Uzávěry
 ▶ Generátorové notace
-▶ Parciální funkce
+▶ Částečně vyhodnocené funkce
 ▶ Caching výsledků funkcí
 ▶ Dekorátory
 ▶ Persistentní datové struktury
@@ -132,15 +132,15 @@ Generátorové notace
 Ukázky generátorových notací pro jednotlivé datové typy
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-Parciální funkce a metody
+Částečně vyhodnocené funkce a metody
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 ▶ Opět podporováno knihovnou functools
 ▶ Částečná aplikace parametrů
 ▶ Výsledkem bude nová plně použitelná funkce
 ▶ Lze ovšem aplikovat i na metody
 
-Ukázky tvorby a použití parciálních funkcí
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Ukázky tvorby a použití částečně vyhodnocených funkcí
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Dekorátory
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
