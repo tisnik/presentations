@@ -1,3 +1,7 @@
+#
+# Použití funkce vyššího řádu reduce
+#
+
 from functools import reduce
 
 
