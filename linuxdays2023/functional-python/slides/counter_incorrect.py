@@ -1,5 +1,5 @@
 #
-# Čítač realizovaný uzávěrrem: nefunční varianta
+# Čítač realizovaný uzávěrem: nefunční varianta
 #
 
 def createCounter():
