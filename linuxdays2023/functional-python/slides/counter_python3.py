@@ -1,5 +1,5 @@
 #
-# Čítač realizovaný uzávěrrem: varianta pro Python 3
+# Čítač realizovaný uzávěrem: varianta pro Python 3
 #
 
 def createCounter():
