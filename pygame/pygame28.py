@@ -13,7 +13,7 @@ import sys
 import os
 
 # Nutno importovat kvůli konstantám QUIT atd.
-from pygame.locals import *
+from pygame.locals import QUIT, KEYDOWN, K_ESCAPE
 
 # Velikost okna aplikace
 WIDTH = 400
