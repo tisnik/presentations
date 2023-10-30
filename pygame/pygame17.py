@@ -9,11 +9,12 @@
 import pygame, sys, os, math
 
 # Nutno importovat kvůli konstantám QUIT atd.
-from pygame.locals import *
+from pygame.locals import QUIT, K_ESCAPE, KEYDOWN
 
 # Velikost okna aplikace
 WIDTH = 320
 HEIGHT = 240
+
 
 # Třída představující sprite zobrazený jako jednobarevný čtverec.
 class BlockySprite(pygame.sprite.Sprite):
