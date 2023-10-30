@@ -10,7 +10,8 @@
 import pygame, sys, os, math
 
 # Nutno importovat kvůli konstantám QUIT atd.
-from pygame.locals import *
+from pygame.locals import QUIT, K_ESCAPE, KEYDOWN
+from pygame.locals import BLEND_ADD, BLEND_SUB, BLEND_MULT, BLEND_MIN, BLEND_MAX
 
 # Velikost okna aplikace
 WIDTH = 320
