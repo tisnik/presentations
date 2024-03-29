@@ -1,0 +1,5 @@
+function print_two_values(a, b)
+    print(a, b)
+end
+
+print_two_values(1, 2)
