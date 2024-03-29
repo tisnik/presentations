@@ -1,0 +1,21 @@
+-- jednoradkovy komentar
+print("Hello")
+
+--[[
+   viceradkovy
+   komentar
+]]
+print("world")
+
+--:END:
+   specialni
+   viceradkovy
+   komentar
+:END:
+print("!")
+
+--:format(use-asciidoc):
+   specialni
+   viceradkovy
+   komentar
+:format:
