@@ -1,0 +1,15 @@
+-- jednoradkovy komentar
+print("Hello")
+
+--[[
+   viceradkovy
+   komentar
+]]
+print("world")
+
+--:END:
+   specialni
+   viceradkovy
+   komentar
+:END:
+print("!")
