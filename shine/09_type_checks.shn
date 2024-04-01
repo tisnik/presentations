@@ -1,0 +1,8 @@
+function print_number(a is Number)
+    print(a)
+end
+
+print_number(100)
+print_number(3.14)
+print_number("foo")
+print_number(nil)
