@@ -1,0 +1,9 @@
+a is Number = 10
+b is String = "foo"
+c is Boolean = true
+d is Nil = nil
+
+print a
+print b
+print c
+print d
