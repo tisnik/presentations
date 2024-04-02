@@ -1,0 +1,20 @@
+function mac(coefficient, ...args)
+    s = 0
+
+    for i, v in ipairs(args) do
+        s = s + v * coefficient
+    end
+
+    return s
+end
+
+s = mac(1.0, 1, 2, 3, 4)
+print(s)
+
+
+s = mac(0.5, 1, 2, 3, 4)
+print(s)
+
+
+s = mac(2.0, 1, 2, 3, 4)
+print(s)
