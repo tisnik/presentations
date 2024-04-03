@@ -1,0 +1,18 @@
+function sum(values is Array)
+    s = 0
+
+    for i, v in ipairs(values) do
+        s = s + v
+    end
+
+    return s
+end
+
+s = sum({1, 2, 3, 4})
+print(s)
+
+s = sum({1})
+print(s)
+
+s = sum({})
+print(s)
