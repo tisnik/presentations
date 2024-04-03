@@ -1,0 +1,18 @@
+function print_array(t)
+    for i, v in ipairs(t) do
+        print(i, v)
+    end
+    print("-------------------")
+end
+
+t = []
+
+t.push("foo")
+t.push("bar")
+t.push("baz")
+print_array(t)
+
+for i = 0, 2 do
+    t.pop()
+    print_array(t)
+end
