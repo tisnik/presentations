@@ -1,0 +1,14 @@
+t = []
+
+for i = 0, 10 do
+    t.push(i)
+end
+
+joined = t.join(",")
+print(joined)
+
+joined = t.join(" ")
+print(joined)
+
+joined = t.join("; ")
+print(joined)
