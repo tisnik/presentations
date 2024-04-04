@@ -1,0 +1,7 @@
+function print_two_values(a=1, b)
+    print(a, b)
+end
+
+print_two_values 100, 200
+print_two_values 100
+print_two_values
