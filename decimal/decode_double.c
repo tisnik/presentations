@@ -15,9 +15,9 @@ void decode_double(double value)
         __uint64_t x;
     } IEEE_754_double;
 
-    IEEE_754_double f;
-    f.value = value;
-    __uint64_t x = f.x;
+    IEEE_754_double d;
+    d.value = value;
+    __uint64_t x = d.x;
 
     unsigned int sign = 0x01 & (x >> (mantissa_bits + exponent_bits));
     unsigned int exponent = max_exponent & (x >> mantissa_bits);
@@ -40,7 +40,7 @@ void decode_double(double value)
 
 int main(void)
 {
-    double values[] = {0.0, 0.1, 0.2, 1.0, 2.0, 10.0, 100.0, 1000.0, 1000.1, 1.0/0.0, -0.1, -0.2, -1.0, -1000.0, -1.0/0.0, 0.0/0.0};
+    double values[] = {0.0, 0.1, 0.2, 1.0, 2.0, 10.0, 100.0, 1000.0, 1000.1, 1.0/0.0, -0.0, -0.1, -0.2, -1.0, -1000.0, -1.0/0.0, 0.0/0.0};
     int i;
 
     for (i=0; i<sizeof(values)/sizeof(double); i++) {
