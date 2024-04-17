@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# vim: set fileencoding=utf-8
 
 # import "jádra" frameworku Qt i modulu pro GUI
 from PySide import QtCore
