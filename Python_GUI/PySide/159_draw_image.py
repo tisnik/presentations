@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# vim: set fileencoding=utf-8
 
 import sys
 from PySide import QtCore, QtGui, QtSvg
