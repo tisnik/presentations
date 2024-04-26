@@ -1,14 +1,12 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
-int startswith(char *prefix, char *str)
-{
+int startswith(char *prefix, char *str) {
     return strncmp(prefix, str, strlen(prefix)) == 0;
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     int i;
 
     printf("Arguments count: %d\n", argc);
