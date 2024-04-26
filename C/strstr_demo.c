@@ -2,10 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(void)
-{
+int main(void) {
     char *c;
-    c = (char *) malloc(100 * sizeof(char));
+    c = (char *)malloc(100 * sizeof(char));
 
     strcpy(c, "Hello hello Red Hat hello");
 
