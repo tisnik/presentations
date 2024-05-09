@@ -1,7 +1,7 @@
+#include <SDL2/SDL.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <SDL2/SDL.h>
 
 #include "gfx.h"
 
@@ -47,23 +47,19 @@ typedef struct {
     Atoms atoms;
 } Model;
 
-void initRule(Model * model)
-{
-    model->rule = 2.0 * (float) rand() / RAND_MAX - 1.0;
+void initRule(Model *model) {
+    model->rule = 2.0 * (float)rand() / RAND_MAX - 1.0;
 }
 
-float randomX()
-{
-    return (WIDTH - BORDER * 2) * (float) rand() / RAND_MAX + BORDER;
+float randomX() {
+    return (WIDTH - BORDER * 2) * (float)rand() / RAND_MAX + BORDER;
 }
 
-float randomY()
-{
-    return (HEIGHT - BORDER * 2) * (float) rand() / RAND_MAX + BORDER;
+float randomY() {
+    return (HEIGHT - BORDER * 2) * (float)rand() / RAND_MAX + BORDER;
 }
 
-void createParticles(int max, Particle * particles)
-{
+void createParticles(int max, Particle *particles) {
     int i;
     for (i = 0; i < max; i++) {
         particles[i].x = randomX();
@@ -73,8 +69,7 @@ void createParticles(int max, Particle * particles)
     }
 }
 
-void redraw(GraphicsState * graphicsState, SDL_Surface * pixmap, Model * model)
-{
+void redraw(GraphicsState *graphicsState, SDL_Surface *pixmap, Model *model) {
     int i;
 
     Atoms atoms = model->atoms;
@@ -93,8 +88,7 @@ void redraw(GraphicsState * graphicsState, SDL_Surface * pixmap, Model * model)
     show_pixmap(graphicsState, pixmap);
 }
 
-void applyRule(Model * model)
-{
+void applyRule(Model *model) {
     int i, j;
 
     for (i = 0; i < model->atoms.max; i++) {
@@ -111,7 +105,7 @@ void applyRule(Model * model)
                 float dy = a->y - b->y;
                 if (dx != 0.0 || dy != 0.0) {
                     float d = dx * dx + dy * dy;
-                    if (d < MAX_DISTANCE*MAX_DISTANCE) {
+                    if (d < MAX_DISTANCE * MAX_DISTANCE) {
                         /* repel force */
                         float f = g / sqrt(d);
                         fx += f * dx;
@@ -149,7 +143,8 @@ void applyRule(Model * model)
     }
 }
 
-static void main_event_loop(GraphicsState * graphicsState, SDL_Surface * pixmap, Model * model) {
+static void main_event_loop(GraphicsState *graphicsState, SDL_Surface *pixmap,
+                            Model *model) {
     SDL_Event event;
     int done = 0;
 
@@ -180,13 +175,14 @@ static void main_event_loop(GraphicsState * graphicsState, SDL_Surface * pixmap,
 }
 
 Model init_model(void) {
-    Color color = { 255, 255, 80 };
+    Color color = {255, 255, 80};
     Model model;
 
     initRule(&model);
     model.atoms.color = color;
 
-    model.atoms.particles = (Particle *) malloc(MAX_PARTICLES * sizeof(Particle));
+    model.atoms.particles =
+        (Particle *)malloc(MAX_PARTICLES * sizeof(Particle));
     model.atoms.max = MAX_PARTICLES;
 
     createParticles(MAX_PARTICLES, model.atoms.particles);
@@ -194,8 +190,7 @@ Model init_model(void) {
     return model;
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     GraphicsState graphicsState;
     Model model;
     SDL_Surface *pixmap;
