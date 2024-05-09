@@ -1,7 +1,7 @@
+#include <SDL2/SDL.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <SDL2/SDL.h>
 
 #include "gfx.h"
 
@@ -11,22 +11,22 @@
 #define TITLE "Life simulator"
 
 /* constants used by model */
-#define RED    0
-#define GREEN  1
+#define RED 0
+#define GREEN 1
 #define YELLOW 2
-#define BLUE   3
+#define BLUE 3
 
 /* model options */
 #define BORDER 50
 
 /* number of particles of different colors/attributes */
-#define MAX_RED    3000
-#define MAX_GREEN  200
-#define MAX_BLUE   100
+#define MAX_RED 3000
+#define MAX_GREEN 200
+#define MAX_BLUE 100
 #define MAX_YELLOW 100
 
 /* total number of particles */
-#define MAX_PARTICLES (MAX_RED+MAX_GREEN+MAX_BLUE+MAX_YELLOW)
+#define MAX_PARTICLES (MAX_RED + MAX_GREEN + MAX_BLUE + MAX_YELLOW)
 
 #define MAX_DISTANCE 50
 
@@ -41,7 +41,6 @@
 
 /* enable scene smoothing */
 int smooth_enabled = 0;
-
 
 typedef struct {
     float x;
@@ -68,29 +67,25 @@ typedef struct {
     Atoms atoms;
 } Model;
 
-void initRules(Model * model)
-{
+void initRules(Model *model) {
     int i, j;
 
     for (j = 0; j < 4; j++) {
         for (i = 0; i < 4; i++) {
-            model->rules[i][j] = 2.0 * (float) rand() / RAND_MAX - 1.0;
+            model->rules[i][j] = 2.0 * (float)rand() / RAND_MAX - 1.0;
         }
     }
 }
 
-float randomX()
-{
-    return (WIDTH - BORDER * 2) * (float) rand() / RAND_MAX + BORDER;
+float randomX() {
+    return (WIDTH - BORDER * 2) * (float)rand() / RAND_MAX + BORDER;
 }
 
-float randomY()
-{
-    return (HEIGHT - BORDER * 2) * (float) rand() / RAND_MAX + BORDER;
+float randomY() {
+    return (HEIGHT - BORDER * 2) * (float)rand() / RAND_MAX + BORDER;
 }
 
-void createParticles(int max, Particle * particles, int type)
-{
+void createParticles(int max, Particle *particles, int type) {
     int i;
     for (i = 0; i < max; i++) {
         particles[i].x = randomX();
@@ -104,12 +99,14 @@ void createParticles(int max, Particle * particles, int type)
 void createParticlesOfAllColors(Model *model) {
     createParticles(MAX_RED, model->atoms.particles, RED);
     createParticles(MAX_GREEN, model->atoms.particles + MAX_RED, GREEN);
-    createParticles(MAX_BLUE, model->atoms.particles + MAX_RED + MAX_GREEN, BLUE);
-    createParticles(MAX_YELLOW, model->atoms.particles + MAX_RED + MAX_GREEN + MAX_BLUE, YELLOW);
+    createParticles(MAX_BLUE, model->atoms.particles + MAX_RED + MAX_GREEN,
+                    BLUE);
+    createParticles(MAX_YELLOW,
+                    model->atoms.particles + MAX_RED + MAX_GREEN + MAX_BLUE,
+                    YELLOW);
 }
 
-void redraw(GraphicsState * graphicsState, SDL_Surface * pixmap, Model * model)
-{
+void redraw(GraphicsState *graphicsState, SDL_Surface *pixmap, Model *model) {
     int i;
 
     Atoms atoms = model->atoms;
@@ -131,8 +128,7 @@ void redraw(GraphicsState * graphicsState, SDL_Surface * pixmap, Model * model)
     show_pixmap(graphicsState, pixmap);
 }
 
-void applyRules(Model * model)
-{
+void applyRules(Model *model) {
     int i, j;
 
     for (i = 0; i < model->atoms.max; i++) {
@@ -149,7 +145,7 @@ void applyRules(Model * model)
                 float dy = a->y - b->y;
                 if (dx != 0.0 || dy != 0.0) {
                     float d = dx * dx + dy * dy;
-                    if (d < MAX_DISTANCE*MAX_DISTANCE) {
+                    if (d < MAX_DISTANCE * MAX_DISTANCE) {
                         /* repel force */
                         float f = g / sqrt(d);
                         fx += f * dx;
@@ -187,8 +183,7 @@ void applyRules(Model * model)
     }
 }
 
-void slowDown(Model * model)
-{
+void slowDown(Model *model) {
     int i;
     for (i = 0; i < model->atoms.max; i++) {
         Particle *p = &model->atoms.particles[i];
@@ -197,7 +192,8 @@ void slowDown(Model * model)
     }
 }
 
-static void main_event_loop(GraphicsState * graphicsState, SDL_Surface * pixmap, Model * model) {
+static void main_event_loop(GraphicsState *graphicsState, SDL_Surface *pixmap,
+                            Model *model) {
     SDL_Event event;
     int done = 0;
 
@@ -240,10 +236,10 @@ static void main_event_loop(GraphicsState * graphicsState, SDL_Surface * pixmap,
 }
 
 Model init_model(void) {
-    Color redColor = { 255, 80, 80 };
-    Color greenColor = { 80, 255, 80 };
-    Color blueColor = { 80, 80, 255 };
-    Color yellowColor = { 255, 255, 80 };
+    Color redColor = {255, 80, 80};
+    Color greenColor = {80, 255, 80};
+    Color blueColor = {80, 80, 255};
+    Color yellowColor = {255, 255, 80};
 
     Model model;
 
@@ -253,7 +249,8 @@ Model init_model(void) {
     model.atoms.colors[BLUE] = blueColor;
     model.atoms.colors[YELLOW] = yellowColor;
 
-    model.atoms.particles = (Particle *) malloc(MAX_PARTICLES * sizeof(Particle));
+    model.atoms.particles =
+        (Particle *)malloc(MAX_PARTICLES * sizeof(Particle));
     model.atoms.max = MAX_PARTICLES;
 
     createParticlesOfAllColors(&model);
@@ -261,8 +258,7 @@ Model init_model(void) {
     return model;
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     GraphicsState graphicsState;
     Model model;
     SDL_Surface *pixmap;
