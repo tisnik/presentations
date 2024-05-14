@@ -60,14 +60,14 @@ typedef struct {
     Particle *particles;
     int max;
     Color colors[4];
-} Atoms;
+} ParticleSystem;
 
 typedef struct {
     float rules[4][4];
-    Atoms atoms;
+    ParticleSystem particle_system;
 } Model;
 
-void initRules(Model *model) {
+void init_rules(Model *model) {
     int i, j;
 
     for (j = 0; j < 4; j++) {
@@ -77,44 +77,44 @@ void initRules(Model *model) {
     }
 }
 
-float randomX() {
+float random_x() {
     return (WIDTH - BORDER * 2) * (float)rand() / RAND_MAX + BORDER;
 }
 
-float randomY() {
+float random_y() {
     return (HEIGHT - BORDER * 2) * (float)rand() / RAND_MAX + BORDER;
 }
 
-void createParticles(int max, Particle *particles, int type) {
+void create_particles(int max, Particle *particles, int type) {
     int i;
     for (i = 0; i < max; i++) {
-        particles[i].x = randomX();
-        particles[i].y = randomY();
+        particles[i].x = random_x();
+        particles[i].y = random_y();
         particles[i].vx = (float)rand() / RAND_MAX - 0.5;
         particles[i].vy = (float)rand() / RAND_MAX - 0.5;
         particles[i].type = type;
     }
 }
 
-void createParticlesOfAllColors(Model *model) {
-    createParticles(MAX_RED, model->atoms.particles, RED);
-    createParticles(MAX_GREEN, model->atoms.particles + MAX_RED, GREEN);
-    createParticles(MAX_BLUE, model->atoms.particles + MAX_RED + MAX_GREEN,
+void create_particles_of_all_colors(Model *model) {
+    create_particles(MAX_RED, model->particle_system.particles, RED);
+    create_particles(MAX_GREEN, model->particle_system.particles + MAX_RED, GREEN);
+    create_particles(MAX_BLUE, model->particle_system.particles + MAX_RED + MAX_GREEN,
                     BLUE);
-    createParticles(MAX_YELLOW,
-                    model->atoms.particles + MAX_RED + MAX_GREEN + MAX_BLUE,
+    create_particles(MAX_YELLOW,
+                    model->particle_system.particles + MAX_RED + MAX_GREEN + MAX_BLUE,
                     YELLOW);
 }
 
 void redraw(GraphicsState *graphicsState, SDL_Surface *pixmap, Model *model) {
     int i;
 
-    Atoms atoms = model->atoms;
+    ParticleSystem particle_system = model->particle_system;
 
     SDL_FillRect(pixmap, NULL, 0x00);
-    for (i = 0; i < atoms.max; i++) {
-        Particle particle = atoms.particles[i];
-        Color color = atoms.colors[particle.type];
+    for (i = 0; i < particle_system.max; i++) {
+        Particle particle = particle_system.particles[i];
+        Color color = particle_system.colors[particle.type];
         putpixel(pixmap, particle.x, particle.y, color.r, color.g, color.b);
         putpixel(pixmap, particle.x - 1, particle.y, color.r, color.g, color.b);
         putpixel(pixmap, particle.x + 1, particle.y, color.r, color.g, color.b);
@@ -128,18 +128,18 @@ void redraw(GraphicsState *graphicsState, SDL_Surface *pixmap, Model *model) {
     show_pixmap(graphicsState, pixmap);
 }
 
-void applyRules(Model *model) {
+void apply_rules(Model *model) {
     int i, j;
 
-    for (i = 0; i < model->atoms.max; i++) {
+    for (i = 0; i < model->particle_system.max; i++) {
         float fx = 0.0;
         float fy = 0.0;
-        Particle *a = &model->atoms.particles[i];
+        Particle *a = &model->particle_system.particles[i];
 
         /* compute force for selected particle */
-        for (j = 0; j < model->atoms.max; j++) {
+        for (j = 0; j < model->particle_system.max; j++) {
             if (i != j) {
-                Particle *b = &model->atoms.particles[j];
+                Particle *b = &model->particle_system.particles[j];
                 float g = model->rules[a->type][b->type] * SCALE_FACTOR;
                 float dx = a->x - b->x;
                 float dy = a->y - b->y;
@@ -183,10 +183,10 @@ void applyRules(Model *model) {
     }
 }
 
-void slowDown(Model *model) {
+void slow_down(Model *model) {
     int i;
-    for (i = 0; i < model->atoms.max; i++) {
-        Particle *p = &model->atoms.particles[i];
+    for (i = 0; i < model->particle_system.max; i++) {
+        Particle *p = &model->particle_system.particles[i];
         p->vx *= SLOW_DOWN_FACTOR;
         p->vy *= SLOW_DOWN_FACTOR;
     }
@@ -206,13 +206,13 @@ static void main_event_loop(GraphicsState *graphicsState, SDL_Surface *pixmap,
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym) {
                 case 'd':
-                    slowDown(model);
+                    slow_down(model);
                     break;
                 case 'i':
-                    initRules(model);
+                    init_rules(model);
                     break;
                 case 'c':
-                    createParticlesOfAllColors(model);
+                    create_particles_of_all_colors(model);
                     break;
                 case 's':
                     smooth_enabled = !smooth_enabled;
@@ -229,7 +229,7 @@ static void main_event_loop(GraphicsState *graphicsState, SDL_Surface *pixmap,
                 break;
             }
         }
-        applyRules(model);
+        apply_rules(model);
         redraw(graphicsState, pixmap, model);
         SDL_Delay(10);
     } while (!done);
@@ -243,17 +243,17 @@ Model init_model(void) {
 
     Model model;
 
-    initRules(&model);
-    model.atoms.colors[RED] = redColor;
-    model.atoms.colors[GREEN] = greenColor;
-    model.atoms.colors[BLUE] = blueColor;
-    model.atoms.colors[YELLOW] = yellowColor;
+    init_rules(&model);
+    model.particle_system.colors[RED] = redColor;
+    model.particle_system.colors[GREEN] = greenColor;
+    model.particle_system.colors[BLUE] = blueColor;
+    model.particle_system.colors[YELLOW] = yellowColor;
 
-    model.atoms.particles =
+    model.particle_system.particles =
         (Particle *)malloc(MAX_PARTICLES * sizeof(Particle));
-    model.atoms.max = MAX_PARTICLES;
+    model.particle_system.max = MAX_PARTICLES;
 
-    createParticlesOfAllColors(&model);
+    create_particles_of_all_colors(&model);
 
     return model;
 }
