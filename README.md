@@ -35,6 +35,15 @@ Examples that are written in Python and use the Matplotlib library that
 can be found on the address
 [http://matplotlib.org/](http://matplotlib.org/).
 
+### Curves
+
+Various curves (including implicit and parametric curves) computed and
+visualized via Python + Matplotlib
+
+### Fractals
+
+Examples from the article serie about fractals
+
 ### Rust
 
 Demonstration example for the Rust programming language.
