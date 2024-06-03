@@ -1,4 +1,3 @@
-# vim: set fileencoding=utf-8
 
 from wx import App, Frame, ID_ANY
 
