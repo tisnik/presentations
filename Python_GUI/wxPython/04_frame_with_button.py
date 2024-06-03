@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# vim: set fileencoding=utf-8
 
 from wx import App, Frame, Button, ID_ANY
 
