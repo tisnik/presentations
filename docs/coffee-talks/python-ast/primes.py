@@ -10,4 +10,4 @@ def primes2(limit):
     return [i for i, prime in enumerate(is_prime) if prime]
 
 
-print(primes2(100))
+print(primes2(1000))
