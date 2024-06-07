@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# vim: set fileencoding=utf-8
 
 from prompt_toolkit import Application, HTML
 from prompt_toolkit.layout.containers import Window
