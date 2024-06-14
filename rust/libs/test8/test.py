@@ -1,5 +1,4 @@
 #!/usr/bin/env python2
-# vim: set fileencoding=utf-8
 
 import ctypes
 
