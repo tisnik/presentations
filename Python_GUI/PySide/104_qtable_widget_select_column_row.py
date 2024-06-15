@@ -15,8 +15,7 @@
 import sys
 
 # import "jádra" frameworku Qt i modulu pro GUI
-from PySide import QtCore
-from PySide import QtGui
+from PySide import QtCore, QtGui
 
 
 # nový widget bude odvozen od obecného widgetu
