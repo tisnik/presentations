@@ -14,12 +14,11 @@
 
 import sys
 
-# import "jádra" frameworku Qt i modulu pro GUI
-from PySide import QtCore
-from PySide import QtGui
-
 # používáme jen pro import funkce sleep
 import time
+
+# import "jádra" frameworku Qt i modulu pro GUI
+from PySide import QtCore, QtGui
 
 
 # uspání hlavního vlákna aplikace na zadaný počet sekund
