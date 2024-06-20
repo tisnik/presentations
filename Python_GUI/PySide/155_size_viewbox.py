@@ -2,7 +2,6 @@
 
 from PySide import QtCore, QtGui, QtSvg
 
-
 # konstanty s n-ticemi představujícími základní barvy
 BLACK = (0, 0, 0)
 BLUE = (0, 0, 255)
