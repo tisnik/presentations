@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+
 from PySide import QtCore, QtGui, QtSvg
 
 
