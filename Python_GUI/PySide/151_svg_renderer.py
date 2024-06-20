@@ -3,9 +3,7 @@
 import sys
 
 # import "jádra" frameworku Qt i modulu pro GUI
-from PySide import QtCore
-from PySide import QtGui
-from PySide import QtSvg
+from PySide import QtCore, QtGui, QtSvg
 
 
 # nový widget bude odvozen od obecného hlavního okna
