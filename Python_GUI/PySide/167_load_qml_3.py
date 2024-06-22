@@ -3,11 +3,8 @@
 import sys
 
 # import "jádra" frameworku Qt i modulu pro GUI
-from PySide import QtCore
-from PySide import QtGui
-
 # modul pro práci s QML
-from PySide import QtDeclarative
+from PySide import QtCore, QtDeclarative, QtGui
 
 QML_FILE = "167_load_qml_3.qml"
 
