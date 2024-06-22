@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 
 # import "jádra" frameworku Qt i modulu pro GUI
-from PySide import QtCore
-from PySide import QtGui
+import sys
 
 # třída pro načtení formuláře
-from PySide import QtUiTools
-
-import sys
+from PySide import QtCore, QtGui, QtUiTools
 
 
 def load_ui_form(filename):
