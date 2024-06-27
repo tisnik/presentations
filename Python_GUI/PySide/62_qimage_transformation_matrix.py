@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 
+import math
 import sys
 
 # import "jádra" frameworku Qt i modulu pro GUI
-from PySide import QtCore
-from PySide import QtGui
-import math
+from PySide import QtCore, QtGui
 
 
 # nový widget bude odvozen od obecného hlavního okna
