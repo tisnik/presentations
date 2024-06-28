@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 
-import sys
 import math
+import sys
 
 # import "jádra" frameworku Qt i modulu pro GUI
-from PySide import QtCore
-from PySide import QtGui
+from PySide import QtCore, QtGui
 
 
 # vytvoření štětce z bitmapy
