@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 
-import sys
 import math
 import random
+import sys
 
 # import "jádra" frameworku Qt i modulu pro GUI
-from PySide import QtCore
-from PySide import QtGui
+from PySide import QtCore, QtGui
 
 
 # nastavení barvy kreslení (pera) na zadanou barvu
