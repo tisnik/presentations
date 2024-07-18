@@ -12,9 +12,8 @@
 #      Pavel Tisnovsky
 #
 
-import tkinter
-
 import sys
+import tkinter
 
 
 def print_state():
