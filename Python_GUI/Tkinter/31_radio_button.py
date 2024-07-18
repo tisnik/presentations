@@ -12,9 +12,8 @@
 #      Pavel Tisnovsky
 #
 
-import tkinter
-
 import sys
+import tkinter
 
 root = tkinter.Tk()
 
