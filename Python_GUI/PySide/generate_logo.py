@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from math import sin, cos
+from math import cos, sin
 
 
 def main():
