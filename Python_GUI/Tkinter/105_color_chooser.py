@@ -12,9 +12,9 @@
 #      Pavel Tisnovsky
 #
 
+import sys
 import tkinter
 from tkinter import colorchooser
-import sys
 
 
 def exit():
