@@ -12,10 +12,9 @@
 #      Pavel Tisnovsky
 #
 
+import sys
 from tkinter import *
 from tkinter import ttk
-
-import sys
 
 root = Tk()
 
