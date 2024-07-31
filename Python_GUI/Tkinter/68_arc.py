@@ -12,10 +12,9 @@
 #      Pavel Tisnovsky
 #
 
+import sys
 import tkinter
 from tkinter import ttk
-import sys
-
 
 WIDTH = 400
 HEIGHT = 400
