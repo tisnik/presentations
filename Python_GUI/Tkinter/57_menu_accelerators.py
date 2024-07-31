@@ -15,7 +15,6 @@
 import tkinter
 from tkinter import ttk
 
-
 root = tkinter.Tk()
 
 menubar = tkinter.Menu(root)
