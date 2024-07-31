@@ -15,7 +15,6 @@
 import tkinter
 from tkinter import ttk
 
-
 root = tkinter.Tk()
 
 canvas = tkinter.Canvas(root, width=256, height=256)
