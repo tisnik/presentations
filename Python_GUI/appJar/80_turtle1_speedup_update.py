@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-from appJar import gui
 import tkinter
 import turtle
 
+from appJar import gui
 
 app = gui()
 
