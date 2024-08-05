@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from wx import App, Frame, ID_ANY
+from wx import ID_ANY, App, Frame
 
 # vytvoření instance objektu představujícího běžící aplikaci
 app = App()
