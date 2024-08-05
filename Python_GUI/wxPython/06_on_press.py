@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from wx import App, Frame, Panel, Button, ID_ANY, EVT_BUTTON
+from wx import EVT_BUTTON, ID_ANY, App, Button, Frame, Panel
 
 
 def onButtonPress(event):
