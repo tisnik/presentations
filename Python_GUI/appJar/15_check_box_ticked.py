@@ -2,7 +2,6 @@
 
 from appJar import gui
 
-
 CHECK_SYMBOL = "\u2713"
 MULTIPLY_SYMBOL = "\u2715"
 
