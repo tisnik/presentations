@@ -1,7 +1,19 @@
 #!/usr/bin/env python
 
-from wx import App, Frame, Panel, Button, MessageDialog
-from wx import ID_ANY, ID_OK, EVT_BUTTON, EVT_CLOSE, OK, CANCEL, ICON_QUESTION
+from wx import (
+    CANCEL,
+    EVT_BUTTON,
+    EVT_CLOSE,
+    ICON_QUESTION,
+    ID_ANY,
+    ID_OK,
+    OK,
+    App,
+    Button,
+    Frame,
+    MessageDialog,
+    Panel,
+)
 
 
 def onButtonPress(event):
