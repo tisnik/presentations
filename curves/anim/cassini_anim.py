@@ -11,6 +11,7 @@
 #
 
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 # příprava vektorů pro konstrukci mřížky
