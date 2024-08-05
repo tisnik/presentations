@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-from appJar import gui
 import tkinter
 
+from appJar import gui
 
 image_data = """
 R0lGODlhFgAWAPZJAAAAAHgCAYcHBYgZGZUJA5cRCpsYEpkkFpkrJKQLBKgYBaQQELQCArEYGKQo
