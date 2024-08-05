@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-from appJar import gui
+import sys
 import tkinter
 import turtle
-import sys
 from random import random
 
+from appJar import gui
 
 app = gui()
 
