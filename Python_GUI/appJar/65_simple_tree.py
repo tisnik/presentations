@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-from appJar import gui
 import re
 
+from appJar import gui
 
 treeContent = """
 <html>
