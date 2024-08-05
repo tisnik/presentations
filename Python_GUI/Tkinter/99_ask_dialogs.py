@@ -12,10 +12,9 @@
 #      Pavel Tisnovsky
 #
 
-import tkinter
-from tkinter import ttk
-from tkinter import messagebox
 import sys
+import tkinter
+from tkinter import messagebox, ttk
 
 
 def exit():
