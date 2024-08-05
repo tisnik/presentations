@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-from appJar import gui
 import tkinter
 
+from appJar import gui
 
 WIDTH = 400
 HEIGHT = 400
