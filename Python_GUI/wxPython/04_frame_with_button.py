@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from wx import App, Frame, Button, ID_ANY
+from wx import ID_ANY, App, Button, Frame
 
 
 class MainFrame(Frame):
