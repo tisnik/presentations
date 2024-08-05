@@ -5,7 +5,8 @@
 
 # Coconut Header: -------------------------------------------------------------
 
-from __future__ import print_function, absolute_import, unicode_literals, division
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import sys as _coconut_sys
 
 if _coconut_sys.version_info < (3,):
@@ -216,7 +217,9 @@ if _coconut_sys.version_info < (3,):
         )
 
     if _coconut_sys.version_info < (2, 7):
-        import functools as _coconut_functools, copy_reg as _coconut_copy_reg
+        import functools as _coconut_functools
+
+        import copy_reg as _coconut_copy_reg
 
         def _coconut_new_partial(func, args, keywords):
             return _coconut_functools.partial(
@@ -270,7 +273,14 @@ else:
 
 
 class _coconut(object):
-    import collections, copy, functools, imp, itertools, operator, types, weakref
+    import collections
+    import copy
+    import functools
+    import imp
+    import itertools
+    import operator
+    import types
+    import weakref
 
     if _coconut_sys.version_info < (3,):
         import cPickle as pickle
@@ -752,7 +762,7 @@ class concurrent_map(map):
         from concurrent.futures import ThreadPoolExecutor
         from multiprocessing import (
             cpu_count,
-        )  # cpu_count() * 5 is the default Python 3.5 thread count
+        )
 
         with ThreadPoolExecutor(cpu_count() * 5) as executor:
             return _coconut.iter(_coconut.tuple(executor.map(self._func, *self._iters)))
