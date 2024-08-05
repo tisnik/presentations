@@ -16,8 +16,9 @@
 #
 
 import numpy as np
-import matplotlib.pyplot as plt
+
 import matplotlib.cm as cm
+import matplotlib.pyplot as plt
 
 # příprava vektorů pro konstrukci mřížky
 x = np.linspace(-4, 4, 50)
