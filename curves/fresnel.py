@@ -15,9 +15,11 @@
 # https://tisnik.github.io/presentations/appendix/lit_sources/basic/fresnel.html
 #
 
-import matplotlib.pyplot as plt
+from math import cos, sin
+
 import numpy as np
-from math import sin, cos
+
+import matplotlib.pyplot as plt
 
 # Celkový počet vypočtených bodů
 n = 10000
