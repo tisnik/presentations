@@ -20,6 +20,7 @@
 
 import numpy as np
 import numpy.polynomial.polynomial as poly
+
 import matplotlib.pyplot as plt
 
 # hodnoty na x-ové ose
