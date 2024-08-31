@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-from gimpfu import *
 from random import *
+
+from gimpfu import *
 
 
 def pixel_1x1(drawable, x, y, color):
