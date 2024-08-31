@@ -14,8 +14,9 @@
 
 """IFS systémy."""
 
-from PIL import Image
 from random import random
+
+from PIL import Image
 
 # rozměry obrázku s fraktálem
 IMAGE_WIDTH = 512
