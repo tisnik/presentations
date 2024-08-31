@@ -14,8 +14,8 @@
 
 """Vykreslení spirál v Juliových množinách."""
 
-from PIL import Image
 import palette_greens
+from PIL import Image
 
 IMAGE_WIDTH = 800
 IMAGE_HEIGHT = 600
