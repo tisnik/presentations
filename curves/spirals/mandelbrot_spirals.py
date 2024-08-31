@@ -14,8 +14,8 @@
 
 """Vykreslení spirál v Mandelbrotově množině."""
 
-from PIL import Image
 import palette_mandmap
+from PIL import Image
 
 IMAGE_WIDTH = 800
 IMAGE_HEIGHT = 600
