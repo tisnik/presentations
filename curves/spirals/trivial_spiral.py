@@ -13,6 +13,7 @@
 #
 
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 # počet bodů na spirále
