@@ -1,12 +1,11 @@
 """Tests for API endpoints that performs component search and component analysis."""
-import requests
-
-from behave import given, then, when
 from urllib.parse import urljoin
 
+import requests
+from behave import given, then, when
+from src.authorization_tokens import *
 from src.parsing import *
 from src.utils import *
-from src.authorization_tokens import *
 
 # tento soubor je odvozen od old.py a byl upraven jinou osobou
 
