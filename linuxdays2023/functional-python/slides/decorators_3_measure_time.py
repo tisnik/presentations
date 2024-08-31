@@ -2,8 +2,9 @@
 # Vytvoření a aplikace nového dekorátoru: měření doby trvání funkce
 #
 
-from funcy import decorator
 import time
+
+from funcy import decorator
 
 
 @decorator
