@@ -4,6 +4,7 @@
 
 from funcy import ignore
 
+
 @ignore(errors=[ZeroDivisionError, TypeError], default=-1)
 def divide(a, b):
     return a/b
