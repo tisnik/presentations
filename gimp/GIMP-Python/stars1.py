@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-from gimpfu import *
 from random import *
+
+from gimpfu import *
 
 
 # funkce zavolana po spusteni pluginu uzivatelem
