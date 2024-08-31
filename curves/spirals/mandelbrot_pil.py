@@ -14,8 +14,8 @@
 
 """Vykreslení klasické Mandelbrotovy množiny."""
 
-from PIL import Image
 import palette_greens
+from PIL import Image
 
 # textura by měla být čtvercová a její šířka i výška by měla být
 # mocninou čísla 2
