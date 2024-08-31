@@ -2,8 +2,9 @@
 
 # Converts structured data from EDN format into JSON format.
 
-import sys
 import json
+import sys
+
 import edn_format
 
 # Check if command line argument is specified (it is mandatory).
