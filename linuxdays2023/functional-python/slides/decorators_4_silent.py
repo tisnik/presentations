@@ -4,6 +4,7 @@
 
 from funcy import silent
 
+
 @silent
 def divide(a, b):
     return a/b
