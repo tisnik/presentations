@@ -3,9 +3,9 @@
 # Converts structured data from EDN format into JSON format.
 
 import sys
-import edn_format
 
-from edn_format import tag, TaggedElement
+import edn_format
+from edn_format import TaggedElement, tag
 
 
 @tag("user")
