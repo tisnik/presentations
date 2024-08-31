@@ -14,8 +14,8 @@
 
 """Script to run all examples found in current directory."""
 
-from pathlib import Path
 from os import system
+from pathlib import Path
 from sys import argv
 
 
