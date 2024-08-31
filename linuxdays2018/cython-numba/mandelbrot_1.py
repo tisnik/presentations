@@ -12,8 +12,9 @@
 #      Pavel Tisnovsky
 #
 
-import palette_mandmap
 from sys import argv, exit
+
+import palette_mandmap
 
 
 def calc_mandelbrot(width, height, maxiter, palette):
