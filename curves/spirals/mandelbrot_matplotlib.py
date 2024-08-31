@@ -13,10 +13,9 @@
 #
 
 import numpy as np
-import matplotlib.pyplot as plt
-
 import palette_greens
 
+import matplotlib.pyplot as plt
 
 # velikost bitmapy s nakresleným fraktálem
 WIDTH = 256
