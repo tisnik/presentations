@@ -3,8 +3,8 @@
 # Sedmnáctý demonstrační příklad:
 # - koláčový graf
 
-from matplotlib import pyplot as plt
 from matplotlib import font_manager as fm
+from matplotlib import pyplot as plt
 
 # make a square figure and axes
 fig = plt.figure(1, figsize=(6, 6), dpi=50)
