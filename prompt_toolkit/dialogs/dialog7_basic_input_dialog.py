@@ -1,4 +1,4 @@
-from prompt_toolkit.shortcuts import message_dialog, input_dialog
+from prompt_toolkit.shortcuts import input_dialog, message_dialog
 
 response = input_dialog(title="Zadání uživatelského jména", text="Uživatelské jméno:")
 
