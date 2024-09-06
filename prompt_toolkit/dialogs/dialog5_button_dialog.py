@@ -1,4 +1,4 @@
-from prompt_toolkit.shortcuts import message_dialog, button_dialog
+from prompt_toolkit.shortcuts import button_dialog, message_dialog
 
 response = button_dialog(
     title="Tento program provedl neplatnou operaci",
