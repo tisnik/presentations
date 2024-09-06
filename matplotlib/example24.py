@@ -5,9 +5,10 @@
 # Dvacátý čtvrtý demonstrační příklad:
 # - zobrazení 3D grafu funkce typu z=f(x,y)
 
-from mpl_toolkits.mplot3d import axes3d
-import matplotlib.pyplot as plt
 import numpy as np
+from mpl_toolkits.mplot3d import axes3d
+
+import matplotlib.pyplot as plt
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection="3d")
