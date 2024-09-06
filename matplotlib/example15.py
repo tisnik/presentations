@@ -4,6 +4,7 @@
 # - sloupcový graf se dvěma skupinami sloupců
 
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 # první pole hodnot
