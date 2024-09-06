@@ -7,10 +7,11 @@
 # - pomocná legenda - colorbar
 # - promítnutí grafu na ploch kolmých na osy
 
-from mpl_toolkits.mplot3d import axes3d
-from matplotlib import cm
-import matplotlib.pyplot as plt
 import numpy as np
+from mpl_toolkits.mplot3d import axes3d
+
+import matplotlib.pyplot as plt
+from matplotlib import cm
 
 fig = plt.figure()
 ax = fig.gca(projection="3d")
