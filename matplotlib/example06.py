@@ -7,6 +7,7 @@
 # - kombinace různých stylů vykreslení
 
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 # hodnoty na x-ové ose
