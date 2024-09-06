@@ -4,6 +4,7 @@
 # - jednoduchý histogram
 
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 # náhodné hodnoty
