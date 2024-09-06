@@ -5,6 +5,7 @@
 #   a se zobrazením odchylek
 
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 # první pole hodnot a pole odchylek
