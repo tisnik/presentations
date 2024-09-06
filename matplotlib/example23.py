@@ -7,12 +7,12 @@
 # - zobrazení hodnot u jednotlivých "vrstevnic"
 # - přidání legendy
 
-import matplotlib
 import numpy as np
+
+import matplotlib
 import matplotlib.cm as cm
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
-
 
 delta = 0.1
 
