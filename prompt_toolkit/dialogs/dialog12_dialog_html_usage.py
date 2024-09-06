@@ -1,6 +1,7 @@
 from enum import Enum
+
 from prompt_toolkit import HTML
-from prompt_toolkit.shortcuts import message_dialog, button_dialog
+from prompt_toolkit.shortcuts import button_dialog, message_dialog
 from prompt_toolkit.styles import Style
 
 dialog_stylesheet_1 = Style.from_dict(
