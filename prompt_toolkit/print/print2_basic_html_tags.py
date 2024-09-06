@@ -1,4 +1,4 @@
-from prompt_toolkit import print_formatted_text, HTML
+from prompt_toolkit import HTML, print_formatted_text
 
 print_formatted_text(HTML("zpráva obsahující <b>tučný text</b>"))
 print_formatted_text(HTML("zpráva s <i>textem tištěným kurzivou</i>"))
