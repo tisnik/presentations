@@ -4,15 +4,17 @@
 import matplotlib
 
 matplotlib.use("Agg")
+import os
+import re
+import subprocess
+import sys
+
+import numpy as np
+
 import matplotlib.cm as cm
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
-import numpy as np
 import pygame
-import os
-import sys
-import subprocess
-import re
 
 # nutno importovat kvuli konstantam QUIT atd.
 from pygame.locals import *
