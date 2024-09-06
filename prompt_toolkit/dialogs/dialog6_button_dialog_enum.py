@@ -1,5 +1,6 @@
 from enum import Enum
-from prompt_toolkit.shortcuts import message_dialog, button_dialog
+
+from prompt_toolkit.shortcuts import button_dialog, message_dialog
 
 Response = Enum("Response", "abort retry fail")
 
