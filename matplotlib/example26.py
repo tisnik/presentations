@@ -6,11 +6,12 @@
 # - zobrazení 3D grafu funkce typu z=f(x,y)
 # - pomocná legenda - colorbar
 
-from mpl_toolkits.mplot3d import axes3d
-from matplotlib import cm
-import matplotlib.pyplot as plt
-from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import numpy as np
+from mpl_toolkits.mplot3d import axes3d
+
+import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.ticker import FormatStrFormatter, LinearLocator
 
 fig = plt.figure()
 ax = fig.gca(projection="3d")
