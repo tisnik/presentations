@@ -4,6 +4,7 @@
 # - jednoduchý sloupcový graf
 
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 # historické ceny ropy
