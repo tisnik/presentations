@@ -1,9 +1,8 @@
-from pygments import lex
-from pygments.token import Token
-from pygments.lexers.basic import CbmBasicV2Lexer
-
-from prompt_toolkit.formatted_text import PygmentsTokens
 from prompt_toolkit import print_formatted_text
+from prompt_toolkit.formatted_text import PygmentsTokens
+from pygments import lex
+from pygments.lexers.basic import CbmBasicV2Lexer
+from pygments.token import Token
 
 code = """
 10 FOR I=0 TO 63
