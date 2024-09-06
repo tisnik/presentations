@@ -1,5 +1,6 @@
-from prompt_toolkit import print_formatted_text
 from urllib.request import urlopen
+
+from prompt_toolkit import print_formatted_text
 
 input = urlopen("http://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt")
 
