@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 
-from prompt_toolkit import Application, HTML
+from prompt_toolkit import HTML, Application
+from prompt_toolkit.key_binding import KeyBindings
+from prompt_toolkit.layout import HSplit, Layout
 from prompt_toolkit.layout.containers import Window
 from prompt_toolkit.layout.controls import FormattedTextControl
-from prompt_toolkit.layout import Layout, HSplit
-from prompt_toolkit.key_binding import KeyBindings
-
 
 # naformátované zprávy
 message1 = HTML("<ansired>Hello</ansired>")
