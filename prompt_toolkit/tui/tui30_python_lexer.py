@@ -1,19 +1,17 @@
 #!/usr/bin/env python
 
-from pygments import lex
-from pygments.token import Token
-from pygments.lexers import PythonLexer
-
 from prompt_toolkit import Application
-from prompt_toolkit.layout.containers import Window
-from prompt_toolkit.layout.controls import FormattedTextControl
-from prompt_toolkit.layout import Layout, HSplit, VSplit
+from prompt_toolkit.application.current import get_app
 from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit.key_binding.bindings.focus import focus_next, focus_previous
-from prompt_toolkit.application.current import get_app
-from prompt_toolkit.widgets import *
+from prompt_toolkit.layout import HSplit, Layout, VSplit
+from prompt_toolkit.layout.containers import Window
+from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.lexers import PygmentsLexer
-
+from prompt_toolkit.widgets import *
+from pygments import lex
+from pygments.lexers import PythonLexer
+from pygments.token import Token
 
 # napojení na klávesové zkratky
 key_bindings = KeyBindings()
