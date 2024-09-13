@@ -2,7 +2,6 @@
 
 from prompt_toolkit import Application
 
-
 # vytvoření aplikace s textovým uživatelským rozhraním
 application = Application()
 
