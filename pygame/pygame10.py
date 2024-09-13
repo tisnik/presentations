@@ -5,12 +5,13 @@
 # Příklad číslo 10: použití objektů typu Surface a metoda blit().
 
 
-import pygame
-import sys
 import os
+import sys
+
+import pygame
 
 # Nutno importovat kvůli konstantám QUIT atd.
-from pygame.locals import QUIT, K_ESCAPE, KEYDOWN
+from pygame.locals import K_ESCAPE, KEYDOWN, QUIT
 
 # Velikost okna aplikace
 WIDTH = 320
