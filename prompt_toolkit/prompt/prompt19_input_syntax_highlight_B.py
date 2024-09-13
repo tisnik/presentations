@@ -1,8 +1,7 @@
-from pygments.lexers.jvm import ClojureLexer
-
-from prompt_toolkit.styles import Style
-from prompt_toolkit.lexers import PygmentsLexer
 from prompt_toolkit import PromptSession
+from prompt_toolkit.lexers import PygmentsLexer
+from prompt_toolkit.styles import Style
+from pygments.lexers.jvm import ClojureLexer
 
 
 def show_help():
