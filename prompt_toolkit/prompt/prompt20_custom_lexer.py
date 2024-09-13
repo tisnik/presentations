@@ -1,9 +1,8 @@
+from prompt_toolkit import PromptSession
+from prompt_toolkit.lexers import PygmentsLexer
+from prompt_toolkit.styles import Style
 from pygments.lexer import RegexLexer
 from pygments.token import *
-
-from prompt_toolkit.styles import Style
-from prompt_toolkit.lexers import PygmentsLexer
-from prompt_toolkit import PromptSession
 
 
 class CommandLexer(RegexLexer):
