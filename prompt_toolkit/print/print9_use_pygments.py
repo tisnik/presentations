@@ -1,6 +1,6 @@
-from pygments.token import Token
 from prompt_toolkit import print_formatted_text
 from prompt_toolkit.formatted_text import PygmentsTokens
+from pygments.token import Token
 
 text = [
     (Token.Keyword, "print"),
