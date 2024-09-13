@@ -5,12 +5,13 @@
 # Příklad číslo 16: použití TrueType fontů
 
 
-import pygame
-import sys
 import math
+import sys
+
+import pygame
 
 # Nutno importovat kvůli konstantám QUIT atd.
-from pygame.locals import QUIT, K_ESCAPE, KEYDOWN, BLEND_ADD
+from pygame.locals import BLEND_ADD, K_ESCAPE, KEYDOWN, QUIT
 
 # Velikost okna aplikace
 WIDTH = 320
