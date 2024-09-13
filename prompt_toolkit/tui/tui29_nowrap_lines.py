@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 
 from prompt_toolkit import Application
-from prompt_toolkit.layout.containers import Window
-from prompt_toolkit.layout.controls import FormattedTextControl
-from prompt_toolkit.layout import Layout, HSplit, VSplit
+from prompt_toolkit.application.current import get_app
 from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit.key_binding.bindings.focus import focus_next, focus_previous
-from prompt_toolkit.application.current import get_app
+from prompt_toolkit.layout import HSplit, Layout, VSplit
+from prompt_toolkit.layout.containers import Window
+from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.widgets import *
-
 
 # napojení na klávesové zkratky
 key_bindings = KeyBindings()
