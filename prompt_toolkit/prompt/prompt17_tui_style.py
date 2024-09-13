@@ -1,6 +1,6 @@
-from prompt_toolkit.validation import Validator, ValidationError
-from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
+from prompt_toolkit.styles import Style
+from prompt_toolkit.validation import ValidationError, Validator
 
 
 def show_help():
