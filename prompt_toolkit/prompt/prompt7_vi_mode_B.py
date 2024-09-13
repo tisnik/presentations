@@ -1,5 +1,4 @@
-from prompt_toolkit import PromptSession
-from prompt_toolkit import enums
+from prompt_toolkit import PromptSession, enums
 from prompt_toolkit.completion import WordCompleter
 
 
