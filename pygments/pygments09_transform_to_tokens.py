@@ -1,6 +1,6 @@
 from pygments import highlight
-from pygments.lexers import PythonLexer
 from pygments.formatters import RawTokenFormatter
+from pygments.lexers import PythonLexer
 
 code = """
 for i in range(1, 11):
