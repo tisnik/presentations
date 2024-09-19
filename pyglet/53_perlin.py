@@ -2,15 +2,16 @@
 
 # Perlinuv sum
 
-from PIL import Image
+import math
 from random import random
+
+import numpy as np
 import palette_blues
-import palette_greens
 import palette_gold
+import palette_greens
 import palette_ice
 import palette_mandmap
-import numpy as np
-import math
+from PIL import Image
 
 # textura by mela byt ctvercova a jeji sirka i vyska by mela byt
 # mocninou cisla 2
