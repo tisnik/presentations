@@ -6,9 +6,10 @@
 #                  a sklonu bez použití antialiasingu.
 
 
-import pygame
-import sys
 import math
+import sys
+
+import pygame
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
