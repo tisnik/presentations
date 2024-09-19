@@ -1,11 +1,10 @@
 import os
-from glob import iglob
 from collections import defaultdict
+from glob import iglob
 
 from pygments.lexer import *
-from pygments.token import *
 from pygments.lexers import get_lexer_by_name
-
+from pygments.token import *
 
 # slovnik s citacem frekvenci vsech klicovych slov
 keywords_freq = defaultdict(lambda: 0)
