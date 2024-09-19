@@ -6,8 +6,9 @@
 #                  tvarů s využitím modulu pygame.draw.
 
 
-import pygame
 import sys
+
+import pygame
 
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import QUIT
