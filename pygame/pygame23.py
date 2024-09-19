@@ -6,11 +6,12 @@
 #                   kolize, různé tvary kolidujících spritů
 
 
-import pygame
 import sys
 
+import pygame
+
 # Nutno importovat kvůli konstantám QUIT atd.
-from pygame.locals import QUIT, K_ESCAPE, KEYUP, KEYDOWN
+from pygame.locals import K_ESCAPE, KEYDOWN, KEYUP, QUIT
 
 # Velikost okna aplikace
 WIDTH = 320
