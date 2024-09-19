@@ -7,12 +7,13 @@
 #                   + pygame.transform.rotozoom().
 
 
-import pygame
-import sys
 import os
+import sys
+
+import pygame
 
 # Nutno importovat kvůli konstantám QUIT atd.
-from pygame.locals import QUIT, KEYDOWN, K_ESCAPE
+from pygame.locals import K_ESCAPE, KEYDOWN, QUIT
 
 # Velikost okna aplikace
 WIDTH = 400
