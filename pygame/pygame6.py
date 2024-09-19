@@ -2,13 +2,12 @@
 
 # Demonstrační příklady využívající knihovnu Pygame
 
-import pygame
 import sys
+
+import pygame
 
 # Příklad číslo 6: výpis seznamu všech dostupných grafických
 #                  režimů pro zadané bitové hloubky.
-
-
 # Nutno importovat kvůli konstantám QUIT atd.
 from pygame.locals import *
 
