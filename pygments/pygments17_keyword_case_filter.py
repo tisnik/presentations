@@ -1,7 +1,7 @@
 from pygments import highlight
-from pygments.lexers.pascal import DelphiLexer
-from pygments.formatters import TerminalFormatter
 from pygments.filters import KeywordCaseFilter
+from pygments.formatters import TerminalFormatter
+from pygments.lexers.pascal import DelphiLexer
 
 code = """
 procedure change(s:string);
