@@ -1,7 +1,7 @@
 from pygments import highlight
-from pygments.lexers import PythonLexer
-from pygments.formatters import TerminalFormatter
 from pygments.filters import NameHighlightFilter
+from pygments.formatters import TerminalFormatter
+from pygments.lexers import PythonLexer
 
 code = """
 for i in range(1, 11):
