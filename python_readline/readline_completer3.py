@@ -1,6 +1,5 @@
 import readline
 
-
 WORDS = ("quit", "exit", "eval", "help")
 
 
