@@ -1,8 +1,8 @@
 from pygments import highlight
+from pygments.filters import NameHighlightFilter
+from pygments.formatters import TerminalFormatter
 from pygments.lexer import RegexLexer
 from pygments.token import *
-from pygments.formatters import TerminalFormatter
-from pygments.filters import NameHighlightFilter
 
 
 class FooLangLexer(RegexLexer):
