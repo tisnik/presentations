@@ -1,9 +1,9 @@
 import re
 
 from pygments import highlight
-from pygments.lexers import PythonLexer
-from pygments.formatters import TerminalFormatter
 from pygments.filter import simplefilter
+from pygments.formatters import TerminalFormatter
+from pygments.lexers import PythonLexer
 from pygments.token import Name
 from pygments.util import get_bool_opt
 
