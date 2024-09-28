@@ -1,13 +1,12 @@
+import itertools
 import re
 
 from pygments import highlight
-from pygments.lexers import PythonLexer
-from pygments.formatters import TerminalFormatter
 from pygments.filter import simplefilter
+from pygments.formatters import TerminalFormatter
+from pygments.lexers import PythonLexer
 from pygments.token import Name, Punctuation
 from pygments.util import get_bool_opt
-
-import itertools
 
 
 def name_to_snake_case(name):
