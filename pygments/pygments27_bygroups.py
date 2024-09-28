@@ -1,12 +1,11 @@
 import re
-from pygments import highlight
-from pygments.lexer import *
-from pygments.token import *
-from pygments.style import Style
-from pygments.formatters import Terminal256Formatter
-from pygments.filters import NameHighlightFilter
 
+from pygments import highlight
+from pygments.filters import NameHighlightFilter
+from pygments.formatters import Terminal256Formatter
+from pygments.lexer import *
 from pygments.lexer import RegexLexer, bygroups
+from pygments.style import Style
 from pygments.token import *
 
 
